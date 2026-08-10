@@ -1350,13 +1350,79 @@
         "smithy.api#input": {}
       }
     },
+    "com.digitalocean.reservedips#ActionLink": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique numeric ID that can be used to identify and reference an action."
+          }
+        },
+        "rel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string specifying the type of the related action."
+          }
+        },
+        "href": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URL that can be used to access the action."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The linked actions can be used to check the status of a Droplet's create event."
+      }
+    },
+    "com.digitalocean.reservedips#ReservedIPsCreateResponseLinksDropletsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.reservedips#ActionLink"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsCreateResponseLinksActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.reservedips#ActionLink"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsCreateResponseLinks": {
+      "type": "structure",
+      "members": {
+        "droplets": {
+          "target": "com.digitalocean.reservedips#ReservedIPsCreateResponseLinksDropletsList"
+        },
+        "actions": {
+          "target": "com.digitalocean.reservedips#ReservedIPsCreateResponseLinksActionsList"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.reservedips#ReservedIPsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "reserved_ip": {
+          "target": "com.digitalocean.reservedips#ReservedIp"
+        },
+        "links": {
+          "target": "com.digitalocean.reservedips#ReservedIPsCreateResponseLinks"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
     "com.digitalocean.reservedips#ReservedIPsCreate": {
       "type": "operation",
       "input": {
         "target": "com.digitalocean.reservedips#ReservedIPsCreateRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.digitalocean.reservedips#ReservedIPsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {

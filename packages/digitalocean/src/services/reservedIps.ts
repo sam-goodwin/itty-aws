@@ -410,52 +410,6 @@ export const ReservedIPsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReservedIPsCreateRequest",
 }) as any as S.Schema<ReservedIPsCreateRequest>;
 
-export interface ReservedIPsCreateResponse {}
-export const ReservedIPsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReservedIPsCreateResponse",
-}) as any as S.Schema<ReservedIPsCreateResponse>;
-
-export interface ReservedIPsDeleteRequest {
-  /** A reserved IP address. */
-  reserved_ip: string;
-}
-export const ReservedIPsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reserved_ip: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/v2/reserved_ips/{reserved_ip}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ReservedIPsDeleteRequest",
-}) as any as S.Schema<ReservedIPsDeleteRequest>;
-
-export interface ReservedIPsDeleteResponse {}
-export const ReservedIPsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReservedIPsDeleteResponse",
-}) as any as S.Schema<ReservedIPsDeleteResponse>;
-
-export interface ReservedIPsGetRequest {
-  /** A reserved IP address. */
-  reserved_ip: string;
-}
-export const ReservedIPsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reserved_ip: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/v2/reserved_ips/{reserved_ip}", code: 200 }),
-  ),
-).annotate({
-  identifier: "ReservedIPsGetRequest",
-}) as any as S.Schema<ReservedIPsGetRequest>;
-
 /** This attribute is set to an array which contains features available in this region */
 export type ReservedIpRegionFeaturesList = Array<string>;
 export const ReservedIpRegionFeaturesList = /*@__PURE__*/ S.Array(
@@ -951,6 +905,98 @@ export const ReservedIp = /*@__PURE__*/ S.suspend(() =>
     project_id: S.optional(S.String),
   }),
 ).annotate({ identifier: "ReservedIp" }) as any as S.Schema<ReservedIp>;
+
+/** The linked actions can be used to check the status of a Droplet's create event. */
+export interface ActionLink {
+  /** A unique numeric ID that can be used to identify and reference an action. */
+  id?: number;
+  /** A string specifying the type of the related action. */
+  rel?: string;
+  /** A URL that can be used to access the action. */
+  href?: string;
+}
+export const ActionLink = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    rel: S.optional(S.String),
+    href: S.optional(S.String),
+  }),
+).annotate({ identifier: "ActionLink" }) as any as S.Schema<ActionLink>;
+
+export type ReservedIPsCreateResponseLinksDropletsList = Array<ActionLink>;
+export const ReservedIPsCreateResponseLinksDropletsList = /*@__PURE__*/ S.Array(
+  ActionLink,
+) as any as S.Schema<ReservedIPsCreateResponseLinksDropletsList>;
+
+export type ReservedIPsCreateResponseLinksActionsList = Array<ActionLink>;
+export const ReservedIPsCreateResponseLinksActionsList = /*@__PURE__*/ S.Array(
+  ActionLink,
+) as any as S.Schema<ReservedIPsCreateResponseLinksActionsList>;
+
+export interface ReservedIPsCreateResponseLinks {
+  droplets?: ReservedIPsCreateResponseLinksDropletsList;
+  actions?: ReservedIPsCreateResponseLinksActionsList;
+}
+export const ReservedIPsCreateResponseLinks = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    droplets: S.optional(ReservedIPsCreateResponseLinksDropletsList),
+    actions: S.optional(ReservedIPsCreateResponseLinksActionsList),
+  }),
+).annotate({
+  identifier: "ReservedIPsCreateResponseLinks",
+}) as any as S.Schema<ReservedIPsCreateResponseLinks>;
+
+export interface ReservedIPsCreateResponse {
+  reserved_ip?: ReservedIp;
+  links?: ReservedIPsCreateResponseLinks;
+}
+export const ReservedIPsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reserved_ip: S.optional(ReservedIp),
+    links: S.optional(ReservedIPsCreateResponseLinks),
+  }),
+).annotate({
+  identifier: "ReservedIPsCreateResponse",
+}) as any as S.Schema<ReservedIPsCreateResponse>;
+
+export interface ReservedIPsDeleteRequest {
+  /** A reserved IP address. */
+  reserved_ip: string;
+}
+export const ReservedIPsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reserved_ip: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/v2/reserved_ips/{reserved_ip}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ReservedIPsDeleteRequest",
+}) as any as S.Schema<ReservedIPsDeleteRequest>;
+
+export interface ReservedIPsDeleteResponse {}
+export const ReservedIPsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ReservedIPsDeleteResponse",
+}) as any as S.Schema<ReservedIPsDeleteResponse>;
+
+export interface ReservedIPsGetRequest {
+  /** A reserved IP address. */
+  reserved_ip: string;
+}
+export const ReservedIPsGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reserved_ip: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/v2/reserved_ips/{reserved_ip}", code: 200 }),
+  ),
+).annotate({
+  identifier: "ReservedIPsGetRequest",
+}) as any as S.Schema<ReservedIPsGetRequest>;
 
 export interface ReservedIPsGetResponse {
   reserved_ip?: ReservedIp;

@@ -831,13 +831,24 @@
         "smithy.api#input": {}
       }
     },
+    "com.digitalocean.firewalls#FirewallsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "firewall": {
+          "target": "com.digitalocean.firewalls#Firewall"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
     "com.digitalocean.firewalls#FirewallsCreate": {
       "type": "operation",
       "input": {
         "target": "com.digitalocean.firewalls#FirewallsCreateRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.digitalocean.firewalls#FirewallsCreateResponse"
       },
       "errors": [
         {

@@ -520,9 +520,242 @@ export const FirewallsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirewallsCreateRequest",
 }) as any as S.Schema<FirewallsCreateRequest>;
 
-export interface FirewallsCreateResponse {}
+/** A status string indicating the current state of the firewall. This can be "waiting", "succeeded", or "failed". */
+export type FirewallStatus = "waiting" | "succeeded" | "failed";
+export const FirewallStatus = /*@__PURE__*/ S.String;
+
+export interface FirewallPendingChangesItem {
+  droplet_id?: number;
+  removing?: boolean;
+  status?: string;
+}
+export const FirewallPendingChangesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    droplet_id: S.optional(S.Number),
+    removing: S.optional(S.Boolean),
+    status: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FirewallPendingChangesItem",
+}) as any as S.Schema<FirewallPendingChangesItem>;
+
+/** An array of objects each containing the fields "droplet_id", "removing", and "status". It is provided to detail exactly which Droplets are having their security policies updated. When empty, all changes have been successfully applied. */
+export type FirewallPendingChangesList = Array<FirewallPendingChangesItem>;
+export const FirewallPendingChangesList = /*@__PURE__*/ S.Array(
+  FirewallPendingChangesItem,
+) as any as S.Schema<FirewallPendingChangesList>;
+
+/** An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope. */
+export type FirewallDropletIdsList = Array<number>;
+export const FirewallDropletIdsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<FirewallDropletIdsList>;
+
+/** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
+export type FirewallInboundRulesItemProtocol = "tcp" | "udp" | "icmp";
+export const FirewallInboundRulesItemProtocol = /*@__PURE__*/ S.String;
+
+/** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
+export type FirewallInboundRulesItemSourcesAddressesList = Array<string>;
+export const FirewallInboundRulesItemSourcesAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallInboundRulesItemSourcesAddressesList>;
+
+/** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
+export type FirewallInboundRulesItemSourcesDropletIdsList = Array<number>;
+export const FirewallInboundRulesItemSourcesDropletIdsList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<FirewallInboundRulesItemSourcesDropletIdsList>;
+
+/** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
+export type FirewallInboundRulesItemSourcesLoadBalancerUidsList = Array<string>;
+export const FirewallInboundRulesItemSourcesLoadBalancerUidsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallInboundRulesItemSourcesLoadBalancerUidsList>;
+
+/** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
+export type FirewallInboundRulesItemSourcesKubernetesIdsList = Array<string>;
+export const FirewallInboundRulesItemSourcesKubernetesIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallInboundRulesItemSourcesKubernetesIdsList>;
+
+export interface FirewallInboundRulesItemSources {
+  /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
+  addresses?: FirewallInboundRulesItemSourcesAddressesList;
+  /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
+  droplet_ids?: FirewallInboundRulesItemSourcesDropletIdsList;
+  /** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
+  load_balancer_uids?: FirewallInboundRulesItemSourcesLoadBalancerUidsList;
+  /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
+  kubernetes_ids?: FirewallInboundRulesItemSourcesKubernetesIdsList;
+  tags?: unknown;
+}
+export const FirewallInboundRulesItemSources = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    addresses: S.optional(FirewallInboundRulesItemSourcesAddressesList),
+    droplet_ids: S.optional(FirewallInboundRulesItemSourcesDropletIdsList),
+    load_balancer_uids: S.optional(
+      FirewallInboundRulesItemSourcesLoadBalancerUidsList,
+    ),
+    kubernetes_ids: S.optional(
+      FirewallInboundRulesItemSourcesKubernetesIdsList,
+    ),
+    tags: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "FirewallInboundRulesItemSources",
+}) as any as S.Schema<FirewallInboundRulesItemSources>;
+
+export interface FirewallInboundRulesItem {
+  /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
+  protocol: FirewallInboundRulesItemProtocol;
+  /** The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. "8000-9000"), or "0" when all ports are open for a protocol. For ICMP rules this parameter will always return "0". */
+  ports: string;
+  sources: FirewallInboundRulesItemSources;
+}
+export const FirewallInboundRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    protocol: FirewallInboundRulesItemProtocol,
+    ports: S.String,
+    sources: FirewallInboundRulesItemSources,
+  }),
+).annotate({
+  identifier: "FirewallInboundRulesItem",
+}) as any as S.Schema<FirewallInboundRulesItem>;
+
+export type FirewallInboundRulesList = Array<FirewallInboundRulesItem>;
+export const FirewallInboundRulesList = /*@__PURE__*/ S.Array(
+  FirewallInboundRulesItem,
+) as any as S.Schema<FirewallInboundRulesList>;
+
+/** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
+export type FirewallOutboundRulesItemProtocol = "tcp" | "udp" | "icmp";
+export const FirewallOutboundRulesItemProtocol = /*@__PURE__*/ S.String;
+
+/** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
+export type FirewallOutboundRulesItemDestinationsAddressesList = Array<string>;
+export const FirewallOutboundRulesItemDestinationsAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallOutboundRulesItemDestinationsAddressesList>;
+
+/** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
+export type FirewallOutboundRulesItemDestinationsDropletIdsList = Array<number>;
+export const FirewallOutboundRulesItemDestinationsDropletIdsList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<FirewallOutboundRulesItemDestinationsDropletIdsList>;
+
+/** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
+export type FirewallOutboundRulesItemDestinationsLoadBalancerUidsList =
+  Array<string>;
+export const FirewallOutboundRulesItemDestinationsLoadBalancerUidsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallOutboundRulesItemDestinationsLoadBalancerUidsList>;
+
+/** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
+export type FirewallOutboundRulesItemDestinationsKubernetesIdsList =
+  Array<string>;
+export const FirewallOutboundRulesItemDestinationsKubernetesIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallOutboundRulesItemDestinationsKubernetesIdsList>;
+
+export interface FirewallOutboundRulesItemDestinations {
+  /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
+  addresses?: FirewallOutboundRulesItemDestinationsAddressesList;
+  /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
+  droplet_ids?: FirewallOutboundRulesItemDestinationsDropletIdsList;
+  /** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
+  load_balancer_uids?: FirewallOutboundRulesItemDestinationsLoadBalancerUidsList;
+  /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
+  kubernetes_ids?: FirewallOutboundRulesItemDestinationsKubernetesIdsList;
+  tags?: unknown;
+}
+export const FirewallOutboundRulesItemDestinations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      addresses: S.optional(FirewallOutboundRulesItemDestinationsAddressesList),
+      droplet_ids: S.optional(
+        FirewallOutboundRulesItemDestinationsDropletIdsList,
+      ),
+      load_balancer_uids: S.optional(
+        FirewallOutboundRulesItemDestinationsLoadBalancerUidsList,
+      ),
+      kubernetes_ids: S.optional(
+        FirewallOutboundRulesItemDestinationsKubernetesIdsList,
+      ),
+      tags: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "FirewallOutboundRulesItemDestinations",
+}) as any as S.Schema<FirewallOutboundRulesItemDestinations>;
+
+export interface FirewallOutboundRulesItem {
+  /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
+  protocol: FirewallOutboundRulesItemProtocol;
+  /** The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. "8000-9000"), or "0" when all ports are open for a protocol. For ICMP rules this parameter will always return "0". */
+  ports: string;
+  destinations: FirewallOutboundRulesItemDestinations;
+}
+export const FirewallOutboundRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    protocol: FirewallOutboundRulesItemProtocol,
+    ports: S.String,
+    destinations: FirewallOutboundRulesItemDestinations,
+  }),
+).annotate({
+  identifier: "FirewallOutboundRulesItem",
+}) as any as S.Schema<FirewallOutboundRulesItem>;
+
+export type FirewallOutboundRulesList = Array<FirewallOutboundRulesItem>;
+export const FirewallOutboundRulesList = /*@__PURE__*/ S.Array(
+  FirewallOutboundRulesItem,
+) as any as S.Schema<FirewallOutboundRulesList>;
+
+export interface Firewall {
+  /** A unique ID that can be used to identify and reference a firewall. */
+  id?: string;
+  /** A status string indicating the current state of the firewall. This can be "waiting", "succeeded", or "failed". */
+  status?: FirewallStatus;
+  /** A time value given in ISO8601 combined date and time format that represents when the firewall was created. */
+  created_at?: string;
+  /** An array of objects each containing the fields "droplet_id", "removing", and "status". It is provided to detail exactly which Droplets are having their security policies updated. When empty, all changes have been successfully applied. */
+  pending_changes?: FirewallPendingChangesList;
+  /** A human-readable name for a firewall. The name must begin with an alphanumeric character. Subsequent characters must either be alphanumeric characters, a period (.), or a dash (-). */
+  name?: string;
+  /** An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope. */
+  droplet_ids?: FirewallDropletIdsList | null;
+  tags?: unknown;
+  inbound_rules?: FirewallInboundRulesList | null;
+  outbound_rules?: FirewallOutboundRulesList | null;
+}
+export const Firewall = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    status: S.optional(FirewallStatus),
+    created_at: S.optional(S.String),
+    pending_changes: S.optional(FirewallPendingChangesList),
+    name: S.optional(S.String),
+    droplet_ids: S.optional(S.NullOr(FirewallDropletIdsList)),
+    tags: S.optional(S.Unknown),
+    inbound_rules: S.optional(S.NullOr(FirewallInboundRulesList)),
+    outbound_rules: S.optional(S.NullOr(FirewallOutboundRulesList)),
+  }),
+).annotate({ identifier: "Firewall" }) as any as S.Schema<Firewall>;
+
+export interface FirewallsCreateResponse {
+  firewall?: Firewall;
+}
 export const FirewallsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({
+    firewall: S.optional(Firewall),
+  }),
 ).annotate({
   identifier: "FirewallsCreateResponse",
 }) as any as S.Schema<FirewallsCreateResponse>;
@@ -852,235 +1085,6 @@ export const FirewallsGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FirewallsGetRequest",
 }) as any as S.Schema<FirewallsGetRequest>;
-
-/** A status string indicating the current state of the firewall. This can be "waiting", "succeeded", or "failed". */
-export type FirewallStatus = "waiting" | "succeeded" | "failed";
-export const FirewallStatus = /*@__PURE__*/ S.String;
-
-export interface FirewallPendingChangesItem {
-  droplet_id?: number;
-  removing?: boolean;
-  status?: string;
-}
-export const FirewallPendingChangesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    droplet_id: S.optional(S.Number),
-    removing: S.optional(S.Boolean),
-    status: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FirewallPendingChangesItem",
-}) as any as S.Schema<FirewallPendingChangesItem>;
-
-/** An array of objects each containing the fields "droplet_id", "removing", and "status". It is provided to detail exactly which Droplets are having their security policies updated. When empty, all changes have been successfully applied. */
-export type FirewallPendingChangesList = Array<FirewallPendingChangesItem>;
-export const FirewallPendingChangesList = /*@__PURE__*/ S.Array(
-  FirewallPendingChangesItem,
-) as any as S.Schema<FirewallPendingChangesList>;
-
-/** An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope. */
-export type FirewallDropletIdsList = Array<number>;
-export const FirewallDropletIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<FirewallDropletIdsList>;
-
-/** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
-export type FirewallInboundRulesItemProtocol = "tcp" | "udp" | "icmp";
-export const FirewallInboundRulesItemProtocol = /*@__PURE__*/ S.String;
-
-/** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
-export type FirewallInboundRulesItemSourcesAddressesList = Array<string>;
-export const FirewallInboundRulesItemSourcesAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FirewallInboundRulesItemSourcesAddressesList>;
-
-/** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
-export type FirewallInboundRulesItemSourcesDropletIdsList = Array<number>;
-export const FirewallInboundRulesItemSourcesDropletIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<FirewallInboundRulesItemSourcesDropletIdsList>;
-
-/** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
-export type FirewallInboundRulesItemSourcesLoadBalancerUidsList = Array<string>;
-export const FirewallInboundRulesItemSourcesLoadBalancerUidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FirewallInboundRulesItemSourcesLoadBalancerUidsList>;
-
-/** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
-export type FirewallInboundRulesItemSourcesKubernetesIdsList = Array<string>;
-export const FirewallInboundRulesItemSourcesKubernetesIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FirewallInboundRulesItemSourcesKubernetesIdsList>;
-
-export interface FirewallInboundRulesItemSources {
-  /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
-  addresses?: FirewallInboundRulesItemSourcesAddressesList;
-  /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
-  droplet_ids?: FirewallInboundRulesItemSourcesDropletIdsList;
-  /** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
-  load_balancer_uids?: FirewallInboundRulesItemSourcesLoadBalancerUidsList;
-  /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
-  kubernetes_ids?: FirewallInboundRulesItemSourcesKubernetesIdsList;
-  tags?: unknown;
-}
-export const FirewallInboundRulesItemSources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    addresses: S.optional(FirewallInboundRulesItemSourcesAddressesList),
-    droplet_ids: S.optional(FirewallInboundRulesItemSourcesDropletIdsList),
-    load_balancer_uids: S.optional(
-      FirewallInboundRulesItemSourcesLoadBalancerUidsList,
-    ),
-    kubernetes_ids: S.optional(
-      FirewallInboundRulesItemSourcesKubernetesIdsList,
-    ),
-    tags: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "FirewallInboundRulesItemSources",
-}) as any as S.Schema<FirewallInboundRulesItemSources>;
-
-export interface FirewallInboundRulesItem {
-  /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
-  protocol: FirewallInboundRulesItemProtocol;
-  /** The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. "8000-9000"), or "0" when all ports are open for a protocol. For ICMP rules this parameter will always return "0". */
-  ports: string;
-  sources: FirewallInboundRulesItemSources;
-}
-export const FirewallInboundRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: FirewallInboundRulesItemProtocol,
-    ports: S.String,
-    sources: FirewallInboundRulesItemSources,
-  }),
-).annotate({
-  identifier: "FirewallInboundRulesItem",
-}) as any as S.Schema<FirewallInboundRulesItem>;
-
-export type FirewallInboundRulesList = Array<FirewallInboundRulesItem>;
-export const FirewallInboundRulesList = /*@__PURE__*/ S.Array(
-  FirewallInboundRulesItem,
-) as any as S.Schema<FirewallInboundRulesList>;
-
-/** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
-export type FirewallOutboundRulesItemProtocol = "tcp" | "udp" | "icmp";
-export const FirewallOutboundRulesItemProtocol = /*@__PURE__*/ S.String;
-
-/** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
-export type FirewallOutboundRulesItemDestinationsAddressesList = Array<string>;
-export const FirewallOutboundRulesItemDestinationsAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FirewallOutboundRulesItemDestinationsAddressesList>;
-
-/** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
-export type FirewallOutboundRulesItemDestinationsDropletIdsList = Array<number>;
-export const FirewallOutboundRulesItemDestinationsDropletIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<FirewallOutboundRulesItemDestinationsDropletIdsList>;
-
-/** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
-export type FirewallOutboundRulesItemDestinationsLoadBalancerUidsList =
-  Array<string>;
-export const FirewallOutboundRulesItemDestinationsLoadBalancerUidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FirewallOutboundRulesItemDestinationsLoadBalancerUidsList>;
-
-/** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
-export type FirewallOutboundRulesItemDestinationsKubernetesIdsList =
-  Array<string>;
-export const FirewallOutboundRulesItemDestinationsKubernetesIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FirewallOutboundRulesItemDestinationsKubernetesIdsList>;
-
-export interface FirewallOutboundRulesItemDestinations {
-  /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
-  addresses?: FirewallOutboundRulesItemDestinationsAddressesList;
-  /** An array containing the IDs of the Droplets to which the firewall will allow traffic. */
-  droplet_ids?: FirewallOutboundRulesItemDestinationsDropletIdsList;
-  /** An array containing the IDs of the load balancers to which the firewall will allow traffic. */
-  load_balancer_uids?: FirewallOutboundRulesItemDestinationsLoadBalancerUidsList;
-  /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
-  kubernetes_ids?: FirewallOutboundRulesItemDestinationsKubernetesIdsList;
-  tags?: unknown;
-}
-export const FirewallOutboundRulesItemDestinations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      addresses: S.optional(FirewallOutboundRulesItemDestinationsAddressesList),
-      droplet_ids: S.optional(
-        FirewallOutboundRulesItemDestinationsDropletIdsList,
-      ),
-      load_balancer_uids: S.optional(
-        FirewallOutboundRulesItemDestinationsLoadBalancerUidsList,
-      ),
-      kubernetes_ids: S.optional(
-        FirewallOutboundRulesItemDestinationsKubernetesIdsList,
-      ),
-      tags: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "FirewallOutboundRulesItemDestinations",
-}) as any as S.Schema<FirewallOutboundRulesItemDestinations>;
-
-export interface FirewallOutboundRulesItem {
-  /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
-  protocol: FirewallOutboundRulesItemProtocol;
-  /** The ports on which traffic will be allowed specified as a string containing a single port, a range (e.g. "8000-9000"), or "0" when all ports are open for a protocol. For ICMP rules this parameter will always return "0". */
-  ports: string;
-  destinations: FirewallOutboundRulesItemDestinations;
-}
-export const FirewallOutboundRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocol: FirewallOutboundRulesItemProtocol,
-    ports: S.String,
-    destinations: FirewallOutboundRulesItemDestinations,
-  }),
-).annotate({
-  identifier: "FirewallOutboundRulesItem",
-}) as any as S.Schema<FirewallOutboundRulesItem>;
-
-export type FirewallOutboundRulesList = Array<FirewallOutboundRulesItem>;
-export const FirewallOutboundRulesList = /*@__PURE__*/ S.Array(
-  FirewallOutboundRulesItem,
-) as any as S.Schema<FirewallOutboundRulesList>;
-
-export interface Firewall {
-  /** A unique ID that can be used to identify and reference a firewall. */
-  id?: string;
-  /** A status string indicating the current state of the firewall. This can be "waiting", "succeeded", or "failed". */
-  status?: FirewallStatus;
-  /** A time value given in ISO8601 combined date and time format that represents when the firewall was created. */
-  created_at?: string;
-  /** An array of objects each containing the fields "droplet_id", "removing", and "status". It is provided to detail exactly which Droplets are having their security policies updated. When empty, all changes have been successfully applied. */
-  pending_changes?: FirewallPendingChangesList;
-  /** A human-readable name for a firewall. The name must begin with an alphanumeric character. Subsequent characters must either be alphanumeric characters, a period (.), or a dash (-). */
-  name?: string;
-  /** An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope. */
-  droplet_ids?: FirewallDropletIdsList | null;
-  tags?: unknown;
-  inbound_rules?: FirewallInboundRulesList | null;
-  outbound_rules?: FirewallOutboundRulesList | null;
-}
-export const Firewall = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    status: S.optional(FirewallStatus),
-    created_at: S.optional(S.String),
-    pending_changes: S.optional(FirewallPendingChangesList),
-    name: S.optional(S.String),
-    droplet_ids: S.optional(S.NullOr(FirewallDropletIdsList)),
-    tags: S.optional(S.Unknown),
-    inbound_rules: S.optional(S.NullOr(FirewallInboundRulesList)),
-    outbound_rules: S.optional(S.NullOr(FirewallOutboundRulesList)),
-  }),
-).annotate({ identifier: "Firewall" }) as any as S.Schema<Firewall>;
 
 export interface FirewallsGetResponse {
   firewall?: Firewall;

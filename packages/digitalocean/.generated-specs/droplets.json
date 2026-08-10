@@ -1847,13 +1847,79 @@
         "smithy.api#input": {}
       }
     },
+    "com.digitalocean.droplets#DropletsCreateResponseDropletsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#Droplet"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#ActionLink": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A unique numeric ID that can be used to identify and reference an action."
+          }
+        },
+        "rel": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string specifying the type of the related action."
+          }
+        },
+        "href": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A URL that can be used to access the action."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The linked actions can be used to check the status of a Droplet's create event."
+      }
+    },
+    "com.digitalocean.droplets#DropletsCreateResponseLinksActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.digitalocean.droplets#ActionLink"
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletsCreateResponseLinks": {
+      "type": "structure",
+      "members": {
+        "actions": {
+          "target": "com.digitalocean.droplets#DropletsCreateResponseLinksActionsList"
+        }
+      },
+      "traits": {}
+    },
+    "com.digitalocean.droplets#DropletsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "droplet": {
+          "target": "com.digitalocean.droplets#Droplet"
+        },
+        "droplets": {
+          "target": "com.digitalocean.droplets#DropletsCreateResponseDropletsList"
+        },
+        "links": {
+          "target": "com.digitalocean.droplets#DropletsCreateResponseLinks"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
     "com.digitalocean.droplets#DropletsCreate": {
       "type": "operation",
       "input": {
         "target": "com.digitalocean.droplets#DropletsCreateRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.digitalocean.droplets#DropletsCreateResponse"
       },
       "traits": {
         "smithy.api#http": {

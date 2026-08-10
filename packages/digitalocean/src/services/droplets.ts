@@ -969,207 +969,6 @@ export const DropletsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DropletsCreateRequest",
 }) as any as S.Schema<DropletsCreateRequest>;
 
-export interface DropletsCreateResponse {}
-export const DropletsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DropletsCreateResponse",
-}) as any as S.Schema<DropletsCreateResponse>;
-
-export interface DropletsDestroyRequest {
-  /** A unique identifier for a Droplet instance. */
-  droplet_id: number;
-}
-export const DropletsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    droplet_id: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({ method: "DELETE", uri: "/v2/droplets/{droplet_id}", code: 200 }),
-  ),
-).annotate({
-  identifier: "DropletsDestroyRequest",
-}) as any as S.Schema<DropletsDestroyRequest>;
-
-export interface DropletsDestroyResponse {}
-export const DropletsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DropletsDestroyResponse",
-}) as any as S.Schema<DropletsDestroyResponse>;
-
-export interface DropletsDestroyByTagRequest {
-  /** Specifies Droplets to be deleted by tag. */
-  tag_name: string;
-}
-export const DropletsDestroyByTagRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tag_name: S.String.pipe(T.Query()),
-  }).pipe(T.Http({ method: "DELETE", uri: "/v2/droplets", code: 200 })),
-).annotate({
-  identifier: "DropletsDestroyByTagRequest",
-}) as any as S.Schema<DropletsDestroyByTagRequest>;
-
-export interface DropletsDestroyByTagResponse {}
-export const DropletsDestroyByTagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DropletsDestroyByTagResponse",
-}) as any as S.Schema<DropletsDestroyByTagResponse>;
-
-export interface DropletsDestroyRetryWithAssociatedResourcesRequest {
-  /** A unique identifier for a Droplet instance. */
-  droplet_id: number;
-}
-export const DropletsDestroyRetryWithAssociatedResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      droplet_id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/retry",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DropletsDestroyRetryWithAssociatedResourcesRequest",
-  }) as any as S.Schema<DropletsDestroyRetryWithAssociatedResourcesRequest>;
-
-export interface DropletsDestroyRetryWithAssociatedResourcesResponse {}
-export const DropletsDestroyRetryWithAssociatedResourcesResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DropletsDestroyRetryWithAssociatedResourcesResponse",
-  }) as any as S.Schema<DropletsDestroyRetryWithAssociatedResourcesResponse>;
-
-export interface DropletsDestroyWithAssociatedResourcesDangerousRequest {
-  /** A unique identifier for a Droplet instance. */
-  droplet_id: number;
-}
-export const DropletsDestroyWithAssociatedResourcesDangerousRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      droplet_id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/dangerous",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DropletsDestroyWithAssociatedResourcesDangerousRequest",
-  }) as any as S.Schema<DropletsDestroyWithAssociatedResourcesDangerousRequest>;
-
-export interface DropletsDestroyWithAssociatedResourcesDangerousResponse {}
-export const DropletsDestroyWithAssociatedResourcesDangerousResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DropletsDestroyWithAssociatedResourcesDangerousResponse",
-  }) as any as S.Schema<DropletsDestroyWithAssociatedResourcesDangerousResponse>;
-
-/** An array of unique identifiers for the floating IPs to be scheduled for deletion. */
-export type DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList =
-  Array<string>;
-export const DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList>;
-
-/** An array of unique identifiers for the reserved IPs to be scheduled for deletion. */
-export type DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList =
-  Array<string>;
-export const DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList>;
-
-/** An array of unique identifiers for the snapshots to be scheduled for deletion. */
-export type DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList =
-  Array<string>;
-export const DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList>;
-
-/** An array of unique identifiers for the volumes to be scheduled for deletion. */
-export type DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList =
-  Array<string>;
-export const DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList>;
-
-/** An array of unique identifiers for the volume snapshots to be scheduled for deletion. */
-export type DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList =
-  Array<string>;
-export const DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList>;
-
-export interface DropletsDestroyWithAssociatedResourcesSelectiveRequest {
-  /** A unique identifier for a Droplet instance. */
-  droplet_id: number;
-  /** An array of unique identifiers for the floating IPs to be scheduled for deletion. */
-  floating_ips?: DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList;
-  /** An array of unique identifiers for the reserved IPs to be scheduled for deletion. */
-  reserved_ips?: DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList;
-  /** An array of unique identifiers for the snapshots to be scheduled for deletion. */
-  snapshots?: DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList;
-  /** An array of unique identifiers for the volumes to be scheduled for deletion. */
-  volumes?: DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList;
-  /** An array of unique identifiers for the volume snapshots to be scheduled for deletion. */
-  volume_snapshots?: DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList;
-}
-export const DropletsDestroyWithAssociatedResourcesSelectiveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      droplet_id: S.Number.pipe(T.Label()),
-      floating_ips: S.optional(
-        DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList,
-      ),
-      reserved_ips: S.optional(
-        DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList,
-      ),
-      snapshots: S.optional(
-        DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList,
-      ),
-      volumes: S.optional(
-        DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList,
-      ),
-      volume_snapshots: S.optional(
-        DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/selective",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "DropletsDestroyWithAssociatedResourcesSelectiveRequest",
-  }) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequest>;
-
-export interface DropletsDestroyWithAssociatedResourcesSelectiveResponse {}
-export const DropletsDestroyWithAssociatedResourcesSelectiveResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DropletsDestroyWithAssociatedResourcesSelectiveResponse",
-  }) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveResponse>;
-
-export interface DropletsGetRequest {
-  /** A unique identifier for a Droplet instance. */
-  droplet_id: number;
-}
-export const DropletsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    droplet_id: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/v2/droplets/{droplet_id}", code: 200 }),
-  ),
-).annotate({
-  identifier: "DropletsGetRequest",
-}) as any as S.Schema<DropletsGetRequest>;
-
 /** The type of disk. All Droplets contain a `local` or `boot` disk. Additionally, GPU Droplets can also have a `scratch` disk for non-persistent data. */
 export type DiskInfoType = "local" | "boot" | "scratch";
 export const DiskInfoType = /*@__PURE__*/ S.String;
@@ -1603,6 +1402,253 @@ export const Droplet = /*@__PURE__*/ S.suspend(() =>
     gpu_info: S.optional(GpuInfo),
   }),
 ).annotate({ identifier: "Droplet" }) as any as S.Schema<Droplet>;
+
+export type DropletsCreateResponseDropletsList = Array<Droplet>;
+export const DropletsCreateResponseDropletsList = /*@__PURE__*/ S.Array(
+  Droplet,
+) as any as S.Schema<DropletsCreateResponseDropletsList>;
+
+/** The linked actions can be used to check the status of a Droplet's create event. */
+export interface ActionLink {
+  /** A unique numeric ID that can be used to identify and reference an action. */
+  id?: number;
+  /** A string specifying the type of the related action. */
+  rel?: string;
+  /** A URL that can be used to access the action. */
+  href?: string;
+}
+export const ActionLink = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    rel: S.optional(S.String),
+    href: S.optional(S.String),
+  }),
+).annotate({ identifier: "ActionLink" }) as any as S.Schema<ActionLink>;
+
+export type DropletsCreateResponseLinksActionsList = Array<ActionLink>;
+export const DropletsCreateResponseLinksActionsList = /*@__PURE__*/ S.Array(
+  ActionLink,
+) as any as S.Schema<DropletsCreateResponseLinksActionsList>;
+
+export interface DropletsCreateResponseLinks {
+  actions?: DropletsCreateResponseLinksActionsList;
+}
+export const DropletsCreateResponseLinks = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actions: S.optional(DropletsCreateResponseLinksActionsList),
+  }),
+).annotate({
+  identifier: "DropletsCreateResponseLinks",
+}) as any as S.Schema<DropletsCreateResponseLinks>;
+
+export interface DropletsCreateResponse {
+  droplet?: Droplet;
+  droplets?: DropletsCreateResponseDropletsList;
+  links?: DropletsCreateResponseLinks;
+}
+export const DropletsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    droplet: S.optional(Droplet),
+    droplets: S.optional(DropletsCreateResponseDropletsList),
+    links: S.optional(DropletsCreateResponseLinks),
+  }),
+).annotate({
+  identifier: "DropletsCreateResponse",
+}) as any as S.Schema<DropletsCreateResponse>;
+
+export interface DropletsDestroyRequest {
+  /** A unique identifier for a Droplet instance. */
+  droplet_id: number;
+}
+export const DropletsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    droplet_id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "DELETE", uri: "/v2/droplets/{droplet_id}", code: 200 }),
+  ),
+).annotate({
+  identifier: "DropletsDestroyRequest",
+}) as any as S.Schema<DropletsDestroyRequest>;
+
+export interface DropletsDestroyResponse {}
+export const DropletsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DropletsDestroyResponse",
+}) as any as S.Schema<DropletsDestroyResponse>;
+
+export interface DropletsDestroyByTagRequest {
+  /** Specifies Droplets to be deleted by tag. */
+  tag_name: string;
+}
+export const DropletsDestroyByTagRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tag_name: S.String.pipe(T.Query()),
+  }).pipe(T.Http({ method: "DELETE", uri: "/v2/droplets", code: 200 })),
+).annotate({
+  identifier: "DropletsDestroyByTagRequest",
+}) as any as S.Schema<DropletsDestroyByTagRequest>;
+
+export interface DropletsDestroyByTagResponse {}
+export const DropletsDestroyByTagResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DropletsDestroyByTagResponse",
+}) as any as S.Schema<DropletsDestroyByTagResponse>;
+
+export interface DropletsDestroyRetryWithAssociatedResourcesRequest {
+  /** A unique identifier for a Droplet instance. */
+  droplet_id: number;
+}
+export const DropletsDestroyRetryWithAssociatedResourcesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      droplet_id: S.Number.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/retry",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "DropletsDestroyRetryWithAssociatedResourcesRequest",
+  }) as any as S.Schema<DropletsDestroyRetryWithAssociatedResourcesRequest>;
+
+export interface DropletsDestroyRetryWithAssociatedResourcesResponse {}
+export const DropletsDestroyRetryWithAssociatedResourcesResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DropletsDestroyRetryWithAssociatedResourcesResponse",
+  }) as any as S.Schema<DropletsDestroyRetryWithAssociatedResourcesResponse>;
+
+export interface DropletsDestroyWithAssociatedResourcesDangerousRequest {
+  /** A unique identifier for a Droplet instance. */
+  droplet_id: number;
+}
+export const DropletsDestroyWithAssociatedResourcesDangerousRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      droplet_id: S.Number.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/dangerous",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "DropletsDestroyWithAssociatedResourcesDangerousRequest",
+  }) as any as S.Schema<DropletsDestroyWithAssociatedResourcesDangerousRequest>;
+
+export interface DropletsDestroyWithAssociatedResourcesDangerousResponse {}
+export const DropletsDestroyWithAssociatedResourcesDangerousResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DropletsDestroyWithAssociatedResourcesDangerousResponse",
+  }) as any as S.Schema<DropletsDestroyWithAssociatedResourcesDangerousResponse>;
+
+/** An array of unique identifiers for the floating IPs to be scheduled for deletion. */
+export type DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList =
+  Array<string>;
+export const DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList>;
+
+/** An array of unique identifiers for the reserved IPs to be scheduled for deletion. */
+export type DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList =
+  Array<string>;
+export const DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList>;
+
+/** An array of unique identifiers for the snapshots to be scheduled for deletion. */
+export type DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList =
+  Array<string>;
+export const DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList>;
+
+/** An array of unique identifiers for the volumes to be scheduled for deletion. */
+export type DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList =
+  Array<string>;
+export const DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList>;
+
+/** An array of unique identifiers for the volume snapshots to be scheduled for deletion. */
+export type DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList =
+  Array<string>;
+export const DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList>;
+
+export interface DropletsDestroyWithAssociatedResourcesSelectiveRequest {
+  /** A unique identifier for a Droplet instance. */
+  droplet_id: number;
+  /** An array of unique identifiers for the floating IPs to be scheduled for deletion. */
+  floating_ips?: DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList;
+  /** An array of unique identifiers for the reserved IPs to be scheduled for deletion. */
+  reserved_ips?: DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList;
+  /** An array of unique identifiers for the snapshots to be scheduled for deletion. */
+  snapshots?: DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList;
+  /** An array of unique identifiers for the volumes to be scheduled for deletion. */
+  volumes?: DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList;
+  /** An array of unique identifiers for the volume snapshots to be scheduled for deletion. */
+  volume_snapshots?: DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList;
+}
+export const DropletsDestroyWithAssociatedResourcesSelectiveRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      droplet_id: S.Number.pipe(T.Label()),
+      floating_ips: S.optional(
+        DropletsDestroyWithAssociatedResourcesSelectiveRequestFloatingIpsList,
+      ),
+      reserved_ips: S.optional(
+        DropletsDestroyWithAssociatedResourcesSelectiveRequestReservedIpsList,
+      ),
+      snapshots: S.optional(
+        DropletsDestroyWithAssociatedResourcesSelectiveRequestSnapshotsList,
+      ),
+      volumes: S.optional(
+        DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumesList,
+      ),
+      volume_snapshots: S.optional(
+        DropletsDestroyWithAssociatedResourcesSelectiveRequestVolumeSnapshotsList,
+      ),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/selective",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "DropletsDestroyWithAssociatedResourcesSelectiveRequest",
+  }) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveRequest>;
+
+export interface DropletsDestroyWithAssociatedResourcesSelectiveResponse {}
+export const DropletsDestroyWithAssociatedResourcesSelectiveResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DropletsDestroyWithAssociatedResourcesSelectiveResponse",
+  }) as any as S.Schema<DropletsDestroyWithAssociatedResourcesSelectiveResponse>;
+
+export interface DropletsGetRequest {
+  /** A unique identifier for a Droplet instance. */
+  droplet_id: number;
+}
+export const DropletsGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    droplet_id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/v2/droplets/{droplet_id}", code: 200 }),
+  ),
+).annotate({
+  identifier: "DropletsGetRequest",
+}) as any as S.Schema<DropletsGetRequest>;
 
 export interface DropletsGetResponse {
   droplet?: Droplet;
