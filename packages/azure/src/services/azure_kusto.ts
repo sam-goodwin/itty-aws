@@ -2394,38 +2394,17 @@ export const ClustersListFollowerDatabasesGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ClustersListFollowerDatabasesGetRequest>;
 
 /** A class representing the properties of a follower database object. */
-export interface FollowerDatabaseProperties {
-  /** Resource id of the cluster that follows a database owned by this cluster. */
-  clusterResourceId: string;
-  /** Resource name of the attached database configuration in the follower cluster. */
-  attachedDatabaseConfigurationName: string;
-  /** The database name owned by this cluster that was followed. * in case following all databases. */
-  databaseName?: string;
-  /** Table level sharing specifications */
-  tableLevelSharingProperties?: TableLevelSharingProperties;
-  /** The origin of the following setup. */
-  databaseShareOrigin?: DatabaseShareOrigin;
-}
-export const FollowerDatabaseProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterResourceId: S.String,
-    attachedDatabaseConfigurationName: S.String,
-    databaseName: S.optional(S.String),
-    tableLevelSharingProperties: S.optional(TableLevelSharingProperties),
-    databaseShareOrigin: S.optional(DatabaseShareOrigin),
-  }),
-).annotate({
-  identifier: "FollowerDatabaseProperties",
-}) as any as S.Schema<FollowerDatabaseProperties>;
+export type FollowerDatabaseProperties = FollowerDatabaseDefinition;
+export const FollowerDatabaseProperties = FollowerDatabaseDefinition;
 
 /** A class representing follower database object. */
 export interface FollowerDatabaseDefinitionGet {
   /** Follower database definition. */
-  properties?: FollowerDatabaseProperties;
+  properties?: FollowerDatabaseDefinition;
 }
 export const FollowerDatabaseDefinitionGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    properties: S.optional(FollowerDatabaseProperties),
+    properties: S.optional(FollowerDatabaseDefinition),
   }),
 ).annotate({
   identifier: "FollowerDatabaseDefinitionGet",

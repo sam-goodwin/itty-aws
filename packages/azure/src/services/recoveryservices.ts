@@ -2176,12 +2176,8 @@ export const UpgradeDetailsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpgradeDetailsInput>;
 
 /** The details of the latest move operation performed on the Azure Resource */
-export interface VaultPropertiesMoveDetailsInput {}
-export const VaultPropertiesMoveDetailsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VaultPropertiesMoveDetailsInput",
-}) as any as S.Schema<VaultPropertiesMoveDetailsInput>;
+export type VaultPropertiesMoveDetailsInput = UpgradeDetailsInput;
+export const VaultPropertiesMoveDetailsInput = UpgradeDetailsInput;
 
 /** ResourceGuardOperationRequests on which LAC check will be performed */
 export type VaultPropertiesInputResourceGuardOperationRequestsList =
@@ -2198,7 +2194,7 @@ export interface VaultPropertiesInput {
   /** Customer Managed Key details of the resource. */
   encryption?: VaultPropertiesEncryption;
   /** The details of the latest move operation performed on the Azure Resource */
-  moveDetails?: VaultPropertiesMoveDetailsInput;
+  moveDetails?: UpgradeDetailsInput;
   /** property to enable or disable resource provider inbound network traffic from public clients */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
   /** Monitoring Settings of the vault */
@@ -2218,7 +2214,7 @@ export const VaultPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upgradeDetails: S.optional(UpgradeDetailsInput),
     encryption: S.optional(VaultPropertiesEncryption),
-    moveDetails: S.optional(VaultPropertiesMoveDetailsInput),
+    moveDetails: S.optional(UpgradeDetailsInput),
     publicNetworkAccess: S.optional(PublicNetworkAccess),
     monitoringSettings: S.optional(MonitoringSettings),
     costManagementSettings: S.optional(CostManagementSettings),
@@ -2234,21 +2230,17 @@ export const VaultPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VaultPropertiesInput>;
 
 /** A resource identity that is managed by the user of the service. */
-export interface UserIdentityInput {}
-export const UserIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserIdentityInput",
-}) as any as S.Schema<UserIdentityInput>;
+export type UserIdentityInput = UpgradeDetailsInput;
+export const UserIdentityInput = UpgradeDetailsInput;
 
 /** The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityDataInputUserAssignedIdentitiesMap = {
-  [key: string]: UserIdentityInput | undefined;
+  [key: string]: UpgradeDetailsInput | undefined;
 };
 export const IdentityDataInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserIdentityInput,
+    UpgradeDetailsInput,
   ) as any as S.Schema<IdentityDataInputUserAssignedIdentitiesMap>;
 
 /** Identity for the resource. */

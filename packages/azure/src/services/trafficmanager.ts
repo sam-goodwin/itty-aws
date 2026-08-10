@@ -748,26 +748,16 @@ export type MonitorProtocol = "HTTP" | "HTTPS" | "TCP";
 export const MonitorProtocol = /*@__PURE__*/ S.String;
 
 /** Custom header name and value. */
-export interface MonitorConfigCustomHeadersItem {
-  /** Header name. */
-  name?: string;
-  /** Header value. */
-  value?: string;
-}
-export const MonitorConfigCustomHeadersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MonitorConfigCustomHeadersItem",
-}) as any as S.Schema<MonitorConfigCustomHeadersItem>;
+export type MonitorConfigCustomHeadersItem =
+  EndpointPropertiesCustomHeadersItem;
+export const MonitorConfigCustomHeadersItem =
+  EndpointPropertiesCustomHeadersItem;
 
 /** List of custom headers. */
 export type MonitorConfigCustomHeadersList =
-  Array<MonitorConfigCustomHeadersItem>;
+  Array<EndpointPropertiesCustomHeadersItem>;
 export const MonitorConfigCustomHeadersList = /*@__PURE__*/ S.Array(
-  MonitorConfigCustomHeadersItem,
+  EndpointPropertiesCustomHeadersItem,
 ) as any as S.Schema<MonitorConfigCustomHeadersList>;
 
 /** Min and max value of a status code range. */

@@ -2846,27 +2846,15 @@ export const SqlAssessmentV2PaasSuitabilityDataMigrationGuidelinesList =
   ) as any as S.Schema<SqlAssessmentV2PaasSuitabilityDataMigrationGuidelinesList>;
 
 /** Class representing Azure SQL Recommendation Reasoning Context. */
-export interface SqlRecommendationReasoningContext {
-  /** Gets the reasoning context key. */
-  contextKey?: string;
-  /** Gets the reasoning context value. */
-  contextValue?: string;
-}
-export const SqlRecommendationReasoningContext = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contextKey: S.optional(S.String),
-    contextValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SqlRecommendationReasoningContext",
-}) as any as S.Schema<SqlRecommendationReasoningContext>;
+export type SqlRecommendationReasoningContext = MigrationGuidelineContext;
+export const SqlRecommendationReasoningContext = MigrationGuidelineContext;
 
 /** Gets the Sql recommended reasoning parameters. */
 export type SqlRecommendationReasoningContextParametersList =
-  Array<SqlRecommendationReasoningContext>;
+  Array<MigrationGuidelineContext>;
 export const SqlRecommendationReasoningContextParametersList =
   /*@__PURE__*/ S.Array(
-    SqlRecommendationReasoningContext,
+    MigrationGuidelineContext,
   ) as any as S.Schema<SqlRecommendationReasoningContextParametersList>;
 
 /** Class representing Azure SQL Recommendation Reasoning. */
@@ -11137,32 +11125,13 @@ export const HypervJobsListByHypervSiteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HypervJobsListByHypervSiteRequest>;
 
 /** A job resource belonging to a site resource. */
-export interface HypervJob {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: JobProperties;
-}
-export const HypervJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobProperties),
-  }),
-).annotate({ identifier: "HypervJob" }) as any as S.Schema<HypervJob>;
+export type HypervJob = VmwareJob;
+export const HypervJob = VmwareJob;
 
 /** The HypervJob items on this page */
-export type HypervJobListResultValueList = Array<HypervJob>;
+export type HypervJobListResultValueList = Array<VmwareJob>;
 export const HypervJobListResultValueList = /*@__PURE__*/ S.Array(
-  HypervJob,
+  VmwareJob,
 ) as any as S.Schema<HypervJobListResultValueList>;
 
 /** The response of a HypervJob list operation. */
@@ -11913,26 +11882,8 @@ export const ProductSupportStatus_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductSupportStatus_2>;
 
 /** Second level object returned as part of Machine REST resource. */
-export interface OperatingSystem {
-  /** Gets or sets the type of the operating system. */
-  osType?: string;
-  /** Gets or sets the Name of the operating system. */
-  osName?: string;
-  /** Gets or sets the Version of the operating system. */
-  osVersion?: string;
-  /** Gets or sets the Architecture of the operating system. */
-  osArchitecture?: string;
-}
-export const OperatingSystem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    osType: S.optional(S.String),
-    osName: S.optional(S.String),
-    osVersion: S.optional(S.String),
-    osArchitecture: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperatingSystem",
-}) as any as S.Schema<OperatingSystem>;
+export type OperatingSystem = GuestOsDetails;
+export const OperatingSystem = GuestOsDetails;
 
 /** Gets or sets tags on the resource. */
 export type HypervMachinePropertiesTagsMap = {
@@ -12044,7 +11995,7 @@ export interface HypervMachineProperties {
   /** Gets or sets the allocated Memory in MB. */
   allocatedMemoryInMb?: number;
   /** Gets or sets the Operating System Details installed on the machine. */
-  operatingSystemDetails?: OperatingSystem;
+  operatingSystemDetails?: GuestOsDetails;
   /** Gets or sets the Machine BIOS serial number. */
   biosSerialNumber?: string;
   /** Gets or sets the BIOS GUID. */
@@ -12113,7 +12064,7 @@ export const HypervMachineProperties = /*@__PURE__*/ S.suspend(() =>
     productSupportStatus: S.optional(ProductSupportStatus_2),
     numberOfProcessorCore: S.optional(S.Number),
     allocatedMemoryInMb: S.optional(S.Number),
-    operatingSystemDetails: S.optional(OperatingSystem),
+    operatingSystemDetails: S.optional(GuestOsDetails),
     biosSerialNumber: S.optional(S.String),
     biosGuid: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -12256,7 +12207,7 @@ export interface HypervMachineUpdateProperties {
   /** Gets or sets the allocated Memory in MB. */
   allocatedMemoryInMb?: number;
   /** Gets or sets the Operating System Details installed on the machine. */
-  operatingSystemDetails?: OperatingSystem;
+  operatingSystemDetails?: GuestOsDetails;
   /** Gets or sets the Machine BIOS serial number. */
   biosSerialNumber?: string;
   /** Gets or sets the BIOS GUID. */
@@ -12271,7 +12222,7 @@ export const HypervMachineUpdateProperties = /*@__PURE__*/ S.suspend(() =>
     productSupportStatus: S.optional(ProductSupportStatus_2),
     numberOfProcessorCore: S.optional(S.Number),
     allocatedMemoryInMb: S.optional(S.Number),
-    operatingSystemDetails: S.optional(OperatingSystem),
+    operatingSystemDetails: S.optional(GuestOsDetails),
     biosSerialNumber: S.optional(S.String),
     biosGuid: S.optional(S.String),
     tags: S.optional(HypervMachineUpdatePropertiesTagsMap),
@@ -13317,29 +13268,8 @@ export const HypervSitesControllerUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HypervSitesControllerUpdateRequestTagsMap>;
 
 /** The updatable properties of the HypervSite. */
-export interface HypervSiteUpdatePropertiesInput {
-  /** Gets or sets the service principal identity details used by agent for communication to the service. */
-  servicePrincipalIdentityDetails?: SiteSpnProperties;
-  /** Gets or sets the on-premises agent details. */
-  agentDetails?: SiteAgentPropertiesInput;
-  /** Gets or sets the Appliance Name. */
-  applianceName?: string;
-  /** Gets or sets the ARM ID of migration hub solution for SDS. */
-  discoverySolutionId?: string;
-  /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2 | (string & {});
-}
-export const HypervSiteUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    servicePrincipalIdentityDetails: S.optional(SiteSpnProperties),
-    agentDetails: S.optional(SiteAgentPropertiesInput),
-    applianceName: S.optional(S.String),
-    discoverySolutionId: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState_2),
-  }),
-).annotate({
-  identifier: "HypervSiteUpdatePropertiesInput",
-}) as any as S.Schema<HypervSiteUpdatePropertiesInput>;
+export type HypervSiteUpdatePropertiesInput = SitePropertiesInput;
+export const HypervSiteUpdatePropertiesInput = SitePropertiesInput;
 
 export interface HypervSitesControllerUpdateRequest {
   /** The ID of the target subscription. */
@@ -13350,7 +13280,7 @@ export interface HypervSitesControllerUpdateRequest {
   siteName: string;
   /** Resource tags. */
   tags?: HypervSitesControllerUpdateRequestTagsMap;
-  properties?: HypervSiteUpdatePropertiesInput;
+  properties?: SitePropertiesInput;
 }
 export const HypervSitesControllerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13358,7 +13288,7 @@ export const HypervSitesControllerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     siteName: S.String.pipe(T.Label()),
     tags: S.optional(HypervSitesControllerUpdateRequestTagsMap),
-    properties: S.optional(HypervSiteUpdatePropertiesInput),
+    properties: S.optional(SitePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -15119,32 +15049,13 @@ export const ImportJobsControllerListByImportSiteRequest =
   }) as any as S.Schema<ImportJobsControllerListByImportSiteRequest>;
 
 /** A host resource belonging to a site resource. */
-export interface ImportJob {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: JobProperties;
-}
-export const ImportJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobProperties),
-  }),
-).annotate({ identifier: "ImportJob" }) as any as S.Schema<ImportJob>;
+export type ImportJob = VmwareJob;
+export const ImportJob = VmwareJob;
 
 /** The ImportJob items on this page */
-export type ImportJobListResultValueList = Array<ImportJob>;
+export type ImportJobListResultValueList = Array<VmwareJob>;
 export const ImportJobListResultValueList = /*@__PURE__*/ S.Array(
-  ImportJob,
+  VmwareJob,
 ) as any as S.Schema<ImportJobListResultValueList>;
 
 /** The response of a ImportJob list operation. */
@@ -15448,26 +15359,8 @@ export const ImportMachinePropertiesDisksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ImportMachinePropertiesDisksList>;
 
 /** Second level object returned as part of Machine REST resource. */
-export interface WebRoleOperatingSystem {
-  /** Gets or sets the type of the operating system. */
-  osType?: string;
-  /** Gets or sets the Name of the operating system. */
-  osName?: string;
-  /** Gets or sets the Version of the operating system. */
-  osVersion?: string;
-  /** Gets or sets the Architecture of the operating system. */
-  osArchitecture?: string;
-}
-export const WebRoleOperatingSystem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    osType: S.optional(S.String),
-    osName: S.optional(S.String),
-    osVersion: S.optional(S.String),
-    osArchitecture: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebRoleOperatingSystem",
-}) as any as S.Schema<WebRoleOperatingSystem>;
+export type WebRoleOperatingSystem = GuestOsDetails;
+export const WebRoleOperatingSystem = GuestOsDetails;
 
 /** machine tags */
 export type ImportMachinePropertiesTagsMap = {
@@ -15527,7 +15420,7 @@ export interface ImportMachineProperties {
   /** Gets or sets the allocated Memory in MB. */
   allocatedMemoryInMb?: number;
   /** Gets or sets the Operating System Details installed on the machine. */
-  operatingSystemDetails?: WebRoleOperatingSystem;
+  operatingSystemDetails?: GuestOsDetails;
   /** Gets or sets the Machine BIOS serial number. */
   biosSerialNumber?: string;
   /** Gets or sets the BIOS GUID. */
@@ -15570,7 +15463,7 @@ export const ImportMachineProperties = /*@__PURE__*/ S.suspend(() =>
     storageInUseGb: S.optional(S.Number),
     numberOfProcessorCore: S.optional(S.Number),
     allocatedMemoryInMb: S.optional(S.Number),
-    operatingSystemDetails: S.optional(WebRoleOperatingSystem),
+    operatingSystemDetails: S.optional(GuestOsDetails),
     biosSerialNumber: S.optional(S.String),
     biosGuid: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -16123,20 +16016,8 @@ export const ImportSitesControllerUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ImportSitesControllerUpdateRequestTagsMap>;
 
 /** The updatable properties of the ImportSite. */
-export interface ImportSiteUpdateProperties {
-  /** Gets or sets the ARM ID of migration hub solution for SDS. */
-  discoverySolutionId?: string;
-  /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2 | (string & {});
-}
-export const ImportSiteUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discoverySolutionId: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState_2),
-  }),
-).annotate({
-  identifier: "ImportSiteUpdateProperties",
-}) as any as S.Schema<ImportSiteUpdateProperties>;
+export type ImportSiteUpdateProperties = ImportSitePropertiesInput;
+export const ImportSiteUpdateProperties = ImportSitePropertiesInput;
 
 export interface ImportSitesControllerUpdateRequest {
   /** The ID of the target subscription. */
@@ -16147,7 +16028,7 @@ export interface ImportSitesControllerUpdateRequest {
   siteName: string;
   /** Resource tags. */
   tags?: ImportSitesControllerUpdateRequestTagsMap;
-  properties?: ImportSiteUpdateProperties;
+  properties?: ImportSitePropertiesInput;
 }
 export const ImportSitesControllerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16155,7 +16036,7 @@ export const ImportSitesControllerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     siteName: S.String.pipe(T.Label()),
     tags: S.optional(ImportSitesControllerUpdateRequestTagsMap),
-    properties: S.optional(ImportSiteUpdateProperties),
+    properties: S.optional(ImportSitePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -16443,7 +16324,7 @@ export interface VmwareMachineProperties {
   /** Gets or sets the allocated Memory in MB. */
   allocatedMemoryInMb?: number;
   /** Gets or sets the Operating System Details installed on the machine. */
-  operatingSystemDetails?: OperatingSystem;
+  operatingSystemDetails?: GuestOsDetails;
   /** Gets or sets the Machine BIOS serial number. */
   biosSerialNumber?: string;
   /** Gets or sets the BIOS GUID. */
@@ -16509,7 +16390,7 @@ export const VmwareMachineProperties = /*@__PURE__*/ S.suspend(() =>
     productSupportStatus: S.optional(ProductSupportStatus_2),
     numberOfProcessorCore: S.optional(S.Number),
     allocatedMemoryInMb: S.optional(S.Number),
-    operatingSystemDetails: S.optional(OperatingSystem),
+    operatingSystemDetails: S.optional(GuestOsDetails),
     biosSerialNumber: S.optional(S.String),
     biosGuid: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -17118,7 +16999,7 @@ export interface MachineResourceUpdateProperties {
   /** Gets or sets the allocated Memory in MB. */
   allocatedMemoryInMb?: number;
   /** Gets or sets the Operating System Details installed on the machine. */
-  operatingSystemDetails?: OperatingSystem;
+  operatingSystemDetails?: GuestOsDetails;
   /** Gets or sets the Machine BIOS serial number. */
   biosSerialNumber?: string;
   /** Gets or sets the BIOS GUID. */
@@ -17133,7 +17014,7 @@ export const MachineResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
     productSupportStatus: S.optional(ProductSupportStatus_2),
     numberOfProcessorCore: S.optional(S.Number),
     allocatedMemoryInMb: S.optional(S.Number),
-    operatingSystemDetails: S.optional(OperatingSystem),
+    operatingSystemDetails: S.optional(GuestOsDetails),
     biosSerialNumber: S.optional(S.String),
     biosGuid: S.optional(S.String),
     tags: S.optional(MachineResourceUpdatePropertiesTagsMap),
@@ -19629,11 +19510,10 @@ export const PrivateEndpointConnectionOperationsUpdateResponse =
   }) as any as S.Schema<PrivateEndpointConnectionOperationsUpdateResponse>;
 
 /** Properties of a private endpoint connection proxy. */
-export interface PrivateEndpointConnectionProxyPropertiesInput {}
+export type PrivateEndpointConnectionProxyPropertiesInput =
+  PrivateEndpointInput;
 export const PrivateEndpointConnectionProxyPropertiesInput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PrivateEndpointConnectionProxyPropertiesInput",
-  }) as any as S.Schema<PrivateEndpointConnectionProxyPropertiesInput>;
+  PrivateEndpointInput;
 
 export interface PrivateEndpointConnectionProxyControllerCreateRequest {
   /** The ID of the target subscription. */
@@ -19645,7 +19525,7 @@ export interface PrivateEndpointConnectionProxyControllerCreateRequest {
   /** Private endpoint proxy name. */
   pecProxyName: string;
   eTag?: string;
-  properties?: PrivateEndpointConnectionProxyPropertiesInput;
+  properties?: PrivateEndpointInput;
 }
 export const PrivateEndpointConnectionProxyControllerCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -19655,7 +19535,7 @@ export const PrivateEndpointConnectionProxyControllerCreateRequest =
       migrateProjectName: S.String.pipe(T.Label()),
       pecProxyName: S.String.pipe(T.Label()),
       eTag: S.optional(S.String),
-      properties: S.optional(PrivateEndpointConnectionProxyPropertiesInput),
+      properties: S.optional(PrivateEndpointInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -20050,7 +19930,7 @@ export interface PrivateEndpointConnectionProxyControllerValidateRequest {
   /** Private link proxy name. */
   pecProxyName: string;
   eTag?: string;
-  properties?: PrivateEndpointConnectionProxyPropertiesInput;
+  properties?: PrivateEndpointInput;
 }
 export const PrivateEndpointConnectionProxyControllerValidateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -20060,7 +19940,7 @@ export const PrivateEndpointConnectionProxyControllerValidateRequest =
       migrateProjectName: S.String.pipe(T.Label()),
       pecProxyName: S.String.pipe(T.Label()),
       eTag: S.optional(S.String),
-      properties: S.optional(PrivateEndpointConnectionProxyPropertiesInput),
+      properties: S.optional(PrivateEndpointInput),
     }).pipe(
       T.Http({
         method: "POST",
@@ -20778,36 +20658,15 @@ export const RunAsAccountsControllerListByVmwareSiteRequest =
   }) as any as S.Schema<RunAsAccountsControllerListByVmwareSiteRequest>;
 
 /** A runasaccount resource belonging to a site resource. */
-export interface VmwareRunAsAccountResource {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: RunAsAccountProperties;
-}
-export const VmwareRunAsAccountResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RunAsAccountProperties),
-  }),
-).annotate({
-  identifier: "VmwareRunAsAccountResource",
-}) as any as S.Schema<VmwareRunAsAccountResource>;
+export type VmwareRunAsAccountResource = HypervRunAsAccountResource;
+export const VmwareRunAsAccountResource = HypervRunAsAccountResource;
 
 /** The VmwareRunAsAccountResource items on this page */
 export type VmwareRunAsAccountResourceListResultValueList =
-  Array<VmwareRunAsAccountResource>;
+  Array<HypervRunAsAccountResource>;
 export const VmwareRunAsAccountResourceListResultValueList =
   /*@__PURE__*/ S.Array(
-    VmwareRunAsAccountResource,
+    HypervRunAsAccountResource,
   ) as any as S.Schema<VmwareRunAsAccountResourceListResultValueList>;
 
 /** The response of a VmwareRunAsAccountResource list operation. */
@@ -21001,34 +20860,13 @@ export const ServerCollectorsOperationsListByAssessmentProjectRequest =
   }) as any as S.Schema<ServerCollectorsOperationsListByAssessmentProjectRequest>;
 
 /** Physical server collector resource. */
-export interface ServerCollector {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: CollectorPropertiesBaseWithAgent;
-}
-export const ServerCollector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CollectorPropertiesBaseWithAgent),
-  }),
-).annotate({
-  identifier: "ServerCollector",
-}) as any as S.Schema<ServerCollector>;
+export type ServerCollector = HypervCollector;
+export const ServerCollector = HypervCollector;
 
 /** The ServerCollector items on this page */
-export type ServerCollectorListResultValueList = Array<ServerCollector>;
+export type ServerCollectorListResultValueList = Array<HypervCollector>;
 export const ServerCollectorListResultValueList = /*@__PURE__*/ S.Array(
-  ServerCollector,
+  HypervCollector,
 ) as any as S.Schema<ServerCollectorListResultValueList>;
 
 /** The response of a ServerCollector list operation. */
@@ -21351,32 +21189,13 @@ export const ServerJobsControllerListByServerSiteResourceRequest =
   }) as any as S.Schema<ServerJobsControllerListByServerSiteResourceRequest>;
 
 /** A host resource belonging to a site resource. */
-export interface ServerJob {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: JobProperties;
-}
-export const ServerJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobProperties),
-  }),
-).annotate({ identifier: "ServerJob" }) as any as S.Schema<ServerJob>;
+export type ServerJob = VmwareJob;
+export const ServerJob = VmwareJob;
 
 /** The ServerJob items on this page */
-export type ServerJobListResultValueList = Array<ServerJob>;
+export type ServerJobListResultValueList = Array<VmwareJob>;
 export const ServerJobListResultValueList = /*@__PURE__*/ S.Array(
-  ServerJob,
+  VmwareJob,
 ) as any as S.Schema<ServerJobListResultValueList>;
 
 /** The response of a ServerJob list operation. */
@@ -21506,34 +21325,14 @@ export const ServerRunAsAccountsControllerListByServerSiteResourceRequest =
   }) as any as S.Schema<ServerRunAsAccountsControllerListByServerSiteResourceRequest>;
 
 /** A run as account resource belonging to a site resource. */
-export interface ServerRunAsAccount {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: RunAsAccountProperties;
-}
-export const ServerRunAsAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RunAsAccountProperties),
-  }),
-).annotate({
-  identifier: "ServerRunAsAccount",
-}) as any as S.Schema<ServerRunAsAccount>;
+export type ServerRunAsAccount = HypervRunAsAccountResource;
+export const ServerRunAsAccount = HypervRunAsAccountResource;
 
 /** The ServerRunAsAccount items on this page */
-export type ServerRunAsAccountListResultValueList = Array<ServerRunAsAccount>;
+export type ServerRunAsAccountListResultValueList =
+  Array<HypervRunAsAccountResource>;
 export const ServerRunAsAccountListResultValueList = /*@__PURE__*/ S.Array(
-  ServerRunAsAccount,
+  HypervRunAsAccountResource,
 ) as any as S.Schema<ServerRunAsAccountListResultValueList>;
 
 /** The response of a ServerRunAsAccount list operation. */
@@ -21791,7 +21590,7 @@ export interface ServerProperties {
   /** Gets or sets the allocated Memory in MB. */
   allocatedMemoryInMb?: number;
   /** Gets or sets the Operating System Details installed on the machine. */
-  operatingSystemDetails?: OperatingSystem;
+  operatingSystemDetails?: GuestOsDetails;
   /** Gets or sets the Machine BIOS serial number. */
   biosSerialNumber?: string;
   /** Gets or sets the BIOS GUID. */
@@ -21840,7 +21639,7 @@ export const ServerProperties = /*@__PURE__*/ S.suspend(() =>
     productSupportStatus: S.optional(ProductSupportStatus_2),
     numberOfProcessorCore: S.optional(S.Number),
     allocatedMemoryInMb: S.optional(S.Number),
-    operatingSystemDetails: S.optional(OperatingSystem),
+    operatingSystemDetails: S.optional(GuestOsDetails),
     biosSerialNumber: S.optional(S.String),
     biosGuid: S.optional(S.String),
     isDeleted: S.optional(S.Boolean),
@@ -22028,7 +21827,7 @@ export interface ServerUpdatePropertiesInput {
   /** Gets or sets the allocated Memory in MB. */
   allocatedMemoryInMb?: number;
   /** Gets or sets the Operating System Details installed on the machine. */
-  operatingSystemDetails?: OperatingSystem;
+  operatingSystemDetails?: GuestOsDetails;
   /** Gets or sets the Machine BIOS serial number. */
   biosSerialNumber?: string;
   /** Gets or sets the BIOS GUID. */
@@ -22050,7 +21849,7 @@ export const ServerUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     productSupportStatus: S.optional(ProductSupportStatus_2),
     numberOfProcessorCore: S.optional(S.Number),
     allocatedMemoryInMb: S.optional(S.Number),
-    operatingSystemDetails: S.optional(OperatingSystem),
+    operatingSystemDetails: S.optional(GuestOsDetails),
     biosSerialNumber: S.optional(S.String),
     biosGuid: S.optional(S.String),
     tags: S.optional(ServerUpdatePropertiesInputTagsMap),
@@ -22260,35 +22059,8 @@ export const ServerSitesControllerCreateResponseTagsMap =
   ) as any as S.Schema<ServerSitesControllerCreateResponseTagsMap>;
 
 /** The properties of SiteResource */
-export interface SitesProperties {
-  /** Gets the Master Site this site is linked to. */
-  masterSiteId?: string;
-  /** Gets or sets the service principal identity details used by agent for communication to the service. */
-  servicePrincipalIdentityDetails?: SiteSpnProperties;
-  /** Gets or sets the on-premises agent details. */
-  agentDetails?: SiteAgentProperties;
-  /** Gets or sets the Appliance Name. */
-  applianceName?: string;
-  /** Gets or sets the ARM ID of migration hub solution for SDS. */
-  discoverySolutionId?: string;
-  /** Gets the service endpoint. */
-  serviceEndpoint?: string;
-  /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2;
-}
-export const SitesProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    masterSiteId: S.optional(S.String),
-    servicePrincipalIdentityDetails: S.optional(SiteSpnProperties),
-    agentDetails: S.optional(SiteAgentProperties),
-    applianceName: S.optional(S.String),
-    discoverySolutionId: S.optional(S.String),
-    serviceEndpoint: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState_2),
-  }),
-).annotate({
-  identifier: "SitesProperties",
-}) as any as S.Schema<SitesProperties>;
+export type SitesProperties = SiteProperties;
+export const SitesProperties = SiteProperties;
 
 export interface ServerSitesControllerCreateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -22304,7 +22076,7 @@ export interface ServerSitesControllerCreateResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource-specific properties for this resource. */
-  properties?: SitesProperties;
+  properties?: SiteProperties;
 }
 export const ServerSitesControllerCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22314,7 +22086,7 @@ export const ServerSitesControllerCreateResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(ServerSitesControllerCreateResponseTagsMap),
     location: S.String,
-    properties: S.optional(SitesProperties),
+    properties: S.optional(SiteProperties),
   }),
 ).annotate({
   identifier: "ServerSitesControllerCreateResponse",
@@ -22467,7 +22239,7 @@ export interface ServerSitesControllerGetResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource-specific properties for this resource. */
-  properties?: SitesProperties;
+  properties?: SiteProperties;
 }
 export const ServerSitesControllerGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22477,7 +22249,7 @@ export const ServerSitesControllerGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(ServerSitesControllerGetResponseTagsMap),
     location: S.String,
-    properties: S.optional(SitesProperties),
+    properties: S.optional(SiteProperties),
   }),
 ).annotate({
   identifier: "ServerSitesControllerGetResponse",
@@ -22528,7 +22300,7 @@ export interface ServerSiteResource {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource-specific properties for this resource. */
-  properties?: SitesProperties;
+  properties?: SiteProperties;
 }
 export const ServerSiteResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22538,7 +22310,7 @@ export const ServerSiteResource = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(ServerSiteResourceTagsMap),
     location: S.String,
-    properties: S.optional(SitesProperties),
+    properties: S.optional(SiteProperties),
   }),
 ).annotate({
   identifier: "ServerSiteResource",
@@ -22696,27 +22468,8 @@ export const ServerSitesControllerUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServerSitesControllerUpdateRequestTagsMap>;
 
 /** The updatable properties of the ServerSiteResource. */
-export interface ServerSiteResourceUpdatePropertiesInput {
-  /** Gets or sets the service principal identity details used by agent for communication to the service. */
-  servicePrincipalIdentityDetails?: SiteSpnProperties;
-  /** Gets or sets the on-premises agent details. */
-  agentDetails?: SiteAgentPropertiesInput;
-  /** Gets or sets the Appliance Name. */
-  applianceName?: string;
-  /** Gets or sets the ARM ID of migration hub solution for SDS. */
-  discoverySolutionId?: string;
-}
-export const ServerSiteResourceUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      servicePrincipalIdentityDetails: S.optional(SiteSpnProperties),
-      agentDetails: S.optional(SiteAgentPropertiesInput),
-      applianceName: S.optional(S.String),
-      discoverySolutionId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ServerSiteResourceUpdatePropertiesInput",
-}) as any as S.Schema<ServerSiteResourceUpdatePropertiesInput>;
+export type ServerSiteResourceUpdatePropertiesInput = SitesPropertiesInput;
+export const ServerSiteResourceUpdatePropertiesInput = SitesPropertiesInput;
 
 export interface ServerSitesControllerUpdateRequest {
   /** The ID of the target subscription. */
@@ -22727,7 +22480,7 @@ export interface ServerSitesControllerUpdateRequest {
   siteName: string;
   /** Resource tags. */
   tags?: ServerSitesControllerUpdateRequestTagsMap;
-  properties?: ServerSiteResourceUpdatePropertiesInput;
+  properties?: SitesPropertiesInput;
 }
 export const ServerSitesControllerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22735,7 +22488,7 @@ export const ServerSitesControllerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     siteName: S.String.pipe(T.Label()),
     tags: S.optional(ServerSitesControllerUpdateRequestTagsMap),
-    properties: S.optional(ServerSiteResourceUpdatePropertiesInput),
+    properties: S.optional(SitesPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -22772,7 +22525,7 @@ export interface ServerSitesControllerUpdateResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource-specific properties for this resource. */
-  properties?: SitesProperties;
+  properties?: SiteProperties;
 }
 export const ServerSitesControllerUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22782,7 +22535,7 @@ export const ServerSitesControllerUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(ServerSitesControllerUpdateResponseTagsMap),
     location: S.String,
-    properties: S.optional(SitesProperties),
+    properties: S.optional(SiteProperties),
   }),
 ).annotate({
   identifier: "ServerSitesControllerUpdateResponse",
@@ -22975,35 +22728,14 @@ export const ServerSoftwareInventoriesControllerListByServerRequest =
   }) as any as S.Schema<ServerSoftwareInventoriesControllerListByServerRequest>;
 
 /** An software inventory resource belonging to a server resource. */
-export interface ServerSoftwareInventory {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: MachineSoftwareInventoryProperties;
-}
-export const ServerSoftwareInventory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MachineSoftwareInventoryProperties),
-  }),
-).annotate({
-  identifier: "ServerSoftwareInventory",
-}) as any as S.Schema<ServerSoftwareInventory>;
+export type ServerSoftwareInventory = HypervVmSoftwareInventory;
+export const ServerSoftwareInventory = HypervVmSoftwareInventory;
 
 /** The ServerSoftwareInventory items on this page */
 export type ServerSoftwareInventoryListResultValueList =
-  Array<ServerSoftwareInventory>;
+  Array<HypervVmSoftwareInventory>;
 export const ServerSoftwareInventoryListResultValueList = /*@__PURE__*/ S.Array(
-  ServerSoftwareInventory,
+  HypervVmSoftwareInventory,
 ) as any as S.Schema<ServerSoftwareInventoryListResultValueList>;
 
 /** The response of a ServerSoftwareInventory list operation. */
@@ -23158,7 +22890,7 @@ export interface SitesControllerCreateResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource-specific properties for this resource. */
-  properties?: SitesProperties;
+  properties?: SiteProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
@@ -23170,7 +22902,7 @@ export const SitesControllerCreateResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(SitesControllerCreateResponseTagsMap),
     location: S.String,
-    properties: S.optional(SitesProperties),
+    properties: S.optional(SiteProperties),
     eTag: S.optional(S.String),
   }),
 ).annotate({
@@ -23360,7 +23092,7 @@ export interface SitesControllerGetResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource-specific properties for this resource. */
-  properties?: SitesProperties;
+  properties?: SiteProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
@@ -23372,7 +23104,7 @@ export const SitesControllerGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(SitesControllerGetResponseTagsMap),
     location: S.String,
-    properties: S.optional(SitesProperties),
+    properties: S.optional(SiteProperties),
     eTag: S.optional(S.String),
   }),
 ).annotate({
@@ -23424,7 +23156,7 @@ export interface VmwareSite {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource-specific properties for this resource. */
-  properties?: SitesProperties;
+  properties?: SiteProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
@@ -23436,7 +23168,7 @@ export const VmwareSite = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(VmwareSiteTagsMap),
     location: S.String,
-    properties: S.optional(SitesProperties),
+    properties: S.optional(SiteProperties),
     eTag: S.optional(S.String),
   }),
 ).annotate({ identifier: "VmwareSite" }) as any as S.Schema<VmwareSite>;
@@ -23544,29 +23276,8 @@ export const SitesControllerUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SitesControllerUpdateRequestTagsMap>;
 
 /** The updatable properties of the VmwareSite. */
-export interface VmwareSiteUpdatePropertiesInput {
-  /** Gets or sets the service principal identity details used by agent for communication to the service. */
-  servicePrincipalIdentityDetails?: SiteSpnProperties;
-  /** Gets or sets the on-premises agent details. */
-  agentDetails?: SiteAgentPropertiesInput;
-  /** Gets or sets the Appliance Name. */
-  applianceName?: string;
-  /** Gets or sets the ARM ID of migration hub solution for SDS. */
-  discoverySolutionId?: string;
-  /** The status of the last operation. */
-  provisioningState?: ProvisioningState_2 | (string & {});
-}
-export const VmwareSiteUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    servicePrincipalIdentityDetails: S.optional(SiteSpnProperties),
-    agentDetails: S.optional(SiteAgentPropertiesInput),
-    applianceName: S.optional(S.String),
-    discoverySolutionId: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState_2),
-  }),
-).annotate({
-  identifier: "VmwareSiteUpdatePropertiesInput",
-}) as any as S.Schema<VmwareSiteUpdatePropertiesInput>;
+export type VmwareSiteUpdatePropertiesInput = SitePropertiesInput;
+export const VmwareSiteUpdatePropertiesInput = SitePropertiesInput;
 
 export interface SitesControllerUpdateRequest {
   /** The ID of the target subscription. */
@@ -23577,7 +23288,7 @@ export interface SitesControllerUpdateRequest {
   siteName: string;
   /** Resource tags. */
   tags?: SitesControllerUpdateRequestTagsMap;
-  properties?: VmwareSiteUpdatePropertiesInput;
+  properties?: SitePropertiesInput;
 }
 export const SitesControllerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23585,7 +23296,7 @@ export const SitesControllerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     siteName: S.String.pipe(T.Label()),
     tags: S.optional(SitesControllerUpdateRequestTagsMap),
-    properties: S.optional(VmwareSiteUpdatePropertiesInput),
+    properties: S.optional(SitePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -23621,7 +23332,7 @@ export interface SitesControllerUpdateResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource-specific properties for this resource. */
-  properties?: SitesProperties;
+  properties?: SiteProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
@@ -23633,7 +23344,7 @@ export const SitesControllerUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(SitesControllerUpdateResponseTagsMap),
     location: S.String,
-    properties: S.optional(SitesProperties),
+    properties: S.optional(SiteProperties),
     eTag: S.optional(S.String),
   }),
 ).annotate({
@@ -23735,12 +23446,8 @@ export type SolutionPropertiesInputCleanupState =
 export const SolutionPropertiesInputCleanupState = /*@__PURE__*/ S.String;
 
 /** The solution summary class. */
-export interface SolutionSummaryInput {}
-export const SolutionSummaryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SolutionSummaryInput",
-}) as any as S.Schema<SolutionSummaryInput>;
+export type SolutionSummaryInput = PrivateEndpointInput;
+export const SolutionSummaryInput = PrivateEndpointInput;
 
 /** Gets or sets the extended details reported by the solution. */
 export type SolutionDetailsExtendedDetailsMap = {
@@ -23783,7 +23490,7 @@ export interface SolutionPropertiesInput {
   /** Gets or sets the cleanup state of the solution. */
   cleanupState?: SolutionPropertiesInputCleanupState | (string & {});
   /** Gets or sets the summary of the solution. */
-  summary?: SolutionSummaryInput;
+  summary?: PrivateEndpointInput;
   /** Gets or sets the details of the solution. */
   details?: SolutionDetails;
 }
@@ -23794,7 +23501,7 @@ export const SolutionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     goal: S.optional(SolutionPropertiesInputGoal),
     status: S.optional(SolutionPropertiesInputStatus),
     cleanupState: S.optional(SolutionPropertiesInputCleanupState),
-    summary: S.optional(SolutionSummaryInput),
+    summary: S.optional(PrivateEndpointInput),
     details: S.optional(SolutionDetails),
   }),
 ).annotate({
@@ -25960,32 +25667,13 @@ export const SqlCollectorOperationsListByAssessmentProjectRequest =
   }) as any as S.Schema<SqlCollectorOperationsListByAssessmentProjectRequest>;
 
 /** The SQL collector REST object. */
-export interface SqlCollector {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: CollectorPropertiesBaseWithAgent;
-}
-export const SqlCollector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CollectorPropertiesBaseWithAgent),
-  }),
-).annotate({ identifier: "SqlCollector" }) as any as S.Schema<SqlCollector>;
+export type SqlCollector = HypervCollector;
+export const SqlCollector = HypervCollector;
 
 /** The SqlCollector items on this page */
-export type SqlCollectorListResultValueList = Array<SqlCollector>;
+export type SqlCollectorListResultValueList = Array<HypervCollector>;
 export const SqlCollectorListResultValueList = /*@__PURE__*/ S.Array(
-  SqlCollector,
+  HypervCollector,
 ) as any as S.Schema<SqlCollectorListResultValueList>;
 
 /** The response of a SqlCollector list operation. */
@@ -26643,32 +26331,13 @@ export const SqlJobsControllerListBySqlSiteRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SqlJobsControllerListBySqlSiteRequest>;
 
 /** Class representing the web model of SQL Database. */
-export interface SqlJob {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: JobProperties;
-}
-export const SqlJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(JobProperties),
-  }),
-).annotate({ identifier: "SqlJob" }) as any as S.Schema<SqlJob>;
+export type SqlJob = VmwareJob;
+export const SqlJob = VmwareJob;
 
 /** The SqlJob items on this page */
-export type SqlJobListResultValueList = Array<SqlJob>;
+export type SqlJobListResultValueList = Array<VmwareJob>;
 export const SqlJobListResultValueList = /*@__PURE__*/ S.Array(
-  SqlJob,
+  VmwareJob,
 ) as any as S.Schema<SqlJobListResultValueList>;
 
 /** The response of a SqlJob list operation. */
@@ -26806,34 +26475,14 @@ export const SqlRunAsAccountsControllerListBySqlSiteRequest =
   }) as any as S.Schema<SqlRunAsAccountsControllerListBySqlSiteRequest>;
 
 /** A runasaccount resource belonging to a site resource. */
-export interface SqlRunAsAccount {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: RunAsAccountProperties;
-}
-export const SqlRunAsAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RunAsAccountProperties),
-  }),
-).annotate({
-  identifier: "SqlRunAsAccount",
-}) as any as S.Schema<SqlRunAsAccount>;
+export type SqlRunAsAccount = HypervRunAsAccountResource;
+export const SqlRunAsAccount = HypervRunAsAccountResource;
 
 /** The SqlRunAsAccount items on this page */
-export type SqlRunAsAccountListResultValueList = Array<SqlRunAsAccount>;
+export type SqlRunAsAccountListResultValueList =
+  Array<HypervRunAsAccountResource>;
 export const SqlRunAsAccountListResultValueList = /*@__PURE__*/ S.Array(
-  SqlRunAsAccount,
+  HypervRunAsAccountResource,
 ) as any as S.Schema<SqlRunAsAccountListResultValueList>;
 
 /** The response of a SqlRunAsAccount list operation. */
@@ -28479,7 +28128,7 @@ export interface TomcatWebServerProperties {
   /** Gets the run as account id. */
   runAsAccountId?: string;
   /** Gets or sets the Operating System Details installed on the machine. */
-  operatingSystemDetails?: OperatingSystem;
+  operatingSystemDetails?: GuestOsDetails;
   /** Gets a value indicating whether application is deleted. */
   isDeleted?: boolean;
   /** Gets the timestamp marking creation of the entity. */
@@ -28515,7 +28164,7 @@ export const TomcatWebServerProperties = /*@__PURE__*/ S.suspend(() =>
     displayName: S.optional(S.String),
     serverFqdn: S.optional(S.String),
     runAsAccountId: S.optional(S.String),
-    operatingSystemDetails: S.optional(OperatingSystem),
+    operatingSystemDetails: S.optional(GuestOsDetails),
     isDeleted: S.optional(S.Boolean),
     createdTimestamp: S.optional(S.String),
     updatedTimestamp: S.optional(S.String),
@@ -29322,34 +28971,13 @@ export const VmwareCollectorsOperationsListByAssessmentProjectRequest =
   }) as any as S.Schema<VmwareCollectorsOperationsListByAssessmentProjectRequest>;
 
 /** VMware collector resource. */
-export interface VmwareCollector {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: CollectorPropertiesBaseWithAgent;
-}
-export const VmwareCollector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CollectorPropertiesBaseWithAgent),
-  }),
-).annotate({
-  identifier: "VmwareCollector",
-}) as any as S.Schema<VmwareCollector>;
+export type VmwareCollector = HypervCollector;
+export const VmwareCollector = HypervCollector;
 
 /** The VmwareCollector items on this page */
-export type VmwareCollectorListResultValueList = Array<VmwareCollector>;
+export type VmwareCollectorListResultValueList = Array<HypervCollector>;
 export const VmwareCollectorListResultValueList = /*@__PURE__*/ S.Array(
-  VmwareCollector,
+  HypervCollector,
 ) as any as S.Schema<VmwareCollectorListResultValueList>;
 
 /** The response of a VmwareCollector list operation. */
@@ -29919,36 +29547,15 @@ export const VmwareSoftwareInventoriesControllerListByMachineResourceRequest =
   }) as any as S.Schema<VmwareSoftwareInventoriesControllerListByMachineResourceRequest>;
 
 /** An software inventory resource belonging to a machine resource. */
-export interface VmwareMachineSoftwareInventory {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: MachineSoftwareInventoryProperties;
-}
-export const VmwareMachineSoftwareInventory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MachineSoftwareInventoryProperties),
-  }),
-).annotate({
-  identifier: "VmwareMachineSoftwareInventory",
-}) as any as S.Schema<VmwareMachineSoftwareInventory>;
+export type VmwareMachineSoftwareInventory = HypervVmSoftwareInventory;
+export const VmwareMachineSoftwareInventory = HypervVmSoftwareInventory;
 
 /** The VmwareMachineSoftwareInventory items on this page */
 export type VmwareMachineSoftwareInventoryListResultValueList =
-  Array<VmwareMachineSoftwareInventory>;
+  Array<HypervVmSoftwareInventory>;
 export const VmwareMachineSoftwareInventoryListResultValueList =
   /*@__PURE__*/ S.Array(
-    VmwareMachineSoftwareInventory,
+    HypervVmSoftwareInventory,
   ) as any as S.Schema<VmwareMachineSoftwareInventoryListResultValueList>;
 
 /** The response of a VmwareMachineSoftwareInventory list operation. */
@@ -30240,17 +29847,8 @@ export const AppSvcNativeSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppSvcNativeSettings>;
 
 /** App service container settings. */
-export interface AppSvcContainerSettings {
-  /** Gets or sets the isolation required. */
-  isolationRequired: boolean;
-}
-export const AppSvcContainerSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isolationRequired: S.Boolean,
-  }),
-).annotate({
-  identifier: "AppSvcContainerSettings",
-}) as any as S.Schema<AppSvcContainerSettings>;
+export type AppSvcContainerSettings = AppSvcNativeSettings;
+export const AppSvcContainerSettings = AppSvcNativeSettings;
 
 /** Discovered entity light summary. */
 export interface DiscoveredEntityLightSummary {
@@ -30282,7 +29880,7 @@ export interface WebAppAssessmentV2PropertiesInput {
   /** Gets or sets user configurable app service native settings. */
   appSvcNativeSettings?: AppSvcNativeSettings;
   /** Gets or sets user configurable app service container database settings. */
-  appSvcContainerSettings?: AppSvcContainerSettings;
+  appSvcContainerSettings?: AppSvcNativeSettings;
   /** Gets or sets user configurable discovered entity settings. */
   discoveredEntityLightSummary?: DiscoveredEntityLightSummary;
   /** Gets or sets a value indicating azure security offering type. */
@@ -30322,7 +29920,7 @@ export const WebAppAssessmentV2PropertiesInput = /*@__PURE__*/ S.suspend(() =>
     entityUptime: S.optional(EntityUptime),
     eaSubscriptionId: S.optional(S.String),
     appSvcNativeSettings: S.optional(AppSvcNativeSettings),
-    appSvcContainerSettings: S.optional(AppSvcContainerSettings),
+    appSvcContainerSettings: S.optional(AppSvcNativeSettings),
     discoveredEntityLightSummary: S.optional(DiscoveredEntityLightSummary),
     azureSecurityOfferingType: S.optional(AzureSecurityOfferingType),
     reservedInstance: S.optional(AzureReservedInstance),
@@ -30403,7 +30001,7 @@ export interface WebAppAssessmentV2Properties {
   /** Gets or sets user configurable app service native settings. */
   appSvcNativeSettings?: AppSvcNativeSettings;
   /** Gets or sets user configurable app service container database settings. */
-  appSvcContainerSettings?: AppSvcContainerSettings;
+  appSvcContainerSettings?: AppSvcNativeSettings;
   /** Gets or sets user configurable discovered entity settings. */
   discoveredEntityLightSummary?: DiscoveredEntityLightSummary;
   /** Gets or sets a value indicating azure security offering type. */
@@ -30456,7 +30054,7 @@ export const WebAppAssessmentV2Properties = /*@__PURE__*/ S.suspend(() =>
     entityUptime: S.optional(EntityUptime),
     eaSubscriptionId: S.optional(S.String),
     appSvcNativeSettings: S.optional(AppSvcNativeSettings),
-    appSvcContainerSettings: S.optional(AppSvcContainerSettings),
+    appSvcContainerSettings: S.optional(AppSvcNativeSettings),
     discoveredEntityLightSummary: S.optional(DiscoveredEntityLightSummary),
     azureSecurityOfferingType: S.optional(AzureSecurityOfferingType),
     reservedInstance: S.optional(AzureReservedInstance),
@@ -31263,20 +30861,10 @@ export const WebAppCollectorListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppCollectorListResult>;
 
 /** Discovery site data source properties class. */
-export interface DiscoverySiteDataSourceProperties {
-  /** Gets or sets the discovery site Id. */
-  discoverySiteId?: string;
-  /** provisioning state enum */
-  provisioningState?: ProvisioningState_2 | (string & {});
-}
-export const DiscoverySiteDataSourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discoverySiteId: S.optional(S.String),
-    provisioningState: S.optional(ProvisioningState_2),
-  }),
-).annotate({
-  identifier: "DiscoverySiteDataSourceProperties",
-}) as any as S.Schema<DiscoverySiteDataSourceProperties>;
+export type DiscoverySiteDataSourceProperties =
+  SqlDiscoverySiteDataSourceProperties;
+export const DiscoverySiteDataSourceProperties =
+  SqlDiscoverySiteDataSourceProperties;
 
 export interface WebAppDiscoverySiteDataSourcesControllerCreateRequest {
   /** The ID of the target subscription. */
@@ -31290,7 +30878,7 @@ export interface WebAppDiscoverySiteDataSourcesControllerCreateRequest {
   /** Data Source ARM name. */
   discoverySiteDataSourceName: string;
   /** The resource-specific properties for this resource. */
-  properties?: DiscoverySiteDataSourceProperties;
+  properties?: SqlDiscoverySiteDataSourceProperties;
 }
 export const WebAppDiscoverySiteDataSourcesControllerCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -31300,7 +30888,7 @@ export const WebAppDiscoverySiteDataSourcesControllerCreateRequest =
       siteName: S.String.pipe(T.Label()),
       webAppSiteName: S.String.pipe(T.Label()),
       discoverySiteDataSourceName: S.String.pipe(T.Label()),
-      properties: S.optional(DiscoverySiteDataSourceProperties),
+      properties: S.optional(SqlDiscoverySiteDataSourceProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -31323,7 +30911,7 @@ export interface WebAppDiscoverySiteDataSourcesControllerCreateResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
-  properties?: DiscoverySiteDataSourceProperties;
+  properties?: SqlDiscoverySiteDataSourceProperties;
 }
 export const WebAppDiscoverySiteDataSourcesControllerCreateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -31332,7 +30920,7 @@ export const WebAppDiscoverySiteDataSourcesControllerCreateResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(DiscoverySiteDataSourceProperties),
+      properties: S.optional(SqlDiscoverySiteDataSourceProperties),
     }),
   ).annotate({
     identifier: "WebAppDiscoverySiteDataSourcesControllerCreateResponse",
@@ -31418,7 +31006,7 @@ export interface WebAppDiscoverySiteDataSourcesControllerGetResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
-  properties?: DiscoverySiteDataSourceProperties;
+  properties?: SqlDiscoverySiteDataSourceProperties;
 }
 export const WebAppDiscoverySiteDataSourcesControllerGetResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -31427,7 +31015,7 @@ export const WebAppDiscoverySiteDataSourcesControllerGetResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(DiscoverySiteDataSourceProperties),
+      properties: S.optional(SqlDiscoverySiteDataSourceProperties),
     }),
   ).annotate({
     identifier: "WebAppDiscoverySiteDataSourcesControllerGetResponse",
@@ -31464,35 +31052,14 @@ export const WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteRequest =
   }) as any as S.Schema<WebAppDiscoverySiteDataSourcesControllerListByWebAppSiteRequest>;
 
 /** Web app data source web model. */
-export interface DiscoverySiteDataSource {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: DiscoverySiteDataSourceProperties;
-}
-export const DiscoverySiteDataSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DiscoverySiteDataSourceProperties),
-  }),
-).annotate({
-  identifier: "DiscoverySiteDataSource",
-}) as any as S.Schema<DiscoverySiteDataSource>;
+export type DiscoverySiteDataSource = SqlDiscoverySiteDataSource;
+export const DiscoverySiteDataSource = SqlDiscoverySiteDataSource;
 
 /** The DiscoverySiteDataSource items on this page */
 export type DiscoverySiteDataSourceListResultValueList =
-  Array<DiscoverySiteDataSource>;
+  Array<SqlDiscoverySiteDataSource>;
 export const DiscoverySiteDataSourceListResultValueList = /*@__PURE__*/ S.Array(
-  DiscoverySiteDataSource,
+  SqlDiscoverySiteDataSource,
 ) as any as S.Schema<DiscoverySiteDataSourceListResultValueList>;
 
 /** The response of a DiscoverySiteDataSource list operation. */
@@ -32081,34 +31648,14 @@ export const WebAppRunAsAccountsControllerListByWebAppSiteRequest =
   }) as any as S.Schema<WebAppRunAsAccountsControllerListByWebAppSiteRequest>;
 
 /** Run as account REST Resource. */
-export interface WebAppRunAsAccount {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: RunAsAccountProperties;
-}
-export const WebAppRunAsAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RunAsAccountProperties),
-  }),
-).annotate({
-  identifier: "WebAppRunAsAccount",
-}) as any as S.Schema<WebAppRunAsAccount>;
+export type WebAppRunAsAccount = HypervRunAsAccountResource;
+export const WebAppRunAsAccount = HypervRunAsAccountResource;
 
 /** The WebAppRunAsAccount items on this page */
-export type WebAppRunAsAccountListResultValueList = Array<WebAppRunAsAccount>;
+export type WebAppRunAsAccountListResultValueList =
+  Array<HypervRunAsAccountResource>;
 export const WebAppRunAsAccountListResultValueList = /*@__PURE__*/ S.Array(
-  WebAppRunAsAccount,
+  HypervRunAsAccountResource,
 ) as any as S.Schema<WebAppRunAsAccountListResultValueList>;
 
 /** The response of a WebAppRunAsAccount list operation. */

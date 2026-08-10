@@ -2798,12 +2798,8 @@ export const MigrationServicesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<MigrationServicesCreateOrUpdateRequestTagsMap>;
 
 /** The Migration Service properties. */
-export interface MigrationServicePropertiesInput {}
-export const MigrationServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MigrationServicePropertiesInput",
-}) as any as S.Schema<MigrationServicePropertiesInput>;
+export type MigrationServicePropertiesInput = UserAssignedIdentityInput;
+export const MigrationServicePropertiesInput = UserAssignedIdentityInput;
 
 export interface MigrationServicesCreateOrUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -2816,7 +2812,7 @@ export interface MigrationServicesCreateOrUpdateRequest {
   tags?: MigrationServicesCreateOrUpdateRequestTagsMap;
   /** The geo-location where the resource lives */
   location: string;
-  properties?: MigrationServicePropertiesInput;
+  properties?: UserAssignedIdentityInput;
 }
 export const MigrationServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -2826,7 +2822,7 @@ export const MigrationServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       migrationServiceName: S.String.pipe(T.Label()),
       tags: S.optional(MigrationServicesCreateOrUpdateRequestTagsMap),
       location: S.String,
-      properties: S.optional(MigrationServicePropertiesInput),
+      properties: S.optional(UserAssignedIdentityInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -3453,24 +3449,10 @@ export const ProjectPropertiesInputSourceConnectionInfo =
   }) as any as S.Schema<ProjectPropertiesInputSourceConnectionInfo>;
 
 /** Defines the connection properties of a server */
-export interface ProjectPropertiesInputTargetConnectionInfo {
-  /** Type of connection info */
-  type: string;
-  /** User name */
-  userName?: string;
-  /** Password credential. */
-  password?: string | Redacted.Redacted<string>;
-}
+export type ProjectPropertiesInputTargetConnectionInfo =
+  ProjectPropertiesInputSourceConnectionInfo;
 export const ProjectPropertiesInputTargetConnectionInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      userName: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "ProjectPropertiesInputTargetConnectionInfo",
-  }) as any as S.Schema<ProjectPropertiesInputTargetConnectionInfo>;
+  ProjectPropertiesInputSourceConnectionInfo;
 
 /** Project Database Details */
 export interface DatabaseInfo {
@@ -3500,7 +3482,7 @@ export interface ProjectPropertiesInput {
   /** Defines the connection properties of a server */
   sourceConnectionInfo?: ProjectPropertiesInputSourceConnectionInfo;
   /** Defines the connection properties of a server */
-  targetConnectionInfo?: ProjectPropertiesInputTargetConnectionInfo;
+  targetConnectionInfo?: ProjectPropertiesInputSourceConnectionInfo;
   /** List of DatabaseInfo */
   databasesInfo?: ProjectPropertiesInputDatabasesInfoList;
 }
@@ -3515,7 +3497,7 @@ export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
       ProjectPropertiesInputSourceConnectionInfo,
     ),
     targetConnectionInfo: S.optional(
-      ProjectPropertiesInputTargetConnectionInfo,
+      ProjectPropertiesInputSourceConnectionInfo,
     ),
     databasesInfo: S.optional(ProjectPropertiesInputDatabasesInfoList),
   }),
@@ -3573,67 +3555,22 @@ export const ProjectsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
 
 /** Azure Active Directory Application */
-export interface ProjectPropertiesAzureAuthenticationInfo {
-  /** Application ID of the Azure Active Directory Application */
-  applicationId?: string;
-  /** Key used to authenticate to the Azure Active Directory Application */
-  appKey?: string;
-  /** Tenant id of the customer */
-  tenantId?: string;
-  /** Ignore checking azure permissions on the AAD app */
-  ignoreAzurePermissions?: boolean;
-}
-export const ProjectPropertiesAzureAuthenticationInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationId: S.optional(S.String),
-      appKey: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      ignoreAzurePermissions: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "ProjectPropertiesAzureAuthenticationInfo",
-}) as any as S.Schema<ProjectPropertiesAzureAuthenticationInfo>;
+export type ProjectPropertiesAzureAuthenticationInfo =
+  ProjectPropertiesInputAzureAuthenticationInfo;
+export const ProjectPropertiesAzureAuthenticationInfo =
+  ProjectPropertiesInputAzureAuthenticationInfo;
 
 /** Defines the connection properties of a server */
-export interface ProjectPropertiesSourceConnectionInfo {
-  /** Type of connection info */
-  type: string;
-  /** User name */
-  userName?: string;
-  /** Password credential. */
-  password?: string | Redacted.Redacted<string>;
-}
-export const ProjectPropertiesSourceConnectionInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.String,
-      userName: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-).annotate({
-  identifier: "ProjectPropertiesSourceConnectionInfo",
-}) as any as S.Schema<ProjectPropertiesSourceConnectionInfo>;
+export type ProjectPropertiesSourceConnectionInfo =
+  ProjectPropertiesInputSourceConnectionInfo;
+export const ProjectPropertiesSourceConnectionInfo =
+  ProjectPropertiesInputSourceConnectionInfo;
 
 /** Defines the connection properties of a server */
-export interface ProjectPropertiesTargetConnectionInfo {
-  /** Type of connection info */
-  type: string;
-  /** User name */
-  userName?: string;
-  /** Password credential. */
-  password?: string | Redacted.Redacted<string>;
-}
-export const ProjectPropertiesTargetConnectionInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.String,
-      userName: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-).annotate({
-  identifier: "ProjectPropertiesTargetConnectionInfo",
-}) as any as S.Schema<ProjectPropertiesTargetConnectionInfo>;
+export type ProjectPropertiesTargetConnectionInfo =
+  ProjectPropertiesInputSourceConnectionInfo;
+export const ProjectPropertiesTargetConnectionInfo =
+  ProjectPropertiesInputSourceConnectionInfo;
 
 /** List of DatabaseInfo */
 export type ProjectPropertiesDatabasesInfoList = Array<DatabaseInfo>;
@@ -3650,15 +3587,15 @@ export interface ProjectProperties {
   /** Source platform for the project */
   sourcePlatform: ProjectSourcePlatform;
   /** Azure Active Directory Application */
-  azureAuthenticationInfo?: ProjectPropertiesAzureAuthenticationInfo;
+  azureAuthenticationInfo?: ProjectPropertiesInputAzureAuthenticationInfo;
   /** Target platform for the project */
   targetPlatform: ProjectTargetPlatform;
   /** UTC Date and time when project was created */
   creationTime?: string;
   /** Defines the connection properties of a server */
-  sourceConnectionInfo?: ProjectPropertiesSourceConnectionInfo;
+  sourceConnectionInfo?: ProjectPropertiesInputSourceConnectionInfo;
   /** Defines the connection properties of a server */
-  targetConnectionInfo?: ProjectPropertiesTargetConnectionInfo;
+  targetConnectionInfo?: ProjectPropertiesInputSourceConnectionInfo;
   /** List of DatabaseInfo */
   databasesInfo?: ProjectPropertiesDatabasesInfoList;
   /** The project's provisioning state */
@@ -3668,12 +3605,16 @@ export const ProjectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourcePlatform: ProjectSourcePlatform,
     azureAuthenticationInfo: S.optional(
-      ProjectPropertiesAzureAuthenticationInfo,
+      ProjectPropertiesInputAzureAuthenticationInfo,
     ),
     targetPlatform: ProjectTargetPlatform,
     creationTime: S.optional(S.String),
-    sourceConnectionInfo: S.optional(ProjectPropertiesSourceConnectionInfo),
-    targetConnectionInfo: S.optional(ProjectPropertiesTargetConnectionInfo),
+    sourceConnectionInfo: S.optional(
+      ProjectPropertiesInputSourceConnectionInfo,
+    ),
+    targetConnectionInfo: S.optional(
+      ProjectPropertiesInputSourceConnectionInfo,
+    ),
     databasesInfo: S.optional(ProjectPropertiesDatabasesInfoList),
     provisioningState: S.optional(ProjectPropertiesProvisioningState),
   }),
@@ -5740,12 +5681,8 @@ export const SqlMigrationServicesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<SqlMigrationServicesCreateOrUpdateRequestTagsMap>;
 
 /** The SQL Migration Service properties. */
-export interface SqlMigrationServicePropertiesInput {}
-export const SqlMigrationServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SqlMigrationServicePropertiesInput",
-}) as any as S.Schema<SqlMigrationServicePropertiesInput>;
+export type SqlMigrationServicePropertiesInput = UserAssignedIdentityInput;
+export const SqlMigrationServicePropertiesInput = UserAssignedIdentityInput;
 
 export interface SqlMigrationServicesCreateOrUpdateRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -5758,7 +5695,7 @@ export interface SqlMigrationServicesCreateOrUpdateRequest {
   tags?: SqlMigrationServicesCreateOrUpdateRequestTagsMap;
   /** The geo-location where the resource lives */
   location: string;
-  properties?: SqlMigrationServicePropertiesInput;
+  properties?: UserAssignedIdentityInput;
 }
 export const SqlMigrationServicesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5768,7 +5705,7 @@ export const SqlMigrationServicesCreateOrUpdateRequest =
       sqlMigrationServiceName: S.String.pipe(T.Label()),
       tags: S.optional(SqlMigrationServicesCreateOrUpdateRequestTagsMap),
       location: S.String,
-      properties: S.optional(SqlMigrationServicePropertiesInput),
+      properties: S.optional(UserAssignedIdentityInput),
     }).pipe(
       T.Http({
         method: "PUT",

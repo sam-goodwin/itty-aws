@@ -408,18 +408,10 @@ export type DataLakeAnalyticsAccountPropertiesState = "Active" | "Suspended";
 export const DataLakeAnalyticsAccountPropertiesState = /*@__PURE__*/ S.String;
 
 /** The Data Lake Store account properties. */
-export interface DataLakeStoreAccountInformationProperties {
-  /** The optional suffix for the Data Lake Store account. */
-  suffix?: string;
-}
+export type DataLakeStoreAccountInformationProperties =
+  AddDataLakeStoreProperties;
 export const DataLakeStoreAccountInformationProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      suffix: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DataLakeStoreAccountInformationProperties",
-  }) as any as S.Schema<DataLakeStoreAccountInformationProperties>;
+  AddDataLakeStoreProperties;
 
 /** Data Lake Store account information. */
 export interface DataLakeStoreAccountInformation {
@@ -430,14 +422,14 @@ export interface DataLakeStoreAccountInformation {
   /** The resource type. */
   type?: string;
   /** The Data Lake Store account properties. */
-  properties?: DataLakeStoreAccountInformationProperties;
+  properties?: AddDataLakeStoreProperties;
 }
 export const DataLakeStoreAccountInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
-    properties: S.optional(DataLakeStoreAccountInformationProperties),
+    properties: S.optional(AddDataLakeStoreProperties),
   }),
 ).annotate({
   identifier: "DataLakeStoreAccountInformation",
@@ -1209,30 +1201,21 @@ export const AccountsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsUpdateRequestTagsMap>;
 
 /** The Data Lake Store account properties to use when updating a Data Lake Store account. */
-export interface UpdateDataLakeStoreProperties {
-  /** The optional suffix for the Data Lake Store account. */
-  suffix?: string;
-}
-export const UpdateDataLakeStoreProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suffix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateDataLakeStoreProperties",
-}) as any as S.Schema<UpdateDataLakeStoreProperties>;
+export type UpdateDataLakeStoreProperties = AddDataLakeStoreProperties;
+export const UpdateDataLakeStoreProperties = AddDataLakeStoreProperties;
 
 /** The parameters used to update a Data Lake Store account while updating a Data Lake Analytics account. */
 export interface UpdateDataLakeStoreWithAccountParameters {
   /** The unique name of the Data Lake Store account to update. */
   name: string;
   /** The Data Lake Store account properties to use when updating a Data Lake Store account. */
-  properties?: UpdateDataLakeStoreProperties;
+  properties?: AddDataLakeStoreProperties;
 }
 export const UpdateDataLakeStoreWithAccountParameters = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String,
-      properties: S.optional(UpdateDataLakeStoreProperties),
+      properties: S.optional(AddDataLakeStoreProperties),
     }),
 ).annotate({
   identifier: "UpdateDataLakeStoreWithAccountParameters",
@@ -1342,33 +1325,21 @@ export const UpdateDataLakeAnalyticsAccountPropertiesComputePoliciesList =
   ) as any as S.Schema<UpdateDataLakeAnalyticsAccountPropertiesComputePoliciesList>;
 
 /** The firewall rule properties to use when updating a firewall rule. */
-export interface UpdateFirewallRuleProperties {
-  /** The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol. */
-  startIpAddress?: string;
-  /** The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol. */
-  endIpAddress?: string;
-}
-export const UpdateFirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startIpAddress: S.optional(S.String),
-    endIpAddress: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateFirewallRuleProperties",
-}) as any as S.Schema<UpdateFirewallRuleProperties>;
+export type UpdateFirewallRuleProperties = FirewallRuleProperties;
+export const UpdateFirewallRuleProperties = FirewallRuleProperties;
 
 /** The parameters used to update a firewall rule while updating a Data Lake Analytics account. */
 export interface UpdateFirewallRuleWithAccountParameters {
   /** The unique name of the firewall rule to update. */
   name: string;
   /** The firewall rule properties to use when updating a firewall rule. */
-  properties?: UpdateFirewallRuleProperties;
+  properties?: FirewallRuleProperties;
 }
 export const UpdateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String,
-      properties: S.optional(UpdateFirewallRuleProperties),
+      properties: S.optional(FirewallRuleProperties),
     }),
 ).annotate({
   identifier: "UpdateFirewallRuleWithAccountParameters",
@@ -1886,14 +1857,14 @@ export interface DataLakeStoreAccountsGetResponse {
   /** The resource type. */
   type?: string;
   /** The Data Lake Store account properties. */
-  properties?: DataLakeStoreAccountInformationProperties;
+  properties?: AddDataLakeStoreProperties;
 }
 export const DataLakeStoreAccountsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
-    properties: S.optional(DataLakeStoreAccountInformationProperties),
+    properties: S.optional(AddDataLakeStoreProperties),
   }),
 ).annotate({
   identifier: "DataLakeStoreAccountsGetResponse",
@@ -2161,7 +2132,7 @@ export interface FirewallRulesUpdateRequest {
   /** The name of the firewall rule to update. */
   firewallRuleName: string;
   /** The firewall rule properties to use when updating a firewall rule. */
-  properties?: UpdateFirewallRuleProperties;
+  properties?: FirewallRuleProperties;
 }
 export const FirewallRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2169,7 +2140,7 @@ export const FirewallRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     firewallRuleName: S.String.pipe(T.Label()),
-    properties: S.optional(UpdateFirewallRuleProperties),
+    properties: S.optional(FirewallRuleProperties),
   }).pipe(
     T.Http({
       method: "PATCH",

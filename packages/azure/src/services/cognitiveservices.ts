@@ -8741,11 +8741,10 @@ export const OutboundRulesPostRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutboundRulesPostRequest>;
 
 /** The Private Endpoint resource. */
-export interface PrivateEndpointConnectionPropertiesInputPrivateEndpoint {}
+export type PrivateEndpointConnectionPropertiesInputPrivateEndpoint =
+  UserAssignedIdentityInput;
 export const PrivateEndpointConnectionPropertiesInputPrivateEndpoint =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PrivateEndpointConnectionPropertiesInputPrivateEndpoint",
-  }) as any as S.Schema<PrivateEndpointConnectionPropertiesInputPrivateEndpoint>;
+  UserAssignedIdentityInput;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState {
@@ -8779,7 +8778,7 @@ export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The Private Endpoint resource. */
-  privateEndpoint?: PrivateEndpointConnectionPropertiesInputPrivateEndpoint;
+  privateEndpoint?: UserAssignedIdentityInput;
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState;
   /** The private link resource group ids. */
@@ -8788,9 +8787,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
 export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      privateEndpoint: S.optional(
-        PrivateEndpointConnectionPropertiesInputPrivateEndpoint,
-      ),
+      privateEndpoint: S.optional(UserAssignedIdentityInput),
       privateLinkServiceConnectionState:
         PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState,
       groupIds: S.optional(

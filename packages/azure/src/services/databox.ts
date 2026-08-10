@@ -2533,20 +2533,8 @@ export const DatacenterAddressRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatacenterAddressRequest>;
 
 /** Request body to get the device capabilities for given sku. */
-export interface DeviceCapabilityRequest {
-  /** Type of the device. */
-  skuName?: SkuName | (string & {});
-  /** The customer friendly name of the combination of version and capacity of the device. This field is necessary only at the time of ordering the newer generation device i.e. AzureDataBox120 and AzureDataBox525 as of Feb/2025 */
-  model?: ModelName | (string & {});
-}
-export const DeviceCapabilityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skuName: S.optional(SkuName),
-    model: S.optional(ModelName),
-  }),
-).annotate({
-  identifier: "DeviceCapabilityRequest",
-}) as any as S.Schema<DeviceCapabilityRequest>;
+export type DeviceCapabilityRequest = TransportAvailabilityRequest;
+export const DeviceCapabilityRequest = TransportAvailabilityRequest;
 
 export interface ServiceRegionConfigurationRequest {
   /** The ID of the target subscription. */
@@ -2560,7 +2548,7 @@ export interface ServiceRegionConfigurationRequest {
   /** Request body to get the datacenter address for given sku. */
   datacenterAddressRequest?: DatacenterAddressRequest;
   /** Request body to get the device capabilities for a given sku. */
-  deviceCapabilityRequest?: DeviceCapabilityRequest;
+  deviceCapabilityRequest?: TransportAvailabilityRequest;
 }
 export const ServiceRegionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2569,7 +2557,7 @@ export const ServiceRegionConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
     scheduleAvailabilityRequest: S.optional(ScheduleAvailabilityRequest),
     transportAvailabilityRequest: S.optional(TransportAvailabilityRequest),
     datacenterAddressRequest: S.optional(DatacenterAddressRequest),
-    deviceCapabilityRequest: S.optional(DeviceCapabilityRequest),
+    deviceCapabilityRequest: S.optional(TransportAvailabilityRequest),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2710,7 +2698,7 @@ export interface ServiceRegionConfigurationByResourceGroupRequest {
   /** Request body to get the datacenter address for given sku. */
   datacenterAddressRequest?: DatacenterAddressRequest;
   /** Request body to get the device capabilities for a given sku. */
-  deviceCapabilityRequest?: DeviceCapabilityRequest;
+  deviceCapabilityRequest?: TransportAvailabilityRequest;
 }
 export const ServiceRegionConfigurationByResourceGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2721,7 +2709,7 @@ export const ServiceRegionConfigurationByResourceGroupRequest =
       scheduleAvailabilityRequest: S.optional(ScheduleAvailabilityRequest),
       transportAvailabilityRequest: S.optional(TransportAvailabilityRequest),
       datacenterAddressRequest: S.optional(DatacenterAddressRequest),
-      deviceCapabilityRequest: S.optional(DeviceCapabilityRequest),
+      deviceCapabilityRequest: S.optional(TransportAvailabilityRequest),
     }).pipe(
       T.Http({
         method: "POST",

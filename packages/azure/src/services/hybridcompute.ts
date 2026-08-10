@@ -1238,12 +1238,10 @@ export const LicenseProfileArmProductProfilePropertiesInputError =
   }) as any as S.Schema<LicenseProfileArmProductProfilePropertiesInputError>;
 
 /** The error detail. */
-export interface ProductFeatureInputError {}
-export const ProductFeatureInputError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ProductFeatureInputError",
-}) as any as S.Schema<ProductFeatureInputError>;
+export type ProductFeatureInputError =
+  LicenseProfileArmProductProfilePropertiesInputError;
+export const ProductFeatureInputError =
+  LicenseProfileArmProductProfilePropertiesInputError;
 
 /** Product Feature */
 export interface ProductFeatureInput {
@@ -1252,13 +1250,13 @@ export interface ProductFeatureInput {
   /** Indicates the current status of the product features. */
   subscriptionStatus?: LicenseProfileSubscriptionStatus | (string & {});
   /** The error detail. */
-  error?: ProductFeatureInputError;
+  error?: LicenseProfileArmProductProfilePropertiesInputError;
 }
 export const ProductFeatureInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     subscriptionStatus: S.optional(LicenseProfileSubscriptionStatus),
-    error: S.optional(ProductFeatureInputError),
+    error: S.optional(LicenseProfileArmProductProfilePropertiesInputError),
   }),
 ).annotate({
   identifier: "ProductFeatureInput",
@@ -1371,19 +1369,10 @@ export const LicenseProfilesCreateOrUpdateResponseTagsMap =
     S.String,
   ) as any as S.Schema<LicenseProfilesCreateOrUpdateResponseTagsMap>;
 
-export interface LicenseProfilesCreateOrUpdateResponsePropertiesSoftwareAssurance {
-  /** Specifies if this machine is licensed as part of a Software Assurance agreement. */
-  softwareAssuranceCustomer?: boolean;
-}
+export type LicenseProfilesCreateOrUpdateResponsePropertiesSoftwareAssurance =
+  LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
 export const LicenseProfilesCreateOrUpdateResponsePropertiesSoftwareAssurance =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      softwareAssuranceCustomer: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier:
-      "LicenseProfilesCreateOrUpdateResponsePropertiesSoftwareAssurance",
-  }) as any as S.Schema<LicenseProfilesCreateOrUpdateResponsePropertiesSoftwareAssurance>;
+  LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
 
 /** ESU key */
 export interface EsuKey {
@@ -1655,7 +1644,7 @@ export const LicenseProfileArmProductProfileProperties =
 
 /** Describe the properties of a license profile. */
 export interface LicenseProfilesCreateOrUpdateResponseProperties {
-  softwareAssurance?: LicenseProfilesCreateOrUpdateResponsePropertiesSoftwareAssurance;
+  softwareAssurance?: LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
   /** Hybrid Compute ESU Profile properties */
   esuProfile?: LicenseProfileArmEsuProperties;
   /** Hybrid Compute Product Profile properties */
@@ -1667,7 +1656,7 @@ export const LicenseProfilesCreateOrUpdateResponseProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       softwareAssurance: S.optional(
-        LicenseProfilesCreateOrUpdateResponsePropertiesSoftwareAssurance,
+        LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance,
       ),
       esuProfile: S.optional(LicenseProfileArmEsuProperties),
       productProfile: S.optional(LicenseProfileArmProductProfileProperties),
@@ -1796,42 +1785,16 @@ export const LicenseProfilesGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<LicenseProfilesGetResponseTagsMap>;
 
-export interface LicenseProfilesGetResponsePropertiesSoftwareAssurance {
-  /** Specifies if this machine is licensed as part of a Software Assurance agreement. */
-  softwareAssuranceCustomer?: boolean;
-}
+export type LicenseProfilesGetResponsePropertiesSoftwareAssurance =
+  LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
 export const LicenseProfilesGetResponsePropertiesSoftwareAssurance =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      softwareAssuranceCustomer: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "LicenseProfilesGetResponsePropertiesSoftwareAssurance",
-  }) as any as S.Schema<LicenseProfilesGetResponsePropertiesSoftwareAssurance>;
+  LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
 
 /** Describe the properties of a license profile. */
-export interface LicenseProfilesGetResponseProperties {
-  softwareAssurance?: LicenseProfilesGetResponsePropertiesSoftwareAssurance;
-  /** Hybrid Compute ESU Profile properties */
-  esuProfile?: LicenseProfileArmEsuProperties;
-  /** Hybrid Compute Product Profile properties */
-  productProfile?: LicenseProfileArmProductProfileProperties;
-  /** The provisioning state, which only appears in the response. */
-  provisioningState?: ProvisioningState;
-}
-export const LicenseProfilesGetResponseProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      softwareAssurance: S.optional(
-        LicenseProfilesGetResponsePropertiesSoftwareAssurance,
-      ),
-      esuProfile: S.optional(LicenseProfileArmEsuProperties),
-      productProfile: S.optional(LicenseProfileArmProductProfileProperties),
-      provisioningState: S.optional(ProvisioningState),
-    }),
-).annotate({
-  identifier: "LicenseProfilesGetResponseProperties",
-}) as any as S.Schema<LicenseProfilesGetResponseProperties>;
+export type LicenseProfilesGetResponseProperties =
+  LicenseProfilesCreateOrUpdateResponseProperties;
+export const LicenseProfilesGetResponseProperties =
+  LicenseProfilesCreateOrUpdateResponseProperties;
 
 export interface LicenseProfilesGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1847,7 +1810,7 @@ export interface LicenseProfilesGetResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** Describe the properties of a license profile. */
-  properties?: LicenseProfilesGetResponseProperties;
+  properties?: LicenseProfilesCreateOrUpdateResponseProperties;
 }
 export const LicenseProfilesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1857,7 +1820,7 @@ export const LicenseProfilesGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(LicenseProfilesGetResponseTagsMap),
     location: S.String,
-    properties: S.optional(LicenseProfilesGetResponseProperties),
+    properties: S.optional(LicenseProfilesCreateOrUpdateResponseProperties),
   }),
 ).annotate({
   identifier: "LicenseProfilesGetResponse",
@@ -1895,39 +1858,16 @@ export const LicenseProfileTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<LicenseProfileTagsMap>;
 
-export interface LicenseProfilePropertiesSoftwareAssurance {
-  /** Specifies if this machine is licensed as part of a Software Assurance agreement. */
-  softwareAssuranceCustomer?: boolean;
-}
+export type LicenseProfilePropertiesSoftwareAssurance =
+  LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
 export const LicenseProfilePropertiesSoftwareAssurance =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      softwareAssuranceCustomer: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "LicenseProfilePropertiesSoftwareAssurance",
-  }) as any as S.Schema<LicenseProfilePropertiesSoftwareAssurance>;
+  LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
 
 /** Describe the properties of a license profile. */
-export interface LicenseProfileProperties {
-  softwareAssurance?: LicenseProfilePropertiesSoftwareAssurance;
-  /** Hybrid Compute ESU Profile properties */
-  esuProfile?: LicenseProfileArmEsuProperties;
-  /** Hybrid Compute Product Profile properties */
-  productProfile?: LicenseProfileArmProductProfileProperties;
-  /** The provisioning state, which only appears in the response. */
-  provisioningState?: ProvisioningState;
-}
-export const LicenseProfileProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    softwareAssurance: S.optional(LicenseProfilePropertiesSoftwareAssurance),
-    esuProfile: S.optional(LicenseProfileArmEsuProperties),
-    productProfile: S.optional(LicenseProfileArmProductProfileProperties),
-    provisioningState: S.optional(ProvisioningState),
-  }),
-).annotate({
-  identifier: "LicenseProfileProperties",
-}) as any as S.Schema<LicenseProfileProperties>;
+export type LicenseProfileProperties =
+  LicenseProfilesCreateOrUpdateResponseProperties;
+export const LicenseProfileProperties =
+  LicenseProfilesCreateOrUpdateResponseProperties;
 
 /** Describes a license profile in a hybrid machine. */
 export interface LicenseProfile {
@@ -1944,7 +1884,7 @@ export interface LicenseProfile {
   /** The geo-location where the resource lives */
   location: string;
   /** Describe the properties of a license profile. */
-  properties?: LicenseProfileProperties;
+  properties?: LicenseProfilesCreateOrUpdateResponseProperties;
 }
 export const LicenseProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1954,7 +1894,7 @@ export const LicenseProfile = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(LicenseProfileTagsMap),
     location: S.String,
-    properties: S.optional(LicenseProfileProperties),
+    properties: S.optional(LicenseProfilesCreateOrUpdateResponseProperties),
   }),
 ).annotate({ identifier: "LicenseProfile" }) as any as S.Schema<LicenseProfile>;
 
@@ -1993,31 +1933,14 @@ export const LicenseProfilesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<LicenseProfilesUpdateRequestTagsMap>;
 
-export interface LicenseProfilesUpdateRequestPropertiesSoftwareAssurance {
-  /** Specifies if this machine is licensed as part of a Software Assurance agreement. */
-  softwareAssuranceCustomer?: boolean;
-}
+export type LicenseProfilesUpdateRequestPropertiesSoftwareAssurance =
+  LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
 export const LicenseProfilesUpdateRequestPropertiesSoftwareAssurance =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      softwareAssuranceCustomer: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "LicenseProfilesUpdateRequestPropertiesSoftwareAssurance",
-  }) as any as S.Schema<LicenseProfilesUpdateRequestPropertiesSoftwareAssurance>;
+  LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
 
 /** Describes the Update properties of a ESU License Profile. */
-export interface EsuProfileUpdateProperties {
-  /** The resource id of the license. */
-  assignedLicense?: string;
-}
-export const EsuProfileUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assignedLicense: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EsuProfileUpdateProperties",
-}) as any as S.Schema<EsuProfileUpdateProperties>;
+export type EsuProfileUpdateProperties = LicenseProfileArmEsuPropertiesInput;
+export const EsuProfileUpdateProperties = LicenseProfileArmEsuPropertiesInput;
 
 /** Indicates the new subscription status of the OS or Product Features. */
 export type LicenseProfileSubscriptionStatusUpdate = "Enable" | "Disable";
@@ -2070,9 +1993,9 @@ export const ProductProfileUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Describe the Update properties of a license profile. */
 export interface LicenseProfilesUpdateRequestProperties {
-  softwareAssurance?: LicenseProfilesUpdateRequestPropertiesSoftwareAssurance;
+  softwareAssurance?: LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
   /** Hybrid Compute ESU Profile Update properties */
-  esuProfile?: EsuProfileUpdateProperties;
+  esuProfile?: LicenseProfileArmEsuPropertiesInput;
   /** Hybrid Compute Product Profile Update properties */
   productProfile?: ProductProfileUpdateProperties;
 }
@@ -2080,9 +2003,9 @@ export const LicenseProfilesUpdateRequestProperties = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       softwareAssurance: S.optional(
-        LicenseProfilesUpdateRequestPropertiesSoftwareAssurance,
+        LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance,
       ),
-      esuProfile: S.optional(EsuProfileUpdateProperties),
+      esuProfile: S.optional(LicenseProfileArmEsuPropertiesInput),
       productProfile: S.optional(ProductProfileUpdateProperties),
     }),
 ).annotate({
@@ -2136,42 +2059,16 @@ export const LicenseProfilesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<LicenseProfilesUpdateResponseTagsMap>;
 
-export interface LicenseProfilesUpdateResponsePropertiesSoftwareAssurance {
-  /** Specifies if this machine is licensed as part of a Software Assurance agreement. */
-  softwareAssuranceCustomer?: boolean;
-}
+export type LicenseProfilesUpdateResponsePropertiesSoftwareAssurance =
+  LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
 export const LicenseProfilesUpdateResponsePropertiesSoftwareAssurance =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      softwareAssuranceCustomer: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "LicenseProfilesUpdateResponsePropertiesSoftwareAssurance",
-  }) as any as S.Schema<LicenseProfilesUpdateResponsePropertiesSoftwareAssurance>;
+  LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
 
 /** Describe the properties of a license profile. */
-export interface LicenseProfilesUpdateResponseProperties {
-  softwareAssurance?: LicenseProfilesUpdateResponsePropertiesSoftwareAssurance;
-  /** Hybrid Compute ESU Profile properties */
-  esuProfile?: LicenseProfileArmEsuProperties;
-  /** Hybrid Compute Product Profile properties */
-  productProfile?: LicenseProfileArmProductProfileProperties;
-  /** The provisioning state, which only appears in the response. */
-  provisioningState?: ProvisioningState;
-}
-export const LicenseProfilesUpdateResponseProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      softwareAssurance: S.optional(
-        LicenseProfilesUpdateResponsePropertiesSoftwareAssurance,
-      ),
-      esuProfile: S.optional(LicenseProfileArmEsuProperties),
-      productProfile: S.optional(LicenseProfileArmProductProfileProperties),
-      provisioningState: S.optional(ProvisioningState),
-    }),
-).annotate({
-  identifier: "LicenseProfilesUpdateResponseProperties",
-}) as any as S.Schema<LicenseProfilesUpdateResponseProperties>;
+export type LicenseProfilesUpdateResponseProperties =
+  LicenseProfilesCreateOrUpdateResponseProperties;
+export const LicenseProfilesUpdateResponseProperties =
+  LicenseProfilesCreateOrUpdateResponseProperties;
 
 export interface LicenseProfilesUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2187,7 +2084,7 @@ export interface LicenseProfilesUpdateResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** Describe the properties of a license profile. */
-  properties?: LicenseProfilesUpdateResponseProperties;
+  properties?: LicenseProfilesCreateOrUpdateResponseProperties;
 }
 export const LicenseProfilesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2197,7 +2094,7 @@ export const LicenseProfilesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(LicenseProfilesUpdateResponseTagsMap),
     location: S.String,
-    properties: S.optional(LicenseProfilesUpdateResponseProperties),
+    properties: S.optional(LicenseProfilesCreateOrUpdateResponseProperties),
   }),
 ).annotate({
   identifier: "LicenseProfilesUpdateResponse",
@@ -4268,12 +4165,10 @@ export const ServiceStatuses = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceStatuses>;
 
 /** The metadata of the cloud environment (Azure/GCP/AWS/OCI...). */
-export interface CloudMetadataInput {}
-export const CloudMetadataInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CloudMetadataInput",
-}) as any as S.Schema<CloudMetadataInput>;
+export type CloudMetadataInput =
+  LicenseProfileArmProductProfilePropertiesInputError;
+export const CloudMetadataInput =
+  LicenseProfileArmProductProfilePropertiesInputError;
 
 /** The info w.r.t Agent Upgrade. */
 export interface AgentUpgradeInput {
@@ -4340,28 +4235,22 @@ export const OSProfileInputWindowsConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OSProfileInputWindowsConfiguration>;
 
 /** Specifies the linux configuration for update management. */
-export interface OSProfileInputLinuxConfiguration {
-  patchSettings?: PatchSettingsInput;
-}
-export const OSProfileInputLinuxConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    patchSettings: S.optional(PatchSettingsInput),
-  }),
-).annotate({
-  identifier: "OSProfileInputLinuxConfiguration",
-}) as any as S.Schema<OSProfileInputLinuxConfiguration>;
+export type OSProfileInputLinuxConfiguration =
+  OSProfileInputWindowsConfiguration;
+export const OSProfileInputLinuxConfiguration =
+  OSProfileInputWindowsConfiguration;
 
 /** Specifies the operating system settings for the hybrid machine. */
 export interface OSProfileInput {
   /** Specifies the windows configuration for update management. */
   windowsConfiguration?: OSProfileInputWindowsConfiguration;
   /** Specifies the linux configuration for update management. */
-  linuxConfiguration?: OSProfileInputLinuxConfiguration;
+  linuxConfiguration?: OSProfileInputWindowsConfiguration;
 }
 export const OSProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     windowsConfiguration: S.optional(OSProfileInputWindowsConfiguration),
-    linuxConfiguration: S.optional(OSProfileInputLinuxConfiguration),
+    linuxConfiguration: S.optional(OSProfileInputWindowsConfiguration),
   }),
 ).annotate({ identifier: "OSProfileInput" }) as any as S.Schema<OSProfileInput>;
 
@@ -4449,7 +4338,7 @@ export interface MachinePropertiesInput {
   /** Statuses of dependent services that are reported back to ARM. */
   serviceStatuses?: ServiceStatuses;
   /** The metadata of the cloud environment (Azure/GCP/AWS/OCI...). */
-  cloudMetadata?: CloudMetadataInput;
+  cloudMetadata?: LicenseProfileArmProductProfilePropertiesInputError;
   /** The info of the machine w.r.t Agent Upgrade */
   agentUpgrade?: AgentUpgradeInput;
   /** Specifies the operating system settings for the hybrid machine. */
@@ -4479,7 +4368,9 @@ export const MachinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationData: S.optional(MachinePropertiesInputLocationData),
     serviceStatuses: S.optional(ServiceStatuses),
-    cloudMetadata: S.optional(CloudMetadataInput),
+    cloudMetadata: S.optional(
+      LicenseProfileArmProductProfilePropertiesInputError,
+    ),
     agentUpgrade: S.optional(AgentUpgradeInput),
     osProfile: S.optional(OSProfileInput),
     licenseProfile: S.optional(LicenseProfileMachineInstanceViewInput),
@@ -4578,26 +4469,8 @@ export const MachinesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MachinesCreateOrUpdateResponseTagsMap>;
 
 /** Metadata pertaining to the geographic location of the resource. */
-export interface MachinePropertiesLocationData {
-  /** A canonical name for the geographic or physical location. */
-  name: string;
-  /** The city or locality where the resource is located. */
-  city?: string;
-  /** The district, state, or province where the resource is located. */
-  district?: string;
-  /** The country or region where the resource is located */
-  countryOrRegion?: string;
-}
-export const MachinePropertiesLocationData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    city: S.optional(S.String),
-    district: S.optional(S.String),
-    countryOrRegion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MachinePropertiesLocationData",
-}) as any as S.Schema<MachinePropertiesLocationData>;
+export type MachinePropertiesLocationData = MachinePropertiesInputLocationData;
+export const MachinePropertiesLocationData = MachinePropertiesInputLocationData;
 
 /** Specifies the list of ports that the agent will be able to listen on. */
 export type AgentConfigurationIncomingConnectionsPortsList = Array<string>;
@@ -4937,16 +4810,8 @@ export const OSProfileWindowsConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OSProfileWindowsConfiguration>;
 
 /** Specifies the linux configuration for update management. */
-export interface OSProfileLinuxConfiguration {
-  patchSettings?: PatchSettings;
-}
-export const OSProfileLinuxConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    patchSettings: S.optional(PatchSettings),
-  }),
-).annotate({
-  identifier: "OSProfileLinuxConfiguration",
-}) as any as S.Schema<OSProfileLinuxConfiguration>;
+export type OSProfileLinuxConfiguration = OSProfileWindowsConfiguration;
+export const OSProfileLinuxConfiguration = OSProfileWindowsConfiguration;
 
 /** Specifies the operating system settings for the hybrid machine. */
 export interface OSProfile {
@@ -4955,13 +4820,13 @@ export interface OSProfile {
   /** Specifies the windows configuration for update management. */
   windowsConfiguration?: OSProfileWindowsConfiguration;
   /** Specifies the linux configuration for update management. */
-  linuxConfiguration?: OSProfileLinuxConfiguration;
+  linuxConfiguration?: OSProfileWindowsConfiguration;
 }
 export const OSProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computerName: S.optional(S.String),
     windowsConfiguration: S.optional(OSProfileWindowsConfiguration),
-    linuxConfiguration: S.optional(OSProfileLinuxConfiguration),
+    linuxConfiguration: S.optional(OSProfileWindowsConfiguration),
   }),
 ).annotate({ identifier: "OSProfile" }) as any as S.Schema<OSProfile>;
 
@@ -4976,18 +4841,10 @@ export type LicenseStatus =
   | "ExtendedGrace";
 export const LicenseStatus = /*@__PURE__*/ S.String;
 
-export interface LicenseProfileMachineInstanceViewSoftwareAssurance {
-  /** Specifies if this machine is licensed as part of a Software Assurance agreement. */
-  softwareAssuranceCustomer?: boolean;
-}
+export type LicenseProfileMachineInstanceViewSoftwareAssurance =
+  LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
 export const LicenseProfileMachineInstanceViewSoftwareAssurance =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      softwareAssuranceCustomer: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "LicenseProfileMachineInstanceViewSoftwareAssurance",
-  }) as any as S.Schema<LicenseProfileMachineInstanceViewSoftwareAssurance>;
+  LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
 
 /** The list of ESU keys. */
 export type LicenseProfileMachineInstanceViewEsuPropertiesEsuKeysList =
@@ -5045,7 +4902,7 @@ export interface LicenseProfileMachineInstanceView {
   licenseStatus?: LicenseStatus;
   /** Indicates the license channel. */
   licenseChannel?: string;
-  softwareAssurance?: LicenseProfileMachineInstanceViewSoftwareAssurance;
+  softwareAssurance?: LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance;
   esuProfile?: LicenseProfileMachineInstanceViewEsuProperties;
   /** Hybrid Compute Product Profile properties */
   productProfile?: LicenseProfileArmProductProfileProperties;
@@ -5055,7 +4912,7 @@ export const LicenseProfileMachineInstanceView = /*@__PURE__*/ S.suspend(() =>
     licenseStatus: S.optional(LicenseStatus),
     licenseChannel: S.optional(S.String),
     softwareAssurance: S.optional(
-      LicenseProfileMachineInstanceViewSoftwareAssurance,
+      LicenseProfilesCreateOrUpdateRequestPropertiesSoftwareAssurance,
     ),
     esuProfile: S.optional(LicenseProfileMachineInstanceViewEsuProperties),
     productProfile: S.optional(LicenseProfileArmProductProfileProperties),
@@ -5211,7 +5068,7 @@ export const NetworkProfile = /*@__PURE__*/ S.suspend(() =>
 /** Describes the properties of a hybrid machine. */
 export interface MachineProperties {
   /** Metadata pertaining to the geographic location of the resource. */
-  locationData?: MachinePropertiesLocationData;
+  locationData?: MachinePropertiesInputLocationData;
   /** Configurable properties that the user can set locally via the azcmagent config command, or remotely via ARM. */
   agentConfiguration?: AgentConfiguration;
   /** Statuses of dependent services that are reported back to ARM. */
@@ -5285,7 +5142,7 @@ export interface MachineProperties {
 }
 export const MachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    locationData: S.optional(MachinePropertiesLocationData),
+    locationData: S.optional(MachinePropertiesInputLocationData),
     agentConfiguration: S.optional(AgentConfiguration),
     serviceStatuses: S.optional(ServiceStatuses),
     hardwareProfile: S.optional(HardwareProfile),
@@ -5997,35 +5854,18 @@ export const MachinesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MachinesUpdateRequestIdentity>;
 
 /** Metadata pertaining to the geographic location of the resource. */
-export interface MachineUpdatePropertiesInputLocationData {
-  /** A canonical name for the geographic or physical location. */
-  name: string;
-  /** The city or locality where the resource is located. */
-  city?: string;
-  /** The district, state, or province where the resource is located. */
-  district?: string;
-  /** The country or region where the resource is located */
-  countryOrRegion?: string;
-}
-export const MachineUpdatePropertiesInputLocationData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      city: S.optional(S.String),
-      district: S.optional(S.String),
-      countryOrRegion: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "MachineUpdatePropertiesInputLocationData",
-}) as any as S.Schema<MachineUpdatePropertiesInputLocationData>;
+export type MachineUpdatePropertiesInputLocationData =
+  MachinePropertiesInputLocationData;
+export const MachineUpdatePropertiesInputLocationData =
+  MachinePropertiesInputLocationData;
 
 /** Describes the ARM updatable properties of a hybrid machine. */
 export interface MachineUpdatePropertiesInput {
   /** Metadata pertaining to the geographic location of the resource. */
-  locationData?: MachineUpdatePropertiesInputLocationData;
+  locationData?: MachinePropertiesInputLocationData;
   osProfile?: OSProfileInput;
   /** The metadata of the cloud environment (Azure/GCP/AWS/OCI...). */
-  cloudMetadata?: CloudMetadataInput;
+  cloudMetadata?: LicenseProfileArmProductProfilePropertiesInputError;
   /** The info of the machine w.r.t Agent Upgrade */
   agentUpgrade?: AgentUpgradeInput;
   /** The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any. */
@@ -6039,9 +5879,11 @@ export interface MachineUpdatePropertiesInput {
 }
 export const MachineUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    locationData: S.optional(MachineUpdatePropertiesInputLocationData),
+    locationData: S.optional(MachinePropertiesInputLocationData),
     osProfile: S.optional(OSProfileInput),
-    cloudMetadata: S.optional(CloudMetadataInput),
+    cloudMetadata: S.optional(
+      LicenseProfileArmProductProfilePropertiesInputError,
+    ),
     agentUpgrade: S.optional(AgentUpgradeInput),
     parentClusterResourceId: S.optional(S.String),
     privateLinkScopeResourceId: S.optional(S.String),

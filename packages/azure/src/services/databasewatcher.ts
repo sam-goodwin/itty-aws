@@ -1571,24 +1571,10 @@ export const WatchersGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WatchersGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface WatchersGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const WatchersGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "WatchersGetResponseIdentity",
-}) as any as S.Schema<WatchersGetResponseIdentity>;
+export type WatchersGetResponseIdentity =
+  WatchersCreateOrUpdateResponseIdentity;
+export const WatchersGetResponseIdentity =
+  WatchersCreateOrUpdateResponseIdentity;
 
 export interface WatchersGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1606,7 +1592,7 @@ export interface WatchersGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: WatcherProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: WatchersGetResponseIdentity;
+  identity?: WatchersCreateOrUpdateResponseIdentity;
 }
 export const WatchersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1617,7 +1603,7 @@ export const WatchersGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(WatchersGetResponseTagsMap),
     location: S.String,
     properties: S.optional(WatcherProperties),
-    identity: S.optional(WatchersGetResponseIdentity),
+    identity: S.optional(WatchersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "WatchersGetResponse",
@@ -1653,24 +1639,8 @@ export const WatcherTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WatcherTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface WatcherIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const WatcherIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "WatcherIdentity",
-}) as any as S.Schema<WatcherIdentity>;
+export type WatcherIdentity = WatchersCreateOrUpdateResponseIdentity;
+export const WatcherIdentity = WatchersCreateOrUpdateResponseIdentity;
 
 /** The DatabaseWatcherProviderHub resource. */
 export interface Watcher {
@@ -1689,7 +1659,7 @@ export interface Watcher {
   /** The resource-specific properties for this resource. */
   properties?: WatcherProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: WatcherIdentity;
+  identity?: WatchersCreateOrUpdateResponseIdentity;
 }
 export const Watcher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1700,7 +1670,7 @@ export const Watcher = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(WatcherTagsMap),
     location: S.String,
     properties: S.optional(WatcherProperties),
-    identity: S.optional(WatcherIdentity),
+    identity: S.optional(WatchersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "Watcher" }) as any as S.Schema<Watcher>;
 
@@ -1780,24 +1750,10 @@ export const WatchersStartResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WatchersStartResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface WatchersStartResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const WatchersStartResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "WatchersStartResponseIdentity",
-}) as any as S.Schema<WatchersStartResponseIdentity>;
+export type WatchersStartResponseIdentity =
+  WatchersCreateOrUpdateResponseIdentity;
+export const WatchersStartResponseIdentity =
+  WatchersCreateOrUpdateResponseIdentity;
 
 export interface WatchersStartResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1815,7 +1771,7 @@ export interface WatchersStartResponse {
   /** The resource-specific properties for this resource. */
   properties?: WatcherProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: WatchersStartResponseIdentity;
+  identity?: WatchersCreateOrUpdateResponseIdentity;
 }
 export const WatchersStartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1826,7 +1782,7 @@ export const WatchersStartResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(WatchersStartResponseTagsMap),
     location: S.String,
     properties: S.optional(WatcherProperties),
-    identity: S.optional(WatchersStartResponseIdentity),
+    identity: S.optional(WatchersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "WatchersStartResponse",
@@ -1865,24 +1821,10 @@ export const WatchersStopResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WatchersStopResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface WatchersStopResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const WatchersStopResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "WatchersStopResponseIdentity",
-}) as any as S.Schema<WatchersStopResponseIdentity>;
+export type WatchersStopResponseIdentity =
+  WatchersCreateOrUpdateResponseIdentity;
+export const WatchersStopResponseIdentity =
+  WatchersCreateOrUpdateResponseIdentity;
 
 export interface WatchersStopResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1900,7 +1842,7 @@ export interface WatchersStopResponse {
   /** The resource-specific properties for this resource. */
   properties?: WatcherProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: WatchersStopResponseIdentity;
+  identity?: WatchersCreateOrUpdateResponseIdentity;
 }
 export const WatchersStopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1911,25 +1853,17 @@ export const WatchersStopResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(WatchersStopResponseTagsMap),
     location: S.String,
     properties: S.optional(WatcherProperties),
-    identity: S.optional(WatchersStopResponseIdentity),
+    identity: S.optional(WatchersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "WatchersStopResponse",
 }) as any as S.Schema<WatchersStopResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface WatchersUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const WatchersUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "WatchersUpdateRequestIdentity",
-}) as any as S.Schema<WatchersUpdateRequestIdentity>;
+export type WatchersUpdateRequestIdentity =
+  WatchersCreateOrUpdateRequestIdentity;
+export const WatchersUpdateRequestIdentity =
+  WatchersCreateOrUpdateRequestIdentity;
 
 /** Resource tags. */
 export type WatchersUpdateRequestTagsMap = {
@@ -1995,7 +1929,7 @@ export interface WatchersUpdateRequest {
   /** The database watcher name. */
   watcherName: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: WatchersUpdateRequestIdentity;
+  identity?: WatchersCreateOrUpdateRequestIdentity;
   /** Resource tags. */
   tags?: WatchersUpdateRequestTagsMap;
   /** The resource-specific properties for this resource. */
@@ -2006,7 +1940,7 @@ export const WatchersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     watcherName: S.String.pipe(T.Label()),
-    identity: S.optional(WatchersUpdateRequestIdentity),
+    identity: S.optional(WatchersCreateOrUpdateRequestIdentity),
     tags: S.optional(WatchersUpdateRequestTagsMap),
     properties: S.optional(WatcherUpdateProperties),
   }).pipe(
@@ -2031,24 +1965,10 @@ export const WatchersUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WatchersUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface WatchersUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const WatchersUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "WatchersUpdateResponseIdentity",
-}) as any as S.Schema<WatchersUpdateResponseIdentity>;
+export type WatchersUpdateResponseIdentity =
+  WatchersCreateOrUpdateResponseIdentity;
+export const WatchersUpdateResponseIdentity =
+  WatchersCreateOrUpdateResponseIdentity;
 
 export interface WatchersUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2066,7 +1986,7 @@ export interface WatchersUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: WatcherProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: WatchersUpdateResponseIdentity;
+  identity?: WatchersCreateOrUpdateResponseIdentity;
 }
 export const WatchersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2077,7 +1997,7 @@ export const WatchersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(WatchersUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(WatcherProperties),
-    identity: S.optional(WatchersUpdateResponseIdentity),
+    identity: S.optional(WatchersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "WatchersUpdateResponse",

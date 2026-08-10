@@ -1417,12 +1417,8 @@ export const SapApplicationServerInstancesCreateRequestTagsMap =
   ) as any as S.Schema<SapApplicationServerInstancesCreateRequestTagsMap>;
 
 /** Defines the SAP Application Server instance properties. */
-export interface SAPApplicationServerPropertiesInput {}
-export const SAPApplicationServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SAPApplicationServerPropertiesInput",
-}) as any as S.Schema<SAPApplicationServerPropertiesInput>;
+export type SAPApplicationServerPropertiesInput = UserAssignedIdentityInput;
+export const SAPApplicationServerPropertiesInput = UserAssignedIdentityInput;
 
 export interface SapApplicationServerInstancesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1438,7 +1434,7 @@ export interface SapApplicationServerInstancesCreateRequest {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource-specific properties for this resource. */
-  properties?: SAPApplicationServerPropertiesInput;
+  properties?: UserAssignedIdentityInput;
 }
 export const SapApplicationServerInstancesCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1449,7 +1445,7 @@ export const SapApplicationServerInstancesCreateRequest =
       applicationInstanceName: S.String.pipe(T.Label()),
       tags: S.optional(SapApplicationServerInstancesCreateRequestTagsMap),
       location: S.String,
-      properties: S.optional(SAPApplicationServerPropertiesInput),
+      properties: S.optional(UserAssignedIdentityInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1715,7 +1711,7 @@ export interface SAPApplicationServerInstancesCreateRequest {
   tags?: SAPApplicationServerInstancesCreateRequestTagsMap;
   /** The geo-location where the resource lives */
   location: string;
-  properties?: SAPApplicationServerPropertiesInput;
+  properties?: UserAssignedIdentityInput;
 }
 export const SAPApplicationServerInstancesCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1726,7 +1722,7 @@ export const SAPApplicationServerInstancesCreateRequest =
       applicationInstanceName: S.String.pipe(T.Label()),
       tags: S.optional(SAPApplicationServerInstancesCreateRequestTagsMap),
       location: S.String,
-      properties: S.optional(SAPApplicationServerPropertiesInput),
+      properties: S.optional(UserAssignedIdentityInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1762,23 +1758,15 @@ export const LoadBalancerDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoadBalancerDetails>;
 
 /** Storage details of all the Storage accounts attached to the VM. For e.g. NFS on AFS Shared Storage. */
-export interface StorageInformation {
-  id?: string;
-}
-export const StorageInformation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StorageInformation",
-}) as any as S.Schema<StorageInformation>;
+export type StorageInformation = LoadBalancerDetails;
+export const StorageInformation = LoadBalancerDetails;
 
 /** Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage. */
 export type ApplicationServerVmDetailsStorageDetailsList =
-  Array<StorageInformation>;
+  Array<LoadBalancerDetails>;
 export const ApplicationServerVmDetailsStorageDetailsList =
   /*@__PURE__*/ S.Array(
-    StorageInformation,
+    LoadBalancerDetails,
   ) as any as S.Schema<ApplicationServerVmDetailsStorageDetailsList>;
 
 /** The Application Server VM Details. */
@@ -2924,52 +2912,35 @@ export const SAPCentralInstancesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SAPCentralInstancesCreateRequestTagsMap>;
 
 /** Defines the SAP Message Server properties. */
-export interface MessageServerPropertiesInput {}
-export const MessageServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MessageServerPropertiesInput",
-}) as any as S.Schema<MessageServerPropertiesInput>;
+export type MessageServerPropertiesInput = UserAssignedIdentityInput;
+export const MessageServerPropertiesInput = UserAssignedIdentityInput;
 
 /** Defines the SAP Enqueue Server properties. */
-export interface EnqueueServerPropertiesInput {}
-export const EnqueueServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnqueueServerPropertiesInput",
-}) as any as S.Schema<EnqueueServerPropertiesInput>;
+export type EnqueueServerPropertiesInput = UserAssignedIdentityInput;
+export const EnqueueServerPropertiesInput = UserAssignedIdentityInput;
 
 /** Defines the SAP Gateway Server properties. */
-export interface GatewayServerPropertiesInput {}
-export const GatewayServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GatewayServerPropertiesInput",
-}) as any as S.Schema<GatewayServerPropertiesInput>;
+export type GatewayServerPropertiesInput = UserAssignedIdentityInput;
+export const GatewayServerPropertiesInput = UserAssignedIdentityInput;
 
 /** Defines the SAP Enqueue Replication Server (ERS) properties. */
-export interface EnqueueReplicationServerPropertiesInput {}
-export const EnqueueReplicationServerPropertiesInput = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "EnqueueReplicationServerPropertiesInput",
-}) as any as S.Schema<EnqueueReplicationServerPropertiesInput>;
+export type EnqueueReplicationServerPropertiesInput = UserAssignedIdentityInput;
+export const EnqueueReplicationServerPropertiesInput =
+  UserAssignedIdentityInput;
 
 /** Defines the SAP Central Services Instance properties. */
 export interface SAPCentralServerPropertiesInput {
-  messageServerProperties?: MessageServerPropertiesInput;
-  enqueueServerProperties?: EnqueueServerPropertiesInput;
-  gatewayServerProperties?: GatewayServerPropertiesInput;
-  enqueueReplicationServerProperties?: EnqueueReplicationServerPropertiesInput;
+  messageServerProperties?: UserAssignedIdentityInput;
+  enqueueServerProperties?: UserAssignedIdentityInput;
+  gatewayServerProperties?: UserAssignedIdentityInput;
+  enqueueReplicationServerProperties?: UserAssignedIdentityInput;
 }
 export const SAPCentralServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    messageServerProperties: S.optional(MessageServerPropertiesInput),
-    enqueueServerProperties: S.optional(EnqueueServerPropertiesInput),
-    gatewayServerProperties: S.optional(GatewayServerPropertiesInput),
-    enqueueReplicationServerProperties: S.optional(
-      EnqueueReplicationServerPropertiesInput,
-    ),
+    messageServerProperties: S.optional(UserAssignedIdentityInput),
+    enqueueServerProperties: S.optional(UserAssignedIdentityInput),
+    gatewayServerProperties: S.optional(UserAssignedIdentityInput),
+    enqueueReplicationServerProperties: S.optional(UserAssignedIdentityInput),
   }),
 ).annotate({
   identifier: "SAPCentralServerPropertiesInput",
@@ -3134,9 +3105,9 @@ export const CentralServerVirtualMachineType = /*@__PURE__*/ S.String;
 
 /** Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage. */
 export type CentralServerVmDetailsStorageDetailsList =
-  Array<StorageInformation>;
+  Array<LoadBalancerDetails>;
 export const CentralServerVmDetailsStorageDetailsList = /*@__PURE__*/ S.Array(
-  StorageInformation,
+  LoadBalancerDetails,
 ) as any as S.Schema<CentralServerVmDetailsStorageDetailsList>;
 
 /** The SAP Central Services Instance VM details. */
@@ -3698,32 +3669,26 @@ export const SapCentralServerInstancesCreateRequestTagsMap =
   ) as any as S.Schema<SapCentralServerInstancesCreateRequestTagsMap>;
 
 /** Defines the SAP message server properties. */
-export interface MessageServerPropertiesInput_2 {}
-export const MessageServerPropertiesInput_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MessageServerPropertiesInput_2",
-}) as any as S.Schema<MessageServerPropertiesInput_2>;
+export type MessageServerPropertiesInput_2 = UserAssignedIdentityInput;
+export const MessageServerPropertiesInput_2 = UserAssignedIdentityInput;
 
 /** Defines the SAP Central Services Instance properties. */
 export interface SAPCentralServerPropertiesInput_2 {
   /** Defines the SAP message server properties. */
-  messageServerProperties?: MessageServerPropertiesInput_2;
+  messageServerProperties?: UserAssignedIdentityInput;
   /** Defines the SAP Enqueue Server properties. */
-  enqueueServerProperties?: EnqueueServerPropertiesInput;
+  enqueueServerProperties?: UserAssignedIdentityInput;
   /** Defines the SAP Gateway Server properties. */
-  gatewayServerProperties?: GatewayServerPropertiesInput;
+  gatewayServerProperties?: UserAssignedIdentityInput;
   /** Defines the SAP Enqueue Replication Server (ERS) properties. */
-  enqueueReplicationServerProperties?: EnqueueReplicationServerPropertiesInput;
+  enqueueReplicationServerProperties?: UserAssignedIdentityInput;
 }
 export const SAPCentralServerPropertiesInput_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    messageServerProperties: S.optional(MessageServerPropertiesInput_2),
-    enqueueServerProperties: S.optional(EnqueueServerPropertiesInput),
-    gatewayServerProperties: S.optional(GatewayServerPropertiesInput),
-    enqueueReplicationServerProperties: S.optional(
-      EnqueueReplicationServerPropertiesInput,
-    ),
+    messageServerProperties: S.optional(UserAssignedIdentityInput),
+    enqueueServerProperties: S.optional(UserAssignedIdentityInput),
+    gatewayServerProperties: S.optional(UserAssignedIdentityInput),
+    enqueueReplicationServerProperties: S.optional(UserAssignedIdentityInput),
   }),
 ).annotate({
   identifier: "SAPCentralServerPropertiesInput_2",
@@ -4436,12 +4401,8 @@ export const SapDatabaseInstancesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SapDatabaseInstancesCreateRequestTagsMap>;
 
 /** Defines the Database properties. */
-export interface SAPDatabasePropertiesInput {}
-export const SAPDatabasePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SAPDatabasePropertiesInput",
-}) as any as S.Schema<SAPDatabasePropertiesInput>;
+export type SAPDatabasePropertiesInput = UserAssignedIdentityInput;
+export const SAPDatabasePropertiesInput = UserAssignedIdentityInput;
 
 export interface SapDatabaseInstancesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4457,7 +4418,7 @@ export interface SapDatabaseInstancesCreateRequest {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource-specific properties for this resource. */
-  properties?: SAPDatabasePropertiesInput;
+  properties?: UserAssignedIdentityInput;
 }
 export const SapDatabaseInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4467,7 +4428,7 @@ export const SapDatabaseInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     databaseInstanceName: S.String.pipe(T.Label()),
     tags: S.optional(SapDatabaseInstancesCreateRequestTagsMap),
     location: S.String,
-    properties: S.optional(SAPDatabasePropertiesInput),
+    properties: S.optional(UserAssignedIdentityInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4609,7 +4570,7 @@ export interface SAPDatabaseInstancesCreateRequest {
   tags?: SAPDatabaseInstancesCreateRequestTagsMap;
   /** The geo-location where the resource lives */
   location: string;
-  properties?: SAPDatabasePropertiesInput;
+  properties?: UserAssignedIdentityInput;
 }
 export const SAPDatabaseInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4619,7 +4580,7 @@ export const SAPDatabaseInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     databaseInstanceName: S.String.pipe(T.Label()),
     tags: S.optional(SAPDatabaseInstancesCreateRequestTagsMap),
     location: S.String,
-    properties: S.optional(SAPDatabasePropertiesInput),
+    properties: S.optional(UserAssignedIdentityInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4642,9 +4603,9 @@ export const SAPDatabaseInstancesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SAPDatabaseInstancesCreateResponseTagsMap>;
 
 /** Storage details of all the Storage Accounts attached to the Database Virtual Machine. For e.g. NFS on AFS Shared Storage. */
-export type DatabaseVmDetailsStorageDetailsList = Array<StorageInformation>;
+export type DatabaseVmDetailsStorageDetailsList = Array<LoadBalancerDetails>;
 export const DatabaseVmDetailsStorageDetailsList = /*@__PURE__*/ S.Array(
-  StorageInformation,
+  LoadBalancerDetails,
 ) as any as S.Schema<DatabaseVmDetailsStorageDetailsList>;
 
 /** Database VM details. */
@@ -6414,22 +6375,19 @@ export type SAPVirtualInstanceIdentityType = "None" | "UserAssigned";
 export const SAPVirtualInstanceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface SAPVirtualInstanceIdentityInputUserAssignedIdentitiesValue {}
+export type SAPVirtualInstanceIdentityInputUserAssignedIdentitiesValue =
+  UserAssignedIdentityInput;
 export const SAPVirtualInstanceIdentityInputUserAssignedIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SAPVirtualInstanceIdentityInputUserAssignedIdentitiesValue",
-  }) as any as S.Schema<SAPVirtualInstanceIdentityInputUserAssignedIdentitiesValue>;
+  UserAssignedIdentityInput;
 
 /** The identities assigned to this resource by the user. */
 export type SAPVirtualInstanceIdentityInputUserAssignedIdentitiesMap = {
-  [key: string]:
-    | SAPVirtualInstanceIdentityInputUserAssignedIdentitiesValue
-    | undefined;
+  [key: string]: UserAssignedIdentityInput | undefined;
 };
 export const SAPVirtualInstanceIdentityInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    SAPVirtualInstanceIdentityInputUserAssignedIdentitiesValue,
+    UserAssignedIdentityInput,
   ) as any as S.Schema<SAPVirtualInstanceIdentityInputUserAssignedIdentitiesMap>;
 
 /** Managed service identity (user assigned identities) */
@@ -6556,32 +6514,19 @@ export const SAPVirtualInstanceProperties_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SAPVirtualInstanceProperties_2>;
 
 /** User assigned identity properties */
-export interface SAPVirtualInstanceIdentityUserAssignedIdentitiesValue {
-  /** The principal ID of the assigned identity. */
-  principalId?: string;
-  /** The client ID of the assigned identity. */
-  clientId?: string;
-}
+export type SAPVirtualInstanceIdentityUserAssignedIdentitiesValue =
+  UserAssignedIdentity;
 export const SAPVirtualInstanceIdentityUserAssignedIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      clientId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SAPVirtualInstanceIdentityUserAssignedIdentitiesValue",
-  }) as any as S.Schema<SAPVirtualInstanceIdentityUserAssignedIdentitiesValue>;
+  UserAssignedIdentity;
 
 /** The identities assigned to this resource by the user. */
 export type SAPVirtualInstanceIdentityUserAssignedIdentitiesMap_2 = {
-  [key: string]:
-    | SAPVirtualInstanceIdentityUserAssignedIdentitiesValue
-    | undefined;
+  [key: string]: UserAssignedIdentity | undefined;
 };
 export const SAPVirtualInstanceIdentityUserAssignedIdentitiesMap_2 =
   /*@__PURE__*/ S.Record(
     S.String,
-    SAPVirtualInstanceIdentityUserAssignedIdentitiesValue,
+    UserAssignedIdentity,
   ) as any as S.Schema<SAPVirtualInstanceIdentityUserAssignedIdentitiesMap_2>;
 
 /** Managed service identity (user assigned identities) */

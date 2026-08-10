@@ -2,6 +2,7 @@
 import * as S from "@distilled.cloud/core/schema";
 import * as Redacted from "effect/Redacted";
 import * as API from "@distilled.cloud/core/api";
+import * as C from "@distilled.cloud/core/category";
 import * as T from "../traits.ts";
 import {
   NeonProtocol,
@@ -19,7 +20,7 @@ export class BadRequest
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
 
@@ -28,7 +29,7 @@ export class Conflict
     /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withConflictError),
     [{ status: 409 }],
   ) {}
 
@@ -37,7 +38,7 @@ export class Forbidden
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
 
@@ -46,7 +47,7 @@ export class NotFound
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
 
@@ -55,7 +56,7 @@ export class UnprocessableEntity
     /*@__PURE__*/ S.TaggedError<UnprocessableEntity>()("UnprocessableEntity", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 422 }],
   ) {}
 
@@ -1654,47 +1655,17 @@ export const BranchCreateRequestEndpointsList = /*@__PURE__*/ S.Array(
   BranchCreateRequestEndpointOptions,
 ) as any as S.Schema<BranchCreateRequestEndpointsList>;
 
-export interface BranchCreateRequestBranch {
-  /** The `branch_id` of the parent branch. If omitted or empty, the branch will be created from the project's default branch. */
-  parent_id?: string;
-  /** The branch name */
-  name?: string;
-  /** A Log Sequence Number (LSN) on the parent branch. The branch will be created with data from this LSN. */
-  parent_lsn?: string;
-  /** A timestamp identifying a point in time on the parent branch. The branch will be created with data starting from this point in time. The timestamp must be provided in ISO 8601 format; for example: `2024-02-26T12:00:00Z`. */
-  parent_timestamp?: string;
-  /** Whether the branch is protected */
-  protected?: boolean;
-  /** Whether to create the branch as archived */
-  archived?: boolean;
-  /** The source of initialization for the branch. Valid values are `schema-only` and `parent-data` (default). * `schema-only` - creates a new root branch containing only the schema. Use `parent_id` to specify the source branch. Optionally, you can provide `parent_lsn` or `parent_timestamp` to branch from a specific point in time or LSN. These fields define which branch to copy the schema from and at what point—they do not establish a parent-child relationship between the `parent_id` branch and the new schema-only branch. * `parent-data` - creates the branch with both schema and data from the parent. */
-  init_source?: string;
-  /** The timestamp when the branch is scheduled to expire and be automatically deleted. Must be set by the client following the [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6) format with precision up to seconds (such as 2025-06-09T18:02:16Z). Deletion is performed by a background job and may not occur exactly at the specified time. Access to this feature is currently limited to participants in the Early Access Program. */
-  expires_at?: string;
-}
-export const BranchCreateRequestBranch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent_id: S.optional(S.String),
-    name: S.optional(S.String),
-    parent_lsn: S.optional(S.String),
-    parent_timestamp: S.optional(S.String),
-    protected: S.optional(S.Boolean),
-    archived: S.optional(S.Boolean),
-    init_source: S.optional(S.String),
-    expires_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BranchCreateRequestBranch",
-}) as any as S.Schema<BranchCreateRequestBranch>;
+export type BranchCreateRequestBranch = CreateProjectBranchRequestBranch;
+export const BranchCreateRequestBranch = CreateProjectBranchRequestBranch;
 
 export interface BranchCreateRequest {
   endpoints?: BranchCreateRequestEndpointsList;
-  branch?: BranchCreateRequestBranch;
+  branch?: CreateProjectBranchRequestBranch;
 }
 export const BranchCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: S.optional(BranchCreateRequestEndpointsList),
-    branch: S.optional(BranchCreateRequestBranch),
+    branch: S.optional(CreateProjectBranchRequestBranch),
   }),
 ).annotate({
   identifier: "BranchCreateRequest",

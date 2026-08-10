@@ -8084,59 +8084,10 @@ export const BillingSubscriptionsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BillingSubscriptionsUpdateRequestTagsMap>;
 
 /** The billing properties of a subscription. */
-export interface BillingSubscriptionPropertiesInput {
-  /** Indicates whether auto renewal is turned on or off for a product. */
-  autoRenew?: AutoRenew | (string & {});
-  /** The provisioning tenant of the subscription. */
-  beneficiaryTenantId?: string;
-  /** The beneficiary of the billing subscription. */
-  beneficiary?: Beneficiary;
-  /** The billing frequency in ISO8601 format of product in the subscription. Example: P1M, P3M, P1Y */
-  billingFrequency?: string;
-  /** The fully qualified ID that uniquely identifies a billing profile. */
-  billingProfileId?: string;
-  /** The cost center applied to the subscription. This field is only available for consumption subscriptions of Microsoft Customer Agreement or Enterprise Agreement Type billing accounts. */
-  consumptionCostCenter?: string;
-  /** The fully qualified ID that uniquely identifies a customer. */
-  customerId?: string;
-  /** The name of the billing subscription. */
-  displayName?: string;
-  /** The fully qualified ID that uniquely identifies an invoice section. */
-  invoiceSectionId?: string;
-  /** Id of the product for which the subscription is purchased. */
-  productTypeId?: string;
-  /** The quantity of licenses or fulfillment units for the subscription. */
-  quantity?: number;
-  /** The SKU ID of the product for which the subscription is purchased. This field is is only available for Microsoft Customer Agreement billing accounts. */
-  skuId?: string;
-  /** System imposed policies that regulate behavior of the subscription. */
-  systemOverrides?: SystemOverridesInput;
-  /** The duration in ISO8601 format for which you can use the subscription. Example: P1M, P3M, P1Y */
-  termDuration?: string;
-  /** The tenant in which the subscription is provisioned. */
-  provisioningTenantId?: string;
-}
-export const BillingSubscriptionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoRenew: S.optional(AutoRenew),
-    beneficiaryTenantId: S.optional(S.String),
-    beneficiary: S.optional(Beneficiary),
-    billingFrequency: S.optional(S.String),
-    billingProfileId: S.optional(S.String),
-    consumptionCostCenter: S.optional(S.String),
-    customerId: S.optional(S.String),
-    displayName: S.optional(S.String),
-    invoiceSectionId: S.optional(S.String),
-    productTypeId: S.optional(S.String),
-    quantity: S.optional(S.Number),
-    skuId: S.optional(S.String),
-    systemOverrides: S.optional(SystemOverridesInput),
-    termDuration: S.optional(S.String),
-    provisioningTenantId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BillingSubscriptionPropertiesInput",
-}) as any as S.Schema<BillingSubscriptionPropertiesInput>;
+export type BillingSubscriptionPropertiesInput =
+  BillingSubscriptionAliasPropertiesInput;
+export const BillingSubscriptionPropertiesInput =
+  BillingSubscriptionAliasPropertiesInput;
 
 export interface BillingSubscriptionsUpdateRequest {
   /** The ID that uniquely identifies a billing account. */
@@ -8146,14 +8097,14 @@ export interface BillingSubscriptionsUpdateRequest {
   /** Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? / */
   tags?: BillingSubscriptionsUpdateRequestTagsMap;
   /** The properties of a(n) BillingSubscription */
-  properties?: BillingSubscriptionPropertiesInput;
+  properties?: BillingSubscriptionAliasPropertiesInput;
 }
 export const BillingSubscriptionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountName: S.String.pipe(T.Label()),
     billingSubscriptionName: S.String.pipe(T.Label()),
     tags: S.optional(BillingSubscriptionsUpdateRequestTagsMap),
-    properties: S.optional(BillingSubscriptionPropertiesInput),
+    properties: S.optional(BillingSubscriptionAliasPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -12629,31 +12580,27 @@ export const ProductsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProductsUpdateRequestTagsMap>;
 
 /** The amount. */
-export interface AmountInput {}
-export const AmountInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "AmountInput" },
-) as any as S.Schema<AmountInput>;
+export type AmountInput = SystemOverridesInput;
+export const AmountInput = SystemOverridesInput;
 
 /** Details of the reseller. */
-export interface ResellerInput {}
-export const ResellerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({ identifier: "ResellerInput" }) as any as S.Schema<ResellerInput>;
+export type ResellerInput = SystemOverridesInput;
+export const ResellerInput = SystemOverridesInput;
 
 /** A product. */
 export interface ProductPropertiesInput {
   /** Indicates whether auto renewal is turned on or off for a product. */
   autoRenew?: AutoRenew | (string & {});
   /** The last month charges. */
-  lastCharge?: AmountInput;
+  lastCharge?: SystemOverridesInput;
   /** Reseller for this product. The fields is not available for Microsoft Partner Agreement products. */
-  reseller?: ResellerInput;
+  reseller?: SystemOverridesInput;
 }
 export const ProductPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoRenew: S.optional(AutoRenew),
-    lastCharge: S.optional(AmountInput),
-    reseller: S.optional(ResellerInput),
+    lastCharge: S.optional(SystemOverridesInput),
+    reseller: S.optional(SystemOverridesInput),
   }),
 ).annotate({
   identifier: "ProductPropertiesInput",
@@ -14464,12 +14411,8 @@ export const PatchPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchPropertiesInput>;
 
 /** The property of reservation sku object. */
-export interface ReservationSkuPropertyInput {}
-export const ReservationSkuPropertyInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ReservationSkuPropertyInput",
-}) as any as S.Schema<ReservationSkuPropertyInput>;
+export type ReservationSkuPropertyInput = SystemOverridesInput;
+export const ReservationSkuPropertyInput = SystemOverridesInput;
 
 /** Tags for this reservation */
 export type ReservationsUpdateByBillingAccountRequestTagsMap = {
@@ -14491,7 +14434,7 @@ export interface ReservationsUpdateByBillingAccountRequest {
   /** Properties for reservation patch */
   properties?: PatchPropertiesInput;
   /** The sku information associated to this reservation */
-  sku?: ReservationSkuPropertyInput;
+  sku?: SystemOverridesInput;
   /** Tags for this reservation */
   tags?: ReservationsUpdateByBillingAccountRequestTagsMap;
 }
@@ -14502,7 +14445,7 @@ export const ReservationsUpdateByBillingAccountRequest =
       reservationOrderId: S.String.pipe(T.Label()),
       reservationId: S.String.pipe(T.Label()),
       properties: S.optional(PatchPropertiesInput),
-      sku: S.optional(ReservationSkuPropertyInput),
+      sku: S.optional(SystemOverridesInput),
       tags: S.optional(ReservationsUpdateByBillingAccountRequestTagsMap),
     }).pipe(
       T.Http({
@@ -15018,31 +14961,13 @@ export const RenewProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RenewProperties>;
 
 /** The aggregate values of savings plan utilization */
-export interface UtilizationAggregates {
-  /** The grain of the aggregate */
-  grain?: number;
-  /** The grain unit of the aggregate */
-  grainUnit?: string;
-  /** The aggregate value */
-  value?: number;
-  /** The aggregate value unit */
-  valueUnit?: string;
-}
-export const UtilizationAggregates = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    grain: S.optional(S.Number),
-    grainUnit: S.optional(S.String),
-    value: S.optional(S.Number),
-    valueUnit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UtilizationAggregates",
-}) as any as S.Schema<UtilizationAggregates>;
+export type UtilizationAggregates = ReservationUtilizationAggregates;
+export const UtilizationAggregates = ReservationUtilizationAggregates;
 
 /** The array of aggregates of a savings plan's utilization */
-export type UtilizationAggregatesList = Array<UtilizationAggregates>;
+export type UtilizationAggregatesList = Array<ReservationUtilizationAggregates>;
 export const UtilizationAggregatesList = /*@__PURE__*/ S.Array(
-  UtilizationAggregates,
+  ReservationUtilizationAggregates,
 ) as any as S.Schema<UtilizationAggregatesList>;
 
 /** Savings plan utilization */

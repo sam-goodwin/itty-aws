@@ -1142,21 +1142,10 @@ export const DiskAccessesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DiskAccessesGetResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface DiskAccessesGetResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const DiskAccessesGetResponseExtendedLocation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-).annotate({
-  identifier: "DiskAccessesGetResponseExtendedLocation",
-}) as any as S.Schema<DiskAccessesGetResponseExtendedLocation>;
+export type DiskAccessesGetResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
+export const DiskAccessesGetResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 export interface DiskAccessesGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1173,7 +1162,7 @@ export interface DiskAccessesGetResponse {
   location: string;
   properties?: DiskAccessProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: DiskAccessesGetResponseExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const DiskAccessesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1184,7 +1173,9 @@ export const DiskAccessesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DiskAccessesGetResponseTagsMap),
     location: S.String,
     properties: S.optional(DiskAccessProperties),
-    extendedLocation: S.optional(DiskAccessesGetResponseExtendedLocation),
+    extendedLocation: S.optional(
+      DiskAccessesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "DiskAccessesGetResponse",
@@ -1375,20 +1366,10 @@ export const DiskAccessTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DiskAccessTagsMap>;
 
 /** The complex type of the extended location. */
-export interface DiskAccessExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const DiskAccessExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "DiskAccessExtendedLocation",
-}) as any as S.Schema<DiskAccessExtendedLocation>;
+export type DiskAccessExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
+export const DiskAccessExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 /** disk access resource. */
 export interface DiskAccess {
@@ -1406,7 +1387,7 @@ export interface DiskAccess {
   location: string;
   properties?: DiskAccessProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: DiskAccessExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const DiskAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1417,7 +1398,9 @@ export const DiskAccess = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DiskAccessTagsMap),
     location: S.String,
     properties: S.optional(DiskAccessProperties),
-    extendedLocation: S.optional(DiskAccessExtendedLocation),
+    extendedLocation: S.optional(
+      DiskAccessesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({ identifier: "DiskAccess" }) as any as S.Schema<DiskAccess>;
 
@@ -1561,21 +1544,10 @@ export const DiskAccessesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DiskAccessesUpdateResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface DiskAccessesUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type DiskAccessesUpdateResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 export const DiskAccessesUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "DiskAccessesUpdateResponseExtendedLocation",
-  }) as any as S.Schema<DiskAccessesUpdateResponseExtendedLocation>;
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 export interface DiskAccessesUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1592,7 +1564,7 @@ export interface DiskAccessesUpdateResponse {
   location: string;
   properties?: DiskAccessProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: DiskAccessesUpdateResponseExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const DiskAccessesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1603,7 +1575,9 @@ export const DiskAccessesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DiskAccessesUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(DiskAccessProperties),
-    extendedLocation: S.optional(DiskAccessesUpdateResponseExtendedLocation),
+    extendedLocation: S.optional(
+      DiskAccessesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "DiskAccessesUpdateResponse",
@@ -1825,21 +1799,17 @@ export type DiskEncryptionSetIdentityType =
   | "None";
 export const DiskEncryptionSetIdentityType = /*@__PURE__*/ S.String;
 
-export interface CommonUserAssignedIdentitiesValueInput {}
-export const CommonUserAssignedIdentitiesValueInput = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "CommonUserAssignedIdentitiesValueInput",
-}) as any as S.Schema<CommonUserAssignedIdentitiesValueInput>;
+export type CommonUserAssignedIdentitiesValueInput = DiskAccessPropertiesInput;
+export const CommonUserAssignedIdentitiesValueInput = DiskAccessPropertiesInput;
 
 /** The list of user identities associated with the disk encryption set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type EncryptionSetIdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: CommonUserAssignedIdentitiesValueInput | undefined;
+  [key: string]: DiskAccessPropertiesInput | undefined;
 };
 export const EncryptionSetIdentityInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    CommonUserAssignedIdentitiesValueInput,
+    DiskAccessPropertiesInput,
   ) as any as S.Schema<EncryptionSetIdentityInputUserAssignedIdentitiesMap>;
 
 /** The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks. */
@@ -3172,21 +3142,10 @@ export const DisksCreateOrUpdateRequestZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DisksCreateOrUpdateRequestZonesList>;
 
 /** The complex type of the extended location. */
-export interface DisksCreateOrUpdateRequestExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
-}
+export type DisksCreateOrUpdateRequestExtendedLocation =
+  DiskAccessesCreateOrUpdateRequestExtendedLocation;
 export const DisksCreateOrUpdateRequestExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "DisksCreateOrUpdateRequestExtendedLocation",
-  }) as any as S.Schema<DisksCreateOrUpdateRequestExtendedLocation>;
+  DiskAccessesCreateOrUpdateRequestExtendedLocation;
 
 export interface DisksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -3206,7 +3165,7 @@ export interface DisksCreateOrUpdateRequest {
   /** The Logical zone list for Disk. */
   zones?: DisksCreateOrUpdateRequestZonesList;
   /** The complex type of the extended location. */
-  extendedLocation?: DisksCreateOrUpdateRequestExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateRequestExtendedLocation;
 }
 export const DisksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3218,7 +3177,9 @@ export const DisksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(DiskPropertiesInput),
     sku: S.optional(DiskSkuInput),
     zones: S.optional(DisksCreateOrUpdateRequestZonesList),
-    extendedLocation: S.optional(DisksCreateOrUpdateRequestExtendedLocation),
+    extendedLocation: S.optional(
+      DiskAccessesCreateOrUpdateRequestExtendedLocation,
+    ),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3471,21 +3432,10 @@ export const DisksCreateOrUpdateResponseZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DisksCreateOrUpdateResponseZonesList>;
 
 /** The complex type of the extended location. */
-export interface DisksCreateOrUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type DisksCreateOrUpdateResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 export const DisksCreateOrUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "DisksCreateOrUpdateResponseExtendedLocation",
-  }) as any as S.Schema<DisksCreateOrUpdateResponseExtendedLocation>;
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 export interface DisksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3511,7 +3461,7 @@ export interface DisksCreateOrUpdateResponse {
   /** The Logical zone list for Disk. */
   zones?: DisksCreateOrUpdateResponseZonesList;
   /** The complex type of the extended location. */
-  extendedLocation?: DisksCreateOrUpdateResponseExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const DisksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3528,7 +3478,9 @@ export const DisksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     sku: S.optional(DiskSku),
     zones: S.optional(DisksCreateOrUpdateResponseZonesList),
-    extendedLocation: S.optional(DisksCreateOrUpdateResponseExtendedLocation),
+    extendedLocation: S.optional(
+      DiskAccessesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "DisksCreateOrUpdateResponse",
@@ -3611,20 +3563,10 @@ export const DisksGetResponseZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DisksGetResponseZonesList>;
 
 /** The complex type of the extended location. */
-export interface DisksGetResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const DisksGetResponseExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "DisksGetResponseExtendedLocation",
-}) as any as S.Schema<DisksGetResponseExtendedLocation>;
+export type DisksGetResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
+export const DisksGetResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 export interface DisksGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3650,7 +3592,7 @@ export interface DisksGetResponse {
   /** The Logical zone list for Disk. */
   zones?: DisksGetResponseZonesList;
   /** The complex type of the extended location. */
-  extendedLocation?: DisksGetResponseExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const DisksGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3665,7 +3607,9 @@ export const DisksGetResponse = /*@__PURE__*/ S.suspend(() =>
     managedByExtended: S.optional(DisksGetResponseManagedByExtendedList),
     sku: S.optional(DiskSku),
     zones: S.optional(DisksGetResponseZonesList),
-    extendedLocation: S.optional(DisksGetResponseExtendedLocation),
+    extendedLocation: S.optional(
+      DiskAccessesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "DisksGetResponse",
@@ -3747,20 +3691,10 @@ export const DiskZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DiskZonesList>;
 
 /** The complex type of the extended location. */
-export interface DiskExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const DiskExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "DiskExtendedLocation",
-}) as any as S.Schema<DiskExtendedLocation>;
+export type DiskExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
+export const DiskExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 /** Disk resource. */
 export interface Disk {
@@ -3787,7 +3721,7 @@ export interface Disk {
   /** The Logical zone list for Disk. */
   zones?: DiskZonesList;
   /** The complex type of the extended location. */
-  extendedLocation?: DiskExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const Disk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3802,7 +3736,9 @@ export const Disk = /*@__PURE__*/ S.suspend(() =>
     managedByExtended: S.optional(DiskManagedByExtendedList),
     sku: S.optional(DiskSku),
     zones: S.optional(DiskZonesList),
-    extendedLocation: S.optional(DiskExtendedLocation),
+    extendedLocation: S.optional(
+      DiskAccessesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({ identifier: "Disk" }) as any as S.Schema<Disk>;
 
@@ -4011,20 +3947,10 @@ export const DisksUpdateResponseZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DisksUpdateResponseZonesList>;
 
 /** The complex type of the extended location. */
-export interface DisksUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const DisksUpdateResponseExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "DisksUpdateResponseExtendedLocation",
-}) as any as S.Schema<DisksUpdateResponseExtendedLocation>;
+export type DisksUpdateResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
+export const DisksUpdateResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 export interface DisksUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4050,7 +3976,7 @@ export interface DisksUpdateResponse {
   /** The Logical zone list for Disk. */
   zones?: DisksUpdateResponseZonesList;
   /** The complex type of the extended location. */
-  extendedLocation?: DisksUpdateResponseExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const DisksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4065,7 +3991,9 @@ export const DisksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     managedByExtended: S.optional(DisksUpdateResponseManagedByExtendedList),
     sku: S.optional(DiskSku),
     zones: S.optional(DisksUpdateResponseZonesList),
-    extendedLocation: S.optional(DisksUpdateResponseExtendedLocation),
+    extendedLocation: S.optional(
+      DiskAccessesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "DisksUpdateResponse",
@@ -4270,21 +4198,10 @@ export const SnapshotSkuInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapshotSkuInput>;
 
 /** The complex type of the extended location. */
-export interface SnapshotsCreateOrUpdateRequestExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
-}
+export type SnapshotsCreateOrUpdateRequestExtendedLocation =
+  DiskAccessesCreateOrUpdateRequestExtendedLocation;
 export const SnapshotsCreateOrUpdateRequestExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "SnapshotsCreateOrUpdateRequestExtendedLocation",
-  }) as any as S.Schema<SnapshotsCreateOrUpdateRequestExtendedLocation>;
+  DiskAccessesCreateOrUpdateRequestExtendedLocation;
 
 export interface SnapshotsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -4302,7 +4219,7 @@ export interface SnapshotsCreateOrUpdateRequest {
   /** The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot */
   sku?: SnapshotSkuInput;
   /** The complex type of the extended location. */
-  extendedLocation?: SnapshotsCreateOrUpdateRequestExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateRequestExtendedLocation;
 }
 export const SnapshotsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4314,7 +4231,7 @@ export const SnapshotsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(SnapshotPropertiesInput),
     sku: S.optional(SnapshotSkuInput),
     extendedLocation: S.optional(
-      SnapshotsCreateOrUpdateRequestExtendedLocation,
+      DiskAccessesCreateOrUpdateRequestExtendedLocation,
     ),
   }).pipe(
     T.Http({
@@ -4466,21 +4383,10 @@ export const SnapshotSku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotSku" }) as any as S.Schema<SnapshotSku>;
 
 /** The complex type of the extended location. */
-export interface SnapshotsCreateOrUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type SnapshotsCreateOrUpdateResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 export const SnapshotsCreateOrUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "SnapshotsCreateOrUpdateResponseExtendedLocation",
-  }) as any as S.Schema<SnapshotsCreateOrUpdateResponseExtendedLocation>;
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 export interface SnapshotsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4502,7 +4408,7 @@ export interface SnapshotsCreateOrUpdateResponse {
   /** The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot */
   sku?: SnapshotSku;
   /** The complex type of the extended location. */
-  extendedLocation?: SnapshotsCreateOrUpdateResponseExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const SnapshotsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4516,7 +4422,7 @@ export const SnapshotsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     sku: S.optional(SnapshotSku),
     extendedLocation: S.optional(
-      SnapshotsCreateOrUpdateResponseExtendedLocation,
+      DiskAccessesCreateOrUpdateResponseExtendedLocation,
     ),
   }),
 ).annotate({
@@ -4588,21 +4494,10 @@ export const SnapshotsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SnapshotsGetResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface SnapshotsGetResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const SnapshotsGetResponseExtendedLocation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-).annotate({
-  identifier: "SnapshotsGetResponseExtendedLocation",
-}) as any as S.Schema<SnapshotsGetResponseExtendedLocation>;
+export type SnapshotsGetResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
+export const SnapshotsGetResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 export interface SnapshotsGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4624,7 +4519,7 @@ export interface SnapshotsGetResponse {
   /** The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot */
   sku?: SnapshotSku;
   /** The complex type of the extended location. */
-  extendedLocation?: SnapshotsGetResponseExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const SnapshotsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4637,7 +4532,9 @@ export const SnapshotsGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(SnapshotProperties),
     managedBy: S.optional(S.String),
     sku: S.optional(SnapshotSku),
-    extendedLocation: S.optional(SnapshotsGetResponseExtendedLocation),
+    extendedLocation: S.optional(
+      DiskAccessesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "SnapshotsGetResponse",
@@ -4707,20 +4604,10 @@ export const SnapshotTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SnapshotTagsMap>;
 
 /** The complex type of the extended location. */
-export interface SnapshotExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const SnapshotExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "SnapshotExtendedLocation",
-}) as any as S.Schema<SnapshotExtendedLocation>;
+export type SnapshotExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
+export const SnapshotExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 /** Snapshot resource. */
 export interface Snapshot {
@@ -4743,7 +4630,7 @@ export interface Snapshot {
   /** The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot */
   sku?: SnapshotSku;
   /** The complex type of the extended location. */
-  extendedLocation?: SnapshotExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const Snapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4756,7 +4643,9 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(SnapshotProperties),
     managedBy: S.optional(S.String),
     sku: S.optional(SnapshotSku),
-    extendedLocation: S.optional(SnapshotExtendedLocation),
+    extendedLocation: S.optional(
+      DiskAccessesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
 
@@ -4927,21 +4816,10 @@ export const SnapshotsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SnapshotsUpdateResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface SnapshotsUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const SnapshotsUpdateResponseExtendedLocation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-).annotate({
-  identifier: "SnapshotsUpdateResponseExtendedLocation",
-}) as any as S.Schema<SnapshotsUpdateResponseExtendedLocation>;
+export type SnapshotsUpdateResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
+export const SnapshotsUpdateResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 export interface SnapshotsUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4963,7 +4841,7 @@ export interface SnapshotsUpdateResponse {
   /** The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot */
   sku?: SnapshotSku;
   /** The complex type of the extended location. */
-  extendedLocation?: SnapshotsUpdateResponseExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const SnapshotsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4976,7 +4854,9 @@ export const SnapshotsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(SnapshotProperties),
     managedBy: S.optional(S.String),
     sku: S.optional(SnapshotSku),
-    extendedLocation: S.optional(SnapshotsUpdateResponseExtendedLocation),
+    extendedLocation: S.optional(
+      DiskAccessesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "SnapshotsUpdateResponse",
@@ -5025,21 +4905,10 @@ export const SnapshotsUpdateImmutabilityPolicyResponseTagsMap =
   ) as any as S.Schema<SnapshotsUpdateImmutabilityPolicyResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface SnapshotsUpdateImmutabilityPolicyResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type SnapshotsUpdateImmutabilityPolicyResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 export const SnapshotsUpdateImmutabilityPolicyResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "SnapshotsUpdateImmutabilityPolicyResponseExtendedLocation",
-  }) as any as S.Schema<SnapshotsUpdateImmutabilityPolicyResponseExtendedLocation>;
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 export interface SnapshotsUpdateImmutabilityPolicyResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5061,7 +4930,7 @@ export interface SnapshotsUpdateImmutabilityPolicyResponse {
   /** The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot */
   sku?: SnapshotSku;
   /** The complex type of the extended location. */
-  extendedLocation?: SnapshotsUpdateImmutabilityPolicyResponseExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const SnapshotsUpdateImmutabilityPolicyResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -5076,7 +4945,7 @@ export const SnapshotsUpdateImmutabilityPolicyResponse =
       managedBy: S.optional(S.String),
       sku: S.optional(SnapshotSku),
       extendedLocation: S.optional(
-        SnapshotsUpdateImmutabilityPolicyResponseExtendedLocation,
+        DiskAccessesCreateOrUpdateResponseExtendedLocation,
       ),
     }),
   ).annotate({
@@ -5126,21 +4995,10 @@ export const SnapshotsUpdateImmutabilityPolicyLockResponseTagsMap =
   ) as any as S.Schema<SnapshotsUpdateImmutabilityPolicyLockResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface SnapshotsUpdateImmutabilityPolicyLockResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type SnapshotsUpdateImmutabilityPolicyLockResponseExtendedLocation =
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 export const SnapshotsUpdateImmutabilityPolicyLockResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "SnapshotsUpdateImmutabilityPolicyLockResponseExtendedLocation",
-  }) as any as S.Schema<SnapshotsUpdateImmutabilityPolicyLockResponseExtendedLocation>;
+  DiskAccessesCreateOrUpdateResponseExtendedLocation;
 
 export interface SnapshotsUpdateImmutabilityPolicyLockResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5162,7 +5020,7 @@ export interface SnapshotsUpdateImmutabilityPolicyLockResponse {
   /** The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot */
   sku?: SnapshotSku;
   /** The complex type of the extended location. */
-  extendedLocation?: SnapshotsUpdateImmutabilityPolicyLockResponseExtendedLocation;
+  extendedLocation?: DiskAccessesCreateOrUpdateResponseExtendedLocation;
 }
 export const SnapshotsUpdateImmutabilityPolicyLockResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -5177,7 +5035,7 @@ export const SnapshotsUpdateImmutabilityPolicyLockResponse =
       managedBy: S.optional(S.String),
       sku: S.optional(SnapshotSku),
       extendedLocation: S.optional(
-        SnapshotsUpdateImmutabilityPolicyLockResponseExtendedLocation,
+        DiskAccessesCreateOrUpdateResponseExtendedLocation,
       ),
     }),
   ).annotate({

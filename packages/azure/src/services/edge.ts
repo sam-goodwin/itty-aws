@@ -3008,12 +3008,8 @@ export const DiagnosticsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DiagnosticsCreateOrUpdateRequestTagsMap>;
 
 /** The properties of a Diagnostic resource. */
-export interface DiagnosticPropertiesInput {}
-export const DiagnosticPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DiagnosticPropertiesInput",
-}) as any as S.Schema<DiagnosticPropertiesInput>;
+export type DiagnosticPropertiesInput = ConfigurationPropertiesInput;
+export const DiagnosticPropertiesInput = ConfigurationPropertiesInput;
 
 /** The supported ExtendedLocation types. */
 export type AzureResourceManagerCommonTypesExtendedLocationType =
@@ -3051,7 +3047,7 @@ export interface DiagnosticsCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource-specific properties for this resource. */
-  properties?: DiagnosticPropertiesInput;
+  properties?: ConfigurationPropertiesInput;
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const DiagnosticsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3061,7 +3057,7 @@ export const DiagnosticsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     diagnosticName: S.String.pipe(T.Label()),
     tags: S.optional(DiagnosticsCreateOrUpdateRequestTagsMap),
     location: S.String,
-    properties: S.optional(DiagnosticPropertiesInput),
+    properties: S.optional(ConfigurationPropertiesInput),
     extendedLocation: S.optional(
       AzureResourceManagerCommonTypesExtendedLocation,
     ),
@@ -3348,12 +3344,8 @@ export const DiagnosticsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DiagnosticsListBySubscriptionRequest>;
 
 /** The updatable properties of the Diagnostic. */
-export interface DiagnosticUpdatePropertiesInput {}
-export const DiagnosticUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DiagnosticUpdatePropertiesInput",
-}) as any as S.Schema<DiagnosticUpdatePropertiesInput>;
+export type DiagnosticUpdatePropertiesInput = ConfigurationPropertiesInput;
+export const DiagnosticUpdatePropertiesInput = ConfigurationPropertiesInput;
 
 /** Resource tags. */
 export type DiagnosticsUpdateRequestTagsMap = {
@@ -3372,7 +3364,7 @@ export interface DiagnosticsUpdateRequest {
   /** Name of Diagnostic. */
   diagnosticName: string;
   /** The resource-specific properties for this resource. */
-  properties?: DiagnosticUpdatePropertiesInput;
+  properties?: ConfigurationPropertiesInput;
   /** Resource tags. */
   tags?: DiagnosticsUpdateRequestTagsMap;
 }
@@ -3381,7 +3373,7 @@ export const DiagnosticsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     diagnosticName: S.String.pipe(T.Label()),
-    properties: S.optional(DiagnosticUpdatePropertiesInput),
+    properties: S.optional(ConfigurationPropertiesInput),
     tags: S.optional(DiagnosticsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
@@ -4815,12 +4807,8 @@ export const DynamicConfigurationVersionsUpdateResponse =
   }) as any as S.Schema<DynamicConfigurationVersionsUpdateResponse>;
 
 /** DynamicSchema Properties */
-export interface DynamicSchemaPropertiesInput {}
-export const DynamicSchemaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DynamicSchemaPropertiesInput",
-}) as any as S.Schema<DynamicSchemaPropertiesInput>;
+export type DynamicSchemaPropertiesInput = ConfigurationPropertiesInput;
+export const DynamicSchemaPropertiesInput = ConfigurationPropertiesInput;
 
 export interface DynamicSchemasCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4832,7 +4820,7 @@ export interface DynamicSchemasCreateOrUpdateRequest {
   /** The name of the DynamicSchema */
   dynamicSchemaName: string;
   /** The resource-specific properties for this resource. */
-  properties?: DynamicSchemaPropertiesInput;
+  properties?: ConfigurationPropertiesInput;
 }
 export const DynamicSchemasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4840,7 +4828,7 @@ export const DynamicSchemasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     schemaName: S.String.pipe(T.Label()),
     dynamicSchemaName: S.String.pipe(T.Label()),
-    properties: S.optional(DynamicSchemaPropertiesInput),
+    properties: S.optional(ConfigurationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5076,7 +5064,7 @@ export interface DynamicSchemasUpdateRequest {
   /** The name of the DynamicSchema */
   dynamicSchemaName: string;
   /** The resource-specific properties for this resource. */
-  properties?: DynamicSchemaPropertiesInput;
+  properties?: ConfigurationPropertiesInput;
 }
 export const DynamicSchemasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5084,7 +5072,7 @@ export const DynamicSchemasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     schemaName: S.String.pipe(T.Label()),
     dynamicSchemaName: S.String.pipe(T.Label()),
-    properties: S.optional(DynamicSchemaPropertiesInput),
+    properties: S.optional(ConfigurationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -8343,12 +8331,8 @@ export const SchemasCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SchemasCreateOrUpdateRequestTagsMap>;
 
 /** Schema Properties */
-export interface SchemaPropertiesInput {}
-export const SchemaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SchemaPropertiesInput",
-}) as any as S.Schema<SchemaPropertiesInput>;
+export type SchemaPropertiesInput = ConfigurationPropertiesInput;
+export const SchemaPropertiesInput = ConfigurationPropertiesInput;
 
 export interface SchemasCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8362,7 +8346,7 @@ export interface SchemasCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource-specific properties for this resource. */
-  properties?: SchemaPropertiesInput;
+  properties?: ConfigurationPropertiesInput;
 }
 export const SchemasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8371,7 +8355,7 @@ export const SchemasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     schemaName: S.String.pipe(T.Label()),
     tags: S.optional(SchemasCreateOrUpdateRequestTagsMap),
     location: S.String,
-    properties: S.optional(SchemaPropertiesInput),
+    properties: S.optional(ConfigurationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -8744,12 +8728,8 @@ export const SchemasRemoveVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemasRemoveVersionRequest>;
 
 /** The updatable properties of the Schema. */
-export interface SchemaUpdatePropertiesInput {}
-export const SchemaUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SchemaUpdatePropertiesInput",
-}) as any as S.Schema<SchemaUpdatePropertiesInput>;
+export type SchemaUpdatePropertiesInput = ConfigurationPropertiesInput;
+export const SchemaUpdatePropertiesInput = ConfigurationPropertiesInput;
 
 /** Resource tags. */
 export type SchemasUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -8766,7 +8746,7 @@ export interface SchemasUpdateRequest {
   /** The name of the Schema */
   schemaName: string;
   /** The resource-specific properties for this resource. */
-  properties?: SchemaUpdatePropertiesInput;
+  properties?: ConfigurationPropertiesInput;
   /** Resource tags. */
   tags?: SchemasUpdateRequestTagsMap;
 }
@@ -8775,7 +8755,7 @@ export const SchemasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     schemaName: S.String.pipe(T.Label()),
-    properties: S.optional(SchemaUpdatePropertiesInput),
+    properties: S.optional(ConfigurationPropertiesInput),
     tags: S.optional(SchemasUpdateRequestTagsMap),
   }).pipe(
     T.Http({
@@ -9006,35 +8986,13 @@ export const SchemaVersionsListBySchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaVersionsListBySchemaRequest>;
 
 /** Schema Version Resource */
-export interface SchemaVersion {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: SchemaVersionProperties;
-  /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
-  eTag?: string;
-}
-export const SchemaVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SchemaVersionProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "SchemaVersion" }) as any as S.Schema<SchemaVersion>;
+export type SchemaVersion = DynamicSchemaVersion;
+export const SchemaVersion = DynamicSchemaVersion;
 
 /** The SchemaVersion items on this page */
-export type SchemaVersionListResultValueList = Array<SchemaVersion>;
+export type SchemaVersionListResultValueList = Array<DynamicSchemaVersion>;
 export const SchemaVersionListResultValueList = /*@__PURE__*/ S.Array(
-  SchemaVersion,
+  DynamicSchemaVersion,
 ) as any as S.Schema<SchemaVersionListResultValueList>;
 
 /** The response of a SchemaVersion list operation. */
@@ -10620,12 +10578,8 @@ export const SolutionSchemaListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionSchemaListResult>;
 
 /** Solution Properties */
-export interface SolutionPropertiesInput {}
-export const SolutionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SolutionPropertiesInput",
-}) as any as S.Schema<SolutionPropertiesInput>;
+export type SolutionPropertiesInput = ConfigurationPropertiesInput;
+export const SolutionPropertiesInput = ConfigurationPropertiesInput;
 
 export interface SolutionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10637,7 +10591,7 @@ export interface SolutionsCreateOrUpdateRequest {
   /** Name of the solution */
   solutionName: string;
   /** The resource-specific properties for this resource. */
-  properties?: SolutionPropertiesInput;
+  properties?: ConfigurationPropertiesInput;
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const SolutionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10646,7 +10600,7 @@ export const SolutionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
     solutionName: S.String.pipe(T.Label()),
-    properties: S.optional(SolutionPropertiesInput),
+    properties: S.optional(ConfigurationPropertiesInput),
     extendedLocation: S.optional(
       AzureResourceManagerCommonTypesExtendedLocation,
     ),
@@ -10916,12 +10870,8 @@ export const SolutionListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SolutionListResult>;
 
 /** The updatable properties of the Solution. */
-export interface SolutionUpdatePropertiesInput {}
-export const SolutionUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SolutionUpdatePropertiesInput",
-}) as any as S.Schema<SolutionUpdatePropertiesInput>;
+export type SolutionUpdatePropertiesInput = ConfigurationPropertiesInput;
+export const SolutionUpdatePropertiesInput = ConfigurationPropertiesInput;
 
 export interface SolutionsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10933,7 +10883,7 @@ export interface SolutionsUpdateRequest {
   /** Name of the solution */
   solutionName: string;
   /** The resource-specific properties for this resource. */
-  properties?: SolutionUpdatePropertiesInput;
+  properties?: ConfigurationPropertiesInput;
 }
 export const SolutionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10941,7 +10891,7 @@ export const SolutionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     targetName: S.String.pipe(T.Label()),
     solutionName: S.String.pipe(T.Label()),
-    properties: S.optional(SolutionUpdatePropertiesInput),
+    properties: S.optional(ConfigurationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -12268,23 +12218,22 @@ export const SolutionVersionPropertiesInputSpecificationMap =
   ) as any as S.Schema<SolutionVersionPropertiesInputSpecificationMap>;
 
 /** The error detail. */
-export interface SolutionVersionPropertiesInputErrorDetails {}
+export type SolutionVersionPropertiesInputErrorDetails =
+  ConfigurationPropertiesInput;
 export const SolutionVersionPropertiesInputErrorDetails =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SolutionVersionPropertiesInputErrorDetails",
-  }) as any as S.Schema<SolutionVersionPropertiesInputErrorDetails>;
+  ConfigurationPropertiesInput;
 
 /** Solution Version Properties */
 export interface SolutionVersionPropertiesInput {
   /** App components spec */
   specification: SolutionVersionPropertiesInputSpecificationMap;
   /** The error detail. */
-  errorDetails?: SolutionVersionPropertiesInputErrorDetails;
+  errorDetails?: ConfigurationPropertiesInput;
 }
 export const SolutionVersionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     specification: SolutionVersionPropertiesInputSpecificationMap,
-    errorDetails: S.optional(SolutionVersionPropertiesInputErrorDetails),
+    errorDetails: S.optional(ConfigurationPropertiesInput),
   }),
 ).annotate({
   identifier: "SolutionVersionPropertiesInput",
@@ -13775,11 +13724,10 @@ export const TargetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetsUpdateResponse>;
 
 /** The error detail. */
-export interface TargetsUpdateExternalValidationStatusRequestErrorDetails {}
+export type TargetsUpdateExternalValidationStatusRequestErrorDetails =
+  ConfigurationPropertiesInput;
 export const TargetsUpdateExternalValidationStatusRequestErrorDetails =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "TargetsUpdateExternalValidationStatusRequestErrorDetails",
-  }) as any as S.Schema<TargetsUpdateExternalValidationStatusRequestErrorDetails>;
+  ConfigurationPropertiesInput;
 
 /** Solution Instance Validation Status */
 export type ValidationStatus = "Valid" | "Invalid";
@@ -13795,7 +13743,7 @@ export interface TargetsUpdateExternalValidationStatusRequest {
   /** Solution Version Id */
   solutionVersionId: string;
   /** The error detail. */
-  errorDetails?: TargetsUpdateExternalValidationStatusRequestErrorDetails;
+  errorDetails?: ConfigurationPropertiesInput;
   /** External validation id */
   externalValidationId: string;
   /** Validation Status of external validation */
@@ -13808,9 +13756,7 @@ export const TargetsUpdateExternalValidationStatusRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       targetName: S.String.pipe(T.Label()),
       solutionVersionId: S.String,
-      errorDetails: S.optional(
-        TargetsUpdateExternalValidationStatusRequestErrorDetails,
-      ),
+      errorDetails: S.optional(ConfigurationPropertiesInput),
       externalValidationId: S.String,
       validationStatus: ValidationStatus,
     }).pipe(
@@ -13858,12 +13804,8 @@ export const TargetsUpdateExternalValidationStatusResponse =
   }) as any as S.Schema<TargetsUpdateExternalValidationStatusResponse>;
 
 /** Workflow Properties */
-export interface WorkflowPropertiesInput {}
-export const WorkflowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WorkflowPropertiesInput",
-}) as any as S.Schema<WorkflowPropertiesInput>;
+export type WorkflowPropertiesInput = ConfigurationPropertiesInput;
+export const WorkflowPropertiesInput = ConfigurationPropertiesInput;
 
 export interface WorkflowsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -13875,7 +13817,7 @@ export interface WorkflowsCreateOrUpdateRequest {
   /** Name of the workflow */
   workflowName: string;
   /** The resource-specific properties for this resource. */
-  properties?: WorkflowPropertiesInput;
+  properties?: ConfigurationPropertiesInput;
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
 }
 export const WorkflowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -13884,7 +13826,7 @@ export const WorkflowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     contextName: S.String.pipe(T.Label()),
     workflowName: S.String.pipe(T.Label()),
-    properties: S.optional(WorkflowPropertiesInput),
+    properties: S.optional(ConfigurationPropertiesInput),
     extendedLocation: S.optional(
       AzureResourceManagerCommonTypesExtendedLocation,
     ),
@@ -14128,7 +14070,7 @@ export interface WorkflowsUpdateRequest {
   /** Name of the workflow */
   workflowName: string;
   /** The resource-specific properties for this resource. */
-  properties?: WorkflowPropertiesInput;
+  properties?: ConfigurationPropertiesInput;
 }
 export const WorkflowsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14136,7 +14078,7 @@ export const WorkflowsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     contextName: S.String.pipe(T.Label()),
     workflowName: S.String.pipe(T.Label()),
-    properties: S.optional(WorkflowPropertiesInput),
+    properties: S.optional(ConfigurationPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",

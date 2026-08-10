@@ -1068,28 +1068,8 @@ export const ClustersGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersGetRequest>;
 
 /** The resource model definition representing SKU */
-export interface ClustersGetResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ClustersGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ClustersGetResponseSku",
-}) as any as S.Schema<ClustersGetResponseSku>;
+export type ClustersGetResponseSku = ClustersCreateOrUpdateResponseSku;
+export const ClustersGetResponseSku = ClustersCreateOrUpdateResponseSku;
 
 export interface ClustersGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1103,7 +1083,7 @@ export interface ClustersGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: ClusterProperties;
   /** The resource model definition representing SKU */
-  sku: ClustersGetResponseSku;
+  sku: ClustersCreateOrUpdateResponseSku;
 }
 export const ClustersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1112,7 +1092,7 @@ export const ClustersGetResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(ClusterProperties),
-    sku: ClustersGetResponseSku,
+    sku: ClustersCreateOrUpdateResponseSku,
   }),
 ).annotate({
   identifier: "ClustersGetResponse",
@@ -1144,26 +1124,8 @@ export const ClustersListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersListRequest>;
 
 /** The resource model definition representing SKU */
-export interface ClusterSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ClusterSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ClusterSku" }) as any as S.Schema<ClusterSku>;
+export type ClusterSku = ClustersCreateOrUpdateResponseSku;
+export const ClusterSku = ClustersCreateOrUpdateResponseSku;
 
 /** A cluster resource */
 export interface Cluster {
@@ -1178,7 +1140,7 @@ export interface Cluster {
   /** The resource-specific properties for this resource. */
   properties?: ClusterProperties;
   /** The resource model definition representing SKU */
-  sku: ClusterSku;
+  sku: ClustersCreateOrUpdateResponseSku;
 }
 export const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1187,7 +1149,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(ClusterProperties),
-    sku: ClusterSku,
+    sku: ClustersCreateOrUpdateResponseSku,
   }),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
@@ -1279,28 +1241,8 @@ export const ClusterZoneList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterZoneList>;
 
 /** The resource model definition representing SKU */
-export interface ClustersUpdateRequestSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ClustersUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ClustersUpdateRequestSku",
-}) as any as S.Schema<ClustersUpdateRequestSku>;
+export type ClustersUpdateRequestSku = ClustersCreateOrUpdateRequestSku;
+export const ClustersUpdateRequestSku = ClustersCreateOrUpdateRequestSku;
 
 /** The hosts */
 export type ClusterUpdatePropertiesHostsList = Array<string>;
@@ -1334,7 +1276,7 @@ export interface ClustersUpdateRequest {
   /** Name of the cluster */
   clusterName: string;
   /** The resource model definition representing SKU */
-  sku?: ClustersUpdateRequestSku;
+  sku?: ClustersCreateOrUpdateRequestSku;
   /** The properties of a cluster resource that may be updated */
   properties?: ClusterUpdateProperties;
 }
@@ -1344,7 +1286,7 @@ export const ClustersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     privateCloudName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
-    sku: S.optional(ClustersUpdateRequestSku),
+    sku: S.optional(ClustersCreateOrUpdateRequestSku),
     properties: S.optional(ClusterUpdateProperties),
   }).pipe(
     T.Http({
@@ -1359,28 +1301,8 @@ export const ClustersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClustersUpdateRequest>;
 
 /** The resource model definition representing SKU */
-export interface ClustersUpdateResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ClustersUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ClustersUpdateResponseSku",
-}) as any as S.Schema<ClustersUpdateResponseSku>;
+export type ClustersUpdateResponseSku = ClustersCreateOrUpdateResponseSku;
+export const ClustersUpdateResponseSku = ClustersCreateOrUpdateResponseSku;
 
 export interface ClustersUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1394,7 +1316,7 @@ export interface ClustersUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ClusterProperties;
   /** The resource model definition representing SKU */
-  sku: ClustersUpdateResponseSku;
+  sku: ClustersCreateOrUpdateResponseSku;
 }
 export const ClustersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1403,7 +1325,7 @@ export const ClustersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(ClusterProperties),
-    sku: ClustersUpdateResponseSku,
+    sku: ClustersCreateOrUpdateResponseSku,
   }),
 ).annotate({
   identifier: "ClustersUpdateResponse",
@@ -2406,28 +2328,8 @@ export const HostsGetResponseZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HostsGetResponseZonesList>;
 
 /** The resource model definition representing SKU */
-export interface HostsGetResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const HostsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "HostsGetResponseSku",
-}) as any as S.Schema<HostsGetResponseSku>;
+export type HostsGetResponseSku = ClustersCreateOrUpdateResponseSku;
+export const HostsGetResponseSku = ClustersCreateOrUpdateResponseSku;
 
 export interface HostsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2443,7 +2345,7 @@ export interface HostsGetResponse {
   /** The availability zones. */
   zones?: HostsGetResponseZonesList;
   /** The resource model definition representing SKU */
-  sku?: HostsGetResponseSku;
+  sku?: ClustersCreateOrUpdateResponseSku;
 }
 export const HostsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2453,7 +2355,7 @@ export const HostsGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     properties: S.optional(HostProperties),
     zones: S.optional(HostsGetResponseZonesList),
-    sku: S.optional(HostsGetResponseSku),
+    sku: S.optional(ClustersCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "HostsGetResponse",
@@ -2494,26 +2396,8 @@ export const HostZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HostZonesList>;
 
 /** The resource model definition representing SKU */
-export interface HostSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const HostSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "HostSku" }) as any as S.Schema<HostSku>;
+export type HostSku = ClustersCreateOrUpdateResponseSku;
+export const HostSku = ClustersCreateOrUpdateResponseSku;
 
 /** A host resource */
 export interface Host {
@@ -2530,7 +2414,7 @@ export interface Host {
   /** The availability zones. */
   zones?: HostZonesList;
   /** The resource model definition representing SKU */
-  sku?: HostSku;
+  sku?: ClustersCreateOrUpdateResponseSku;
 }
 export const Host = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2540,7 +2424,7 @@ export const Host = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     properties: S.optional(HostProperties),
     zones: S.optional(HostZonesList),
-    sku: S.optional(HostSku),
+    sku: S.optional(ClustersCreateOrUpdateResponseSku),
   }),
 ).annotate({ identifier: "Host" }) as any as S.Schema<Host>;
 
@@ -4394,10 +4278,8 @@ export const PrivateCloudPropertiesInputExtendedNetworkBlocksList =
   ) as any as S.Schema<PrivateCloudPropertiesInputExtendedNetworkBlocksList>;
 
 /** An ExpressRoute Circuit */
-export interface CircuitInput {}
-export const CircuitInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({ identifier: "CircuitInput" }) as any as S.Schema<CircuitInput>;
+export type CircuitInput = HcxEnterpriseSitePropertiesInput;
+export const CircuitInput = HcxEnterpriseSitePropertiesInput;
 
 /** The type of DNS zone. */
 export type DnsZoneType = "Public" | "Private";
@@ -4435,7 +4317,7 @@ export interface PrivateCloudPropertiesInput {
   /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
   extendedNetworkBlocks?: PrivateCloudPropertiesInputExtendedNetworkBlocksList;
   /** An ExpressRoute Circuit */
-  circuit?: CircuitInput;
+  circuit?: HcxEnterpriseSitePropertiesInput;
   /** The block of addresses should be unique across VNet in your subscription as well as on-premise. Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22 */
   networkBlock: string;
   /** Optionally, set the vCenter admin password when the private cloud is created */
@@ -4443,7 +4325,7 @@ export interface PrivateCloudPropertiesInput {
   /** Optionally, set the NSX-T Manager password when the private cloud is created */
   nsxtPassword?: string | Redacted.Redacted<string>;
   /** A secondary expressRoute circuit from a separate AZ. Only present in a stretched private cloud */
-  secondaryCircuit?: CircuitInput;
+  secondaryCircuit?: HcxEnterpriseSitePropertiesInput;
   /** Azure resource ID of the virtual network */
   virtualNetworkId?: string;
   /** The type of DNS zone to use. */
@@ -4461,11 +4343,11 @@ export const PrivateCloudPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     extendedNetworkBlocks: S.optional(
       PrivateCloudPropertiesInputExtendedNetworkBlocksList,
     ),
-    circuit: S.optional(CircuitInput),
+    circuit: S.optional(HcxEnterpriseSitePropertiesInput),
     networkBlock: S.String,
     vcenterPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
     nsxtPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    secondaryCircuit: S.optional(CircuitInput),
+    secondaryCircuit: S.optional(HcxEnterpriseSitePropertiesInput),
     virtualNetworkId: S.optional(S.String),
     dnsZoneType: S.optional(DnsZoneType),
     vcfLicense: S.optional(VcfLicenseInput),
@@ -4475,29 +4357,10 @@ export const PrivateCloudPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateCloudPropertiesInput>;
 
 /** The resource model definition representing SKU */
-export interface PrivateCloudsCreateOrUpdateRequestSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const PrivateCloudsCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "PrivateCloudsCreateOrUpdateRequestSku",
-}) as any as S.Schema<PrivateCloudsCreateOrUpdateRequestSku>;
+export type PrivateCloudsCreateOrUpdateRequestSku =
+  ClustersCreateOrUpdateRequestSku;
+export const PrivateCloudsCreateOrUpdateRequestSku =
+  ClustersCreateOrUpdateRequestSku;
 
 /** Type of managed service identity (either system assigned, or none). */
 export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
@@ -4537,7 +4400,7 @@ export interface PrivateCloudsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: PrivateCloudPropertiesInput;
   /** The resource model definition representing SKU */
-  sku: PrivateCloudsCreateOrUpdateRequestSku;
+  sku: ClustersCreateOrUpdateRequestSku;
   /** Managed service identity (either system assigned, or none) */
   identity?: PrivateCloudsCreateOrUpdateRequestIdentity;
   /** The availability zones. */
@@ -4551,7 +4414,7 @@ export const PrivateCloudsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PrivateCloudsCreateOrUpdateRequestTagsMap),
     location: S.String,
     properties: S.optional(PrivateCloudPropertiesInput),
-    sku: PrivateCloudsCreateOrUpdateRequestSku,
+    sku: ClustersCreateOrUpdateRequestSku,
     identity: S.optional(PrivateCloudsCreateOrUpdateRequestIdentity),
     zones: S.optional(PrivateCloudsCreateOrUpdateRequestZonesList),
   }).pipe(
@@ -4841,29 +4704,10 @@ export const PrivateCloudProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateCloudProperties>;
 
 /** The resource model definition representing SKU */
-export interface PrivateCloudsCreateOrUpdateResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const PrivateCloudsCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "PrivateCloudsCreateOrUpdateResponseSku",
-}) as any as S.Schema<PrivateCloudsCreateOrUpdateResponseSku>;
+export type PrivateCloudsCreateOrUpdateResponseSku =
+  ClustersCreateOrUpdateResponseSku;
+export const PrivateCloudsCreateOrUpdateResponseSku =
+  ClustersCreateOrUpdateResponseSku;
 
 /** Managed service identity (either system assigned, or none) */
 export interface PrivateCloudsCreateOrUpdateResponseIdentity {
@@ -4907,7 +4751,7 @@ export interface PrivateCloudsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: PrivateCloudProperties;
   /** The resource model definition representing SKU */
-  sku: PrivateCloudsCreateOrUpdateResponseSku;
+  sku: ClustersCreateOrUpdateResponseSku;
   /** Managed service identity (either system assigned, or none) */
   identity?: PrivateCloudsCreateOrUpdateResponseIdentity;
   /** The availability zones. */
@@ -4922,7 +4766,7 @@ export const PrivateCloudsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PrivateCloudsCreateOrUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(PrivateCloudProperties),
-    sku: PrivateCloudsCreateOrUpdateResponseSku,
+    sku: ClustersCreateOrUpdateResponseSku,
     identity: S.optional(PrivateCloudsCreateOrUpdateResponseIdentity),
     zones: S.optional(PrivateCloudsCreateOrUpdateResponseZonesList),
   }),
@@ -4997,46 +4841,14 @@ export const PrivateCloudsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PrivateCloudsGetResponseTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface PrivateCloudsGetResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const PrivateCloudsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PrivateCloudsGetResponseSku",
-}) as any as S.Schema<PrivateCloudsGetResponseSku>;
+export type PrivateCloudsGetResponseSku = ClustersCreateOrUpdateResponseSku;
+export const PrivateCloudsGetResponseSku = ClustersCreateOrUpdateResponseSku;
 
 /** Managed service identity (either system assigned, or none) */
-export interface PrivateCloudsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const PrivateCloudsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "PrivateCloudsGetResponseIdentity",
-}) as any as S.Schema<PrivateCloudsGetResponseIdentity>;
+export type PrivateCloudsGetResponseIdentity =
+  PrivateCloudsCreateOrUpdateResponseIdentity;
+export const PrivateCloudsGetResponseIdentity =
+  PrivateCloudsCreateOrUpdateResponseIdentity;
 
 /** The availability zones. */
 export type PrivateCloudsGetResponseZonesList = Array<string>;
@@ -5060,9 +4872,9 @@ export interface PrivateCloudsGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: PrivateCloudProperties;
   /** The resource model definition representing SKU */
-  sku: PrivateCloudsGetResponseSku;
+  sku: ClustersCreateOrUpdateResponseSku;
   /** Managed service identity (either system assigned, or none) */
-  identity?: PrivateCloudsGetResponseIdentity;
+  identity?: PrivateCloudsCreateOrUpdateResponseIdentity;
   /** The availability zones. */
   zones?: PrivateCloudsGetResponseZonesList;
 }
@@ -5075,8 +4887,8 @@ export const PrivateCloudsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PrivateCloudsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(PrivateCloudProperties),
-    sku: PrivateCloudsGetResponseSku,
-    identity: S.optional(PrivateCloudsGetResponseIdentity),
+    sku: ClustersCreateOrUpdateResponseSku,
+    identity: S.optional(PrivateCloudsCreateOrUpdateResponseIdentity),
     zones: S.optional(PrivateCloudsGetResponseZonesList),
   }),
 ).annotate({
@@ -5138,46 +4950,12 @@ export const PrivateCloudTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PrivateCloudTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface PrivateCloudSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const PrivateCloudSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PrivateCloudSku",
-}) as any as S.Schema<PrivateCloudSku>;
+export type PrivateCloudSku = ClustersCreateOrUpdateResponseSku;
+export const PrivateCloudSku = ClustersCreateOrUpdateResponseSku;
 
 /** Managed service identity (either system assigned, or none) */
-export interface PrivateCloudIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const PrivateCloudIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "PrivateCloudIdentity",
-}) as any as S.Schema<PrivateCloudIdentity>;
+export type PrivateCloudIdentity = PrivateCloudsCreateOrUpdateResponseIdentity;
+export const PrivateCloudIdentity = PrivateCloudsCreateOrUpdateResponseIdentity;
 
 /** The availability zones. */
 export type PrivateCloudZonesList = Array<string>;
@@ -5202,9 +4980,9 @@ export interface PrivateCloud {
   /** The resource-specific properties for this resource. */
   properties?: PrivateCloudProperties;
   /** The resource model definition representing SKU */
-  sku: PrivateCloudSku;
+  sku: ClustersCreateOrUpdateResponseSku;
   /** Managed service identity (either system assigned, or none) */
-  identity?: PrivateCloudIdentity;
+  identity?: PrivateCloudsCreateOrUpdateResponseIdentity;
   /** The availability zones. */
   zones?: PrivateCloudZonesList;
 }
@@ -5217,8 +4995,8 @@ export const PrivateCloud = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PrivateCloudTagsMap),
     location: S.String,
     properties: S.optional(PrivateCloudProperties),
-    sku: PrivateCloudSku,
-    identity: S.optional(PrivateCloudIdentity),
+    sku: ClustersCreateOrUpdateResponseSku,
+    identity: S.optional(PrivateCloudsCreateOrUpdateResponseIdentity),
     zones: S.optional(PrivateCloudZonesList),
   }),
 ).annotate({ identifier: "PrivateCloud" }) as any as S.Schema<PrivateCloud>;
@@ -5388,40 +5166,14 @@ export const PrivateCloudsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PrivateCloudsUpdateRequestTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface PrivateCloudsUpdateRequestSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const PrivateCloudsUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PrivateCloudsUpdateRequestSku",
-}) as any as S.Schema<PrivateCloudsUpdateRequestSku>;
+export type PrivateCloudsUpdateRequestSku = ClustersCreateOrUpdateRequestSku;
+export const PrivateCloudsUpdateRequestSku = ClustersCreateOrUpdateRequestSku;
 
 /** Managed service identity (either system assigned, or none) */
-export interface PrivateCloudsUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType | (string & {});
-}
-export const PrivateCloudsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "PrivateCloudsUpdateRequestIdentity",
-}) as any as S.Schema<PrivateCloudsUpdateRequestIdentity>;
+export type PrivateCloudsUpdateRequestIdentity =
+  PrivateCloudsCreateOrUpdateRequestIdentity;
+export const PrivateCloudsUpdateRequestIdentity =
+  PrivateCloudsCreateOrUpdateRequestIdentity;
 
 /** Whether internet is enabled or disabled */
 export type InternetEnum = "Enabled" | "Disabled";
@@ -5488,9 +5240,9 @@ export interface PrivateCloudsUpdateRequest {
   /** Resource tags. */
   tags?: PrivateCloudsUpdateRequestTagsMap;
   /** The resource model definition representing SKU */
-  sku?: PrivateCloudsUpdateRequestSku;
+  sku?: ClustersCreateOrUpdateRequestSku;
   /** Managed service identity (either system assigned, or none) */
-  identity?: PrivateCloudsUpdateRequestIdentity;
+  identity?: PrivateCloudsCreateOrUpdateRequestIdentity;
   /** The updatable properties of a private cloud resource */
   properties?: PrivateCloudUpdatePropertiesInput;
 }
@@ -5500,8 +5252,8 @@ export const PrivateCloudsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     privateCloudName: S.String.pipe(T.Label()),
     tags: S.optional(PrivateCloudsUpdateRequestTagsMap),
-    sku: S.optional(PrivateCloudsUpdateRequestSku),
-    identity: S.optional(PrivateCloudsUpdateRequestIdentity),
+    sku: S.optional(ClustersCreateOrUpdateRequestSku),
+    identity: S.optional(PrivateCloudsCreateOrUpdateRequestIdentity),
     properties: S.optional(PrivateCloudUpdatePropertiesInput),
   }).pipe(
     T.Http({
@@ -5525,46 +5277,14 @@ export const PrivateCloudsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PrivateCloudsUpdateResponseTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface PrivateCloudsUpdateResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const PrivateCloudsUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PrivateCloudsUpdateResponseSku",
-}) as any as S.Schema<PrivateCloudsUpdateResponseSku>;
+export type PrivateCloudsUpdateResponseSku = ClustersCreateOrUpdateResponseSku;
+export const PrivateCloudsUpdateResponseSku = ClustersCreateOrUpdateResponseSku;
 
 /** Managed service identity (either system assigned, or none) */
-export interface PrivateCloudsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const PrivateCloudsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "PrivateCloudsUpdateResponseIdentity",
-}) as any as S.Schema<PrivateCloudsUpdateResponseIdentity>;
+export type PrivateCloudsUpdateResponseIdentity =
+  PrivateCloudsCreateOrUpdateResponseIdentity;
+export const PrivateCloudsUpdateResponseIdentity =
+  PrivateCloudsCreateOrUpdateResponseIdentity;
 
 /** The availability zones. */
 export type PrivateCloudsUpdateResponseZonesList = Array<string>;
@@ -5588,9 +5308,9 @@ export interface PrivateCloudsUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: PrivateCloudProperties;
   /** The resource model definition representing SKU */
-  sku: PrivateCloudsUpdateResponseSku;
+  sku: ClustersCreateOrUpdateResponseSku;
   /** Managed service identity (either system assigned, or none) */
-  identity?: PrivateCloudsUpdateResponseIdentity;
+  identity?: PrivateCloudsCreateOrUpdateResponseIdentity;
   /** The availability zones. */
   zones?: PrivateCloudsUpdateResponseZonesList;
 }
@@ -5603,8 +5323,8 @@ export const PrivateCloudsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PrivateCloudsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(PrivateCloudProperties),
-    sku: PrivateCloudsUpdateResponseSku,
-    identity: S.optional(PrivateCloudsUpdateResponseIdentity),
+    sku: ClustersCreateOrUpdateResponseSku,
+    identity: S.optional(PrivateCloudsCreateOrUpdateResponseIdentity),
     zones: S.optional(PrivateCloudsUpdateResponseZonesList),
   }),
 ).annotate({

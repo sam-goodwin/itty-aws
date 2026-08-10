@@ -1309,12 +1309,8 @@ export const SetMemberCapOverridesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetMemberCapOverridesResult>;
 
 /** Properties of the compute shared limit. */
-export interface SharedLimitPropertiesInput {}
-export const SharedLimitPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SharedLimitPropertiesInput",
-}) as any as S.Schema<SharedLimitPropertiesInput>;
+export type SharedLimitPropertiesInput = GuestSubscriptionPropertiesInput;
+export const SharedLimitPropertiesInput = GuestSubscriptionPropertiesInput;
 
 export interface SharedLimitsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1324,14 +1320,14 @@ export interface SharedLimitsCreateRequest {
   /** The name of the SharedLimit */
   name: string;
   /** The resource-specific properties for this resource. */
-  properties?: SharedLimitPropertiesInput;
+  properties?: GuestSubscriptionPropertiesInput;
 }
 export const SharedLimitsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
-    properties: S.optional(SharedLimitPropertiesInput),
+    properties: S.optional(GuestSubscriptionPropertiesInput),
   }).pipe(
     T.Http({
       method: "PUT",

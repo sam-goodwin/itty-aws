@@ -1269,20 +1269,16 @@ export type IdentityType = "None" | "SystemAssigned" | "UserAssigned";
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** UserAssignedIdentity for the resource. */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = PrivateEndpointInput;
+export const UserAssignedIdentityInput = PrivateEndpointInput;
 
 /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity. */
 export type IdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: PrivateEndpointInput | undefined;
 };
 export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentityInput,
+  PrivateEndpointInput,
 ) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
 
 /** Identity for the resource. */
@@ -1774,29 +1770,8 @@ export const VolumeGroupList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeGroupList>;
 
 /** VolumeGroup response properties. */
-export interface VolumeGroupUpdatePropertiesInput {
-  /** Type of storage target */
-  protocolType?: StorageTargetType | (string & {});
-  /** Type of encryption */
-  encryption?: EncryptionType | (string & {});
-  /** Encryption Properties describing Key Vault and Identity information */
-  encryptionProperties?: EncryptionPropertiesInput;
-  /** A collection of rules governing the accessibility from specific network locations. */
-  networkAcls?: NetworkRuleSet;
-  /** A boolean indicating whether or not Data Integrity Check is enabled */
-  enforceDataIntegrityCheckForIscsi?: boolean;
-}
-export const VolumeGroupUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocolType: S.optional(StorageTargetType),
-    encryption: S.optional(EncryptionType),
-    encryptionProperties: S.optional(EncryptionPropertiesInput),
-    networkAcls: S.optional(NetworkRuleSet),
-    enforceDataIntegrityCheckForIscsi: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "VolumeGroupUpdatePropertiesInput",
-}) as any as S.Schema<VolumeGroupUpdatePropertiesInput>;
+export type VolumeGroupUpdatePropertiesInput = VolumeGroupPropertiesInput;
+export const VolumeGroupUpdatePropertiesInput = VolumeGroupPropertiesInput;
 
 export interface VolumeGroupsUpdateRequest {
   /** The ID of the target subscription. */
@@ -1810,7 +1785,7 @@ export interface VolumeGroupsUpdateRequest {
   /** The identity of the resource. */
   identity?: IdentityInput;
   /** Properties of VolumeGroup. */
-  properties?: VolumeGroupUpdatePropertiesInput;
+  properties?: VolumeGroupPropertiesInput;
 }
 export const VolumeGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1819,7 +1794,7 @@ export const VolumeGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     elasticSanName: S.String.pipe(T.Label()),
     volumeGroupName: S.String.pipe(T.Label()),
     identity: S.optional(IdentityInput),
-    properties: S.optional(VolumeGroupUpdatePropertiesInput),
+    properties: S.optional(VolumeGroupPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",

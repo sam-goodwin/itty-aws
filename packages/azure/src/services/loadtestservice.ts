@@ -371,24 +371,10 @@ export const LoadTestsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LoadTestsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface LoadTestsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const LoadTestsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "LoadTestsGetResponseIdentity",
-}) as any as S.Schema<LoadTestsGetResponseIdentity>;
+export type LoadTestsGetResponseIdentity =
+  LoadTestsCreateOrUpdateResponseIdentity;
+export const LoadTestsGetResponseIdentity =
+  LoadTestsCreateOrUpdateResponseIdentity;
 
 export interface LoadTestsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -406,7 +392,7 @@ export interface LoadTestsGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: LoadTestProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: LoadTestsGetResponseIdentity;
+  identity?: LoadTestsCreateOrUpdateResponseIdentity;
 }
 export const LoadTestsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -417,7 +403,7 @@ export const LoadTestsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(LoadTestsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(LoadTestProperties),
-    identity: S.optional(LoadTestsGetResponseIdentity),
+    identity: S.optional(LoadTestsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "LoadTestsGetResponse",
@@ -453,24 +439,8 @@ export const LoadTestResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LoadTestResourceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface LoadTestResourceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const LoadTestResourceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "LoadTestResourceIdentity",
-}) as any as S.Schema<LoadTestResourceIdentity>;
+export type LoadTestResourceIdentity = LoadTestsCreateOrUpdateResponseIdentity;
+export const LoadTestResourceIdentity = LoadTestsCreateOrUpdateResponseIdentity;
 
 /** LoadTest details. */
 export interface LoadTestResource {
@@ -489,7 +459,7 @@ export interface LoadTestResource {
   /** The resource-specific properties for this resource. */
   properties?: LoadTestProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: LoadTestResourceIdentity;
+  identity?: LoadTestsCreateOrUpdateResponseIdentity;
 }
 export const LoadTestResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -500,7 +470,7 @@ export const LoadTestResource = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(LoadTestResourceTagsMap),
     location: S.String,
     properties: S.optional(LoadTestProperties),
-    identity: S.optional(LoadTestResourceIdentity),
+    identity: S.optional(LoadTestsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "LoadTestResource",
@@ -656,18 +626,10 @@ export const PagedOutboundEnvironmentEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PagedOutboundEnvironmentEndpoint>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface LoadTestsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const LoadTestsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "LoadTestsUpdateRequestIdentity",
-}) as any as S.Schema<LoadTestsUpdateRequestIdentity>;
+export type LoadTestsUpdateRequestIdentity =
+  LoadTestsCreateOrUpdateRequestIdentity;
+export const LoadTestsUpdateRequestIdentity =
+  LoadTestsCreateOrUpdateRequestIdentity;
 
 /** Resource tags. */
 export type LoadTestsUpdateRequestTagsMap = {
@@ -679,20 +641,8 @@ export const LoadTestsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LoadTestsUpdateRequestTagsMap>;
 
 /** The updatable properties of the LoadTestResource. */
-export interface LoadTestResourceUpdateProperties {
-  /** Description of the resource. */
-  description?: string;
-  /** CMK Encryption property. */
-  encryption?: EncryptionProperties;
-}
-export const LoadTestResourceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    encryption: S.optional(EncryptionProperties),
-  }),
-).annotate({
-  identifier: "LoadTestResourceUpdateProperties",
-}) as any as S.Schema<LoadTestResourceUpdateProperties>;
+export type LoadTestResourceUpdateProperties = LoadTestPropertiesInput;
+export const LoadTestResourceUpdateProperties = LoadTestPropertiesInput;
 
 export interface LoadTestsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -702,20 +652,20 @@ export interface LoadTestsUpdateRequest {
   /** Load Test name */
   loadTestName: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: LoadTestsUpdateRequestIdentity;
+  identity?: LoadTestsCreateOrUpdateRequestIdentity;
   /** Resource tags. */
   tags?: LoadTestsUpdateRequestTagsMap;
   /** The resource-specific properties for this resource. */
-  properties?: LoadTestResourceUpdateProperties;
+  properties?: LoadTestPropertiesInput;
 }
 export const LoadTestsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     loadTestName: S.String.pipe(T.Label()),
-    identity: S.optional(LoadTestsUpdateRequestIdentity),
+    identity: S.optional(LoadTestsCreateOrUpdateRequestIdentity),
     tags: S.optional(LoadTestsUpdateRequestTagsMap),
-    properties: S.optional(LoadTestResourceUpdateProperties),
+    properties: S.optional(LoadTestPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -738,24 +688,10 @@ export const LoadTestsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LoadTestsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface LoadTestsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const LoadTestsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "LoadTestsUpdateResponseIdentity",
-}) as any as S.Schema<LoadTestsUpdateResponseIdentity>;
+export type LoadTestsUpdateResponseIdentity =
+  LoadTestsCreateOrUpdateResponseIdentity;
+export const LoadTestsUpdateResponseIdentity =
+  LoadTestsCreateOrUpdateResponseIdentity;
 
 export interface LoadTestsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -773,7 +709,7 @@ export interface LoadTestsUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: LoadTestProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: LoadTestsUpdateResponseIdentity;
+  identity?: LoadTestsCreateOrUpdateResponseIdentity;
 }
 export const LoadTestsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -784,7 +720,7 @@ export const LoadTestsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(LoadTestsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(LoadTestProperties),
-    identity: S.optional(LoadTestsUpdateResponseIdentity),
+    identity: S.optional(LoadTestsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "LoadTestsUpdateResponse",

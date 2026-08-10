@@ -1413,12 +1413,10 @@ export const ApplicationAcceleratorResourceCollection = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ApplicationAcceleratorResourceCollection>;
 
 /** Application Live View properties payload */
-export interface ApplicationLiveViewPropertiesInput {}
-export const ApplicationLiveViewPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ApplicationLiveViewPropertiesInput",
-}) as any as S.Schema<ApplicationLiveViewPropertiesInput>;
+export type ApplicationLiveViewPropertiesInput =
+  ApplicationAcceleratorPropertiesInput;
+export const ApplicationLiveViewPropertiesInput =
+  ApplicationAcceleratorPropertiesInput;
 
 export interface ApplicationLiveViewsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1429,7 +1427,7 @@ export interface ApplicationLiveViewsCreateOrUpdateRequest {
   serviceName: string;
   /** The name of Application Live View. */
   applicationLiveViewName: string;
-  properties?: ApplicationLiveViewPropertiesInput;
+  properties?: ApplicationAcceleratorPropertiesInput;
 }
 export const ApplicationLiveViewsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -1438,7 +1436,7 @@ export const ApplicationLiveViewsCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       serviceName: S.String.pipe(T.Label()),
       applicationLiveViewName: S.String.pipe(T.Label()),
-      properties: S.optional(ApplicationLiveViewPropertiesInput),
+      properties: S.optional(ApplicationAcceleratorPropertiesInput),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -1967,20 +1965,18 @@ export type ManagedIdentityPropertiesInputType =
 export const ManagedIdentityPropertiesInputType = /*@__PURE__*/ S.String;
 
 /** The details of the user-assigned managed identity assigned to an App. */
-export interface UserAssignedManagedIdentityInput {}
-export const UserAssignedManagedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedManagedIdentityInput",
-}) as any as S.Schema<UserAssignedManagedIdentityInput>;
+export type UserAssignedManagedIdentityInput =
+  ApplicationAcceleratorPropertiesInput;
+export const UserAssignedManagedIdentityInput =
+  ApplicationAcceleratorPropertiesInput;
 
 /** User-assigned managed identities in key-value map. The key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type UserAssignedManagedIdentitiesInput = {
-  [key: string]: UserAssignedManagedIdentityInput | undefined;
+  [key: string]: ApplicationAcceleratorPropertiesInput | undefined;
 };
 export const UserAssignedManagedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedManagedIdentityInput,
+  ApplicationAcceleratorPropertiesInput,
 ) as any as S.Schema<UserAssignedManagedIdentitiesInput>;
 
 /** Managed identity properties retrieved from ARM request headers. */
@@ -3965,23 +3961,22 @@ export const DeploymentList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeploymentList" }) as any as S.Schema<DeploymentList>;
 
 /** The runtime resource configuration of this build service. */
-export interface BuildServicePropertiesInputResourceRequests {}
+export type BuildServicePropertiesInputResourceRequests =
+  ApplicationAcceleratorPropertiesInput;
 export const BuildServicePropertiesInputResourceRequests =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BuildServicePropertiesInputResourceRequests",
-  }) as any as S.Schema<BuildServicePropertiesInputResourceRequests>;
+  ApplicationAcceleratorPropertiesInput;
 
 /** Build service resource properties payload */
 export interface BuildServicePropertiesInput {
   /** The resource id of the container registry used in this build service. */
   containerRegistry?: string;
   /** The runtime resource configuration of this build service. */
-  resourceRequests?: BuildServicePropertiesInputResourceRequests;
+  resourceRequests?: ApplicationAcceleratorPropertiesInput;
 }
 export const BuildServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerRegistry: S.optional(S.String),
-    resourceRequests: S.optional(BuildServicePropertiesInputResourceRequests),
+    resourceRequests: S.optional(ApplicationAcceleratorPropertiesInput),
   }),
 ).annotate({
   identifier: "BuildServicePropertiesInput",
@@ -8946,17 +8941,8 @@ export const DevToolPortalResourceCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevToolPortalResourceCollection>;
 
 /** The properties of custom domain for Spring Cloud Gateway */
-export interface GatewayCustomDomainProperties {
-  /** The thumbprint of bound certificate. */
-  thumbprint?: string;
-}
-export const GatewayCustomDomainProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    thumbprint: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GatewayCustomDomainProperties",
-}) as any as S.Schema<GatewayCustomDomainProperties>;
+export type GatewayCustomDomainProperties = ApiPortalCustomDomainProperties;
+export const GatewayCustomDomainProperties = ApiPortalCustomDomainProperties;
 
 export interface GatewayCustomDomainsCreateOrUpdateRequest {
   /** Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -8969,7 +8955,7 @@ export interface GatewayCustomDomainsCreateOrUpdateRequest {
   gatewayName: string;
   /** The name of the Spring Cloud Gateway custom domain. */
   domainName: string;
-  properties?: GatewayCustomDomainProperties;
+  properties?: ApiPortalCustomDomainProperties;
 }
 export const GatewayCustomDomainsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8979,7 +8965,7 @@ export const GatewayCustomDomainsCreateOrUpdateRequest =
       serviceName: S.String.pipe(T.Label()),
       gatewayName: S.String.pipe(T.Label()),
       domainName: S.String.pipe(T.Label()),
-      properties: S.optional(GatewayCustomDomainProperties),
+      properties: S.optional(ApiPortalCustomDomainProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -9000,7 +8986,7 @@ export interface GatewayCustomDomainsCreateOrUpdateResponse {
   /** The type of the resource. */
   type?: string;
   systemData?: SystemData;
-  properties?: GatewayCustomDomainProperties;
+  properties?: ApiPortalCustomDomainProperties;
 }
 export const GatewayCustomDomainsCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -9009,7 +8995,7 @@ export const GatewayCustomDomainsCreateOrUpdateResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(GatewayCustomDomainProperties),
+      properties: S.optional(ApiPortalCustomDomainProperties),
     }),
   ).annotate({
     identifier: "GatewayCustomDomainsCreateOrUpdateResponse",
@@ -9092,7 +9078,7 @@ export interface GatewayCustomDomainsGetResponse {
   /** The type of the resource. */
   type?: string;
   systemData?: SystemData;
-  properties?: GatewayCustomDomainProperties;
+  properties?: ApiPortalCustomDomainProperties;
 }
 export const GatewayCustomDomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9100,7 +9086,7 @@ export const GatewayCustomDomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(GatewayCustomDomainProperties),
+    properties: S.optional(ApiPortalCustomDomainProperties),
   }),
 ).annotate({
   identifier: "GatewayCustomDomainsGetResponse",
@@ -9135,34 +9121,15 @@ export const GatewayCustomDomainsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayCustomDomainsListRequest>;
 
 /** Custom domain of the Spring Cloud Gateway */
-export interface GatewayCustomDomainResource {
-  /** Fully qualified resource Id for the resource. */
-  id?: string;
-  /** The name of the resource. */
-  name?: string;
-  /** The type of the resource. */
-  type?: string;
-  systemData?: SystemData;
-  properties?: GatewayCustomDomainProperties;
-}
-export const GatewayCustomDomainResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(GatewayCustomDomainProperties),
-  }),
-).annotate({
-  identifier: "GatewayCustomDomainResource",
-}) as any as S.Schema<GatewayCustomDomainResource>;
+export type GatewayCustomDomainResource = ApiPortalCustomDomainResource;
+export const GatewayCustomDomainResource = ApiPortalCustomDomainResource;
 
 /** Collection of Spring Cloud Gateway custom domain resources */
 export type GatewayCustomDomainResourceCollectionValueList =
-  Array<GatewayCustomDomainResource>;
+  Array<ApiPortalCustomDomainResource>;
 export const GatewayCustomDomainResourceCollectionValueList =
   /*@__PURE__*/ S.Array(
-    GatewayCustomDomainResource,
+    ApiPortalCustomDomainResource,
   ) as any as S.Schema<GatewayCustomDomainResourceCollectionValueList>;
 
 /** Object that includes an array of Spring Cloud Gateway custom domain resources and a possible link for next set */
@@ -10425,12 +10392,10 @@ export const MonitoringSettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoringSettingsGetResponse>;
 
 /** Application Insights agent versions properties payload */
-export interface ApplicationInsightsAgentVersionsInput {}
-export const ApplicationInsightsAgentVersionsInput = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ApplicationInsightsAgentVersionsInput",
-}) as any as S.Schema<ApplicationInsightsAgentVersionsInput>;
+export type ApplicationInsightsAgentVersionsInput =
+  ApplicationAcceleratorPropertiesInput;
+export const ApplicationInsightsAgentVersionsInput =
+  ApplicationAcceleratorPropertiesInput;
 
 /** Monitoring Setting properties payload */
 export interface MonitoringSettingPropertiesInput {
@@ -10443,7 +10408,7 @@ export interface MonitoringSettingPropertiesInput {
   /** Indicates the sampling rate of application insight agent, should be in range [0.0, 100.0] */
   appInsightsSamplingRate?: number;
   /** Indicates the versions of application insight agent */
-  appInsightsAgentVersions?: ApplicationInsightsAgentVersionsInput;
+  appInsightsAgentVersions?: ApplicationAcceleratorPropertiesInput;
 }
 export const MonitoringSettingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10451,7 +10416,7 @@ export const MonitoringSettingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     traceEnabled: S.optional(S.Boolean),
     appInsightsInstrumentationKey: S.optional(S.String),
     appInsightsSamplingRate: S.optional(S.Number),
-    appInsightsAgentVersions: S.optional(ApplicationInsightsAgentVersionsInput),
+    appInsightsAgentVersions: S.optional(ApplicationAcceleratorPropertiesInput),
   }),
 ).annotate({
   identifier: "MonitoringSettingPropertiesInput",

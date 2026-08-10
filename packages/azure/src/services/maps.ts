@@ -604,24 +604,10 @@ export const AccountsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsGetResponseSystemData>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface AccountsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const AccountsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "AccountsGetResponseIdentity",
-}) as any as S.Schema<AccountsGetResponseIdentity>;
+export type AccountsGetResponseIdentity =
+  AccountsCreateOrUpdateResponseIdentity;
+export const AccountsGetResponseIdentity =
+  AccountsCreateOrUpdateResponseIdentity;
 
 export interface AccountsGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -641,7 +627,7 @@ export interface AccountsGetResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: AccountsGetResponseSystemData;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: AccountsGetResponseIdentity;
+  identity?: AccountsCreateOrUpdateResponseIdentity;
   /** The map account properties. */
   properties?: MapsAccountProperties;
 }
@@ -655,7 +641,7 @@ export const AccountsGetResponse = /*@__PURE__*/ S.suspend(() =>
     sku: Sku,
     kind: S.optional(Kind),
     systemData: S.optional(AccountsGetResponseSystemData),
-    identity: S.optional(AccountsGetResponseIdentity),
+    identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
     properties: S.optional(MapsAccountProperties),
   }),
 ).annotate({
@@ -736,24 +722,8 @@ export const MapsAccountSystemData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MapsAccountSystemData>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface MapsAccountIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const MapsAccountIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "MapsAccountIdentity",
-}) as any as S.Schema<MapsAccountIdentity>;
+export type MapsAccountIdentity = AccountsCreateOrUpdateResponseIdentity;
+export const MapsAccountIdentity = AccountsCreateOrUpdateResponseIdentity;
 
 /** An Azure resource which represents access to a suite of Maps REST APIs. */
 export interface MapsAccount {
@@ -774,7 +744,7 @@ export interface MapsAccount {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: MapsAccountSystemData;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MapsAccountIdentity;
+  identity?: AccountsCreateOrUpdateResponseIdentity;
   /** The map account properties. */
   properties?: MapsAccountProperties;
 }
@@ -788,7 +758,7 @@ export const MapsAccount = /*@__PURE__*/ S.suspend(() =>
     sku: Sku,
     kind: S.optional(Kind),
     systemData: S.optional(MapsAccountSystemData),
-    identity: S.optional(MapsAccountIdentity),
+    identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
     properties: S.optional(MapsAccountProperties),
   }),
 ).annotate({ identifier: "MapsAccount" }) as any as S.Schema<MapsAccount>;
@@ -990,18 +960,10 @@ export const AccountsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface AccountsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const AccountsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "AccountsUpdateRequestIdentity",
-}) as any as S.Schema<AccountsUpdateRequestIdentity>;
+export type AccountsUpdateRequestIdentity =
+  AccountsCreateOrUpdateRequestIdentity;
+export const AccountsUpdateRequestIdentity =
+  AccountsCreateOrUpdateRequestIdentity;
 
 export interface AccountsUpdateRequest {
   /** The ID of the target subscription. */
@@ -1017,7 +979,7 @@ export interface AccountsUpdateRequest {
   /** The SKU of this account. */
   sku?: SkuInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: AccountsUpdateRequestIdentity;
+  identity?: AccountsCreateOrUpdateRequestIdentity;
   /** The map account properties. */
   properties?: MapsAccountPropertiesInput;
 }
@@ -1029,7 +991,7 @@ export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(AccountsUpdateRequestTagsMap),
     kind: S.optional(Kind),
     sku: S.optional(SkuInput),
-    identity: S.optional(AccountsUpdateRequestIdentity),
+    identity: S.optional(AccountsCreateOrUpdateRequestIdentity),
     properties: S.optional(MapsAccountPropertiesInput),
   }).pipe(
     T.Http({
@@ -1101,24 +1063,10 @@ export const AccountsUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsUpdateResponseSystemData>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface AccountsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const AccountsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "AccountsUpdateResponseIdentity",
-}) as any as S.Schema<AccountsUpdateResponseIdentity>;
+export type AccountsUpdateResponseIdentity =
+  AccountsCreateOrUpdateResponseIdentity;
+export const AccountsUpdateResponseIdentity =
+  AccountsCreateOrUpdateResponseIdentity;
 
 export interface AccountsUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1138,7 +1086,7 @@ export interface AccountsUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: AccountsUpdateResponseSystemData;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: AccountsUpdateResponseIdentity;
+  identity?: AccountsCreateOrUpdateResponseIdentity;
   /** The map account properties. */
   properties?: MapsAccountProperties;
 }
@@ -1152,7 +1100,7 @@ export const AccountsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     sku: Sku,
     kind: S.optional(Kind),
     systemData: S.optional(AccountsUpdateResponseSystemData),
-    identity: S.optional(AccountsUpdateResponseIdentity),
+    identity: S.optional(AccountsCreateOrUpdateResponseIdentity),
     properties: S.optional(MapsAccountProperties),
   }),
 ).annotate({

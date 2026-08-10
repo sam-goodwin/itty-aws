@@ -977,37 +977,24 @@ export const AmlFilesystemsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AmlFilesystemsUpdateRequestTagsMap>;
 
 /** Start time of a 30-minute weekly maintenance window. */
-export interface AmlFilesystemUpdatePropertiesMaintenanceWindow {
-  /** Day of the week on which the maintenance window will occur. */
-  dayOfWeek?: MaintenanceDayOfWeekType | (string & {});
-  /** The time of day (in UTC) to start the maintenance window. */
-  timeOfDayUTC?: string;
-}
+export type AmlFilesystemUpdatePropertiesMaintenanceWindow =
+  AmlFilesystemPropertiesMaintenanceWindow;
 export const AmlFilesystemUpdatePropertiesMaintenanceWindow =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dayOfWeek: S.optional(MaintenanceDayOfWeekType),
-      timeOfDayUTC: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AmlFilesystemUpdatePropertiesMaintenanceWindow",
-  }) as any as S.Schema<AmlFilesystemUpdatePropertiesMaintenanceWindow>;
+  AmlFilesystemPropertiesMaintenanceWindow;
 
 /** Properties of the AML file system. */
 export interface AmlFilesystemUpdatePropertiesInput {
   /** Specifies encryption settings of the AML file system. */
   encryptionSettings?: AmlFilesystemEncryptionSettings;
   /** Start time of a 30-minute weekly maintenance window. */
-  maintenanceWindow?: AmlFilesystemUpdatePropertiesMaintenanceWindow;
+  maintenanceWindow?: AmlFilesystemPropertiesMaintenanceWindow;
   /** Specifies root squash settings of the AML file system. */
   rootSquashSettings?: AmlFilesystemRootSquashSettingsInput;
 }
 export const AmlFilesystemUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionSettings: S.optional(AmlFilesystemEncryptionSettings),
-    maintenanceWindow: S.optional(
-      AmlFilesystemUpdatePropertiesMaintenanceWindow,
-    ),
+    maintenanceWindow: S.optional(AmlFilesystemPropertiesMaintenanceWindow),
     rootSquashSettings: S.optional(AmlFilesystemRootSquashSettingsInput),
   }),
 ).annotate({

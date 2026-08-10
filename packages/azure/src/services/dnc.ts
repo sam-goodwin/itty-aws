@@ -733,32 +733,22 @@ export const DelegatedSubnetServicePutDetailsRequestTagsMap =
   ) as any as S.Schema<DelegatedSubnetServicePutDetailsRequestTagsMap>;
 
 /** controller details */
-export interface DelegatedSubnetPropertiesInputControllerDetails {
-  /** controller arm resource id */
-  id?: string;
-}
+export type DelegatedSubnetPropertiesInputControllerDetails =
+  DelegatedSubnetPropertiesControllerDetails;
 export const DelegatedSubnetPropertiesInputControllerDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DelegatedSubnetPropertiesInputControllerDetails",
-  }) as any as S.Schema<DelegatedSubnetPropertiesInputControllerDetails>;
+  DelegatedSubnetPropertiesControllerDetails;
 
 /** Properties of delegated subnet */
 export interface DelegatedSubnetPropertiesInput {
   /** subnet details */
   subnetDetails?: SubnetDetails;
   /** controller details */
-  controllerDetails?: DelegatedSubnetPropertiesInputControllerDetails;
+  controllerDetails?: DelegatedSubnetPropertiesControllerDetails;
 }
 export const DelegatedSubnetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetDetails: S.optional(SubnetDetails),
-    controllerDetails: S.optional(
-      DelegatedSubnetPropertiesInputControllerDetails,
-    ),
+    controllerDetails: S.optional(DelegatedSubnetPropertiesControllerDetails),
   }),
 ).annotate({
   identifier: "DelegatedSubnetPropertiesInput",
@@ -957,18 +947,10 @@ export const OrchestratorInstanceServiceCreateRequestTagsMap =
   ) as any as S.Schema<OrchestratorInstanceServiceCreateRequestTagsMap>;
 
 /** controller details */
-export interface OrchestratorResourcePropertiesInputControllerDetails {
-  /** controller arm resource id */
-  id?: string;
-}
+export type OrchestratorResourcePropertiesInputControllerDetails =
+  DelegatedSubnetPropertiesControllerDetails;
 export const OrchestratorResourcePropertiesInputControllerDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OrchestratorResourcePropertiesInputControllerDetails",
-  }) as any as S.Schema<OrchestratorResourcePropertiesInputControllerDetails>;
+  DelegatedSubnetPropertiesControllerDetails;
 
 /** Properties of orchestrator */
 export interface OrchestratorResourcePropertiesInput {
@@ -983,7 +965,7 @@ export interface OrchestratorResourcePropertiesInput {
   /** private link arm resource id. Either one of apiServerEndpoint or privateLinkResourceId can be specified */
   privateLinkResourceId?: string;
   /** controller details */
-  controllerDetails: OrchestratorResourcePropertiesInputControllerDetails;
+  controllerDetails: DelegatedSubnetPropertiesControllerDetails;
 }
 export const OrchestratorResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -992,7 +974,7 @@ export const OrchestratorResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     clusterRootCA: S.optional(S.String),
     apiServerEndpoint: S.optional(S.String),
     privateLinkResourceId: S.optional(S.String),
-    controllerDetails: OrchestratorResourcePropertiesInputControllerDetails,
+    controllerDetails: DelegatedSubnetPropertiesControllerDetails,
   }),
 ).annotate({
   identifier: "OrchestratorResourcePropertiesInput",
@@ -1086,18 +1068,10 @@ export const OrchestratorResourcePropertiesProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** controller details */
-export interface OrchestratorResourcePropertiesControllerDetails {
-  /** controller arm resource id */
-  id?: string;
-}
+export type OrchestratorResourcePropertiesControllerDetails =
+  DelegatedSubnetPropertiesControllerDetails;
 export const OrchestratorResourcePropertiesControllerDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OrchestratorResourcePropertiesControllerDetails",
-  }) as any as S.Schema<OrchestratorResourcePropertiesControllerDetails>;
+  DelegatedSubnetPropertiesControllerDetails;
 
 /** Properties of orchestrator */
 export interface OrchestratorResourceProperties {
@@ -1116,7 +1090,7 @@ export interface OrchestratorResourceProperties {
   /** private link arm resource id. Either one of apiServerEndpoint or privateLinkResourceId can be specified */
   privateLinkResourceId?: string;
   /** controller details */
-  controllerDetails: OrchestratorResourcePropertiesControllerDetails;
+  controllerDetails: DelegatedSubnetPropertiesControllerDetails;
 }
 export const OrchestratorResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1129,7 +1103,7 @@ export const OrchestratorResourceProperties = /*@__PURE__*/ S.suspend(() =>
     clusterRootCA: S.optional(S.String),
     apiServerEndpoint: S.optional(S.String),
     privateLinkResourceId: S.optional(S.String),
-    controllerDetails: OrchestratorResourcePropertiesControllerDetails,
+    controllerDetails: DelegatedSubnetPropertiesControllerDetails,
   }),
 ).annotate({
   identifier: "OrchestratorResourceProperties",

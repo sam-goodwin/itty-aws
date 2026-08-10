@@ -9951,12 +9951,8 @@ export const KubernetesVersionsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<KubernetesVersionsCreateOrUpdateRequestTagsMap>;
 
 /** KubernetesVersionProperties contains the read-only properties describing available versions. */
-export interface KubernetesVersionPropertiesInput {}
-export const KubernetesVersionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "KubernetesVersionPropertiesInput",
-}) as any as S.Schema<KubernetesVersionPropertiesInput>;
+export type KubernetesVersionPropertiesInput = UserAssignedIdentityInput;
+export const KubernetesVersionPropertiesInput = UserAssignedIdentityInput;
 
 export interface KubernetesVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9970,7 +9966,7 @@ export interface KubernetesVersionsCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location: string;
   /** The list of the resource properties. */
-  properties: KubernetesVersionPropertiesInput;
+  properties: UserAssignedIdentityInput;
   /** The extended location of the resource. This property is required when creating the resource. */
   extendedLocation: AzureResourceManagerCommonTypesExtendedLocation;
 }
@@ -9982,7 +9978,7 @@ export const KubernetesVersionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       kubernetesVersionName: S.String.pipe(T.Label()),
       tags: S.optional(KubernetesVersionsCreateOrUpdateRequestTagsMap),
       location: S.String,
-      properties: KubernetesVersionPropertiesInput,
+      properties: UserAssignedIdentityInput,
       extendedLocation: AzureResourceManagerCommonTypesExtendedLocation,
     }).pipe(
       T.Http({

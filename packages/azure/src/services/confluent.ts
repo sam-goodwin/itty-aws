@@ -318,26 +318,8 @@ export const ClusterEnvironmentEntity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterEnvironmentEntity>;
 
 /** The network associated with this object */
-export interface ClusterNetworkEntity {
-  /** ID of the referred resource */
-  id?: string;
-  /** Environment of the referred resource */
-  environment?: string;
-  /** API URL for accessing or modifying the referred object */
-  related?: string;
-  /** CRN reference to the referred resource */
-  resource_name?: string;
-}
-export const ClusterNetworkEntity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    environment: S.optional(S.String),
-    related: S.optional(S.String),
-    resource_name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ClusterNetworkEntity",
-}) as any as S.Schema<ClusterNetworkEntity>;
+export type ClusterNetworkEntity = ClusterEnvironmentEntity;
+export const ClusterNetworkEntity = ClusterEnvironmentEntity;
 
 /** The network associated with this object */
 export interface ClusterByokEntity {
@@ -381,7 +363,7 @@ export interface ClusterSpecEntity {
   /** Specification of the cluster */
   environment?: ClusterEnvironmentEntity;
   /** Specification of the cluster */
-  network?: ClusterNetworkEntity;
+  network?: ClusterEnvironmentEntity;
   /** Specification of the cluster */
   byok?: ClusterByokEntity;
 }
@@ -397,7 +379,7 @@ export const ClusterSpecEntity = /*@__PURE__*/ S.suspend(() =>
     api_endpoint: S.optional(S.String),
     config: S.optional(ClusterConfigEntity),
     environment: S.optional(ClusterEnvironmentEntity),
-    network: S.optional(ClusterNetworkEntity),
+    network: S.optional(ClusterEnvironmentEntity),
     byok: S.optional(ClusterByokEntity),
   }),
 ).annotate({
@@ -2591,24 +2573,8 @@ export const OrganizationGetSchemaRegistryClusterByIdRequest =
   }) as any as S.Schema<OrganizationGetSchemaRegistryClusterByIdRequest>;
 
 /** The environment associated with this object */
-export interface SchemaRegistryClusterEnvironmentRegionEntity {
-  /** ID of the referred resource */
-  id?: string;
-  /** API URL for accessing or modifying the referred object */
-  related?: string;
-  /** CRN reference to the referred resource */
-  resourceName?: string;
-}
-export const SchemaRegistryClusterEnvironmentRegionEntity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      related: S.optional(S.String),
-      resourceName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SchemaRegistryClusterEnvironmentRegionEntity",
-  }) as any as S.Schema<SchemaRegistryClusterEnvironmentRegionEntity>;
+export type SchemaRegistryClusterEnvironmentRegionEntity = SCClusterByokEntity;
+export const SchemaRegistryClusterEnvironmentRegionEntity = SCClusterByokEntity;
 
 /** Details of schema registry cluster spec */
 export interface SchemaRegistryClusterSpecEntity {
@@ -2619,9 +2585,9 @@ export interface SchemaRegistryClusterSpecEntity {
   /** Type of the cluster package Advanced, essentials */
   package?: string;
   /** Region details of the schema registry cluster */
-  region?: SchemaRegistryClusterEnvironmentRegionEntity;
+  region?: SCClusterByokEntity;
   /** Environment details of the schema registry cluster */
-  environment?: SchemaRegistryClusterEnvironmentRegionEntity;
+  environment?: SCClusterByokEntity;
   /** The cloud service provider */
   cloud?: string;
 }
@@ -2630,8 +2596,8 @@ export const SchemaRegistryClusterSpecEntity = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     httpEndpoint: S.optional(S.String),
     package: S.optional(S.String),
-    region: S.optional(SchemaRegistryClusterEnvironmentRegionEntity),
-    environment: S.optional(SchemaRegistryClusterEnvironmentRegionEntity),
+    region: S.optional(SCClusterByokEntity),
+    environment: S.optional(SCClusterByokEntity),
     cloud: S.optional(S.String),
   }),
 ).annotate({

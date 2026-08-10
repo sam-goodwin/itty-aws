@@ -1125,21 +1125,10 @@ export const CapacitiesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CapacitiesUpdateRequestTagsMap>;
 
 /** An object that represents a set of mutable Dedicated capacity resource properties. */
-export interface DedicatedCapacityMutablePropertiesInput {
-  /** A collection of Dedicated capacity administrators */
-  administration?: DedicatedCapacityAdministrators;
-  /** Specifies the generation of the Power BI Embedded capacity. If no value is specified, the default value 'Gen2' is used. [Learn More](https://docs.microsoft.com/power-bi/developer/embedded/power-bi-embedded-generation-2) */
-  mode?: Mode | (string & {});
-}
-export const DedicatedCapacityMutablePropertiesInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      administration: S.optional(DedicatedCapacityAdministrators),
-      mode: S.optional(Mode),
-    }),
-).annotate({
-  identifier: "DedicatedCapacityMutablePropertiesInput",
-}) as any as S.Schema<DedicatedCapacityMutablePropertiesInput>;
+export type DedicatedCapacityMutablePropertiesInput =
+  DedicatedCapacityPropertiesInput;
+export const DedicatedCapacityMutablePropertiesInput =
+  DedicatedCapacityPropertiesInput;
 
 export interface CapacitiesUpdateRequest {
   /** The ID of the target subscription. */
@@ -1153,7 +1142,7 @@ export interface CapacitiesUpdateRequest {
   /** Key-value pairs of additional provisioning properties. */
   tags?: CapacitiesUpdateRequestTagsMap;
   /** Properties of the provision operation request. */
-  properties?: DedicatedCapacityMutablePropertiesInput;
+  properties?: DedicatedCapacityPropertiesInput;
 }
 export const CapacitiesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1162,7 +1151,7 @@ export const CapacitiesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     dedicatedCapacityName: S.String.pipe(T.Label()),
     sku: S.optional(CapacitySku),
     tags: S.optional(CapacitiesUpdateRequestTagsMap),
-    properties: S.optional(DedicatedCapacityMutablePropertiesInput),
+    properties: S.optional(DedicatedCapacityPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",

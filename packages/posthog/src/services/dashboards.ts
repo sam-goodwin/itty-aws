@@ -2,6 +2,7 @@
 import * as S from "@distilled.cloud/core/schema";
 import * as Redacted from "effect/Redacted";
 import * as API from "@distilled.cloud/core/api";
+import * as C from "@distilled.cloud/core/category";
 import * as T from "../traits.ts";
 import {
   PosthogProtocol,
@@ -17,7 +18,7 @@ export class BadRequest
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
 
@@ -26,7 +27,7 @@ export class Forbidden
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
 
@@ -35,7 +36,7 @@ export class NotFound
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
 
@@ -2965,27 +2966,15 @@ export const TrendsFilterResultCustomizationsCase0Map = /*@__PURE__*/ S.Record(
   ResultCustomizationByValue,
 ) as any as S.Schema<TrendsFilterResultCustomizationsCase0Map>;
 
-export interface ResultCustomizationByPosition {
-  assignmentBy?: string;
-  color?: DataColorToken | null;
-  hidden?: boolean | null;
-}
-export const ResultCustomizationByPosition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assignmentBy: S.optional(S.String),
-    color: S.optional(S.NullOr(DataColorToken)),
-    hidden: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "ResultCustomizationByPosition",
-}) as any as S.Schema<ResultCustomizationByPosition>;
+export type ResultCustomizationByPosition = ResultCustomizationByValue;
+export const ResultCustomizationByPosition = ResultCustomizationByValue;
 
 export type TrendsFilterResultCustomizationsCase1Map = {
-  [key: string]: ResultCustomizationByPosition | undefined;
+  [key: string]: ResultCustomizationByValue | undefined;
 };
 export const TrendsFilterResultCustomizationsCase1Map = /*@__PURE__*/ S.Record(
   S.String,
-  ResultCustomizationByPosition,
+  ResultCustomizationByValue,
 ) as any as S.Schema<TrendsFilterResultCustomizationsCase1Map>;
 
 /** Customizations for the appearance of result datasets. */
@@ -4607,12 +4596,12 @@ export const StickinessFilterResultCustomizationsCase0Map =
   ) as any as S.Schema<StickinessFilterResultCustomizationsCase0Map>;
 
 export type StickinessFilterResultCustomizationsCase1Map = {
-  [key: string]: ResultCustomizationByPosition | undefined;
+  [key: string]: ResultCustomizationByValue | undefined;
 };
 export const StickinessFilterResultCustomizationsCase1Map =
   /*@__PURE__*/ S.Record(
     S.String,
-    ResultCustomizationByPosition,
+    ResultCustomizationByValue,
   ) as any as S.Schema<StickinessFilterResultCustomizationsCase1Map>;
 
 /** Customizations for the appearance of result datasets. */
@@ -7318,20 +7307,8 @@ export const FirstEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FirstEvent" }) as any as S.Schema<FirstEvent>;
 
-export interface LastEvent {
-  distinct_id?: string;
-  properties?: string;
-  timestamp?: string;
-  uuid?: string;
-}
-export const LastEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    distinct_id: S.optional(S.String),
-    properties: S.optional(S.String),
-    timestamp: S.optional(S.String),
-    uuid: S.optional(S.String),
-  }),
-).annotate({ identifier: "LastEvent" }) as any as S.Schema<LastEvent>;
+export type LastEvent = FirstEvent;
+export const LastEvent = FirstEvent;
 
 export type ErrorTrackingIssueStatus =
   | "archived"
@@ -7351,7 +7328,7 @@ export interface ErrorTrackingIssue {
   first_seen?: string;
   function?: string | null;
   id?: string;
-  last_event?: LastEvent | null;
+  last_event?: FirstEvent | null;
   last_seen?: string;
   library?: string | null;
   name?: string | null;
@@ -7369,7 +7346,7 @@ export const ErrorTrackingIssue = /*@__PURE__*/ S.suspend(() =>
     first_seen: S.optional(S.String),
     function: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
-    last_event: S.optional(S.NullOr(LastEvent)),
+    last_event: S.optional(S.NullOr(FirstEvent)),
     last_seen: S.optional(S.String),
     library: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -15261,18 +15238,8 @@ export const InsightOutputTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightOutputTypesList>;
 
-export interface InsightOutputResolvedDateRange {
-  date_from?: string;
-  date_to?: string;
-}
-export const InsightOutputResolvedDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date_from: S.optional(S.String),
-    date_to: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsightOutputResolvedDateRange",
-}) as any as S.Schema<InsightOutputResolvedDateRange>;
+export type InsightOutputResolvedDateRange = ResolvedDateRangeResponse;
+export const InsightOutputResolvedDateRange = ResolvedDateRangeResponse;
 
 export type InsightOutputAlertsList = Array<unknown>;
 export const InsightOutputAlertsList = /*@__PURE__*/ S.Array(
@@ -15323,7 +15290,7 @@ export interface InsightOutput {
   query_status?: unknown;
   hogql?: string | null;
   types?: InsightOutputTypesList | null;
-  resolved_date_range?: InsightOutputResolvedDateRange | null;
+  resolved_date_range?: ResolvedDateRangeResponse | null;
   alerts?: InsightOutputAlertsList;
   last_viewed_at?: string | null;
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
@@ -15363,7 +15330,7 @@ export const InsightOutput = /*@__PURE__*/ S.suspend(() =>
     query_status: S.optional(S.Unknown),
     hogql: S.optional(S.NullOr(S.String)),
     types: S.optional(S.NullOr(InsightOutputTypesList)),
-    resolved_date_range: S.optional(S.NullOr(InsightOutputResolvedDateRange)),
+    resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     alerts: S.optional(InsightOutputAlertsList),
     last_viewed_at: S.optional(S.NullOr(S.String)),
     search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
@@ -17265,41 +17232,11 @@ export const WidgetCatalogResponse = /*@__PURE__*/ S.suspend(() =>
 export type DashboardsWidgetsBatchCreateRequestFormat = "json" | "txt";
 export const DashboardsWidgetsBatchCreateRequestFormat = /*@__PURE__*/ S.String;
 
-export interface WidgetTileLayoutBoxOpenApi {
-  /** Column position in the dashboard grid (0-indexed). */
-  x?: number;
-  /** Row position in the dashboard grid (0-indexed). */
-  y?: number;
-  /** Width in grid columns. The desktop grid is 12 columns wide. */
-  w?: number;
-  /** Height in grid rows. */
-  h?: number;
-}
-export const WidgetTileLayoutBoxOpenApi = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    x: S.optional(S.Number),
-    y: S.optional(S.Number),
-    w: S.optional(S.Number),
-    h: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WidgetTileLayoutBoxOpenApi",
-}) as any as S.Schema<WidgetTileLayoutBoxOpenApi>;
+export type WidgetTileLayoutBoxOpenApi = TileLayoutBox;
+export const WidgetTileLayoutBoxOpenApi = TileLayoutBox;
 
-export interface WidgetTileLayoutsOpenApi {
-  /** Layout for the standard (desktop) breakpoint. The grid is 12 columns wide. */
-  sm?: WidgetTileLayoutBoxOpenApi;
-  /** Layout for the small (mobile) breakpoint. The grid is 1 column wide. */
-  xs?: WidgetTileLayoutBoxOpenApi;
-}
-export const WidgetTileLayoutsOpenApi = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sm: S.optional(WidgetTileLayoutBoxOpenApi),
-    xs: S.optional(WidgetTileLayoutBoxOpenApi),
-  }),
-).annotate({
-  identifier: "WidgetTileLayoutsOpenApi",
-}) as any as S.Schema<WidgetTileLayoutsOpenApi>;
+export type WidgetTileLayoutsOpenApi = TileLayouts;
+export const WidgetTileLayoutsOpenApi = TileLayouts;
 
 export interface ActivityEventsListWidgetAddRequestOpenApi {
   /** Optional custom display name for the widget tile. */
@@ -17307,7 +17244,7 @@ export interface ActivityEventsListWidgetAddRequestOpenApi {
   /** Optional markdown description shown when show_description is enabled. */
   description?: string;
   /** Optional react-grid-layout positions keyed by breakpoint (sm, xs). */
-  layouts?: WidgetTileLayoutsOpenApi;
+  layouts?: TileLayouts;
   /** Whether to show the description on the dashboard tile. */
   show_description?: boolean;
   widget_type: ActivityEventsListWidgetTypeEnum;
@@ -17319,7 +17256,7 @@ export const ActivityEventsListWidgetAddRequestOpenApi =
     S.Struct({
       name: S.optional(S.NullOr(S.String)),
       description: S.optional(S.String),
-      layouts: S.optional(WidgetTileLayoutsOpenApi),
+      layouts: S.optional(TileLayouts),
       show_description: S.optional(S.Boolean),
       widget_type: ActivityEventsListWidgetTypeEnum,
       config: ActivityEventsListWidgetConfig,
@@ -17334,7 +17271,7 @@ export interface ErrorTrackingListWidgetAddRequestOpenApi {
   /** Optional markdown description shown when show_description is enabled. */
   description?: string;
   /** Optional react-grid-layout positions keyed by breakpoint (sm, xs). */
-  layouts?: WidgetTileLayoutsOpenApi;
+  layouts?: TileLayouts;
   /** Whether to show the description on the dashboard tile. */
   show_description?: boolean;
   widget_type: ErrorTrackingListWidgetTypeEnum;
@@ -17346,7 +17283,7 @@ export const ErrorTrackingListWidgetAddRequestOpenApi = /*@__PURE__*/ S.suspend(
     S.Struct({
       name: S.optional(S.NullOr(S.String)),
       description: S.optional(S.String),
-      layouts: S.optional(WidgetTileLayoutsOpenApi),
+      layouts: S.optional(TileLayouts),
       show_description: S.optional(S.Boolean),
       widget_type: ErrorTrackingListWidgetTypeEnum,
       config: ErrorTrackingListWidgetConfig,
@@ -17361,7 +17298,7 @@ export interface SessionReplayListWidgetAddRequestOpenApi {
   /** Optional markdown description shown when show_description is enabled. */
   description?: string;
   /** Optional react-grid-layout positions keyed by breakpoint (sm, xs). */
-  layouts?: WidgetTileLayoutsOpenApi;
+  layouts?: TileLayouts;
   /** Whether to show the description on the dashboard tile. */
   show_description?: boolean;
   widget_type: SessionReplayListWidgetTypeEnum;
@@ -17373,7 +17310,7 @@ export const SessionReplayListWidgetAddRequestOpenApi = /*@__PURE__*/ S.suspend(
     S.Struct({
       name: S.optional(S.NullOr(S.String)),
       description: S.optional(S.String),
-      layouts: S.optional(WidgetTileLayoutsOpenApi),
+      layouts: S.optional(TileLayouts),
       show_description: S.optional(S.Boolean),
       widget_type: SessionReplayListWidgetTypeEnum,
       config: SessionReplayListWidgetConfig,
@@ -17388,7 +17325,7 @@ export interface ExperimentsListWidgetAddRequestOpenApi {
   /** Optional markdown description shown when show_description is enabled. */
   description?: string;
   /** Optional react-grid-layout positions keyed by breakpoint (sm, xs). */
-  layouts?: WidgetTileLayoutsOpenApi;
+  layouts?: TileLayouts;
   /** Whether to show the description on the dashboard tile. */
   show_description?: boolean;
   widget_type: ExperimentsListWidgetTypeEnum;
@@ -17400,7 +17337,7 @@ export const ExperimentsListWidgetAddRequestOpenApi = /*@__PURE__*/ S.suspend(
     S.Struct({
       name: S.optional(S.NullOr(S.String)),
       description: S.optional(S.String),
-      layouts: S.optional(WidgetTileLayoutsOpenApi),
+      layouts: S.optional(TileLayouts),
       show_description: S.optional(S.Boolean),
       widget_type: ExperimentsListWidgetTypeEnum,
       config: ExperimentsListWidgetConfig,
@@ -17415,7 +17352,7 @@ export interface ExperimentResultsWidgetAddRequestOpenApi {
   /** Optional markdown description shown when show_description is enabled. */
   description?: string;
   /** Optional react-grid-layout positions keyed by breakpoint (sm, xs). */
-  layouts?: WidgetTileLayoutsOpenApi;
+  layouts?: TileLayouts;
   /** Whether to show the description on the dashboard tile. */
   show_description?: boolean;
   widget_type: ExperimentResultsWidgetTypeEnum;
@@ -17427,7 +17364,7 @@ export const ExperimentResultsWidgetAddRequestOpenApi = /*@__PURE__*/ S.suspend(
     S.Struct({
       name: S.optional(S.NullOr(S.String)),
       description: S.optional(S.String),
-      layouts: S.optional(WidgetTileLayoutsOpenApi),
+      layouts: S.optional(TileLayouts),
       show_description: S.optional(S.Boolean),
       widget_type: ExperimentResultsWidgetTypeEnum,
       config: ExperimentResultsWidgetConfig,
@@ -17442,7 +17379,7 @@ export interface LogsListWidgetAddRequestOpenApi {
   /** Optional markdown description shown when show_description is enabled. */
   description?: string;
   /** Optional react-grid-layout positions keyed by breakpoint (sm, xs). */
-  layouts?: WidgetTileLayoutsOpenApi;
+  layouts?: TileLayouts;
   /** Whether to show the description on the dashboard tile. */
   show_description?: boolean;
   widget_type: LogsListWidgetTypeEnum;
@@ -17453,7 +17390,7 @@ export const LogsListWidgetAddRequestOpenApi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     description: S.optional(S.String),
-    layouts: S.optional(WidgetTileLayoutsOpenApi),
+    layouts: S.optional(TileLayouts),
     show_description: S.optional(S.Boolean),
     widget_type: LogsListWidgetTypeEnum,
     config: LogsListWidgetConfig,

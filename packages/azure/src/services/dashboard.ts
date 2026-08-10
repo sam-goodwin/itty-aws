@@ -661,20 +661,16 @@ export type ManagedServiceIdentityType =
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = GrafanaPluginInput;
+export const UserAssignedIdentityInput = GrafanaPluginInput;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: GrafanaPluginInput | undefined;
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentityInput,
+  GrafanaPluginInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1185,24 +1181,8 @@ export const GrafanaGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GrafanaGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface GrafanaGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const GrafanaGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "GrafanaGetResponseIdentity",
-}) as any as S.Schema<GrafanaGetResponseIdentity>;
+export type GrafanaGetResponseIdentity = GrafanaCreateResponseIdentity;
+export const GrafanaGetResponseIdentity = GrafanaCreateResponseIdentity;
 
 export interface GrafanaGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1222,7 +1202,7 @@ export interface GrafanaGetResponse {
   /** The geo-location where the resource lives */
   location?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: GrafanaGetResponseIdentity;
+  identity?: GrafanaCreateResponseIdentity;
 }
 export const GrafanaGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1234,7 +1214,7 @@ export const GrafanaGetResponse = /*@__PURE__*/ S.suspend(() =>
     sku: S.optional(ResourceSku),
     tags: S.optional(GrafanaGetResponseTagsMap),
     location: S.optional(S.String),
-    identity: S.optional(GrafanaGetResponseIdentity),
+    identity: S.optional(GrafanaCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "GrafanaGetResponse",
@@ -1267,24 +1247,8 @@ export const ManagedGrafanaTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ManagedGrafanaTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedGrafanaIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const ManagedGrafanaIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "ManagedGrafanaIdentity",
-}) as any as S.Schema<ManagedGrafanaIdentity>;
+export type ManagedGrafanaIdentity = GrafanaCreateResponseIdentity;
+export const ManagedGrafanaIdentity = GrafanaCreateResponseIdentity;
 
 /** The grafana resource type. */
 export interface ManagedGrafana {
@@ -1305,7 +1269,7 @@ export interface ManagedGrafana {
   /** The geo-location where the resource lives */
   location?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedGrafanaIdentity;
+  identity?: GrafanaCreateResponseIdentity;
 }
 export const ManagedGrafana = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1317,7 +1281,7 @@ export const ManagedGrafana = /*@__PURE__*/ S.suspend(() =>
     sku: S.optional(ResourceSku),
     tags: S.optional(ManagedGrafanaTagsMap),
     location: S.optional(S.String),
-    identity: S.optional(ManagedGrafanaIdentity),
+    identity: S.optional(GrafanaCreateResponseIdentity),
   }),
 ).annotate({ identifier: "ManagedGrafana" }) as any as S.Schema<ManagedGrafana>;
 
@@ -1366,18 +1330,8 @@ export const GrafanaListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GrafanaListByResourceGroupRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface GrafanaUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
-export const GrafanaUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-  }),
-).annotate({
-  identifier: "GrafanaUpdateRequestIdentity",
-}) as any as S.Schema<GrafanaUpdateRequestIdentity>;
+export type GrafanaUpdateRequestIdentity = GrafanaCreateRequestIdentity;
+export const GrafanaUpdateRequestIdentity = GrafanaCreateRequestIdentity;
 
 /** The new tags of the grafana resource. */
 export type GrafanaUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -1487,7 +1441,7 @@ export interface GrafanaUpdateRequest {
   workspaceName: string;
   sku?: ResourceSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: GrafanaUpdateRequestIdentity;
+  identity?: GrafanaCreateRequestIdentity;
   /** The new tags of the grafana resource. */
   tags?: GrafanaUpdateRequestTagsMap;
   /** Properties specific to the managed grafana resource. */
@@ -1499,7 +1453,7 @@ export const GrafanaUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     sku: S.optional(ResourceSku),
-    identity: S.optional(GrafanaUpdateRequestIdentity),
+    identity: S.optional(GrafanaCreateRequestIdentity),
     tags: S.optional(GrafanaUpdateRequestTagsMap),
     properties: S.optional(ManagedGrafanaPropertiesUpdateParametersInput),
   }).pipe(
@@ -1524,24 +1478,8 @@ export const GrafanaUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GrafanaUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface GrafanaUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const GrafanaUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "GrafanaUpdateResponseIdentity",
-}) as any as S.Schema<GrafanaUpdateResponseIdentity>;
+export type GrafanaUpdateResponseIdentity = GrafanaCreateResponseIdentity;
+export const GrafanaUpdateResponseIdentity = GrafanaCreateResponseIdentity;
 
 export interface GrafanaUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1561,7 +1499,7 @@ export interface GrafanaUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: GrafanaUpdateResponseIdentity;
+  identity?: GrafanaCreateResponseIdentity;
 }
 export const GrafanaUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1573,7 +1511,7 @@ export const GrafanaUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     sku: S.optional(ResourceSku),
     tags: S.optional(GrafanaUpdateResponseTagsMap),
     location: S.optional(S.String),
-    identity: S.optional(GrafanaUpdateResponseIdentity),
+    identity: S.optional(GrafanaCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "GrafanaUpdateResponse",
@@ -2013,12 +1951,8 @@ export const ManagedDashboardsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ManagedDashboardsCreateRequestTagsMap>;
 
 /** Properties specific to the grafana resource. */
-export interface ManagedDashboardPropertiesInput {}
-export const ManagedDashboardPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ManagedDashboardPropertiesInput",
-}) as any as S.Schema<ManagedDashboardPropertiesInput>;
+export type ManagedDashboardPropertiesInput = GrafanaPluginInput;
+export const ManagedDashboardPropertiesInput = GrafanaPluginInput;
 
 export interface ManagedDashboardsCreateRequest {
   /** The ID of the target subscription. */
@@ -2032,7 +1966,7 @@ export interface ManagedDashboardsCreateRequest {
   /** The geo-location where the resource lives */
   location: string;
   /** Properties specific to the managed dashboard resource. */
-  properties?: ManagedDashboardPropertiesInput;
+  properties?: GrafanaPluginInput;
 }
 export const ManagedDashboardsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2041,7 +1975,7 @@ export const ManagedDashboardsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     dashboardName: S.String.pipe(T.Label()),
     tags: S.optional(ManagedDashboardsCreateRequestTagsMap),
     location: S.String,
-    properties: S.optional(ManagedDashboardPropertiesInput),
+    properties: S.optional(GrafanaPluginInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -2791,11 +2725,10 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResponse>;
 
 /** The Private Endpoint resource. */
-export interface PrivateEndpointConnectionPropertiesInputPrivateEndpoint {}
+export type PrivateEndpointConnectionPropertiesInputPrivateEndpoint =
+  GrafanaPluginInput;
 export const PrivateEndpointConnectionPropertiesInputPrivateEndpoint =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PrivateEndpointConnectionPropertiesInputPrivateEndpoint",
-  }) as any as S.Schema<PrivateEndpointConnectionPropertiesInputPrivateEndpoint>;
+  GrafanaPluginInput;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState {
@@ -2829,7 +2762,7 @@ export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The Private Endpoint resource. */
-  privateEndpoint?: PrivateEndpointConnectionPropertiesInputPrivateEndpoint;
+  privateEndpoint?: GrafanaPluginInput;
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState;
   /** The private endpoint connection group ids. */
@@ -2838,9 +2771,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
 export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      privateEndpoint: S.optional(
-        PrivateEndpointConnectionPropertiesInputPrivateEndpoint,
-      ),
+      privateEndpoint: S.optional(GrafanaPluginInput),
       privateLinkServiceConnectionState:
         PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState,
       groupIds: S.optional(

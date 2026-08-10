@@ -4211,37 +4211,17 @@ export const Network = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Network" }) as any as S.Schema<Network>;
 
 /** The private endpoint connection resource. */
-export interface ServerPropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type ServerPropertiesPrivateEndpointConnectionsItem =
+  PrivateEndpointConnectionListResultValueItem;
 export const ServerPropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "ServerPropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<ServerPropertiesPrivateEndpointConnectionsItem>;
+  PrivateEndpointConnectionListResultValueItem;
 
 /** PrivateEndpointConnections related properties of a server. */
 export type ServerPropertiesPrivateEndpointConnectionsList =
-  Array<ServerPropertiesPrivateEndpointConnectionsItem>;
+  Array<PrivateEndpointConnectionListResultValueItem>;
 export const ServerPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    ServerPropertiesPrivateEndpointConnectionsItem,
+    PrivateEndpointConnectionListResultValueItem,
   ) as any as S.Schema<ServerPropertiesPrivateEndpointConnectionsList>;
 
 /** Enum to indicate the patch strategy of a server */
@@ -4912,21 +4892,17 @@ export const ServerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerPropertiesInput>;
 
 /** Metadata of user assigned identity. */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = PrivateEndpointInput;
+export const UserAssignedIdentityInput = PrivateEndpointInput;
 
 /** Metadata of user assigned identity. */
 export type MySQLServerIdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: PrivateEndpointInput | undefined;
 };
 export const MySQLServerIdentityInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserAssignedIdentityInput,
+    PrivateEndpointInput,
   ) as any as S.Schema<MySQLServerIdentityInputUserAssignedIdentitiesMap>;
 
 /** Properties to configure Identity for Bring your Own Keys */

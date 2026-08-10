@@ -263,26 +263,14 @@ export const GroupQuotaLimitsRequestGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupQuotaLimitsRequestGetRequest>;
 
 /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
-export interface GroupQuotaRequestBasePropertiesName {
-  /** Resource name. */
-  value?: string;
-  /** Resource display name. */
-  localizedValue?: string;
-}
-export const GroupQuotaRequestBasePropertiesName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    localizedValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GroupQuotaRequestBasePropertiesName",
-}) as any as S.Schema<GroupQuotaRequestBasePropertiesName>;
+export type GroupQuotaRequestBasePropertiesName = GroupQuotaDetailsName;
+export const GroupQuotaRequestBasePropertiesName = GroupQuotaDetailsName;
 
 export interface GroupQuotaRequestBaseProperties {
   /** The new quota limit for the subscription. The incremental quota will be allocated from pre-approved group quota. */
   limit?: number;
   /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
-  name?: GroupQuotaRequestBasePropertiesName;
+  name?: GroupQuotaDetailsName;
   /** Location/Azure region for the quota requested for resource. */
   region?: string;
   /** GroupQuota Request comments and details for request. This is optional paramter to provide more details related to the requested resource. */
@@ -291,7 +279,7 @@ export interface GroupQuotaRequestBaseProperties {
 export const GroupQuotaRequestBaseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
-    name: S.optional(GroupQuotaRequestBasePropertiesName),
+    name: S.optional(GroupQuotaDetailsName),
     region: S.optional(S.String),
     comments: S.optional(S.String),
   }),
@@ -998,20 +986,8 @@ export const GroupQuotaSubscriptionAllocationListRequest =
   }) as any as S.Schema<GroupQuotaSubscriptionAllocationListRequest>;
 
 /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
-export interface SubscriptionQuotaDetailsName {
-  /** Resource name. */
-  value?: string;
-  /** Resource display name. */
-  localizedValue?: string;
-}
-export const SubscriptionQuotaDetailsName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    localizedValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubscriptionQuotaDetailsName",
-}) as any as S.Schema<SubscriptionQuotaDetailsName>;
+export type SubscriptionQuotaDetailsName = GroupQuotaDetailsName;
+export const SubscriptionQuotaDetailsName = GroupQuotaDetailsName;
 
 /** Subscription Quota details. */
 export interface SubscriptionQuotaDetails {
@@ -1022,14 +998,14 @@ export interface SubscriptionQuotaDetails {
   /** The shareable quota for the subscription. */
   shareableQuota?: number;
   /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
-  name?: SubscriptionQuotaDetailsName;
+  name?: GroupQuotaDetailsName;
 }
 export const SubscriptionQuotaDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
     limit: S.optional(S.Number),
     shareableQuota: S.optional(S.Number),
-    name: S.optional(SubscriptionQuotaDetailsName),
+    name: S.optional(GroupQuotaDetailsName),
   }),
 ).annotate({
   identifier: "SubscriptionQuotaDetails",
@@ -1132,27 +1108,14 @@ export const GroupQuotaSubscriptionAllocationRequestGetRequest =
   }) as any as S.Schema<GroupQuotaSubscriptionAllocationRequestGetRequest>;
 
 /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
-export interface QuotaAllocationRequestBasePropertiesName {
-  /** Resource name. */
-  value?: string;
-  /** Resource display name. */
-  localizedValue?: string;
-}
-export const QuotaAllocationRequestBasePropertiesName = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.optional(S.String),
-      localizedValue: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "QuotaAllocationRequestBasePropertiesName",
-}) as any as S.Schema<QuotaAllocationRequestBasePropertiesName>;
+export type QuotaAllocationRequestBasePropertiesName = GroupQuotaDetailsName;
+export const QuotaAllocationRequestBasePropertiesName = GroupQuotaDetailsName;
 
 export interface QuotaAllocationRequestBaseProperties {
   /** The new quota limit for the subscription. The incremental quota will be allocated from pre-approved group quota. */
   limit?: number;
   /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
-  name?: QuotaAllocationRequestBasePropertiesName;
+  name?: GroupQuotaDetailsName;
   /** The location for which the subscription is allocated */
   region?: string;
 }
@@ -1160,7 +1123,7 @@ export const QuotaAllocationRequestBaseProperties = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       limit: S.optional(S.Number),
-      name: S.optional(QuotaAllocationRequestBasePropertiesName),
+      name: S.optional(GroupQuotaDetailsName),
       region: S.optional(S.String),
     }),
 ).annotate({
@@ -1821,17 +1784,8 @@ export const GroupQuotaSubscriptionsUpdateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GroupQuotaSubscriptionsUpdateResponse>;
 
 /** Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified. */
-export interface GroupQuotasEntityBasePatchInput {
-  /** Display name of the GroupQuota entity. */
-  displayName?: string;
-}
-export const GroupQuotasEntityBasePatchInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GroupQuotasEntityBasePatchInput",
-}) as any as S.Schema<GroupQuotasEntityBasePatchInput>;
+export type GroupQuotasEntityBasePatchInput = GroupQuotasEntityBaseInput;
+export const GroupQuotasEntityBasePatchInput = GroupQuotasEntityBaseInput;
 
 export interface GroupQuotasUpdateRequest {
   /** The management group ID. */
@@ -1839,13 +1793,13 @@ export interface GroupQuotasUpdateRequest {
   /** The GroupQuota name. The name should be unique for the provided context tenantId/MgId. */
   groupQuotaName: string;
   /** Properties */
-  properties?: GroupQuotasEntityBasePatchInput;
+  properties?: GroupQuotasEntityBaseInput;
 }
 export const GroupQuotasUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
-    properties: S.optional(GroupQuotasEntityBasePatchInput),
+    properties: S.optional(GroupQuotasEntityBaseInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1911,25 +1865,13 @@ export const GroupQuotaUsagesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupQuotaUsagesListRequest>;
 
 /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
-export interface GroupQuotaUsagesBaseName {
-  /** Resource name. */
-  value?: string;
-  /** Resource display name. */
-  localizedValue?: string;
-}
-export const GroupQuotaUsagesBaseName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    localizedValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GroupQuotaUsagesBaseName",
-}) as any as S.Schema<GroupQuotaUsagesBaseName>;
+export type GroupQuotaUsagesBaseName = GroupQuotaDetailsName;
+export const GroupQuotaUsagesBaseName = GroupQuotaDetailsName;
 
 /** Resource details with usages and GroupQuota. */
 export interface GroupQuotaUsagesBase {
   /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
-  name?: GroupQuotaUsagesBaseName;
+  name?: GroupQuotaDetailsName;
   /** Quota/limits for the resource. */
   limit?: number;
   /** Usages for the resource. */
@@ -1939,7 +1881,7 @@ export interface GroupQuotaUsagesBase {
 }
 export const GroupQuotaUsagesBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(GroupQuotaUsagesBaseName),
+    name: S.optional(GroupQuotaDetailsName),
     limit: S.optional(S.Number),
     usages: S.optional(S.Number),
     unit: S.optional(S.String),
@@ -2071,18 +2013,8 @@ export const QuotaCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuotaCreateOrUpdateRequest>;
 
 /** Name of the resource provided by the resource Provider. When requesting quota, use this property name. */
-export interface ResourceName {
-  /** Resource name. */
-  value?: string;
-  /** Resource display name. */
-  localizedValue?: string;
-}
-export const ResourceName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    localizedValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "ResourceName" }) as any as S.Schema<ResourceName>;
+export type ResourceName = GroupQuotaDetailsName;
+export const ResourceName = GroupQuotaDetailsName;
 
 /** Quota properties for the specified resource. */
 export interface QuotaProperties {
@@ -2091,7 +2023,7 @@ export interface QuotaProperties {
   /** The quota units, such as Count and Bytes. When requesting quota, use the **unit** value returned in the GET response in the request body of your PUT operation. */
   unit?: string;
   /** Resource name provided by the resource provider. Use this property name when requesting quota. */
-  name?: ResourceName;
+  name?: GroupQuotaDetailsName;
   /** The name of the resource type. Optional field. */
   resourceType?: string;
   /** The time period over which the quota usage values are summarized. For example: *P1D (per one day) *PT1M (per one minute) *PT1S (per one second). This parameter is optional because, for some resources like compute, the period is irrelevant. */
@@ -2105,7 +2037,7 @@ export const QuotaProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(LimitJsonObject),
     unit: S.optional(S.String),
-    name: S.optional(ResourceName),
+    name: S.optional(GroupQuotaDetailsName),
     resourceType: S.optional(S.String),
     quotaPeriod: S.optional(S.String),
     isQuotaApplicable: S.optional(S.Boolean),
@@ -2369,7 +2301,7 @@ export const ServiceErrorDetail = /*@__PURE__*/ S.suspend(() =>
 /** Request property. */
 export interface SubRequest {
   /** Resource name. */
-  name?: ResourceName;
+  name?: GroupQuotaDetailsName;
   /** Resource type for which the quota properties were requested. */
   resourceType?: string;
   /** Quota limit units, such as Count and Bytes. When requesting quota, use the **unit** value returned in the GET response in the request body of your PUT operation. */
@@ -2385,7 +2317,7 @@ export interface SubRequest {
 }
 export const SubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(ResourceName),
+    name: S.optional(GroupQuotaDetailsName),
     resourceType: S.optional(S.String),
     unit: S.optional(S.String),
     provisioningState: S.optional(QuotaRequestState),
@@ -2621,7 +2553,7 @@ export interface UsagesProperties {
   /** The units for the quota usage, such as Count and Bytes. When requesting quota, use the **unit** value returned in the GET response in the request body of your PUT operation. */
   unit?: string;
   /** Resource name provided by the resource provider. Use this property name when requesting quota. */
-  name?: ResourceName;
+  name?: GroupQuotaDetailsName;
   /** The name of the resource type. Optional field. */
   resourceType?: string;
   /** The time period for the summary of the quota usage values. For example: *P1D (per one day) *PT1M (per one minute) *PT1S (per one second). This parameter is optional because it is not relevant for all resources such as compute. */
@@ -2635,7 +2567,7 @@ export const UsagesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usages: S.optional(UsagesObject),
     unit: S.optional(S.String),
-    name: S.optional(ResourceName),
+    name: S.optional(GroupQuotaDetailsName),
     resourceType: S.optional(S.String),
     quotaPeriod: S.optional(S.String),
     isQuotaApplicable: S.optional(S.Boolean),

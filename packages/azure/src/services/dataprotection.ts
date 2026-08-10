@@ -259,17 +259,8 @@ export const BackupInstanceInputResourceGuardOperationRequestsList =
   ) as any as S.Schema<BackupInstanceInputResourceGuardOperationRequestsList>;
 
 /** Base class for different types of authentication credentials. */
-export interface AuthCredentials {
-  /** Type of the specific object - used for deserializing */
-  objectType: string;
-}
-export const AuthCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-  }),
-).annotate({
-  identifier: "AuthCredentials",
-}) as any as S.Schema<AuthCredentials>;
+export type AuthCredentials = BackupDatasourceParameters;
+export const AuthCredentials = BackupDatasourceParameters;
 
 /** Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again. */
 export type ValidationType = "ShallowValidation" | "DeepValidation";
@@ -303,7 +294,7 @@ export interface BackupInstanceInput {
   /** ResourceGuardOperationRequests on which LAC check will be performed */
   resourceGuardOperationRequests?: BackupInstanceInputResourceGuardOperationRequestsList;
   /** Credentials to use to authenticate with data source provider. */
-  datasourceAuthCredentials?: AuthCredentials;
+  datasourceAuthCredentials?: BackupDatasourceParameters;
   /** Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again. */
   validationType?: ValidationType | (string & {});
   /** Contains information of the Identity Details for the BI. If it is null, default will be considered as System Assigned. */
@@ -319,7 +310,7 @@ export const BackupInstanceInput = /*@__PURE__*/ S.suspend(() =>
     resourceGuardOperationRequests: S.optional(
       BackupInstanceInputResourceGuardOperationRequestsList,
     ),
-    datasourceAuthCredentials: S.optional(AuthCredentials),
+    datasourceAuthCredentials: S.optional(BackupDatasourceParameters),
     validationType: S.optional(ValidationType),
     identityDetails: S.optional(IdentityDetails),
     objectType: S.String,
@@ -581,7 +572,7 @@ export interface BackupInstance {
   /** Specifies the provisioning state of the resource i.e. provisioning/updating/Succeeded/Failed */
   provisioningState?: string;
   /** Credentials to use to authenticate with data source provider. */
-  datasourceAuthCredentials?: AuthCredentials;
+  datasourceAuthCredentials?: BackupDatasourceParameters;
   /** Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again. */
   validationType?: ValidationType;
   /** Contains information of the Identity Details for the BI. If it is null, default will be considered as System Assigned. */
@@ -601,7 +592,7 @@ export const BackupInstance = /*@__PURE__*/ S.suspend(() =>
     currentProtectionState: S.optional(CurrentProtectionState),
     protectionErrorDetails: S.optional(UserFacingError),
     provisioningState: S.optional(S.String),
-    datasourceAuthCredentials: S.optional(AuthCredentials),
+    datasourceAuthCredentials: S.optional(BackupDatasourceParameters),
     validationType: S.optional(ValidationType),
     identityDetails: S.optional(IdentityDetails),
     objectType: S.String,
@@ -3095,7 +3086,7 @@ export interface DeletedBackupInstance {
   /** Specifies the provisioning state of the resource i.e. provisioning/updating/Succeeded/Failed */
   provisioningState?: string;
   /** Credentials to use to authenticate with data source provider. */
-  datasourceAuthCredentials?: AuthCredentials;
+  datasourceAuthCredentials?: BackupDatasourceParameters;
   /** Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again. */
   validationType?: ValidationType;
   /** Contains information of the Identity Details for the BI. If it is null, default will be considered as System Assigned. */
@@ -3117,7 +3108,7 @@ export const DeletedBackupInstance = /*@__PURE__*/ S.suspend(() =>
     currentProtectionState: S.optional(CurrentProtectionState),
     protectionErrorDetails: S.optional(UserFacingError),
     provisioningState: S.optional(S.String),
-    datasourceAuthCredentials: S.optional(AuthCredentials),
+    datasourceAuthCredentials: S.optional(BackupDatasourceParameters),
     validationType: S.optional(ValidationType),
     identityDetails: S.optional(IdentityDetails),
     objectType: S.String,

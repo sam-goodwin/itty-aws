@@ -628,18 +628,10 @@ export const RouteConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteConfiguration>;
 
 /** Defines the Web Application Firewall policy for each routing rule (if applicable) */
-export interface RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink {
-  /** Resource ID. */
-  id?: string;
-}
+export type RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink =
+  SubResource;
 export const RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink",
-  }) as any as S.Schema<RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink>;
+  SubResource;
 
 /** Resource status of the Front Door or Front Door SubResource. */
 export type FrontDoorResourceState =
@@ -668,7 +660,7 @@ export interface RoutingRuleProperties {
   /** A reference to a specific Rules Engine Configuration to apply to this route. */
   rulesEngine?: SubResource;
   /** Defines the Web Application Firewall policy for each routing rule (if applicable) */
-  webApplicationFirewallPolicyLink?: RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink;
+  webApplicationFirewallPolicyLink?: SubResource;
   /** Resource status. */
   resourceState?: FrontDoorResourceState | (string & {});
 }
@@ -680,9 +672,7 @@ export const RoutingRuleProperties = /*@__PURE__*/ S.suspend(() =>
     enabledState: S.optional(RoutingRuleEnabledState),
     routeConfiguration: S.optional(RouteConfiguration),
     rulesEngine: S.optional(SubResource),
-    webApplicationFirewallPolicyLink: S.optional(
-      RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink,
-    ),
+    webApplicationFirewallPolicyLink: S.optional(SubResource),
     resourceState: S.optional(FrontDoorResourceState),
   }),
 ).annotate({
@@ -946,19 +936,10 @@ export type SessionAffinityEnabledState = "Enabled" | "Disabled";
 export const SessionAffinityEnabledState = /*@__PURE__*/ S.String;
 
 /** Defines the Web Application Firewall policy for each host (if applicable) */
-export interface FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink {
-  /** Resource ID. */
-  id?: string;
-}
+export type FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink =
+  SubResource;
 export const FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink",
-  }) as any as S.Schema<FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink>;
+  SubResource;
 
 /** Provisioning status of Custom Https of the frontendEndpoint. */
 export type CustomHttpsProvisioningState =
@@ -996,23 +977,13 @@ export type MinimumTLSVersion = "1.0" | "1.2";
 export const MinimumTLSVersion = /*@__PURE__*/ S.String;
 
 /** The Key Vault containing the SSL certificate */
-export interface KeyVaultCertificateSourceParametersVault {
-  /** Resource ID. */
-  id?: string;
-}
-export const KeyVaultCertificateSourceParametersVault = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "KeyVaultCertificateSourceParametersVault",
-}) as any as S.Schema<KeyVaultCertificateSourceParametersVault>;
+export type KeyVaultCertificateSourceParametersVault = SubResource;
+export const KeyVaultCertificateSourceParametersVault = SubResource;
 
 /** Parameters required for bring-your-own-certification via Key Vault */
 export interface KeyVaultCertificateSourceParameters {
   /** The Key Vault containing the SSL certificate */
-  vault?: KeyVaultCertificateSourceParametersVault;
+  vault?: SubResource;
   /** The name of the Key Vault secret representing the full certificate PFX */
   secretName?: string;
   /** The version of the Key Vault secret representing the full certificate PFX */
@@ -1020,7 +991,7 @@ export interface KeyVaultCertificateSourceParameters {
 }
 export const KeyVaultCertificateSourceParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    vault: S.optional(KeyVaultCertificateSourceParametersVault),
+    vault: S.optional(SubResource),
     secretName: S.optional(S.String),
     secretVersion: S.optional(S.String),
   }),
@@ -1084,7 +1055,7 @@ export interface FrontendEndpointProperties {
   /** UNUSED. This field will be ignored. The TTL to use in seconds for session affinity, if applicable. */
   sessionAffinityTtlSeconds?: number;
   /** Defines the Web Application Firewall policy for each host (if applicable) */
-  webApplicationFirewallPolicyLink?: FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink;
+  webApplicationFirewallPolicyLink?: SubResource;
   /** Resource status. */
   resourceState?: FrontDoorResourceState | (string & {});
   /** Provisioning status of Custom Https of the frontendEndpoint. */
@@ -1101,9 +1072,7 @@ export const FrontendEndpointProperties = /*@__PURE__*/ S.suspend(() =>
     hostName: S.optional(S.String),
     sessionAffinityEnabledState: S.optional(SessionAffinityEnabledState),
     sessionAffinityTtlSeconds: S.optional(S.Number),
-    webApplicationFirewallPolicyLink: S.optional(
-      FrontendEndpointUpdateParametersWebApplicationFirewallPolicyLink,
-    ),
+    webApplicationFirewallPolicyLink: S.optional(SubResource),
     resourceState: S.optional(FrontDoorResourceState),
     customHttpsProvisioningState: S.optional(CustomHttpsProvisioningState),
     customHttpsProvisioningSubstate: S.optional(
@@ -3397,66 +3366,39 @@ export const PoliciesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PoliciesCreateOrUpdateResponseTagsMap>;
 
 /** Defines the Resource ID for a Frontend Endpoint. */
-export interface FrontendEndpointLink {
-  /** Resource ID. */
-  id?: string;
-}
-export const FrontendEndpointLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FrontendEndpointLink",
-}) as any as S.Schema<FrontendEndpointLink>;
+export type FrontendEndpointLink = SubResource;
+export const FrontendEndpointLink = SubResource;
 
 /** Describes Frontend Endpoints associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList =
-  Array<FrontendEndpointLink>;
+  Array<SubResource>;
 export const WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList =
   /*@__PURE__*/ S.Array(
-    FrontendEndpointLink,
+    SubResource,
   ) as any as S.Schema<WebApplicationFirewallPolicyPropertiesFrontendEndpointLinksList>;
 
 /** Defines the Resource ID for a Routing Rule. */
-export interface RoutingRuleLink {
-  /** Resource ID. */
-  id?: string;
-}
-export const RoutingRuleLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RoutingRuleLink",
-}) as any as S.Schema<RoutingRuleLink>;
+export type RoutingRuleLink = SubResource;
+export const RoutingRuleLink = SubResource;
 
 /** Describes Routing Rules associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList =
-  Array<RoutingRuleLink>;
+  Array<SubResource>;
 export const WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList =
   /*@__PURE__*/ S.Array(
-    RoutingRuleLink,
+    SubResource,
   ) as any as S.Schema<WebApplicationFirewallPolicyPropertiesRoutingRuleLinksList>;
 
 /** Defines the Resource ID for a Security Policy. */
-export interface SecurityPolicyLink {
-  /** Resource ID. */
-  id?: string;
-}
-export const SecurityPolicyLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecurityPolicyLink",
-}) as any as S.Schema<SecurityPolicyLink>;
+export type SecurityPolicyLink = SubResource;
+export const SecurityPolicyLink = SubResource;
 
 /** Describes Security Policy associated with this Web Application Firewall policy. */
 export type WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList =
-  Array<SecurityPolicyLink>;
+  Array<SubResource>;
 export const WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList =
   /*@__PURE__*/ S.Array(
-    SecurityPolicyLink,
+    SubResource,
   ) as any as S.Schema<WebApplicationFirewallPolicyPropertiesSecurityPolicyLinksList>;
 
 /** Resource status of the policy. */

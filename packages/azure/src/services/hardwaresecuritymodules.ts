@@ -825,20 +825,22 @@ export type ManagedServiceIdentityType =
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput =
+  PrivateEndpointConnectionPropertiesInputPrivateEndpoint;
+export const UserAssignedIdentityInput =
+  PrivateEndpointConnectionPropertiesInputPrivateEndpoint;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CloudHsmClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
-  { [key: string]: UserAssignedIdentityInput | undefined };
+  {
+    [key: string]:
+      | PrivateEndpointConnectionPropertiesInputPrivateEndpoint
+      | undefined;
+  };
 export const CloudHsmClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserAssignedIdentityInput,
+    PrivateEndpointConnectionPropertiesInputPrivateEndpoint,
   ) as any as S.Schema<CloudHsmClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1466,12 +1468,14 @@ export const CloudHsmClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CloudHsmClustersUpdateRequestIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]:
+    | PrivateEndpointConnectionPropertiesInputPrivateEndpoint
+    | undefined;
 };
 export const CloudHsmClustersUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserAssignedIdentityInput,
+    PrivateEndpointConnectionPropertiesInputPrivateEndpoint,
   ) as any as S.Schema<CloudHsmClustersUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

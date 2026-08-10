@@ -194,20 +194,8 @@ export const AdvisorScoresListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdvisorScoresListRequest>;
 
 /** The Advisor score data. */
-export interface AdvisorScoreEntityProperties {
-  /** The details of latest available score. */
-  lastRefreshedScore?: ScoreEntity;
-  /** The historic Advisor score data. */
-  timeSeries?: TimeSeriesEntity;
-}
-export const AdvisorScoreEntityProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastRefreshedScore: S.optional(ScoreEntity),
-    timeSeries: S.optional(TimeSeriesEntity),
-  }),
-).annotate({
-  identifier: "AdvisorScoreEntityProperties",
-}) as any as S.Schema<AdvisorScoreEntityProperties>;
+export type AdvisorScoreEntityProperties = AdvisorScoresGetResponseProperties;
+export const AdvisorScoreEntityProperties = AdvisorScoresGetResponseProperties;
 
 /** The details of Advisor score for a single category. */
 export interface AdvisorScoreEntity {
@@ -220,7 +208,7 @@ export interface AdvisorScoreEntity {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** The Advisor score data. */
-  properties?: AdvisorScoreEntityProperties;
+  properties?: AdvisorScoresGetResponseProperties;
 }
 export const AdvisorScoreEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -228,7 +216,7 @@ export const AdvisorScoreEntity = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(AdvisorScoreEntityProperties),
+    properties: S.optional(AdvisorScoresGetResponseProperties),
   }),
 ).annotate({
   identifier: "AdvisorScoreEntity",

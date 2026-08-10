@@ -715,28 +715,13 @@ export const RoleDataDisksGroupsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RoleDataDisksGroupsList>;
 
 /** Describes a script action on role on the cluster. */
-export interface RoleScriptActionsItem {
-  /** The name of the script action. */
-  name: string;
-  /** The URI to the script. */
-  uri: string;
-  /** The parameters for the script provided. */
-  parameters: string;
-}
-export const RoleScriptActionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    uri: S.String,
-    parameters: S.String,
-  }),
-).annotate({
-  identifier: "RoleScriptActionsItem",
-}) as any as S.Schema<RoleScriptActionsItem>;
+export type RoleScriptActionsItem = RoleInputScriptActionsItem;
+export const RoleScriptActionsItem = RoleInputScriptActionsItem;
 
 /** The list of script actions on the role. */
-export type RoleScriptActionsList = Array<RoleScriptActionsItem>;
+export type RoleScriptActionsList = Array<RoleInputScriptActionsItem>;
 export const RoleScriptActionsList = /*@__PURE__*/ S.Array(
-  RoleScriptActionsItem,
+  RoleInputScriptActionsItem,
 ) as any as S.Schema<RoleScriptActionsList>;
 
 /** Describes a role on the cluster. */
@@ -936,26 +921,16 @@ export const ApplicationPropertiesSshEndpointsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ApplicationPropertiesSshEndpointsList>;
 
 /** The error message associated with the cluster creation. */
-export interface ApplicationPropertiesErrorsItem {
-  /** The error code. */
-  code?: string;
-  /** The error message. */
-  message?: string;
-}
-export const ApplicationPropertiesErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationPropertiesErrorsItem",
-}) as any as S.Schema<ApplicationPropertiesErrorsItem>;
+export type ApplicationPropertiesErrorsItem =
+  ApplicationPropertiesInputErrorsItem;
+export const ApplicationPropertiesErrorsItem =
+  ApplicationPropertiesInputErrorsItem;
 
 /** The list of errors. */
 export type ApplicationPropertiesErrorsList =
-  Array<ApplicationPropertiesErrorsItem>;
+  Array<ApplicationPropertiesInputErrorsItem>;
 export const ApplicationPropertiesErrorsList = /*@__PURE__*/ S.Array(
-  ApplicationPropertiesErrorsItem,
+  ApplicationPropertiesInputErrorsItem,
 ) as any as S.Schema<ApplicationPropertiesErrorsList>;
 
 /** The private link configuration provisioning state, which only appears in the response. */
@@ -1418,24 +1393,14 @@ export const ApplicationsGetAzureAsyncOperationStatusResponseStatus =
   /*@__PURE__*/ S.String;
 
 /** The error message associated with the cluster creation. */
-export interface Errors {
-  /** The error code. */
-  code?: string;
-  /** The error message. */
-  message?: string;
-}
-export const Errors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "Errors" }) as any as S.Schema<Errors>;
+export type Errors = ApplicationPropertiesInputErrorsItem;
+export const Errors = ApplicationPropertiesInputErrorsItem;
 
 export interface ApplicationsGetAzureAsyncOperationStatusResponse {
   /** The async operation state. */
   status?: ApplicationsGetAzureAsyncOperationStatusResponseStatus;
   /** The operation error information. */
-  error?: Errors;
+  error?: ApplicationPropertiesInputErrorsItem;
 }
 export const ApplicationsGetAzureAsyncOperationStatusResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -1443,7 +1408,7 @@ export const ApplicationsGetAzureAsyncOperationStatusResponse =
       status: S.optional(
         ApplicationsGetAzureAsyncOperationStatusResponseStatus,
       ),
-      error: S.optional(Errors),
+      error: S.optional(ApplicationPropertiesInputErrorsItem),
     }),
   ).annotate({
     identifier: "ApplicationsGetAzureAsyncOperationStatusResponse",
@@ -1899,27 +1864,17 @@ export const ComputeIsolationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComputeIsolationProperties>;
 
 /** The private link configuration. */
-export interface PrivateLinkConfigurationInput {
-  /** The name of private link configuration. */
-  name: string;
-  /** The private link configuration properties. */
-  properties: PrivateLinkConfigurationPropertiesInput;
-}
-export const PrivateLinkConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    properties: PrivateLinkConfigurationPropertiesInput,
-  }),
-).annotate({
-  identifier: "PrivateLinkConfigurationInput",
-}) as any as S.Schema<PrivateLinkConfigurationInput>;
+export type PrivateLinkConfigurationInput =
+  ApplicationPropertiesInputPrivateLinkConfigurationsItem;
+export const PrivateLinkConfigurationInput =
+  ApplicationPropertiesInputPrivateLinkConfigurationsItem;
 
 /** The private link configurations. */
 export type ClusterCreatePropertiesInputPrivateLinkConfigurationsList =
-  Array<PrivateLinkConfigurationInput>;
+  Array<ApplicationPropertiesInputPrivateLinkConfigurationsItem>;
 export const ClusterCreatePropertiesInputPrivateLinkConfigurationsList =
   /*@__PURE__*/ S.Array(
-    PrivateLinkConfigurationInput,
+    ApplicationPropertiesInputPrivateLinkConfigurationsItem,
   ) as any as S.Schema<ClusterCreatePropertiesInputPrivateLinkConfigurationsList>;
 
 /** The cluster create parameters. */
@@ -2126,9 +2081,10 @@ export const QuotaInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaInfo" }) as any as S.Schema<QuotaInfo>;
 
 /** The list of errors. */
-export type ClusterGetPropertiesErrorsList = Array<Errors>;
+export type ClusterGetPropertiesErrorsList =
+  Array<ApplicationPropertiesInputErrorsItem>;
 export const ClusterGetPropertiesErrorsList = /*@__PURE__*/ S.Array(
-  Errors,
+  ApplicationPropertiesInputErrorsItem,
 ) as any as S.Schema<ClusterGetPropertiesErrorsList>;
 
 /** The connectivity properties */
@@ -2181,33 +2137,17 @@ export const ExcludedServicesConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExcludedServicesConfig>;
 
 /** The private link configuration. */
-export interface PrivateLinkConfiguration {
-  /** The private link configuration id. */
-  id?: string;
-  /** The name of private link configuration. */
-  name: string;
-  /** The type of the private link configuration. */
-  type?: string;
-  /** The private link configuration properties. */
-  properties: PrivateLinkConfigurationProperties;
-}
-export const PrivateLinkConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.String,
-    type: S.optional(S.String),
-    properties: PrivateLinkConfigurationProperties,
-  }),
-).annotate({
-  identifier: "PrivateLinkConfiguration",
-}) as any as S.Schema<PrivateLinkConfiguration>;
+export type PrivateLinkConfiguration =
+  ApplicationPropertiesPrivateLinkConfigurationsItem;
+export const PrivateLinkConfiguration =
+  ApplicationPropertiesPrivateLinkConfigurationsItem;
 
 /** The private link configurations. */
 export type ClusterGetPropertiesPrivateLinkConfigurationsList =
-  Array<PrivateLinkConfiguration>;
+  Array<ApplicationPropertiesPrivateLinkConfigurationsItem>;
 export const ClusterGetPropertiesPrivateLinkConfigurationsList =
   /*@__PURE__*/ S.Array(
-    PrivateLinkConfiguration,
+    ApplicationPropertiesPrivateLinkConfigurationsItem,
   ) as any as S.Schema<ClusterGetPropertiesPrivateLinkConfigurationsList>;
 
 /** The private endpoint. */
@@ -2872,12 +2812,12 @@ export interface AsyncOperationResult {
   /** The async operation state. */
   status?: AsyncOperationResultStatus;
   /** The operation error information. */
-  error?: Errors;
+  error?: ApplicationPropertiesInputErrorsItem;
 }
 export const AsyncOperationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(AsyncOperationResultStatus),
-    error: S.optional(Errors),
+    error: S.optional(ApplicationPropertiesInputErrorsItem),
   }),
 ).annotate({
   identifier: "AsyncOperationResult",
@@ -3901,13 +3841,13 @@ export interface ExtensionsGetAzureAsyncOperationStatusResponse {
   /** The async operation state. */
   status?: ExtensionsGetAzureAsyncOperationStatusResponseStatus;
   /** The operation error information. */
-  error?: Errors;
+  error?: ApplicationPropertiesInputErrorsItem;
 }
 export const ExtensionsGetAzureAsyncOperationStatusResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.optional(ExtensionsGetAzureAsyncOperationStatusResponseStatus),
-      error: S.optional(Errors),
+      error: S.optional(ApplicationPropertiesInputErrorsItem),
     }),
   ).annotate({
     identifier: "ExtensionsGetAzureAsyncOperationStatusResponse",
@@ -4070,13 +4010,13 @@ export interface LocationsGetAzureAsyncOperationStatusResponse {
   /** The async operation state. */
   status?: LocationsGetAzureAsyncOperationStatusResponseStatus;
   /** The operation error information. */
-  error?: Errors;
+  error?: ApplicationPropertiesInputErrorsItem;
 }
 export const LocationsGetAzureAsyncOperationStatusResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.optional(LocationsGetAzureAsyncOperationStatusResponseStatus),
-      error: S.optional(Errors),
+      error: S.optional(ApplicationPropertiesInputErrorsItem),
     }),
   ).annotate({
     identifier: "LocationsGetAzureAsyncOperationStatusResponse",
@@ -5766,7 +5706,7 @@ export interface ScriptActionsGetExecutionAsyncOperationStatusResponse {
   /** The async operation state. */
   status?: ScriptActionsGetExecutionAsyncOperationStatusResponseStatus;
   /** The operation error information. */
-  error?: Errors;
+  error?: ApplicationPropertiesInputErrorsItem;
 }
 export const ScriptActionsGetExecutionAsyncOperationStatusResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -5774,7 +5714,7 @@ export const ScriptActionsGetExecutionAsyncOperationStatusResponse =
       status: S.optional(
         ScriptActionsGetExecutionAsyncOperationStatusResponseStatus,
       ),
-      error: S.optional(Errors),
+      error: S.optional(ApplicationPropertiesInputErrorsItem),
     }),
   ).annotate({
     identifier: "ScriptActionsGetExecutionAsyncOperationStatusResponse",
@@ -6187,13 +6127,13 @@ export interface VirtualMachinesGetAsyncOperationStatusResponse {
   /** The async operation state. */
   status?: VirtualMachinesGetAsyncOperationStatusResponseStatus;
   /** The operation error information. */
-  error?: Errors;
+  error?: ApplicationPropertiesInputErrorsItem;
 }
 export const VirtualMachinesGetAsyncOperationStatusResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: S.optional(VirtualMachinesGetAsyncOperationStatusResponseStatus),
-      error: S.optional(Errors),
+      error: S.optional(ApplicationPropertiesInputErrorsItem),
     }),
   ).annotate({
     identifier: "VirtualMachinesGetAsyncOperationStatusResponse",

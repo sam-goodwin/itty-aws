@@ -511,18 +511,10 @@ export const RecoveryPointsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecoveryPointsGetRequest>;
 
 /** Replication provider specific recovery point details. */
-export interface ProviderSpecificRecoveryPointDetails {
-  /** Gets the provider type. */
-  instanceType: string;
-}
-export const ProviderSpecificRecoveryPointDetails = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-).annotate({
-  identifier: "ProviderSpecificRecoveryPointDetails",
-}) as any as S.Schema<ProviderSpecificRecoveryPointDetails>;
+export type ProviderSpecificRecoveryPointDetails =
+  ClusterProviderSpecificRecoveryPointDetails;
+export const ProviderSpecificRecoveryPointDetails =
+  ClusterProviderSpecificRecoveryPointDetails;
 
 /** Recovery point properties. */
 export interface RecoveryPointProperties {
@@ -531,13 +523,15 @@ export interface RecoveryPointProperties {
   /** The recovery point type: ApplicationConsistent, CrashConsistent. */
   recoveryPointType?: string;
   /** The provider specific details for the recovery point. */
-  providerSpecificDetails?: ProviderSpecificRecoveryPointDetails;
+  providerSpecificDetails?: ClusterProviderSpecificRecoveryPointDetails;
 }
 export const RecoveryPointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recoveryPointTime: S.optional(S.String),
     recoveryPointType: S.optional(S.String),
-    providerSpecificDetails: S.optional(ProviderSpecificRecoveryPointDetails),
+    providerSpecificDetails: S.optional(
+      ClusterProviderSpecificRecoveryPointDetails,
+    ),
   }),
 ).annotate({
   identifier: "RecoveryPointProperties",
@@ -1188,30 +1182,12 @@ export const ReplicationEventsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationEventsGetRequest>;
 
 /** Model class for provider specific details for an event. */
-export interface EventProviderSpecificDetails {
-  /** Gets the class type. Overridden in derived classes. */
-  instanceType: string;
-}
-export const EventProviderSpecificDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "EventProviderSpecificDetails",
-}) as any as S.Schema<EventProviderSpecificDetails>;
+export type EventProviderSpecificDetails = ApplianceSpecificDetails;
+export const EventProviderSpecificDetails = ApplianceSpecificDetails;
 
 /** Model class for event specific details for an event. */
-export interface EventSpecificDetails {
-  /** Gets the class type. Overridden in derived classes. */
-  instanceType: string;
-}
-export const EventSpecificDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "EventSpecificDetails",
-}) as any as S.Schema<EventSpecificDetails>;
+export type EventSpecificDetails = ApplianceSpecificDetails;
+export const EventSpecificDetails = ApplianceSpecificDetails;
 
 /** Value indicating whether the health error is customer resolvable. */
 export type HealthErrorCustomerResolvability = "Allowed" | "NotAllowed";
@@ -1353,9 +1329,9 @@ export interface EventProperties {
   /** The ARM ID of the fabric. */
   fabricId?: string;
   /** The provider specific settings. */
-  providerSpecificDetails?: EventProviderSpecificDetails;
+  providerSpecificDetails?: ApplianceSpecificDetails;
   /** The event specific settings. */
-  eventSpecificDetails?: EventSpecificDetails;
+  eventSpecificDetails?: ApplianceSpecificDetails;
   /** The list of errors / warnings capturing details associated with the issue(s). */
   healthErrors?: EventPropertiesHealthErrorsList;
 }
@@ -1369,8 +1345,8 @@ export const EventProperties = /*@__PURE__*/ S.suspend(() =>
     severity: S.optional(S.String),
     timeOfOccurrence: S.optional(S.String),
     fabricId: S.optional(S.String),
-    providerSpecificDetails: S.optional(EventProviderSpecificDetails),
-    eventSpecificDetails: S.optional(EventSpecificDetails),
+    providerSpecificDetails: S.optional(ApplianceSpecificDetails),
+    eventSpecificDetails: S.optional(ApplianceSpecificDetails),
     healthErrors: S.optional(EventPropertiesHealthErrorsList),
   }),
 ).annotate({
@@ -1529,17 +1505,8 @@ export const EncryptionDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionDetails>;
 
 /** Fabric specific details. */
-export interface FabricSpecificDetails {
-  /** Gets the class type. Overridden in derived classes. */
-  instanceType: string;
-}
-export const FabricSpecificDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "FabricSpecificDetails",
-}) as any as S.Schema<FabricSpecificDetails>;
+export type FabricSpecificDetails = ApplianceSpecificDetails;
+export const FabricSpecificDetails = ApplianceSpecificDetails;
 
 /** Fabric health error details. */
 export type FabricPropertiesHealthErrorDetailsList = Array<HealthError>;
@@ -1560,7 +1527,7 @@ export interface FabricProperties {
   /** BCDR state of the fabric. */
   bcdrState?: string;
   /** Fabric specific settings. */
-  customDetails?: FabricSpecificDetails;
+  customDetails?: ApplianceSpecificDetails;
   /** Fabric health error details. */
   healthErrorDetails?: FabricPropertiesHealthErrorDetailsList;
   /** Health of fabric. */
@@ -1573,7 +1540,7 @@ export const FabricProperties = /*@__PURE__*/ S.suspend(() =>
     rolloverEncryptionDetails: S.optional(EncryptionDetails),
     internalIdentifier: S.optional(S.String),
     bcdrState: S.optional(S.String),
-    customDetails: S.optional(FabricSpecificDetails),
+    customDetails: S.optional(ApplianceSpecificDetails),
     healthErrorDetails: S.optional(FabricPropertiesHealthErrorDetailsList),
     health: S.optional(S.String),
   }),
@@ -3461,26 +3428,18 @@ export const ReplicationMigrationItemsListByReplicationProtectionContainersReque
   }) as any as S.Schema<ReplicationMigrationItemsListByReplicationProtectionContainersRequest>;
 
 /** Migrate provider specific input. */
-export interface MigrateProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const MigrateProviderSpecificInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "MigrateProviderSpecificInput",
-}) as any as S.Schema<MigrateProviderSpecificInput>;
+export type MigrateProviderSpecificInput = EnableMigrationProviderSpecificInput;
+export const MigrateProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Migrate input properties. */
 export interface MigrateInputProperties {
   /** The provider specific details. */
-  providerSpecificDetails: MigrateProviderSpecificInput;
+  providerSpecificDetails: EnableMigrationProviderSpecificInput;
 }
 export const MigrateInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    providerSpecificDetails: MigrateProviderSpecificInput,
+    providerSpecificDetails: EnableMigrationProviderSpecificInput,
   }),
 ).annotate({
   identifier: "MigrateInputProperties",
@@ -3553,17 +3512,10 @@ export const ReplicationMigrationItemsMigrateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReplicationMigrationItemsMigrateResponse>;
 
 /** Pause replication input properties. */
-export interface PauseReplicationInputProperties {
-  /** The class type. */
-  instanceType: string;
-}
-export const PauseReplicationInputProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "PauseReplicationInputProperties",
-}) as any as S.Schema<PauseReplicationInputProperties>;
+export type PauseReplicationInputProperties =
+  EnableMigrationProviderSpecificInput;
+export const PauseReplicationInputProperties =
+  EnableMigrationProviderSpecificInput;
 
 export interface ReplicationMigrationItemsPauseReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3579,7 +3531,7 @@ export interface ReplicationMigrationItemsPauseReplicationRequest {
   /** Migration item name. */
   migrationItemName: string;
   /** Pause replication input properties. */
-  properties: PauseReplicationInputProperties;
+  properties: EnableMigrationProviderSpecificInput;
 }
 export const ReplicationMigrationItemsPauseReplicationRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3590,7 +3542,7 @@ export const ReplicationMigrationItemsPauseReplicationRequest =
       fabricName: S.String.pipe(T.Label()),
       protectionContainerName: S.String.pipe(T.Label()),
       migrationItemName: S.String.pipe(T.Label()),
-      properties: PauseReplicationInputProperties,
+      properties: EnableMigrationProviderSpecificInput,
     }).pipe(
       T.Http({
         method: "POST",
@@ -3632,27 +3584,19 @@ export const ReplicationMigrationItemsPauseReplicationResponse =
   }) as any as S.Schema<ReplicationMigrationItemsPauseReplicationResponse>;
 
 /** Resume replication provider specific input. */
-export interface ResumeReplicationProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const ResumeReplicationProviderSpecificInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-).annotate({
-  identifier: "ResumeReplicationProviderSpecificInput",
-}) as any as S.Schema<ResumeReplicationProviderSpecificInput>;
+export type ResumeReplicationProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const ResumeReplicationProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Resume replication input properties. */
 export interface ResumeReplicationInputProperties {
   /** The provider specific input for resume replication. */
-  providerSpecificDetails: ResumeReplicationProviderSpecificInput;
+  providerSpecificDetails: EnableMigrationProviderSpecificInput;
 }
 export const ResumeReplicationInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    providerSpecificDetails: ResumeReplicationProviderSpecificInput,
+    providerSpecificDetails: EnableMigrationProviderSpecificInput,
   }),
 ).annotate({
   identifier: "ResumeReplicationInputProperties",
@@ -3725,30 +3669,12 @@ export const ReplicationMigrationItemsResumeReplicationResponse =
   }) as any as S.Schema<ReplicationMigrationItemsResumeReplicationResponse>;
 
 /** Resync provider specific input. */
-export interface ResyncProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const ResyncProviderSpecificInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "ResyncProviderSpecificInput",
-}) as any as S.Schema<ResyncProviderSpecificInput>;
+export type ResyncProviderSpecificInput = EnableMigrationProviderSpecificInput;
+export const ResyncProviderSpecificInput = EnableMigrationProviderSpecificInput;
 
 /** Resync input properties. */
-export interface ResyncInputProperties {
-  /** The provider specific details. */
-  providerSpecificDetails: ResyncProviderSpecificInput;
-}
-export const ResyncInputProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerSpecificDetails: ResyncProviderSpecificInput,
-  }),
-).annotate({
-  identifier: "ResyncInputProperties",
-}) as any as S.Schema<ResyncInputProperties>;
+export type ResyncInputProperties = MigrateInputProperties;
+export const ResyncInputProperties = MigrateInputProperties;
 
 export interface ReplicationMigrationItemsResyncRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3764,7 +3690,7 @@ export interface ReplicationMigrationItemsResyncRequest {
   /** Migration item name. */
   migrationItemName: string;
   /** Resync input properties. */
-  properties: ResyncInputProperties;
+  properties: MigrateInputProperties;
 }
 export const ReplicationMigrationItemsResyncRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3775,7 +3701,7 @@ export const ReplicationMigrationItemsResyncRequest = /*@__PURE__*/ S.suspend(
       fabricName: S.String.pipe(T.Label()),
       protectionContainerName: S.String.pipe(T.Label()),
       migrationItemName: S.String.pipe(T.Label()),
-      properties: ResyncInputProperties,
+      properties: MigrateInputProperties,
     }).pipe(
       T.Http({
         method: "POST",
@@ -3817,30 +3743,14 @@ export const ReplicationMigrationItemsResyncResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReplicationMigrationItemsResyncResponse>;
 
 /** Test migrate provider specific input. */
-export interface TestMigrateProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const TestMigrateProviderSpecificInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "TestMigrateProviderSpecificInput",
-}) as any as S.Schema<TestMigrateProviderSpecificInput>;
+export type TestMigrateProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const TestMigrateProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Test migrate input properties. */
-export interface TestMigrateInputProperties {
-  /** The provider specific details. */
-  providerSpecificDetails: TestMigrateProviderSpecificInput;
-}
-export const TestMigrateInputProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    providerSpecificDetails: TestMigrateProviderSpecificInput,
-  }),
-).annotate({
-  identifier: "TestMigrateInputProperties",
-}) as any as S.Schema<TestMigrateInputProperties>;
+export type TestMigrateInputProperties = MigrateInputProperties;
+export const TestMigrateInputProperties = MigrateInputProperties;
 
 export interface ReplicationMigrationItemsTestMigrateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3856,7 +3766,7 @@ export interface ReplicationMigrationItemsTestMigrateRequest {
   /** Migration item name. */
   migrationItemName: string;
   /** Test migrate input properties. */
-  properties: TestMigrateInputProperties;
+  properties: MigrateInputProperties;
 }
 export const ReplicationMigrationItemsTestMigrateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3867,7 +3777,7 @@ export const ReplicationMigrationItemsTestMigrateRequest =
       fabricName: S.String.pipe(T.Label()),
       protectionContainerName: S.String.pipe(T.Label()),
       migrationItemName: S.String.pipe(T.Label()),
-      properties: TestMigrateInputProperties,
+      properties: MigrateInputProperties,
     }).pipe(
       T.Http({
         method: "POST",
@@ -3988,27 +3898,19 @@ export const ReplicationMigrationItemsTestMigrateCleanupResponse =
   }) as any as S.Schema<ReplicationMigrationItemsTestMigrateCleanupResponse>;
 
 /** Update migration item provider specific input. */
-export interface UpdateMigrationItemProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const UpdateMigrationItemProviderSpecificInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-).annotate({
-  identifier: "UpdateMigrationItemProviderSpecificInput",
-}) as any as S.Schema<UpdateMigrationItemProviderSpecificInput>;
+export type UpdateMigrationItemProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const UpdateMigrationItemProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Update migration item input properties. */
 export interface UpdateMigrationItemInputProperties {
   /** The provider specific input to update migration item. */
-  providerSpecificDetails: UpdateMigrationItemProviderSpecificInput;
+  providerSpecificDetails: EnableMigrationProviderSpecificInput;
 }
 export const UpdateMigrationItemInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    providerSpecificDetails: UpdateMigrationItemProviderSpecificInput,
+    providerSpecificDetails: EnableMigrationProviderSpecificInput,
   }),
 ).annotate({
   identifier: "UpdateMigrationItemInputProperties",
@@ -4442,18 +4344,10 @@ export const ReplicationNetworkMappingsListByReplicationNetworksRequest =
   }) as any as S.Schema<ReplicationNetworkMappingsListByReplicationNetworksRequest>;
 
 /** Input details specific to fabrics during Network Mapping. */
-export interface FabricSpecificUpdateNetworkMappingInput {
-  /** The instance type. */
-  instanceType: string;
-}
-export const FabricSpecificUpdateNetworkMappingInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-).annotate({
-  identifier: "FabricSpecificUpdateNetworkMappingInput",
-}) as any as S.Schema<FabricSpecificUpdateNetworkMappingInput>;
+export type FabricSpecificUpdateNetworkMappingInput =
+  FabricSpecificCreateNetworkMappingInput;
+export const FabricSpecificUpdateNetworkMappingInput =
+  FabricSpecificCreateNetworkMappingInput;
 
 /** Common input details for network mapping operation. */
 export interface UpdateNetworkMappingInputProperties {
@@ -4462,13 +4356,13 @@ export interface UpdateNetworkMappingInputProperties {
   /** Recovery network Id. */
   recoveryNetworkId?: string;
   /** Fabrics specific input network Id. */
-  fabricSpecificDetails?: FabricSpecificUpdateNetworkMappingInput;
+  fabricSpecificDetails?: FabricSpecificCreateNetworkMappingInput;
 }
 export const UpdateNetworkMappingInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recoveryFabricName: S.optional(S.String),
     recoveryNetworkId: S.optional(S.String),
-    fabricSpecificDetails: S.optional(FabricSpecificUpdateNetworkMappingInput),
+    fabricSpecificDetails: S.optional(FabricSpecificCreateNetworkMappingInput),
   }),
 ).annotate({
   identifier: "UpdateNetworkMappingInputProperties",
@@ -4752,26 +4646,17 @@ export const ReplicationNetworksListByReplicationFabricsRequest =
   }) as any as S.Schema<ReplicationNetworksListByReplicationFabricsRequest>;
 
 /** Base class for provider specific input. */
-export interface PolicyProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const PolicyProviderSpecificInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "PolicyProviderSpecificInput",
-}) as any as S.Schema<PolicyProviderSpecificInput>;
+export type PolicyProviderSpecificInput = EnableMigrationProviderSpecificInput;
+export const PolicyProviderSpecificInput = EnableMigrationProviderSpecificInput;
 
 /** Policy creation properties. */
 export interface CreatePolicyInputProperties {
   /** The ReplicationProviderSettings. */
-  providerSpecificInput?: PolicyProviderSpecificInput;
+  providerSpecificInput?: EnableMigrationProviderSpecificInput;
 }
 export const CreatePolicyInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    providerSpecificInput: S.optional(PolicyProviderSpecificInput),
+    providerSpecificInput: S.optional(EnableMigrationProviderSpecificInput),
   }),
 ).annotate({
   identifier: "CreatePolicyInputProperties",
@@ -4809,29 +4694,20 @@ export const ReplicationPoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationPoliciesCreateRequest>;
 
 /** Base class for Provider specific details for policies. */
-export interface PolicyProviderSpecificDetails {
-  /** Gets the class type. Overridden in derived classes. */
-  instanceType: string;
-}
-export const PolicyProviderSpecificDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "PolicyProviderSpecificDetails",
-}) as any as S.Schema<PolicyProviderSpecificDetails>;
+export type PolicyProviderSpecificDetails = ApplianceSpecificDetails;
+export const PolicyProviderSpecificDetails = ApplianceSpecificDetails;
 
 /** Protection profile custom data details. */
 export interface PolicyProperties {
   /** The FriendlyName. */
   friendlyName?: string;
   /** The ReplicationChannelSetting. */
-  providerSpecificDetails?: PolicyProviderSpecificDetails;
+  providerSpecificDetails?: ApplianceSpecificDetails;
 }
 export const PolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     friendlyName: S.optional(S.String),
-    providerSpecificDetails: S.optional(PolicyProviderSpecificDetails),
+    providerSpecificDetails: S.optional(ApplianceSpecificDetails),
   }),
 ).annotate({
   identifier: "PolicyProperties",
@@ -5030,11 +4906,13 @@ export const PolicyCollection = /*@__PURE__*/ S.suspend(() =>
 /** Policy update properties. */
 export interface UpdatePolicyInputProperties {
   /** The ReplicationProviderSettings. */
-  replicationProviderSettings?: PolicyProviderSpecificInput;
+  replicationProviderSettings?: EnableMigrationProviderSpecificInput;
 }
 export const UpdatePolicyInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    replicationProviderSettings: S.optional(PolicyProviderSpecificInput),
+    replicationProviderSettings: S.optional(
+      EnableMigrationProviderSpecificInput,
+    ),
   }),
 ).annotate({
   identifier: "UpdatePolicyInputProperties",
@@ -5150,17 +5028,8 @@ export const ProtectableItemPropertiesSupportedReplicationProvidersList =
   ) as any as S.Schema<ProtectableItemPropertiesSupportedReplicationProvidersList>;
 
 /** Replication provider specific settings. */
-export interface ConfigurationSettings {
-  /** Gets the class type. Overridden in derived classes. */
-  instanceType: string;
-}
-export const ConfigurationSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "ConfigurationSettings",
-}) as any as S.Schema<ConfigurationSettings>;
+export type ConfigurationSettings = ApplianceSpecificDetails;
+export const ConfigurationSettings = ApplianceSpecificDetails;
 
 /** Replication protected item custom data details. */
 export interface ProtectableItemProperties {
@@ -5177,7 +5046,7 @@ export interface ProtectableItemProperties {
   /** The list of replication providers supported for the protectable item. */
   supportedReplicationProviders?: ProtectableItemPropertiesSupportedReplicationProvidersList;
   /** The Replication provider custom settings. */
-  customDetails?: ConfigurationSettings;
+  customDetails?: ApplianceSpecificDetails;
 }
 export const ProtectableItemProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5191,7 +5060,7 @@ export const ProtectableItemProperties = /*@__PURE__*/ S.suspend(() =>
     supportedReplicationProviders: S.optional(
       ProtectableItemPropertiesSupportedReplicationProvidersList,
     ),
-    customDetails: S.optional(ConfigurationSettings),
+    customDetails: S.optional(ApplianceSpecificDetails),
   }),
 ).annotate({
   identifier: "ProtectableItemProperties",
@@ -5318,26 +5187,19 @@ export const ProtectableItemCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProtectableItemCollection>;
 
 /** Add Disks provider specific input. */
-export interface AddDisksProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const AddDisksProviderSpecificInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "AddDisksProviderSpecificInput",
-}) as any as S.Schema<AddDisksProviderSpecificInput>;
+export type AddDisksProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const AddDisksProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Add Disks input properties. */
 export interface AddDisksInputProperties {
   /** The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider, it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null. */
-  providerSpecificDetails: AddDisksProviderSpecificInput;
+  providerSpecificDetails: EnableMigrationProviderSpecificInput;
 }
 export const AddDisksInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    providerSpecificDetails: AddDisksProviderSpecificInput,
+    providerSpecificDetails: EnableMigrationProviderSpecificInput,
   }),
 ).annotate({
   identifier: "AddDisksInputProperties",
@@ -5417,17 +5279,10 @@ export const CurrentScenarioDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CurrentScenarioDetails>;
 
 /** Replication provider specific settings. */
-export interface ReplicationProviderSpecificSettings {
-  /** Gets the Instance type. */
-  instanceType: string;
-}
-export const ReplicationProviderSpecificSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "ReplicationProviderSpecificSettings",
-}) as any as S.Schema<ReplicationProviderSpecificSettings>;
+export type ReplicationProviderSpecificSettings =
+  NetworkMappingFabricSpecificSettings;
+export const ReplicationProviderSpecificSettings =
+  NetworkMappingFabricSpecificSettings;
 
 /** Replication protected item custom data details. */
 export interface ReplicationProtectedItemProperties {
@@ -5486,7 +5341,7 @@ export interface ReplicationProtectedItemProperties {
   /** The recovery point ARM Id to which the Vm was failed over. */
   failoverRecoveryPointId?: string;
   /** The Replication provider custom settings. */
-  providerSpecificDetails?: ReplicationProviderSpecificSettings;
+  providerSpecificDetails?: NetworkMappingFabricSpecificSettings;
   /** The recovery container Id. */
   recoveryContainerId?: string;
   /** The correlation Id for events associated with this protected item. */
@@ -5525,7 +5380,7 @@ export const ReplicationProtectedItemProperties = /*@__PURE__*/ S.suspend(() =>
     lastSuccessfulTestFailoverTime: S.optional(S.String),
     currentScenario: S.optional(CurrentScenarioDetails),
     failoverRecoveryPointId: S.optional(S.String),
-    providerSpecificDetails: S.optional(ReplicationProviderSpecificSettings),
+    providerSpecificDetails: S.optional(NetworkMappingFabricSpecificSettings),
     recoveryContainerId: S.optional(S.String),
     eventCorrelationId: S.optional(S.String),
   }),
@@ -5562,30 +5417,22 @@ export const ReplicationProtectedItemsAddDisksResponse =
   }) as any as S.Schema<ReplicationProtectedItemsAddDisksResponse>;
 
 /** Provider specific input for apply recovery point. */
-export interface ApplyRecoveryPointProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const ApplyRecoveryPointProviderSpecificInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-).annotate({
-  identifier: "ApplyRecoveryPointProviderSpecificInput",
-}) as any as S.Schema<ApplyRecoveryPointProviderSpecificInput>;
+export type ApplyRecoveryPointProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const ApplyRecoveryPointProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Input properties to apply recovery point. */
 export interface ApplyRecoveryPointInputProperties {
   /** The recovery point Id. */
   recoveryPointId?: string;
   /** Provider specific input for applying recovery point. */
-  providerSpecificDetails: ApplyRecoveryPointProviderSpecificInput;
+  providerSpecificDetails: EnableMigrationProviderSpecificInput;
 }
 export const ApplyRecoveryPointInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recoveryPointId: S.optional(S.String),
-    providerSpecificDetails: ApplyRecoveryPointProviderSpecificInput,
+    providerSpecificDetails: EnableMigrationProviderSpecificInput,
   }),
 ).annotate({
   identifier: "ApplyRecoveryPointInputProperties",
@@ -5658,18 +5505,10 @@ export const ReplicationProtectedItemsApplyRecoveryPointResponse =
   }) as any as S.Schema<ReplicationProtectedItemsApplyRecoveryPointResponse>;
 
 /** Enable protection provider specific input. */
-export interface EnableProtectionProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const EnableProtectionProviderSpecificInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-).annotate({
-  identifier: "EnableProtectionProviderSpecificInput",
-}) as any as S.Schema<EnableProtectionProviderSpecificInput>;
+export type EnableProtectionProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const EnableProtectionProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Enable protection input properties. */
 export interface EnableProtectionInputProperties {
@@ -5678,13 +5517,13 @@ export interface EnableProtectionInputProperties {
   /** The protectable item Id. */
   protectableItemId?: string;
   /** The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider, it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null. */
-  providerSpecificDetails?: EnableProtectionProviderSpecificInput;
+  providerSpecificDetails?: EnableMigrationProviderSpecificInput;
 }
 export const EnableProtectionInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyId: S.optional(S.String),
     protectableItemId: S.optional(S.String),
-    providerSpecificDetails: S.optional(EnableProtectionProviderSpecificInput),
+    providerSpecificDetails: S.optional(EnableMigrationProviderSpecificInput),
   }),
 ).annotate({
   identifier: "EnableProtectionInputProperties",
@@ -5761,32 +5600,22 @@ export type DisableProtectionReason = "NotSpecified" | "MigrationComplete";
 export const DisableProtectionReason = /*@__PURE__*/ S.String;
 
 /** Disable protection provider specific input. */
-export interface DisableProtectionProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const DisableProtectionProviderSpecificInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-).annotate({
-  identifier: "DisableProtectionProviderSpecificInput",
-}) as any as S.Schema<DisableProtectionProviderSpecificInput>;
+export type DisableProtectionProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const DisableProtectionProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Disable protection input properties. */
 export interface DisableProtectionInputProperties {
   /** Disable protection reason. It can have values NotSpecified/MigrationComplete. */
   disableProtectionReason?: DisableProtectionReason | (string & {});
   /** Replication provider specific input. */
-  replicationProviderInput?: DisableProtectionProviderSpecificInput;
+  replicationProviderInput?: EnableMigrationProviderSpecificInput;
 }
 export const DisableProtectionInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableProtectionReason: S.optional(DisableProtectionReason),
-    replicationProviderInput: S.optional(
-      DisableProtectionProviderSpecificInput,
-    ),
+    replicationProviderInput: S.optional(EnableMigrationProviderSpecificInput),
   }),
 ).annotate({
   identifier: "DisableProtectionInputProperties",
@@ -6143,32 +5972,22 @@ export const ReplicationProtectedItemsListByReplicationProtectionContainersReque
   }) as any as S.Schema<ReplicationProtectedItemsListByReplicationProtectionContainersRequest>;
 
 /** Provider specific failover input. */
-export interface PlannedFailoverProviderSpecificFailoverInput {
-  /** The class type. */
-  instanceType: string;
-}
+export type PlannedFailoverProviderSpecificFailoverInput =
+  EnableMigrationProviderSpecificInput;
 export const PlannedFailoverProviderSpecificFailoverInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "PlannedFailoverProviderSpecificFailoverInput",
-  }) as any as S.Schema<PlannedFailoverProviderSpecificFailoverInput>;
+  EnableMigrationProviderSpecificInput;
 
 /** Input definition for planned failover input properties. */
 export interface PlannedFailoverInputProperties {
   /** Failover direction. */
   failoverDirection?: string;
   /** Provider specific settings. */
-  providerSpecificDetails?: PlannedFailoverProviderSpecificFailoverInput;
+  providerSpecificDetails?: EnableMigrationProviderSpecificInput;
 }
 export const PlannedFailoverInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverDirection: S.optional(S.String),
-    providerSpecificDetails: S.optional(
-      PlannedFailoverProviderSpecificFailoverInput,
-    ),
+    providerSpecificDetails: S.optional(EnableMigrationProviderSpecificInput),
   }),
 ).annotate({
   identifier: "PlannedFailoverInputProperties",
@@ -6363,26 +6182,19 @@ export const ReplicationProtectedItemsReinstallMobilityServiceResponse =
   }) as any as S.Schema<ReplicationProtectedItemsReinstallMobilityServiceResponse>;
 
 /** Remove Disk provider specific input. */
-export interface RemoveDisksProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const RemoveDisksProviderSpecificInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "RemoveDisksProviderSpecificInput",
-}) as any as S.Schema<RemoveDisksProviderSpecificInput>;
+export type RemoveDisksProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const RemoveDisksProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Remove Disk input properties. */
 export interface RemoveDisksInputProperties {
   /** The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider, it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null. */
-  providerSpecificDetails?: RemoveDisksProviderSpecificInput;
+  providerSpecificDetails?: EnableMigrationProviderSpecificInput;
 }
 export const RemoveDisksInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    providerSpecificDetails: S.optional(RemoveDisksProviderSpecificInput),
+    providerSpecificDetails: S.optional(EnableMigrationProviderSpecificInput),
   }),
 ).annotate({
   identifier: "RemoveDisksInputProperties",
@@ -6518,32 +6330,22 @@ export const ReplicationProtectedItemsRepairReplicationResponse =
   }) as any as S.Schema<ReplicationProtectedItemsRepairReplicationResponse>;
 
 /** Provider specific reverse replication input. */
-export interface ReverseReplicationProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const ReverseReplicationProviderSpecificInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-).annotate({
-  identifier: "ReverseReplicationProviderSpecificInput",
-}) as any as S.Schema<ReverseReplicationProviderSpecificInput>;
+export type ReverseReplicationProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const ReverseReplicationProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Reverse replication input properties. */
 export interface ReverseReplicationInputProperties {
   /** Failover direction. */
   failoverDirection?: string;
   /** Provider specific reverse replication input. */
-  providerSpecificDetails?: ReverseReplicationProviderSpecificInput;
+  providerSpecificDetails?: EnableMigrationProviderSpecificInput;
 }
 export const ReverseReplicationInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverDirection: S.optional(S.String),
-    providerSpecificDetails: S.optional(
-      ReverseReplicationProviderSpecificInput,
-    ),
+    providerSpecificDetails: S.optional(EnableMigrationProviderSpecificInput),
   }),
 ).annotate({
   identifier: "ReverseReplicationInputProperties",
@@ -6716,29 +6518,22 @@ export const ReplicationProtectedItemsResolveHealthErrorsResponse =
   }) as any as S.Schema<ReplicationProtectedItemsResolveHealthErrorsResponse>;
 
 /** Provider specific switch provider input. */
-export interface SwitchProviderProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const SwitchProviderProviderSpecificInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "SwitchProviderProviderSpecificInput",
-}) as any as S.Schema<SwitchProviderProviderSpecificInput>;
+export type SwitchProviderProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const SwitchProviderProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Input definition for switch provider input properties. */
 export interface SwitchProviderInputProperties {
   /** Target provider type. */
   targetInstanceType?: string;
   /** Provider specific settings. */
-  providerSpecificDetails?: SwitchProviderProviderSpecificInput;
+  providerSpecificDetails?: EnableMigrationProviderSpecificInput;
 }
 export const SwitchProviderInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetInstanceType: S.optional(S.String),
-    providerSpecificDetails: S.optional(SwitchProviderProviderSpecificInput),
+    providerSpecificDetails: S.optional(EnableMigrationProviderSpecificInput),
   }),
 ).annotate({
   identifier: "SwitchProviderInputProperties",
@@ -6811,17 +6606,10 @@ export const ReplicationProtectedItemsSwitchProviderResponse =
   }) as any as S.Schema<ReplicationProtectedItemsSwitchProviderResponse>;
 
 /** Provider specific test failover input. */
-export interface TestFailoverProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const TestFailoverProviderSpecificInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "TestFailoverProviderSpecificInput",
-}) as any as S.Schema<TestFailoverProviderSpecificInput>;
+export type TestFailoverProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const TestFailoverProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Input definition for test failover input properties. */
 export interface TestFailoverInputProperties {
@@ -6832,14 +6620,14 @@ export interface TestFailoverInputProperties {
   /** The id of the network to be used for test failover. */
   networkId?: string;
   /** Provider specific settings. */
-  providerSpecificDetails?: TestFailoverProviderSpecificInput;
+  providerSpecificDetails?: EnableMigrationProviderSpecificInput;
 }
 export const TestFailoverInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverDirection: S.optional(S.String),
     networkType: S.optional(S.String),
     networkId: S.optional(S.String),
-    providerSpecificDetails: S.optional(TestFailoverProviderSpecificInput),
+    providerSpecificDetails: S.optional(EnableMigrationProviderSpecificInput),
   }),
 ).annotate({
   identifier: "TestFailoverInputProperties",
@@ -6991,18 +6779,10 @@ export const ReplicationProtectedItemsTestFailoverCleanupResponse =
   }) as any as S.Schema<ReplicationProtectedItemsTestFailoverCleanupResponse>;
 
 /** Provider specific unplanned failover input. */
-export interface UnplannedFailoverProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const UnplannedFailoverProviderSpecificInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-).annotate({
-  identifier: "UnplannedFailoverProviderSpecificInput",
-}) as any as S.Schema<UnplannedFailoverProviderSpecificInput>;
+export type UnplannedFailoverProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const UnplannedFailoverProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Input definition for unplanned failover input properties. */
 export interface UnplannedFailoverInputProperties {
@@ -7011,13 +6791,13 @@ export interface UnplannedFailoverInputProperties {
   /** Source site operations status. */
   sourceSiteOperations?: string;
   /** Provider specific settings. */
-  providerSpecificDetails?: UnplannedFailoverProviderSpecificInput;
+  providerSpecificDetails?: EnableMigrationProviderSpecificInput;
 }
 export const UnplannedFailoverInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverDirection: S.optional(S.String),
     sourceSiteOperations: S.optional(S.String),
-    providerSpecificDetails: S.optional(UnplannedFailoverProviderSpecificInput),
+    providerSpecificDetails: S.optional(EnableMigrationProviderSpecificInput),
   }),
 ).annotate({
   identifier: "UnplannedFailoverInputProperties",
@@ -7208,18 +6988,10 @@ export type LicenseType = "NotSpecified" | "NoLicenseType" | "WindowsServer";
 export const LicenseType = /*@__PURE__*/ S.String;
 
 /** Update replication protected item provider specific input. */
-export interface UpdateReplicationProtectedItemProviderInput {
-  /** The class type. */
-  instanceType: string;
-}
+export type UpdateReplicationProtectedItemProviderInput =
+  EnableMigrationProviderSpecificInput;
 export const UpdateReplicationProtectedItemProviderInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateReplicationProtectedItemProviderInput",
-  }) as any as S.Schema<UpdateReplicationProtectedItemProviderInput>;
+  EnableMigrationProviderSpecificInput;
 
 /** Update protected item input properties. */
 export interface UpdateReplicationProtectedItemInputProperties {
@@ -7242,7 +7014,7 @@ export interface UpdateReplicationProtectedItemInputProperties {
   /** The target availability set Id. */
   recoveryAvailabilitySetId?: string;
   /** The provider specific input to update replication protected item. */
-  providerSpecificDetails?: UpdateReplicationProtectedItemProviderInput;
+  providerSpecificDetails?: EnableMigrationProviderSpecificInput;
 }
 export const UpdateReplicationProtectedItemInputProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -7258,9 +7030,7 @@ export const UpdateReplicationProtectedItemInputProperties =
       ),
       licenseType: S.optional(LicenseType),
       recoveryAvailabilitySetId: S.optional(S.String),
-      providerSpecificDetails: S.optional(
-        UpdateReplicationProtectedItemProviderInput,
-      ),
+      providerSpecificDetails: S.optional(EnableMigrationProviderSpecificInput),
     }),
   ).annotate({
     identifier: "UpdateReplicationProtectedItemInputProperties",
@@ -7333,33 +7103,23 @@ export const ReplicationProtectedItemsUpdateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ReplicationProtectedItemsUpdateResponse>;
 
 /** Update replication protected item provider specific input. */
-export interface UpdateApplianceForReplicationProtectedItemProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
+export type UpdateApplianceForReplicationProtectedItemProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 export const UpdateApplianceForReplicationProtectedItemProviderSpecificInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "UpdateApplianceForReplicationProtectedItemProviderSpecificInput",
-  }) as any as S.Schema<UpdateApplianceForReplicationProtectedItemProviderSpecificInput>;
+  EnableMigrationProviderSpecificInput;
 
 /** Update appliance for protected item input properties. */
 export interface UpdateApplianceForReplicationProtectedItemInputProperties {
   /** The target appliance Id. */
   targetApplianceId: string;
   /** The provider specific input to update replication protected item. */
-  providerSpecificDetails: UpdateApplianceForReplicationProtectedItemProviderSpecificInput;
+  providerSpecificDetails: EnableMigrationProviderSpecificInput;
 }
 export const UpdateApplianceForReplicationProtectedItemInputProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetApplianceId: S.String,
-      providerSpecificDetails:
-        UpdateApplianceForReplicationProtectedItemProviderSpecificInput,
+      providerSpecificDetails: EnableMigrationProviderSpecificInput,
     }),
   ).annotate({
     identifier: "UpdateApplianceForReplicationProtectedItemInputProperties",
@@ -7432,18 +7192,10 @@ export const ReplicationProtectedItemsUpdateApplianceResponse =
   }) as any as S.Schema<ReplicationProtectedItemsUpdateApplianceResponse>;
 
 /** The properties of an update mobility service request. */
-export interface UpdateMobilityServiceRequestProperties {
-  /** The CS run as account Id. */
-  runAsAccountId?: string;
-}
-export const UpdateMobilityServiceRequestProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      runAsAccountId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "UpdateMobilityServiceRequestProperties",
-}) as any as S.Schema<UpdateMobilityServiceRequestProperties>;
+export type UpdateMobilityServiceRequestProperties =
+  ReinstallMobilityServiceRequestProperties;
+export const UpdateMobilityServiceRequestProperties =
+  ReinstallMobilityServiceRequestProperties;
 
 export interface ReplicationProtectedItemsUpdateMobilityServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7459,7 +7211,7 @@ export interface ReplicationProtectedItemsUpdateMobilityServiceRequest {
   /** Replication protected item name. */
   replicatedProtectedItemName: string;
   /** The properties of the update mobility service request. */
-  properties?: UpdateMobilityServiceRequestProperties;
+  properties?: ReinstallMobilityServiceRequestProperties;
 }
 export const ReplicationProtectedItemsUpdateMobilityServiceRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7470,7 +7222,7 @@ export const ReplicationProtectedItemsUpdateMobilityServiceRequest =
       fabricName: S.String.pipe(T.Label()),
       protectionContainerName: S.String.pipe(T.Label()),
       replicatedProtectedItemName: S.String.pipe(T.Label()),
-      properties: S.optional(UpdateMobilityServiceRequestProperties),
+      properties: S.optional(ReinstallMobilityServiceRequestProperties),
     }).pipe(
       T.Http({
         method: "POST",
@@ -7520,18 +7272,10 @@ export const ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPoint
   ) as any as S.Schema<ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPointsList>;
 
 /** Provider specific input for apply cluster recovery point. */
-export interface ApplyClusterRecoveryPointProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
+export type ApplyClusterRecoveryPointProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 export const ApplyClusterRecoveryPointProviderSpecificInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "ApplyClusterRecoveryPointProviderSpecificInput",
-  }) as any as S.Schema<ApplyClusterRecoveryPointProviderSpecificInput>;
+  EnableMigrationProviderSpecificInput;
 
 /** Input definition for apply cluster recovery point properties. */
 export interface ApplyClusterRecoveryPointInputProperties {
@@ -7540,7 +7284,7 @@ export interface ApplyClusterRecoveryPointInputProperties {
   /** The list of individual node recovery points. */
   individualNodeRecoveryPoints?: ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPointsList;
   /** The provider specific input for applying cluster recovery point. */
-  providerSpecificDetails: ApplyClusterRecoveryPointProviderSpecificInput;
+  providerSpecificDetails: EnableMigrationProviderSpecificInput;
 }
 export const ApplyClusterRecoveryPointInputProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -7549,7 +7293,7 @@ export const ApplyClusterRecoveryPointInputProperties = /*@__PURE__*/ S.suspend(
       individualNodeRecoveryPoints: S.optional(
         ApplyClusterRecoveryPointInputPropertiesIndividualNodeRecoveryPointsList,
       ),
-      providerSpecificDetails: ApplyClusterRecoveryPointProviderSpecificInput,
+      providerSpecificDetails: EnableMigrationProviderSpecificInput,
     }),
 ).annotate({
   identifier: "ApplyClusterRecoveryPointInputProperties",
@@ -7656,18 +7400,10 @@ export const ReplicationProtectionClusterPropertiesClusterRegisteredNodesList =
   ) as any as S.Schema<ReplicationProtectionClusterPropertiesClusterRegisteredNodesList>;
 
 /** Replication cluster provider specific settings. */
-export interface ReplicationClusterProviderSpecificSettings {
-  /** Gets the Instance type. */
-  instanceType: string;
-}
+export type ReplicationClusterProviderSpecificSettings =
+  NetworkMappingFabricSpecificSettings;
 export const ReplicationClusterProviderSpecificSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "ReplicationClusterProviderSpecificSettings",
-  }) as any as S.Schema<ReplicationClusterProviderSpecificSettings>;
+  NetworkMappingFabricSpecificSettings;
 
 /** The allowed operations on the Replication protected item. */
 export type SharedDiskReplicationItemPropertiesAllowedOperationsList =
@@ -7686,18 +7422,10 @@ export const SharedDiskReplicationItemPropertiesHealthErrorsList =
   ) as any as S.Schema<SharedDiskReplicationItemPropertiesHealthErrorsList>;
 
 /** Replication provider specific settings. */
-export interface SharedDiskReplicationProviderSpecificSettings {
-  /** Gets the Instance type. */
-  instanceType: string;
-}
+export type SharedDiskReplicationProviderSpecificSettings =
+  NetworkMappingFabricSpecificSettings;
 export const SharedDiskReplicationProviderSpecificSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "SharedDiskReplicationProviderSpecificSettings",
-  }) as any as S.Schema<SharedDiskReplicationProviderSpecificSettings>;
+  NetworkMappingFabricSpecificSettings;
 
 /** Shared Disk Replication item custom data details. */
 export interface SharedDiskReplicationItemProperties {
@@ -7716,7 +7444,7 @@ export interface SharedDiskReplicationItemProperties {
   /** The current scenario. */
   currentScenario?: CurrentScenarioDetails;
   /** The Replication provider custom settings. */
-  sharedDiskProviderSpecificDetails?: SharedDiskReplicationProviderSpecificSettings;
+  sharedDiskProviderSpecificDetails?: NetworkMappingFabricSpecificSettings;
 }
 export const SharedDiskReplicationItemProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7732,7 +7460,7 @@ export const SharedDiskReplicationItemProperties = /*@__PURE__*/ S.suspend(() =>
     ),
     currentScenario: S.optional(CurrentScenarioDetails),
     sharedDiskProviderSpecificDetails: S.optional(
-      SharedDiskReplicationProviderSpecificSettings,
+      NetworkMappingFabricSpecificSettings,
     ),
   }),
 ).annotate({
@@ -7796,7 +7524,7 @@ export interface ReplicationProtectionClusterProperties {
   /** The registered node details. */
   clusterRegisteredNodes?: ReplicationProtectionClusterPropertiesClusterRegisteredNodesList;
   /** The Replication cluster provider custom settings. */
-  providerSpecificDetails?: ReplicationClusterProviderSpecificSettings;
+  providerSpecificDetails?: NetworkMappingFabricSpecificSettings;
   /** The shared disk properties. */
   sharedDiskProperties?: SharedDiskReplicationItemProperties;
   /** The Policy Id. */
@@ -7842,9 +7570,7 @@ export const ReplicationProtectionClusterProperties = /*@__PURE__*/ S.suspend(
       clusterRegisteredNodes: S.optional(
         ReplicationProtectionClusterPropertiesClusterRegisteredNodesList,
       ),
-      providerSpecificDetails: S.optional(
-        ReplicationClusterProviderSpecificSettings,
-      ),
+      providerSpecificDetails: S.optional(NetworkMappingFabricSpecificSettings),
       sharedDiskProperties: S.optional(SharedDiskReplicationItemProperties),
       policyId: S.optional(S.String),
     }),
@@ -7972,7 +7698,7 @@ export interface ReplicationProtectionClusterPropertiesInput {
   /** The registered node details. */
   clusterRegisteredNodes?: ReplicationProtectionClusterPropertiesInputClusterRegisteredNodesList;
   /** The Replication cluster provider custom settings. */
-  providerSpecificDetails?: ReplicationClusterProviderSpecificSettings;
+  providerSpecificDetails?: NetworkMappingFabricSpecificSettings;
   /** The shared disk properties. */
   sharedDiskProperties?: SharedDiskReplicationItemProperties;
   /** The Policy Id. */
@@ -8017,9 +7743,7 @@ export const ReplicationProtectionClusterPropertiesInput =
       clusterRegisteredNodes: S.optional(
         ReplicationProtectionClusterPropertiesInputClusterRegisteredNodesList,
       ),
-      providerSpecificDetails: S.optional(
-        ReplicationClusterProviderSpecificSettings,
-      ),
+      providerSpecificDetails: S.optional(NetworkMappingFabricSpecificSettings),
       sharedDiskProperties: S.optional(SharedDiskReplicationItemProperties),
       policyId: S.optional(S.String),
     }),
@@ -8494,18 +8218,10 @@ export type FailoverDirection = "PrimaryToRecovery" | "RecoveryToPrimary";
 export const FailoverDirection = /*@__PURE__*/ S.String;
 
 /** Provider specific test cluster failover input. */
-export interface ClusterTestFailoverProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
-export const ClusterTestFailoverProviderSpecificInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-).annotate({
-  identifier: "ClusterTestFailoverProviderSpecificInput",
-}) as any as S.Schema<ClusterTestFailoverProviderSpecificInput>;
+export type ClusterTestFailoverProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
+export const ClusterTestFailoverProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 
 /** Input definition for test failover input properties. */
 export interface ClusterTestFailoverInputProperties {
@@ -8516,16 +8232,14 @@ export interface ClusterTestFailoverInputProperties {
   /** The id of the network to be used for test failover. */
   networkId?: string;
   /** Provider specific settings. */
-  providerSpecificDetails?: ClusterTestFailoverProviderSpecificInput;
+  providerSpecificDetails?: EnableMigrationProviderSpecificInput;
 }
 export const ClusterTestFailoverInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverDirection: S.optional(FailoverDirection),
     networkType: S.optional(S.String),
     networkId: S.optional(S.String),
-    providerSpecificDetails: S.optional(
-      ClusterTestFailoverProviderSpecificInput,
-    ),
+    providerSpecificDetails: S.optional(EnableMigrationProviderSpecificInput),
   }),
 ).annotate({
   identifier: "ClusterTestFailoverInputProperties",
@@ -8595,18 +8309,10 @@ export const ReplicationProtectionClustersTestFailoverResponse =
   }) as any as S.Schema<ReplicationProtectionClustersTestFailoverResponse>;
 
 /** Input definition for test failover cleanup input properties. */
-export interface ClusterTestFailoverCleanupInputProperties {
-  /** Test failover cleanup comments. */
-  comments?: string;
-}
+export type ClusterTestFailoverCleanupInputProperties =
+  TestFailoverCleanupInputProperties;
 export const ClusterTestFailoverCleanupInputProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      comments: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ClusterTestFailoverCleanupInputProperties",
-  }) as any as S.Schema<ClusterTestFailoverCleanupInputProperties>;
+  TestFailoverCleanupInputProperties;
 
 export interface ReplicationProtectionClustersTestFailoverCleanupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8622,7 +8328,7 @@ export interface ReplicationProtectionClustersTestFailoverCleanupRequest {
   /** Replication protection cluster name. */
   replicationProtectionClusterName: string;
   /** Test failover cleanup input properties. */
-  properties: ClusterTestFailoverCleanupInputProperties;
+  properties: TestFailoverCleanupInputProperties;
 }
 export const ReplicationProtectionClustersTestFailoverCleanupRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8633,7 +8339,7 @@ export const ReplicationProtectionClustersTestFailoverCleanupRequest =
       fabricName: S.String.pipe(T.Label()),
       protectionContainerName: S.String.pipe(T.Label()),
       replicationProtectionClusterName: S.String.pipe(T.Label()),
-      properties: ClusterTestFailoverCleanupInputProperties,
+      properties: TestFailoverCleanupInputProperties,
     }).pipe(
       T.Http({
         method: "POST",
@@ -8672,40 +8378,16 @@ export const ReplicationProtectionClustersTestFailoverCleanupResponse =
   }) as any as S.Schema<ReplicationProtectionClustersTestFailoverCleanupResponse>;
 
 /** Provider specific unplanned cluster failover input. */
-export interface ClusterUnplannedFailoverProviderSpecificInput {
-  /** The class type. */
-  instanceType: string;
-}
+export type ClusterUnplannedFailoverProviderSpecificInput =
+  EnableMigrationProviderSpecificInput;
 export const ClusterUnplannedFailoverProviderSpecificInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "ClusterUnplannedFailoverProviderSpecificInput",
-  }) as any as S.Schema<ClusterUnplannedFailoverProviderSpecificInput>;
+  EnableMigrationProviderSpecificInput;
 
 /** Input definition for unplanned failover input properties. */
-export interface ClusterUnplannedFailoverInputProperties {
-  /** Failover direction. */
-  failoverDirection?: string;
-  /** Source site operations status. */
-  sourceSiteOperations?: string;
-  /** Provider specific settings. */
-  providerSpecificDetails?: ClusterUnplannedFailoverProviderSpecificInput;
-}
-export const ClusterUnplannedFailoverInputProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      failoverDirection: S.optional(S.String),
-      sourceSiteOperations: S.optional(S.String),
-      providerSpecificDetails: S.optional(
-        ClusterUnplannedFailoverProviderSpecificInput,
-      ),
-    }),
-).annotate({
-  identifier: "ClusterUnplannedFailoverInputProperties",
-}) as any as S.Schema<ClusterUnplannedFailoverInputProperties>;
+export type ClusterUnplannedFailoverInputProperties =
+  UnplannedFailoverInputProperties;
+export const ClusterUnplannedFailoverInputProperties =
+  UnplannedFailoverInputProperties;
 
 export interface ReplicationProtectionClustersUnplannedFailoverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8721,7 +8403,7 @@ export interface ReplicationProtectionClustersUnplannedFailoverRequest {
   /** Replication protection cluster name. */
   replicationProtectionClusterName: string;
   /** Unplanned failover input properties. */
-  properties: ClusterUnplannedFailoverInputProperties;
+  properties: UnplannedFailoverInputProperties;
 }
 export const ReplicationProtectionClustersUnplannedFailoverRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -8732,7 +8414,7 @@ export const ReplicationProtectionClustersUnplannedFailoverRequest =
       fabricName: S.String.pipe(T.Label()),
       protectionContainerName: S.String.pipe(T.Label()),
       replicationProtectionClusterName: S.String.pipe(T.Label()),
-      properties: ClusterUnplannedFailoverInputProperties,
+      properties: UnplannedFailoverInputProperties,
     }).pipe(
       T.Http({
         method: "POST",
@@ -8771,18 +8453,10 @@ export const ReplicationProtectionClustersUnplannedFailoverResponse =
   }) as any as S.Schema<ReplicationProtectionClustersUnplannedFailoverResponse>;
 
 /** Provider specific input for pairing operations. */
-export interface ReplicationProviderSpecificContainerMappingInput {
-  /** The class type. */
-  instanceType: string;
-}
+export type ReplicationProviderSpecificContainerMappingInput =
+  EnableMigrationProviderSpecificInput;
 export const ReplicationProviderSpecificContainerMappingInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "ReplicationProviderSpecificContainerMappingInput",
-  }) as any as S.Schema<ReplicationProviderSpecificContainerMappingInput>;
+  EnableMigrationProviderSpecificInput;
 
 /** Configure pairing input properties. */
 export interface CreateProtectionContainerMappingInputProperties {
@@ -8791,16 +8465,14 @@ export interface CreateProtectionContainerMappingInputProperties {
   /** Applicable policy. */
   policyId?: string;
   /** Provider specific input for pairing. */
-  providerSpecificInput?: ReplicationProviderSpecificContainerMappingInput;
+  providerSpecificInput?: EnableMigrationProviderSpecificInput;
 }
 export const CreateProtectionContainerMappingInputProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetProtectionContainerId: S.optional(S.String),
       policyId: S.optional(S.String),
-      providerSpecificInput: S.optional(
-        ReplicationProviderSpecificContainerMappingInput,
-      ),
+      providerSpecificInput: S.optional(EnableMigrationProviderSpecificInput),
     }),
   ).annotate({
     identifier: "CreateProtectionContainerMappingInputProperties",
@@ -8845,18 +8517,10 @@ export const ReplicationProtectionContainerMappingsCreateRequest =
   }) as any as S.Schema<ReplicationProtectionContainerMappingsCreateRequest>;
 
 /** Container mapping provider specific details. */
-export interface ProtectionContainerMappingProviderSpecificDetails {
-  /** Gets the class type. Overridden in derived classes. */
-  instanceType: string;
-}
+export type ProtectionContainerMappingProviderSpecificDetails =
+  ApplianceSpecificDetails;
 export const ProtectionContainerMappingProviderSpecificDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "ProtectionContainerMappingProviderSpecificDetails",
-  }) as any as S.Schema<ProtectionContainerMappingProviderSpecificDetails>;
+  ApplianceSpecificDetails;
 
 /** Health error. */
 export type ProtectionContainerMappingPropertiesHealthErrorDetailsList =
@@ -8873,7 +8537,7 @@ export interface ProtectionContainerMappingProperties {
   /** Friendly name of paired container. */
   targetProtectionContainerFriendlyName?: string;
   /** Provider specific provider details. */
-  providerSpecificDetails?: ProtectionContainerMappingProviderSpecificDetails;
+  providerSpecificDetails?: ApplianceSpecificDetails;
   /** Health of pairing. */
   health?: string;
   /** Health error. */
@@ -8896,9 +8560,7 @@ export const ProtectionContainerMappingProperties = /*@__PURE__*/ S.suspend(
     S.Struct({
       targetProtectionContainerId: S.optional(S.String),
       targetProtectionContainerFriendlyName: S.optional(S.String),
-      providerSpecificDetails: S.optional(
-        ProtectionContainerMappingProviderSpecificDetails,
-      ),
+      providerSpecificDetails: S.optional(ApplianceSpecificDetails),
       health: S.optional(S.String),
       healthErrorDetails: S.optional(
         ProtectionContainerMappingPropertiesHealthErrorDetailsList,
@@ -9233,30 +8895,20 @@ export const ReplicationProtectionContainerMappingsPurgeResponse =
   }) as any as S.Schema<ReplicationProtectionContainerMappingsPurgeResponse>;
 
 /** Provider specific input for update pairing operations. */
-export interface ReplicationProviderSpecificUpdateContainerMappingInput {
-  /** The class type. */
-  instanceType: string;
-}
+export type ReplicationProviderSpecificUpdateContainerMappingInput =
+  EnableMigrationProviderSpecificInput;
 export const ReplicationProviderSpecificUpdateContainerMappingInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "ReplicationProviderSpecificUpdateContainerMappingInput",
-  }) as any as S.Schema<ReplicationProviderSpecificUpdateContainerMappingInput>;
+  EnableMigrationProviderSpecificInput;
 
 /** Container pairing update input. */
 export interface UpdateProtectionContainerMappingInputProperties {
   /** Provider specific input for updating protection container mapping. */
-  providerSpecificInput?: ReplicationProviderSpecificUpdateContainerMappingInput;
+  providerSpecificInput?: EnableMigrationProviderSpecificInput;
 }
 export const UpdateProtectionContainerMappingInputProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      providerSpecificInput: S.optional(
-        ReplicationProviderSpecificUpdateContainerMappingInput,
-      ),
+      providerSpecificInput: S.optional(EnableMigrationProviderSpecificInput),
     }),
   ).annotate({
     identifier: "UpdateProtectionContainerMappingInputProperties",
@@ -9329,25 +8981,17 @@ export const ReplicationProtectionContainerMappingsUpdateResponse =
   }) as any as S.Schema<ReplicationProtectionContainerMappingsUpdateResponse>;
 
 /** Provider specific input for container creation operation. */
-export interface ReplicationProviderSpecificContainerCreationInput {
-  /** The class type. */
-  instanceType: string;
-}
+export type ReplicationProviderSpecificContainerCreationInput =
+  EnableMigrationProviderSpecificInput;
 export const ReplicationProviderSpecificContainerCreationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "ReplicationProviderSpecificContainerCreationInput",
-  }) as any as S.Schema<ReplicationProviderSpecificContainerCreationInput>;
+  EnableMigrationProviderSpecificInput;
 
 /** Provider specific inputs for container creation. */
 export type CreateProtectionContainerInputPropertiesProviderSpecificInputList =
-  Array<ReplicationProviderSpecificContainerCreationInput>;
+  Array<EnableMigrationProviderSpecificInput>;
 export const CreateProtectionContainerInputPropertiesProviderSpecificInputList =
   /*@__PURE__*/ S.Array(
-    ReplicationProviderSpecificContainerCreationInput,
+    EnableMigrationProviderSpecificInput,
   ) as any as S.Schema<CreateProtectionContainerInputPropertiesProviderSpecificInputList>;
 
 /** Create protection container input properties. */
@@ -9763,33 +9407,23 @@ export const ReplicationProtectionContainersListByReplicationFabricsRequest =
   }) as any as S.Schema<ReplicationProtectionContainersListByReplicationFabricsRequest>;
 
 /** Provider specific switch cluster protection input. */
-export interface SwitchClusterProtectionProviderSpecificInput {
-  /** Gets the Instance type. */
-  instanceType: string;
-}
+export type SwitchClusterProtectionProviderSpecificInput =
+  NetworkMappingFabricSpecificSettings;
 export const SwitchClusterProtectionProviderSpecificInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "SwitchClusterProtectionProviderSpecificInput",
-  }) as any as S.Schema<SwitchClusterProtectionProviderSpecificInput>;
+  NetworkMappingFabricSpecificSettings;
 
 /** Switch cluster protection input properties. */
 export interface SwitchClusterProtectionInputProperties {
   /** The unique replication protection cluster name. */
   replicationProtectionClusterName?: string;
   /** Provider specific switch protection input. */
-  providerSpecificDetails?: SwitchClusterProtectionProviderSpecificInput;
+  providerSpecificDetails?: NetworkMappingFabricSpecificSettings;
 }
 export const SwitchClusterProtectionInputProperties = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       replicationProtectionClusterName: S.optional(S.String),
-      providerSpecificDetails: S.optional(
-        SwitchClusterProtectionProviderSpecificInput,
-      ),
+      providerSpecificDetails: S.optional(NetworkMappingFabricSpecificSettings),
     }),
 ).annotate({
   identifier: "SwitchClusterProtectionInputProperties",
@@ -9860,30 +9494,22 @@ export const ReplicationProtectionContainersSwitchClusterProtectionResponse =
   }) as any as S.Schema<ReplicationProtectionContainersSwitchClusterProtectionResponse>;
 
 /** Provider specific switch protection input. */
-export interface SwitchProtectionProviderSpecificInput {
-  /** Gets the Instance type. */
-  instanceType: string;
-}
-export const SwitchProtectionProviderSpecificInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-).annotate({
-  identifier: "SwitchProtectionProviderSpecificInput",
-}) as any as S.Schema<SwitchProtectionProviderSpecificInput>;
+export type SwitchProtectionProviderSpecificInput =
+  NetworkMappingFabricSpecificSettings;
+export const SwitchProtectionProviderSpecificInput =
+  NetworkMappingFabricSpecificSettings;
 
 /** Switch protection input properties. */
 export interface SwitchProtectionInputProperties {
   /** The unique replication protected item name. */
   replicationProtectedItemName?: string;
   /** Provider specific switch protection input. */
-  providerSpecificDetails?: SwitchProtectionProviderSpecificInput;
+  providerSpecificDetails?: NetworkMappingFabricSpecificSettings;
 }
 export const SwitchProtectionInputProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicationProtectedItemName: S.optional(S.String),
-    providerSpecificDetails: S.optional(SwitchProtectionProviderSpecificInput),
+    providerSpecificDetails: S.optional(NetworkMappingFabricSpecificSettings),
   }),
 ).annotate({
   identifier: "SwitchProtectionInputProperties",
@@ -9953,29 +9579,19 @@ export const ReplicationProtectionContainersSwitchProtectionResponse =
   }) as any as S.Schema<ReplicationProtectionContainersSwitchProtectionResponse>;
 
 /** Create protection intent provider specific input. */
-export interface CreateProtectionIntentProviderSpecificDetails {
-  /** The class type. */
-  instanceType: string;
-}
+export type CreateProtectionIntentProviderSpecificDetails =
+  EnableMigrationProviderSpecificInput;
 export const CreateProtectionIntentProviderSpecificDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "CreateProtectionIntentProviderSpecificDetails",
-  }) as any as S.Schema<CreateProtectionIntentProviderSpecificDetails>;
+  EnableMigrationProviderSpecificInput;
 
 /** Create protection intent input properties. */
 export interface CreateProtectionIntentProperties {
   /** The ReplicationProviderInput. For A2A provider, it will be A2ACreateProtectionIntentInput object. */
-  providerSpecificDetails?: CreateProtectionIntentProviderSpecificDetails;
+  providerSpecificDetails?: EnableMigrationProviderSpecificInput;
 }
 export const CreateProtectionIntentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    providerSpecificDetails: S.optional(
-      CreateProtectionIntentProviderSpecificDetails,
-    ),
+    providerSpecificDetails: S.optional(EnableMigrationProviderSpecificInput),
   }),
 ).annotate({
   identifier: "CreateProtectionIntentProperties",
@@ -10014,18 +9630,10 @@ export const ReplicationProtectionIntentsCreateRequest =
   }) as any as S.Schema<ReplicationProtectionIntentsCreateRequest>;
 
 /** Replication provider specific settings. */
-export interface ReplicationProtectionIntentProviderSpecificSettings {
-  /** Gets the Instance type. */
-  instanceType: string;
-}
+export type ReplicationProtectionIntentProviderSpecificSettings =
+  NetworkMappingFabricSpecificSettings;
 export const ReplicationProtectionIntentProviderSpecificSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "ReplicationProtectionIntentProviderSpecificSettings",
-  }) as any as S.Schema<ReplicationProtectionIntentProviderSpecificSettings>;
+  NetworkMappingFabricSpecificSettings;
 
 /** Replication protection intent custom data details. */
 export interface ReplicationProtectionIntentProperties {
@@ -10040,7 +9648,7 @@ export interface ReplicationProtectionIntentProperties {
   /** The creation time in UTC. */
   creationTimeUTC?: string;
   /** The Replication provider custom settings. */
-  providerSpecificDetails?: ReplicationProtectionIntentProviderSpecificSettings;
+  providerSpecificDetails?: NetworkMappingFabricSpecificSettings;
 }
 export const ReplicationProtectionIntentProperties = /*@__PURE__*/ S.suspend(
   () =>
@@ -10050,9 +9658,7 @@ export const ReplicationProtectionIntentProperties = /*@__PURE__*/ S.suspend(
       jobState: S.optional(S.String),
       isActive: S.optional(S.Boolean),
       creationTimeUTC: S.optional(S.String),
-      providerSpecificDetails: S.optional(
-        ReplicationProtectionIntentProviderSpecificSettings,
-      ),
+      providerSpecificDetails: S.optional(NetworkMappingFabricSpecificSettings),
     }),
 ).annotate({
   identifier: "ReplicationProtectionIntentProperties",
@@ -10383,24 +9989,17 @@ export const CreateRecoveryPlanInputPropertiesGroupsList =
   ) as any as S.Schema<CreateRecoveryPlanInputPropertiesGroupsList>;
 
 /** Recovery plan provider specific input base class. */
-export interface RecoveryPlanProviderSpecificInput {
-  /** Gets the Instance type. */
-  instanceType: string;
-}
-export const RecoveryPlanProviderSpecificInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "RecoveryPlanProviderSpecificInput",
-}) as any as S.Schema<RecoveryPlanProviderSpecificInput>;
+export type RecoveryPlanProviderSpecificInput =
+  NetworkMappingFabricSpecificSettings;
+export const RecoveryPlanProviderSpecificInput =
+  NetworkMappingFabricSpecificSettings;
 
 /** The provider specific input. */
 export type CreateRecoveryPlanInputPropertiesProviderSpecificInputList =
-  Array<RecoveryPlanProviderSpecificInput>;
+  Array<NetworkMappingFabricSpecificSettings>;
 export const CreateRecoveryPlanInputPropertiesProviderSpecificInputList =
   /*@__PURE__*/ S.Array(
-    RecoveryPlanProviderSpecificInput,
+    NetworkMappingFabricSpecificSettings,
   ) as any as S.Schema<CreateRecoveryPlanInputPropertiesProviderSpecificInputList>;
 
 /** Recovery plan creation properties. */
@@ -10483,24 +10082,17 @@ export const RecoveryPlanPropertiesGroupsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RecoveryPlanPropertiesGroupsList>;
 
 /** Recovery plan provider specific details. */
-export interface RecoveryPlanProviderSpecificDetails {
-  /** Gets the Instance type. */
-  instanceType: string;
-}
-export const RecoveryPlanProviderSpecificDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceType: S.String,
-  }),
-).annotate({
-  identifier: "RecoveryPlanProviderSpecificDetails",
-}) as any as S.Schema<RecoveryPlanProviderSpecificDetails>;
+export type RecoveryPlanProviderSpecificDetails =
+  NetworkMappingFabricSpecificSettings;
+export const RecoveryPlanProviderSpecificDetails =
+  NetworkMappingFabricSpecificSettings;
 
 /** The provider id and provider specific details. */
 export type RecoveryPlanPropertiesProviderSpecificDetailsList =
-  Array<RecoveryPlanProviderSpecificDetails>;
+  Array<NetworkMappingFabricSpecificSettings>;
 export const RecoveryPlanPropertiesProviderSpecificDetailsList =
   /*@__PURE__*/ S.Array(
-    RecoveryPlanProviderSpecificDetails,
+    NetworkMappingFabricSpecificSettings,
   ) as any as S.Schema<RecoveryPlanPropertiesProviderSpecificDetailsList>;
 
 /** Recovery plan properties. */
@@ -10872,25 +10464,17 @@ export const RecoveryPlanCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecoveryPlanCollection>;
 
 /** Recovery plan provider specific failover input. */
-export interface RecoveryPlanProviderSpecificFailoverInput {
-  /** The class type. */
-  instanceType: string;
-}
+export type RecoveryPlanProviderSpecificFailoverInput =
+  EnableMigrationProviderSpecificInput;
 export const RecoveryPlanProviderSpecificFailoverInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceType: S.String,
-    }),
-  ).annotate({
-    identifier: "RecoveryPlanProviderSpecificFailoverInput",
-  }) as any as S.Schema<RecoveryPlanProviderSpecificFailoverInput>;
+  EnableMigrationProviderSpecificInput;
 
 /** The provider specific properties. */
 export type RecoveryPlanPlannedFailoverInputPropertiesProviderSpecificDetailsList =
-  Array<RecoveryPlanProviderSpecificFailoverInput>;
+  Array<EnableMigrationProviderSpecificInput>;
 export const RecoveryPlanPlannedFailoverInputPropertiesProviderSpecificDetailsList =
   /*@__PURE__*/ S.Array(
-    RecoveryPlanProviderSpecificFailoverInput,
+    EnableMigrationProviderSpecificInput,
   ) as any as S.Schema<RecoveryPlanPlannedFailoverInputPropertiesProviderSpecificDetailsList>;
 
 /** Recovery plan planned failover input properties. */
@@ -11031,10 +10615,10 @@ export const ReplicationRecoveryPlansReprotectResponse =
 
 /** The provider specific properties. */
 export type RecoveryPlanTestFailoverInputPropertiesProviderSpecificDetailsList =
-  Array<RecoveryPlanProviderSpecificFailoverInput>;
+  Array<EnableMigrationProviderSpecificInput>;
 export const RecoveryPlanTestFailoverInputPropertiesProviderSpecificDetailsList =
   /*@__PURE__*/ S.Array(
-    RecoveryPlanProviderSpecificFailoverInput,
+    EnableMigrationProviderSpecificInput,
   ) as any as S.Schema<RecoveryPlanTestFailoverInputPropertiesProviderSpecificDetailsList>;
 
 /** Recovery plan test failover input properties. */
@@ -11202,10 +10786,10 @@ export const SourceSiteOperations = /*@__PURE__*/ S.String;
 
 /** The provider specific properties. */
 export type RecoveryPlanUnplannedFailoverInputPropertiesProviderSpecificDetailsList =
-  Array<RecoveryPlanProviderSpecificFailoverInput>;
+  Array<EnableMigrationProviderSpecificInput>;
 export const RecoveryPlanUnplannedFailoverInputPropertiesProviderSpecificDetailsList =
   /*@__PURE__*/ S.Array(
-    RecoveryPlanProviderSpecificFailoverInput,
+    EnableMigrationProviderSpecificInput,
   ) as any as S.Schema<RecoveryPlanUnplannedFailoverInputPropertiesProviderSpecificDetailsList>;
 
 /** Recovery plan unplanned failover input properties. */

@@ -344,20 +344,16 @@ export type ManagedServiceIdentityType =
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = ConsoleProfileInput;
+export const UserAssignedIdentityInput = ConsoleProfileInput;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
-  { [key: string]: UserAssignedIdentityInput | undefined };
+  { [key: string]: ConsoleProfileInput | undefined };
 export const OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserAssignedIdentityInput,
+    ConsoleProfileInput,
   ) as any as S.Schema<OpenShiftClustersCreateOrUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1166,12 +1162,12 @@ export const OpenShiftClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type OpenShiftClustersUpdateRequestIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: ConsoleProfileInput | undefined;
 };
 export const OpenShiftClustersUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserAssignedIdentityInput,
+    ConsoleProfileInput,
   ) as any as S.Schema<OpenShiftClustersUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */

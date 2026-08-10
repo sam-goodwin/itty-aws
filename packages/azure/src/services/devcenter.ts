@@ -901,26 +901,14 @@ export const SyncErrorDetailsConflictsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SyncErrorDetailsConflictsList>;
 
 /** Catalog error details */
-export interface CatalogSyncErrorErrorDetailsItem {
-  /** An identifier for the error. */
-  code?: string;
-  /** A message describing the error. */
-  message?: string;
-}
-export const CatalogSyncErrorErrorDetailsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CatalogSyncErrorErrorDetailsItem",
-}) as any as S.Schema<CatalogSyncErrorErrorDetailsItem>;
+export type CatalogSyncErrorErrorDetailsItem = SyncErrorDetailsOperationError;
+export const CatalogSyncErrorErrorDetailsItem = SyncErrorDetailsOperationError;
 
 /** Errors associated with the file. */
 export type CatalogSyncErrorErrorDetailsList =
-  Array<CatalogSyncErrorErrorDetailsItem>;
+  Array<SyncErrorDetailsOperationError>;
 export const CatalogSyncErrorErrorDetailsList = /*@__PURE__*/ S.Array(
-  CatalogSyncErrorErrorDetailsItem,
+  SyncErrorDetailsOperationError,
 ) as any as S.Schema<CatalogSyncErrorErrorDetailsList>;
 
 /** An individual synchronization error. */
@@ -1416,27 +1404,15 @@ export const CustomizationTasksGetErrorDetailsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CustomizationTasksGetErrorDetailsRequest>;
 
 /** Catalog error details */
-export interface CatalogErrorDetails {
-  /** An identifier for the error. */
-  code?: string;
-  /** A message describing the error. */
-  message?: string;
-}
-export const CatalogErrorDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CatalogErrorDetails",
-}) as any as S.Schema<CatalogErrorDetails>;
+export type CatalogErrorDetails = SyncErrorDetailsOperationError;
+export const CatalogErrorDetails = SyncErrorDetailsOperationError;
 
 /** Errors associated with resources synchronized from the catalog. */
 export type CustomizationTasksGetErrorDetailsResponseErrorsList =
-  Array<CatalogErrorDetails>;
+  Array<SyncErrorDetailsOperationError>;
 export const CustomizationTasksGetErrorDetailsResponseErrorsList =
   /*@__PURE__*/ S.Array(
-    CatalogErrorDetails,
+    SyncErrorDetailsOperationError,
   ) as any as S.Schema<CustomizationTasksGetErrorDetailsResponseErrorsList>;
 
 export interface CustomizationTasksGetErrorDetailsResponse {
@@ -1598,21 +1574,10 @@ export const DevBoxDefinitionPropertiesInputImageValidationStatus =
   /*@__PURE__*/ S.String;
 
 /** Image validation error details */
-export interface DevBoxDefinitionPropertiesInputImageValidationErrorDetails {
-  /** An identifier for the error. */
-  code?: string;
-  /** A message describing the error. */
-  message?: string;
-}
+export type DevBoxDefinitionPropertiesInputImageValidationErrorDetails =
+  SyncErrorDetailsOperationError;
 export const DevBoxDefinitionPropertiesInputImageValidationErrorDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.optional(S.String),
-      message: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DevBoxDefinitionPropertiesInputImageValidationErrorDetails",
-  }) as any as S.Schema<DevBoxDefinitionPropertiesInputImageValidationErrorDetails>;
+  SyncErrorDetailsOperationError;
 
 /** Catalog resource validation status */
 export type DevBoxDefinitionPropertiesInputValidationStatus =
@@ -1624,18 +1589,10 @@ export const DevBoxDefinitionPropertiesInputValidationStatus =
   /*@__PURE__*/ S.String;
 
 /** Image reference information */
-export interface DevBoxDefinitionPropertiesInputActiveImageReference {
-  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
-  id?: string;
-}
+export type DevBoxDefinitionPropertiesInputActiveImageReference =
+  DevBoxDefinitionPropertiesInputImageReference;
 export const DevBoxDefinitionPropertiesInputActiveImageReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DevBoxDefinitionPropertiesInputActiveImageReference",
-  }) as any as S.Schema<DevBoxDefinitionPropertiesInputActiveImageReference>;
+  DevBoxDefinitionPropertiesInputImageReference;
 
 /** Properties of a Dev Box definition. */
 export interface DevBoxDefinitionPropertiesInput {
@@ -1652,13 +1609,13 @@ export interface DevBoxDefinitionPropertiesInput {
     | DevBoxDefinitionPropertiesInputImageValidationStatus
     | (string & {});
   /** Image validation error details */
-  imageValidationErrorDetails?: DevBoxDefinitionPropertiesInputImageValidationErrorDetails;
+  imageValidationErrorDetails?: SyncErrorDetailsOperationError;
   /** Catalog resource validation status */
   validationStatus?:
     | DevBoxDefinitionPropertiesInputValidationStatus
     | (string & {});
   /** Image reference information */
-  activeImageReference?: DevBoxDefinitionPropertiesInputActiveImageReference;
+  activeImageReference?: DevBoxDefinitionPropertiesInputImageReference;
 }
 export const DevBoxDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1669,14 +1626,12 @@ export const DevBoxDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     imageValidationStatus: S.optional(
       DevBoxDefinitionPropertiesInputImageValidationStatus,
     ),
-    imageValidationErrorDetails: S.optional(
-      DevBoxDefinitionPropertiesInputImageValidationErrorDetails,
-    ),
+    imageValidationErrorDetails: S.optional(SyncErrorDetailsOperationError),
     validationStatus: S.optional(
       DevBoxDefinitionPropertiesInputValidationStatus,
     ),
     activeImageReference: S.optional(
-      DevBoxDefinitionPropertiesInputActiveImageReference,
+      DevBoxDefinitionPropertiesInputImageReference,
     ),
   }),
 ).annotate({
@@ -1804,21 +1759,10 @@ export const DevBoxDefinitionPropertiesImageValidationStatus =
   /*@__PURE__*/ S.String;
 
 /** Image validation error details */
-export interface DevBoxDefinitionPropertiesImageValidationErrorDetails {
-  /** An identifier for the error. */
-  code?: string;
-  /** A message describing the error. */
-  message?: string;
-}
+export type DevBoxDefinitionPropertiesImageValidationErrorDetails =
+  SyncErrorDetailsOperationError;
 export const DevBoxDefinitionPropertiesImageValidationErrorDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.optional(S.String),
-      message: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DevBoxDefinitionPropertiesImageValidationErrorDetails",
-  }) as any as S.Schema<DevBoxDefinitionPropertiesImageValidationErrorDetails>;
+  SyncErrorDetailsOperationError;
 
 /** Catalog resource validation status */
 export type DevBoxDefinitionPropertiesValidationStatus =
@@ -1830,21 +1774,10 @@ export const DevBoxDefinitionPropertiesValidationStatus =
   /*@__PURE__*/ S.String;
 
 /** Image reference information */
-export interface DevBoxDefinitionPropertiesActiveImageReference {
-  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
-  id?: string;
-  /** The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use. */
-  exactVersion?: string;
-}
+export type DevBoxDefinitionPropertiesActiveImageReference =
+  DevBoxDefinitionPropertiesImageReference;
 export const DevBoxDefinitionPropertiesActiveImageReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      exactVersion: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DevBoxDefinitionPropertiesActiveImageReference",
-  }) as any as S.Schema<DevBoxDefinitionPropertiesActiveImageReference>;
+  DevBoxDefinitionPropertiesImageReference;
 
 /** Properties of a Dev Box definition. */
 export interface DevBoxDefinitionProperties {
@@ -1861,11 +1794,11 @@ export interface DevBoxDefinitionProperties {
   /** Image validation status */
   imageValidationStatus?: DevBoxDefinitionPropertiesImageValidationStatus;
   /** Image validation error details */
-  imageValidationErrorDetails?: DevBoxDefinitionPropertiesImageValidationErrorDetails;
+  imageValidationErrorDetails?: SyncErrorDetailsOperationError;
   /** Catalog resource validation status */
   validationStatus?: DevBoxDefinitionPropertiesValidationStatus;
   /** Image reference information */
-  activeImageReference?: DevBoxDefinitionPropertiesActiveImageReference;
+  activeImageReference?: DevBoxDefinitionPropertiesImageReference;
 }
 export const DevBoxDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1877,13 +1810,9 @@ export const DevBoxDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
     imageValidationStatus: S.optional(
       DevBoxDefinitionPropertiesImageValidationStatus,
     ),
-    imageValidationErrorDetails: S.optional(
-      DevBoxDefinitionPropertiesImageValidationErrorDetails,
-    ),
+    imageValidationErrorDetails: S.optional(SyncErrorDetailsOperationError),
     validationStatus: S.optional(DevBoxDefinitionPropertiesValidationStatus),
-    activeImageReference: S.optional(
-      DevBoxDefinitionPropertiesActiveImageReference,
-    ),
+    activeImageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
   }),
 ).annotate({
   identifier: "DevBoxDefinitionProperties",
@@ -2218,50 +2147,23 @@ export const Tags = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<Tags>;
 
 /** Image reference information */
-export interface DevBoxDefinitionUpdatePropertiesInputImageReference {
-  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
-  id?: string;
-}
+export type DevBoxDefinitionUpdatePropertiesInputImageReference =
+  DevBoxDefinitionPropertiesInputImageReference;
 export const DevBoxDefinitionUpdatePropertiesInputImageReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DevBoxDefinitionUpdatePropertiesInputImageReference",
-  }) as any as S.Schema<DevBoxDefinitionUpdatePropertiesInputImageReference>;
+  DevBoxDefinitionPropertiesInputImageReference;
 
 /** The resource model definition representing SKU */
-export interface DevBoxDefinitionUpdatePropertiesInputSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const DevBoxDefinitionUpdatePropertiesInputSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "DevBoxDefinitionUpdatePropertiesInputSku",
-}) as any as S.Schema<DevBoxDefinitionUpdatePropertiesInputSku>;
+export type DevBoxDefinitionUpdatePropertiesInputSku =
+  DevBoxDefinitionPropertiesInputSku;
+export const DevBoxDefinitionUpdatePropertiesInputSku =
+  DevBoxDefinitionPropertiesInputSku;
 
 /** Properties of a Dev Box definition. These properties can be updated after the resource has been created. */
 export interface DevBoxDefinitionUpdatePropertiesInput {
   /** Image reference information */
-  imageReference?: DevBoxDefinitionUpdatePropertiesInputImageReference;
+  imageReference?: DevBoxDefinitionPropertiesInputImageReference;
   /** The resource model definition representing SKU */
-  sku?: DevBoxDefinitionUpdatePropertiesInputSku;
+  sku?: DevBoxDefinitionPropertiesInputSku;
   /** The storage type used for the Operating System disk of Dev Boxes created using this definition. */
   osStorageType?: string;
   /** Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate */
@@ -2270,10 +2172,8 @@ export interface DevBoxDefinitionUpdatePropertiesInput {
 export const DevBoxDefinitionUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      imageReference: S.optional(
-        DevBoxDefinitionUpdatePropertiesInputImageReference,
-      ),
-      sku: S.optional(DevBoxDefinitionUpdatePropertiesInputSku),
+      imageReference: S.optional(DevBoxDefinitionPropertiesInputImageReference),
+      sku: S.optional(DevBoxDefinitionPropertiesInputSku),
       osStorageType: S.optional(S.String),
       hibernateSupport: S.optional(HibernateSupport),
     }),
@@ -2796,24 +2696,10 @@ export const DevCentersGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DevCentersGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface DevCentersGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const DevCentersGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "DevCentersGetResponseIdentity",
-}) as any as S.Schema<DevCentersGetResponseIdentity>;
+export type DevCentersGetResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
+export const DevCentersGetResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
 
 export interface DevCentersGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2831,7 +2717,7 @@ export interface DevCentersGetResponse {
   /** DevCenter properties */
   properties?: DevCenterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: DevCentersGetResponseIdentity;
+  identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
 export const DevCentersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2842,7 +2728,7 @@ export const DevCentersGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DevCentersGetResponseTagsMap),
     location: S.String,
     properties: S.optional(DevCenterProperties),
-    identity: S.optional(DevCentersGetResponseIdentity),
+    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "DevCentersGetResponse",
@@ -2882,24 +2768,8 @@ export const DevCenterTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DevCenterTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface DevCenterIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const DevCenterIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "DevCenterIdentity",
-}) as any as S.Schema<DevCenterIdentity>;
+export type DevCenterIdentity = DevCentersCreateOrUpdateResponseIdentity;
+export const DevCenterIdentity = DevCentersCreateOrUpdateResponseIdentity;
 
 /** Represents a devcenter resource. */
 export interface DevCenter {
@@ -2918,7 +2788,7 @@ export interface DevCenter {
   /** DevCenter properties */
   properties?: DevCenterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: DevCenterIdentity;
+  identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
 export const DevCenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2929,7 +2799,7 @@ export const DevCenter = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DevCenterTagsMap),
     location: S.String,
     properties: S.optional(DevCenterProperties),
-    identity: S.optional(DevCenterIdentity),
+    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "DevCenter" }) as any as S.Schema<DevCenter>;
 
@@ -2978,43 +2848,14 @@ export const DevCentersListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevCentersListBySubscriptionRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface DevCentersUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const DevCentersUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "DevCentersUpdateRequestIdentity",
-}) as any as S.Schema<DevCentersUpdateRequestIdentity>;
+export type DevCentersUpdateRequestIdentity =
+  DevCentersCreateOrUpdateRequestIdentity;
+export const DevCentersUpdateRequestIdentity =
+  DevCentersCreateOrUpdateRequestIdentity;
 
 /** Properties of the devcenter. These properties can be updated after the resource has been created. */
-export interface DevCenterUpdateProperties {
-  /** Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations). */
-  encryption?: Encryption;
-  /** The display name of the devcenter. */
-  displayName?: string;
-  /** Dev Center settings to be used when associating a project with a catalog. */
-  projectCatalogSettings?: DevCenterProjectCatalogSettings;
-  /** Network settings that will be enforced on network resources associated with the Dev Center. */
-  networkSettings?: DevCenterNetworkSettings;
-  /** Settings to be used in the provisioning of all Dev Boxes that belong to this dev center. */
-  devBoxProvisioningSettings?: DevBoxProvisioningSettings;
-}
-export const DevCenterUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encryption: S.optional(Encryption),
-    displayName: S.optional(S.String),
-    projectCatalogSettings: S.optional(DevCenterProjectCatalogSettings),
-    networkSettings: S.optional(DevCenterNetworkSettings),
-    devBoxProvisioningSettings: S.optional(DevBoxProvisioningSettings),
-  }),
-).annotate({
-  identifier: "DevCenterUpdateProperties",
-}) as any as S.Schema<DevCenterUpdateProperties>;
+export type DevCenterUpdateProperties = DevCenterPropertiesInput;
+export const DevCenterUpdateProperties = DevCenterPropertiesInput;
 
 export interface DevCentersUpdateRequest {
   /** The ID of the target subscription. */
@@ -3028,9 +2869,9 @@ export interface DevCentersUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: DevCentersUpdateRequestIdentity;
+  identity?: DevCentersCreateOrUpdateRequestIdentity;
   /** Properties of a Dev Center to be updated. */
-  properties?: DevCenterUpdateProperties;
+  properties?: DevCenterPropertiesInput;
 }
 export const DevCentersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3039,8 +2880,8 @@ export const DevCentersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     devCenterName: S.String.pipe(T.Label()),
     tags: S.optional(Tags),
     location: S.optional(S.String),
-    identity: S.optional(DevCentersUpdateRequestIdentity),
-    properties: S.optional(DevCenterUpdateProperties),
+    identity: S.optional(DevCentersCreateOrUpdateRequestIdentity),
+    properties: S.optional(DevCenterPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3063,24 +2904,10 @@ export const DevCentersUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DevCentersUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface DevCentersUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const DevCentersUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "DevCentersUpdateResponseIdentity",
-}) as any as S.Schema<DevCentersUpdateResponseIdentity>;
+export type DevCentersUpdateResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
+export const DevCentersUpdateResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
 
 export interface DevCentersUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3098,7 +2925,7 @@ export interface DevCentersUpdateResponse {
   /** DevCenter properties */
   properties?: DevCenterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: DevCentersUpdateResponseIdentity;
+  identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
 export const DevCentersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3109,7 +2936,7 @@ export const DevCentersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DevCentersUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(DevCenterProperties),
-    identity: S.optional(DevCentersUpdateResponseIdentity),
+    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "DevCentersUpdateResponse",
@@ -3340,10 +3167,10 @@ export const EnvironmentDefinitionsGetErrorDetailsRequest =
 
 /** Errors associated with resources synchronized from the catalog. */
 export type EnvironmentDefinitionsGetErrorDetailsResponseErrorsList =
-  Array<CatalogErrorDetails>;
+  Array<SyncErrorDetailsOperationError>;
 export const EnvironmentDefinitionsGetErrorDetailsResponseErrorsList =
   /*@__PURE__*/ S.Array(
-    CatalogErrorDetails,
+    SyncErrorDetailsOperationError,
   ) as any as S.Schema<EnvironmentDefinitionsGetErrorDetailsResponseErrorsList>;
 
 export interface EnvironmentDefinitionsGetErrorDetailsResponse {
@@ -3789,17 +3616,8 @@ export const EnvironmentTypeListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentTypeListResult>;
 
 /** Properties of an environment type. These properties can be updated after the resource has been created. */
-export interface EnvironmentTypeUpdateProperties {
-  /** The display name of the environment type. */
-  displayName?: string;
-}
-export const EnvironmentTypeUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnvironmentTypeUpdateProperties",
-}) as any as S.Schema<EnvironmentTypeUpdateProperties>;
+export type EnvironmentTypeUpdateProperties = EnvironmentTypePropertiesInput;
+export const EnvironmentTypeUpdateProperties = EnvironmentTypePropertiesInput;
 
 /** Resource tags. */
 export type EnvironmentTypesUpdateRequestTagsMap = {
@@ -3820,7 +3638,7 @@ export interface EnvironmentTypesUpdateRequest {
   /** The name of the environment type. */
   environmentTypeName: string;
   /** Properties of an environment type to be updated. */
-  properties?: EnvironmentTypeUpdateProperties;
+  properties?: EnvironmentTypePropertiesInput;
   /** Resource tags. */
   tags?: EnvironmentTypesUpdateRequestTagsMap;
 }
@@ -3830,7 +3648,7 @@ export const EnvironmentTypesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     devCenterName: S.String.pipe(T.Label()),
     environmentTypeName: S.String.pipe(T.Label()),
-    properties: S.optional(EnvironmentTypeUpdateProperties),
+    properties: S.optional(EnvironmentTypePropertiesInput),
     tags: S.optional(EnvironmentTypesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
@@ -5817,53 +5635,25 @@ export type PoolDevBoxDefinitionType = "Reference" | "Value";
 export const PoolDevBoxDefinitionType = /*@__PURE__*/ S.String;
 
 /** Image reference information */
-export interface ImageReferenceInput {
-  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
-  id?: string;
-}
-export const ImageReferenceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImageReferenceInput",
-}) as any as S.Schema<ImageReferenceInput>;
+export type ImageReferenceInput = DevBoxDefinitionPropertiesInputImageReference;
+export const ImageReferenceInput =
+  DevBoxDefinitionPropertiesInputImageReference;
 
 /** The resource model definition representing SKU */
-export interface PoolDevBoxDefinitionInputSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const PoolDevBoxDefinitionInputSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PoolDevBoxDefinitionInputSku",
-}) as any as S.Schema<PoolDevBoxDefinitionInputSku>;
+export type PoolDevBoxDefinitionInputSku = DevBoxDefinitionPropertiesInputSku;
+export const PoolDevBoxDefinitionInputSku = DevBoxDefinitionPropertiesInputSku;
 
 /** Represents a definition for a Developer Machine. */
 export interface PoolDevBoxDefinitionInput {
   /** Image reference information. */
-  imageReference?: ImageReferenceInput;
+  imageReference?: DevBoxDefinitionPropertiesInputImageReference;
   /** The resource model definition representing SKU */
-  sku?: PoolDevBoxDefinitionInputSku;
+  sku?: DevBoxDefinitionPropertiesInputSku;
 }
 export const PoolDevBoxDefinitionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    imageReference: S.optional(ImageReferenceInput),
-    sku: S.optional(PoolDevBoxDefinitionInputSku),
+    imageReference: S.optional(DevBoxDefinitionPropertiesInputImageReference),
+    sku: S.optional(DevBoxDefinitionPropertiesInputSku),
   }),
 ).annotate({
   identifier: "PoolDevBoxDefinitionInput",
@@ -6027,57 +5817,27 @@ export const PoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PoolsCreateOrUpdateResponseTagsMap>;
 
 /** Image reference information */
-export interface ImageReference {
-  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
-  id?: string;
-  /** The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use. */
-  exactVersion?: string;
-}
-export const ImageReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    exactVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImageReference" }) as any as S.Schema<ImageReference>;
+export type ImageReference = DevBoxDefinitionPropertiesImageReference;
+export const ImageReference = DevBoxDefinitionPropertiesImageReference;
 
 /** The resource model definition representing SKU */
-export interface PoolDevBoxDefinitionSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const PoolDevBoxDefinitionSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PoolDevBoxDefinitionSku",
-}) as any as S.Schema<PoolDevBoxDefinitionSku>;
+export type PoolDevBoxDefinitionSku = DevBoxDefinitionPropertiesSku;
+export const PoolDevBoxDefinitionSku = DevBoxDefinitionPropertiesSku;
 
 /** Represents a definition for a Developer Machine. */
 export interface PoolDevBoxDefinition {
   /** Image reference information. */
-  imageReference?: ImageReference;
+  imageReference?: DevBoxDefinitionPropertiesImageReference;
   /** The resource model definition representing SKU */
-  sku?: PoolDevBoxDefinitionSku;
+  sku?: DevBoxDefinitionPropertiesSku;
   /** Image reference information for the currently active image (only populated during updates). */
-  activeImageReference?: ImageReference;
+  activeImageReference?: DevBoxDefinitionPropertiesImageReference;
 }
 export const PoolDevBoxDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    imageReference: S.optional(ImageReference),
-    sku: S.optional(PoolDevBoxDefinitionSku),
-    activeImageReference: S.optional(ImageReference),
+    imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
+    sku: S.optional(DevBoxDefinitionPropertiesSku),
+    activeImageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
   }),
 ).annotate({
   identifier: "PoolDevBoxDefinition",
@@ -6782,10 +6542,10 @@ export const ProjectCatalogEnvironmentDefinitionsGetErrorDetailsRequest =
 
 /** Errors associated with resources synchronized from the catalog. */
 export type ProjectCatalogEnvironmentDefinitionsGetErrorDetailsResponseErrorsList =
-  Array<CatalogErrorDetails>;
+  Array<SyncErrorDetailsOperationError>;
 export const ProjectCatalogEnvironmentDefinitionsGetErrorDetailsResponseErrorsList =
   /*@__PURE__*/ S.Array(
-    CatalogErrorDetails,
+    SyncErrorDetailsOperationError,
   ) as any as S.Schema<ProjectCatalogEnvironmentDefinitionsGetErrorDetailsResponseErrorsList>;
 
 export interface ProjectCatalogEnvironmentDefinitionsGetErrorDetailsResponse {
@@ -6880,21 +6640,10 @@ export const ProjectCatalogImageDefinitionBuildGetRequest =
   }) as any as S.Schema<ProjectCatalogImageDefinitionBuildGetRequest>;
 
 /** Image reference information */
-export interface ImageDefinitionBuildPropertiesImageReference {
-  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
-  id?: string;
-  /** The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use. */
-  exactVersion?: string;
-}
+export type ImageDefinitionBuildPropertiesImageReference =
+  DevBoxDefinitionPropertiesImageReference;
 export const ImageDefinitionBuildPropertiesImageReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      exactVersion: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ImageDefinitionBuildPropertiesImageReference",
-  }) as any as S.Schema<ImageDefinitionBuildPropertiesImageReference>;
+  DevBoxDefinitionPropertiesImageReference;
 
 /** The state of an Image Definition Build. */
 export type ImageDefinitionBuildStatus =
@@ -6907,25 +6656,13 @@ export type ImageDefinitionBuildStatus =
 export const ImageDefinitionBuildStatus = /*@__PURE__*/ S.String;
 
 /** Image creation error details */
-export interface ImageCreationErrorDetails {
-  /** An identifier for the error. */
-  code?: string;
-  /** A message describing the error. */
-  message?: string;
-}
-export const ImageCreationErrorDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImageCreationErrorDetails",
-}) as any as S.Schema<ImageCreationErrorDetails>;
+export type ImageCreationErrorDetails = SyncErrorDetailsOperationError;
+export const ImageCreationErrorDetails = SyncErrorDetailsOperationError;
 
 /** Properties of an Image Definition Build. */
 export interface ImageDefinitionBuildProperties {
   /** Image reference information */
-  imageReference?: ImageDefinitionBuildPropertiesImageReference;
+  imageReference?: DevBoxDefinitionPropertiesImageReference;
   /** The status of the build. */
   status?: ImageDefinitionBuildStatus;
   /** Start time of the task group. */
@@ -6933,15 +6670,15 @@ export interface ImageDefinitionBuildProperties {
   /** End time of the task group. */
   endTime?: string;
   /** Details for image creation error. Populated when the image creation is not successful. */
-  errorDetails?: ImageCreationErrorDetails;
+  errorDetails?: SyncErrorDetailsOperationError;
 }
 export const ImageDefinitionBuildProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    imageReference: S.optional(ImageDefinitionBuildPropertiesImageReference),
+    imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
     status: S.optional(ImageDefinitionBuildStatus),
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
-    errorDetails: S.optional(ImageCreationErrorDetails),
+    errorDetails: S.optional(SyncErrorDetailsOperationError),
   }),
 ).annotate({
   identifier: "ImageDefinitionBuildProperties",
@@ -7008,22 +6745,10 @@ export const ProjectCatalogImageDefinitionBuildGetBuildDetailsRequest =
   }) as any as S.Schema<ProjectCatalogImageDefinitionBuildGetBuildDetailsRequest>;
 
 /** Image reference information */
-export interface ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseImageReference {
-  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
-  id?: string;
-  /** The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use. */
-  exactVersion?: string;
-}
+export type ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseImageReference =
+  DevBoxDefinitionPropertiesImageReference;
 export const ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseImageReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      exactVersion: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseImageReference",
-  }) as any as S.Schema<ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseImageReference>;
+  DevBoxDefinitionPropertiesImageReference;
 
 export interface ImageDefinitionBuildTaskParametersItem {
   key: string;
@@ -7130,7 +6855,7 @@ export interface ProjectCatalogImageDefinitionBuildGetBuildDetailsResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Image reference information */
-  imageReference?: ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseImageReference;
+  imageReference?: DevBoxDefinitionPropertiesImageReference;
   /** The status of the build. */
   status?: ImageDefinitionBuildStatus;
   /** Start time of the task group. */
@@ -7138,7 +6863,7 @@ export interface ProjectCatalogImageDefinitionBuildGetBuildDetailsResponse {
   /** End time of the task group. */
   endTime?: string;
   /** Details for image creation error. Populated when the image creation is not successful. */
-  errorDetails?: ImageCreationErrorDetails;
+  errorDetails?: SyncErrorDetailsOperationError;
   /** The list of task groups executed during the image definition build. */
   taskGroups?: ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseTaskGroupsList;
 }
@@ -7149,13 +6874,11 @@ export const ProjectCatalogImageDefinitionBuildGetBuildDetailsResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      imageReference: S.optional(
-        ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseImageReference,
-      ),
+      imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
       status: S.optional(ImageDefinitionBuildStatus),
       startTime: S.optional(S.String),
       endTime: S.optional(S.String),
-      errorDetails: S.optional(ImageCreationErrorDetails),
+      errorDetails: S.optional(SyncErrorDetailsOperationError),
       taskGroups: S.optional(
         ProjectCatalogImageDefinitionBuildGetBuildDetailsResponseTaskGroupsList,
       ),
@@ -7316,21 +7039,10 @@ export const ProjectCatalogImageDefinitionsGetByProjectCatalogRequest =
   }) as any as S.Schema<ProjectCatalogImageDefinitionsGetByProjectCatalogRequest>;
 
 /** Image reference information */
-export interface ImageDefinitionPropertiesImageReference {
-  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
-  id?: string;
-  /** The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use. */
-  exactVersion?: string;
-}
-export const ImageDefinitionPropertiesImageReference = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      exactVersion: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ImageDefinitionPropertiesImageReference",
-}) as any as S.Schema<ImageDefinitionPropertiesImageReference>;
+export type ImageDefinitionPropertiesImageReference =
+  DevBoxDefinitionPropertiesImageReference;
+export const ImageDefinitionPropertiesImageReference =
+  DevBoxDefinitionPropertiesImageReference;
 
 /** Details about the latest build. */
 export interface LatestImageBuild {
@@ -7365,21 +7077,10 @@ export const ImageDefinitionPropertiesImageValidationStatus =
   /*@__PURE__*/ S.String;
 
 /** Image validation error details */
-export interface ImageDefinitionPropertiesImageValidationErrorDetails {
-  /** An identifier for the error. */
-  code?: string;
-  /** A message describing the error. */
-  message?: string;
-}
+export type ImageDefinitionPropertiesImageValidationErrorDetails =
+  SyncErrorDetailsOperationError;
 export const ImageDefinitionPropertiesImageValidationErrorDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.optional(S.String),
-      message: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ImageDefinitionPropertiesImageValidationErrorDetails",
-  }) as any as S.Schema<ImageDefinitionPropertiesImageValidationErrorDetails>;
+  SyncErrorDetailsOperationError;
 
 /** Catalog resource validation status */
 export type ImageDefinitionPropertiesValidationStatus =
@@ -7390,21 +7091,10 @@ export type ImageDefinitionPropertiesValidationStatus =
 export const ImageDefinitionPropertiesValidationStatus = /*@__PURE__*/ S.String;
 
 /** Image reference information */
-export interface ImageDefinitionPropertiesActiveImageReference {
-  /** Image ID, or Image version ID. When Image ID is provided, its latest version will be used. */
-  id?: string;
-  /** The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use. */
-  exactVersion?: string;
-}
+export type ImageDefinitionPropertiesActiveImageReference =
+  DevBoxDefinitionPropertiesImageReference;
 export const ImageDefinitionPropertiesActiveImageReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      exactVersion: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ImageDefinitionPropertiesActiveImageReference",
-  }) as any as S.Schema<ImageDefinitionPropertiesActiveImageReference>;
+  DevBoxDefinitionPropertiesImageReference;
 
 /** Indicates whether auto image build is enabled/disabled. */
 export type AutoImageBuildStatus = "Disabled" | "Enabled";
@@ -7413,7 +7103,7 @@ export const AutoImageBuildStatus = /*@__PURE__*/ S.String;
 /** Properties of an Image Definition. */
 export interface ImageDefinitionProperties {
   /** Image reference information */
-  imageReference?: ImageDefinitionPropertiesImageReference;
+  imageReference?: DevBoxDefinitionPropertiesImageReference;
   /** The URL to the repository file containing the image definition. */
   fileUrl?: string;
   /** Details about the latest build. */
@@ -7421,29 +7111,25 @@ export interface ImageDefinitionProperties {
   /** Image validation status */
   imageValidationStatus?: ImageDefinitionPropertiesImageValidationStatus;
   /** Image validation error details */
-  imageValidationErrorDetails?: ImageDefinitionPropertiesImageValidationErrorDetails;
+  imageValidationErrorDetails?: SyncErrorDetailsOperationError;
   /** Catalog resource validation status */
   validationStatus?: ImageDefinitionPropertiesValidationStatus;
   /** Image reference information */
-  activeImageReference?: ImageDefinitionPropertiesActiveImageReference;
+  activeImageReference?: DevBoxDefinitionPropertiesImageReference;
   /** Indicates if automatic image builds will be triggered for image definition updates */
   autoImageBuild?: AutoImageBuildStatus;
 }
 export const ImageDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    imageReference: S.optional(ImageDefinitionPropertiesImageReference),
+    imageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
     fileUrl: S.optional(S.String),
     latestBuild: S.optional(LatestImageBuild),
     imageValidationStatus: S.optional(
       ImageDefinitionPropertiesImageValidationStatus,
     ),
-    imageValidationErrorDetails: S.optional(
-      ImageDefinitionPropertiesImageValidationErrorDetails,
-    ),
+    imageValidationErrorDetails: S.optional(SyncErrorDetailsOperationError),
     validationStatus: S.optional(ImageDefinitionPropertiesValidationStatus),
-    activeImageReference: S.optional(
-      ImageDefinitionPropertiesActiveImageReference,
-    ),
+    activeImageReference: S.optional(DevBoxDefinitionPropertiesImageReference),
     autoImageBuild: S.optional(AutoImageBuildStatus),
   }),
 ).annotate({
@@ -7509,10 +7195,10 @@ export const ProjectCatalogImageDefinitionsGetErrorDetailsRequest =
 
 /** Errors associated with resources synchronized from the catalog. */
 export type ProjectCatalogImageDefinitionsGetErrorDetailsResponseErrorsList =
-  Array<CatalogErrorDetails>;
+  Array<SyncErrorDetailsOperationError>;
 export const ProjectCatalogImageDefinitionsGetErrorDetailsResponseErrorsList =
   /*@__PURE__*/ S.Array(
-    CatalogErrorDetails,
+    SyncErrorDetailsOperationError,
   ) as any as S.Schema<ProjectCatalogImageDefinitionsGetErrorDetailsResponseErrorsList>;
 
 export interface ProjectCatalogImageDefinitionsGetErrorDetailsResponse {
@@ -7940,20 +7626,16 @@ export type EnvironmentTypeEnableStatus = "Enabled" | "Disabled";
 export const EnvironmentTypeEnableStatus = /*@__PURE__*/ S.String;
 
 /** A role that can be assigned to a user. */
-export interface EnvironmentRoleInput {}
-export const EnvironmentRoleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EnvironmentRoleInput",
-}) as any as S.Schema<EnvironmentRoleInput>;
+export type EnvironmentRoleInput = UserAssignedIdentityInput;
+export const EnvironmentRoleInput = UserAssignedIdentityInput;
 
 /** A map of roles to assign to the environment creator. */
 export type ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap =
-  { [key: string]: EnvironmentRoleInput | undefined };
+  { [key: string]: UserAssignedIdentityInput | undefined };
 export const ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    EnvironmentRoleInput,
+    UserAssignedIdentityInput,
   ) as any as S.Schema<ProjectEnvironmentTypePropertiesInputCreatorRoleAssignmentRolesMap>;
 
 /** The role definition assigned to the environment creator on backing resources. */
@@ -7974,11 +7656,11 @@ export const ProjectEnvironmentTypePropertiesInputCreatorRoleAssignment =
 
 /** A map of roles to assign to the parent user. */
 export type UserRoleAssignmentInputRolesMap = {
-  [key: string]: EnvironmentRoleInput | undefined;
+  [key: string]: UserAssignedIdentityInput | undefined;
 };
 export const UserRoleAssignmentInputRolesMap = /*@__PURE__*/ S.Record(
   S.String,
-  EnvironmentRoleInput,
+  UserAssignedIdentityInput,
 ) as any as S.Schema<UserRoleAssignmentInputRolesMap>;
 
 /** Mapping of user object ID to role assignments. */
@@ -8045,19 +7727,10 @@ export const ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProjectEnvironmentTypesCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
+export type ProjectEnvironmentTypesCreateOrUpdateRequestIdentity =
+  DevCentersCreateOrUpdateRequestIdentity;
 export const ProjectEnvironmentTypesCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-  ).annotate({
-    identifier: "ProjectEnvironmentTypesCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateRequestIdentity>;
+  DevCentersCreateOrUpdateRequestIdentity;
 
 export interface ProjectEnvironmentTypesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -8073,7 +7746,7 @@ export interface ProjectEnvironmentTypesCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProjectEnvironmentTypesCreateOrUpdateRequestIdentity;
+  identity?: DevCentersCreateOrUpdateRequestIdentity;
   /** The geo-location for the environment type */
   location?: string;
 }
@@ -8086,9 +7759,7 @@ export const ProjectEnvironmentTypesCreateOrUpdateRequest =
       environmentTypeName: S.String.pipe(T.Label()),
       properties: S.optional(ProjectEnvironmentTypePropertiesInput),
       tags: S.optional(ProjectEnvironmentTypesCreateOrUpdateRequestTagsMap),
-      identity: S.optional(
-        ProjectEnvironmentTypesCreateOrUpdateRequestIdentity,
-      ),
+      identity: S.optional(DevCentersCreateOrUpdateRequestIdentity),
       location: S.optional(S.String),
     }).pipe(
       T.Http({
@@ -8245,25 +7916,10 @@ export const ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProjectEnvironmentTypesCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type ProjectEnvironmentTypesCreateOrUpdateResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
 export const ProjectEnvironmentTypesCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "ProjectEnvironmentTypesCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<ProjectEnvironmentTypesCreateOrUpdateResponseIdentity>;
+  DevCentersCreateOrUpdateResponseIdentity;
 
 export interface ProjectEnvironmentTypesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8279,7 +7935,7 @@ export interface ProjectEnvironmentTypesCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProjectEnvironmentTypesCreateOrUpdateResponseIdentity;
+  identity?: DevCentersCreateOrUpdateResponseIdentity;
   /** The geo-location for the environment type */
   location?: string;
 }
@@ -8292,9 +7948,7 @@ export const ProjectEnvironmentTypesCreateOrUpdateResponse =
       systemData: S.optional(SystemData),
       properties: S.optional(ProjectEnvironmentTypeProperties),
       tags: S.optional(ProjectEnvironmentTypesCreateOrUpdateResponseTagsMap),
-      identity: S.optional(
-        ProjectEnvironmentTypesCreateOrUpdateResponseIdentity,
-      ),
+      identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
       location: S.optional(S.String),
     }),
   ).annotate({
@@ -8375,25 +8029,10 @@ export const ProjectEnvironmentTypesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectEnvironmentTypesGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProjectEnvironmentTypesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type ProjectEnvironmentTypesGetResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
 export const ProjectEnvironmentTypesGetResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "ProjectEnvironmentTypesGetResponseIdentity",
-  }) as any as S.Schema<ProjectEnvironmentTypesGetResponseIdentity>;
+  DevCentersCreateOrUpdateResponseIdentity;
 
 export interface ProjectEnvironmentTypesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8409,7 +8048,7 @@ export interface ProjectEnvironmentTypesGetResponse {
   /** Resource tags. */
   tags?: ProjectEnvironmentTypesGetResponseTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProjectEnvironmentTypesGetResponseIdentity;
+  identity?: DevCentersCreateOrUpdateResponseIdentity;
   /** The geo-location for the environment type */
   location?: string;
 }
@@ -8421,7 +8060,7 @@ export const ProjectEnvironmentTypesGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     properties: S.optional(ProjectEnvironmentTypeProperties),
     tags: S.optional(ProjectEnvironmentTypesGetResponseTagsMap),
-    identity: S.optional(ProjectEnvironmentTypesGetResponseIdentity),
+    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
     location: S.optional(S.String),
   }),
 ).annotate({
@@ -8466,24 +8105,10 @@ export const ProjectEnvironmentTypeTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectEnvironmentTypeTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProjectEnvironmentTypeIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ProjectEnvironmentTypeIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ProjectEnvironmentTypeIdentity",
-}) as any as S.Schema<ProjectEnvironmentTypeIdentity>;
+export type ProjectEnvironmentTypeIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
+export const ProjectEnvironmentTypeIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
 
 /** Represents an environment type. */
 export interface ProjectEnvironmentType {
@@ -8500,7 +8125,7 @@ export interface ProjectEnvironmentType {
   /** Resource tags. */
   tags?: ProjectEnvironmentTypeTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProjectEnvironmentTypeIdentity;
+  identity?: DevCentersCreateOrUpdateResponseIdentity;
   /** The geo-location for the environment type */
   location?: string;
 }
@@ -8512,7 +8137,7 @@ export const ProjectEnvironmentType = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     properties: S.optional(ProjectEnvironmentTypeProperties),
     tags: S.optional(ProjectEnvironmentTypeTagsMap),
-    identity: S.optional(ProjectEnvironmentTypeIdentity),
+    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
     location: S.optional(S.String),
   }),
 ).annotate({
@@ -8544,11 +8169,11 @@ export const ProjectEnvironmentTypeListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** A map of roles to assign to the environment creator. */
 export type ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap =
-  { [key: string]: EnvironmentRoleInput | undefined };
+  { [key: string]: UserAssignedIdentityInput | undefined };
 export const ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    EnvironmentRoleInput,
+    UserAssignedIdentityInput,
   ) as any as S.Schema<ProjectEnvironmentTypeUpdatePropertiesInputCreatorRoleAssignmentRolesMap>;
 
 /** The role definition assigned to the environment creator on backing resources. */
@@ -8618,19 +8243,10 @@ export const ProjectEnvironmentTypesUpdateRequestTagsMap =
   ) as any as S.Schema<ProjectEnvironmentTypesUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProjectEnvironmentTypesUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
+export type ProjectEnvironmentTypesUpdateRequestIdentity =
+  DevCentersCreateOrUpdateRequestIdentity;
 export const ProjectEnvironmentTypesUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-  ).annotate({
-    identifier: "ProjectEnvironmentTypesUpdateRequestIdentity",
-  }) as any as S.Schema<ProjectEnvironmentTypesUpdateRequestIdentity>;
+  DevCentersCreateOrUpdateRequestIdentity;
 
 export interface ProjectEnvironmentTypesUpdateRequest {
   /** The ID of the target subscription. */
@@ -8646,7 +8262,7 @@ export interface ProjectEnvironmentTypesUpdateRequest {
   /** Resource tags. */
   tags?: ProjectEnvironmentTypesUpdateRequestTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProjectEnvironmentTypesUpdateRequestIdentity;
+  identity?: DevCentersCreateOrUpdateRequestIdentity;
 }
 export const ProjectEnvironmentTypesUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -8657,7 +8273,7 @@ export const ProjectEnvironmentTypesUpdateRequest = /*@__PURE__*/ S.suspend(
       environmentTypeName: S.String.pipe(T.Label()),
       properties: S.optional(ProjectEnvironmentTypeUpdatePropertiesInput),
       tags: S.optional(ProjectEnvironmentTypesUpdateRequestTagsMap),
-      identity: S.optional(ProjectEnvironmentTypesUpdateRequestIdentity),
+      identity: S.optional(DevCentersCreateOrUpdateRequestIdentity),
     }).pipe(
       T.Http({
         method: "PATCH",
@@ -8681,25 +8297,10 @@ export const ProjectEnvironmentTypesUpdateResponseTagsMap =
   ) as any as S.Schema<ProjectEnvironmentTypesUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProjectEnvironmentTypesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type ProjectEnvironmentTypesUpdateResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
 export const ProjectEnvironmentTypesUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "ProjectEnvironmentTypesUpdateResponseIdentity",
-  }) as any as S.Schema<ProjectEnvironmentTypesUpdateResponseIdentity>;
+  DevCentersCreateOrUpdateResponseIdentity;
 
 export interface ProjectEnvironmentTypesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8715,7 +8316,7 @@ export interface ProjectEnvironmentTypesUpdateResponse {
   /** Resource tags. */
   tags?: ProjectEnvironmentTypesUpdateResponseTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProjectEnvironmentTypesUpdateResponseIdentity;
+  identity?: DevCentersCreateOrUpdateResponseIdentity;
   /** The geo-location for the environment type */
   location?: string;
 }
@@ -8728,7 +8329,7 @@ export const ProjectEnvironmentTypesUpdateResponse = /*@__PURE__*/ S.suspend(
       systemData: S.optional(SystemData),
       properties: S.optional(ProjectEnvironmentTypeProperties),
       tags: S.optional(ProjectEnvironmentTypesUpdateResponseTagsMap),
-      identity: S.optional(ProjectEnvironmentTypesUpdateResponseIdentity),
+      identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
       location: S.optional(S.String),
     }),
 ).annotate({
@@ -9211,19 +8812,10 @@ export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProjectsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const ProjectsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-).annotate({
-  identifier: "ProjectsCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<ProjectsCreateOrUpdateRequestIdentity>;
+export type ProjectsCreateOrUpdateRequestIdentity =
+  DevCentersCreateOrUpdateRequestIdentity;
+export const ProjectsCreateOrUpdateRequestIdentity =
+  DevCentersCreateOrUpdateRequestIdentity;
 
 export interface ProjectsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -9239,7 +8831,7 @@ export interface ProjectsCreateOrUpdateRequest {
   /** Properties of a project. */
   properties?: ProjectPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProjectsCreateOrUpdateRequestIdentity;
+  identity?: DevCentersCreateOrUpdateRequestIdentity;
 }
 export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9249,7 +8841,7 @@ export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ProjectsCreateOrUpdateRequestTagsMap),
     location: S.String,
     properties: S.optional(ProjectPropertiesInput),
-    identity: S.optional(ProjectsCreateOrUpdateRequestIdentity),
+    identity: S.optional(DevCentersCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9323,25 +8915,10 @@ export const ProjectProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProjectsCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ProjectsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "ProjectsCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<ProjectsCreateOrUpdateResponseIdentity>;
+export type ProjectsCreateOrUpdateResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
+export const ProjectsCreateOrUpdateResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
 
 export interface ProjectsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9359,7 +8936,7 @@ export interface ProjectsCreateOrUpdateResponse {
   /** Properties of a project. */
   properties?: ProjectProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProjectsCreateOrUpdateResponseIdentity;
+  identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
 export const ProjectsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9370,7 +8947,7 @@ export const ProjectsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ProjectsCreateOrUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(ProjectProperties),
-    identity: S.optional(ProjectsCreateOrUpdateResponseIdentity),
+    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ProjectsCreateOrUpdateResponse",
@@ -9441,24 +9018,10 @@ export const ProjectsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProjectsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ProjectsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ProjectsGetResponseIdentity",
-}) as any as S.Schema<ProjectsGetResponseIdentity>;
+export type ProjectsGetResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
+export const ProjectsGetResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
 
 export interface ProjectsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9476,7 +9039,7 @@ export interface ProjectsGetResponse {
   /** Properties of a project. */
   properties?: ProjectProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProjectsGetResponseIdentity;
+  identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
 export const ProjectsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9487,7 +9050,7 @@ export const ProjectsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ProjectsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(ProjectProperties),
-    identity: S.optional(ProjectsGetResponseIdentity),
+    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ProjectsGetResponse",
@@ -9581,24 +9144,8 @@ export const ProjectTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProjectIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ProjectIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ProjectIdentity",
-}) as any as S.Schema<ProjectIdentity>;
+export type ProjectIdentity = DevCentersCreateOrUpdateResponseIdentity;
+export const ProjectIdentity = DevCentersCreateOrUpdateResponseIdentity;
 
 /** Represents a project resource. */
 export interface Project {
@@ -9617,7 +9164,7 @@ export interface Project {
   /** Properties of a project. */
   properties?: ProjectProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProjectIdentity;
+  identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
 export const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9628,7 +9175,7 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ProjectTagsMap),
     location: S.String,
     properties: S.optional(ProjectProperties),
-    identity: S.optional(ProjectIdentity),
+    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
 
@@ -9677,43 +9224,14 @@ export const ProjectsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectsListBySubscriptionRequest>;
 
 /** Properties of a project. These properties can be updated after the resource has been created. */
-export interface ProjectUpdateProperties {
-  /** Resource Id of an associated DevCenter */
-  devCenterId?: string;
-  /** Description of the project. */
-  description?: string;
-  /** When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced. */
-  maxDevBoxesPerUser?: number;
-  /** The display name of the project. */
-  displayName?: string;
-  /** Settings to be used when associating a project with a catalog. */
-  catalogSettings?: ProjectCatalogSettings;
-}
-export const ProjectUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    devCenterId: S.optional(S.String),
-    description: S.optional(S.String),
-    maxDevBoxesPerUser: S.optional(S.Number),
-    displayName: S.optional(S.String),
-    catalogSettings: S.optional(ProjectCatalogSettings),
-  }),
-).annotate({
-  identifier: "ProjectUpdateProperties",
-}) as any as S.Schema<ProjectUpdateProperties>;
+export type ProjectUpdateProperties = ProjectPropertiesInput;
+export const ProjectUpdateProperties = ProjectPropertiesInput;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProjectsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const ProjectsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "ProjectsUpdateRequestIdentity",
-}) as any as S.Schema<ProjectsUpdateRequestIdentity>;
+export type ProjectsUpdateRequestIdentity =
+  DevCentersCreateOrUpdateRequestIdentity;
+export const ProjectsUpdateRequestIdentity =
+  DevCentersCreateOrUpdateRequestIdentity;
 
 export interface ProjectsUpdateRequest {
   /** The ID of the target subscription. */
@@ -9727,9 +9245,9 @@ export interface ProjectsUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
   /** Properties of a project to be updated. */
-  properties?: ProjectUpdateProperties;
+  properties?: ProjectPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProjectsUpdateRequestIdentity;
+  identity?: DevCentersCreateOrUpdateRequestIdentity;
 }
 export const ProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9738,8 +9256,8 @@ export const ProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     projectName: S.String.pipe(T.Label()),
     tags: S.optional(Tags),
     location: S.optional(S.String),
-    properties: S.optional(ProjectUpdateProperties),
-    identity: S.optional(ProjectsUpdateRequestIdentity),
+    properties: S.optional(ProjectPropertiesInput),
+    identity: S.optional(DevCentersCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -9762,24 +9280,10 @@ export const ProjectsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ProjectsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProjectsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ProjectsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ProjectsUpdateResponseIdentity",
-}) as any as S.Schema<ProjectsUpdateResponseIdentity>;
+export type ProjectsUpdateResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
+export const ProjectsUpdateResponseIdentity =
+  DevCentersCreateOrUpdateResponseIdentity;
 
 export interface ProjectsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9797,7 +9301,7 @@ export interface ProjectsUpdateResponse {
   /** Properties of a project. */
   properties?: ProjectProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProjectsUpdateResponseIdentity;
+  identity?: DevCentersCreateOrUpdateResponseIdentity;
 }
 export const ProjectsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9808,7 +9312,7 @@ export const ProjectsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ProjectsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(ProjectProperties),
-    identity: S.optional(ProjectsUpdateResponseIdentity),
+    identity: S.optional(DevCentersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ProjectsUpdateResponse",
