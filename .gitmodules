@@ -76,3 +76,7 @@
 	url = https://github.com/github/rest-api-description.git
 	shallow = true
 	ignore = dirty
+[submodule "packages/railway/specs/distilled-spec-railway"]
+	path = packages/railway/specs/distilled-spec-railway
+	url = https://github.com/alchemy-run/distilled-spec-railway.git
+	ignore = dirty
