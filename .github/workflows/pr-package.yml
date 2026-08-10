@@ -59,6 +59,7 @@ jobs:
               { "dir": "packages/supabase",        "name": "@distilled.cloud/supabase",        "group": "Distilled" },
               { "dir": "packages/turso",           "name": "@distilled.cloud/turso",           "group": "Distilled" },
               { "dir": "packages/typesense",       "name": "@distilled.cloud/typesense",       "group": "Distilled" },
+              { "dir": "packages/vercel",          "name": "@distilled.cloud/vercel",          "group": "Distilled" },
               { "dir": "packages/workos",          "name": "@distilled.cloud/workos",          "group": "Distilled" }
             ]
           pr-package-token: ${{ secrets.PR_PACKAGE_TOKEN }}
