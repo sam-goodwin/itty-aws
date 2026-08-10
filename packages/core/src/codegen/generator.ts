@@ -1030,14 +1030,26 @@ export const generateService = (
     // No items path: `.items()` is a page passthrough at runtime, so an
     // item IS a whole response.
     if (!itemsPath) return tsRef(outputId);
-    let def = shapes[outputId];
+    let id: string = outputId;
+    // Whether the path crossed a list on the way down (`"edges.node"` on a
+    // Relay connection). When it did, the path itself is what fans out, so
+    // the value it lands on IS one item — it needn't be a list again.
+    let fannedOut = false;
     for (const segment of itemsPath.split(".")) {
+      let def: any = shapes[id];
+      if (def?.type === "list") {
+        id = def.member.target as string;
+        def = shapes[id];
+        fannedOut = true;
+      }
       if (def?.type !== "structure") return undefined;
       const info = memberInfos(def).find((m) => m.tsName === segment);
       if (!info) return undefined;
-      def = shapes[info.target];
+      id = info.target;
     }
-    return def?.type === "list" ? tsRef(def.member.target) : undefined;
+    const last: any = shapes[id];
+    if (last?.type === "list") return tsRef(last.member.target);
+    return fannedOut ? tsRef(id) : undefined;
   };
 
   const emitOperation =
