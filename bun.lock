@@ -162,6 +162,21 @@
         "effect": "catalog:",
       },
     },
+    "packages/github": {
+      "name": "@distilled.cloud/github",
+      "version": "1.0.0-rc.3",
+      "dependencies": {
+        "@distilled.cloud/core": "workspace:*",
+      },
+      "devDependencies": {
+        "@effect/platform-bun": "catalog:",
+        "@types/bun": "catalog:",
+        "@types/node": "catalog:",
+      },
+      "peerDependencies": {
+        "effect": "catalog:",
+      },
+    },
     "packages/kubernetes": {
       "name": "@distilled.cloud/kubernetes",
       "version": "1.0.0-rc.3",
@@ -409,6 +424,8 @@
     "@distilled.cloud/fly-io": ["@distilled.cloud/fly-io@workspace:packages/fly-io"],
 
     "@distilled.cloud/gcp": ["@distilled.cloud/gcp@workspace:packages/gcp"],
+
+    "@distilled.cloud/github": ["@distilled.cloud/github@workspace:packages/github"],
 
     "@distilled.cloud/kubernetes": ["@distilled.cloud/kubernetes@workspace:packages/kubernetes"],
 
@@ -1040,6 +1057,8 @@
 
     "@distilled.cloud/gcp/@types/node": ["@types/node@26.1.2", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-Vu4a5UFA9rIIFJ7rB/Vaafh9lrCQszopTCx6KjFboXTGQbPNasehVR5TEiithSDGyd1DEiUByggTZsg8jukeIg=="],
 
+    "@distilled.cloud/github/@types/node": ["@types/node@26.1.2", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-Vu4a5UFA9rIIFJ7rB/Vaafh9lrCQszopTCx6KjFboXTGQbPNasehVR5TEiithSDGyd1DEiUByggTZsg8jukeIg=="],
+
     "@distilled.cloud/kubernetes/@types/node": ["@types/node@26.1.2", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-Vu4a5UFA9rIIFJ7rB/Vaafh9lrCQszopTCx6KjFboXTGQbPNasehVR5TEiithSDGyd1DEiUByggTZsg8jukeIg=="],
 
     "@distilled.cloud/mongodb-atlas/@types/node": ["@types/node@26.1.2", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-Vu4a5UFA9rIIFJ7rB/Vaafh9lrCQszopTCx6KjFboXTGQbPNasehVR5TEiithSDGyd1DEiUByggTZsg8jukeIg=="],
@@ -1099,6 +1118,8 @@
     "@distilled.cloud/fly-io/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
 
     "@distilled.cloud/gcp/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
+
+    "@distilled.cloud/github/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
 
     "@distilled.cloud/kubernetes/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
 
