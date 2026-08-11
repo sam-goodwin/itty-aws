@@ -1,0 +1,179 @@
+{
+  "kind": "schema-truth",
+  "description": "prometheusremotewrite exporter: un-squash `clientconfig` and `timeoutsettings`, and restore the config-file shape of `headers`, `auth.authenticator` and `cookies`. Its retry config really is squashed to the root upstream, so those fields are left where the reflector put them.",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/auth",
+      "path": "/properties/auth"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/compression",
+      "path": "/properties/compression"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/compression_params",
+      "path": "/properties/compression_params"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/cookies",
+      "path": "/properties/cookies"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/disable_keep_alives",
+      "path": "/properties/disable_keep_alives"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/endpoint",
+      "path": "/properties/endpoint"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/force_attempt_http2",
+      "path": "/properties/force_attempt_http2"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/headers",
+      "path": "/properties/headers"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/http2_ping_timeout",
+      "path": "/properties/http2_ping_timeout"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/http2_read_idle_timeout",
+      "path": "/properties/http2_read_idle_timeout"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/idle_conn_timeout",
+      "path": "/properties/idle_conn_timeout"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/max_conns_per_host",
+      "path": "/properties/max_conns_per_host"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/max_idle_conns",
+      "path": "/properties/max_idle_conns"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/max_idle_conns_per_host",
+      "path": "/properties/max_idle_conns_per_host"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/middlewares",
+      "path": "/properties/middlewares"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/proxy_url",
+      "path": "/properties/proxy_url"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/read_buffer_size",
+      "path": "/properties/read_buffer_size"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/timeout",
+      "path": "/properties/timeout"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/tls",
+      "path": "/properties/tls"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/write_buffer_size",
+      "path": "/properties/write_buffer_size"
+    },
+    {
+      "op": "remove",
+      "path": "/properties/clientconfig"
+    },
+    {
+      "op": "move",
+      "from": "/properties/timeoutsettings/properties/timeout",
+      "path": "/properties/timeout"
+    },
+    {
+      "op": "remove",
+      "path": "/properties/timeoutsettings"
+    },
+    {
+      "op": "replace",
+      "path": "/properties/headers",
+      "value": {
+        "description": "Additional headers attached to each request sent by the client. Header values are opaque since they may be sensitive.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/properties/auth/properties/authenticator",
+      "value": {
+        "description": "Id of the `extensions` entry that authenticates this client, e.g. `sigv4auth` or `basicauth/backend`.",
+        "type": "string"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/properties/compression",
+      "value": {
+        "description": "The compression key for supported compression types within collector.",
+        "type": "string",
+        "enum": ["none", "gzip", "zstd", "snappy", "zlib", "deflate", "lz4"]
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/properties/cookies",
+      "value": {
+        "description": "Send and accept cookies across requests.",
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/properties/translation_strategy",
+      "value": {
+        "description": "How OTLP metric and attribute names become Prometheus metric and label names.",
+        "type": "string",
+        "enum": [
+          "UnderscoreEscapingWithSuffixes",
+          "UnderscoreEscapingWithoutSuffixes",
+          "NoUTF8EscapingWithSuffixes",
+          "NoTranslation"
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/required",
+      "value": ["endpoint"]
+    }
+  ]
+}

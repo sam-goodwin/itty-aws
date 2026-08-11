@@ -1,0 +1,135 @@
+{
+  "kind": "schema-truth",
+  "description": "otlp exporter: un-squash `clientconfig` and `timeoutconfig`, and restore the config-file shape of `headers`, `auth.authenticator` and the queue sizers.",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/auth",
+      "path": "/properties/auth"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/authority",
+      "path": "/properties/authority"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/balancer_name",
+      "path": "/properties/balancer_name"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/compression",
+      "path": "/properties/compression"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/endpoint",
+      "path": "/properties/endpoint"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/headers",
+      "path": "/properties/headers"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/keepalive",
+      "path": "/properties/keepalive"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/middlewares",
+      "path": "/properties/middlewares"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/read_buffer_size",
+      "path": "/properties/read_buffer_size"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/tls",
+      "path": "/properties/tls"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/user_agent",
+      "path": "/properties/user_agent"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/wait_for_ready",
+      "path": "/properties/wait_for_ready"
+    },
+    {
+      "op": "move",
+      "from": "/properties/clientconfig/properties/write_buffer_size",
+      "path": "/properties/write_buffer_size"
+    },
+    {
+      "op": "remove",
+      "path": "/properties/clientconfig"
+    },
+    {
+      "op": "move",
+      "from": "/properties/timeoutconfig/properties/timeout",
+      "path": "/properties/timeout"
+    },
+    {
+      "op": "remove",
+      "path": "/properties/timeoutconfig"
+    },
+    {
+      "op": "replace",
+      "path": "/properties/headers",
+      "value": {
+        "description": "Additional headers attached to each request sent by the client. Header values are opaque since they may be sensitive.",
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/properties/auth/properties/authenticator",
+      "value": {
+        "description": "Id of the `extensions` entry that authenticates this client, e.g. `sigv4auth` or `basicauth/backend`.",
+        "type": "string"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/properties/compression",
+      "value": {
+        "description": "The compression key for supported compression types within collector.",
+        "type": "string",
+        "enum": ["none", "gzip", "zstd", "snappy", "zlib", "deflate", "lz4"]
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/properties/sending_queue/properties/sizer",
+      "value": {
+        "description": "Unit the size limits are counted in.",
+        "type": "string",
+        "enum": ["requests", "items", "bytes"]
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/properties/sending_queue/properties/batch/properties/sizer",
+      "value": {
+        "description": "Unit the batch size limits are counted in. If unset, the queue's sizer is used.",
+        "type": "string",
+        "enum": ["requests", "items", "bytes"]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/required",
+      "value": ["endpoint"]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "schema-truth",
+  "description": "probabilistic_sampler processor: `mode` is a closed set that reflects as a bare string.",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/properties/mode",
+      "value": {
+        "description": "Sampling mode.",
+        "type": "string",
+        "enum": ["hash_seed", "equalizing", "proportional"]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/required",
+      "value": ["sampling_percentage"]
+    }
+  ]
+}

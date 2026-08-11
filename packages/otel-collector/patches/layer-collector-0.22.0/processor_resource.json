@@ -1,0 +1,11 @@
+{
+  "kind": "schema-truth",
+  "description": "resource processor: `attributes` is the only field and is required.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/required",
+      "value": ["attributes"]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "kind": "build-policy",
+  "description": "BUILD POLICY — the closed lambda build registers no middleware and no storage extension, so `middlewares` and `sending_queue.storage` have no value the collector would accept.",
+  "patches": [
+    {
+      "op": "remove",
+      "path": "/properties/middlewares"
+    },
+    {
+      "op": "remove",
+      "path": "/properties/sending_queue/properties/storage"
+    }
+  ]
+}

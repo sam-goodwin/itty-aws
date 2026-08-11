@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "output_paths": {
+      "description": "OutputPaths is a list of file paths to write logging output to. This option can only be used when use_internal_logger is false. Special strings \"stdout\" and \"stderr\" are interpreted as os.Stdout and os.Stderr respectively. All other values are treated as file paths. If not set, defaults to [\"stdout\"].",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "sampling_initial": {
+      "description": "SamplingInitial defines how many samples are initially logged during each second.",
+      "type": "integer"
+    },
+    "sampling_thereafter": {
+      "description": "SamplingThereafter defines the sampling rate after the initial samples are logged.",
+      "type": "integer"
+    },
+    "sending_queue": {
+      "properties": {
+        "batch": {
+          "properties": {
+            "flush_timeout": {
+              "description": "Duration string (e.g., '1s', '5m', '1h')",
+              "pattern": "^[0-9]+(ns|us|µs|ms|s|m|h)$",
+              "type": "string"
+            },
+            "max_size": {
+              "description": "MaxSize defines the configuration for the maximum size of a batch.",
+              "type": "integer"
+            },
+            "min_size": {
+              "description": "MinSize defines the configuration for the minimum size of a batch.",
+              "type": "integer"
+            },
+            "partition": {
+              "description": "Partition defines the partitioning of the batches configuration.",
+              "properties": {
+                "metadata_keys": {
+                  "description": "MetadataKeys is a list of client.Metadata keys that will be used to partition the data into batches. If this setting is empty, a single batcher instance will be used. When this setting is not empty, one batcher will be used per distinct combination of values for the listed metadata keys. Empty value and unset metadata are treated as distinct cases. Entries are case-insensitive. Duplicated entries will trigger a validation error.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            },
+            "sizer": {
+              "description": "Sizer determines the type of size measurement used by the batch. If not configured, use the same configuration as the queue. It accepts \"requests\", \"items\", or \"bytes\".",
+              "type": "object"
+            }
+          },
+          "type": "object"
+        },
+        "block_on_overflow": {
+          "description": "BlockOnOverflow determines the behavior when the component's TotalSize limit is reached. If true, the component will wait for space; otherwise, operations will immediately return a retryable error.",
+          "type": "boolean"
+        },
+        "num_consumers": {
+          "description": "NumConsumers is the maximum number of concurrent consumers from the queue. This applies across all different optional configurations from above (e.g. wait_for_result, block_on_overflow, storage, etc.).",
+          "type": "integer"
+        },
+        "queue_size": {
+          "description": "QueueSize represents the maximum data size allowed for concurrent storage and processing.",
+          "type": "integer"
+        },
+        "sizer": {
+          "description": "Sizer determines the type of size measurement used by this component. It accepts \"requests\", \"items\", or \"bytes\".",
+          "type": "object"
+        },
+        "storage": {
+          "description": "StorageID if not empty, enables the persistent storage and uses the component specified as a storage extension for the persistent queue. TODO: This will be changed to Optional when available. See https://github.com/open-telemetry/opentelemetry-collector/issues/13822",
+          "type": "object"
+        },
+        "wait_for_result": {
+          "description": "WaitForResult determines if incoming requests are blocked until the request is processed or not. Currently, this option is not available when persistent queue is configured using the storage configuration.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "use_internal_logger": {
+      "description": "UseInternalLogger defines whether the exporter sends the output to the collector's internal logger.",
+      "type": "boolean"
+    },
+    "verbosity": {
+      "description": "Verbosity defines the debug exporter verbosity.",
+      "type": "integer"
+    }
+  },
+  "type": "object"
+}

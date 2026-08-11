@@ -1,0 +1,37 @@
+{
+  "tag": "layer-collector/0.22.0",
+  "repository": "open-telemetry/opentelemetry-lambda",
+  "artifact": "the AWS-managed Lambda collector extension layer",
+  "closed": true,
+  "note": "The component set is a property of the OCB BUILD, not of any single upstream version — core, contrib and the lambda-only modules are pinned independently. That is why every directory on this axis is keyed on the build tag rather than on `0.151.0`.",
+  "modules": {
+    "collector-core": "v0.151.0",
+    "collector-core-stable": "v1.57.0",
+    "collector-contrib": "v0.151.0",
+    "collector-lambda": "v0.98.0"
+  },
+  "builder": {
+    "manifest": "manifest-0.151.0-lambda.yaml",
+    "tags": [],
+    "note": "Built WITHOUT the `lambdacomponents.custom` tag, so collector/lambdacomponents/default.go registers exactly the components listed below and nothing else. No connectors are registered."
+  },
+  "schemaGenerator": "pavolloffay/opentelemetry-collector-config-schema",
+  "components": {
+    "receivers": ["otlp", "telemetryapi"],
+    "processors": [
+      "attributes",
+      "batch",
+      "coldstart",
+      "decouple",
+      "filter",
+      "memory_limiter",
+      "probabilistic_sampler",
+      "resource",
+      "span",
+      "transform"
+    ],
+    "exporters": ["debug", "otlp", "otlphttp", "prometheusremotewrite"],
+    "extensions": ["basicauth", "sigv4auth"],
+    "connectors": []
+  }
+}

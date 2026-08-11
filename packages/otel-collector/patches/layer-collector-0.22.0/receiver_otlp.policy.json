@@ -1,0 +1,14 @@
+{
+  "kind": "build-policy",
+  "description": "BUILD POLICY — the closed lambda build registers no middleware extension, so neither listener's `middlewares` has a value the collector would accept.",
+  "patches": [
+    {
+      "op": "remove",
+      "path": "/properties/protocols/properties/http/properties/middlewares"
+    },
+    {
+      "op": "remove",
+      "path": "/properties/protocols/properties/grpc/properties/middlewares"
+    }
+  ]
+}
