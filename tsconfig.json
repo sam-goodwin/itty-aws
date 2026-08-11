@@ -12,6 +12,8 @@
     { "path": "./packages/azure/tsconfig.scripts.json" },
     { "path": "./packages/coinbase/tsconfig.json" },
     { "path": "./packages/coinbase/tsconfig.scripts.json" },
+    { "path": "./packages/discord/tsconfig.json" },
+    { "path": "./packages/discord/tsconfig.scripts.json" },
     { "path": "./packages/expo-eas/tsconfig.json" },
     { "path": "./packages/expo-eas/tsconfig.scripts.json" },
     { "path": "./packages/fly-io/tsconfig.json" },
