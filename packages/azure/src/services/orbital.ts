@@ -448,18 +448,10 @@ export const ContactProfilesPropertiesAutoTrackingConfiguration =
   /*@__PURE__*/ S.String;
 
 /** Network configuration of customer virtual network. */
-export interface ContactProfilesPropertiesNetworkConfiguration {
-  /** ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class C subnet, and should not have any IP created in it. */
-  subnetId: string;
-}
+export type ContactProfilesPropertiesNetworkConfiguration =
+  ContactProfilesPropertiesInputNetworkConfiguration;
 export const ContactProfilesPropertiesNetworkConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subnetId: S.String,
-    }),
-  ).annotate({
-    identifier: "ContactProfilesPropertiesNetworkConfiguration",
-  }) as any as S.Schema<ContactProfilesPropertiesNetworkConfiguration>;
+  ContactProfilesPropertiesInputNetworkConfiguration;
 
 /** Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
 export type ContactProfilesPropertiesThirdPartyConfigurationsList =
@@ -488,7 +480,7 @@ export interface ContactProfilesProperties {
   /** ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub. */
   eventHubUri?: string;
   /** Network configuration of customer virtual network. */
-  networkConfiguration: ContactProfilesPropertiesNetworkConfiguration;
+  networkConfiguration: ContactProfilesPropertiesInputNetworkConfiguration;
   /** Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
   thirdPartyConfigurations?: ContactProfilesPropertiesThirdPartyConfigurationsList;
   /** Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints. */
@@ -503,7 +495,7 @@ export const ContactProfilesProperties = /*@__PURE__*/ S.suspend(() =>
       ContactProfilesPropertiesAutoTrackingConfiguration,
     ),
     eventHubUri: S.optional(S.String),
-    networkConfiguration: ContactProfilesPropertiesNetworkConfiguration,
+    networkConfiguration: ContactProfilesPropertiesInputNetworkConfiguration,
     thirdPartyConfigurations: S.optional(
       ContactProfilesPropertiesThirdPartyConfigurationsList,
     ),
@@ -2331,32 +2323,16 @@ export type ProvisioningState_2 =
 export const ProvisioningState_2 = /*@__PURE__*/ S.String;
 
 /** The name of the partner router that cross-connects with the Orbital Edge Router at the edge site. */
-export interface L2ConnectionsPropertiesEdgeSitePartnerRouter {
-  /** The unique name of the partner router that cross-connects with the Orbital Edge Router at the edge site. */
-  name: string;
-}
+export type L2ConnectionsPropertiesEdgeSitePartnerRouter =
+  L2ConnectionsPropertiesInputEdgeSitePartnerRouter;
 export const L2ConnectionsPropertiesEdgeSitePartnerRouter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "L2ConnectionsPropertiesEdgeSitePartnerRouter",
-  }) as any as S.Schema<L2ConnectionsPropertiesEdgeSitePartnerRouter>;
+  L2ConnectionsPropertiesInputEdgeSitePartnerRouter;
 
 /** The name of the partner router to establish a connection to within the ground station. */
-export interface L2ConnectionsPropertiesGroundStationPartnerRouter {
-  /** The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site. */
-  name: string;
-}
+export type L2ConnectionsPropertiesGroundStationPartnerRouter =
+  L2ConnectionsPropertiesInputGroundStationPartnerRouter;
 export const L2ConnectionsPropertiesGroundStationPartnerRouter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "L2ConnectionsPropertiesGroundStationPartnerRouter",
-  }) as any as S.Schema<L2ConnectionsPropertiesGroundStationPartnerRouter>;
+  L2ConnectionsPropertiesInputGroundStationPartnerRouter;
 
 /** Properties object for an L2 Connection. */
 export interface L2ConnectionsProperties {
@@ -2367,11 +2343,11 @@ export interface L2ConnectionsProperties {
   /** A reference to an Microsoft.Orbital/edgeSites resource to route traffic for. */
   edgeSite: ResourceReference;
   /** The name of the partner router that cross-connects with the Orbital Edge Router at the edge site. */
-  edgeSitePartnerRouter: L2ConnectionsPropertiesEdgeSitePartnerRouter;
+  edgeSitePartnerRouter: L2ConnectionsPropertiesInputEdgeSitePartnerRouter;
   /** A reference to an Microsoft.Orbital/groundStations resource to route traffic for. */
   groundStation: ResourceReference;
   /** The name of the partner router to establish a connection to within the ground station. */
-  groundStationPartnerRouter: L2ConnectionsPropertiesGroundStationPartnerRouter;
+  groundStationPartnerRouter: L2ConnectionsPropertiesInputGroundStationPartnerRouter;
   /** The VLAN ID for the L2 connection. */
   vlanId: number;
 }
@@ -2380,10 +2356,10 @@ export const L2ConnectionsProperties = /*@__PURE__*/ S.suspend(() =>
     provisioningState: S.optional(ProvisioningState_2),
     circuitId: S.optional(S.String),
     edgeSite: ResourceReference,
-    edgeSitePartnerRouter: L2ConnectionsPropertiesEdgeSitePartnerRouter,
+    edgeSitePartnerRouter: L2ConnectionsPropertiesInputEdgeSitePartnerRouter,
     groundStation: ResourceReference,
     groundStationPartnerRouter:
-      L2ConnectionsPropertiesGroundStationPartnerRouter,
+      L2ConnectionsPropertiesInputGroundStationPartnerRouter,
     vlanId: S.Number,
   }),
 ).annotate({

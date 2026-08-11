@@ -4703,37 +4703,17 @@ export type CreateMode =
 export const CreateMode = /*@__PURE__*/ S.String;
 
 /** The private endpoint connection resource. */
-export interface ServerPropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type ServerPropertiesPrivateEndpointConnectionsItem =
+  PrivateEndpointConnectionListValueItem;
 export const ServerPropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "ServerPropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<ServerPropertiesPrivateEndpointConnectionsItem>;
+  PrivateEndpointConnectionListValueItem;
 
 /** List of private endpoint connections associated with the specified server. */
 export type ServerPropertiesPrivateEndpointConnectionsList =
-  Array<ServerPropertiesPrivateEndpointConnectionsItem>;
+  Array<PrivateEndpointConnectionListValueItem>;
 export const ServerPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    ServerPropertiesPrivateEndpointConnectionsItem,
+    PrivateEndpointConnectionListValueItem,
   ) as any as S.Schema<ServerPropertiesPrivateEndpointConnectionsList>;
 
 /** Cluster properties of a server. */
@@ -5439,26 +5419,8 @@ export const HighAvailabilityForPatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HighAvailabilityForPatch>;
 
 /** Maintenance window properties of a server. */
-export interface MaintenanceWindowForPatch {
-  /** Indicates whether custom window is enabled or disabled. */
-  customWindow?: string;
-  /** Start hour to be used for maintenance window. */
-  startHour?: number;
-  /** Start minute to be used for maintenance window. */
-  startMinute?: number;
-  /** Day of the week to be used for maintenance window. */
-  dayOfWeek?: number;
-}
-export const MaintenanceWindowForPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customWindow: S.optional(S.String),
-    startHour: S.optional(S.Number),
-    startMinute: S.optional(S.Number),
-    dayOfWeek: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MaintenanceWindowForPatch",
-}) as any as S.Schema<MaintenanceWindowForPatch>;
+export type MaintenanceWindowForPatch = MaintenanceWindow;
+export const MaintenanceWindowForPatch = MaintenanceWindow;
 
 /** Indicates if the server supports password based authentication. */
 export type PasswordBasedAuth = "Enabled" | "Disabled";
@@ -5500,7 +5462,7 @@ export interface ServerPropertiesForPatchInput {
   /** High availability properties of a server. */
   highAvailability?: HighAvailabilityForPatch;
   /** Maintenance window properties of a server. */
-  maintenanceWindow?: MaintenanceWindowForPatch;
+  maintenanceWindow?: MaintenanceWindow;
   /** Authentication configuration properties of a server. */
   authConfig?: AuthConfigForPatch;
   /** Data encryption properties of a server. */
@@ -5525,7 +5487,7 @@ export const ServerPropertiesForPatchInput = /*@__PURE__*/ S.suspend(() =>
     storage: S.optional(Storage),
     backup: S.optional(BackupForPatchInput),
     highAvailability: S.optional(HighAvailabilityForPatch),
-    maintenanceWindow: S.optional(MaintenanceWindowForPatch),
+    maintenanceWindow: S.optional(MaintenanceWindow),
     authConfig: S.optional(AuthConfigForPatch),
     dataEncryption: S.optional(DataEncryption),
     availabilityZone: S.optional(S.String),

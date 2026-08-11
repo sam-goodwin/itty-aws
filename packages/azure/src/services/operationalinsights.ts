@@ -150,12 +150,8 @@ export const ClusterPropertiesInputAssociatedWorkspacesList =
   ) as any as S.Schema<ClusterPropertiesInputAssociatedWorkspacesList>;
 
 /** The Capacity Reservation properties. */
-export interface CapacityReservationPropertiesInput {}
-export const CapacityReservationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CapacityReservationPropertiesInput",
-}) as any as S.Schema<CapacityReservationPropertiesInput>;
+export type CapacityReservationPropertiesInput = AssociatedWorkspaceInput;
+export const CapacityReservationPropertiesInput = AssociatedWorkspaceInput;
 
 /** Cluster replication properties. */
 export interface ClusterReplicationPropertiesInput {
@@ -189,7 +185,7 @@ export interface ClusterPropertiesInput {
   /** The list of Log Analytics workspaces associated with the cluster */
   associatedWorkspaces?: ClusterPropertiesInputAssociatedWorkspacesList;
   /** Additional properties for capacity reservation */
-  capacityReservationProperties?: CapacityReservationPropertiesInput;
+  capacityReservationProperties?: AssociatedWorkspaceInput;
   /** Cluster's replication properties. */
   replication?: ClusterReplicationPropertiesInput;
 }
@@ -202,9 +198,7 @@ export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     associatedWorkspaces: S.optional(
       ClusterPropertiesInputAssociatedWorkspacesList,
     ),
-    capacityReservationProperties: S.optional(
-      CapacityReservationPropertiesInput,
-    ),
+    capacityReservationProperties: S.optional(AssociatedWorkspaceInput),
     replication: S.optional(ClusterReplicationPropertiesInput),
   }),
 ).annotate({
@@ -220,20 +214,16 @@ export type ManagedServiceIdentityType =
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = AssociatedWorkspaceInput;
+export const UserAssignedIdentityInput = AssociatedWorkspaceInput;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: AssociatedWorkspaceInput | undefined;
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentityInput,
+  AssociatedWorkspaceInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -647,24 +637,10 @@ export const ClustersGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ClustersGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ClustersGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ClustersGetResponseIdentity",
-}) as any as S.Schema<ClustersGetResponseIdentity>;
+export type ClustersGetResponseIdentity =
+  ClustersCreateOrUpdateResponseIdentity;
+export const ClustersGetResponseIdentity =
+  ClustersCreateOrUpdateResponseIdentity;
 
 export interface ClustersGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -682,7 +658,7 @@ export interface ClustersGetResponse {
   /** Log Analytics cluster properties. */
   properties?: ClusterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ClustersGetResponseIdentity;
+  identity?: ClustersCreateOrUpdateResponseIdentity;
   /** The sku properties. */
   sku?: ClusterSku;
 }
@@ -695,7 +671,7 @@ export const ClustersGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ClustersGetResponseTagsMap),
     location: S.String,
     properties: S.optional(ClusterProperties),
-    identity: S.optional(ClustersGetResponseIdentity),
+    identity: S.optional(ClustersCreateOrUpdateResponseIdentity),
     sku: S.optional(ClusterSku),
   }),
 ).annotate({
@@ -729,24 +705,8 @@ export const ClusterTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClusterTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ClusterIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ClusterIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ClusterIdentity",
-}) as any as S.Schema<ClusterIdentity>;
+export type ClusterIdentity = ClustersCreateOrUpdateResponseIdentity;
+export const ClusterIdentity = ClustersCreateOrUpdateResponseIdentity;
 
 /** The top level Log Analytics cluster resource container. */
 export interface Cluster {
@@ -765,7 +725,7 @@ export interface Cluster {
   /** Log Analytics cluster properties. */
   properties?: ClusterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ClusterIdentity;
+  identity?: ClustersCreateOrUpdateResponseIdentity;
   /** The sku properties. */
   sku?: ClusterSku;
 }
@@ -778,7 +738,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ClusterTagsMap),
     location: S.String,
     properties: S.optional(ClusterProperties),
-    identity: S.optional(ClusterIdentity),
+    identity: S.optional(ClustersCreateOrUpdateResponseIdentity),
     sku: S.optional(ClusterSku),
   }),
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
@@ -844,18 +804,10 @@ export const ClusterPatchProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterPatchProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ClustersUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const ClustersUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "ClustersUpdateRequestIdentity",
-}) as any as S.Schema<ClustersUpdateRequestIdentity>;
+export type ClustersUpdateRequestIdentity =
+  ClustersCreateOrUpdateRequestIdentity;
+export const ClustersUpdateRequestIdentity =
+  ClustersCreateOrUpdateRequestIdentity;
 
 /** Resource tags. */
 export type ClustersUpdateRequestTagsMap = {
@@ -876,7 +828,7 @@ export interface ClustersUpdateRequest {
   /** Log Analytics cluster properties. */
   properties?: ClusterPatchProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ClustersUpdateRequestIdentity;
+  identity?: ClustersCreateOrUpdateRequestIdentity;
   /** The sku properties. */
   sku?: ClusterSku;
   /** Resource tags. */
@@ -888,7 +840,7 @@ export const ClustersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     clusterName: S.String.pipe(T.Label()),
     properties: S.optional(ClusterPatchProperties),
-    identity: S.optional(ClustersUpdateRequestIdentity),
+    identity: S.optional(ClustersCreateOrUpdateRequestIdentity),
     sku: S.optional(ClusterSku),
     tags: S.optional(ClustersUpdateRequestTagsMap),
   }).pipe(
@@ -913,24 +865,10 @@ export const ClustersUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ClustersUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ClustersUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ClustersUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ClustersUpdateResponseIdentity",
-}) as any as S.Schema<ClustersUpdateResponseIdentity>;
+export type ClustersUpdateResponseIdentity =
+  ClustersCreateOrUpdateResponseIdentity;
+export const ClustersUpdateResponseIdentity =
+  ClustersCreateOrUpdateResponseIdentity;
 
 export interface ClustersUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -948,7 +886,7 @@ export interface ClustersUpdateResponse {
   /** Log Analytics cluster properties. */
   properties?: ClusterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ClustersUpdateResponseIdentity;
+  identity?: ClustersCreateOrUpdateResponseIdentity;
   /** The sku properties. */
   sku?: ClusterSku;
 }
@@ -961,7 +899,7 @@ export const ClustersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ClustersUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(ClusterProperties),
-    identity: S.optional(ClustersUpdateResponseIdentity),
+    identity: S.optional(ClustersCreateOrUpdateResponseIdentity),
     sku: S.optional(ClusterSku),
   }),
 ).annotate({
@@ -3606,12 +3544,8 @@ export const QueryPacksCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<QueryPacksCreateOrUpdateRequestTagsMap>;
 
 /** Properties that define a Log Analytics QueryPack resource. */
-export interface LogAnalyticsQueryPackPropertiesInput {}
-export const LogAnalyticsQueryPackPropertiesInput = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "LogAnalyticsQueryPackPropertiesInput",
-}) as any as S.Schema<LogAnalyticsQueryPackPropertiesInput>;
+export type LogAnalyticsQueryPackPropertiesInput = AssociatedWorkspaceInput;
+export const LogAnalyticsQueryPackPropertiesInput = AssociatedWorkspaceInput;
 
 export interface QueryPacksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3625,7 +3559,7 @@ export interface QueryPacksCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location: string;
   /** Properties that define a Log Analytics QueryPack resource. */
-  properties: LogAnalyticsQueryPackPropertiesInput;
+  properties: AssociatedWorkspaceInput;
 }
 export const QueryPacksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3634,7 +3568,7 @@ export const QueryPacksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     queryPackName: S.String.pipe(T.Label()),
     tags: S.optional(QueryPacksCreateOrUpdateRequestTagsMap),
     location: S.String,
-    properties: LogAnalyticsQueryPackPropertiesInput,
+    properties: AssociatedWorkspaceInput,
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3728,7 +3662,7 @@ export interface QueryPacksCreateOrUpdateWithoutNameRequest {
   /** The geo-location where the resource lives */
   location: string;
   /** Properties that define a Log Analytics QueryPack resource. */
-  properties: LogAnalyticsQueryPackPropertiesInput;
+  properties: AssociatedWorkspaceInput;
 }
 export const QueryPacksCreateOrUpdateWithoutNameRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3737,7 +3671,7 @@ export const QueryPacksCreateOrUpdateWithoutNameRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       tags: S.optional(QueryPacksCreateOrUpdateWithoutNameRequestTagsMap),
       location: S.String,
-      properties: LogAnalyticsQueryPackPropertiesInput,
+      properties: AssociatedWorkspaceInput,
     }).pipe(
       T.Http({
         method: "PUT",
@@ -6396,12 +6330,8 @@ export const WorkspaceReplicationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceReplicationPropertiesInput>;
 
 /** The failover state of the replication. */
-export interface WorkspaceFailoverPropertiesInput {}
-export const WorkspaceFailoverPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WorkspaceFailoverPropertiesInput",
-}) as any as S.Schema<WorkspaceFailoverPropertiesInput>;
+export type WorkspaceFailoverPropertiesInput = AssociatedWorkspaceInput;
+export const WorkspaceFailoverPropertiesInput = AssociatedWorkspaceInput;
 
 /** Workspace properties. */
 export interface WorkspacePropertiesInput {
@@ -6428,7 +6358,7 @@ export interface WorkspacePropertiesInput {
   /** workspace replication properties. */
   replication?: WorkspaceReplicationPropertiesInput;
   /** workspace failover properties. */
-  failover?: WorkspaceFailoverPropertiesInput;
+  failover?: AssociatedWorkspaceInput;
 }
 export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6445,27 +6375,23 @@ export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     features: S.optional(WorkspaceFeaturesInput),
     defaultDataCollectionRuleResourceId: S.optional(S.String),
     replication: S.optional(WorkspaceReplicationPropertiesInput),
-    failover: S.optional(WorkspaceFailoverPropertiesInput),
+    failover: S.optional(AssociatedWorkspaceInput),
   }),
 ).annotate({
   identifier: "WorkspacePropertiesInput",
 }) as any as S.Schema<WorkspacePropertiesInput>;
 
 /** User assigned identity properties. */
-export interface UserIdentityPropertiesInput {}
-export const UserIdentityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserIdentityPropertiesInput",
-}) as any as S.Schema<UserIdentityPropertiesInput>;
+export type UserIdentityPropertiesInput = AssociatedWorkspaceInput;
+export const UserIdentityPropertiesInput = AssociatedWorkspaceInput;
 
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: UserIdentityPropertiesInput | undefined;
+  [key: string]: AssociatedWorkspaceInput | undefined;
 };
 export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  UserIdentityPropertiesInput,
+  AssociatedWorkspaceInput,
 ) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
 
 /** Identity for the resource. */

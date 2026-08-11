@@ -38,20 +38,16 @@ export type ManagedServiceIdentityType =
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = AccessConnectorPropertiesInput;
+export const UserAssignedIdentityInput = AccessConnectorPropertiesInput;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: AccessConnectorPropertiesInput | undefined;
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentityInput,
+  AccessConnectorPropertiesInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -297,24 +293,10 @@ export const AccessConnectorsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccessConnectorsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface AccessConnectorsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const AccessConnectorsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "AccessConnectorsGetResponseIdentity",
-}) as any as S.Schema<AccessConnectorsGetResponseIdentity>;
+export type AccessConnectorsGetResponseIdentity =
+  AccessConnectorsCreateOrUpdateResponseIdentity;
+export const AccessConnectorsGetResponseIdentity =
+  AccessConnectorsCreateOrUpdateResponseIdentity;
 
 export interface AccessConnectorsGetResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -330,7 +312,7 @@ export interface AccessConnectorsGetResponse {
   /** Azure Databricks Access Connector properties */
   properties?: AccessConnectorProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: AccessConnectorsGetResponseIdentity;
+  identity?: AccessConnectorsCreateOrUpdateResponseIdentity;
 }
 export const AccessConnectorsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -340,7 +322,7 @@ export const AccessConnectorsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(AccessConnectorsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(AccessConnectorProperties),
-    identity: S.optional(AccessConnectorsGetResponseIdentity),
+    identity: S.optional(AccessConnectorsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "AccessConnectorsGetResponse",
@@ -377,24 +359,10 @@ export const AccessConnectorTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccessConnectorTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface AccessConnectorIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const AccessConnectorIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "AccessConnectorIdentity",
-}) as any as S.Schema<AccessConnectorIdentity>;
+export type AccessConnectorIdentity =
+  AccessConnectorsCreateOrUpdateResponseIdentity;
+export const AccessConnectorIdentity =
+  AccessConnectorsCreateOrUpdateResponseIdentity;
 
 /** Information about Azure Databricks Access Connector. */
 export interface AccessConnector {
@@ -411,7 +379,7 @@ export interface AccessConnector {
   /** Azure Databricks Access Connector properties */
   properties?: AccessConnectorProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: AccessConnectorIdentity;
+  identity?: AccessConnectorsCreateOrUpdateResponseIdentity;
 }
 export const AccessConnector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -421,7 +389,7 @@ export const AccessConnector = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(AccessConnectorTagsMap),
     location: S.String,
     properties: S.optional(AccessConnectorProperties),
-    identity: S.optional(AccessConnectorIdentity),
+    identity: S.optional(AccessConnectorsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "AccessConnector",
@@ -479,19 +447,10 @@ export const AccessConnectorsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccessConnectorsUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface AccessConnectorsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const AccessConnectorsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-).annotate({
-  identifier: "AccessConnectorsUpdateRequestIdentity",
-}) as any as S.Schema<AccessConnectorsUpdateRequestIdentity>;
+export type AccessConnectorsUpdateRequestIdentity =
+  AccessConnectorsCreateOrUpdateRequestIdentity;
+export const AccessConnectorsUpdateRequestIdentity =
+  AccessConnectorsCreateOrUpdateRequestIdentity;
 
 export interface AccessConnectorsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -503,7 +462,7 @@ export interface AccessConnectorsUpdateRequest {
   /** Resource tags. */
   tags?: AccessConnectorsUpdateRequestTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: AccessConnectorsUpdateRequestIdentity;
+  identity?: AccessConnectorsCreateOrUpdateRequestIdentity;
 }
 export const AccessConnectorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -511,7 +470,7 @@ export const AccessConnectorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     connectorName: S.String.pipe(T.Label()),
     tags: S.optional(AccessConnectorsUpdateRequestTagsMap),
-    identity: S.optional(AccessConnectorsUpdateRequestIdentity),
+    identity: S.optional(AccessConnectorsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -534,25 +493,10 @@ export const AccessConnectorsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccessConnectorsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface AccessConnectorsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const AccessConnectorsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "AccessConnectorsUpdateResponseIdentity",
-}) as any as S.Schema<AccessConnectorsUpdateResponseIdentity>;
+export type AccessConnectorsUpdateResponseIdentity =
+  AccessConnectorsCreateOrUpdateResponseIdentity;
+export const AccessConnectorsUpdateResponseIdentity =
+  AccessConnectorsCreateOrUpdateResponseIdentity;
 
 export interface AccessConnectorsUpdateResponse {
   /** Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -568,7 +512,7 @@ export interface AccessConnectorsUpdateResponse {
   /** Azure Databricks Access Connector properties */
   properties?: AccessConnectorProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: AccessConnectorsUpdateResponseIdentity;
+  identity?: AccessConnectorsCreateOrUpdateResponseIdentity;
 }
 export const AccessConnectorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -578,7 +522,7 @@ export const AccessConnectorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(AccessConnectorsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(AccessConnectorProperties),
-    identity: S.optional(AccessConnectorsUpdateResponseIdentity),
+    identity: S.optional(AccessConnectorsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "AccessConnectorsUpdateResponse",
@@ -764,12 +708,8 @@ export const OutboundNetworkDependenciesEndpointsListResponse =
   }) as any as S.Schema<OutboundNetworkDependenciesEndpointsListResponse>;
 
 /** The private endpoint property of a private endpoint connection. */
-export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PrivateEndpointInput",
-}) as any as S.Schema<PrivateEndpointInput>;
+export type PrivateEndpointInput = AccessConnectorPropertiesInput;
+export const PrivateEndpointInput = AccessConnectorPropertiesInput;
 
 /** GroupIds from the private link service resource. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList =
@@ -809,7 +749,7 @@ export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
 /** The properties of a private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** Private endpoint */
-  privateEndpoint?: PrivateEndpointInput;
+  privateEndpoint?: AccessConnectorPropertiesInput;
   /** GroupIds from the private link service resource. */
   groupIds?: PrivateEndpointConnectionPropertiesInputGroupIdsList;
   /** Private endpoint connection state */
@@ -818,7 +758,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
 export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateEndpoint: S.optional(AccessConnectorPropertiesInput),
       groupIds: S.optional(
         PrivateEndpointConnectionPropertiesInputGroupIdsList,
       ),
@@ -1603,20 +1543,10 @@ export const WorkspaceNoPublicIPBooleanParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceNoPublicIPBooleanParameter>;
 
 /** The value which should be used for this field. */
-export interface WorkspaceCustomBooleanParameter {
-  /** The type of variable that this is */
-  type?: CustomParameterType | (string & {});
-  /** The value which should be used for this field. */
-  value: boolean;
-}
-export const WorkspaceCustomBooleanParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(CustomParameterType),
-    value: S.Boolean,
-  }),
-).annotate({
-  identifier: "WorkspaceCustomBooleanParameter",
-}) as any as S.Schema<WorkspaceCustomBooleanParameter>;
+export type WorkspaceCustomBooleanParameter =
+  WorkspaceNoPublicIPBooleanParameter;
+export const WorkspaceCustomBooleanParameter =
+  WorkspaceNoPublicIPBooleanParameter;
 
 /** The encryption keySource (provider). Possible values (case-insensitive): Default, Microsoft.Keyvault */
 export type EncryptionKeySource = "Default" | "Microsoft.Keyvault";
@@ -1695,11 +1625,11 @@ export interface WorkspaceCustomParameters {
   /** Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace. */
   publicIpName?: WorkspaceCustomStringParameter;
   /** Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace. */
-  prepareEncryption?: WorkspaceCustomBooleanParameter;
+  prepareEncryption?: WorkspaceNoPublicIPBooleanParameter;
   /** Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace. */
   encryption?: WorkspaceEncryptionParameter;
   /** A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace. */
-  requireInfrastructureEncryption?: WorkspaceCustomBooleanParameter;
+  requireInfrastructureEncryption?: WorkspaceNoPublicIPBooleanParameter;
   /** Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace. */
   storageAccountName?: WorkspaceCustomStringParameter;
   /** Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace. */
@@ -1720,10 +1650,10 @@ export const WorkspaceCustomParameters = /*@__PURE__*/ S.suspend(() =>
     loadBalancerId: S.optional(WorkspaceCustomStringParameter),
     natGatewayName: S.optional(WorkspaceCustomStringParameter),
     publicIpName: S.optional(WorkspaceCustomStringParameter),
-    prepareEncryption: S.optional(WorkspaceCustomBooleanParameter),
+    prepareEncryption: S.optional(WorkspaceNoPublicIPBooleanParameter),
     encryption: S.optional(WorkspaceEncryptionParameter),
     requireInfrastructureEncryption: S.optional(
-      WorkspaceCustomBooleanParameter,
+      WorkspaceNoPublicIPBooleanParameter,
     ),
     storageAccountName: S.optional(WorkspaceCustomStringParameter),
     storageAccountSkuName: S.optional(WorkspaceCustomStringParameter),
@@ -1758,18 +1688,12 @@ export const WorkspacePropertiesInputAuthorizationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<WorkspacePropertiesInputAuthorizationsList>;
 
 /** Provides details of the entity that created/updated the workspace. */
-export interface CreatedByInput {}
-export const CreatedByInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({ identifier: "CreatedByInput" }) as any as S.Schema<CreatedByInput>;
+export type CreatedByInput = AccessConnectorPropertiesInput;
+export const CreatedByInput = AccessConnectorPropertiesInput;
 
 /** The Managed Identity details for storage account. */
-export interface ManagedIdentityConfigurationInput {}
-export const ManagedIdentityConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ManagedIdentityConfigurationInput",
-}) as any as S.Schema<ManagedIdentityConfigurationInput>;
+export type ManagedIdentityConfigurationInput = AccessConnectorPropertiesInput;
+export const ManagedIdentityConfigurationInput = AccessConnectorPropertiesInput;
 
 /** The encryption keySource (provider). Possible values (case-insensitive): Microsoft.Keyvault */
 export type EncryptionKeySource2 = "Microsoft.Keyvault";
@@ -2032,13 +1956,13 @@ export interface WorkspacePropertiesInput {
   /** The workspace provider authorizations. */
   authorizations?: WorkspacePropertiesInputAuthorizationsList;
   /** Indicates the Object ID, PUID and Application ID of entity that created the workspace. */
-  createdBy?: CreatedByInput;
+  createdBy?: AccessConnectorPropertiesInput;
   /** Indicates the Object ID, PUID and Application ID of entity that last updated the workspace. */
-  updatedBy?: CreatedByInput;
+  updatedBy?: AccessConnectorPropertiesInput;
   /** The details of Managed Identity of Storage Account. Only returned in Hybrid ComputeMode workspace. */
-  storageAccountIdentity?: ManagedIdentityConfigurationInput;
+  storageAccountIdentity?: AccessConnectorPropertiesInput;
   /** The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption. Only returned in Hybrid ComputeMode workspace. */
-  managedDiskIdentity?: ManagedIdentityConfigurationInput;
+  managedDiskIdentity?: AccessConnectorPropertiesInput;
   /** Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace. */
   encryption?: WorkspacePropertiesEncryption;
   /** Contains settings related to the Enhanced Security and Compliance Add-On. Supported in both Serverless and Hybrid ComputeMode workspace. */
@@ -2061,10 +1985,10 @@ export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     parameters: S.optional(WorkspaceCustomParameters),
     uiDefinitionUri: S.optional(S.String),
     authorizations: S.optional(WorkspacePropertiesInputAuthorizationsList),
-    createdBy: S.optional(CreatedByInput),
-    updatedBy: S.optional(CreatedByInput),
-    storageAccountIdentity: S.optional(ManagedIdentityConfigurationInput),
-    managedDiskIdentity: S.optional(ManagedIdentityConfigurationInput),
+    createdBy: S.optional(AccessConnectorPropertiesInput),
+    updatedBy: S.optional(AccessConnectorPropertiesInput),
+    storageAccountIdentity: S.optional(AccessConnectorPropertiesInput),
+    managedDiskIdentity: S.optional(AccessConnectorPropertiesInput),
     encryption: S.optional(WorkspacePropertiesEncryption),
     enhancedSecurityCompliance: S.optional(
       EnhancedSecurityComplianceDefinition,

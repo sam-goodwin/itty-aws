@@ -3403,43 +3403,13 @@ export const VirtualMachineInstancesStopResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineInstancesStopResponse>;
 
 /** Defines the virtual disk update. */
-export interface VirtualDiskUpdate {
-  /** Gets or sets the name of the virtual disk. */
-  name?: string;
-  /** Gets or sets the disk total size. */
-  diskSizeGB?: number;
-  /** Gets or sets the device key value. */
-  deviceKey?: number;
-  /** Gets or sets the disk mode. */
-  diskMode?: DiskMode | (string & {});
-  /** Gets or sets the controller id. */
-  controllerKey?: number;
-  /** Gets or sets the unit number of the disk on the controller. */
-  unitNumber?: number;
-  /** Gets or sets the device name. */
-  deviceName?: string;
-  /** Gets or sets the disk backing type. */
-  diskType?: DiskType | (string & {});
-}
-export const VirtualDiskUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    diskSizeGB: S.optional(S.Number),
-    deviceKey: S.optional(S.Number),
-    diskMode: S.optional(DiskMode),
-    controllerKey: S.optional(S.Number),
-    unitNumber: S.optional(S.Number),
-    deviceName: S.optional(S.String),
-    diskType: S.optional(DiskType),
-  }),
-).annotate({
-  identifier: "VirtualDiskUpdate",
-}) as any as S.Schema<VirtualDiskUpdate>;
+export type VirtualDiskUpdate = VirtualDiskInput;
+export const VirtualDiskUpdate = VirtualDiskInput;
 
 /** Gets or sets the list of virtual disks associated with the virtual machine. */
-export type StorageProfileUpdateDisksList = Array<VirtualDiskUpdate>;
+export type StorageProfileUpdateDisksList = Array<VirtualDiskInput>;
 export const StorageProfileUpdateDisksList = /*@__PURE__*/ S.Array(
-  VirtualDiskUpdate,
+  VirtualDiskInput,
 ) as any as S.Schema<StorageProfileUpdateDisksList>;
 
 /** Specifies the storage settings for the virtual machine disks. */

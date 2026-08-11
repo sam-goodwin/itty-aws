@@ -678,24 +678,10 @@ export const ConnectionsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConnectionsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ConnectionsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ConnectionsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ConnectionsGetResponseIdentity",
-}) as any as S.Schema<ConnectionsGetResponseIdentity>;
+export type ConnectionsGetResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const ConnectionsGetResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface ConnectionsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -713,7 +699,7 @@ export interface ConnectionsGetResponse {
   /** Properties of connection */
   properties?: ConnectionProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ConnectionsGetResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const ConnectionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -724,7 +710,7 @@ export const ConnectionsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ConnectionsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(ConnectionProperties),
-    identity: S.optional(ConnectionsGetResponseIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ConnectionsGetResponse",
@@ -771,24 +757,10 @@ export const ConnectionsLinkResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConnectionsLinkResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ConnectionsLinkResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ConnectionsLinkResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ConnectionsLinkResponseIdentity",
-}) as any as S.Schema<ConnectionsLinkResponseIdentity>;
+export type ConnectionsLinkResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const ConnectionsLinkResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface ConnectionsLinkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -806,7 +778,7 @@ export interface ConnectionsLinkResponse {
   /** Properties of connection */
   properties?: ConnectionProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ConnectionsLinkResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const ConnectionsLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -817,7 +789,7 @@ export const ConnectionsLinkResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ConnectionsLinkResponseTagsMap),
     location: S.String,
     properties: S.optional(ConnectionProperties),
-    identity: S.optional(ConnectionsLinkResponseIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ConnectionsLinkResponse",
@@ -854,24 +826,8 @@ export const ConnectionTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConnectionTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ConnectionIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ConnectionIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ConnectionIdentity",
-}) as any as S.Schema<ConnectionIdentity>;
+export type ConnectionIdentity = ConnectionsCreateOrUpdateResponseIdentity;
+export const ConnectionIdentity = ConnectionsCreateOrUpdateResponseIdentity;
 
 /** The connection resource definition. */
 export interface Connection {
@@ -890,7 +846,7 @@ export interface Connection {
   /** Properties of connection */
   properties?: ConnectionProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ConnectionIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const Connection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -901,7 +857,7 @@ export const Connection = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ConnectionTagsMap),
     location: S.String,
     properties: S.optional(ConnectionProperties),
-    identity: S.optional(ConnectionIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
 
@@ -948,18 +904,10 @@ export const ConnectionsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConnectionsListBySubscriptionRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ConnectionsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const ConnectionsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "ConnectionsUpdateRequestIdentity",
-}) as any as S.Schema<ConnectionsUpdateRequestIdentity>;
+export type ConnectionsUpdateRequestIdentity =
+  ConnectionsCreateOrUpdateRequestIdentity;
+export const ConnectionsUpdateRequestIdentity =
+  ConnectionsCreateOrUpdateRequestIdentity;
 
 /** Resource tags. */
 export type ConnectionsUpdateRequestTagsMap = {
@@ -978,7 +926,7 @@ export interface ConnectionsUpdateRequest {
   /** The name for the connection to perform the operation on. */
   connectionName: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ConnectionsUpdateRequestIdentity;
+  identity?: ConnectionsCreateOrUpdateRequestIdentity;
   /** Resource tags. */
   tags?: ConnectionsUpdateRequestTagsMap;
 }
@@ -987,7 +935,7 @@ export const ConnectionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     connectionName: S.String.pipe(T.Label()),
-    identity: S.optional(ConnectionsUpdateRequestIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateRequestIdentity),
     tags: S.optional(ConnectionsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
@@ -1011,24 +959,10 @@ export const ConnectionsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ConnectionsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ConnectionsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ConnectionsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ConnectionsUpdateResponseIdentity",
-}) as any as S.Schema<ConnectionsUpdateResponseIdentity>;
+export type ConnectionsUpdateResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const ConnectionsUpdateResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface ConnectionsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1046,7 +980,7 @@ export interface ConnectionsUpdateResponse {
   /** Properties of connection */
   properties?: ConnectionProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ConnectionsUpdateResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const ConnectionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1057,7 +991,7 @@ export const ConnectionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ConnectionsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(ConnectionProperties),
-    identity: S.optional(ConnectionsUpdateResponseIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ConnectionsUpdateResponse",
@@ -1311,18 +1245,10 @@ export const FlowsCreateOrUpdateRequestPlan = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FlowsCreateOrUpdateRequestPlan>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const FlowsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "FlowsCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<FlowsCreateOrUpdateRequestIdentity>;
+export type FlowsCreateOrUpdateRequestIdentity =
+  ConnectionsCreateOrUpdateRequestIdentity;
+export const FlowsCreateOrUpdateRequestIdentity =
+  ConnectionsCreateOrUpdateRequestIdentity;
 
 export interface FlowsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1342,7 +1268,7 @@ export interface FlowsCreateOrUpdateRequest {
   /** Plan for the resource. */
   plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsCreateOrUpdateRequestIdentity;
+  identity?: ConnectionsCreateOrUpdateRequestIdentity;
 }
 export const FlowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1354,7 +1280,7 @@ export const FlowsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(FlowPropertiesInput),
     plan: S.optional(FlowsCreateOrUpdateRequestPlan),
-    identity: S.optional(FlowsCreateOrUpdateRequestIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1498,49 +1424,14 @@ export const FlowProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlowProperties" }) as any as S.Schema<FlowProperties>;
 
 /** Plan for the resource. */
-export interface FlowsCreateOrUpdateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FlowsCreateOrUpdateResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlowsCreateOrUpdateResponsePlan",
-}) as any as S.Schema<FlowsCreateOrUpdateResponsePlan>;
+export type FlowsCreateOrUpdateResponsePlan = FlowsCreateOrUpdateRequestPlan;
+export const FlowsCreateOrUpdateResponsePlan = FlowsCreateOrUpdateRequestPlan;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FlowsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "FlowsCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<FlowsCreateOrUpdateResponseIdentity>;
+export type FlowsCreateOrUpdateResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const FlowsCreateOrUpdateResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface FlowsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1558,9 +1449,9 @@ export interface FlowsCreateOrUpdateResponse {
   /** Properties of flow */
   properties?: FlowProperties;
   /** Plan for the resource. */
-  plan?: FlowsCreateOrUpdateResponsePlan;
+  plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsCreateOrUpdateResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const FlowsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1571,8 +1462,8 @@ export const FlowsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(FlowsCreateOrUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(FlowProperties),
-    plan: S.optional(FlowsCreateOrUpdateResponsePlan),
-    identity: S.optional(FlowsCreateOrUpdateResponseIdentity),
+    plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "FlowsCreateOrUpdateResponse",
@@ -1649,49 +1540,14 @@ export const FlowsDisableResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FlowsDisableResponseTagsMap>;
 
 /** Plan for the resource. */
-export interface FlowsDisableResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FlowsDisableResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlowsDisableResponsePlan",
-}) as any as S.Schema<FlowsDisableResponsePlan>;
+export type FlowsDisableResponsePlan = FlowsCreateOrUpdateRequestPlan;
+export const FlowsDisableResponsePlan = FlowsCreateOrUpdateRequestPlan;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsDisableResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FlowsDisableResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "FlowsDisableResponseIdentity",
-}) as any as S.Schema<FlowsDisableResponseIdentity>;
+export type FlowsDisableResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const FlowsDisableResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface FlowsDisableResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1709,9 +1565,9 @@ export interface FlowsDisableResponse {
   /** Properties of flow */
   properties?: FlowProperties;
   /** Plan for the resource. */
-  plan?: FlowsDisableResponsePlan;
+  plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsDisableResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const FlowsDisableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1722,8 +1578,8 @@ export const FlowsDisableResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(FlowsDisableResponseTagsMap),
     location: S.String,
     properties: S.optional(FlowProperties),
-    plan: S.optional(FlowsDisableResponsePlan),
-    identity: S.optional(FlowsDisableResponseIdentity),
+    plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "FlowsDisableResponse",
@@ -1765,49 +1621,14 @@ export const FlowsEnableResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FlowsEnableResponseTagsMap>;
 
 /** Plan for the resource. */
-export interface FlowsEnableResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FlowsEnableResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlowsEnableResponsePlan",
-}) as any as S.Schema<FlowsEnableResponsePlan>;
+export type FlowsEnableResponsePlan = FlowsCreateOrUpdateRequestPlan;
+export const FlowsEnableResponsePlan = FlowsCreateOrUpdateRequestPlan;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsEnableResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FlowsEnableResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "FlowsEnableResponseIdentity",
-}) as any as S.Schema<FlowsEnableResponseIdentity>;
+export type FlowsEnableResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const FlowsEnableResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface FlowsEnableResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1825,9 +1646,9 @@ export interface FlowsEnableResponse {
   /** Properties of flow */
   properties?: FlowProperties;
   /** Plan for the resource. */
-  plan?: FlowsEnableResponsePlan;
+  plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsEnableResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const FlowsEnableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1838,8 +1659,8 @@ export const FlowsEnableResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(FlowsEnableResponseTagsMap),
     location: S.String,
     properties: S.optional(FlowProperties),
-    plan: S.optional(FlowsEnableResponsePlan),
-    identity: S.optional(FlowsEnableResponseIdentity),
+    plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "FlowsEnableResponse",
@@ -1883,50 +1704,16 @@ export const FlowsGeneratePassphraseResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FlowsGeneratePassphraseResponseTagsMap>;
 
 /** Plan for the resource. */
-export interface FlowsGeneratePassphraseResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FlowsGeneratePassphraseResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlowsGeneratePassphraseResponsePlan",
-}) as any as S.Schema<FlowsGeneratePassphraseResponsePlan>;
+export type FlowsGeneratePassphraseResponsePlan =
+  FlowsCreateOrUpdateRequestPlan;
+export const FlowsGeneratePassphraseResponsePlan =
+  FlowsCreateOrUpdateRequestPlan;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsGeneratePassphraseResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FlowsGeneratePassphraseResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "FlowsGeneratePassphraseResponseIdentity",
-}) as any as S.Schema<FlowsGeneratePassphraseResponseIdentity>;
+export type FlowsGeneratePassphraseResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const FlowsGeneratePassphraseResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface FlowsGeneratePassphraseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1944,9 +1731,9 @@ export interface FlowsGeneratePassphraseResponse {
   /** Properties of flow */
   properties?: FlowProperties;
   /** Plan for the resource. */
-  plan?: FlowsGeneratePassphraseResponsePlan;
+  plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsGeneratePassphraseResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const FlowsGeneratePassphraseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1957,8 +1744,8 @@ export const FlowsGeneratePassphraseResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(FlowsGeneratePassphraseResponseTagsMap),
     location: S.String,
     properties: S.optional(FlowProperties),
-    plan: S.optional(FlowsGeneratePassphraseResponsePlan),
-    identity: S.optional(FlowsGeneratePassphraseResponseIdentity),
+    plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "FlowsGeneratePassphraseResponse",
@@ -2000,49 +1787,14 @@ export const FlowsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FlowsGetResponseTagsMap>;
 
 /** Plan for the resource. */
-export interface FlowsGetResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FlowsGetResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlowsGetResponsePlan",
-}) as any as S.Schema<FlowsGetResponsePlan>;
+export type FlowsGetResponsePlan = FlowsCreateOrUpdateRequestPlan;
+export const FlowsGetResponsePlan = FlowsCreateOrUpdateRequestPlan;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FlowsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "FlowsGetResponseIdentity",
-}) as any as S.Schema<FlowsGetResponseIdentity>;
+export type FlowsGetResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const FlowsGetResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface FlowsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2060,9 +1812,9 @@ export interface FlowsGetResponse {
   /** Properties of flow */
   properties?: FlowProperties;
   /** Plan for the resource. */
-  plan?: FlowsGetResponsePlan;
+  plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsGetResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const FlowsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2073,8 +1825,8 @@ export const FlowsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(FlowsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(FlowProperties),
-    plan: S.optional(FlowsGetResponsePlan),
-    identity: S.optional(FlowsGetResponseIdentity),
+    plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "FlowsGetResponse",
@@ -2287,49 +2039,14 @@ export const FlowsLinkResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FlowsLinkResponseTagsMap>;
 
 /** Plan for the resource. */
-export interface FlowsLinkResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FlowsLinkResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlowsLinkResponsePlan",
-}) as any as S.Schema<FlowsLinkResponsePlan>;
+export type FlowsLinkResponsePlan = FlowsCreateOrUpdateRequestPlan;
+export const FlowsLinkResponsePlan = FlowsCreateOrUpdateRequestPlan;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsLinkResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FlowsLinkResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "FlowsLinkResponseIdentity",
-}) as any as S.Schema<FlowsLinkResponseIdentity>;
+export type FlowsLinkResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const FlowsLinkResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface FlowsLinkResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2347,9 +2064,9 @@ export interface FlowsLinkResponse {
   /** Properties of flow */
   properties?: FlowProperties;
   /** Plan for the resource. */
-  plan?: FlowsLinkResponsePlan;
+  plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsLinkResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const FlowsLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2360,8 +2077,8 @@ export const FlowsLinkResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(FlowsLinkResponseTagsMap),
     location: S.String,
     properties: S.optional(FlowProperties),
-    plan: S.optional(FlowsLinkResponsePlan),
-    identity: S.optional(FlowsLinkResponseIdentity),
+    plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "FlowsLinkResponse",
@@ -2400,45 +2117,12 @@ export const FlowTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FlowTagsMap>;
 
 /** Plan for the resource. */
-export interface FlowPlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FlowPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({ identifier: "FlowPlan" }) as any as S.Schema<FlowPlan>;
+export type FlowPlan = FlowsCreateOrUpdateRequestPlan;
+export const FlowPlan = FlowsCreateOrUpdateRequestPlan;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FlowIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({ identifier: "FlowIdentity" }) as any as S.Schema<FlowIdentity>;
+export type FlowIdentity = ConnectionsCreateOrUpdateResponseIdentity;
+export const FlowIdentity = ConnectionsCreateOrUpdateResponseIdentity;
 
 /** The flow resource definition. */
 export interface Flow {
@@ -2457,9 +2141,9 @@ export interface Flow {
   /** Properties of flow */
   properties?: FlowProperties;
   /** Plan for the resource. */
-  plan?: FlowPlan;
+  plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const Flow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2470,8 +2154,8 @@ export const Flow = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(FlowTagsMap),
     location: S.String,
     properties: S.optional(FlowProperties),
-    plan: S.optional(FlowPlan),
-    identity: S.optional(FlowIdentity),
+    plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "Flow" }) as any as S.Schema<Flow>;
 
@@ -2545,51 +2229,16 @@ export const FlowsSetDestinationEndpointPortsResponseTagsMap =
   ) as any as S.Schema<FlowsSetDestinationEndpointPortsResponseTagsMap>;
 
 /** Plan for the resource. */
-export interface FlowsSetDestinationEndpointPortsResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
+export type FlowsSetDestinationEndpointPortsResponsePlan =
+  FlowsCreateOrUpdateRequestPlan;
 export const FlowsSetDestinationEndpointPortsResponsePlan =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      publisher: S.String,
-      product: S.String,
-      promotionCode: S.optional(S.String),
-      version: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "FlowsSetDestinationEndpointPortsResponsePlan",
-  }) as any as S.Schema<FlowsSetDestinationEndpointPortsResponsePlan>;
+  FlowsCreateOrUpdateRequestPlan;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsSetDestinationEndpointPortsResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type FlowsSetDestinationEndpointPortsResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 export const FlowsSetDestinationEndpointPortsResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "FlowsSetDestinationEndpointPortsResponseIdentity",
-  }) as any as S.Schema<FlowsSetDestinationEndpointPortsResponseIdentity>;
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface FlowsSetDestinationEndpointPortsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2607,9 +2256,9 @@ export interface FlowsSetDestinationEndpointPortsResponse {
   /** Properties of flow */
   properties?: FlowProperties;
   /** Plan for the resource. */
-  plan?: FlowsSetDestinationEndpointPortsResponsePlan;
+  plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsSetDestinationEndpointPortsResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const FlowsSetDestinationEndpointPortsResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -2621,8 +2270,8 @@ export const FlowsSetDestinationEndpointPortsResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(FlowsSetDestinationEndpointPortsResponseTagsMap),
       location: S.String,
       properties: S.optional(FlowProperties),
-      plan: S.optional(FlowsSetDestinationEndpointPortsResponsePlan),
-      identity: S.optional(FlowsSetDestinationEndpointPortsResponseIdentity),
+      plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+      identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
     }),
 ).annotate({
   identifier: "FlowsSetDestinationEndpointPortsResponse",
@@ -2677,51 +2326,16 @@ export const FlowsSetDestinationEndpointsResponseTagsMap =
   ) as any as S.Schema<FlowsSetDestinationEndpointsResponseTagsMap>;
 
 /** Plan for the resource. */
-export interface FlowsSetDestinationEndpointsResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FlowsSetDestinationEndpointsResponsePlan = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      publisher: S.String,
-      product: S.String,
-      promotionCode: S.optional(S.String),
-      version: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "FlowsSetDestinationEndpointsResponsePlan",
-}) as any as S.Schema<FlowsSetDestinationEndpointsResponsePlan>;
+export type FlowsSetDestinationEndpointsResponsePlan =
+  FlowsCreateOrUpdateRequestPlan;
+export const FlowsSetDestinationEndpointsResponsePlan =
+  FlowsCreateOrUpdateRequestPlan;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsSetDestinationEndpointsResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type FlowsSetDestinationEndpointsResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 export const FlowsSetDestinationEndpointsResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "FlowsSetDestinationEndpointsResponseIdentity",
-  }) as any as S.Schema<FlowsSetDestinationEndpointsResponseIdentity>;
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface FlowsSetDestinationEndpointsResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2739,9 +2353,9 @@ export interface FlowsSetDestinationEndpointsResponse {
   /** Properties of flow */
   properties?: FlowProperties;
   /** Plan for the resource. */
-  plan?: FlowsSetDestinationEndpointsResponsePlan;
+  plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsSetDestinationEndpointsResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const FlowsSetDestinationEndpointsResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -2753,8 +2367,8 @@ export const FlowsSetDestinationEndpointsResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(FlowsSetDestinationEndpointsResponseTagsMap),
       location: S.String,
       properties: S.optional(FlowProperties),
-      plan: S.optional(FlowsSetDestinationEndpointsResponsePlan),
-      identity: S.optional(FlowsSetDestinationEndpointsResponseIdentity),
+      plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+      identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
     }),
 ).annotate({
   identifier: "FlowsSetDestinationEndpointsResponse",
@@ -2801,49 +2415,14 @@ export const FlowsSetPassphraseResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FlowsSetPassphraseResponseTagsMap>;
 
 /** Plan for the resource. */
-export interface FlowsSetPassphraseResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FlowsSetPassphraseResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlowsSetPassphraseResponsePlan",
-}) as any as S.Schema<FlowsSetPassphraseResponsePlan>;
+export type FlowsSetPassphraseResponsePlan = FlowsCreateOrUpdateRequestPlan;
+export const FlowsSetPassphraseResponsePlan = FlowsCreateOrUpdateRequestPlan;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsSetPassphraseResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FlowsSetPassphraseResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "FlowsSetPassphraseResponseIdentity",
-}) as any as S.Schema<FlowsSetPassphraseResponseIdentity>;
+export type FlowsSetPassphraseResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const FlowsSetPassphraseResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface FlowsSetPassphraseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2861,9 +2440,9 @@ export interface FlowsSetPassphraseResponse {
   /** Properties of flow */
   properties?: FlowProperties;
   /** Plan for the resource. */
-  plan?: FlowsSetPassphraseResponsePlan;
+  plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsSetPassphraseResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const FlowsSetPassphraseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2874,8 +2453,8 @@ export const FlowsSetPassphraseResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(FlowsSetPassphraseResponseTagsMap),
     location: S.String,
     properties: S.optional(FlowProperties),
-    plan: S.optional(FlowsSetPassphraseResponsePlan),
-    identity: S.optional(FlowsSetPassphraseResponseIdentity),
+    plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "FlowsSetPassphraseResponse",
@@ -2928,50 +2507,16 @@ export const FlowsSetSourceAddressesResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FlowsSetSourceAddressesResponseTagsMap>;
 
 /** Plan for the resource. */
-export interface FlowsSetSourceAddressesResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FlowsSetSourceAddressesResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlowsSetSourceAddressesResponsePlan",
-}) as any as S.Schema<FlowsSetSourceAddressesResponsePlan>;
+export type FlowsSetSourceAddressesResponsePlan =
+  FlowsCreateOrUpdateRequestPlan;
+export const FlowsSetSourceAddressesResponsePlan =
+  FlowsCreateOrUpdateRequestPlan;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsSetSourceAddressesResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FlowsSetSourceAddressesResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "FlowsSetSourceAddressesResponseIdentity",
-}) as any as S.Schema<FlowsSetSourceAddressesResponseIdentity>;
+export type FlowsSetSourceAddressesResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const FlowsSetSourceAddressesResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface FlowsSetSourceAddressesResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2989,9 +2534,9 @@ export interface FlowsSetSourceAddressesResponse {
   /** Properties of flow */
   properties?: FlowProperties;
   /** Plan for the resource. */
-  plan?: FlowsSetSourceAddressesResponsePlan;
+  plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsSetSourceAddressesResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const FlowsSetSourceAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3002,26 +2547,18 @@ export const FlowsSetSourceAddressesResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(FlowsSetSourceAddressesResponseTagsMap),
     location: S.String,
     properties: S.optional(FlowProperties),
-    plan: S.optional(FlowsSetSourceAddressesResponsePlan),
-    identity: S.optional(FlowsSetSourceAddressesResponseIdentity),
+    plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "FlowsSetSourceAddressesResponse",
 }) as any as S.Schema<FlowsSetSourceAddressesResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const FlowsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "FlowsUpdateRequestIdentity",
-}) as any as S.Schema<FlowsUpdateRequestIdentity>;
+export type FlowsUpdateRequestIdentity =
+  ConnectionsCreateOrUpdateRequestIdentity;
+export const FlowsUpdateRequestIdentity =
+  ConnectionsCreateOrUpdateRequestIdentity;
 
 /** Resource tags. */
 export type FlowsUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -3040,7 +2577,7 @@ export interface FlowsUpdateRequest {
   /** The name for the flow to perform the operation on. */
   flowName: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsUpdateRequestIdentity;
+  identity?: ConnectionsCreateOrUpdateRequestIdentity;
   /** Resource tags. */
   tags?: FlowsUpdateRequestTagsMap;
 }
@@ -3050,7 +2587,7 @@ export const FlowsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     connectionName: S.String.pipe(T.Label()),
     flowName: S.String.pipe(T.Label()),
-    identity: S.optional(FlowsUpdateRequestIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateRequestIdentity),
     tags: S.optional(FlowsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
@@ -3072,49 +2609,14 @@ export const FlowsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FlowsUpdateResponseTagsMap>;
 
 /** Plan for the resource. */
-export interface FlowsUpdateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FlowsUpdateResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FlowsUpdateResponsePlan",
-}) as any as S.Schema<FlowsUpdateResponsePlan>;
+export type FlowsUpdateResponsePlan = FlowsCreateOrUpdateRequestPlan;
+export const FlowsUpdateResponsePlan = FlowsCreateOrUpdateRequestPlan;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FlowsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FlowsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "FlowsUpdateResponseIdentity",
-}) as any as S.Schema<FlowsUpdateResponseIdentity>;
+export type FlowsUpdateResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const FlowsUpdateResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface FlowsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3132,9 +2634,9 @@ export interface FlowsUpdateResponse {
   /** Properties of flow */
   properties?: FlowProperties;
   /** Plan for the resource. */
-  plan?: FlowsUpdateResponsePlan;
+  plan?: FlowsCreateOrUpdateRequestPlan;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FlowsUpdateResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const FlowsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3145,8 +2647,8 @@ export const FlowsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(FlowsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(FlowProperties),
-    plan: S.optional(FlowsUpdateResponsePlan),
-    identity: S.optional(FlowsUpdateResponseIdentity),
+    plan: S.optional(FlowsCreateOrUpdateRequestPlan),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "FlowsUpdateResponse",
@@ -3878,25 +3380,10 @@ export const PipelinesApproveConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PipelinesApproveConnectionResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PipelinesApproveConnectionResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type PipelinesApproveConnectionResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 export const PipelinesApproveConnectionResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "PipelinesApproveConnectionResponseIdentity",
-  }) as any as S.Schema<PipelinesApproveConnectionResponseIdentity>;
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface PipelinesApproveConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3914,7 +3401,7 @@ export interface PipelinesApproveConnectionResponse {
   /** Properties of connection */
   properties?: ConnectionProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PipelinesApproveConnectionResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const PipelinesApproveConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3925,7 +3412,7 @@ export const PipelinesApproveConnectionResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PipelinesApproveConnectionResponseTagsMap),
     location: S.String,
     properties: S.optional(ConnectionProperties),
-    identity: S.optional(PipelinesApproveConnectionResponseIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "PipelinesApproveConnectionResponse",
@@ -4025,19 +3512,10 @@ export const PipelinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PipelinePropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PipelinesCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const PipelinesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-).annotate({
-  identifier: "PipelinesCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<PipelinesCreateOrUpdateRequestIdentity>;
+export type PipelinesCreateOrUpdateRequestIdentity =
+  ConnectionsCreateOrUpdateRequestIdentity;
+export const PipelinesCreateOrUpdateRequestIdentity =
+  ConnectionsCreateOrUpdateRequestIdentity;
 
 export interface PipelinesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4053,7 +3531,7 @@ export interface PipelinesCreateOrUpdateRequest {
   /** The set of configurable properties for the Pipeline resource. */
   properties?: PipelinePropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PipelinesCreateOrUpdateRequestIdentity;
+  identity?: ConnectionsCreateOrUpdateRequestIdentity;
 }
 export const PipelinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4063,7 +3541,7 @@ export const PipelinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PipelinesCreateOrUpdateRequestTagsMap),
     location: S.String,
     properties: S.optional(PipelinePropertiesInput),
-    identity: S.optional(PipelinesCreateOrUpdateRequestIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -4290,25 +3768,10 @@ export const PipelineProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PipelineProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PipelinesCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const PipelinesCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "PipelinesCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<PipelinesCreateOrUpdateResponseIdentity>;
+export type PipelinesCreateOrUpdateResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const PipelinesCreateOrUpdateResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface PipelinesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4326,7 +3789,7 @@ export interface PipelinesCreateOrUpdateResponse {
   /** The set of configurable properties for the Pipeline resource. */
   properties?: PipelineProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PipelinesCreateOrUpdateResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const PipelinesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4337,7 +3800,7 @@ export const PipelinesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PipelinesCreateOrUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(PipelineProperties),
-    identity: S.optional(PipelinesCreateOrUpdateResponseIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "PipelinesCreateOrUpdateResponse",
@@ -4436,25 +3899,10 @@ export const PipelinesExecuteActionResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PipelinesExecuteActionResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PipelinesExecuteActionResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const PipelinesExecuteActionResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "PipelinesExecuteActionResponseIdentity",
-}) as any as S.Schema<PipelinesExecuteActionResponseIdentity>;
+export type PipelinesExecuteActionResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const PipelinesExecuteActionResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface PipelinesExecuteActionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4472,7 +3920,7 @@ export interface PipelinesExecuteActionResponse {
   /** The set of configurable properties for the Pipeline resource. */
   properties?: PipelineProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PipelinesExecuteActionResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const PipelinesExecuteActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4483,7 +3931,7 @@ export const PipelinesExecuteActionResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PipelinesExecuteActionResponseTagsMap),
     location: S.String,
     properties: S.optional(PipelineProperties),
-    identity: S.optional(PipelinesExecuteActionResponseIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "PipelinesExecuteActionResponse",
@@ -4522,24 +3970,10 @@ export const PipelinesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PipelinesGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PipelinesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const PipelinesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "PipelinesGetResponseIdentity",
-}) as any as S.Schema<PipelinesGetResponseIdentity>;
+export type PipelinesGetResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const PipelinesGetResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface PipelinesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4557,7 +3991,7 @@ export interface PipelinesGetResponse {
   /** The set of configurable properties for the Pipeline resource. */
   properties?: PipelineProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PipelinesGetResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const PipelinesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4568,7 +4002,7 @@ export const PipelinesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PipelinesGetResponseTagsMap),
     location: S.String,
     properties: S.optional(PipelineProperties),
-    identity: S.optional(PipelinesGetResponseIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "PipelinesGetResponse",
@@ -4604,24 +4038,8 @@ export const PipelineTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PipelineTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PipelineIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const PipelineIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "PipelineIdentity",
-}) as any as S.Schema<PipelineIdentity>;
+export type PipelineIdentity = ConnectionsCreateOrUpdateResponseIdentity;
+export const PipelineIdentity = ConnectionsCreateOrUpdateResponseIdentity;
 
 /** The pipeline resource definition. A Pipeline defines the scope and identity under which data replication scenarios are managed. */
 export interface Pipeline {
@@ -4640,7 +4058,7 @@ export interface Pipeline {
   /** The set of configurable properties for the Pipeline resource. */
   properties?: PipelineProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PipelineIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const Pipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4651,7 +4069,7 @@ export const Pipeline = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PipelineTagsMap),
     location: S.String,
     properties: S.optional(PipelineProperties),
-    identity: S.optional(PipelineIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "Pipeline" }) as any as S.Schema<Pipeline>;
 
@@ -4737,25 +4155,10 @@ export const PipelinesRejectConnectionResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PipelinesRejectConnectionResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PipelinesRejectConnectionResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type PipelinesRejectConnectionResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 export const PipelinesRejectConnectionResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "PipelinesRejectConnectionResponseIdentity",
-  }) as any as S.Schema<PipelinesRejectConnectionResponseIdentity>;
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface PipelinesRejectConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4773,7 +4176,7 @@ export interface PipelinesRejectConnectionResponse {
   /** Properties of connection */
   properties?: ConnectionProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PipelinesRejectConnectionResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const PipelinesRejectConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4784,7 +4187,7 @@ export const PipelinesRejectConnectionResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PipelinesRejectConnectionResponseTagsMap),
     location: S.String,
     properties: S.optional(ConnectionProperties),
-    identity: S.optional(PipelinesRejectConnectionResponseIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "PipelinesRejectConnectionResponse",
@@ -4821,18 +4224,10 @@ export const PipelinesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PipelinesUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PipelinesUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const PipelinesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "PipelinesUpdateRequestIdentity",
-}) as any as S.Schema<PipelinesUpdateRequestIdentity>;
+export type PipelinesUpdateRequestIdentity =
+  ConnectionsCreateOrUpdateRequestIdentity;
+export const PipelinesUpdateRequestIdentity =
+  ConnectionsCreateOrUpdateRequestIdentity;
 
 export interface PipelinesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4846,7 +4241,7 @@ export interface PipelinesUpdateRequest {
   /** Resource tags. */
   tags?: PipelinesUpdateRequestTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PipelinesUpdateRequestIdentity;
+  identity?: ConnectionsCreateOrUpdateRequestIdentity;
 }
 export const PipelinesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4855,7 +4250,7 @@ export const PipelinesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     pipelineName: S.String.pipe(T.Label()),
     properties: S.optional(PipelinesPatchProperties),
     tags: S.optional(PipelinesUpdateRequestTagsMap),
-    identity: S.optional(PipelinesUpdateRequestIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -4878,24 +4273,10 @@ export const PipelinesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PipelinesUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PipelinesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const PipelinesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "PipelinesUpdateResponseIdentity",
-}) as any as S.Schema<PipelinesUpdateResponseIdentity>;
+export type PipelinesUpdateResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
+export const PipelinesUpdateResponseIdentity =
+  ConnectionsCreateOrUpdateResponseIdentity;
 
 export interface PipelinesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4913,7 +4294,7 @@ export interface PipelinesUpdateResponse {
   /** The set of configurable properties for the Pipeline resource. */
   properties?: PipelineProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PipelinesUpdateResponseIdentity;
+  identity?: ConnectionsCreateOrUpdateResponseIdentity;
 }
 export const PipelinesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4924,7 +4305,7 @@ export const PipelinesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PipelinesUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(PipelineProperties),
-    identity: S.optional(PipelinesUpdateResponseIdentity),
+    identity: S.optional(ConnectionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "PipelinesUpdateResponse",

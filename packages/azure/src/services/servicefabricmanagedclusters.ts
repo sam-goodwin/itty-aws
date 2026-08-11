@@ -989,32 +989,17 @@ export type RuntimeUpgradeKind = "Rolling";
 export const RuntimeUpgradeKind = /*@__PURE__*/ S.String;
 
 /** Cluster level definition that represents the health policy used to evaluate the health of services belonging to a service type. */
-export interface RuntimeServiceTypeHealthPolicy {
-  /** The maximum allowed percentage of unhealthy services. The percentage represents the maximum tolerated percentage of services that can be unhealthy before the application is considered in error. If the percentage is respected but there is at least one unhealthy service, the health is evaluated as Warning. This is calculated by dividing the number of unhealthy services of the specific service type over the total number of services of the specific service type. The computation rounds up to tolerate one failure on small numbers of services. */
-  maxPercentUnhealthyServices: number;
-  /** The maximum allowed percentage of unhealthy partitions per service. The percentage represents the maximum tolerated percentage of partitions that can be unhealthy before the service is considered in error. If the percentage is respected but there is at least one unhealthy partition, the health is evaluated as Warning. The percentage is calculated by dividing the number of unhealthy partitions over the total number of partitions in the service. The computation rounds up to tolerate one failure on small numbers of partitions. */
-  maxPercentUnhealthyPartitionsPerService: number;
-  /** The maximum allowed percentage of unhealthy replicas per partition. The percentage represents the maximum tolerated percentage of replicas that can be unhealthy before the partition is considered in error. If the percentage is respected but there is at least one unhealthy replica, the health is evaluated as Warning. The percentage is calculated by dividing the number of unhealthy replicas over the total number of replicas in the partition. The computation rounds up to tolerate one failure on small numbers of replicas. */
-  maxPercentUnhealthyReplicasPerPartition: number;
-}
-export const RuntimeServiceTypeHealthPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxPercentUnhealthyServices: S.Number,
-    maxPercentUnhealthyPartitionsPerService: S.Number,
-    maxPercentUnhealthyReplicasPerPartition: S.Number,
-  }),
-).annotate({
-  identifier: "RuntimeServiceTypeHealthPolicy",
-}) as any as S.Schema<RuntimeServiceTypeHealthPolicy>;
+export type RuntimeServiceTypeHealthPolicy = ServiceTypeHealthPolicy;
+export const RuntimeServiceTypeHealthPolicy = ServiceTypeHealthPolicy;
 
 /** The map with service type health policy per service type name. The map is empty by default. */
 export type RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap = {
-  [key: string]: RuntimeServiceTypeHealthPolicy | undefined;
+  [key: string]: ServiceTypeHealthPolicy | undefined;
 };
 export const RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    RuntimeServiceTypeHealthPolicy,
+    ServiceTypeHealthPolicy,
   ) as any as S.Schema<RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap>;
 
 /** Cluster level definition for a health policy used to evaluate the health of an application or one of its children entities. */
@@ -1024,7 +1009,7 @@ export interface RuntimeApplicationHealthPolicy {
   /** The maximum allowed percentage of unhealthy deployed applications. Allowed values are Byte values from zero to 100. The percentage represents the maximum tolerated percentage of deployed applications that can be unhealthy before the application is considered in error. This is calculated by dividing the number of unhealthy deployed applications over the number of nodes where the application is currently deployed on in the cluster. The computation rounds up to tolerate one failure on small numbers of nodes. Default percentage is zero. */
   maxPercentUnhealthyDeployedApplications: number;
   /** The health policy used by default to evaluate the health of a service type. */
-  defaultServiceTypeHealthPolicy?: RuntimeServiceTypeHealthPolicy;
+  defaultServiceTypeHealthPolicy?: ServiceTypeHealthPolicy;
   /** The map with service type health policy per service type name. The map is empty by default. */
   serviceTypeHealthPolicyMap?: RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap;
 }
@@ -1032,7 +1017,7 @@ export const RuntimeApplicationHealthPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     considerWarningAsError: S.Boolean,
     maxPercentUnhealthyDeployedApplications: S.Number,
-    defaultServiceTypeHealthPolicy: S.optional(RuntimeServiceTypeHealthPolicy),
+    defaultServiceTypeHealthPolicy: S.optional(ServiceTypeHealthPolicy),
     serviceTypeHealthPolicyMap: S.optional(
       RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap,
     ),
@@ -1141,12 +1126,8 @@ export const ApplicationsUpdateUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationsUpdateUpgradeResponse>;
 
 /** The application type name properties */
-export interface ApplicationTypeResourcePropertiesInput {}
-export const ApplicationTypeResourcePropertiesInput = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ApplicationTypeResourcePropertiesInput",
-}) as any as S.Schema<ApplicationTypeResourcePropertiesInput>;
+export type ApplicationTypeResourcePropertiesInput = UserAssignedIdentityInput;
+export const ApplicationTypeResourcePropertiesInput = UserAssignedIdentityInput;
 
 /** Resource tags. */
 export type ApplicationTypesCreateOrUpdateRequestTagsMap = {
@@ -1168,7 +1149,7 @@ export interface ApplicationTypesCreateOrUpdateRequest {
   /** The name of the application type name resource. */
   applicationTypeName: string;
   /** The application type name properties */
-  properties?: ApplicationTypeResourcePropertiesInput;
+  properties?: UserAssignedIdentityInput;
   /** Resource tags. */
   tags?: ApplicationTypesCreateOrUpdateRequestTagsMap;
   /** The geo-location where the resource lives */
@@ -1181,7 +1162,7 @@ export const ApplicationTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       clusterName: S.String.pipe(T.Label()),
       applicationTypeName: S.String.pipe(T.Label()),
-      properties: S.optional(ApplicationTypeResourcePropertiesInput),
+      properties: S.optional(UserAssignedIdentityInput),
       tags: S.optional(ApplicationTypesCreateOrUpdateRequestTagsMap),
       location: S.optional(S.String),
     }).pipe(

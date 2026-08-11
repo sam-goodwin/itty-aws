@@ -331,22 +331,8 @@ export const AppsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AppsGetResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface AppsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const AppsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "AppsGetResponseIdentity",
-}) as any as S.Schema<AppsGetResponseIdentity>;
+export type AppsGetResponseIdentity = AppsCreateOrUpdateResponseIdentity;
+export const AppsGetResponseIdentity = AppsCreateOrUpdateResponseIdentity;
 
 export interface AppsGetResponse {
   /** The ARM resource identifier. */
@@ -364,7 +350,7 @@ export interface AppsGetResponse {
   /** A valid instance SKU. */
   sku: AppSkuInfo;
   /** Managed service identity (either system assigned, or none) */
-  identity?: AppsGetResponseIdentity;
+  identity?: AppsCreateOrUpdateResponseIdentity;
 }
 export const AppsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -375,7 +361,7 @@ export const AppsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(AppsGetResponseTagsMap),
     properties: S.optional(AppProperties),
     sku: AppSkuInfo,
-    identity: S.optional(AppsGetResponseIdentity),
+    identity: S.optional(AppsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "AppsGetResponse",
@@ -411,20 +397,8 @@ export const AppTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AppTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface AppIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const AppIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({ identifier: "AppIdentity" }) as any as S.Schema<AppIdentity>;
+export type AppIdentity = AppsCreateOrUpdateResponseIdentity;
+export const AppIdentity = AppsCreateOrUpdateResponseIdentity;
 
 /** The IoT Central application. */
 export interface App {
@@ -443,7 +417,7 @@ export interface App {
   /** A valid instance SKU. */
   sku: AppSkuInfo;
   /** Managed service identity (either system assigned, or none) */
-  identity?: AppIdentity;
+  identity?: AppsCreateOrUpdateResponseIdentity;
 }
 export const App = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -454,7 +428,7 @@ export const App = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(AppTagsMap),
     properties: S.optional(AppProperties),
     sku: AppSkuInfo,
-    identity: S.optional(AppIdentity),
+    identity: S.optional(AppsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "App" }) as any as S.Schema<App>;
 
@@ -600,16 +574,8 @@ export const AppsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AppsUpdateRequestTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface AppsUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType | (string & {});
-}
-export const AppsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "AppsUpdateRequestIdentity",
-}) as any as S.Schema<AppsUpdateRequestIdentity>;
+export type AppsUpdateRequestIdentity = AppsCreateOrUpdateRequestIdentity;
+export const AppsUpdateRequestIdentity = AppsCreateOrUpdateRequestIdentity;
 
 export interface AppsUpdateRequest {
   /** The subscription identifier. */
@@ -625,7 +591,7 @@ export interface AppsUpdateRequest {
   /** The common properties of an IoT Central application. */
   properties?: AppPropertiesInput;
   /** Managed service identity (either system assigned, or none) */
-  identity?: AppsUpdateRequestIdentity;
+  identity?: AppsCreateOrUpdateRequestIdentity;
 }
 export const AppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -635,7 +601,7 @@ export const AppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(AppsUpdateRequestTagsMap),
     sku: S.optional(AppSkuInfo),
     properties: S.optional(AppPropertiesInput),
-    identity: S.optional(AppsUpdateRequestIdentity),
+    identity: S.optional(AppsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -656,22 +622,8 @@ export const AppsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AppsUpdateResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface AppsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const AppsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "AppsUpdateResponseIdentity",
-}) as any as S.Schema<AppsUpdateResponseIdentity>;
+export type AppsUpdateResponseIdentity = AppsCreateOrUpdateResponseIdentity;
+export const AppsUpdateResponseIdentity = AppsCreateOrUpdateResponseIdentity;
 
 export interface AppsUpdateResponse {
   /** The ARM resource identifier. */
@@ -689,7 +641,7 @@ export interface AppsUpdateResponse {
   /** A valid instance SKU. */
   sku: AppSkuInfo;
   /** Managed service identity (either system assigned, or none) */
-  identity?: AppsUpdateResponseIdentity;
+  identity?: AppsCreateOrUpdateResponseIdentity;
 }
 export const AppsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -700,7 +652,7 @@ export const AppsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(AppsUpdateResponseTagsMap),
     properties: S.optional(AppProperties),
     sku: AppSkuInfo,
-    identity: S.optional(AppsUpdateResponseIdentity),
+    identity: S.optional(AppsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "AppsUpdateResponse",

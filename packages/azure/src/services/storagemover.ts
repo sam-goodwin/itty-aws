@@ -1059,24 +1059,10 @@ export const EndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointsGetRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface EndpointsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const EndpointsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "EndpointsGetResponseIdentity",
-}) as any as S.Schema<EndpointsGetResponseIdentity>;
+export type EndpointsGetResponseIdentity =
+  EndpointsCreateOrUpdateResponseIdentity;
+export const EndpointsGetResponseIdentity =
+  EndpointsCreateOrUpdateResponseIdentity;
 
 export interface EndpointsGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1090,7 +1076,7 @@ export interface EndpointsGetResponse {
   /** The resource specific properties for the Storage Mover resource. */
   properties: EndpointBaseProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: EndpointsGetResponseIdentity;
+  identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
 export const EndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1099,7 +1085,7 @@ export const EndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: EndpointBaseProperties,
-    identity: S.optional(EndpointsGetResponseIdentity),
+    identity: S.optional(EndpointsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "EndpointsGetResponse",
@@ -1131,24 +1117,8 @@ export const EndpointsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointsListRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface EndpointIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const EndpointIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "EndpointIdentity",
-}) as any as S.Schema<EndpointIdentity>;
+export type EndpointIdentity = EndpointsCreateOrUpdateResponseIdentity;
+export const EndpointIdentity = EndpointsCreateOrUpdateResponseIdentity;
 
 /** The Endpoint resource, which contains information about file sources and targets. */
 export interface Endpoint {
@@ -1163,7 +1133,7 @@ export interface Endpoint {
   /** The resource specific properties for the Storage Mover resource. */
   properties: EndpointBaseProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: EndpointIdentity;
+  identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
 export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1172,7 +1142,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: EndpointBaseProperties,
-    identity: S.optional(EndpointIdentity),
+    identity: S.optional(EndpointsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
@@ -1213,18 +1183,10 @@ export const EndpointBaseUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointBaseUpdateProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface EndpointsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
-export const EndpointsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-  }),
-).annotate({
-  identifier: "EndpointsUpdateRequestIdentity",
-}) as any as S.Schema<EndpointsUpdateRequestIdentity>;
+export type EndpointsUpdateRequestIdentity =
+  EndpointsCreateOrUpdateRequestIdentity;
+export const EndpointsUpdateRequestIdentity =
+  EndpointsCreateOrUpdateRequestIdentity;
 
 export interface EndpointsUpdateRequest {
   /** The ID of the target subscription. */
@@ -1238,7 +1200,7 @@ export interface EndpointsUpdateRequest {
   /** The Endpoint resource, which contains information about file sources and targets. */
   properties?: EndpointBaseUpdateProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: EndpointsUpdateRequestIdentity;
+  identity?: EndpointsCreateOrUpdateRequestIdentity;
 }
 export const EndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1247,7 +1209,7 @@ export const EndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     storageMoverName: S.String.pipe(T.Label()),
     endpointName: S.String.pipe(T.Label()),
     properties: S.optional(EndpointBaseUpdateProperties),
-    identity: S.optional(EndpointsUpdateRequestIdentity),
+    identity: S.optional(EndpointsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1261,24 +1223,10 @@ export const EndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointsUpdateRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface EndpointsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const EndpointsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "EndpointsUpdateResponseIdentity",
-}) as any as S.Schema<EndpointsUpdateResponseIdentity>;
+export type EndpointsUpdateResponseIdentity =
+  EndpointsCreateOrUpdateResponseIdentity;
+export const EndpointsUpdateResponseIdentity =
+  EndpointsCreateOrUpdateResponseIdentity;
 
 export interface EndpointsUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1292,7 +1240,7 @@ export interface EndpointsUpdateResponse {
   /** The resource specific properties for the Storage Mover resource. */
   properties: EndpointBaseProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: EndpointsUpdateResponseIdentity;
+  identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
 export const EndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1301,7 +1249,7 @@ export const EndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: EndpointBaseProperties,
-    identity: S.optional(EndpointsUpdateResponseIdentity),
+    identity: S.optional(EndpointsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "EndpointsUpdateResponse",
@@ -1318,11 +1266,10 @@ export type CopyMode = "Additive" | "Mirror";
 export const CopyMode = /*@__PURE__*/ S.String;
 
 /** The list of cloud endpoints to migrate. */
-export interface JobDefinitionPropertiesInputSourceTargetMap {}
+export type JobDefinitionPropertiesInputSourceTargetMap =
+  UserAssignedIdentityInput;
 export const JobDefinitionPropertiesInputSourceTargetMap =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "JobDefinitionPropertiesInputSourceTargetMap",
-  }) as any as S.Schema<JobDefinitionPropertiesInputSourceTargetMap>;
+  UserAssignedIdentityInput;
 
 /** List of connections associated to this job */
 export type JobDefinitionPropertiesInputConnectionsList = Array<string>;
@@ -1424,7 +1371,7 @@ export interface JobDefinitionPropertiesInput {
   /** Name of the Agent to assign for new Job Runs of this Job Definition. */
   agentName?: string;
   /** The list of cloud endpoints to migrate. */
-  sourceTargetMap?: JobDefinitionPropertiesInputSourceTargetMap;
+  sourceTargetMap?: UserAssignedIdentityInput;
   /** List of connections associated to this job */
   connections?: JobDefinitionPropertiesInputConnectionsList;
   /** Schedule information for the Job Definition. */
@@ -1446,7 +1393,7 @@ export const JobDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     targetName: S.String,
     targetSubpath: S.optional(S.String),
     agentName: S.optional(S.String),
-    sourceTargetMap: S.optional(JobDefinitionPropertiesInputSourceTargetMap),
+    sourceTargetMap: S.optional(UserAssignedIdentityInput),
     connections: S.optional(JobDefinitionPropertiesInputConnectionsList),
     schedule: S.optional(ScheduleInfo),
     dataIntegrityValidation: S.optional(
@@ -2669,17 +2616,8 @@ export const ProjectList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectList" }) as any as S.Schema<ProjectList>;
 
 /** Project properties. */
-export interface ProjectUpdateProperties {
-  /** A description for the Project. */
-  description?: string;
-}
-export const ProjectUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProjectUpdateProperties",
-}) as any as S.Schema<ProjectUpdateProperties>;
+export type ProjectUpdateProperties = ProjectPropertiesInput;
+export const ProjectUpdateProperties = ProjectPropertiesInput;
 
 export interface ProjectsUpdateRequest {
   /** The ID of the target subscription. */
@@ -2691,7 +2629,7 @@ export interface ProjectsUpdateRequest {
   /** The name of the Project resource. */
   projectName: string;
   /** Project properties. */
-  properties?: ProjectUpdateProperties;
+  properties?: ProjectPropertiesInput;
 }
 export const ProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2699,7 +2637,7 @@ export const ProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     storageMoverName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
-    properties: S.optional(ProjectUpdateProperties),
+    properties: S.optional(ProjectPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3045,17 +2983,8 @@ export const StorageMoversListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StorageMoversListBySubscriptionRequest>;
 
 /** The resource specific properties for the Storage Mover resource. */
-export interface StorageMoverUpdateProperties {
-  /** A description for the Storage Mover. */
-  description?: string;
-}
-export const StorageMoverUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "StorageMoverUpdateProperties",
-}) as any as S.Schema<StorageMoverUpdateProperties>;
+export type StorageMoverUpdateProperties = StorageMoverPropertiesInput;
+export const StorageMoverUpdateProperties = StorageMoverPropertiesInput;
 
 /** Resource tags. */
 export type StorageMoversUpdateRequestTagsMap = {
@@ -3074,7 +3003,7 @@ export interface StorageMoversUpdateRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
   /** The resource specific properties for the Storage Mover resource. */
-  properties?: StorageMoverUpdateProperties;
+  properties?: StorageMoverPropertiesInput;
   /** Resource tags. */
   tags?: StorageMoversUpdateRequestTagsMap;
 }
@@ -3083,7 +3012,7 @@ export const StorageMoversUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     storageMoverName: S.String.pipe(T.Label()),
-    properties: S.optional(StorageMoverUpdateProperties),
+    properties: S.optional(StorageMoverPropertiesInput),
     tags: S.optional(StorageMoversUpdateRequestTagsMap),
   }).pipe(
     T.Http({

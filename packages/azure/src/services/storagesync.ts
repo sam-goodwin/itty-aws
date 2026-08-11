@@ -3300,20 +3300,16 @@ export type ManagedServiceIdentityType =
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = PrivateEndpointInput;
+export const UserAssignedIdentityInput = PrivateEndpointInput;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: PrivateEndpointInput | undefined;
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentityInput,
+  PrivateEndpointInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3401,37 +3397,17 @@ export const StorageSyncServicesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageSyncServicesCreateResponseTagsMap>;
 
 /** The private endpoint connection resource. */
-export interface StorageSyncServicePropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type StorageSyncServicePropertiesPrivateEndpointConnectionsItem =
+  PrivateEndpointConnectionListResultValueItem;
 export const StorageSyncServicePropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "StorageSyncServicePropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<StorageSyncServicePropertiesPrivateEndpointConnectionsItem>;
+  PrivateEndpointConnectionListResultValueItem;
 
 /** List of private endpoint connection associated with the specified storage sync service */
 export type StorageSyncServicePropertiesPrivateEndpointConnectionsList =
-  Array<StorageSyncServicePropertiesPrivateEndpointConnectionsItem>;
+  Array<PrivateEndpointConnectionListResultValueItem>;
 export const StorageSyncServicePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    StorageSyncServicePropertiesPrivateEndpointConnectionsItem,
+    PrivateEndpointConnectionListResultValueItem,
   ) as any as S.Schema<StorageSyncServicePropertiesPrivateEndpointConnectionsList>;
 
 /** Storage Sync Service Properties object. */
@@ -3616,25 +3592,10 @@ export const StorageSyncServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageSyncServicesGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface StorageSyncServicesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const StorageSyncServicesGetResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "StorageSyncServicesGetResponseIdentity",
-}) as any as S.Schema<StorageSyncServicesGetResponseIdentity>;
+export type StorageSyncServicesGetResponseIdentity =
+  StorageSyncServicesCreateResponseIdentity;
+export const StorageSyncServicesGetResponseIdentity =
+  StorageSyncServicesCreateResponseIdentity;
 
 export interface StorageSyncServicesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3652,7 +3613,7 @@ export interface StorageSyncServicesGetResponse {
   /** Storage Sync Service properties. */
   properties?: StorageSyncServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: StorageSyncServicesGetResponseIdentity;
+  identity?: StorageSyncServicesCreateResponseIdentity;
 }
 export const StorageSyncServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3663,7 +3624,7 @@ export const StorageSyncServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(StorageSyncServicesGetResponseTagsMap),
     location: S.String,
     properties: S.optional(StorageSyncServiceProperties),
-    identity: S.optional(StorageSyncServicesGetResponseIdentity),
+    identity: S.optional(StorageSyncServicesCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "StorageSyncServicesGetResponse",
@@ -3700,24 +3661,10 @@ export const StorageSyncServiceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageSyncServiceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface StorageSyncServiceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const StorageSyncServiceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "StorageSyncServiceIdentity",
-}) as any as S.Schema<StorageSyncServiceIdentity>;
+export type StorageSyncServiceIdentity =
+  StorageSyncServicesCreateResponseIdentity;
+export const StorageSyncServiceIdentity =
+  StorageSyncServicesCreateResponseIdentity;
 
 /** Storage Sync Service object. */
 export interface StorageSyncService {
@@ -3736,7 +3683,7 @@ export interface StorageSyncService {
   /** Storage Sync Service properties. */
   properties?: StorageSyncServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: StorageSyncServiceIdentity;
+  identity?: StorageSyncServicesCreateResponseIdentity;
 }
 export const StorageSyncService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3747,7 +3694,7 @@ export const StorageSyncService = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(StorageSyncServiceTagsMap),
     location: S.String,
     properties: S.optional(StorageSyncServiceProperties),
-    identity: S.optional(StorageSyncServiceIdentity),
+    identity: S.optional(StorageSyncServicesCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "StorageSyncService",
@@ -3805,35 +3752,16 @@ export const StorageSyncServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageSyncServicesUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface StorageSyncServicesUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const StorageSyncServicesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-).annotate({
-  identifier: "StorageSyncServicesUpdateRequestIdentity",
-}) as any as S.Schema<StorageSyncServicesUpdateRequestIdentity>;
+export type StorageSyncServicesUpdateRequestIdentity =
+  StorageSyncServicesCreateRequestIdentity;
+export const StorageSyncServicesUpdateRequestIdentity =
+  StorageSyncServicesCreateRequestIdentity;
 
 /** StorageSyncService Properties object. */
-export interface StorageSyncServiceUpdateProperties {
-  /** Incoming Traffic Policy */
-  incomingTrafficPolicy?: IncomingTrafficPolicy | (string & {});
-  /** Use Identity authorization when customer have finished setup RBAC permissions. */
-  useIdentity?: boolean;
-}
-export const StorageSyncServiceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    incomingTrafficPolicy: S.optional(IncomingTrafficPolicy),
-    useIdentity: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "StorageSyncServiceUpdateProperties",
-}) as any as S.Schema<StorageSyncServiceUpdateProperties>;
+export type StorageSyncServiceUpdateProperties =
+  StorageSyncServiceCreateParametersProperties;
+export const StorageSyncServiceUpdateProperties =
+  StorageSyncServiceCreateParametersProperties;
 
 export interface StorageSyncServicesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3845,9 +3773,9 @@ export interface StorageSyncServicesUpdateRequest {
   /** The user-specified tags associated with the storage sync service. */
   tags?: StorageSyncServicesUpdateRequestTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: StorageSyncServicesUpdateRequestIdentity;
+  identity?: StorageSyncServicesCreateRequestIdentity;
   /** The properties of the server endpoint. */
-  properties?: StorageSyncServiceUpdateProperties;
+  properties?: StorageSyncServiceCreateParametersProperties;
 }
 export const StorageSyncServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3855,8 +3783,8 @@ export const StorageSyncServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     storageSyncServiceName: S.String.pipe(T.Label()),
     tags: S.optional(StorageSyncServicesUpdateRequestTagsMap),
-    identity: S.optional(StorageSyncServicesUpdateRequestIdentity),
-    properties: S.optional(StorageSyncServiceUpdateProperties),
+    identity: S.optional(StorageSyncServicesCreateRequestIdentity),
+    properties: S.optional(StorageSyncServiceCreateParametersProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3879,25 +3807,10 @@ export const StorageSyncServicesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageSyncServicesUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface StorageSyncServicesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type StorageSyncServicesUpdateResponseIdentity =
+  StorageSyncServicesCreateResponseIdentity;
 export const StorageSyncServicesUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "StorageSyncServicesUpdateResponseIdentity",
-  }) as any as S.Schema<StorageSyncServicesUpdateResponseIdentity>;
+  StorageSyncServicesCreateResponseIdentity;
 
 export interface StorageSyncServicesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3915,7 +3828,7 @@ export interface StorageSyncServicesUpdateResponse {
   /** Storage Sync Service properties. */
   properties?: StorageSyncServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: StorageSyncServicesUpdateResponseIdentity;
+  identity?: StorageSyncServicesCreateResponseIdentity;
 }
 export const StorageSyncServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3926,7 +3839,7 @@ export const StorageSyncServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(StorageSyncServicesUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(StorageSyncServiceProperties),
-    identity: S.optional(StorageSyncServicesUpdateResponseIdentity),
+    identity: S.optional(StorageSyncServicesCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "StorageSyncServicesUpdateResponse",

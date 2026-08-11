@@ -4827,46 +4827,18 @@ export const SkusGetByBillingAccountResponseCategoryIdsList =
   ) as any as S.Schema<SkusGetByBillingAccountResponseCategoryIdsList>;
 
 /** Retail price with currency */
-export interface Price_3 {
-  /** Currency code i.e. 'USD' */
-  currencyCode?: string;
-  /** A value indicating whether a payment instrument is required */
-  isPiRequired: boolean;
-  /** Retail price for the item */
-  listPrice: number;
-  /** Manufacturer's suggested retail price for the item */
-  msrp: number;
-}
-export const Price_3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currencyCode: S.optional(S.String),
-    isPiRequired: S.Boolean,
-    listPrice: S.Number,
-    msrp: S.Number,
-  }),
-).annotate({ identifier: "Price_3" }) as any as S.Schema<Price_3>;
+export type Price_3 = Price_2;
+export const Price_3 = Price_2;
 
 /** Included quantity properties for a meter */
-export interface IncludedQuantityProperty_3 {
-  /** Term id */
-  termId?: string;
-  /** Included quantity */
-  quantity?: string;
-}
-export const IncludedQuantityProperty_3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    termId: S.optional(S.String),
-    quantity: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IncludedQuantityProperty_3",
-}) as any as S.Schema<IncludedQuantityProperty_3>;
+export type IncludedQuantityProperty_3 = IncludedQuantityProperty_2;
+export const IncludedQuantityProperty_3 = IncludedQuantityProperty_2;
 
 /** Included quantity properties */
 export type MeterIncludedQuantityPropertiesList_3 =
-  Array<IncludedQuantityProperty_3>;
+  Array<IncludedQuantityProperty_2>;
 export const MeterIncludedQuantityPropertiesList_3 = /*@__PURE__*/ S.Array(
-  IncludedQuantityProperty_3,
+  IncludedQuantityProperty_2,
 ) as any as S.Schema<MeterIncludedQuantityPropertiesList_3>;
 
 /** Applicable billing meter information */
@@ -4878,7 +4850,7 @@ export interface Meter_3 {
   /** Consumption resource id */
   consumptionResourceId?: string;
   /** Retail price with currency */
-  price?: Price_3;
+  price?: Price_2;
   /** Type of this meter */
   type?: string;
   /** Included quantity properties */
@@ -4889,7 +4861,7 @@ export const Meter_3 = /*@__PURE__*/ S.suspend(() =>
     meterId: S.optional(S.String),
     partNumber: S.optional(S.String),
     consumptionResourceId: S.optional(S.String),
-    price: S.optional(Price_3),
+    price: S.optional(Price_2),
     type: S.optional(S.String),
     includedQuantityProperties: S.optional(
       MeterIncludedQuantityPropertiesList_3,
@@ -4898,79 +4870,27 @@ export const Meter_3 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Meter_3" }) as any as S.Schema<Meter_3>;
 
 /** Term description parameters */
-export interface TermDescriptionParameter_3 {
-  /** Description parameter */
-  parameter?: string;
-  /** Parameter's value */
-  value?: string;
-}
-export const TermDescriptionParameter_3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameter: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TermDescriptionParameter_3",
-}) as any as S.Schema<TermDescriptionParameter_3>;
+export type TermDescriptionParameter_3 = TermDescriptionParameter_2;
+export const TermDescriptionParameter_3 = TermDescriptionParameter_2;
 
 /** Term description parameters */
 export type TermTermDescriptionParametersList_3 =
-  Array<TermDescriptionParameter_3>;
+  Array<TermDescriptionParameter_2>;
 export const TermTermDescriptionParametersList_3 = /*@__PURE__*/ S.Array(
-  TermDescriptionParameter_3,
+  TermDescriptionParameter_2,
 ) as any as S.Schema<TermTermDescriptionParametersList_3>;
 
 /** Proration policy */
-export interface ProrationPolicy_3 {
-  /** Minimum prorated units */
-  minimumProratedUnits?: string;
-}
-export const ProrationPolicy_3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minimumProratedUnits: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProrationPolicy_3",
-}) as any as S.Schema<ProrationPolicy_3>;
+export type ProrationPolicy_3 = ProrationPolicy_2;
+export const ProrationPolicy_3 = ProrationPolicy_2;
 
 /** Renew Billing Plan */
-export interface BillingPlan_3 {
-  /** Billing period */
-  billingPeriod?: string;
-  /** Title of the billing plan */
-  title?: string;
-  /** Description of the billing plan */
-  description?: string;
-  /** Retail price with currency */
-  price?: Price_3;
-}
-export const BillingPlan_3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingPeriod: S.optional(S.String),
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    price: S.optional(Price_3),
-  }),
-).annotate({ identifier: "BillingPlan_3" }) as any as S.Schema<BillingPlan_3>;
+export type BillingPlan_3 = BillingPlan_2;
+export const BillingPlan_3 = BillingPlan_2;
 
 /** Defines the lifecycle management policy for the term */
-export interface LifecyclePolicy_2 {
-  /** Grace period duration where customers retain access to their product. Examples: 'P1M' (1 month), 'P30D' (30 days), 'P0D' (0 days) */
-  graceDuration?: string;
-  /** Inactive period duration */
-  inactiveDuration?: string;
-  /** Lockout period duration */
-  lockoutDuration?: string;
-}
-export const LifecyclePolicy_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    graceDuration: S.optional(S.String),
-    inactiveDuration: S.optional(S.String),
-    lockoutDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LifecyclePolicy_2",
-}) as any as S.Schema<LifecyclePolicy_2>;
+export type LifecyclePolicy_2 = LifecyclePolicy;
+export const LifecyclePolicy_2 = LifecyclePolicy;
 
 /** Applicable term */
 export interface Term_3 {
@@ -4981,23 +4901,23 @@ export interface Term_3 {
   /** Term unit */
   termUnit?: string;
   /** Defines the rules for calculating prorated charges or refunds for a subscription. */
-  prorationPolicy?: ProrationPolicy_3;
+  prorationPolicy?: ProrationPolicy_2;
   /** Term description */
   termDescription?: string;
   /** Retail price with currency */
-  price?: Price_3;
+  price?: Price_2;
   /** Renew term id */
   renewTermId?: string;
   /** Renew term units */
   renewTermUnits?: string;
   /** Billing Plan */
-  billingPlan?: BillingPlan_3;
+  billingPlan?: BillingPlan_2;
   /** Renew Billing Plan */
   renewToTermBillingPlan?: string;
   /** Indicates if autorenew is enabled */
   isAutorenewable?: boolean;
   /** Defines the lifecycle management policy for the term */
-  lifecyclePolicy?: LifecyclePolicy_2;
+  lifecyclePolicy?: LifecyclePolicy;
   /** Product code for this term */
   productCode?: string;
   /** Term state */
@@ -5010,15 +4930,15 @@ export const Term_3 = /*@__PURE__*/ S.suspend(() =>
     termDescriptionParameters: S.optional(TermTermDescriptionParametersList_3),
     termId: S.optional(S.String),
     termUnit: S.optional(S.String),
-    prorationPolicy: S.optional(ProrationPolicy_3),
+    prorationPolicy: S.optional(ProrationPolicy_2),
     termDescription: S.optional(S.String),
-    price: S.optional(Price_3),
+    price: S.optional(Price_2),
     renewTermId: S.optional(S.String),
     renewTermUnits: S.optional(S.String),
-    billingPlan: S.optional(BillingPlan_3),
+    billingPlan: S.optional(BillingPlan_2),
     renewToTermBillingPlan: S.optional(S.String),
     isAutorenewable: S.optional(S.Boolean),
-    lifecyclePolicy: S.optional(LifecyclePolicy_2),
+    lifecyclePolicy: S.optional(LifecyclePolicy),
     productCode: S.optional(S.String),
     state: S.optional(S.String),
     actions: S.optional(TermActionsList),

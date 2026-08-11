@@ -3733,20 +3733,19 @@ export type DeploymentIdentityType = "None" | "UserAssigned";
 export const DeploymentIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface DeploymentIdentityInputUserAssignedIdentitiesValue {}
+export type DeploymentIdentityInputUserAssignedIdentitiesValue =
+  UserAssignedResourceIdentityInput;
 export const DeploymentIdentityInputUserAssignedIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeploymentIdentityInputUserAssignedIdentitiesValue",
-  }) as any as S.Schema<DeploymentIdentityInputUserAssignedIdentitiesValue>;
+  UserAssignedResourceIdentityInput;
 
 /** The set of user assigned identities associated with the resource. */
 export type DeploymentIdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: DeploymentIdentityInputUserAssignedIdentitiesValue | undefined;
+  [key: string]: UserAssignedResourceIdentityInput | undefined;
 };
 export const DeploymentIdentityInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    DeploymentIdentityInputUserAssignedIdentitiesValue,
+    UserAssignedResourceIdentityInput,
   ) as any as S.Schema<DeploymentIdentityInputUserAssignedIdentitiesMap>;
 
 /** The Managed Identity configuration for a deployment. */
@@ -3882,20 +3881,8 @@ export const AliasPattern_2 = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AliasPattern_2" }) as any as S.Schema<AliasPattern_2>;
 
-export interface AliasPathMetadata_2 {
-  /** The type of the token that the alias path is referring to. */
-  type?: AliasPathTokenType;
-  /** The attributes of the token that the alias path is referring to. */
-  attributes?: AliasPathAttributes;
-}
-export const AliasPathMetadata_2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(AliasPathTokenType),
-    attributes: S.optional(AliasPathAttributes),
-  }),
-).annotate({
-  identifier: "AliasPathMetadata_2",
-}) as any as S.Schema<AliasPathMetadata_2>;
+export type AliasPathMetadata_2 = AliasPathMetadata;
+export const AliasPathMetadata_2 = AliasPathMetadata;
 
 /** The type of the paths for alias. */
 export interface AliasPath_2 {
@@ -3906,14 +3893,14 @@ export interface AliasPath_2 {
   /** The pattern for an alias path. */
   pattern?: AliasPattern_2;
   /** The metadata of the alias path. If missing, fall back to the default metadata of the alias. */
-  metadata?: AliasPathMetadata_2;
+  metadata?: AliasPathMetadata;
 }
 export const AliasPath_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     apiVersions: S.optional(AliasPathApiVersionsList),
     pattern: S.optional(AliasPattern_2),
-    metadata: S.optional(AliasPathMetadata_2),
+    metadata: S.optional(AliasPathMetadata),
   }),
 ).annotate({ identifier: "AliasPath_2" }) as any as S.Schema<AliasPath_2>;
 
@@ -3936,7 +3923,7 @@ export interface Alias_2 {
   /** The default pattern for an alias. */
   defaultPattern?: AliasPattern_2;
   /** The default alias path metadata. Applies to the default path and to any alias path that doesn't have metadata */
-  defaultMetadata?: AliasPathMetadata_2;
+  defaultMetadata?: AliasPathMetadata;
 }
 export const Alias_2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3945,7 +3932,7 @@ export const Alias_2 = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(AliasType),
     defaultPath: S.optional(S.String),
     defaultPattern: S.optional(AliasPattern_2),
-    defaultMetadata: S.optional(AliasPathMetadata_2),
+    defaultMetadata: S.optional(AliasPathMetadata),
   }),
 ).annotate({ identifier: "Alias_2" }) as any as S.Schema<Alias_2>;
 
@@ -4222,28 +4209,17 @@ export type Level = "Warning" | "Info" | "Error";
 export const Level = /*@__PURE__*/ S.String;
 
 /** The resource management error additional info. */
-export interface DeploymentDiagnosticsDefinitionAdditionalInfoItem {
-  /** The additional info type. */
-  type?: string;
-  /** The additional info. */
-  info?: unknown;
-}
+export type DeploymentDiagnosticsDefinitionAdditionalInfoItem =
+  ErrorResponseAdditionalInfoItem;
 export const DeploymentDiagnosticsDefinitionAdditionalInfoItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(S.String),
-      info: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "DeploymentDiagnosticsDefinitionAdditionalInfoItem",
-  }) as any as S.Schema<DeploymentDiagnosticsDefinitionAdditionalInfoItem>;
+  ErrorResponseAdditionalInfoItem;
 
 /** The error additional info. */
 export type DeploymentDiagnosticsDefinitionAdditionalInfoList =
-  Array<DeploymentDiagnosticsDefinitionAdditionalInfoItem>;
+  Array<ErrorResponseAdditionalInfoItem>;
 export const DeploymentDiagnosticsDefinitionAdditionalInfoList =
   /*@__PURE__*/ S.Array(
-    DeploymentDiagnosticsDefinitionAdditionalInfoItem,
+    ErrorResponseAdditionalInfoItem,
   ) as any as S.Schema<DeploymentDiagnosticsDefinitionAdditionalInfoList>;
 
 export interface DeploymentDiagnosticsDefinition {
@@ -4754,21 +4730,17 @@ export type ManagedServiceIdentityType = "UserAssigned";
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User-assigned managed identity. */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = UserAssignedResourceIdentityInput;
+export const UserAssignedIdentityInput = UserAssignedResourceIdentityInput;
 
 /** The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity. */
 export type ManagedServiceIdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: UserAssignedResourceIdentityInput | undefined;
 };
 export const ManagedServiceIdentityInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserAssignedIdentityInput,
+    UserAssignedResourceIdentityInput,
   ) as any as S.Schema<ManagedServiceIdentityInputUserAssignedIdentitiesMap>;
 
 /** Describes the managed identities for an Azure resource. */
@@ -6103,12 +6075,10 @@ export const DeploymentsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeploymentsListByResourceGroupRequest>;
 
 /** The error detail. */
-export interface DeploymentStackPropertiesInputError {}
-export const DeploymentStackPropertiesInputError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeploymentStackPropertiesInputError",
-}) as any as S.Schema<DeploymentStackPropertiesInputError>;
+export type DeploymentStackPropertiesInputError =
+  UserAssignedResourceIdentityInput;
+export const DeploymentStackPropertiesInputError =
+  UserAssignedResourceIdentityInput;
 
 /** The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both. */
 export type DeploymentStackPropertiesInputTemplateMap = {
@@ -6209,20 +6179,8 @@ export const DeploymentStackPropertiesInputParametersMap =
   ) as any as S.Schema<DeploymentStackPropertiesInputParametersMap>;
 
 /** Entity representing the reference to the deployment parameters. */
-export interface DeploymentStacksParametersLink {
-  /** The URI of the parameters file. */
-  uri: string;
-  /** If included, must match the ContentVersion in the template. */
-  contentVersion?: string;
-}
-export const DeploymentStacksParametersLink = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.String,
-    contentVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeploymentStacksParametersLink",
-}) as any as S.Schema<DeploymentStacksParametersLink>;
+export type DeploymentStacksParametersLink = ParametersLink;
+export const DeploymentStacksParametersLink = ParametersLink;
 
 /** The value or how to get a value for an extension config property. */
 export interface DeploymentExtensionConfigItemInput {
@@ -6373,7 +6331,7 @@ export const DenySettings = /*@__PURE__*/ S.suspend(() =>
 /** Deployment stack properties. */
 export interface DeploymentStackPropertiesInput {
   /** The error detail. */
-  error?: DeploymentStackPropertiesInputError;
+  error?: UserAssignedResourceIdentityInput;
   /** The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both. */
   template?: DeploymentStackPropertiesInputTemplateMap;
   /** The URI of the template. Use either the templateLink property or the template property, but not both. */
@@ -6381,7 +6339,7 @@ export interface DeploymentStackPropertiesInput {
   /** Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. */
   parameters?: DeploymentStackPropertiesInputParametersMap;
   /** The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both. */
-  parametersLink?: DeploymentStacksParametersLink;
+  parametersLink?: ParametersLink;
   /** The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template. */
   extensionConfigs?: DeploymentStackPropertiesInputExtensionConfigsMap;
   /** External input values, used by external tooling for parameter evaluation. */
@@ -6405,11 +6363,11 @@ export interface DeploymentStackPropertiesInput {
 }
 export const DeploymentStackPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    error: S.optional(DeploymentStackPropertiesInputError),
+    error: S.optional(UserAssignedResourceIdentityInput),
     template: S.optional(DeploymentStackPropertiesInputTemplateMap),
     templateLink: S.optional(DeploymentStacksTemplateLink),
     parameters: S.optional(DeploymentStackPropertiesInputParametersMap),
-    parametersLink: S.optional(DeploymentStacksParametersLink),
+    parametersLink: S.optional(ParametersLink),
     extensionConfigs: S.optional(
       DeploymentStackPropertiesInputExtensionConfigsMap,
     ),
@@ -6480,25 +6438,14 @@ export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
 /** The resource management error additional info. */
-export interface ErrorAdditionalInfo {
-  /** The additional info type. */
-  type?: string;
-  /** The additional info. */
-  info?: unknown;
-}
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    info: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "ErrorAdditionalInfo",
-}) as any as S.Schema<ErrorAdditionalInfo>;
+export type ErrorAdditionalInfo = ErrorResponseAdditionalInfoItem;
+export const ErrorAdditionalInfo = ErrorResponseAdditionalInfoItem;
 
 /** The error additional info. */
-export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
+export type ErrorDetailAdditionalInfoList =
+  Array<ErrorResponseAdditionalInfoItem>;
 export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
-  ErrorAdditionalInfo,
+  ErrorResponseAdditionalInfoItem,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
 /** The error detail. */
@@ -6532,10 +6479,10 @@ export const DeploymentStackPropertiesErrorDetailsList = /*@__PURE__*/ S.Array(
 
 /** The error additional info. */
 export type DeploymentStackPropertiesErrorAdditionalInfoList =
-  Array<ErrorAdditionalInfo>;
+  Array<ErrorResponseAdditionalInfoItem>;
 export const DeploymentStackPropertiesErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
-    ErrorAdditionalInfo,
+    ErrorResponseAdditionalInfoItem,
   ) as any as S.Schema<DeploymentStackPropertiesErrorAdditionalInfoList>;
 
 /** The error detail. */
@@ -6747,10 +6694,10 @@ export const ResourceReferenceExtendedErrorDetailsList = /*@__PURE__*/ S.Array(
 
 /** The error additional info. */
 export type ResourceReferenceExtendedErrorAdditionalInfoList =
-  Array<ErrorAdditionalInfo>;
+  Array<ErrorResponseAdditionalInfoItem>;
 export const ResourceReferenceExtendedErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
-    ErrorAdditionalInfo,
+    ErrorResponseAdditionalInfoItem,
   ) as any as S.Schema<ResourceReferenceExtendedErrorAdditionalInfoList>;
 
 /** The error detail. */
@@ -6909,7 +6856,7 @@ export interface DeploymentStackProperties {
   /** Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. */
   parameters?: DeploymentStackPropertiesParametersMap;
   /** The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both. */
-  parametersLink?: DeploymentStacksParametersLink;
+  parametersLink?: ParametersLink;
   /** The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template. */
   extensionConfigs?: DeploymentStackPropertiesExtensionConfigsMap;
   /** External input values, used by external tooling for parameter evaluation. */
@@ -6957,7 +6904,7 @@ export const DeploymentStackProperties = /*@__PURE__*/ S.suspend(() =>
     template: S.optional(DeploymentStackPropertiesTemplateMap),
     templateLink: S.optional(DeploymentStacksTemplateLink),
     parameters: S.optional(DeploymentStackPropertiesParametersMap),
-    parametersLink: S.optional(DeploymentStacksParametersLink),
+    parametersLink: S.optional(ParametersLink),
     extensionConfigs: S.optional(DeploymentStackPropertiesExtensionConfigsMap),
     externalInputs: S.optional(DeploymentStackPropertiesExternalInputsMap),
     externalInputDefinitions: S.optional(
@@ -7996,10 +7943,10 @@ export const DeploymentStackValidateResultErrorDetailsList =
 
 /** The error additional info. */
 export type DeploymentStackValidateResultErrorAdditionalInfoList =
-  Array<ErrorAdditionalInfo>;
+  Array<ErrorResponseAdditionalInfoItem>;
 export const DeploymentStackValidateResultErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
-    ErrorAdditionalInfo,
+    ErrorResponseAdditionalInfoItem,
   ) as any as S.Schema<DeploymentStackValidateResultErrorAdditionalInfoList>;
 
 /** The error detail. */
@@ -8219,11 +8166,10 @@ export const DeploymentStacksValidateStackAtSubscriptionRequest =
   }) as any as S.Schema<DeploymentStacksValidateStackAtSubscriptionRequest>;
 
 /** The error detail. */
-export interface DeploymentStacksWhatIfResultPropertiesInputError {}
+export type DeploymentStacksWhatIfResultPropertiesInputError =
+  UserAssignedResourceIdentityInput;
 export const DeploymentStacksWhatIfResultPropertiesInputError =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeploymentStacksWhatIfResultPropertiesInputError",
-  }) as any as S.Schema<DeploymentStacksWhatIfResultPropertiesInputError>;
+  UserAssignedResourceIdentityInput;
 
 /** The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both. */
 export type DeploymentStacksWhatIfResultPropertiesInputTemplateMap = {
@@ -8277,7 +8223,7 @@ export const DeploymentStacksWhatIfResultPropertiesInputExternalInputDefinitions
 /** DeploymentStack WhatIfResult Properties */
 export interface DeploymentStacksWhatIfResultPropertiesInput {
   /** The error detail. */
-  error?: DeploymentStacksWhatIfResultPropertiesInputError;
+  error?: UserAssignedResourceIdentityInput;
   /** The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both. */
   template?: DeploymentStacksWhatIfResultPropertiesInputTemplateMap;
   /** The URI of the template. Use either the templateLink property or the template property, but not both. */
@@ -8285,7 +8231,7 @@ export interface DeploymentStacksWhatIfResultPropertiesInput {
   /** Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. */
   parameters?: DeploymentStacksWhatIfResultPropertiesInputParametersMap;
   /** The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both. */
-  parametersLink?: DeploymentStacksParametersLink;
+  parametersLink?: ParametersLink;
   /** The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template. */
   extensionConfigs?: DeploymentStacksWhatIfResultPropertiesInputExtensionConfigsMap;
   /** External input values, used by external tooling for parameter evaluation. */
@@ -8312,7 +8258,7 @@ export interface DeploymentStacksWhatIfResultPropertiesInput {
 export const DeploymentStacksWhatIfResultPropertiesInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      error: S.optional(DeploymentStacksWhatIfResultPropertiesInputError),
+      error: S.optional(UserAssignedResourceIdentityInput),
       template: S.optional(
         DeploymentStacksWhatIfResultPropertiesInputTemplateMap,
       ),
@@ -8320,7 +8266,7 @@ export const DeploymentStacksWhatIfResultPropertiesInput =
       parameters: S.optional(
         DeploymentStacksWhatIfResultPropertiesInputParametersMap,
       ),
-      parametersLink: S.optional(DeploymentStacksParametersLink),
+      parametersLink: S.optional(ParametersLink),
       extensionConfigs: S.optional(
         DeploymentStacksWhatIfResultPropertiesInputExtensionConfigsMap,
       ),
@@ -8397,10 +8343,10 @@ export const DeploymentStacksWhatIfResultPropertiesErrorDetailsList =
 
 /** The error additional info. */
 export type DeploymentStacksWhatIfResultPropertiesErrorAdditionalInfoList =
-  Array<ErrorAdditionalInfo>;
+  Array<ErrorResponseAdditionalInfoItem>;
 export const DeploymentStacksWhatIfResultPropertiesErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
-    ErrorAdditionalInfo,
+    ErrorResponseAdditionalInfoItem,
   ) as any as S.Schema<DeploymentStacksWhatIfResultPropertiesErrorAdditionalInfoList>;
 
 /** The error detail. */
@@ -8793,28 +8739,17 @@ export type DeploymentStacksDiagnosticLevel = "info" | "warning" | "error";
 export const DeploymentStacksDiagnosticLevel = /*@__PURE__*/ S.String;
 
 /** The resource management error additional info. */
-export interface DeploymentStacksDiagnosticAdditionalInfoItem {
-  /** The additional info type. */
-  type?: string;
-  /** The additional info. */
-  info?: unknown;
-}
+export type DeploymentStacksDiagnosticAdditionalInfoItem =
+  ErrorResponseAdditionalInfoItem;
 export const DeploymentStacksDiagnosticAdditionalInfoItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(S.String),
-      info: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "DeploymentStacksDiagnosticAdditionalInfoItem",
-  }) as any as S.Schema<DeploymentStacksDiagnosticAdditionalInfoItem>;
+  ErrorResponseAdditionalInfoItem;
 
 /** Additional error information. */
 export type DeploymentStacksDiagnosticAdditionalInfoList =
-  Array<DeploymentStacksDiagnosticAdditionalInfoItem>;
+  Array<ErrorResponseAdditionalInfoItem>;
 export const DeploymentStacksDiagnosticAdditionalInfoList =
   /*@__PURE__*/ S.Array(
-    DeploymentStacksDiagnosticAdditionalInfoItem,
+    ErrorResponseAdditionalInfoItem,
   ) as any as S.Schema<DeploymentStacksDiagnosticAdditionalInfoList>;
 
 /** The error additional info */
@@ -8861,7 +8796,7 @@ export interface DeploymentStacksWhatIfResultProperties {
   /** Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both. */
   parameters?: DeploymentStacksWhatIfResultPropertiesParametersMap;
   /** The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both. */
-  parametersLink?: DeploymentStacksParametersLink;
+  parametersLink?: ParametersLink;
   /** The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template. */
   extensionConfigs?: DeploymentStacksWhatIfResultPropertiesExtensionConfigsMap;
   /** External input values, used by external tooling for parameter evaluation. */
@@ -8904,7 +8839,7 @@ export const DeploymentStacksWhatIfResultProperties = /*@__PURE__*/ S.suspend(
       parameters: S.optional(
         DeploymentStacksWhatIfResultPropertiesParametersMap,
       ),
-      parametersLink: S.optional(DeploymentStacksParametersLink),
+      parametersLink: S.optional(ParametersLink),
       extensionConfigs: S.optional(
         DeploymentStacksWhatIfResultPropertiesExtensionConfigsMap,
       ),
@@ -12258,20 +12193,18 @@ export const PolicyAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export type ResourceIdentityType = "SystemAssigned" | "UserAssigned" | "None";
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
-export interface UserAssignedIdentitiesValueInput {}
-export const UserAssignedIdentitiesValueInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentitiesValueInput",
-}) as any as S.Schema<UserAssignedIdentitiesValueInput>;
+export type UserAssignedIdentitiesValueInput =
+  UserAssignedResourceIdentityInput;
+export const UserAssignedIdentitiesValueInput =
+  UserAssignedResourceIdentityInput;
 
 /** The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentitiesValueInput | undefined;
+  [key: string]: UserAssignedResourceIdentityInput | undefined;
 };
 export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentitiesValueInput,
+  UserAssignedResourceIdentityInput,
 ) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
 
 /** Identity for the resource. Policy assignments support a maximum of one identity. That is either a system assigned identity or a single user assigned identity. */
@@ -16211,12 +16144,8 @@ export const ResourceGroupsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<ResourceGroupsCreateOrUpdateRequestTagsMap>;
 
 /** The resource group properties. */
-export interface ResourceGroupPropertiesInput {}
-export const ResourceGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResourceGroupPropertiesInput",
-}) as any as S.Schema<ResourceGroupPropertiesInput>;
+export type ResourceGroupPropertiesInput = UserAssignedResourceIdentityInput;
+export const ResourceGroupPropertiesInput = UserAssignedResourceIdentityInput;
 
 export interface ResourceGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -16228,7 +16157,7 @@ export interface ResourceGroupsCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location: string;
   /** The resource group properties. */
-  properties?: ResourceGroupPropertiesInput;
+  properties?: UserAssignedResourceIdentityInput;
   /** The ID of the resource that manages this resource group. */
   managedBy?: string;
 }
@@ -16238,7 +16167,7 @@ export const ResourceGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     tags: S.optional(ResourceGroupsCreateOrUpdateRequestTagsMap),
     location: S.String,
-    properties: S.optional(ResourceGroupPropertiesInput),
+    properties: S.optional(UserAssignedResourceIdentityInput),
     managedBy: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -16391,10 +16320,10 @@ export const ResourceGroupExportResultErrorDetailsList = /*@__PURE__*/ S.Array(
 
 /** The error additional info. */
 export type ResourceGroupExportResultErrorAdditionalInfoList =
-  Array<ErrorAdditionalInfo>;
+  Array<ErrorResponseAdditionalInfoItem>;
 export const ResourceGroupExportResultErrorAdditionalInfoList =
   /*@__PURE__*/ S.Array(
-    ErrorAdditionalInfo,
+    ErrorResponseAdditionalInfoItem,
   ) as any as S.Schema<ResourceGroupExportResultErrorAdditionalInfoList>;
 
 /** The error detail. */
@@ -16610,7 +16539,7 @@ export interface ResourceGroupsUpdateRequest {
   /** The name of the resource group. */
   name?: string;
   /** The resource group properties. */
-  properties?: ResourceGroupPropertiesInput;
+  properties?: UserAssignedResourceIdentityInput;
   /** The ID of the resource that manages this resource group. */
   managedBy?: string;
   /** The tags attached to the resource group. */
@@ -16621,7 +16550,7 @@ export const ResourceGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     name: S.optional(S.String),
-    properties: S.optional(ResourceGroupPropertiesInput),
+    properties: S.optional(UserAssignedResourceIdentityInput),
     managedBy: S.optional(S.String),
     tags: S.optional(ResourceGroupsUpdateRequestTagsMap),
   }).pipe(
@@ -17128,20 +17057,18 @@ export type ResourceIdentityType_2 =
   | "None";
 export const ResourceIdentityType_2 = /*@__PURE__*/ S.String;
 
-export interface IdentityUserAssignedIdentitiesValueInput {}
-export const IdentityUserAssignedIdentitiesValueInput = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "IdentityUserAssignedIdentitiesValueInput",
-}) as any as S.Schema<IdentityUserAssignedIdentitiesValueInput>;
+export type IdentityUserAssignedIdentitiesValueInput =
+  UserAssignedResourceIdentityInput;
+export const IdentityUserAssignedIdentitiesValueInput =
+  UserAssignedResourceIdentityInput;
 
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityInputUserAssignedIdentitiesMap_2 = {
-  [key: string]: IdentityUserAssignedIdentitiesValueInput | undefined;
+  [key: string]: UserAssignedResourceIdentityInput | undefined;
 };
 export const IdentityInputUserAssignedIdentitiesMap_2 = /*@__PURE__*/ S.Record(
   S.String,
-  IdentityUserAssignedIdentitiesValueInput,
+  UserAssignedResourceIdentityInput,
 ) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap_2>;
 
 /** Identity for the resource. */
@@ -17252,28 +17179,16 @@ export const ResourcesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourcesCreateOrUpdateRequest",
 }) as any as S.Schema<ResourcesCreateOrUpdateRequest>;
 
-export interface IdentityUserAssignedIdentitiesValue {
-  /** The principal id of user assigned identity. */
-  principalId?: string;
-  /** The client id of user assigned identity. */
-  clientId?: string;
-}
-export const IdentityUserAssignedIdentitiesValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    clientId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IdentityUserAssignedIdentitiesValue",
-}) as any as S.Schema<IdentityUserAssignedIdentitiesValue>;
+export type IdentityUserAssignedIdentitiesValue = UserAssignedIdentitiesValue;
+export const IdentityUserAssignedIdentitiesValue = UserAssignedIdentitiesValue;
 
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityUserAssignedIdentitiesMap_2 = {
-  [key: string]: IdentityUserAssignedIdentitiesValue | undefined;
+  [key: string]: UserAssignedIdentitiesValue | undefined;
 };
 export const IdentityUserAssignedIdentitiesMap_2 = /*@__PURE__*/ S.Record(
   S.String,
-  IdentityUserAssignedIdentitiesValue,
+  UserAssignedIdentitiesValue,
 ) as any as S.Schema<IdentityUserAssignedIdentitiesMap_2>;
 
 /** Identity for the resource. */
@@ -18280,12 +18195,8 @@ export const SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesStat
   /*@__PURE__*/ S.String;
 
 /** Authorization Profile */
-export interface AuthorizationProfileInput {}
-export const AuthorizationProfileInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AuthorizationProfileInput",
-}) as any as S.Schema<AuthorizationProfileInput>;
+export type AuthorizationProfileInput = UserAssignedResourceIdentityInput;
+export const AuthorizationProfileInput = UserAssignedResourceIdentityInput;
 
 /** Key-value pairs for meta data. */
 export type SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesMetadataMap =
@@ -18301,7 +18212,7 @@ export interface SubscriptionFeatureRegistrationsCreateOrUpdateRequestProperties
   state?:
     | SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesState
     | (string & {});
-  authorizationProfile?: AuthorizationProfileInput;
+  authorizationProfile?: UserAssignedResourceIdentityInput;
   /** Key-value pairs for meta data. */
   metadata?: SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesMetadataMap;
   /** Indicates whether feature should be displayed in Portal. */
@@ -18315,7 +18226,7 @@ export const SubscriptionFeatureRegistrationsCreateOrUpdateRequestProperties =
       state: S.optional(
         SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesState,
       ),
-      authorizationProfile: S.optional(AuthorizationProfileInput),
+      authorizationProfile: S.optional(UserAssignedResourceIdentityInput),
       metadata: S.optional(
         SubscriptionFeatureRegistrationsCreateOrUpdateRequestPropertiesMetadataMap,
       ),

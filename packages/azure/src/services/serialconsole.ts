@@ -82,25 +82,18 @@ export const EnableConsoleRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnableConsoleRequest",
 }) as any as S.Schema<EnableConsoleRequest>;
 
-export interface EnableSerialConsoleResultProperties {
-  /** Whether or not Serial Console is disabled. */
-  disabled?: boolean;
-}
-export const EnableSerialConsoleResultProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EnableSerialConsoleResultProperties",
-}) as any as S.Schema<EnableSerialConsoleResultProperties>;
+export type EnableSerialConsoleResultProperties =
+  DisableSerialConsoleResultProperties;
+export const EnableSerialConsoleResultProperties =
+  DisableSerialConsoleResultProperties;
 
 /** Returns whether or not Serial Console is disabled (enabled). */
 export interface EnableSerialConsoleResult {
-  properties?: EnableSerialConsoleResultProperties;
+  properties?: DisableSerialConsoleResultProperties;
 }
 export const EnableSerialConsoleResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    properties: S.optional(EnableSerialConsoleResultProperties),
+    properties: S.optional(DisableSerialConsoleResultProperties),
   }),
 ).annotate({
   identifier: "EnableSerialConsoleResult",
@@ -128,25 +121,18 @@ export const GetConsoleStatusRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetConsoleStatusRequest",
 }) as any as S.Schema<GetConsoleStatusRequest>;
 
-export interface SerialConsoleStatusProperties {
-  /** Whether or not Serial Console is disabled. */
-  disabled?: boolean;
-}
-export const SerialConsoleStatusProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    disabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SerialConsoleStatusProperties",
-}) as any as S.Schema<SerialConsoleStatusProperties>;
+export type SerialConsoleStatusProperties =
+  DisableSerialConsoleResultProperties;
+export const SerialConsoleStatusProperties =
+  DisableSerialConsoleResultProperties;
 
 /** Returns whether or not Serial Console is disabled. */
 export interface SerialConsoleStatus {
-  properties?: SerialConsoleStatusProperties;
+  properties?: DisableSerialConsoleResultProperties;
 }
 export const SerialConsoleStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    properties: S.optional(SerialConsoleStatusProperties),
+    properties: S.optional(DisableSerialConsoleResultProperties),
   }),
 ).annotate({
   identifier: "SerialConsoleStatus",

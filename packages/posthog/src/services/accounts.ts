@@ -24,39 +24,21 @@ export const AccountsCreateRequestPropertiesCsm = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsCreateRequestPropertiesCsm",
 }) as any as S.Schema<AccountsCreateRequestPropertiesCsm>;
 
-export interface AccountsCreateRequestPropertiesAccountExecutive {
-  id: number;
-  email: string;
-}
+export type AccountsCreateRequestPropertiesAccountExecutive =
+  AccountsCreateRequestPropertiesCsm;
 export const AccountsCreateRequestPropertiesAccountExecutive =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.Number,
-      email: S.String,
-    }),
-  ).annotate({
-    identifier: "AccountsCreateRequestPropertiesAccountExecutive",
-  }) as any as S.Schema<AccountsCreateRequestPropertiesAccountExecutive>;
+  AccountsCreateRequestPropertiesCsm;
 
-export interface AccountsCreateRequestPropertiesAccountOwner {
-  id: number;
-  email: string;
-}
+export type AccountsCreateRequestPropertiesAccountOwner =
+  AccountsCreateRequestPropertiesCsm;
 export const AccountsCreateRequestPropertiesAccountOwner =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.Number,
-      email: S.String,
-    }),
-  ).annotate({
-    identifier: "AccountsCreateRequestPropertiesAccountOwner",
-  }) as any as S.Schema<AccountsCreateRequestPropertiesAccountOwner>;
+  AccountsCreateRequestPropertiesCsm;
 
 /** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
 export interface AccountsCreateRequestProperties {
   csm?: AccountsCreateRequestPropertiesCsm | null;
-  account_executive?: AccountsCreateRequestPropertiesAccountExecutive | null;
-  account_owner?: AccountsCreateRequestPropertiesAccountOwner | null;
+  account_executive?: AccountsCreateRequestPropertiesCsm | null;
+  account_owner?: AccountsCreateRequestPropertiesCsm | null;
   stripe_customer_id?: string | null;
   hubspot_deal_id?: string | null;
   billing_id?: string | null;
@@ -68,12 +50,8 @@ export interface AccountsCreateRequestProperties {
 export const AccountsCreateRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csm: S.optional(S.NullOr(AccountsCreateRequestPropertiesCsm)),
-    account_executive: S.optional(
-      S.NullOr(AccountsCreateRequestPropertiesAccountExecutive),
-    ),
-    account_owner: S.optional(
-      S.NullOr(AccountsCreateRequestPropertiesAccountOwner),
-    ),
+    account_executive: S.optional(S.NullOr(AccountsCreateRequestPropertiesCsm)),
+    account_owner: S.optional(S.NullOr(AccountsCreateRequestPropertiesCsm)),
     stripe_customer_id: S.optional(S.NullOr(S.String)),
     hubspot_deal_id: S.optional(S.NullOr(S.String)),
     billing_id: S.optional(S.NullOr(S.String)),
@@ -122,74 +100,20 @@ export const AccountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsCreateRequest",
 }) as any as S.Schema<AccountsCreateRequest>;
 
-export interface AccountPropertiesCsm {
-  id: number;
-  email: string;
-}
-export const AccountPropertiesCsm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    email: S.String,
-  }),
-).annotate({
-  identifier: "AccountPropertiesCsm",
-}) as any as S.Schema<AccountPropertiesCsm>;
+export type AccountPropertiesCsm = AccountsCreateRequestPropertiesCsm;
+export const AccountPropertiesCsm = AccountsCreateRequestPropertiesCsm;
 
-export interface AccountPropertiesAccountExecutive {
-  id: number;
-  email: string;
-}
-export const AccountPropertiesAccountExecutive = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    email: S.String,
-  }),
-).annotate({
-  identifier: "AccountPropertiesAccountExecutive",
-}) as any as S.Schema<AccountPropertiesAccountExecutive>;
+export type AccountPropertiesAccountExecutive =
+  AccountsCreateRequestPropertiesCsm;
+export const AccountPropertiesAccountExecutive =
+  AccountsCreateRequestPropertiesCsm;
 
-export interface AccountPropertiesAccountOwner {
-  id: number;
-  email: string;
-}
-export const AccountPropertiesAccountOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    email: S.String,
-  }),
-).annotate({
-  identifier: "AccountPropertiesAccountOwner",
-}) as any as S.Schema<AccountPropertiesAccountOwner>;
+export type AccountPropertiesAccountOwner = AccountsCreateRequestPropertiesCsm;
+export const AccountPropertiesAccountOwner = AccountsCreateRequestPropertiesCsm;
 
 /** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
-export interface AccountProperties {
-  csm?: AccountPropertiesCsm | null;
-  account_executive?: AccountPropertiesAccountExecutive | null;
-  account_owner?: AccountPropertiesAccountOwner | null;
-  stripe_customer_id?: string | null;
-  hubspot_deal_id?: string | null;
-  billing_id?: string | null;
-  sfdc_id?: string | null;
-  zendesk_id?: string | null;
-  slack_channel_id?: string | null;
-  usage_dashboard_link?: string | null;
-}
-export const AccountProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    csm: S.optional(S.NullOr(AccountPropertiesCsm)),
-    account_executive: S.optional(S.NullOr(AccountPropertiesAccountExecutive)),
-    account_owner: S.optional(S.NullOr(AccountPropertiesAccountOwner)),
-    stripe_customer_id: S.optional(S.NullOr(S.String)),
-    hubspot_deal_id: S.optional(S.NullOr(S.String)),
-    billing_id: S.optional(S.NullOr(S.String)),
-    sfdc_id: S.optional(S.NullOr(S.String)),
-    zendesk_id: S.optional(S.NullOr(S.String)),
-    slack_channel_id: S.optional(S.NullOr(S.String)),
-    usage_dashboard_link: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AccountProperties",
-}) as any as S.Schema<AccountProperties>;
+export type AccountProperties = AccountsCreateRequestProperties;
+export const AccountProperties = AccountsCreateRequestProperties;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type AccountTagsList = Array<string>;
@@ -211,7 +135,7 @@ export interface Account {
   /** Identifier linking this account to its source customer — the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
   external_id?: string | null;
   /** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
-  properties?: AccountProperties | null;
+  properties?: AccountsCreateRequestProperties | null;
   /** Tag names attached to the account. Pass a list to replace existing tags. */
   tags?: AccountTagsList;
   /** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
@@ -225,7 +149,7 @@ export const Account = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     name: S.String,
     external_id: S.optional(S.NullOr(S.String)),
-    properties: S.optional(S.NullOr(AccountProperties)),
+    properties: S.optional(S.NullOr(AccountsCreateRequestProperties)),
     tags: S.optional(AccountTagsList),
     notebooks: AccountNotebooksList,
     created_at: S.String,
@@ -338,82 +262,26 @@ export const PaginatedAccountList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedAccountList",
 }) as any as S.Schema<PaginatedAccountList>;
 
-export interface AccountsPartialUpdateRequestPropertiesCsm {
-  id: number;
-  email: string;
-}
+export type AccountsPartialUpdateRequestPropertiesCsm =
+  AccountsCreateRequestPropertiesCsm;
 export const AccountsPartialUpdateRequestPropertiesCsm =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.Number,
-      email: S.String,
-    }),
-  ).annotate({
-    identifier: "AccountsPartialUpdateRequestPropertiesCsm",
-  }) as any as S.Schema<AccountsPartialUpdateRequestPropertiesCsm>;
+  AccountsCreateRequestPropertiesCsm;
 
-export interface AccountsPartialUpdateRequestPropertiesAccountExecutive {
-  id: number;
-  email: string;
-}
+export type AccountsPartialUpdateRequestPropertiesAccountExecutive =
+  AccountsCreateRequestPropertiesCsm;
 export const AccountsPartialUpdateRequestPropertiesAccountExecutive =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.Number,
-      email: S.String,
-    }),
-  ).annotate({
-    identifier: "AccountsPartialUpdateRequestPropertiesAccountExecutive",
-  }) as any as S.Schema<AccountsPartialUpdateRequestPropertiesAccountExecutive>;
+  AccountsCreateRequestPropertiesCsm;
 
-export interface AccountsPartialUpdateRequestPropertiesAccountOwner {
-  id: number;
-  email: string;
-}
+export type AccountsPartialUpdateRequestPropertiesAccountOwner =
+  AccountsCreateRequestPropertiesCsm;
 export const AccountsPartialUpdateRequestPropertiesAccountOwner =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.Number,
-      email: S.String,
-    }),
-  ).annotate({
-    identifier: "AccountsPartialUpdateRequestPropertiesAccountOwner",
-  }) as any as S.Schema<AccountsPartialUpdateRequestPropertiesAccountOwner>;
+  AccountsCreateRequestPropertiesCsm;
 
 /** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
-export interface AccountsPartialUpdateRequestProperties {
-  csm?: AccountsPartialUpdateRequestPropertiesCsm | null;
-  account_executive?: AccountsPartialUpdateRequestPropertiesAccountExecutive | null;
-  account_owner?: AccountsPartialUpdateRequestPropertiesAccountOwner | null;
-  stripe_customer_id?: string | null;
-  hubspot_deal_id?: string | null;
-  billing_id?: string | null;
-  sfdc_id?: string | null;
-  zendesk_id?: string | null;
-  slack_channel_id?: string | null;
-  usage_dashboard_link?: string | null;
-}
-export const AccountsPartialUpdateRequestProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      csm: S.optional(S.NullOr(AccountsPartialUpdateRequestPropertiesCsm)),
-      account_executive: S.optional(
-        S.NullOr(AccountsPartialUpdateRequestPropertiesAccountExecutive),
-      ),
-      account_owner: S.optional(
-        S.NullOr(AccountsPartialUpdateRequestPropertiesAccountOwner),
-      ),
-      stripe_customer_id: S.optional(S.NullOr(S.String)),
-      hubspot_deal_id: S.optional(S.NullOr(S.String)),
-      billing_id: S.optional(S.NullOr(S.String)),
-      sfdc_id: S.optional(S.NullOr(S.String)),
-      zendesk_id: S.optional(S.NullOr(S.String)),
-      slack_channel_id: S.optional(S.NullOr(S.String)),
-      usage_dashboard_link: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "AccountsPartialUpdateRequestProperties",
-}) as any as S.Schema<AccountsPartialUpdateRequestProperties>;
+export type AccountsPartialUpdateRequestProperties =
+  AccountsCreateRequestProperties;
+export const AccountsPartialUpdateRequestProperties =
+  AccountsCreateRequestProperties;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type AccountsPartialUpdateRequestTagsList = Array<string>;
@@ -431,7 +299,7 @@ export interface AccountsPartialUpdateRequest {
   /** Identifier linking this account to its source customer — the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
   external_id?: string | null;
   /** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
-  properties?: AccountsPartialUpdateRequestProperties | null;
+  properties?: AccountsCreateRequestProperties | null;
   /** Tag names attached to the account. Pass a list to replace existing tags. */
   tags?: AccountsPartialUpdateRequestTagsList;
 }
@@ -441,7 +309,7 @@ export const AccountsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
     external_id: S.optional(S.NullOr(S.String)),
-    properties: S.optional(S.NullOr(AccountsPartialUpdateRequestProperties)),
+    properties: S.optional(S.NullOr(AccountsCreateRequestProperties)),
     tags: S.optional(AccountsPartialUpdateRequestTagsList),
   }).pipe(
     T.Http({
@@ -475,80 +343,24 @@ export const AccountsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccountsRetrieveRequest",
 }) as any as S.Schema<AccountsRetrieveRequest>;
 
-export interface AccountsUpdateRequestPropertiesCsm {
-  id: number;
-  email: string;
-}
-export const AccountsUpdateRequestPropertiesCsm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    email: S.String,
-  }),
-).annotate({
-  identifier: "AccountsUpdateRequestPropertiesCsm",
-}) as any as S.Schema<AccountsUpdateRequestPropertiesCsm>;
+export type AccountsUpdateRequestPropertiesCsm =
+  AccountsCreateRequestPropertiesCsm;
+export const AccountsUpdateRequestPropertiesCsm =
+  AccountsCreateRequestPropertiesCsm;
 
-export interface AccountsUpdateRequestPropertiesAccountExecutive {
-  id: number;
-  email: string;
-}
+export type AccountsUpdateRequestPropertiesAccountExecutive =
+  AccountsCreateRequestPropertiesCsm;
 export const AccountsUpdateRequestPropertiesAccountExecutive =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.Number,
-      email: S.String,
-    }),
-  ).annotate({
-    identifier: "AccountsUpdateRequestPropertiesAccountExecutive",
-  }) as any as S.Schema<AccountsUpdateRequestPropertiesAccountExecutive>;
+  AccountsCreateRequestPropertiesCsm;
 
-export interface AccountsUpdateRequestPropertiesAccountOwner {
-  id: number;
-  email: string;
-}
+export type AccountsUpdateRequestPropertiesAccountOwner =
+  AccountsCreateRequestPropertiesCsm;
 export const AccountsUpdateRequestPropertiesAccountOwner =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.Number,
-      email: S.String,
-    }),
-  ).annotate({
-    identifier: "AccountsUpdateRequestPropertiesAccountOwner",
-  }) as any as S.Schema<AccountsUpdateRequestPropertiesAccountOwner>;
+  AccountsCreateRequestPropertiesCsm;
 
 /** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
-export interface AccountsUpdateRequestProperties {
-  csm?: AccountsUpdateRequestPropertiesCsm | null;
-  account_executive?: AccountsUpdateRequestPropertiesAccountExecutive | null;
-  account_owner?: AccountsUpdateRequestPropertiesAccountOwner | null;
-  stripe_customer_id?: string | null;
-  hubspot_deal_id?: string | null;
-  billing_id?: string | null;
-  sfdc_id?: string | null;
-  zendesk_id?: string | null;
-  slack_channel_id?: string | null;
-  usage_dashboard_link?: string | null;
-}
-export const AccountsUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    csm: S.optional(S.NullOr(AccountsUpdateRequestPropertiesCsm)),
-    account_executive: S.optional(
-      S.NullOr(AccountsUpdateRequestPropertiesAccountExecutive),
-    ),
-    account_owner: S.optional(
-      S.NullOr(AccountsUpdateRequestPropertiesAccountOwner),
-    ),
-    stripe_customer_id: S.optional(S.NullOr(S.String)),
-    hubspot_deal_id: S.optional(S.NullOr(S.String)),
-    billing_id: S.optional(S.NullOr(S.String)),
-    sfdc_id: S.optional(S.NullOr(S.String)),
-    zendesk_id: S.optional(S.NullOr(S.String)),
-    slack_channel_id: S.optional(S.NullOr(S.String)),
-    usage_dashboard_link: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AccountsUpdateRequestProperties",
-}) as any as S.Schema<AccountsUpdateRequestProperties>;
+export type AccountsUpdateRequestProperties = AccountsCreateRequestProperties;
+export const AccountsUpdateRequestProperties = AccountsCreateRequestProperties;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type AccountsUpdateRequestTagsList = Array<string>;
@@ -566,7 +378,7 @@ export interface AccountsUpdateRequest {
   /** Identifier linking this account to its source customer — the analytics group key (the customer's organization id), used to match billing and external records. Optional. */
   external_id?: string | null;
   /** Typed account properties: assignment fields (csm, account_executive, account_owner) and external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link). Defaults to an empty object. Unknown keys are rejected. */
-  properties?: AccountsUpdateRequestProperties | null;
+  properties?: AccountsCreateRequestProperties | null;
   /** Tag names attached to the account. Pass a list to replace existing tags. */
   tags?: AccountsUpdateRequestTagsList;
 }
@@ -576,7 +388,7 @@ export const AccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.String.pipe(T.Label()),
     name: S.String,
     external_id: S.optional(S.NullOr(S.String)),
-    properties: S.optional(S.NullOr(AccountsUpdateRequestProperties)),
+    properties: S.optional(S.NullOr(AccountsCreateRequestProperties)),
     tags: S.optional(AccountsUpdateRequestTagsList),
   }).pipe(
     T.Http({

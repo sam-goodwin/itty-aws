@@ -269,27 +269,15 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Username and password for basic login authentication. */
-export interface ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation {
-  /** Login username. */
-  username?: string;
-  /** Login password. */
-  password?: string | Redacted.Redacted<string>;
-}
+export type ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 export const ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier:
-      "ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation",
-  }) as any as S.Schema<ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation>;
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 
 /** The properties of an Active Directory connector resource */
 export interface ActiveDirectoryConnectorProperties {
   /** Username and password for basic login authentication. */
-  domainServiceAccountLoginInformation?: ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation;
+  domainServiceAccountLoginInformation?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
   /** The provisioning state of the Active Directory connector resource. */
   provisioningState?: string;
   /** null */
@@ -300,7 +288,7 @@ export interface ActiveDirectoryConnectorProperties {
 export const ActiveDirectoryConnectorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainServiceAccountLoginInformation: S.optional(
-      ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation,
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
     ),
     provisioningState: S.optional(S.String),
     spec: ActiveDirectoryConnectorSpec,
@@ -637,55 +625,22 @@ export const UploadWatermark = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadWatermark>;
 
 /** Username and password for basic login authentication. */
-export interface DataControllerPropertiesBasicLoginInformation {
-  /** Login username. */
-  username?: string;
-  /** Login password. */
-  password?: string | Redacted.Redacted<string>;
-}
+export type DataControllerPropertiesBasicLoginInformation =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 export const DataControllerPropertiesBasicLoginInformation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "DataControllerPropertiesBasicLoginInformation",
-  }) as any as S.Schema<DataControllerPropertiesBasicLoginInformation>;
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 
 /** Username and password for basic login authentication. */
-export interface DataControllerPropertiesMetricsDashboardCredential {
-  /** Login username. */
-  username?: string;
-  /** Login password. */
-  password?: string | Redacted.Redacted<string>;
-}
+export type DataControllerPropertiesMetricsDashboardCredential =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 export const DataControllerPropertiesMetricsDashboardCredential =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "DataControllerPropertiesMetricsDashboardCredential",
-  }) as any as S.Schema<DataControllerPropertiesMetricsDashboardCredential>;
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 
 /** Username and password for basic login authentication. */
-export interface DataControllerPropertiesLogsDashboardCredential {
-  /** Login username. */
-  username?: string;
-  /** Login password. */
-  password?: string | Redacted.Redacted<string>;
-}
+export type DataControllerPropertiesLogsDashboardCredential =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 export const DataControllerPropertiesLogsDashboardCredential =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "DataControllerPropertiesLogsDashboardCredential",
-  }) as any as S.Schema<DataControllerPropertiesLogsDashboardCredential>;
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 
 /** Log analytics workspace id and primary key */
 export interface LogAnalyticsWorkspaceConfig {
@@ -736,11 +691,11 @@ export interface DataControllerProperties {
   /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
   lastUploadedDate?: string;
   /** Username and password for basic login authentication. */
-  basicLoginInformation?: DataControllerPropertiesBasicLoginInformation;
+  basicLoginInformation?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
   /** Username and password for basic login authentication. */
-  metricsDashboardCredential?: DataControllerPropertiesMetricsDashboardCredential;
+  metricsDashboardCredential?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
   /** Username and password for basic login authentication. */
-  logsDashboardCredential?: DataControllerPropertiesLogsDashboardCredential;
+  logsDashboardCredential?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
   logAnalyticsWorkspaceConfig?: LogAnalyticsWorkspaceConfig;
   /** Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity. */
   uploadServicePrincipal?: UploadServicePrincipal;
@@ -759,13 +714,13 @@ export const DataControllerProperties = /*@__PURE__*/ S.suspend(() =>
     uploadWatermark: S.optional(UploadWatermark),
     lastUploadedDate: S.optional(S.String),
     basicLoginInformation: S.optional(
-      DataControllerPropertiesBasicLoginInformation,
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
     ),
     metricsDashboardCredential: S.optional(
-      DataControllerPropertiesMetricsDashboardCredential,
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
     ),
     logsDashboardCredential: S.optional(
-      DataControllerPropertiesLogsDashboardCredential,
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
     ),
     logAnalyticsWorkspaceConfig: S.optional(LogAnalyticsWorkspaceConfig),
     uploadServicePrincipal: S.optional(UploadServicePrincipal),
@@ -845,21 +800,10 @@ export const DataControllerResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DataControllerResourceTagsMap>;
 
 /** The complex type of the extended location. */
-export interface DataControllerResourceExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const DataControllerResourceExtendedLocation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-).annotate({
-  identifier: "DataControllerResourceExtendedLocation",
-}) as any as S.Schema<DataControllerResourceExtendedLocation>;
+export type DataControllerResourceExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
+export const DataControllerResourceExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
 
 /** Data controller resource */
 export interface DataControllerResource {
@@ -876,7 +820,7 @@ export interface DataControllerResource {
   /** The geo-location where the resource lives */
   location: string;
   /** The complex type of the extended location. */
-  extendedLocation?: DataControllerResourceExtendedLocation;
+  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
   /** The data controller's properties */
   properties: DataControllerProperties;
 }
@@ -888,7 +832,9 @@ export const DataControllerResource = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(DataControllerResourceTagsMap),
     location: S.String,
-    extendedLocation: S.optional(DataControllerResourceExtendedLocation),
+    extendedLocation: S.optional(
+      DataControllersGetDataControllerResponseExtendedLocation,
+    ),
     properties: DataControllerProperties,
   }),
 ).annotate({
@@ -984,55 +930,22 @@ export const DataControllerPropertiesInputInfrastructure =
   /*@__PURE__*/ S.String;
 
 /** Username and password for basic login authentication. */
-export interface DataControllerPropertiesInputBasicLoginInformation {
-  /** Login username. */
-  username?: string;
-  /** Login password. */
-  password?: string | Redacted.Redacted<string>;
-}
+export type DataControllerPropertiesInputBasicLoginInformation =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 export const DataControllerPropertiesInputBasicLoginInformation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "DataControllerPropertiesInputBasicLoginInformation",
-  }) as any as S.Schema<DataControllerPropertiesInputBasicLoginInformation>;
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 
 /** Username and password for basic login authentication. */
-export interface DataControllerPropertiesInputMetricsDashboardCredential {
-  /** Login username. */
-  username?: string;
-  /** Login password. */
-  password?: string | Redacted.Redacted<string>;
-}
+export type DataControllerPropertiesInputMetricsDashboardCredential =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 export const DataControllerPropertiesInputMetricsDashboardCredential =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "DataControllerPropertiesInputMetricsDashboardCredential",
-  }) as any as S.Schema<DataControllerPropertiesInputMetricsDashboardCredential>;
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 
 /** Username and password for basic login authentication. */
-export interface DataControllerPropertiesInputLogsDashboardCredential {
-  /** Login username. */
-  username?: string;
-  /** Login password. */
-  password?: string | Redacted.Redacted<string>;
-}
+export type DataControllerPropertiesInputLogsDashboardCredential =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 export const DataControllerPropertiesInputLogsDashboardCredential =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "DataControllerPropertiesInputLogsDashboardCredential",
-  }) as any as S.Schema<DataControllerPropertiesInputLogsDashboardCredential>;
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 
 /** The data controller properties. */
 export interface DataControllerPropertiesInput {
@@ -1045,11 +958,11 @@ export interface DataControllerPropertiesInput {
   /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
   lastUploadedDate?: string;
   /** Username and password for basic login authentication. */
-  basicLoginInformation?: DataControllerPropertiesInputBasicLoginInformation;
+  basicLoginInformation?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
   /** Username and password for basic login authentication. */
-  metricsDashboardCredential?: DataControllerPropertiesInputMetricsDashboardCredential;
+  metricsDashboardCredential?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
   /** Username and password for basic login authentication. */
-  logsDashboardCredential?: DataControllerPropertiesInputLogsDashboardCredential;
+  logsDashboardCredential?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
   logAnalyticsWorkspaceConfig?: LogAnalyticsWorkspaceConfig;
   /** Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity. */
   uploadServicePrincipal?: UploadServicePrincipal;
@@ -1066,13 +979,13 @@ export const DataControllerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     uploadWatermark: S.optional(UploadWatermark),
     lastUploadedDate: S.optional(S.String),
     basicLoginInformation: S.optional(
-      DataControllerPropertiesInputBasicLoginInformation,
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
     ),
     metricsDashboardCredential: S.optional(
-      DataControllerPropertiesInputMetricsDashboardCredential,
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
     ),
     logsDashboardCredential: S.optional(
-      DataControllerPropertiesInputLogsDashboardCredential,
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
     ),
     logAnalyticsWorkspaceConfig: S.optional(LogAnalyticsWorkspaceConfig),
     uploadServicePrincipal: S.optional(UploadServicePrincipal),
@@ -1126,21 +1039,10 @@ export const DataControllersPatchDataControllerResponseTagsMap =
   ) as any as S.Schema<DataControllersPatchDataControllerResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface DataControllersPatchDataControllerResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type DataControllersPatchDataControllerResponseExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
 export const DataControllersPatchDataControllerResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "DataControllersPatchDataControllerResponseExtendedLocation",
-  }) as any as S.Schema<DataControllersPatchDataControllerResponseExtendedLocation>;
+  DataControllersGetDataControllerResponseExtendedLocation;
 
 export interface DataControllersPatchDataControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1156,7 +1058,7 @@ export interface DataControllersPatchDataControllerResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** The complex type of the extended location. */
-  extendedLocation?: DataControllersPatchDataControllerResponseExtendedLocation;
+  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
   /** The data controller's properties */
   properties: DataControllerProperties;
 }
@@ -1170,7 +1072,7 @@ export const DataControllersPatchDataControllerResponse =
       tags: S.optional(DataControllersPatchDataControllerResponseTagsMap),
       location: S.String,
       extendedLocation: S.optional(
-        DataControllersPatchDataControllerResponseExtendedLocation,
+        DataControllersGetDataControllerResponseExtendedLocation,
       ),
       properties: DataControllerProperties,
     }),
@@ -1256,21 +1158,10 @@ export const DataControllersPutDataControllerResponseTagsMap =
   ) as any as S.Schema<DataControllersPutDataControllerResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface DataControllersPutDataControllerResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type DataControllersPutDataControllerResponseExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
 export const DataControllersPutDataControllerResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "DataControllersPutDataControllerResponseExtendedLocation",
-  }) as any as S.Schema<DataControllersPutDataControllerResponseExtendedLocation>;
+  DataControllersGetDataControllerResponseExtendedLocation;
 
 export interface DataControllersPutDataControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1286,7 +1177,7 @@ export interface DataControllersPutDataControllerResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** The complex type of the extended location. */
-  extendedLocation?: DataControllersPutDataControllerResponseExtendedLocation;
+  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
   /** The data controller's properties */
   properties: DataControllerProperties;
 }
@@ -1300,7 +1191,7 @@ export const DataControllersPutDataControllerResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(DataControllersPutDataControllerResponseTagsMap),
       location: S.String,
       extendedLocation: S.optional(
-        DataControllersPutDataControllerResponseExtendedLocation,
+        DataControllersGetDataControllerResponseExtendedLocation,
       ),
       properties: DataControllerProperties,
     }),
@@ -1714,38 +1605,16 @@ export const PostgresInstancesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PostgresInstancesCreateRequestTagsMap>;
 
 /** The complex type of the extended location. */
-export interface PostgresInstancesCreateRequestExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
-}
+export type PostgresInstancesCreateRequestExtendedLocation =
+  DataControllersPutDataControllerRequestExtendedLocation;
 export const PostgresInstancesCreateRequestExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "PostgresInstancesCreateRequestExtendedLocation",
-  }) as any as S.Schema<PostgresInstancesCreateRequestExtendedLocation>;
+  DataControllersPutDataControllerRequestExtendedLocation;
 
 /** Username and password for basic login authentication. */
-export interface PostgresInstancePropertiesInputBasicLoginInformation {
-  /** Login username. */
-  username?: string;
-  /** Login password. */
-  password?: string | Redacted.Redacted<string>;
-}
+export type PostgresInstancePropertiesInputBasicLoginInformation =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 export const PostgresInstancePropertiesInputBasicLoginInformation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "PostgresInstancePropertiesInputBasicLoginInformation",
-  }) as any as S.Schema<PostgresInstancePropertiesInputBasicLoginInformation>;
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 
 /** Postgres Instance properties. */
 export interface PostgresInstancePropertiesInput {
@@ -1754,7 +1623,7 @@ export interface PostgresInstancePropertiesInput {
   /** The instance admin */
   admin?: string;
   /** Username and password for basic login authentication. */
-  basicLoginInformation?: PostgresInstancePropertiesInputBasicLoginInformation;
+  basicLoginInformation?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
   /** The raw kubernetes information */
   k8sRaw?: unknown;
   /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
@@ -1765,7 +1634,7 @@ export const PostgresInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     dataControllerId: S.optional(S.String),
     admin: S.optional(S.String),
     basicLoginInformation: S.optional(
-      PostgresInstancePropertiesInputBasicLoginInformation,
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
     ),
     k8sRaw: S.optional(S.Unknown),
     lastUploadedDate: S.optional(S.String),
@@ -1818,7 +1687,7 @@ export interface PostgresInstancesCreateRequest {
   /** The geo-location where the resource lives */
   location: string;
   /** The complex type of the extended location. */
-  extendedLocation?: PostgresInstancesCreateRequestExtendedLocation;
+  extendedLocation?: DataControllersPutDataControllerRequestExtendedLocation;
   /** null */
   properties: PostgresInstancePropertiesInput;
   /** Resource sku. */
@@ -1832,7 +1701,7 @@ export const PostgresInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PostgresInstancesCreateRequestTagsMap),
     location: S.String,
     extendedLocation: S.optional(
-      PostgresInstancesCreateRequestExtendedLocation,
+      DataControllersPutDataControllerRequestExtendedLocation,
     ),
     properties: PostgresInstancePropertiesInput,
     sku: S.optional(PostgresInstanceSku),
@@ -1858,38 +1727,16 @@ export const PostgresInstancesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PostgresInstancesCreateResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface PostgresInstancesCreateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type PostgresInstancesCreateResponseExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
 export const PostgresInstancesCreateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "PostgresInstancesCreateResponseExtendedLocation",
-  }) as any as S.Schema<PostgresInstancesCreateResponseExtendedLocation>;
+  DataControllersGetDataControllerResponseExtendedLocation;
 
 /** Username and password for basic login authentication. */
-export interface PostgresInstancePropertiesBasicLoginInformation {
-  /** Login username. */
-  username?: string;
-  /** Login password. */
-  password?: string | Redacted.Redacted<string>;
-}
+export type PostgresInstancePropertiesBasicLoginInformation =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 export const PostgresInstancePropertiesBasicLoginInformation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "PostgresInstancePropertiesBasicLoginInformation",
-  }) as any as S.Schema<PostgresInstancePropertiesBasicLoginInformation>;
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 
 /** Postgres Instance properties. */
 export interface PostgresInstanceProperties {
@@ -1898,7 +1745,7 @@ export interface PostgresInstanceProperties {
   /** The instance admin */
   admin?: string;
   /** Username and password for basic login authentication. */
-  basicLoginInformation?: PostgresInstancePropertiesBasicLoginInformation;
+  basicLoginInformation?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
   /** The raw kubernetes information */
   k8sRaw?: unknown;
   /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
@@ -1911,7 +1758,7 @@ export const PostgresInstanceProperties = /*@__PURE__*/ S.suspend(() =>
     dataControllerId: S.optional(S.String),
     admin: S.optional(S.String),
     basicLoginInformation: S.optional(
-      PostgresInstancePropertiesBasicLoginInformation,
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
     ),
     k8sRaw: S.optional(S.Unknown),
     lastUploadedDate: S.optional(S.String),
@@ -1935,7 +1782,7 @@ export interface PostgresInstancesCreateResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** The complex type of the extended location. */
-  extendedLocation?: PostgresInstancesCreateResponseExtendedLocation;
+  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
   /** null */
   properties: PostgresInstanceProperties;
   /** Resource sku. */
@@ -1950,7 +1797,7 @@ export const PostgresInstancesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PostgresInstancesCreateResponseTagsMap),
     location: S.String,
     extendedLocation: S.optional(
-      PostgresInstancesCreateResponseExtendedLocation,
+      DataControllersGetDataControllerResponseExtendedLocation,
     ),
     properties: PostgresInstanceProperties,
     sku: S.optional(PostgresInstanceSku),
@@ -2026,21 +1873,10 @@ export const PostgresInstancesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PostgresInstancesGetResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface PostgresInstancesGetResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type PostgresInstancesGetResponseExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
 export const PostgresInstancesGetResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "PostgresInstancesGetResponseExtendedLocation",
-  }) as any as S.Schema<PostgresInstancesGetResponseExtendedLocation>;
+  DataControllersGetDataControllerResponseExtendedLocation;
 
 export interface PostgresInstancesGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2056,7 +1892,7 @@ export interface PostgresInstancesGetResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** The complex type of the extended location. */
-  extendedLocation?: PostgresInstancesGetResponseExtendedLocation;
+  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
   /** null */
   properties: PostgresInstanceProperties;
   /** Resource sku. */
@@ -2070,7 +1906,9 @@ export const PostgresInstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(PostgresInstancesGetResponseTagsMap),
     location: S.String,
-    extendedLocation: S.optional(PostgresInstancesGetResponseExtendedLocation),
+    extendedLocation: S.optional(
+      DataControllersGetDataControllerResponseExtendedLocation,
+    ),
     properties: PostgresInstanceProperties,
     sku: S.optional(PostgresInstanceSku),
   }),
@@ -2105,20 +1943,10 @@ export const PostgresInstanceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PostgresInstanceTagsMap>;
 
 /** The complex type of the extended location. */
-export interface PostgresInstanceExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const PostgresInstanceExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "PostgresInstanceExtendedLocation",
-}) as any as S.Schema<PostgresInstanceExtendedLocation>;
+export type PostgresInstanceExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
+export const PostgresInstanceExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
 
 /** A Postgres Instance. */
 export interface PostgresInstance {
@@ -2135,7 +1963,7 @@ export interface PostgresInstance {
   /** The geo-location where the resource lives */
   location: string;
   /** The complex type of the extended location. */
-  extendedLocation?: PostgresInstanceExtendedLocation;
+  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
   /** null */
   properties: PostgresInstanceProperties;
   /** Resource sku. */
@@ -2149,7 +1977,9 @@ export const PostgresInstance = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(PostgresInstanceTagsMap),
     location: S.String,
-    extendedLocation: S.optional(PostgresInstanceExtendedLocation),
+    extendedLocation: S.optional(
+      DataControllersGetDataControllerResponseExtendedLocation,
+    ),
     properties: PostgresInstanceProperties,
     sku: S.optional(PostgresInstanceSku),
   }),
@@ -2274,21 +2104,10 @@ export const PostgresInstancesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PostgresInstancesUpdateResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface PostgresInstancesUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type PostgresInstancesUpdateResponseExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
 export const PostgresInstancesUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "PostgresInstancesUpdateResponseExtendedLocation",
-  }) as any as S.Schema<PostgresInstancesUpdateResponseExtendedLocation>;
+  DataControllersGetDataControllerResponseExtendedLocation;
 
 export interface PostgresInstancesUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2304,7 +2123,7 @@ export interface PostgresInstancesUpdateResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** The complex type of the extended location. */
-  extendedLocation?: PostgresInstancesUpdateResponseExtendedLocation;
+  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
   /** null */
   properties: PostgresInstanceProperties;
   /** Resource sku. */
@@ -2319,7 +2138,7 @@ export const PostgresInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PostgresInstancesUpdateResponseTagsMap),
     location: S.String,
     extendedLocation: S.optional(
-      PostgresInstancesUpdateResponseExtendedLocation,
+      DataControllersGetDataControllerResponseExtendedLocation,
     ),
     properties: PostgresInstanceProperties,
     sku: S.optional(PostgresInstanceSku),
@@ -2530,21 +2349,10 @@ export const SqlManagedInstanceK8sRaw = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlManagedInstanceK8sRaw>;
 
 /** Username and password for basic login authentication. */
-export interface SqlManagedInstancePropertiesInputBasicLoginInformation {
-  /** Login username. */
-  username?: string;
-  /** Login password. */
-  password?: string | Redacted.Redacted<string>;
-}
+export type SqlManagedInstancePropertiesInputBasicLoginInformation =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 export const SqlManagedInstancePropertiesInputBasicLoginInformation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "SqlManagedInstancePropertiesInputBasicLoginInformation",
-  }) as any as S.Schema<SqlManagedInstancePropertiesInputBasicLoginInformation>;
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 
 /** Keytab used for authenticate with Active Directory. */
 export interface KeytabInformation {
@@ -2593,7 +2401,7 @@ export interface SqlManagedInstancePropertiesInput {
   /** The raw kubernetes information */
   k8sRaw?: SqlManagedInstanceK8sRaw;
   /** Username and password for basic login authentication. */
-  basicLoginInformation?: SqlManagedInstancePropertiesInputBasicLoginInformation;
+  basicLoginInformation?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
   /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
   lastUploadedDate?: string;
   /** Active Directory information related to this SQL Managed Instance. */
@@ -2613,7 +2421,7 @@ export const SqlManagedInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     endTime: S.optional(S.String),
     k8sRaw: S.optional(SqlManagedInstanceK8sRaw),
     basicLoginInformation: S.optional(
-      SqlManagedInstancePropertiesInputBasicLoginInformation,
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
     ),
     lastUploadedDate: S.optional(S.String),
     activeDirectoryInformation: S.optional(ActiveDirectoryInformation),
@@ -2626,21 +2434,10 @@ export const SqlManagedInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlManagedInstancePropertiesInput>;
 
 /** The complex type of the extended location. */
-export interface SqlManagedInstancesCreateRequestExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
-}
+export type SqlManagedInstancesCreateRequestExtendedLocation =
+  DataControllersPutDataControllerRequestExtendedLocation;
 export const SqlManagedInstancesCreateRequestExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "SqlManagedInstancesCreateRequestExtendedLocation",
-  }) as any as S.Schema<SqlManagedInstancesCreateRequestExtendedLocation>;
+  DataControllersPutDataControllerRequestExtendedLocation;
 
 /** The name of the SKU. */
 export type SqlManagedInstanceSkuName = "vCore";
@@ -2692,7 +2489,7 @@ export interface SqlManagedInstancesCreateRequest {
   /** null */
   properties: SqlManagedInstancePropertiesInput;
   /** The complex type of the extended location. */
-  extendedLocation?: SqlManagedInstancesCreateRequestExtendedLocation;
+  extendedLocation?: DataControllersPutDataControllerRequestExtendedLocation;
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
@@ -2705,7 +2502,7 @@ export const SqlManagedInstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: SqlManagedInstancePropertiesInput,
     extendedLocation: S.optional(
-      SqlManagedInstancesCreateRequestExtendedLocation,
+      DataControllersPutDataControllerRequestExtendedLocation,
     ),
     sku: S.optional(SqlManagedInstanceSku),
   }).pipe(
@@ -2730,21 +2527,10 @@ export const SqlManagedInstancesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SqlManagedInstancesCreateResponseTagsMap>;
 
 /** Username and password for basic login authentication. */
-export interface SqlManagedInstancePropertiesBasicLoginInformation {
-  /** Login username. */
-  username?: string;
-  /** Login password. */
-  password?: string | Redacted.Redacted<string>;
-}
+export type SqlManagedInstancePropertiesBasicLoginInformation =
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 export const SqlManagedInstancePropertiesBasicLoginInformation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      username: S.optional(S.String),
-      password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "SqlManagedInstancePropertiesBasicLoginInformation",
-  }) as any as S.Schema<SqlManagedInstancePropertiesBasicLoginInformation>;
+  ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
 
 /** The license type to apply for this managed instance. */
 export type SqlManagedInstancePropertiesLicenseType =
@@ -2766,7 +2552,7 @@ export interface SqlManagedInstanceProperties {
   /** The raw kubernetes information */
   k8sRaw?: SqlManagedInstanceK8sRaw;
   /** Username and password for basic login authentication. */
-  basicLoginInformation?: SqlManagedInstancePropertiesBasicLoginInformation;
+  basicLoginInformation?: ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
   /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
   lastUploadedDate?: string;
   /** The provisioning state of the Arc-enabled SQL Managed Instance resource. */
@@ -2788,7 +2574,7 @@ export const SqlManagedInstanceProperties = /*@__PURE__*/ S.suspend(() =>
     endTime: S.optional(S.String),
     k8sRaw: S.optional(SqlManagedInstanceK8sRaw),
     basicLoginInformation: S.optional(
-      SqlManagedInstancePropertiesBasicLoginInformation,
+      ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
     ),
     lastUploadedDate: S.optional(S.String),
     provisioningState: S.optional(S.String),
@@ -2802,21 +2588,10 @@ export const SqlManagedInstanceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SqlManagedInstanceProperties>;
 
 /** The complex type of the extended location. */
-export interface SqlManagedInstancesCreateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type SqlManagedInstancesCreateResponseExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
 export const SqlManagedInstancesCreateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "SqlManagedInstancesCreateResponseExtendedLocation",
-  }) as any as S.Schema<SqlManagedInstancesCreateResponseExtendedLocation>;
+  DataControllersGetDataControllerResponseExtendedLocation;
 
 export interface SqlManagedInstancesCreateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2834,7 +2609,7 @@ export interface SqlManagedInstancesCreateResponse {
   /** null */
   properties: SqlManagedInstanceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: SqlManagedInstancesCreateResponseExtendedLocation;
+  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
@@ -2848,7 +2623,7 @@ export const SqlManagedInstancesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: SqlManagedInstanceProperties,
     extendedLocation: S.optional(
-      SqlManagedInstancesCreateResponseExtendedLocation,
+      DataControllersGetDataControllerResponseExtendedLocation,
     ),
     sku: S.optional(SqlManagedInstanceSku),
   }),
@@ -2923,21 +2698,10 @@ export const SqlManagedInstancesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SqlManagedInstancesGetResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface SqlManagedInstancesGetResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type SqlManagedInstancesGetResponseExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
 export const SqlManagedInstancesGetResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "SqlManagedInstancesGetResponseExtendedLocation",
-  }) as any as S.Schema<SqlManagedInstancesGetResponseExtendedLocation>;
+  DataControllersGetDataControllerResponseExtendedLocation;
 
 export interface SqlManagedInstancesGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2955,7 +2719,7 @@ export interface SqlManagedInstancesGetResponse {
   /** null */
   properties: SqlManagedInstanceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: SqlManagedInstancesGetResponseExtendedLocation;
+  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
@@ -2969,7 +2733,7 @@ export const SqlManagedInstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: SqlManagedInstanceProperties,
     extendedLocation: S.optional(
-      SqlManagedInstancesGetResponseExtendedLocation,
+      DataControllersGetDataControllerResponseExtendedLocation,
     ),
     sku: S.optional(SqlManagedInstanceSku),
   }),
@@ -3004,20 +2768,10 @@ export const SqlManagedInstanceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SqlManagedInstanceTagsMap>;
 
 /** The complex type of the extended location. */
-export interface SqlManagedInstanceExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const SqlManagedInstanceExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "SqlManagedInstanceExtendedLocation",
-}) as any as S.Schema<SqlManagedInstanceExtendedLocation>;
+export type SqlManagedInstanceExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
+export const SqlManagedInstanceExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
 
 /** A SqlManagedInstance. */
 export interface SqlManagedInstance {
@@ -3036,7 +2790,7 @@ export interface SqlManagedInstance {
   /** null */
   properties: SqlManagedInstanceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: SqlManagedInstanceExtendedLocation;
+  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
@@ -3049,7 +2803,9 @@ export const SqlManagedInstance = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(SqlManagedInstanceTagsMap),
     location: S.String,
     properties: SqlManagedInstanceProperties,
-    extendedLocation: S.optional(SqlManagedInstanceExtendedLocation),
+    extendedLocation: S.optional(
+      DataControllersGetDataControllerResponseExtendedLocation,
+    ),
     sku: S.optional(SqlManagedInstanceSku),
   }),
 ).annotate({
@@ -3174,21 +2930,10 @@ export const SqlManagedInstancesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SqlManagedInstancesUpdateResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface SqlManagedInstancesUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type SqlManagedInstancesUpdateResponseExtendedLocation =
+  DataControllersGetDataControllerResponseExtendedLocation;
 export const SqlManagedInstancesUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "SqlManagedInstancesUpdateResponseExtendedLocation",
-  }) as any as S.Schema<SqlManagedInstancesUpdateResponseExtendedLocation>;
+  DataControllersGetDataControllerResponseExtendedLocation;
 
 export interface SqlManagedInstancesUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3206,7 +2951,7 @@ export interface SqlManagedInstancesUpdateResponse {
   /** null */
   properties: SqlManagedInstanceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: SqlManagedInstancesUpdateResponseExtendedLocation;
+  extendedLocation?: DataControllersGetDataControllerResponseExtendedLocation;
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
@@ -3220,7 +2965,7 @@ export const SqlManagedInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: SqlManagedInstanceProperties,
     extendedLocation: S.optional(
-      SqlManagedInstancesUpdateResponseExtendedLocation,
+      DataControllersGetDataControllerResponseExtendedLocation,
     ),
     sku: S.optional(SqlManagedInstanceSku),
   }),
@@ -5633,21 +5378,17 @@ export const SqlServerDatabaseResourcePropertiesInputCreateMode =
   /*@__PURE__*/ S.String;
 
 /** The migration assessment related configuration. */
-export interface DataBaseMigrationAssessmentInput {}
-export const DataBaseMigrationAssessmentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DataBaseMigrationAssessmentInput",
-}) as any as S.Schema<DataBaseMigrationAssessmentInput>;
+export type DataBaseMigrationAssessmentInput = AvailabilityGroupStateInput;
+export const DataBaseMigrationAssessmentInput = AvailabilityGroupStateInput;
 
 /** Migration related configuration. */
 export interface DataBaseMigrationInput {
   /** Migration assessments related configuration. */
-  assessment?: DataBaseMigrationAssessmentInput;
+  assessment?: AvailabilityGroupStateInput;
 }
 export const DataBaseMigrationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    assessment: S.optional(DataBaseMigrationAssessmentInput),
+    assessment: S.optional(AvailabilityGroupStateInput),
   }),
 ).annotate({
   identifier: "DataBaseMigrationInput",
@@ -5793,53 +5534,15 @@ export const SqlServerDatabaseResourcePropertiesRecoveryMode =
   /*@__PURE__*/ S.String;
 
 /** List of features that are enabled for the database */
-export interface SqlServerDatabaseResourcePropertiesDatabaseOptions {
-  isAutoCloseOn?: boolean;
-  isAutoShrinkOn?: boolean;
-  isAutoCreateStatsOn?: boolean;
-  isAutoUpdateStatsOn?: boolean;
-  isRemoteDataArchiveEnabled?: boolean;
-  isMemoryOptimizationEnabled?: boolean;
-  isEncrypted?: boolean;
-  isTrustworthyOn?: boolean;
-  /** Whether the database uses the In-Memory OLTP feature for storing in-memory objects. */
-  isHekatonFilesOn?: boolean;
-  /** How many Hekaton files the DB has on disk, if it uses in-memory OLTP objects. */
-  numberOfHekatonFiles?: number;
-}
+export type SqlServerDatabaseResourcePropertiesDatabaseOptions =
+  SqlServerDatabaseResourcePropertiesInputDatabaseOptions;
 export const SqlServerDatabaseResourcePropertiesDatabaseOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      isAutoCloseOn: S.optional(S.Boolean),
-      isAutoShrinkOn: S.optional(S.Boolean),
-      isAutoCreateStatsOn: S.optional(S.Boolean),
-      isAutoUpdateStatsOn: S.optional(S.Boolean),
-      isRemoteDataArchiveEnabled: S.optional(S.Boolean),
-      isMemoryOptimizationEnabled: S.optional(S.Boolean),
-      isEncrypted: S.optional(S.Boolean),
-      isTrustworthyOn: S.optional(S.Boolean),
-      isHekatonFilesOn: S.optional(S.Boolean),
-      numberOfHekatonFiles: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SqlServerDatabaseResourcePropertiesDatabaseOptions",
-  }) as any as S.Schema<SqlServerDatabaseResourcePropertiesDatabaseOptions>;
+  SqlServerDatabaseResourcePropertiesInputDatabaseOptions;
 
-export interface SqlServerDatabaseResourcePropertiesBackupInformation {
-  /** Date time of last full backup. */
-  lastFullBackup?: string;
-  /** Date time of last log backup. */
-  lastLogBackup?: string;
-}
+export type SqlServerDatabaseResourcePropertiesBackupInformation =
+  SqlServerDatabaseResourcePropertiesInputBackupInformation;
 export const SqlServerDatabaseResourcePropertiesBackupInformation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastFullBackup: S.optional(S.String),
-      lastLogBackup: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SqlServerDatabaseResourcePropertiesBackupInformation",
-  }) as any as S.Schema<SqlServerDatabaseResourcePropertiesBackupInformation>;
+  SqlServerDatabaseResourcePropertiesInputBackupInformation;
 
 /** Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified. */
 export type SqlServerDatabaseResourcePropertiesCreateMode =
@@ -6130,8 +5833,8 @@ export interface SqlServerDatabaseResourceProperties {
   /** Status of the database. */
   recoveryMode?: SqlServerDatabaseResourcePropertiesRecoveryMode;
   /** List of features that are enabled for the database */
-  databaseOptions?: SqlServerDatabaseResourcePropertiesDatabaseOptions;
-  backupInformation?: SqlServerDatabaseResourcePropertiesBackupInformation;
+  databaseOptions?: SqlServerDatabaseResourcePropertiesInputDatabaseOptions;
+  backupInformation?: SqlServerDatabaseResourcePropertiesInputBackupInformation;
   /** The backup profile for the SQL server. */
   backupPolicy?: BackupPolicy;
   /** This records the earliest start date and time that restore is available for this database (ISO8601 format). */
@@ -6163,10 +5866,10 @@ export const SqlServerDatabaseResourceProperties = /*@__PURE__*/ S.suspend(() =>
     isReadOnly: S.optional(S.Boolean),
     recoveryMode: S.optional(SqlServerDatabaseResourcePropertiesRecoveryMode),
     databaseOptions: S.optional(
-      SqlServerDatabaseResourcePropertiesDatabaseOptions,
+      SqlServerDatabaseResourcePropertiesInputDatabaseOptions,
     ),
     backupInformation: S.optional(
-      SqlServerDatabaseResourcePropertiesBackupInformation,
+      SqlServerDatabaseResourcePropertiesInputBackupInformation,
     ),
     backupPolicy: S.optional(BackupPolicy),
     earliestRestoreDate: S.optional(S.String),
@@ -7115,12 +6818,8 @@ export const DBMEndpointInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DBMEndpointInput>;
 
 /** Failover Cluster Instance properties. */
-export interface FailoverClusterInput {}
-export const FailoverClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FailoverClusterInput",
-}) as any as S.Schema<FailoverClusterInput>;
+export type FailoverClusterInput = AvailabilityGroupStateInput;
+export const FailoverClusterInput = AvailabilityGroupStateInput;
 
 /** The monitoring configuration. */
 export interface Monitoring {
@@ -7184,11 +6883,10 @@ export const MigrationAssessmentSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrationAssessmentSettings>;
 
 /** Represents a summary of migration readiness issues/warnings per feature type for Azure SQL DB and SQL MI targets */
-export interface MigrationAssessmentInputImpactedObjectsSummary {}
+export type MigrationAssessmentInputImpactedObjectsSummary =
+  AvailabilityGroupStateInput;
 export const MigrationAssessmentInputImpactedObjectsSummary =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "MigrationAssessmentInputImpactedObjectsSummary",
-  }) as any as S.Schema<MigrationAssessmentInputImpactedObjectsSummary>;
+  AvailabilityGroupStateInput;
 
 /** The migration assessment related configuration. */
 export interface MigrationAssessmentInput {
@@ -7196,15 +6894,13 @@ export interface MigrationAssessmentInput {
   enabled?: boolean;
   settings?: MigrationAssessmentSettings;
   /** Represents a summary of migration readiness issues/warnings per feature type for Azure SQL DB and SQL MI targets */
-  impactedObjectsSummary?: MigrationAssessmentInputImpactedObjectsSummary;
+  impactedObjectsSummary?: AvailabilityGroupStateInput;
 }
 export const MigrationAssessmentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     settings: S.optional(MigrationAssessmentSettings),
-    impactedObjectsSummary: S.optional(
-      MigrationAssessmentInputImpactedObjectsSummary,
-    ),
+    impactedObjectsSummary: S.optional(AvailabilityGroupStateInput),
   }),
 ).annotate({
   identifier: "MigrationAssessmentInput",
@@ -7353,7 +7049,7 @@ export interface SqlServerInstancePropertiesInput {
   /** Database mirroring endpoint related properties. */
   databaseMirroringEndpoint?: DBMEndpointInput;
   /** Failover Cluster Instance properties. */
-  failoverCluster?: FailoverClusterInput;
+  failoverCluster?: AvailabilityGroupStateInput;
   /** The backup profile for the SQL server. */
   backupPolicy?: BackupPolicy;
   /** Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty. */
@@ -7379,7 +7075,7 @@ export const SqlServerInstancePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     instanceName: S.optional(S.String),
     hostType: S.optional(SqlServerInstancePropertiesInputHostType),
     databaseMirroringEndpoint: S.optional(DBMEndpointInput),
-    failoverCluster: S.optional(FailoverClusterInput),
+    failoverCluster: S.optional(AvailabilityGroupStateInput),
     backupPolicy: S.optional(BackupPolicy),
     upgradeLockedUntil: S.optional(S.String),
     monitoring: S.optional(Monitoring),
@@ -7705,33 +7401,10 @@ export const SkuRecommendationResultsAzureSqlDatabaseRecommendationStatus =
   /*@__PURE__*/ S.String;
 
 /** The monthly cost of the particular SKU. */
-export interface SkuRecommendationResultsAzureSqlDatabaseMonthlyCost {
-  /** Represents the Cost of Compute. */
-  computeCost?: number;
-  /** Represents the Cost of Storage. */
-  storageCost?: number;
-  /** Represents the Cost of IOPS. */
-  iopsCost?: number;
-  /** Represents the Cost of SQL license. */
-  sqlLicenseCost?: number;
-  /** Represents the Cost of Windows license. */
-  windowsLicenseCost?: number;
-  /** Represents the Total Cost. */
-  totalCost?: number;
-}
+export type SkuRecommendationResultsAzureSqlDatabaseMonthlyCost =
+  SkuRecommendationSummaryMonthlyCost;
 export const SkuRecommendationResultsAzureSqlDatabaseMonthlyCost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      computeCost: S.optional(S.Number),
-      storageCost: S.optional(S.Number),
-      iopsCost: S.optional(S.Number),
-      sqlLicenseCost: S.optional(S.Number),
-      windowsLicenseCost: S.optional(S.Number),
-      totalCost: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SkuRecommendationResultsAzureSqlDatabaseMonthlyCost",
-  }) as any as S.Schema<SkuRecommendationResultsAzureSqlDatabaseMonthlyCost>;
+  SkuRecommendationSummaryMonthlyCost;
 
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList =
@@ -7741,33 +7414,13 @@ export const SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList =
     SkuRecommendationResultsMonthlyCostOptionItem,
   ) as any as S.Schema<SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList>;
 
-export interface SkuRecommendationResultsAzureSqlDatabaseTargetSkuCategory {
-  /** The compute tier of the target SKU. */
-  computeTier?: string;
-  /** The hardware type of the target SKU. */
-  hardwareType?: string;
-  /** The SQL purchasing model of the target SKU. */
-  sqlPurchasingModel?: string;
-  /** The SQL service tier of the target SKU. */
-  sqlServiceTier?: string;
-  /** Indicates if zone redundancy is available for the target SKU. */
-  zoneRedundancyAvailable?: boolean;
-}
+export type SkuRecommendationResultsAzureSqlDatabaseTargetSkuCategory =
+  SkuRecommendationSummaryTargetSkuCategory;
 export const SkuRecommendationResultsAzureSqlDatabaseTargetSkuCategory =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      computeTier: S.optional(S.String),
-      hardwareType: S.optional(S.String),
-      sqlPurchasingModel: S.optional(S.String),
-      sqlServiceTier: S.optional(S.String),
-      zoneRedundancyAvailable: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "SkuRecommendationResultsAzureSqlDatabaseTargetSkuCategory",
-  }) as any as S.Schema<SkuRecommendationResultsAzureSqlDatabaseTargetSkuCategory>;
+  SkuRecommendationSummaryTargetSkuCategory;
 
 export interface SkuRecommendationResultsAzureSqlDatabaseTargetSku {
-  category?: SkuRecommendationResultsAzureSqlDatabaseTargetSkuCategory;
+  category?: SkuRecommendationSummaryTargetSkuCategory;
   /** Compute Size in vCores. */
   computeSize?: number;
   /** maximum storage for this particular SKU, in MB. */
@@ -7784,9 +7437,7 @@ export interface SkuRecommendationResultsAzureSqlDatabaseTargetSku {
 export const SkuRecommendationResultsAzureSqlDatabaseTargetSku =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      category: S.optional(
-        SkuRecommendationResultsAzureSqlDatabaseTargetSkuCategory,
-      ),
+      category: S.optional(SkuRecommendationSummaryTargetSkuCategory),
       computeSize: S.optional(S.Number),
       storageMaxSizeInMb: S.optional(S.Number),
       predictedDataSizeInMb: S.optional(S.Number),
@@ -7804,7 +7455,7 @@ export interface SkuRecommendationResultsAzureSqlDatabase {
   recommendationStatus?: SkuRecommendationResultsAzureSqlDatabaseRecommendationStatus;
   numberOfServerBlockerIssues?: number;
   /** The monthly cost of the particular SKU. */
-  monthlyCost?: SkuRecommendationResultsAzureSqlDatabaseMonthlyCost;
+  monthlyCost?: SkuRecommendationSummaryMonthlyCost;
   /** The monthly cost for all different savings options applicable for the particular SKU. */
   monthlyCostOptions?: SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList;
   targetSku?: SkuRecommendationResultsAzureSqlDatabaseTargetSku;
@@ -7816,9 +7467,7 @@ export const SkuRecommendationResultsAzureSqlDatabase = /*@__PURE__*/ S.suspend(
         SkuRecommendationResultsAzureSqlDatabaseRecommendationStatus,
       ),
       numberOfServerBlockerIssues: S.optional(S.Number),
-      monthlyCost: S.optional(
-        SkuRecommendationResultsAzureSqlDatabaseMonthlyCost,
-      ),
+      monthlyCost: S.optional(SkuRecommendationSummaryMonthlyCost),
       monthlyCostOptions: S.optional(
         SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList,
       ),
@@ -7835,33 +7484,10 @@ export const SkuRecommendationResultsAzureSqlManagedInstanceRecommendationStatus
   /*@__PURE__*/ S.String;
 
 /** The monthly cost of the particular SKU. */
-export interface SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCost {
-  /** Represents the Cost of Compute. */
-  computeCost?: number;
-  /** Represents the Cost of Storage. */
-  storageCost?: number;
-  /** Represents the Cost of IOPS. */
-  iopsCost?: number;
-  /** Represents the Cost of SQL license. */
-  sqlLicenseCost?: number;
-  /** Represents the Cost of Windows license. */
-  windowsLicenseCost?: number;
-  /** Represents the Total Cost. */
-  totalCost?: number;
-}
+export type SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCost =
+  SkuRecommendationSummaryMonthlyCost;
 export const SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      computeCost: S.optional(S.Number),
-      storageCost: S.optional(S.Number),
-      iopsCost: S.optional(S.Number),
-      sqlLicenseCost: S.optional(S.Number),
-      windowsLicenseCost: S.optional(S.Number),
-      totalCost: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCost",
-  }) as any as S.Schema<SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCost>;
+  SkuRecommendationSummaryMonthlyCost;
 
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList =
@@ -7871,63 +7497,15 @@ export const SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsLi
     SkuRecommendationResultsMonthlyCostOptionItem,
   ) as any as S.Schema<SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList>;
 
-export interface SkuRecommendationResultsAzureSqlManagedInstanceTargetSkuCategory {
-  /** The compute tier of the target SKU. */
-  computeTier?: string;
-  /** The hardware type of the target SKU. */
-  hardwareType?: string;
-  /** The SQL purchasing model of the target SKU. */
-  sqlPurchasingModel?: string;
-  /** The SQL service tier of the target SKU. */
-  sqlServiceTier?: string;
-  /** Indicates if zone redundancy is available for the target SKU. */
-  zoneRedundancyAvailable?: boolean;
-}
+export type SkuRecommendationResultsAzureSqlManagedInstanceTargetSkuCategory =
+  SkuRecommendationSummaryTargetSkuCategory;
 export const SkuRecommendationResultsAzureSqlManagedInstanceTargetSkuCategory =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      computeTier: S.optional(S.String),
-      hardwareType: S.optional(S.String),
-      sqlPurchasingModel: S.optional(S.String),
-      sqlServiceTier: S.optional(S.String),
-      zoneRedundancyAvailable: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier:
-      "SkuRecommendationResultsAzureSqlManagedInstanceTargetSkuCategory",
-  }) as any as S.Schema<SkuRecommendationResultsAzureSqlManagedInstanceTargetSkuCategory>;
+  SkuRecommendationSummaryTargetSkuCategory;
 
-export interface SkuRecommendationResultsAzureSqlManagedInstanceTargetSku {
-  category?: SkuRecommendationResultsAzureSqlManagedInstanceTargetSkuCategory;
-  /** Compute Size in vCores. */
-  computeSize?: number;
-  /** maximum storage for this particular SKU, in MB. */
-  storageMaxSizeInMb?: number;
-  /** The predicted data size in MB in Azure SQL, will impact the billing cost. */
-  predictedDataSizeInMb?: number;
-  /** The predicted log size in MB in Azure SQL, will impact the billing cost. */
-  predictedLogSizeInMb?: number;
-  /** The maximum storage IOPS in Azure SQL, will impact the billing cost. */
-  maxStorageIops?: number;
-  /** The maximum throughput in Azure SQL, will impact the billing cost. */
-  maxThroughputMBps?: number;
-}
+export type SkuRecommendationResultsAzureSqlManagedInstanceTargetSku =
+  SkuRecommendationResultsAzureSqlDatabaseTargetSku;
 export const SkuRecommendationResultsAzureSqlManagedInstanceTargetSku =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: S.optional(
-        SkuRecommendationResultsAzureSqlManagedInstanceTargetSkuCategory,
-      ),
-      computeSize: S.optional(S.Number),
-      storageMaxSizeInMb: S.optional(S.Number),
-      predictedDataSizeInMb: S.optional(S.Number),
-      predictedLogSizeInMb: S.optional(S.Number),
-      maxStorageIops: S.optional(S.Number),
-      maxThroughputMBps: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SkuRecommendationResultsAzureSqlManagedInstanceTargetSku",
-  }) as any as S.Schema<SkuRecommendationResultsAzureSqlManagedInstanceTargetSku>;
+  SkuRecommendationResultsAzureSqlDatabaseTargetSku;
 
 /** SKU Recommendation results for Azure SQL Managed Instance. */
 export interface SkuRecommendationResultsAzureSqlManagedInstance {
@@ -7935,10 +7513,10 @@ export interface SkuRecommendationResultsAzureSqlManagedInstance {
   recommendationStatus?: SkuRecommendationResultsAzureSqlManagedInstanceRecommendationStatus;
   numberOfServerBlockerIssues?: number;
   /** The monthly cost of the particular SKU. */
-  monthlyCost?: SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCost;
+  monthlyCost?: SkuRecommendationSummaryMonthlyCost;
   /** The monthly cost for all different savings options applicable for the particular SKU. */
   monthlyCostOptions?: SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList;
-  targetSku?: SkuRecommendationResultsAzureSqlManagedInstanceTargetSku;
+  targetSku?: SkuRecommendationResultsAzureSqlDatabaseTargetSku;
 }
 export const SkuRecommendationResultsAzureSqlManagedInstance =
   /*@__PURE__*/ S.suspend(() =>
@@ -7947,15 +7525,11 @@ export const SkuRecommendationResultsAzureSqlManagedInstance =
         SkuRecommendationResultsAzureSqlManagedInstanceRecommendationStatus,
       ),
       numberOfServerBlockerIssues: S.optional(S.Number),
-      monthlyCost: S.optional(
-        SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCost,
-      ),
+      monthlyCost: S.optional(SkuRecommendationSummaryMonthlyCost),
       monthlyCostOptions: S.optional(
         SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList,
       ),
-      targetSku: S.optional(
-        SkuRecommendationResultsAzureSqlManagedInstanceTargetSku,
-      ),
+      targetSku: S.optional(SkuRecommendationResultsAzureSqlDatabaseTargetSku),
     }),
   ).annotate({
     identifier: "SkuRecommendationResultsAzureSqlManagedInstance",
@@ -7968,33 +7542,10 @@ export const SkuRecommendationResultsAzureSqlVirtualMachineRecommendationStatus 
   /*@__PURE__*/ S.String;
 
 /** The monthly cost of the particular SKU. */
-export interface SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCost {
-  /** Represents the Cost of Compute. */
-  computeCost?: number;
-  /** Represents the Cost of Storage. */
-  storageCost?: number;
-  /** Represents the Cost of IOPS. */
-  iopsCost?: number;
-  /** Represents the Cost of SQL license. */
-  sqlLicenseCost?: number;
-  /** Represents the Cost of Windows license. */
-  windowsLicenseCost?: number;
-  /** Represents the Total Cost. */
-  totalCost?: number;
-}
+export type SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCost =
+  SkuRecommendationSummaryMonthlyCost;
 export const SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      computeCost: S.optional(S.Number),
-      storageCost: S.optional(S.Number),
-      iopsCost: S.optional(S.Number),
-      sqlLicenseCost: S.optional(S.Number),
-      windowsLicenseCost: S.optional(S.Number),
-      totalCost: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCost",
-  }) as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCost>;
+  SkuRecommendationSummaryMonthlyCost;
 
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList =
@@ -8163,7 +7714,7 @@ export interface SkuRecommendationResultsAzureSqlVirtualMachine {
   recommendationStatus?: SkuRecommendationResultsAzureSqlVirtualMachineRecommendationStatus;
   numberOfServerBlockerIssues?: number;
   /** The monthly cost of the particular SKU. */
-  monthlyCost?: SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCost;
+  monthlyCost?: SkuRecommendationSummaryMonthlyCost;
   /** The monthly cost for all different savings options applicable for the particular SKU. */
   monthlyCostOptions?: SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList;
   targetSku?: SkuRecommendationResultsAzureSqlVirtualMachineTargetSku;
@@ -8175,9 +7726,7 @@ export const SkuRecommendationResultsAzureSqlVirtualMachine =
         SkuRecommendationResultsAzureSqlVirtualMachineRecommendationStatus,
       ),
       numberOfServerBlockerIssues: S.optional(S.Number),
-      monthlyCost: S.optional(
-        SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCost,
-      ),
+      monthlyCost: S.optional(SkuRecommendationSummaryMonthlyCost),
       monthlyCostOptions: S.optional(
         SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList,
       ),
@@ -8210,36 +7759,23 @@ export const SkuRecommendationResults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SkuRecommendationResults>;
 
 /** summary information about the incompatible feature id, number of objects impacted and category of issue (warning/error) */
-export interface ImpactedObjectsInfo {
-  /** Represents the feature id from https://learn.microsoft.com/en-us/data-migration/sql-server/database/assessment-rules?view=azuresql. OR https://learn.microsoft.com/en-us/data-migration/sql-server/managed-instance/assessment-rules?view=azuresql */
-  featureId?: string;
-  /** Represents the number of issues/warnings. */
-  numberImpacted?: number;
-  /** Issue or Warning */
-  issueCategory?: string;
-}
-export const ImpactedObjectsInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    featureId: S.optional(S.String),
-    numberImpacted: S.optional(S.Number),
-    issueCategory: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImpactedObjectsInfo",
-}) as any as S.Schema<ImpactedObjectsInfo>;
+export type ImpactedObjectsInfo =
+  SkuRecommendationSummaryImpactedObjectsSummaryItem;
+export const ImpactedObjectsInfo =
+  SkuRecommendationSummaryImpactedObjectsSummaryItem;
 
 export type MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList =
-  Array<ImpactedObjectsInfo>;
+  Array<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
 export const MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList =
   /*@__PURE__*/ S.Array(
-    ImpactedObjectsInfo,
+    SkuRecommendationSummaryImpactedObjectsSummaryItem,
   ) as any as S.Schema<MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList>;
 
 export type MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList =
-  Array<ImpactedObjectsInfo>;
+  Array<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
 export const MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList =
   /*@__PURE__*/ S.Array(
-    ImpactedObjectsInfo,
+    SkuRecommendationSummaryImpactedObjectsSummaryItem,
   ) as any as S.Schema<MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList>;
 
 /** Represents a summary of migration readiness issues/warnings per feature type for Azure SQL DB and SQL MI targets */
@@ -9674,7 +9210,7 @@ export interface SqlServerInstanceUpdatePropertiesInput {
   /** Type of host for Azure Arc SQL Server */
   hostType?: SqlServerInstanceUpdatePropertiesInputHostType | (string & {});
   /** Failover Cluster Instance properties. */
-  failoverCluster?: FailoverClusterInput;
+  failoverCluster?: AvailabilityGroupStateInput;
   /** The backup profile for the SQL server. */
   backupPolicy?: BackupPolicy;
   /** Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty. */
@@ -9708,7 +9244,7 @@ export const SqlServerInstanceUpdatePropertiesInput = /*@__PURE__*/ S.suspend(
       cores: S.optional(S.String),
       instanceName: S.optional(S.String),
       hostType: S.optional(SqlServerInstanceUpdatePropertiesInputHostType),
-      failoverCluster: S.optional(FailoverClusterInput),
+      failoverCluster: S.optional(AvailabilityGroupStateInput),
       backupPolicy: S.optional(BackupPolicy),
       upgradeLockedUntil: S.optional(S.String),
       monitoring: S.optional(Monitoring),

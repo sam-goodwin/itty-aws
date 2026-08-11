@@ -2230,27 +2230,10 @@ export const ServiceEndpointsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServiceEndpointsGetResponseTagsMap>;
 
 /** ServiceEndpoint resource properties. */
-export interface ServiceEndpointsGetResponseProperties {
-  /** ServiceEndpoint pre-allocated capacity controls the maximum requests-per-second allowed for that endpoint. Only applicable when Account configuration is Capacity. */
-  preAllocatedCapacity?: number;
-  /** The paired location that will be used by this ServiceEndpoint. */
-  pairedLocation?: string;
-  /** The URL where the ServiceEndpoint API is accessible at. */
-  url?: string;
-  /** The resource provisioning state. */
-  provisioningState?: string;
-}
-export const ServiceEndpointsGetResponseProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      preAllocatedCapacity: S.optional(S.Number),
-      pairedLocation: S.optional(S.String),
-      url: S.optional(S.String),
-      provisioningState: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ServiceEndpointsGetResponseProperties",
-}) as any as S.Schema<ServiceEndpointsGetResponseProperties>;
+export type ServiceEndpointsGetResponseProperties =
+  ServiceEndpointsCreateOrUpdateResponseProperties;
+export const ServiceEndpointsGetResponseProperties =
+  ServiceEndpointsCreateOrUpdateResponseProperties;
 
 /** The type of identity that created the resource. */
 export type ServiceEndpointsGetResponseSystemDataCreatedByType =
@@ -2315,7 +2298,7 @@ export interface ServiceEndpointsGetResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** ServiceEndpoint resource properties. */
-  properties?: ServiceEndpointsGetResponseProperties;
+  properties?: ServiceEndpointsCreateOrUpdateResponseProperties;
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ServiceEndpointsGetResponseSystemData;
 }
@@ -2326,7 +2309,7 @@ export const ServiceEndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     tags: S.optional(ServiceEndpointsGetResponseTagsMap),
     location: S.String,
-    properties: S.optional(ServiceEndpointsGetResponseProperties),
+    properties: S.optional(ServiceEndpointsCreateOrUpdateResponseProperties),
     systemData: S.optional(ServiceEndpointsGetResponseSystemData),
   }),
 ).annotate({
@@ -2369,26 +2352,10 @@ export const ServiceEndpointResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServiceEndpointResourceTagsMap>;
 
 /** ServiceEndpoint resource properties. */
-export interface ServiceEndpointResourceProperties {
-  /** ServiceEndpoint pre-allocated capacity controls the maximum requests-per-second allowed for that endpoint. Only applicable when Account configuration is Capacity. */
-  preAllocatedCapacity?: number;
-  /** The paired location that will be used by this ServiceEndpoint. */
-  pairedLocation?: string;
-  /** The URL where the ServiceEndpoint API is accessible at. */
-  url?: string;
-  /** The resource provisioning state. */
-  provisioningState?: string;
-}
-export const ServiceEndpointResourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    preAllocatedCapacity: S.optional(S.Number),
-    pairedLocation: S.optional(S.String),
-    url: S.optional(S.String),
-    provisioningState: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServiceEndpointResourceProperties",
-}) as any as S.Schema<ServiceEndpointResourceProperties>;
+export type ServiceEndpointResourceProperties =
+  ServiceEndpointsCreateOrUpdateResponseProperties;
+export const ServiceEndpointResourceProperties =
+  ServiceEndpointsCreateOrUpdateResponseProperties;
 
 /** The type of identity that created the resource. */
 export type ServiceEndpointResourceSystemDataCreatedByType =
@@ -2451,7 +2418,7 @@ export interface ServiceEndpointResource {
   /** The geo-location where the resource lives */
   location: string;
   /** ServiceEndpoint resource properties. */
-  properties?: ServiceEndpointResourceProperties;
+  properties?: ServiceEndpointsCreateOrUpdateResponseProperties;
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ServiceEndpointResourceSystemData;
 }
@@ -2462,7 +2429,7 @@ export const ServiceEndpointResource = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     tags: S.optional(ServiceEndpointResourceTagsMap),
     location: S.String,
-    properties: S.optional(ServiceEndpointResourceProperties),
+    properties: S.optional(ServiceEndpointsCreateOrUpdateResponseProperties),
     systemData: S.optional(ServiceEndpointResourceSystemData),
   }),
 ).annotate({
@@ -2533,27 +2500,10 @@ export const ServiceEndpointsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServiceEndpointsUpdateResponseTagsMap>;
 
 /** ServiceEndpoint resource properties. */
-export interface ServiceEndpointsUpdateResponseProperties {
-  /** ServiceEndpoint pre-allocated capacity controls the maximum requests-per-second allowed for that endpoint. Only applicable when Account configuration is Capacity. */
-  preAllocatedCapacity?: number;
-  /** The paired location that will be used by this ServiceEndpoint. */
-  pairedLocation?: string;
-  /** The URL where the ServiceEndpoint API is accessible at. */
-  url?: string;
-  /** The resource provisioning state. */
-  provisioningState?: string;
-}
-export const ServiceEndpointsUpdateResponseProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      preAllocatedCapacity: S.optional(S.Number),
-      pairedLocation: S.optional(S.String),
-      url: S.optional(S.String),
-      provisioningState: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ServiceEndpointsUpdateResponseProperties",
-}) as any as S.Schema<ServiceEndpointsUpdateResponseProperties>;
+export type ServiceEndpointsUpdateResponseProperties =
+  ServiceEndpointsCreateOrUpdateResponseProperties;
+export const ServiceEndpointsUpdateResponseProperties =
+  ServiceEndpointsCreateOrUpdateResponseProperties;
 
 /** The type of identity that created the resource. */
 export type ServiceEndpointsUpdateResponseSystemDataCreatedByType =
@@ -2618,7 +2568,7 @@ export interface ServiceEndpointsUpdateResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** ServiceEndpoint resource properties. */
-  properties?: ServiceEndpointsUpdateResponseProperties;
+  properties?: ServiceEndpointsCreateOrUpdateResponseProperties;
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ServiceEndpointsUpdateResponseSystemData;
 }
@@ -2629,7 +2579,7 @@ export const ServiceEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     tags: S.optional(ServiceEndpointsUpdateResponseTagsMap),
     location: S.String,
-    properties: S.optional(ServiceEndpointsUpdateResponseProperties),
+    properties: S.optional(ServiceEndpointsCreateOrUpdateResponseProperties),
     systemData: S.optional(ServiceEndpointsUpdateResponseSystemData),
   }),
 ).annotate({

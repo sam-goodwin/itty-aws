@@ -344,28 +344,10 @@ export const CommunityTrainingsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CommunityTrainingsGetResponseTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface CommunityTrainingsGetResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const CommunityTrainingsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CommunityTrainingsGetResponseSku",
-}) as any as S.Schema<CommunityTrainingsGetResponseSku>;
+export type CommunityTrainingsGetResponseSku =
+  CommunityTrainingsCreateResponseSku;
+export const CommunityTrainingsGetResponseSku =
+  CommunityTrainingsCreateResponseSku;
 
 export interface CommunityTrainingsGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -383,7 +365,7 @@ export interface CommunityTrainingsGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: CommunityTrainingProperties;
   /** The resource model definition representing SKU */
-  sku?: CommunityTrainingsGetResponseSku;
+  sku?: CommunityTrainingsCreateResponseSku;
 }
 export const CommunityTrainingsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -394,7 +376,7 @@ export const CommunityTrainingsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(CommunityTrainingsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(CommunityTrainingProperties),
-    sku: S.optional(CommunityTrainingsGetResponseSku),
+    sku: S.optional(CommunityTrainingsCreateResponseSku),
   }),
 ).annotate({
   identifier: "CommunityTrainingsGetResponse",
@@ -431,28 +413,8 @@ export const CommunityTrainingTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CommunityTrainingTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface CommunityTrainingSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const CommunityTrainingSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CommunityTrainingSku",
-}) as any as S.Schema<CommunityTrainingSku>;
+export type CommunityTrainingSku = CommunityTrainingsCreateResponseSku;
+export const CommunityTrainingSku = CommunityTrainingsCreateResponseSku;
 
 /** A CommunityProviderHub resource */
 export interface CommunityTraining {
@@ -471,7 +433,7 @@ export interface CommunityTraining {
   /** The resource-specific properties for this resource. */
   properties?: CommunityTrainingProperties;
   /** The resource model definition representing SKU */
-  sku?: CommunityTrainingSku;
+  sku?: CommunityTrainingsCreateResponseSku;
 }
 export const CommunityTraining = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -482,7 +444,7 @@ export const CommunityTraining = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(CommunityTrainingTagsMap),
     location: S.String,
     properties: S.optional(CommunityTrainingProperties),
-    sku: S.optional(CommunityTrainingSku),
+    sku: S.optional(CommunityTrainingsCreateResponseSku),
   }),
 ).annotate({
   identifier: "CommunityTraining",
@@ -531,28 +493,10 @@ export const CommunityTrainingsListBySubscriptionRequest =
   }) as any as S.Schema<CommunityTrainingsListBySubscriptionRequest>;
 
 /** The resource model definition representing SKU */
-export interface CommunityTrainingsUpdateRequestSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const CommunityTrainingsUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CommunityTrainingsUpdateRequestSku",
-}) as any as S.Schema<CommunityTrainingsUpdateRequestSku>;
+export type CommunityTrainingsUpdateRequestSku =
+  CommunityTrainingsCreateRequestSku;
+export const CommunityTrainingsUpdateRequestSku =
+  CommunityTrainingsCreateRequestSku;
 
 /** Resource tags. */
 export type CommunityTrainingsUpdateRequestTagsMap = {
@@ -622,7 +566,7 @@ export interface CommunityTrainingsUpdateRequest {
   /** The name of the Community Training Resource */
   communityTrainingName: string;
   /** The resource model definition representing SKU */
-  sku?: CommunityTrainingsUpdateRequestSku;
+  sku?: CommunityTrainingsCreateRequestSku;
   /** Resource tags. */
   tags?: CommunityTrainingsUpdateRequestTagsMap;
   /** The resource-specific properties for this resource. */
@@ -633,7 +577,7 @@ export const CommunityTrainingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     communityTrainingName: S.String.pipe(T.Label()),
-    sku: S.optional(CommunityTrainingsUpdateRequestSku),
+    sku: S.optional(CommunityTrainingsCreateRequestSku),
     tags: S.optional(CommunityTrainingsUpdateRequestTagsMap),
     properties: S.optional(CommunityTrainingUpdateProperties),
   }).pipe(
@@ -658,28 +602,10 @@ export const CommunityTrainingsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CommunityTrainingsUpdateResponseTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface CommunityTrainingsUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const CommunityTrainingsUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CommunityTrainingsUpdateResponseSku",
-}) as any as S.Schema<CommunityTrainingsUpdateResponseSku>;
+export type CommunityTrainingsUpdateResponseSku =
+  CommunityTrainingsCreateResponseSku;
+export const CommunityTrainingsUpdateResponseSku =
+  CommunityTrainingsCreateResponseSku;
 
 export interface CommunityTrainingsUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -697,7 +623,7 @@ export interface CommunityTrainingsUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: CommunityTrainingProperties;
   /** The resource model definition representing SKU */
-  sku?: CommunityTrainingsUpdateResponseSku;
+  sku?: CommunityTrainingsCreateResponseSku;
 }
 export const CommunityTrainingsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -708,7 +634,7 @@ export const CommunityTrainingsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(CommunityTrainingsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(CommunityTrainingProperties),
-    sku: S.optional(CommunityTrainingsUpdateResponseSku),
+    sku: S.optional(CommunityTrainingsCreateResponseSku),
   }),
 ).annotate({
   identifier: "CommunityTrainingsUpdateResponse",

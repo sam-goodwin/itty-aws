@@ -691,26 +691,17 @@ export const ArtifactStoresAddNetworkFabricControllerEndPointsResponse =
   }) as any as S.Schema<ArtifactStoresAddNetworkFabricControllerEndPointsResponse>;
 
 /** Reference to another resource. */
-export interface ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem {
-  /** Resource ID. */
-  id?: string;
-}
+export type ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem",
-  }) as any as S.Schema<ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** list of private endpoints. */
 export type ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
-  Array<ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem>;
+  Array<ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
 export const ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
   /*@__PURE__*/ S.Array(
-    ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem,
+    ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
   ) as any as S.Schema<ArtifactStoresApprovePrivateEndPointsRequestManualPrivateEndPointConnectionsList>;
 
 export interface ArtifactStoresApprovePrivateEndPointsRequest {
@@ -913,22 +904,10 @@ export type ArtifactStorePropertiesFormatReplicationStrategy =
 export const ArtifactStorePropertiesFormatReplicationStrategy =
   /*@__PURE__*/ S.String;
 
-export interface ArtifactStorePropertiesFormatManagedResourceGroupConfiguration {
-  /** The managed resource group name. */
-  name?: string;
-  /** The managed resource group location. */
-  location?: string;
-}
+export type ArtifactStorePropertiesFormatManagedResourceGroupConfiguration =
+  ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration;
 export const ArtifactStorePropertiesFormatManagedResourceGroupConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      location: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ArtifactStorePropertiesFormatManagedResourceGroupConfiguration",
-  }) as any as S.Schema<ArtifactStorePropertiesFormatManagedResourceGroupConfiguration>;
+  ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration;
 
 /** Artifact store properties. */
 export interface ArtifactStorePropertiesFormat {
@@ -940,7 +919,7 @@ export interface ArtifactStorePropertiesFormat {
   backingResourcePublicNetworkAccess?: ArtifactStorePropertiesFormatBackingResourcePublicNetworkAccess;
   /** The replication strategy. */
   replicationStrategy?: ArtifactStorePropertiesFormatReplicationStrategy;
-  managedResourceGroupConfiguration?: ArtifactStorePropertiesFormatManagedResourceGroupConfiguration;
+  managedResourceGroupConfiguration?: ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration;
   /** The created storage resource id */
   storageResourceId?: string;
 }
@@ -957,7 +936,7 @@ export const ArtifactStorePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
       ArtifactStorePropertiesFormatReplicationStrategy,
     ),
     managedResourceGroupConfiguration: S.optional(
-      ArtifactStorePropertiesFormatManagedResourceGroupConfiguration,
+      ArtifactStorePropertiesFormatInputManagedResourceGroupConfiguration,
     ),
     storageResourceId: S.optional(S.String),
   }),
@@ -1032,26 +1011,17 @@ export const ArtifactStoresDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArtifactStoresDeleteResponse>;
 
 /** Reference to another resource. */
-export interface ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem {
-  /** Resource ID. */
-  id?: string;
-}
+export type ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem",
-  }) as any as S.Schema<ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** list of network fabric controllers. */
 export type ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
-  Array<ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
+  Array<ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
 export const ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList =
   /*@__PURE__*/ S.Array(
-    ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
+    ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
   ) as any as S.Schema<ArtifactStoresDeleteNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList>;
 
 export interface ArtifactStoresDeleteNetworkFabricControllerEndPointsRequest {
@@ -1276,26 +1246,17 @@ export const ArtifactStoresListNetworkFabricControllerPrivateEndPointsRequest =
   }) as any as S.Schema<ArtifactStoresListNetworkFabricControllerPrivateEndPointsRequest>;
 
 /** Reference to another resource. */
-export interface ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem {
-  /** Resource ID. */
-  id?: string;
-}
+export type ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem",
-  }) as any as S.Schema<ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** list of network fabric controllers. */
 export type ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList =
-  Array<ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem>;
+  Array<ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
 export const ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList =
   /*@__PURE__*/ S.Array(
-    ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsItem,
+    ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
   ) as any as S.Schema<ArtifactStoreNetworkFabricControllerEndPointsNetworkFabricControllerIdsList>;
 
 /** List of network fabric controller ids. */
@@ -1371,26 +1332,17 @@ export const ArtifactStoresListPrivateEndPointsRequest =
   }) as any as S.Schema<ArtifactStoresListPrivateEndPointsRequest>;
 
 /** Reference to another resource. */
-export interface ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem {
-  /** Resource ID. */
-  id?: string;
-}
+export type ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem",
-  }) as any as S.Schema<ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** list of private endpoints. */
 export type ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList =
-  Array<ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem>;
+  Array<ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
 export const ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList =
   /*@__PURE__*/ S.Array(
-    ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsItem,
+    ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
   ) as any as S.Schema<ArtifactStorePrivateEndPointsFormatManualPrivateEndPointConnectionsList>;
 
 /** List of manual private endpoints. */
@@ -1434,26 +1386,17 @@ export const ArtifactStorePrivateEndPointsListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ArtifactStorePrivateEndPointsListResult>;
 
 /** Reference to another resource. */
-export interface ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem {
-  /** Resource ID. */
-  id?: string;
-}
+export type ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem",
-  }) as any as S.Schema<ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** list of private endpoints. */
 export type ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
-  Array<ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem>;
+  Array<ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
 export const ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsList =
   /*@__PURE__*/ S.Array(
-    ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsItem,
+    ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
   ) as any as S.Schema<ArtifactStoresRemovePrivateEndPointsRequestManualPrivateEndPointConnectionsList>;
 
 export interface ArtifactStoresRemovePrivateEndPointsRequest {
@@ -3941,19 +3884,10 @@ export const NetworkFunctionPropertiesFormatInputPublisherScope =
   /*@__PURE__*/ S.String;
 
 /** The azure resource reference which is used for deployment. */
-export interface NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference {
-  /** The resource reference arm id type. */
-  idType: IdType | (string & {});
-}
+export type NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference =
+  ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference;
 export const NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      idType: IdType,
-    }),
-  ).annotate({
-    identifier:
-      "NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference",
-  }) as any as S.Schema<NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference>;
+  ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference;
 
 /** The NFVI type. */
 export type NetworkFunctionPropertiesFormatInputNfviType =
@@ -3991,7 +3925,7 @@ export interface NetworkFunctionPropertiesFormatInput {
   /** The location of the network function definition offering. */
   networkFunctionDefinitionOfferingLocation?: string;
   /** The azure resource reference which is used for deployment. */
-  networkFunctionDefinitionVersionResourceReference?: NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference;
+  networkFunctionDefinitionVersionResourceReference?: ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference;
   /** The NFVI type. */
   nfviType?: NetworkFunctionPropertiesFormatInputNfviType | (string & {});
   /** The nfviId for the network function. */
@@ -4014,7 +3948,7 @@ export const NetworkFunctionPropertiesFormatInput = /*@__PURE__*/ S.suspend(
       networkFunctionDefinitionVersion: S.optional(S.String),
       networkFunctionDefinitionOfferingLocation: S.optional(S.String),
       networkFunctionDefinitionVersionResourceReference: S.optional(
-        NetworkFunctionPropertiesFormatInputNetworkFunctionDefinitionVersionResourceReference,
+        ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference,
       ),
       nfviType: S.optional(NetworkFunctionPropertiesFormatInputNfviType),
       nfviId: S.optional(S.String),
@@ -4140,19 +4074,10 @@ export const NetworkFunctionPropertiesFormatPublisherScope =
   /*@__PURE__*/ S.String;
 
 /** The azure resource reference which is used for deployment. */
-export interface NetworkFunctionPropertiesFormatNetworkFunctionDefinitionVersionResourceReference {
-  /** The resource reference arm id type. */
-  idType: IdType;
-}
+export type NetworkFunctionPropertiesFormatNetworkFunctionDefinitionVersionResourceReference =
+  ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference;
 export const NetworkFunctionPropertiesFormatNetworkFunctionDefinitionVersionResourceReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      idType: IdType,
-    }),
-  ).annotate({
-    identifier:
-      "NetworkFunctionPropertiesFormatNetworkFunctionDefinitionVersionResourceReference",
-  }) as any as S.Schema<NetworkFunctionPropertiesFormatNetworkFunctionDefinitionVersionResourceReference>;
+  ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference;
 
 /** The NFVI type. */
 export type NetworkFunctionPropertiesFormatNfviType =
@@ -4185,7 +4110,7 @@ export interface NetworkFunctionPropertiesFormat {
   /** The location of the network function definition offering. */
   networkFunctionDefinitionOfferingLocation?: string;
   /** The azure resource reference which is used for deployment. */
-  networkFunctionDefinitionVersionResourceReference?: NetworkFunctionPropertiesFormatNetworkFunctionDefinitionVersionResourceReference;
+  networkFunctionDefinitionVersionResourceReference?: ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference;
   /** The NFVI type. */
   nfviType?: NetworkFunctionPropertiesFormatNfviType;
   /** The nfviId for the network function. */
@@ -4208,7 +4133,7 @@ export const NetworkFunctionPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
     networkFunctionDefinitionVersion: S.optional(S.String),
     networkFunctionDefinitionOfferingLocation: S.optional(S.String),
     networkFunctionDefinitionVersionResourceReference: S.optional(
-      NetworkFunctionPropertiesFormatNetworkFunctionDefinitionVersionResourceReference,
+      ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference,
     ),
     nfviType: S.optional(NetworkFunctionPropertiesFormatNfviType),
     nfviId: S.optional(S.String),
@@ -4443,24 +4368,10 @@ export const NetworkFunctionsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkFunctionsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFunctionsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const NetworkFunctionsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "NetworkFunctionsGetResponseIdentity",
-}) as any as S.Schema<NetworkFunctionsGetResponseIdentity>;
+export type NetworkFunctionsGetResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
+export const NetworkFunctionsGetResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 
 export interface NetworkFunctionsGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4480,7 +4391,7 @@ export interface NetworkFunctionsGetResponse {
   /** A unique read-only string that changes whenever the resource is updated. */
   etag?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFunctionsGetResponseIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateResponseIdentity;
 }
 export const NetworkFunctionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4492,7 +4403,7 @@ export const NetworkFunctionsGetResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(NetworkFunctionPropertiesFormat),
     etag: S.optional(S.String),
-    identity: S.optional(NetworkFunctionsGetResponseIdentity),
+    identity: S.optional(NetworkFunctionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkFunctionsGetResponse",
@@ -4529,24 +4440,10 @@ export const NetworkFunctionTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkFunctionTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFunctionIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const NetworkFunctionIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "NetworkFunctionIdentity",
-}) as any as S.Schema<NetworkFunctionIdentity>;
+export type NetworkFunctionIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
+export const NetworkFunctionIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 
 /** Network function resource response. */
 export interface NetworkFunction {
@@ -4567,7 +4464,7 @@ export interface NetworkFunction {
   /** A unique read-only string that changes whenever the resource is updated. */
   etag?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFunctionIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateResponseIdentity;
 }
 export const NetworkFunction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4579,7 +4476,7 @@ export const NetworkFunction = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(NetworkFunctionPropertiesFormat),
     etag: S.optional(S.String),
-    identity: S.optional(NetworkFunctionIdentity),
+    identity: S.optional(NetworkFunctionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkFunction",
@@ -4674,25 +4571,10 @@ export const NetworkFunctionsUpdateTagsResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkFunctionsUpdateTagsResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFunctionsUpdateTagsResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
+export type NetworkFunctionsUpdateTagsResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 export const NetworkFunctionsUpdateTagsResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-  ).annotate({
-    identifier: "NetworkFunctionsUpdateTagsResponseIdentity",
-  }) as any as S.Schema<NetworkFunctionsUpdateTagsResponseIdentity>;
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 
 export interface NetworkFunctionsUpdateTagsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4712,7 +4594,7 @@ export interface NetworkFunctionsUpdateTagsResponse {
   /** A unique read-only string that changes whenever the resource is updated. */
   etag?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFunctionsUpdateTagsResponseIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateResponseIdentity;
 }
 export const NetworkFunctionsUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4724,7 +4606,7 @@ export const NetworkFunctionsUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(NetworkFunctionPropertiesFormat),
     etag: S.optional(S.String),
-    identity: S.optional(NetworkFunctionsUpdateTagsResponseIdentity),
+    identity: S.optional(NetworkFunctionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkFunctionsUpdateTagsResponse",
@@ -5155,31 +5037,22 @@ export const NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<NetworkServiceDesignVersionsCreateOrUpdateRequestTagsMap>;
 
 /** Reference to another resource. */
-export interface NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue {
-  /** Resource ID. */
-  id?: string;
-}
+export type NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue",
-  }) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** The configuration schemas to used to define the values. */
 export type NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap =
   {
     [key: string]:
-      | NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue
+      | ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem
       | undefined;
   };
 export const NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesValue,
+    ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
   ) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatInputConfigurationGroupSchemaReferencesMap>;
 
 /** The nfvi details. */
@@ -5390,31 +5263,22 @@ export type NSDVersionState = "Unknown" | "Preview" | "Active" | "Deprecated";
 export const NSDVersionState = /*@__PURE__*/ S.String;
 
 /** Reference to another resource. */
-export interface NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue {
-  /** Resource ID. */
-  id?: string;
-}
+export type NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue",
-  }) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** The configuration schemas to used to define the values. */
 export type NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap =
   {
     [key: string]:
-      | NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue
+      | ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem
       | undefined;
   };
 export const NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesValue,
+    ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
   ) as any as S.Schema<NetworkServiceDesignVersionPropertiesFormatConfigurationGroupSchemaReferencesMap>;
 
 /** The nfvis from the site. */
@@ -6221,19 +6085,10 @@ export const PublisherPropertiesFormatInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublisherPropertiesFormatInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PublishersCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
-export const PublishersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-    }),
-).annotate({
-  identifier: "PublishersCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<PublishersCreateOrUpdateRequestIdentity>;
+export type PublishersCreateOrUpdateRequestIdentity =
+  NetworkFunctionsCreateOrUpdateRequestIdentity;
+export const PublishersCreateOrUpdateRequestIdentity =
+  NetworkFunctionsCreateOrUpdateRequestIdentity;
 
 export interface PublishersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -6249,7 +6104,7 @@ export interface PublishersCreateOrUpdateRequest {
   /** Publisher properties. */
   properties?: PublisherPropertiesFormatInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PublishersCreateOrUpdateRequestIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateRequestIdentity;
 }
 export const PublishersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6259,7 +6114,7 @@ export const PublishersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PublishersCreateOrUpdateRequestTagsMap),
     location: S.String,
     properties: S.optional(PublisherPropertiesFormatInput),
-    identity: S.optional(PublishersCreateOrUpdateRequestIdentity),
+    identity: S.optional(NetworkFunctionsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -6315,25 +6170,10 @@ export const PublisherPropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PublisherPropertiesFormat>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PublishersCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const PublishersCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-).annotate({
-  identifier: "PublishersCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<PublishersCreateOrUpdateResponseIdentity>;
+export type PublishersCreateOrUpdateResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
+export const PublishersCreateOrUpdateResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 
 export interface PublishersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6351,7 +6191,7 @@ export interface PublishersCreateOrUpdateResponse {
   /** Publisher properties. */
   properties?: PublisherPropertiesFormat;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PublishersCreateOrUpdateResponseIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateResponseIdentity;
 }
 export const PublishersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6362,7 +6202,7 @@ export const PublishersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PublishersCreateOrUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(PublisherPropertiesFormat),
-    identity: S.optional(PublishersCreateOrUpdateResponseIdentity),
+    identity: S.optional(NetworkFunctionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "PublishersCreateOrUpdateResponse",
@@ -6435,24 +6275,10 @@ export const PublishersGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PublishersGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PublishersGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const PublishersGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "PublishersGetResponseIdentity",
-}) as any as S.Schema<PublishersGetResponseIdentity>;
+export type PublishersGetResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
+export const PublishersGetResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 
 export interface PublishersGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6470,7 +6296,7 @@ export interface PublishersGetResponse {
   /** Publisher properties. */
   properties?: PublisherPropertiesFormat;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PublishersGetResponseIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateResponseIdentity;
 }
 export const PublishersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6481,7 +6307,7 @@ export const PublishersGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PublishersGetResponseTagsMap),
     location: S.String,
     properties: S.optional(PublisherPropertiesFormat),
-    identity: S.optional(PublishersGetResponseIdentity),
+    identity: S.optional(NetworkFunctionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "PublishersGetResponse",
@@ -6518,24 +6344,8 @@ export const PublisherTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PublisherTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PublisherIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const PublisherIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "PublisherIdentity",
-}) as any as S.Schema<PublisherIdentity>;
+export type PublisherIdentity = NetworkFunctionsCreateOrUpdateResponseIdentity;
+export const PublisherIdentity = NetworkFunctionsCreateOrUpdateResponseIdentity;
 
 /** publisher resource. */
 export interface Publisher {
@@ -6554,7 +6364,7 @@ export interface Publisher {
   /** Publisher properties. */
   properties?: PublisherPropertiesFormat;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PublisherIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateResponseIdentity;
 }
 export const Publisher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6565,7 +6375,7 @@ export const Publisher = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PublisherTagsMap),
     location: S.String,
     properties: S.optional(PublisherPropertiesFormat),
-    identity: S.optional(PublisherIdentity),
+    identity: S.optional(NetworkFunctionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "Publisher" }) as any as S.Schema<Publisher>;
 
@@ -6657,24 +6467,10 @@ export const PublishersUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<PublishersUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PublishersUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const PublishersUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "PublishersUpdateResponseIdentity",
-}) as any as S.Schema<PublishersUpdateResponseIdentity>;
+export type PublishersUpdateResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
+export const PublishersUpdateResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 
 export interface PublishersUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6692,7 +6488,7 @@ export interface PublishersUpdateResponse {
   /** Publisher properties. */
   properties?: PublisherPropertiesFormat;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PublishersUpdateResponseIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateResponseIdentity;
 }
 export const PublishersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6703,7 +6499,7 @@ export const PublishersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PublishersUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(PublisherPropertiesFormat),
-    identity: S.optional(PublishersUpdateResponseIdentity),
+    identity: S.optional(NetworkFunctionsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "PublishersUpdateResponse",
@@ -6738,18 +6534,10 @@ export const SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfigur
   }) as any as S.Schema<SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration>;
 
 /** Reference to another resource. */
-export interface SiteNetworkServicePropertiesFormatInputSiteReference {
-  /** Resource ID. */
-  id?: string;
-}
+export type SiteNetworkServicePropertiesFormatInputSiteReference =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const SiteNetworkServicePropertiesFormatInputSiteReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SiteNetworkServicePropertiesFormatInputSiteReference",
-  }) as any as S.Schema<SiteNetworkServicePropertiesFormatInputSiteReference>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** Publisher Scope. */
 export type SiteNetworkServicePropertiesFormatInputPublisherScope =
@@ -6759,46 +6547,28 @@ export const SiteNetworkServicePropertiesFormatInputPublisherScope =
   /*@__PURE__*/ S.String;
 
 /** The azure resource reference which is used for deployment. */
-export interface SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference {
-  /** The resource reference arm id type. */
-  idType: IdType | (string & {});
-}
+export type SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference =
+  ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference;
 export const SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      idType: IdType,
-    }),
-  ).annotate({
-    identifier:
-      "SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference",
-  }) as any as S.Schema<SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference>;
+  ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference;
 
 /** Reference to another resource. */
-export interface SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue {
-  /** Resource ID. */
-  id?: string;
-}
+export type SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue",
-  }) as any as S.Schema<SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service. */
 export type SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap =
   {
     [key: string]:
-      | SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue
+      | ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem
       | undefined;
   };
 export const SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesValue,
+    ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
   ) as any as S.Schema<SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap>;
 
 /** Site network service properties. */
@@ -6806,13 +6576,13 @@ export interface SiteNetworkServicePropertiesFormatInput {
   /** Managed resource group configuration. */
   managedResourceGroupConfiguration?: SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration;
   /** Reference to another resource. */
-  siteReference?: SiteNetworkServicePropertiesFormatInputSiteReference;
+  siteReference?: ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
   /** Publisher Scope. */
   publisherScope?:
     | SiteNetworkServicePropertiesFormatInputPublisherScope
     | (string & {});
   /** The azure resource reference which is used for deployment. */
-  networkServiceDesignVersionResourceReference?: SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference;
+  networkServiceDesignVersionResourceReference?: ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference;
   /** The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service. */
   desiredStateConfigurationGroupValueReferences?: SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap;
 }
@@ -6823,13 +6593,13 @@ export const SiteNetworkServicePropertiesFormatInput = /*@__PURE__*/ S.suspend(
         SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration,
       ),
       siteReference: S.optional(
-        SiteNetworkServicePropertiesFormatInputSiteReference,
+        ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
       ),
       publisherScope: S.optional(
         SiteNetworkServicePropertiesFormatInputPublisherScope,
       ),
       networkServiceDesignVersionResourceReference: S.optional(
-        SiteNetworkServicePropertiesFormatInputNetworkServiceDesignVersionResourceReference,
+        ConfigurationGroupValuePropertiesFormatInputConfigurationGroupSchemaResourceReference,
       ),
       desiredStateConfigurationGroupValueReferences: S.optional(
         SiteNetworkServicePropertiesFormatInputDesiredStateConfigurationGroupValueReferencesMap,
@@ -6840,19 +6610,10 @@ export const SiteNetworkServicePropertiesFormatInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SiteNetworkServicePropertiesFormatInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface SiteNetworkServicesCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
+export type SiteNetworkServicesCreateOrUpdateRequestIdentity =
+  NetworkFunctionsCreateOrUpdateRequestIdentity;
 export const SiteNetworkServicesCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-    }),
-  ).annotate({
-    identifier: "SiteNetworkServicesCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<SiteNetworkServicesCreateOrUpdateRequestIdentity>;
+  NetworkFunctionsCreateOrUpdateRequestIdentity;
 
 /** Name of this Sku */
 export type SkuInputName = "Basic" | "Standard";
@@ -6883,7 +6644,7 @@ export interface SiteNetworkServicesCreateOrUpdateRequest {
   /** Site network service properties. */
   properties?: SiteNetworkServicePropertiesFormatInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SiteNetworkServicesCreateOrUpdateRequestIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateRequestIdentity;
   /** Sku of the site network service. */
   sku?: SkuInput;
 }
@@ -6896,7 +6657,7 @@ export const SiteNetworkServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       tags: S.optional(SiteNetworkServicesCreateOrUpdateRequestTagsMap),
       location: S.String,
       properties: S.optional(SiteNetworkServicePropertiesFormatInput),
-      identity: S.optional(SiteNetworkServicesCreateOrUpdateRequestIdentity),
+      identity: S.optional(NetworkFunctionsCreateOrUpdateRequestIdentity),
       sku: S.optional(SkuInput),
     }).pipe(
       T.Http({
@@ -6934,36 +6695,16 @@ export const SiteNetworkServicePropertiesFormatProvisioningState =
   /*@__PURE__*/ S.String;
 
 /** Managed resource group configuration. */
-export interface SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration {
-  /** Managed resource group name. */
-  name?: string;
-  /** Managed resource group location. */
-  location?: string;
-}
+export type SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration =
+  SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration;
 export const SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      location: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration",
-  }) as any as S.Schema<SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration>;
+  SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration;
 
 /** Reference to another resource. */
-export interface SiteNetworkServicePropertiesFormatSiteReference {
-  /** Resource ID. */
-  id?: string;
-}
+export type SiteNetworkServicePropertiesFormatSiteReference =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const SiteNetworkServicePropertiesFormatSiteReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SiteNetworkServicePropertiesFormatSiteReference",
-  }) as any as S.Schema<SiteNetworkServicePropertiesFormatSiteReference>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** Publisher Scope. */
 export type SiteNetworkServicePropertiesFormatPublisherScope =
@@ -6973,74 +6714,47 @@ export const SiteNetworkServicePropertiesFormatPublisherScope =
   /*@__PURE__*/ S.String;
 
 /** The azure resource reference which is used for deployment. */
-export interface SiteNetworkServicePropertiesFormatNetworkServiceDesignVersionResourceReference {
-  /** The resource reference arm id type. */
-  idType: IdType;
-}
+export type SiteNetworkServicePropertiesFormatNetworkServiceDesignVersionResourceReference =
+  ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference;
 export const SiteNetworkServicePropertiesFormatNetworkServiceDesignVersionResourceReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      idType: IdType,
-    }),
-  ).annotate({
-    identifier:
-      "SiteNetworkServicePropertiesFormatNetworkServiceDesignVersionResourceReference",
-  }) as any as S.Schema<SiteNetworkServicePropertiesFormatNetworkServiceDesignVersionResourceReference>;
+  ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference;
 
 /** Reference to another resource. */
-export interface SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesValue {
-  /** Resource ID. */
-  id?: string;
-}
+export type SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesValue =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesValue",
-  }) as any as S.Schema<SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesValue>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service. */
 export type SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesMap =
   {
     [key: string]:
-      | SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesValue
+      | ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem
       | undefined;
   };
 export const SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesValue,
+    ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
   ) as any as S.Schema<SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesMap>;
 
 /** Reference to another resource. */
-export interface SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesValue {
-  /** Resource ID. */
-  id?: string;
-}
+export type SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesValue =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesValue",
-  }) as any as S.Schema<SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesValue>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** The last state of the site network service resource. */
 export type SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesMap =
   {
     [key: string]:
-      | SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesValue
+      | ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem
       | undefined;
   };
 export const SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesValue,
+    ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
   ) as any as S.Schema<SiteNetworkServicePropertiesFormatLastStateConfigurationGroupValueReferencesMap>;
 
 /** Site network service properties. */
@@ -7048,9 +6762,9 @@ export interface SiteNetworkServicePropertiesFormat {
   /** The current provisioning state. */
   provisioningState?: SiteNetworkServicePropertiesFormatProvisioningState;
   /** Managed resource group configuration. */
-  managedResourceGroupConfiguration?: SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration;
+  managedResourceGroupConfiguration?: SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration;
   /** Reference to another resource. */
-  siteReference?: SiteNetworkServicePropertiesFormatSiteReference;
+  siteReference?: ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
   /** The publisher name for the site network service. */
   publisherName?: string;
   /** Publisher Scope. */
@@ -7062,7 +6776,7 @@ export interface SiteNetworkServicePropertiesFormat {
   /** The location of the network service design offering. */
   networkServiceDesignVersionOfferingLocation?: string;
   /** The azure resource reference which is used for deployment. */
-  networkServiceDesignVersionResourceReference?: SiteNetworkServicePropertiesFormatNetworkServiceDesignVersionResourceReference;
+  networkServiceDesignVersionResourceReference?: ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference;
   /** The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service. */
   desiredStateConfigurationGroupValueReferences?: SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesMap;
   /** The network service design version for the site network service. */
@@ -7076,9 +6790,11 @@ export const SiteNetworkServicePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
       SiteNetworkServicePropertiesFormatProvisioningState,
     ),
     managedResourceGroupConfiguration: S.optional(
-      SiteNetworkServicePropertiesFormatManagedResourceGroupConfiguration,
+      SiteNetworkServicePropertiesFormatInputManagedResourceGroupConfiguration,
     ),
-    siteReference: S.optional(SiteNetworkServicePropertiesFormatSiteReference),
+    siteReference: S.optional(
+      ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
+    ),
     publisherName: S.optional(S.String),
     publisherScope: S.optional(
       SiteNetworkServicePropertiesFormatPublisherScope,
@@ -7087,7 +6803,7 @@ export const SiteNetworkServicePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
     networkServiceDesignVersionName: S.optional(S.String),
     networkServiceDesignVersionOfferingLocation: S.optional(S.String),
     networkServiceDesignVersionResourceReference: S.optional(
-      SiteNetworkServicePropertiesFormatNetworkServiceDesignVersionResourceReference,
+      ConfigurationGroupValuePropertiesFormatConfigurationGroupSchemaResourceReference,
     ),
     desiredStateConfigurationGroupValueReferences: S.optional(
       SiteNetworkServicePropertiesFormatDesiredStateConfigurationGroupValueReferencesMap,
@@ -7102,25 +6818,10 @@ export const SiteNetworkServicePropertiesFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SiteNetworkServicePropertiesFormat>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface SiteNetworkServicesCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
+export type SiteNetworkServicesCreateOrUpdateResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 export const SiteNetworkServicesCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-  ).annotate({
-    identifier: "SiteNetworkServicesCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<SiteNetworkServicesCreateOrUpdateResponseIdentity>;
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 
 /** Name of this Sku */
 export type SkuName = "Basic" | "Standard";
@@ -7160,7 +6861,7 @@ export interface SiteNetworkServicesCreateOrUpdateResponse {
   /** Site network service properties. */
   properties?: SiteNetworkServicePropertiesFormat;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SiteNetworkServicesCreateOrUpdateResponseIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateResponseIdentity;
   /** Sku of the site network service. */
   sku?: Sku;
 }
@@ -7174,7 +6875,7 @@ export const SiteNetworkServicesCreateOrUpdateResponse =
       tags: S.optional(SiteNetworkServicesCreateOrUpdateResponseTagsMap),
       location: S.String,
       properties: S.optional(SiteNetworkServicePropertiesFormat),
-      identity: S.optional(SiteNetworkServicesCreateOrUpdateResponseIdentity),
+      identity: S.optional(NetworkFunctionsCreateOrUpdateResponseIdentity),
       sku: S.optional(Sku),
     }),
   ).annotate({
@@ -7248,25 +6949,10 @@ export const SiteNetworkServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SiteNetworkServicesGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface SiteNetworkServicesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const SiteNetworkServicesGetResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-).annotate({
-  identifier: "SiteNetworkServicesGetResponseIdentity",
-}) as any as S.Schema<SiteNetworkServicesGetResponseIdentity>;
+export type SiteNetworkServicesGetResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
+export const SiteNetworkServicesGetResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 
 export interface SiteNetworkServicesGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7284,7 +6970,7 @@ export interface SiteNetworkServicesGetResponse {
   /** Site network service properties. */
   properties?: SiteNetworkServicePropertiesFormat;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SiteNetworkServicesGetResponseIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateResponseIdentity;
   /** Sku of the site network service. */
   sku?: Sku;
 }
@@ -7297,7 +6983,7 @@ export const SiteNetworkServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(SiteNetworkServicesGetResponseTagsMap),
     location: S.String,
     properties: S.optional(SiteNetworkServicePropertiesFormat),
-    identity: S.optional(SiteNetworkServicesGetResponseIdentity),
+    identity: S.optional(NetworkFunctionsCreateOrUpdateResponseIdentity),
     sku: S.optional(Sku),
   }),
 ).annotate({
@@ -7335,24 +7021,10 @@ export const SiteNetworkServiceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SiteNetworkServiceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface SiteNetworkServiceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const SiteNetworkServiceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "SiteNetworkServiceIdentity",
-}) as any as S.Schema<SiteNetworkServiceIdentity>;
+export type SiteNetworkServiceIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
+export const SiteNetworkServiceIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 
 /** Site network service resource. */
 export interface SiteNetworkService {
@@ -7371,7 +7043,7 @@ export interface SiteNetworkService {
   /** Site network service properties. */
   properties?: SiteNetworkServicePropertiesFormat;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SiteNetworkServiceIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateResponseIdentity;
   /** Sku of the site network service. */
   sku?: Sku;
 }
@@ -7384,7 +7056,7 @@ export const SiteNetworkService = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(SiteNetworkServiceTagsMap),
     location: S.String,
     properties: S.optional(SiteNetworkServicePropertiesFormat),
-    identity: S.optional(SiteNetworkServiceIdentity),
+    identity: S.optional(NetworkFunctionsCreateOrUpdateResponseIdentity),
     sku: S.optional(Sku),
   }),
 ).annotate({
@@ -7483,25 +7155,10 @@ export const SiteNetworkServicesUpdateTagsResponseTagsMap =
   ) as any as S.Schema<SiteNetworkServicesUpdateTagsResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface SiteNetworkServicesUpdateTagsResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
+export type SiteNetworkServicesUpdateTagsResponseIdentity =
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 export const SiteNetworkServicesUpdateTagsResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-  ).annotate({
-    identifier: "SiteNetworkServicesUpdateTagsResponseIdentity",
-  }) as any as S.Schema<SiteNetworkServicesUpdateTagsResponseIdentity>;
+  NetworkFunctionsCreateOrUpdateResponseIdentity;
 
 export interface SiteNetworkServicesUpdateTagsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7519,7 +7176,7 @@ export interface SiteNetworkServicesUpdateTagsResponse {
   /** Site network service properties. */
   properties?: SiteNetworkServicePropertiesFormat;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SiteNetworkServicesUpdateTagsResponseIdentity;
+  identity?: NetworkFunctionsCreateOrUpdateResponseIdentity;
   /** Sku of the site network service. */
   sku?: Sku;
 }
@@ -7533,7 +7190,7 @@ export const SiteNetworkServicesUpdateTagsResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(SiteNetworkServicesUpdateTagsResponseTagsMap),
       location: S.String,
       properties: S.optional(SiteNetworkServicePropertiesFormat),
-      identity: S.optional(SiteNetworkServicesUpdateTagsResponseIdentity),
+      identity: S.optional(NetworkFunctionsCreateOrUpdateResponseIdentity),
       sku: S.optional(Sku),
     }),
 ).annotate({
@@ -7652,25 +7309,17 @@ export const SitePropertiesFormatNfvisList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SitePropertiesFormatNfvisList>;
 
 /** Reference to another resource. */
-export interface SitePropertiesFormatSiteNetworkServiceReferencesItem {
-  /** Resource ID. */
-  id?: string;
-}
+export type SitePropertiesFormatSiteNetworkServiceReferencesItem =
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 export const SitePropertiesFormatSiteNetworkServiceReferencesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SitePropertiesFormatSiteNetworkServiceReferencesItem",
-  }) as any as S.Schema<SitePropertiesFormatSiteNetworkServiceReferencesItem>;
+  ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
 
 /** The list of site network services on the site. */
 export type SitePropertiesFormatSiteNetworkServiceReferencesList =
-  Array<SitePropertiesFormatSiteNetworkServiceReferencesItem>;
+  Array<ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem>;
 export const SitePropertiesFormatSiteNetworkServiceReferencesList =
   /*@__PURE__*/ S.Array(
-    SitePropertiesFormatSiteNetworkServiceReferencesItem,
+    ArtifactStoresAddNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem,
   ) as any as S.Schema<SitePropertiesFormatSiteNetworkServiceReferencesList>;
 
 /** Site properties. */

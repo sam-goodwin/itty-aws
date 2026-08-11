@@ -779,27 +779,10 @@ export const AutomationRulePropertiesInputLastModifiedBy =
   }) as any as S.Schema<AutomationRulePropertiesInputLastModifiedBy>;
 
 /** Information on the client (user or application) that made some action */
-export interface AutomationRulePropertiesInputCreatedBy {
-  /** The email of the client. */
-  email?: string;
-  /** The name of the client. */
-  name?: string;
-  /** The object id of the client. */
-  objectId?: string;
-  /** The user principal name of the client. */
-  userPrincipalName?: string;
-}
-export const AutomationRulePropertiesInputCreatedBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      email: S.optional(S.String),
-      name: S.optional(S.String),
-      objectId: S.optional(S.String),
-      userPrincipalName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AutomationRulePropertiesInputCreatedBy",
-}) as any as S.Schema<AutomationRulePropertiesInputCreatedBy>;
+export type AutomationRulePropertiesInputCreatedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
+export const AutomationRulePropertiesInputCreatedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
 
 /** Automation rule properties */
 export interface AutomationRulePropertiesInput {
@@ -813,7 +796,7 @@ export interface AutomationRulePropertiesInput {
   /** Information on the client (user or application) that made some action */
   lastModifiedBy?: AutomationRulePropertiesInputLastModifiedBy;
   /** Information on the client (user or application) that made some action */
-  createdBy?: AutomationRulePropertiesInputCreatedBy;
+  createdBy?: AutomationRulePropertiesInputLastModifiedBy;
 }
 export const AutomationRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -822,7 +805,7 @@ export const AutomationRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     triggeringLogic: AutomationRuleTriggeringLogic,
     actions: AutomationRulePropertiesInputActionsList,
     lastModifiedBy: S.optional(AutomationRulePropertiesInputLastModifiedBy),
-    createdBy: S.optional(AutomationRulePropertiesInputCreatedBy),
+    createdBy: S.optional(AutomationRulePropertiesInputLastModifiedBy),
   }),
 ).annotate({
   identifier: "AutomationRulePropertiesInput",
@@ -869,49 +852,16 @@ export const AutomationRulePropertiesActionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AutomationRulePropertiesActionsList>;
 
 /** Information on the client (user or application) that made some action */
-export interface AutomationRulePropertiesLastModifiedBy {
-  /** The email of the client. */
-  email?: string;
-  /** The name of the client. */
-  name?: string;
-  /** The object id of the client. */
-  objectId?: string;
-  /** The user principal name of the client. */
-  userPrincipalName?: string;
-}
-export const AutomationRulePropertiesLastModifiedBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      email: S.optional(S.String),
-      name: S.optional(S.String),
-      objectId: S.optional(S.String),
-      userPrincipalName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AutomationRulePropertiesLastModifiedBy",
-}) as any as S.Schema<AutomationRulePropertiesLastModifiedBy>;
+export type AutomationRulePropertiesLastModifiedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
+export const AutomationRulePropertiesLastModifiedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
 
 /** Information on the client (user or application) that made some action */
-export interface AutomationRulePropertiesCreatedBy {
-  /** The email of the client. */
-  email?: string;
-  /** The name of the client. */
-  name?: string;
-  /** The object id of the client. */
-  objectId?: string;
-  /** The user principal name of the client. */
-  userPrincipalName?: string;
-}
-export const AutomationRulePropertiesCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    objectId: S.optional(S.String),
-    userPrincipalName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutomationRulePropertiesCreatedBy",
-}) as any as S.Schema<AutomationRulePropertiesCreatedBy>;
+export type AutomationRulePropertiesCreatedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
+export const AutomationRulePropertiesCreatedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
 
 /** Automation rule properties */
 export interface AutomationRuleProperties {
@@ -927,9 +877,9 @@ export interface AutomationRuleProperties {
   /** The time the automation rule was created. */
   createdTimeUtc?: string;
   /** Information on the client (user or application) that made some action */
-  lastModifiedBy?: AutomationRulePropertiesLastModifiedBy;
+  lastModifiedBy?: AutomationRulePropertiesInputLastModifiedBy;
   /** Information on the client (user or application) that made some action */
-  createdBy?: AutomationRulePropertiesCreatedBy;
+  createdBy?: AutomationRulePropertiesInputLastModifiedBy;
 }
 export const AutomationRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -939,8 +889,8 @@ export const AutomationRuleProperties = /*@__PURE__*/ S.suspend(() =>
     actions: AutomationRulePropertiesActionsList,
     lastModifiedTimeUtc: S.optional(S.String),
     createdTimeUtc: S.optional(S.String),
-    lastModifiedBy: S.optional(AutomationRulePropertiesLastModifiedBy),
-    createdBy: S.optional(AutomationRulePropertiesCreatedBy),
+    lastModifiedBy: S.optional(AutomationRulePropertiesInputLastModifiedBy),
+    createdBy: S.optional(AutomationRulePropertiesInputLastModifiedBy),
   }),
 ).annotate({
   identifier: "AutomationRuleProperties",
@@ -1149,17 +1099,9 @@ export const BookmarkPropertiesInputLabelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BookmarkPropertiesInputLabelsList>;
 
 /** User information that made some action */
-export interface BookmarkPropertiesInputUpdatedBy {
-  /** The object id of the user. */
-  objectId?: string | null;
-}
-export const BookmarkPropertiesInputUpdatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "BookmarkPropertiesInputUpdatedBy",
-}) as any as S.Schema<BookmarkPropertiesInputUpdatedBy>;
+export type BookmarkPropertiesInputUpdatedBy = BookmarkPropertiesInputCreatedBy;
+export const BookmarkPropertiesInputUpdatedBy =
+  BookmarkPropertiesInputCreatedBy;
 
 /** The severity of the incident */
 export type IncidentSeverityEnum = "High" | "Medium" | "Low" | "Informational";
@@ -1206,7 +1148,7 @@ export interface BookmarkPropertiesInput {
   /** The last time the bookmark was updated */
   updated?: string;
   /** User information that made some action */
-  updatedBy?: BookmarkPropertiesInputUpdatedBy;
+  updatedBy?: BookmarkPropertiesInputCreatedBy;
   /** The bookmark event time */
   eventTime?: string;
   /** The start time for the query */
@@ -1226,7 +1168,7 @@ export const BookmarkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     query: S.String,
     queryResult: S.optional(S.String),
     updated: S.optional(S.String),
-    updatedBy: S.optional(BookmarkPropertiesInputUpdatedBy),
+    updatedBy: S.optional(BookmarkPropertiesInputCreatedBy),
     eventTime: S.optional(S.String),
     queryStartTime: S.optional(S.String),
     queryEndTime: S.optional(S.String),
@@ -1296,23 +1238,8 @@ export const BookmarkPropertiesLabelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BookmarkPropertiesLabelsList>;
 
 /** User information that made some action */
-export interface BookmarkPropertiesUpdatedBy {
-  /** The email of the user. */
-  email?: string;
-  /** The name of the user. */
-  name?: string;
-  /** The object id of the user. */
-  objectId?: string | null;
-}
-export const BookmarkPropertiesUpdatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    objectId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "BookmarkPropertiesUpdatedBy",
-}) as any as S.Schema<BookmarkPropertiesUpdatedBy>;
+export type BookmarkPropertiesUpdatedBy = BookmarkPropertiesCreatedBy;
+export const BookmarkPropertiesUpdatedBy = BookmarkPropertiesCreatedBy;
 
 /** Describes related incident information for the bookmark */
 export interface BookmarkPropertiesIncidentInfo {
@@ -1355,7 +1282,7 @@ export interface BookmarkProperties {
   /** The last time the bookmark was updated */
   updated?: string;
   /** User information that made some action */
-  updatedBy?: BookmarkPropertiesUpdatedBy;
+  updatedBy?: BookmarkPropertiesCreatedBy;
   /** The bookmark event time */
   eventTime?: string;
   /** The start time for the query */
@@ -1375,7 +1302,7 @@ export const BookmarkProperties = /*@__PURE__*/ S.suspend(() =>
     query: S.String,
     queryResult: S.optional(S.String),
     updated: S.optional(S.String),
-    updatedBy: S.optional(BookmarkPropertiesUpdatedBy),
+    updatedBy: S.optional(BookmarkPropertiesCreatedBy),
     eventTime: S.optional(S.String),
     queryStartTime: S.optional(S.String),
     queryEndTime: S.optional(S.String),
@@ -3014,39 +2941,22 @@ export const EntitiesRunPlaybookResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EntitiesRunPlaybookResponse>;
 
 /** Information on the client (user or application) that made some action */
-export interface IncidentCommentPropertiesInputAuthor {
-  /** The email of the client. */
-  email?: string;
-  /** The name of the client. */
-  name?: string;
-  /** The object id of the client. */
-  objectId?: string;
-  /** The user principal name of the client. */
-  userPrincipalName?: string;
-}
-export const IncidentCommentPropertiesInputAuthor = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      email: S.optional(S.String),
-      name: S.optional(S.String),
-      objectId: S.optional(S.String),
-      userPrincipalName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "IncidentCommentPropertiesInputAuthor",
-}) as any as S.Schema<IncidentCommentPropertiesInputAuthor>;
+export type IncidentCommentPropertiesInputAuthor =
+  AutomationRulePropertiesInputLastModifiedBy;
+export const IncidentCommentPropertiesInputAuthor =
+  AutomationRulePropertiesInputLastModifiedBy;
 
 /** Incident comment property bag. */
 export interface IncidentCommentPropertiesInput {
   /** The comment message */
   message: string;
   /** Information on the client (user or application) that made some action */
-  author?: IncidentCommentPropertiesInputAuthor;
+  author?: AutomationRulePropertiesInputLastModifiedBy;
 }
 export const IncidentCommentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
-    author: S.optional(IncidentCommentPropertiesInputAuthor),
+    author: S.optional(AutomationRulePropertiesInputLastModifiedBy),
   }),
 ).annotate({
   identifier: "IncidentCommentPropertiesInput",
@@ -3091,26 +3001,10 @@ export const IncidentCommentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<IncidentCommentsCreateOrUpdateRequest>;
 
 /** Information on the client (user or application) that made some action */
-export interface IncidentCommentPropertiesAuthor {
-  /** The email of the client. */
-  email?: string;
-  /** The name of the client. */
-  name?: string;
-  /** The object id of the client. */
-  objectId?: string;
-  /** The user principal name of the client. */
-  userPrincipalName?: string;
-}
-export const IncidentCommentPropertiesAuthor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    objectId: S.optional(S.String),
-    userPrincipalName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IncidentCommentPropertiesAuthor",
-}) as any as S.Schema<IncidentCommentPropertiesAuthor>;
+export type IncidentCommentPropertiesAuthor =
+  AutomationRulePropertiesInputLastModifiedBy;
+export const IncidentCommentPropertiesAuthor =
+  AutomationRulePropertiesInputLastModifiedBy;
 
 /** Incident comment property bag. */
 export interface IncidentCommentProperties {
@@ -3121,14 +3015,14 @@ export interface IncidentCommentProperties {
   /** The comment message */
   message: string;
   /** Information on the client (user or application) that made some action */
-  author?: IncidentCommentPropertiesAuthor;
+  author?: AutomationRulePropertiesInputLastModifiedBy;
 }
 export const IncidentCommentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdTimeUtc: S.optional(S.String),
     lastModifiedTimeUtc: S.optional(S.String),
     message: S.String,
-    author: S.optional(IncidentCommentPropertiesAuthor),
+    author: S.optional(AutomationRulePropertiesInputLastModifiedBy),
   }),
 ).annotate({
   identifier: "IncidentCommentProperties",
@@ -4572,23 +4466,8 @@ export const HuntingBookmarkPropertiesAdditionalDataMap =
   ) as any as S.Schema<HuntingBookmarkPropertiesAdditionalDataMap>;
 
 /** User information that made some action */
-export interface HuntingBookmarkPropertiesCreatedBy {
-  /** The email of the user. */
-  email?: string;
-  /** The name of the user. */
-  name?: string;
-  /** The object id of the user. */
-  objectId?: string | null;
-}
-export const HuntingBookmarkPropertiesCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    objectId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "HuntingBookmarkPropertiesCreatedBy",
-}) as any as S.Schema<HuntingBookmarkPropertiesCreatedBy>;
+export type HuntingBookmarkPropertiesCreatedBy = BookmarkPropertiesCreatedBy;
+export const HuntingBookmarkPropertiesCreatedBy = BookmarkPropertiesCreatedBy;
 
 /** List of labels relevant to this bookmark */
 export type HuntingBookmarkPropertiesLabelsList = Array<string>;
@@ -4597,46 +4476,14 @@ export const HuntingBookmarkPropertiesLabelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<HuntingBookmarkPropertiesLabelsList>;
 
 /** User information that made some action */
-export interface HuntingBookmarkPropertiesUpdatedBy {
-  /** The email of the user. */
-  email?: string;
-  /** The name of the user. */
-  name?: string;
-  /** The object id of the user. */
-  objectId?: string | null;
-}
-export const HuntingBookmarkPropertiesUpdatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    objectId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "HuntingBookmarkPropertiesUpdatedBy",
-}) as any as S.Schema<HuntingBookmarkPropertiesUpdatedBy>;
+export type HuntingBookmarkPropertiesUpdatedBy = BookmarkPropertiesCreatedBy;
+export const HuntingBookmarkPropertiesUpdatedBy = BookmarkPropertiesCreatedBy;
 
 /** Describes related incident information for the bookmark */
-export interface HuntingBookmarkPropertiesIncidentInfo {
-  /** Incident Id */
-  incidentId?: string;
-  /** The severity of the incident */
-  severity?: IncidentSeverityEnum;
-  /** The title of the incident */
-  title?: string;
-  /** Relation Name */
-  relationName?: string;
-}
-export const HuntingBookmarkPropertiesIncidentInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      incidentId: S.optional(S.String),
-      severity: S.optional(IncidentSeverityEnum),
-      title: S.optional(S.String),
-      relationName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "HuntingBookmarkPropertiesIncidentInfo",
-}) as any as S.Schema<HuntingBookmarkPropertiesIncidentInfo>;
+export type HuntingBookmarkPropertiesIncidentInfo =
+  BookmarkPropertiesIncidentInfo;
+export const HuntingBookmarkPropertiesIncidentInfo =
+  BookmarkPropertiesIncidentInfo;
 
 /** Describes bookmark properties */
 export interface HuntingBookmarkProperties {
@@ -4647,7 +4494,7 @@ export interface HuntingBookmarkProperties {
   /** The time the bookmark was created */
   created?: string;
   /** User information that made some action */
-  createdBy?: HuntingBookmarkPropertiesCreatedBy;
+  createdBy?: BookmarkPropertiesCreatedBy;
   /** The display name of the bookmark */
   displayName: string;
   /** The time of the event */
@@ -4663,16 +4510,16 @@ export interface HuntingBookmarkProperties {
   /** The last time the bookmark was updated */
   updated?: string;
   /** User information that made some action */
-  updatedBy?: HuntingBookmarkPropertiesUpdatedBy;
+  updatedBy?: BookmarkPropertiesCreatedBy;
   /** Describes related incident information for the bookmark */
-  incidentInfo?: HuntingBookmarkPropertiesIncidentInfo;
+  incidentInfo?: BookmarkPropertiesIncidentInfo;
 }
 export const HuntingBookmarkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalData: S.optional(HuntingBookmarkPropertiesAdditionalDataMap),
     friendlyName: S.optional(S.String),
     created: S.optional(S.String),
-    createdBy: S.optional(HuntingBookmarkPropertiesCreatedBy),
+    createdBy: S.optional(BookmarkPropertiesCreatedBy),
     displayName: S.String,
     eventTime: S.optional(S.String),
     labels: S.optional(HuntingBookmarkPropertiesLabelsList),
@@ -4680,8 +4527,8 @@ export const HuntingBookmarkProperties = /*@__PURE__*/ S.suspend(() =>
     query: S.String,
     queryResult: S.optional(S.String),
     updated: S.optional(S.String),
-    updatedBy: S.optional(HuntingBookmarkPropertiesUpdatedBy),
-    incidentInfo: S.optional(HuntingBookmarkPropertiesIncidentInfo),
+    updatedBy: S.optional(BookmarkPropertiesCreatedBy),
+    incidentInfo: S.optional(BookmarkPropertiesIncidentInfo),
   }),
 ).annotate({
   identifier: "HuntingBookmarkProperties",
@@ -4906,50 +4753,16 @@ export type IncidentTaskStatus = "New" | "Completed";
 export const IncidentTaskStatus = /*@__PURE__*/ S.String;
 
 /** Information on the client (user or application) that made some action */
-export interface IncidentTaskPropertiesInputCreatedBy {
-  /** The email of the client. */
-  email?: string;
-  /** The name of the client. */
-  name?: string;
-  /** The object id of the client. */
-  objectId?: string;
-  /** The user principal name of the client. */
-  userPrincipalName?: string;
-}
-export const IncidentTaskPropertiesInputCreatedBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      email: S.optional(S.String),
-      name: S.optional(S.String),
-      objectId: S.optional(S.String),
-      userPrincipalName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "IncidentTaskPropertiesInputCreatedBy",
-}) as any as S.Schema<IncidentTaskPropertiesInputCreatedBy>;
+export type IncidentTaskPropertiesInputCreatedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
+export const IncidentTaskPropertiesInputCreatedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
 
 /** Information on the client (user or application) that made some action */
-export interface IncidentTaskPropertiesInputLastModifiedBy {
-  /** The email of the client. */
-  email?: string;
-  /** The name of the client. */
-  name?: string;
-  /** The object id of the client. */
-  objectId?: string;
-  /** The user principal name of the client. */
-  userPrincipalName?: string;
-}
+export type IncidentTaskPropertiesInputLastModifiedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
 export const IncidentTaskPropertiesInputLastModifiedBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      email: S.optional(S.String),
-      name: S.optional(S.String),
-      objectId: S.optional(S.String),
-      userPrincipalName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "IncidentTaskPropertiesInputLastModifiedBy",
-  }) as any as S.Schema<IncidentTaskPropertiesInputLastModifiedBy>;
+  AutomationRulePropertiesInputLastModifiedBy;
 
 /** Describes the properties of an incident task */
 export interface IncidentTaskPropertiesInput {
@@ -4959,17 +4772,17 @@ export interface IncidentTaskPropertiesInput {
   description?: string;
   status: IncidentTaskStatus | (string & {});
   /** Information on the client (user or application) that made some action */
-  createdBy?: IncidentTaskPropertiesInputCreatedBy;
+  createdBy?: AutomationRulePropertiesInputLastModifiedBy;
   /** Information on the client (user or application) that made some action */
-  lastModifiedBy?: IncidentTaskPropertiesInputLastModifiedBy;
+  lastModifiedBy?: AutomationRulePropertiesInputLastModifiedBy;
 }
 export const IncidentTaskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     description: S.optional(S.String),
     status: IncidentTaskStatus,
-    createdBy: S.optional(IncidentTaskPropertiesInputCreatedBy),
-    lastModifiedBy: S.optional(IncidentTaskPropertiesInputLastModifiedBy),
+    createdBy: S.optional(AutomationRulePropertiesInputLastModifiedBy),
+    lastModifiedBy: S.optional(AutomationRulePropertiesInputLastModifiedBy),
   }),
 ).annotate({
   identifier: "IncidentTaskPropertiesInput",
@@ -5012,49 +4825,16 @@ export const IncidentTasksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IncidentTasksCreateOrUpdateRequest>;
 
 /** Information on the client (user or application) that made some action */
-export interface IncidentTaskPropertiesCreatedBy {
-  /** The email of the client. */
-  email?: string;
-  /** The name of the client. */
-  name?: string;
-  /** The object id of the client. */
-  objectId?: string;
-  /** The user principal name of the client. */
-  userPrincipalName?: string;
-}
-export const IncidentTaskPropertiesCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    objectId: S.optional(S.String),
-    userPrincipalName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IncidentTaskPropertiesCreatedBy",
-}) as any as S.Schema<IncidentTaskPropertiesCreatedBy>;
+export type IncidentTaskPropertiesCreatedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
+export const IncidentTaskPropertiesCreatedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
 
 /** Information on the client (user or application) that made some action */
-export interface IncidentTaskPropertiesLastModifiedBy {
-  /** The email of the client. */
-  email?: string;
-  /** The name of the client. */
-  name?: string;
-  /** The object id of the client. */
-  objectId?: string;
-  /** The user principal name of the client. */
-  userPrincipalName?: string;
-}
-export const IncidentTaskPropertiesLastModifiedBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      email: S.optional(S.String),
-      name: S.optional(S.String),
-      objectId: S.optional(S.String),
-      userPrincipalName: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "IncidentTaskPropertiesLastModifiedBy",
-}) as any as S.Schema<IncidentTaskPropertiesLastModifiedBy>;
+export type IncidentTaskPropertiesLastModifiedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
+export const IncidentTaskPropertiesLastModifiedBy =
+  AutomationRulePropertiesInputLastModifiedBy;
 
 /** Describes the properties of an incident task */
 export interface IncidentTaskProperties {
@@ -5068,9 +4848,9 @@ export interface IncidentTaskProperties {
   /** The last time the task was updated */
   lastModifiedTimeUtc?: string;
   /** Information on the client (user or application) that made some action */
-  createdBy?: IncidentTaskPropertiesCreatedBy;
+  createdBy?: AutomationRulePropertiesInputLastModifiedBy;
   /** Information on the client (user or application) that made some action */
-  lastModifiedBy?: IncidentTaskPropertiesLastModifiedBy;
+  lastModifiedBy?: AutomationRulePropertiesInputLastModifiedBy;
 }
 export const IncidentTaskProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5079,8 +4859,8 @@ export const IncidentTaskProperties = /*@__PURE__*/ S.suspend(() =>
     status: IncidentTaskStatus,
     createdTimeUtc: S.optional(S.String),
     lastModifiedTimeUtc: S.optional(S.String),
-    createdBy: S.optional(IncidentTaskPropertiesCreatedBy),
-    lastModifiedBy: S.optional(IncidentTaskPropertiesLastModifiedBy),
+    createdBy: S.optional(AutomationRulePropertiesInputLastModifiedBy),
+    lastModifiedBy: S.optional(AutomationRulePropertiesInputLastModifiedBy),
   }),
 ).annotate({
   identifier: "IncidentTaskProperties",
@@ -8591,32 +8371,16 @@ export const ThreatIntelligenceIndicatorsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ThreatIntelligenceIndicatorsListRequest>;
 
 /** User information that made some action */
-export interface WatchlistItemPropertiesInputCreatedBy {
-  /** The object id of the user. */
-  objectId?: string | null;
-}
-export const WatchlistItemPropertiesInputCreatedBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      objectId: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "WatchlistItemPropertiesInputCreatedBy",
-}) as any as S.Schema<WatchlistItemPropertiesInputCreatedBy>;
+export type WatchlistItemPropertiesInputCreatedBy =
+  BookmarkPropertiesInputCreatedBy;
+export const WatchlistItemPropertiesInputCreatedBy =
+  BookmarkPropertiesInputCreatedBy;
 
 /** User information that made some action */
-export interface WatchlistItemPropertiesInputUpdatedBy {
-  /** The object id of the user. */
-  objectId?: string | null;
-}
-export const WatchlistItemPropertiesInputUpdatedBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      objectId: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "WatchlistItemPropertiesInputUpdatedBy",
-}) as any as S.Schema<WatchlistItemPropertiesInputUpdatedBy>;
+export type WatchlistItemPropertiesInputUpdatedBy =
+  BookmarkPropertiesInputCreatedBy;
+export const WatchlistItemPropertiesInputUpdatedBy =
+  BookmarkPropertiesInputCreatedBy;
 
 /** Describes watchlist item properties */
 export interface WatchlistItemPropertiesInput {
@@ -8633,9 +8397,9 @@ export interface WatchlistItemPropertiesInput {
   /** The last time the watchlist item was updated */
   updated?: string;
   /** User information that made some action */
-  createdBy?: WatchlistItemPropertiesInputCreatedBy;
+  createdBy?: BookmarkPropertiesInputCreatedBy;
   /** User information that made some action */
-  updatedBy?: WatchlistItemPropertiesInputUpdatedBy;
+  updatedBy?: BookmarkPropertiesInputCreatedBy;
   /** key-value pairs for a watchlist item */
   itemsKeyValue: unknown;
   /** key-value pairs for a watchlist item entity mapping */
@@ -8649,8 +8413,8 @@ export const WatchlistItemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     isDeleted: S.optional(S.Boolean),
     created: S.optional(S.String),
     updated: S.optional(S.String),
-    createdBy: S.optional(WatchlistItemPropertiesInputCreatedBy),
-    updatedBy: S.optional(WatchlistItemPropertiesInputUpdatedBy),
+    createdBy: S.optional(BookmarkPropertiesInputCreatedBy),
+    updatedBy: S.optional(BookmarkPropertiesInputCreatedBy),
     itemsKeyValue: S.Unknown,
     entityMapping: S.optional(S.Unknown),
   }),
@@ -8696,42 +8460,12 @@ export const WatchlistItemsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WatchlistItemsCreateOrUpdateRequest>;
 
 /** User information that made some action */
-export interface WatchlistItemPropertiesCreatedBy {
-  /** The email of the user. */
-  email?: string;
-  /** The name of the user. */
-  name?: string;
-  /** The object id of the user. */
-  objectId?: string | null;
-}
-export const WatchlistItemPropertiesCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    objectId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "WatchlistItemPropertiesCreatedBy",
-}) as any as S.Schema<WatchlistItemPropertiesCreatedBy>;
+export type WatchlistItemPropertiesCreatedBy = BookmarkPropertiesCreatedBy;
+export const WatchlistItemPropertiesCreatedBy = BookmarkPropertiesCreatedBy;
 
 /** User information that made some action */
-export interface WatchlistItemPropertiesUpdatedBy {
-  /** The email of the user. */
-  email?: string;
-  /** The name of the user. */
-  name?: string;
-  /** The object id of the user. */
-  objectId?: string | null;
-}
-export const WatchlistItemPropertiesUpdatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    objectId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "WatchlistItemPropertiesUpdatedBy",
-}) as any as S.Schema<WatchlistItemPropertiesUpdatedBy>;
+export type WatchlistItemPropertiesUpdatedBy = BookmarkPropertiesCreatedBy;
+export const WatchlistItemPropertiesUpdatedBy = BookmarkPropertiesCreatedBy;
 
 /** Describes watchlist item properties */
 export interface WatchlistItemProperties {
@@ -8748,9 +8482,9 @@ export interface WatchlistItemProperties {
   /** The last time the watchlist item was updated */
   updated?: string;
   /** User information that made some action */
-  createdBy?: WatchlistItemPropertiesCreatedBy;
+  createdBy?: BookmarkPropertiesCreatedBy;
   /** User information that made some action */
-  updatedBy?: WatchlistItemPropertiesUpdatedBy;
+  updatedBy?: BookmarkPropertiesCreatedBy;
   /** key-value pairs for a watchlist item */
   itemsKeyValue: unknown;
   /** key-value pairs for a watchlist item entity mapping */
@@ -8764,8 +8498,8 @@ export const WatchlistItemProperties = /*@__PURE__*/ S.suspend(() =>
     isDeleted: S.optional(S.Boolean),
     created: S.optional(S.String),
     updated: S.optional(S.String),
-    createdBy: S.optional(WatchlistItemPropertiesCreatedBy),
-    updatedBy: S.optional(WatchlistItemPropertiesUpdatedBy),
+    createdBy: S.optional(BookmarkPropertiesCreatedBy),
+    updatedBy: S.optional(BookmarkPropertiesCreatedBy),
     itemsKeyValue: S.Unknown,
     entityMapping: S.optional(S.Unknown),
   }),
@@ -8981,30 +8715,16 @@ export type WatchlistPropertiesInputSourceType = "Local" | "AzureStorage";
 export const WatchlistPropertiesInputSourceType = /*@__PURE__*/ S.String;
 
 /** User information that made some action */
-export interface WatchlistPropertiesInputCreatedBy {
-  /** The object id of the user. */
-  objectId?: string | null;
-}
-export const WatchlistPropertiesInputCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "WatchlistPropertiesInputCreatedBy",
-}) as any as S.Schema<WatchlistPropertiesInputCreatedBy>;
+export type WatchlistPropertiesInputCreatedBy =
+  BookmarkPropertiesInputCreatedBy;
+export const WatchlistPropertiesInputCreatedBy =
+  BookmarkPropertiesInputCreatedBy;
 
 /** User information that made some action */
-export interface WatchlistPropertiesInputUpdatedBy {
-  /** The object id of the user. */
-  objectId?: string | null;
-}
-export const WatchlistPropertiesInputUpdatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "WatchlistPropertiesInputUpdatedBy",
-}) as any as S.Schema<WatchlistPropertiesInputUpdatedBy>;
+export type WatchlistPropertiesInputUpdatedBy =
+  BookmarkPropertiesInputCreatedBy;
+export const WatchlistPropertiesInputUpdatedBy =
+  BookmarkPropertiesInputCreatedBy;
 
 /** List of labels relevant to this watchlist */
 export type WatchlistPropertiesInputLabelsList = Array<string>;
@@ -9029,9 +8749,9 @@ export interface WatchlistPropertiesInput {
   /** The last time the watchlist was updated */
   updated?: string;
   /** User information that made some action */
-  createdBy?: WatchlistPropertiesInputCreatedBy;
+  createdBy?: BookmarkPropertiesInputCreatedBy;
   /** User information that made some action */
-  updatedBy?: WatchlistPropertiesInputUpdatedBy;
+  updatedBy?: BookmarkPropertiesInputCreatedBy;
   /** A description of the watchlist */
   description?: string;
   /** The type of the watchlist */
@@ -9066,8 +8786,8 @@ export const WatchlistPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     sourceType: S.optional(WatchlistPropertiesInputSourceType),
     created: S.optional(S.String),
     updated: S.optional(S.String),
-    createdBy: S.optional(WatchlistPropertiesInputCreatedBy),
-    updatedBy: S.optional(WatchlistPropertiesInputUpdatedBy),
+    createdBy: S.optional(BookmarkPropertiesInputCreatedBy),
+    updatedBy: S.optional(BookmarkPropertiesInputCreatedBy),
     description: S.optional(S.String),
     watchlistType: S.optional(S.String),
     watchlistAlias: S.optional(S.String),
@@ -9124,42 +8844,12 @@ export type WatchlistPropertiesSourceType = "Local" | "AzureStorage";
 export const WatchlistPropertiesSourceType = /*@__PURE__*/ S.String;
 
 /** User information that made some action */
-export interface WatchlistPropertiesCreatedBy {
-  /** The email of the user. */
-  email?: string;
-  /** The name of the user. */
-  name?: string;
-  /** The object id of the user. */
-  objectId?: string | null;
-}
-export const WatchlistPropertiesCreatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    objectId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "WatchlistPropertiesCreatedBy",
-}) as any as S.Schema<WatchlistPropertiesCreatedBy>;
+export type WatchlistPropertiesCreatedBy = BookmarkPropertiesCreatedBy;
+export const WatchlistPropertiesCreatedBy = BookmarkPropertiesCreatedBy;
 
 /** User information that made some action */
-export interface WatchlistPropertiesUpdatedBy {
-  /** The email of the user. */
-  email?: string;
-  /** The name of the user. */
-  name?: string;
-  /** The object id of the user. */
-  objectId?: string | null;
-}
-export const WatchlistPropertiesUpdatedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.optional(S.String),
-    name: S.optional(S.String),
-    objectId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "WatchlistPropertiesUpdatedBy",
-}) as any as S.Schema<WatchlistPropertiesUpdatedBy>;
+export type WatchlistPropertiesUpdatedBy = BookmarkPropertiesCreatedBy;
+export const WatchlistPropertiesUpdatedBy = BookmarkPropertiesCreatedBy;
 
 /** List of labels relevant to this watchlist */
 export type WatchlistPropertiesLabelsList = Array<string>;
@@ -9195,9 +8885,9 @@ export interface WatchlistProperties {
   /** The last time the watchlist was updated */
   updated?: string;
   /** User information that made some action */
-  createdBy?: WatchlistPropertiesCreatedBy;
+  createdBy?: BookmarkPropertiesCreatedBy;
   /** User information that made some action */
-  updatedBy?: WatchlistPropertiesUpdatedBy;
+  updatedBy?: BookmarkPropertiesCreatedBy;
   /** A description of the watchlist */
   description?: string;
   /** The type of the watchlist */
@@ -9233,8 +8923,8 @@ export const WatchlistProperties = /*@__PURE__*/ S.suspend(() =>
     sourceType: S.optional(WatchlistPropertiesSourceType),
     created: S.optional(S.String),
     updated: S.optional(S.String),
-    createdBy: S.optional(WatchlistPropertiesCreatedBy),
-    updatedBy: S.optional(WatchlistPropertiesUpdatedBy),
+    createdBy: S.optional(BookmarkPropertiesCreatedBy),
+    updatedBy: S.optional(BookmarkPropertiesCreatedBy),
     description: S.optional(S.String),
     watchlistType: S.optional(S.String),
     watchlistAlias: S.optional(S.String),

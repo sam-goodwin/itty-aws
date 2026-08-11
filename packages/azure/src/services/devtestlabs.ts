@@ -3050,26 +3050,13 @@ export const BulkCreationParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkCreationParameters>;
 
 /** Properties of an artifact parameter. */
-export interface ArtifactParameterProperties {
-  /** The name of the artifact parameter. */
-  name?: string;
-  /** The value of the artifact parameter. */
-  value?: string;
-}
-export const ArtifactParameterProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ArtifactParameterProperties",
-}) as any as S.Schema<ArtifactParameterProperties>;
+export type ArtifactParameterProperties = ParameterInfo;
+export const ArtifactParameterProperties = ParameterInfo;
 
 /** The parameters of the artifact. */
-export type ArtifactInstallPropertiesParametersList =
-  Array<ArtifactParameterProperties>;
+export type ArtifactInstallPropertiesParametersList = Array<ParameterInfo>;
 export const ArtifactInstallPropertiesParametersList = /*@__PURE__*/ S.Array(
-  ArtifactParameterProperties,
+  ParameterInfo,
 ) as any as S.Schema<ArtifactInstallPropertiesParametersList>;
 
 /** Properties of an artifact. */

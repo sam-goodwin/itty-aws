@@ -1447,12 +1447,8 @@ export const BackendConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackendConfiguration>;
 
 /** Information regarding the Configuration API of the API Management gateway. This is only applicable for API gateway with Standard SKU. */
-export interface GatewayConfigurationApiInput {}
-export const GatewayConfigurationApiInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GatewayConfigurationApiInput",
-}) as any as S.Schema<GatewayConfigurationApiInput>;
+export type GatewayConfigurationApiInput = FrontendConfigurationInput;
+export const GatewayConfigurationApiInput = FrontendConfigurationInput;
 
 /** The type of VPN in which API Management gateway needs to be configured in. */
 export type ApiManagementGatewayPropertiesInputVirtualNetworkType =
@@ -1469,7 +1465,7 @@ export interface ApiManagementGatewayPropertiesInput {
   /** Information regarding how the gateway should integrate with backend systems. */
   backend?: BackendConfiguration;
   /** Information regarding the Configuration API of the API Management gateway. This is only applicable for API gateway with Standard SKU. */
-  configurationApi?: GatewayConfigurationApiInput;
+  configurationApi?: FrontendConfigurationInput;
   /** The type of VPN in which API Management gateway needs to be configured in. */
   virtualNetworkType?:
     | ApiManagementGatewayPropertiesInputVirtualNetworkType
@@ -1479,7 +1475,7 @@ export const ApiManagementGatewayPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frontend: S.optional(FrontendConfigurationInput),
     backend: S.optional(BackendConfiguration),
-    configurationApi: S.optional(GatewayConfigurationApiInput),
+    configurationApi: S.optional(FrontendConfigurationInput),
     virtualNetworkType: S.optional(
       ApiManagementGatewayPropertiesInputVirtualNetworkType,
     ),
@@ -2047,7 +2043,7 @@ export interface ApiManagementGatewayUpdatePropertiesInput {
   /** Information regarding how the gateway should integrate with backend systems. */
   backend?: BackendConfiguration;
   /** Information regarding the Configuration API of the API Management gateway. This is only applicable for API gateway with Standard SKU. */
-  configurationApi?: GatewayConfigurationApiInput;
+  configurationApi?: FrontendConfigurationInput;
   /** The type of VPN in which API Management gateway needs to be configured in. */
   virtualNetworkType?:
     | ApiManagementGatewayUpdatePropertiesInputVirtualNetworkType
@@ -2058,7 +2054,7 @@ export const ApiManagementGatewayUpdatePropertiesInput =
     S.Struct({
       frontend: S.optional(FrontendConfigurationInput),
       backend: S.optional(BackendConfiguration),
-      configurationApi: S.optional(GatewayConfigurationApiInput),
+      configurationApi: S.optional(FrontendConfigurationInput),
       virtualNetworkType: S.optional(
         ApiManagementGatewayUpdatePropertiesInputVirtualNetworkType,
       ),
@@ -4844,12 +4840,8 @@ export const ApiManagementServicePropertiesInputVirtualNetworkType =
   /*@__PURE__*/ S.String;
 
 /** A wrapper for an ARM resource id */
-export interface ArmIdWrapperInput {}
-export const ArmIdWrapperInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ArmIdWrapperInput",
-}) as any as S.Schema<ArmIdWrapperInput>;
+export type ArmIdWrapperInput = FrontendConfigurationInput;
+export const ArmIdWrapperInput = FrontendConfigurationInput;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServiceConnectionState {
@@ -4875,14 +4867,14 @@ export const PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServiceCo
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionWrapperPropertiesInput {
   /** The resource of private end point. */
-  privateEndpoint?: ArmIdWrapperInput;
+  privateEndpoint?: FrontendConfigurationInput;
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServiceConnectionState;
 }
 export const PrivateEndpointConnectionWrapperPropertiesInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      privateEndpoint: S.optional(ArmIdWrapperInput),
+      privateEndpoint: S.optional(FrontendConfigurationInput),
       privateLinkServiceConnectionState:
         PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServiceConnectionState,
     }),
@@ -6135,35 +6127,17 @@ export const ApiManagementServiceUpdatePropertiesInputVirtualNetworkType =
   /*@__PURE__*/ S.String;
 
 /** Remote Private Endpoint Connection resource. */
-export interface ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsItem {
-  /** Private Endpoint connection resource id */
-  id?: string;
-  /** Private Endpoint Connection Name */
-  name?: string;
-  /** Private Endpoint Connection Resource Type */
-  type?: string;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionWrapperPropertiesInput;
-}
+export type ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsItem =
+  ApiManagementServicePropertiesInputPrivateEndpointConnectionsItem;
 export const ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(PrivateEndpointConnectionWrapperPropertiesInput),
-    }),
-  ).annotate({
-    identifier:
-      "ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsItem>;
+  ApiManagementServicePropertiesInputPrivateEndpointConnectionsItem;
 
 /** List of Private Endpoint Connections of this service. */
 export type ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsList =
-  Array<ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsItem>;
+  Array<ApiManagementServicePropertiesInputPrivateEndpointConnectionsItem>;
 export const ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsItem,
+    ApiManagementServicePropertiesInputPrivateEndpointConnectionsItem,
   ) as any as S.Schema<ApiManagementServiceUpdatePropertiesInputPrivateEndpointConnectionsList>;
 
 /** Status of legacy portal in the API Management service. */
@@ -16550,23 +16524,8 @@ export const GraphQLApiResolverPolicyListByResolverResponse =
   }) as any as S.Schema<GraphQLApiResolverPolicyListByResolverResponse>;
 
 /** Resolver Update Contract Properties. */
-export interface ResolverUpdateContractProperties {
-  /** Resolver Name. */
-  displayName?: string;
-  /** Path is type/field being resolved. */
-  path?: string;
-  /** Description of the resolver. May include HTML formatting tags. */
-  description?: string;
-}
-export const ResolverUpdateContractProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    path: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResolverUpdateContractProperties",
-}) as any as S.Schema<ResolverUpdateContractProperties>;
+export type ResolverUpdateContractProperties = ResolverEntityBaseContract;
+export const ResolverUpdateContractProperties = ResolverEntityBaseContract;
 
 export interface GraphQLApiResolverUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16580,7 +16539,7 @@ export interface GraphQLApiResolverUpdateRequest {
   /** Resolver identifier within a GraphQL API. Must be unique in the current API Management service instance. */
   resolverId: string;
   /** Properties of the GraphQL API Resolver entity that can be updated. */
-  properties?: ResolverUpdateContractProperties;
+  properties?: ResolverEntityBaseContract;
 }
 export const GraphQLApiResolverUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16589,7 +16548,7 @@ export const GraphQLApiResolverUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     serviceName: S.String.pipe(T.Label()),
     apiId: S.String.pipe(T.Label()),
     resolverId: S.String.pipe(T.Label()),
-    properties: S.optional(ResolverUpdateContractProperties),
+    properties: S.optional(ResolverEntityBaseContract),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -22411,36 +22370,21 @@ export const PortalRevisionUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PortalRevisionUpdateResponse>;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
-export interface PrivateEndpointConnectionCreateOrUpdateRequestPropertiesPrivateLinkServiceConnectionState {
-  /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus | (string & {});
-  /** The reason for approval/rejection of the connection. */
-  description?: string;
-  /** A message indicating if changes on the service provider require any updates on the consumer. */
-  actionsRequired?: string;
-}
+export type PrivateEndpointConnectionCreateOrUpdateRequestPropertiesPrivateLinkServiceConnectionState =
+  PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServiceConnectionState;
 export const PrivateEndpointConnectionCreateOrUpdateRequestPropertiesPrivateLinkServiceConnectionState =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(PrivateEndpointServiceConnectionStatus),
-      description: S.optional(S.String),
-      actionsRequired: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "PrivateEndpointConnectionCreateOrUpdateRequestPropertiesPrivateLinkServiceConnectionState",
-  }) as any as S.Schema<PrivateEndpointConnectionCreateOrUpdateRequestPropertiesPrivateLinkServiceConnectionState>;
+  PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServiceConnectionState;
 
 /** The connection state of the private endpoint connection. */
 export interface PrivateEndpointConnectionCreateOrUpdateRequestProperties {
   /** A collection of information about the state of the connection between service consumer and provider. */
-  privateLinkServiceConnectionState?: PrivateEndpointConnectionCreateOrUpdateRequestPropertiesPrivateLinkServiceConnectionState;
+  privateLinkServiceConnectionState?: PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServiceConnectionState;
 }
 export const PrivateEndpointConnectionCreateOrUpdateRequestProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       privateLinkServiceConnectionState: S.optional(
-        PrivateEndpointConnectionCreateOrUpdateRequestPropertiesPrivateLinkServiceConnectionState,
+        PrivateEndpointConnectionWrapperPropertiesInputPrivateLinkServiceConnectionState,
       ),
     }),
   ).annotate({
@@ -22498,23 +22442,10 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpoint>;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
-export interface PrivateLinkServiceConnectionState {
-  /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus;
-  /** The reason for approval/rejection of the connection. */
-  description?: string;
-  /** A message indicating if changes on the service provider require any updates on the consumer. */
-  actionsRequired?: string;
-}
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(PrivateEndpointServiceConnectionStatus),
-    description: S.optional(S.String),
-    actionsRequired: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateLinkServiceConnectionState",
-}) as any as S.Schema<PrivateLinkServiceConnectionState>;
+export type PrivateLinkServiceConnectionState =
+  PrivateEndpointConnectionWrapperPropertiesPrivateLinkServiceConnectionState;
+export const PrivateLinkServiceConnectionState =
+  PrivateEndpointConnectionWrapperPropertiesPrivateLinkServiceConnectionState;
 
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
@@ -22530,14 +22461,15 @@ export interface PrivateEndpointConnectionProperties {
   /** The resource of private end point. */
   privateEndpoint?: PrivateEndpoint;
   /** A collection of information about the state of the connection between service consumer and provider. */
-  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+  privateLinkServiceConnectionState: PrivateEndpointConnectionWrapperPropertiesPrivateLinkServiceConnectionState;
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
 export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpoint),
-    privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+    privateLinkServiceConnectionState:
+      PrivateEndpointConnectionWrapperPropertiesPrivateLinkServiceConnectionState,
     provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
   }),
 ).annotate({
@@ -26074,17 +26006,8 @@ export const SubscriptionUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionUpdateResponse>;
 
 /** Tag-API link entity properties. */
-export interface TagApiLinkContractProperties {
-  /** Full resource Id of an API. */
-  apiId: string;
-}
-export const TagApiLinkContractProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiId: S.String,
-  }),
-).annotate({
-  identifier: "TagApiLinkContractProperties",
-}) as any as S.Schema<TagApiLinkContractProperties>;
+export type TagApiLinkContractProperties = ProductApiLinkContractProperties;
+export const TagApiLinkContractProperties = ProductApiLinkContractProperties;
 
 export interface TagApiLinkCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -26098,7 +26021,7 @@ export interface TagApiLinkCreateOrUpdateRequest {
   /** Tag-API link identifier. Must be unique in the current API Management service instance. */
   apiLinkId: string;
   /** Tag-API link entity contract properties. */
-  properties?: TagApiLinkContractProperties;
+  properties?: ProductApiLinkContractProperties;
 }
 export const TagApiLinkCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -26107,7 +26030,7 @@ export const TagApiLinkCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     serviceName: S.String.pipe(T.Label()),
     tagId: S.String.pipe(T.Label()),
     apiLinkId: S.String.pipe(T.Label()),
-    properties: S.optional(TagApiLinkContractProperties),
+    properties: S.optional(ProductApiLinkContractProperties),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -26128,14 +26051,14 @@ export interface TagApiLinkCreateOrUpdateResponse {
   /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
   type?: string;
   /** Tag-API link entity contract properties. */
-  properties?: TagApiLinkContractProperties;
+  properties?: ProductApiLinkContractProperties;
 }
 export const TagApiLinkCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
-    properties: S.optional(TagApiLinkContractProperties),
+    properties: S.optional(ProductApiLinkContractProperties),
   }),
 ).annotate({
   identifier: "TagApiLinkCreateOrUpdateResponse",
@@ -26218,14 +26141,14 @@ export interface TagApiLinkGetResponse {
   /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
   type?: string;
   /** Tag-API link entity contract properties. */
-  properties?: TagApiLinkContractProperties;
+  properties?: ProductApiLinkContractProperties;
 }
 export const TagApiLinkGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
-    properties: S.optional(TagApiLinkContractProperties),
+    properties: S.optional(ProductApiLinkContractProperties),
   }),
 ).annotate({
   identifier: "TagApiLinkGetResponse",
@@ -26277,14 +26200,14 @@ export interface TagApiLinkContract {
   /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
   type?: string;
   /** Tag-API link entity contract properties. */
-  properties?: TagApiLinkContractProperties;
+  properties?: ProductApiLinkContractProperties;
 }
 export const TagApiLinkContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
-    properties: S.optional(TagApiLinkContractProperties),
+    properties: S.optional(ProductApiLinkContractProperties),
   }),
 ).annotate({
   identifier: "TagApiLinkContract",
@@ -36413,7 +36336,7 @@ export interface WorkspaceTagApiLinkCreateOrUpdateRequest {
   /** Tag-API link identifier. Must be unique in the current API Management service instance. */
   apiLinkId: string;
   /** Tag-API link entity contract properties. */
-  properties?: TagApiLinkContractProperties;
+  properties?: ProductApiLinkContractProperties;
 }
 export const WorkspaceTagApiLinkCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -36424,7 +36347,7 @@ export const WorkspaceTagApiLinkCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       workspaceId: S.String.pipe(T.Label()),
       tagId: S.String.pipe(T.Label()),
       apiLinkId: S.String.pipe(T.Label()),
-      properties: S.optional(TagApiLinkContractProperties),
+      properties: S.optional(ProductApiLinkContractProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -36445,7 +36368,7 @@ export interface WorkspaceTagApiLinkCreateOrUpdateResponse {
   /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
   type?: string;
   /** Tag-API link entity contract properties. */
-  properties?: TagApiLinkContractProperties;
+  properties?: ProductApiLinkContractProperties;
 }
 export const WorkspaceTagApiLinkCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -36453,7 +36376,7 @@ export const WorkspaceTagApiLinkCreateOrUpdateResponse =
       id: S.optional(S.String),
       name: S.optional(S.String),
       type: S.optional(S.String),
-      properties: S.optional(TagApiLinkContractProperties),
+      properties: S.optional(ProductApiLinkContractProperties),
     }),
   ).annotate({
     identifier: "WorkspaceTagApiLinkCreateOrUpdateResponse",
@@ -36542,14 +36465,14 @@ export interface WorkspaceTagApiLinkGetResponse {
   /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
   type?: string;
   /** Tag-API link entity contract properties. */
-  properties?: TagApiLinkContractProperties;
+  properties?: ProductApiLinkContractProperties;
 }
 export const WorkspaceTagApiLinkGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
-    properties: S.optional(TagApiLinkContractProperties),
+    properties: S.optional(ProductApiLinkContractProperties),
   }),
 ).annotate({
   identifier: "WorkspaceTagApiLinkGetResponse",

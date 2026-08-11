@@ -1680,12 +1680,8 @@ export const LogCollectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogCollectionPropertiesInput>;
 
 /** Remote Support properties of the cluster. */
-export interface RemoteSupportPropertiesInput {}
-export const RemoteSupportPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RemoteSupportPropertiesInput",
-}) as any as S.Schema<RemoteSupportPropertiesInput>;
+export type RemoteSupportPropertiesInput = LogCollectionPropertiesInput;
+export const RemoteSupportPropertiesInput = LogCollectionPropertiesInput;
 
 /** List of secret locations. */
 export type ClusterPropertiesInputSecretsLocationsList =
@@ -1719,7 +1715,7 @@ export interface ClusterPropertiesInput {
   /** Log Collection properties of the cluster. */
   logCollectionProperties?: LogCollectionPropertiesInput;
   /** RemoteSupport properties of the cluster. */
-  remoteSupportProperties?: RemoteSupportPropertiesInput;
+  remoteSupportProperties?: LogCollectionPropertiesInput;
   /** Desired properties of the cluster. */
   desiredProperties?: ClusterDesiredProperties;
   /** List of secret locations. */
@@ -1736,7 +1732,7 @@ export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     aadServicePrincipalObjectId: S.optional(S.String),
     softwareAssuranceProperties: S.optional(SoftwareAssurancePropertiesInput),
     logCollectionProperties: S.optional(LogCollectionPropertiesInput),
-    remoteSupportProperties: S.optional(RemoteSupportPropertiesInput),
+    remoteSupportProperties: S.optional(LogCollectionPropertiesInput),
     desiredProperties: S.optional(ClusterDesiredProperties),
     secretsLocations: S.optional(ClusterPropertiesInputSecretsLocationsList),
     localAvailabilityZones: S.optional(
@@ -1748,21 +1744,17 @@ export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClusterPropertiesInput>;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = LogCollectionPropertiesInput;
+export const UserAssignedIdentityInput = LogCollectionPropertiesInput;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ClustersCreateRequestIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: LogCollectionPropertiesInput | undefined;
 };
 export const ClustersCreateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserAssignedIdentityInput,
+    LogCollectionPropertiesInput,
   ) as any as S.Schema<ClustersCreateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2481,12 +2473,12 @@ export const ClustersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ClustersUpdateRequestIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: LogCollectionPropertiesInput | undefined;
 };
 export const ClustersUpdateRequestIdentityUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserAssignedIdentityInput,
+    LogCollectionPropertiesInput,
   ) as any as S.Schema<ClustersUpdateRequestIdentityUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3460,12 +3452,8 @@ export const DeploymentDataInputLocalAvailabilityZonesList =
   ) as any as S.Schema<DeploymentDataInputLocalAvailabilityZonesList>;
 
 /** Assembly Package details for Validated Solution Recipe for AzureStackHCI Cluster */
-export interface AssemblyInfoInput {}
-export const AssemblyInfoInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AssemblyInfoInput",
-}) as any as S.Schema<AssemblyInfoInput>;
+export type AssemblyInfoInput = LogCollectionPropertiesInput;
+export const AssemblyInfoInput = LogCollectionPropertiesInput;
 
 /** The Deployment data of AzureStackHCI Cluster. */
 export interface DeploymentDataInput {
@@ -3504,7 +3492,7 @@ export interface DeploymentDataInput {
   /** Local Availability Zone information for HCI cluster */
   localAvailabilityZones?: DeploymentDataInputLocalAvailabilityZonesList;
   /** Assembly Package details for Validated Solution Recipe for AzureStackHCI Cluster */
-  assemblyInfo?: AssemblyInfoInput;
+  assemblyInfo?: LogCollectionPropertiesInput;
 }
 export const DeploymentDataInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3529,7 +3517,7 @@ export const DeploymentDataInput = /*@__PURE__*/ S.suspend(() =>
     localAvailabilityZones: S.optional(
       DeploymentDataInputLocalAvailabilityZonesList,
     ),
-    assemblyInfo: S.optional(AssemblyInfoInput),
+    assemblyInfo: S.optional(LogCollectionPropertiesInput),
   }),
 ).annotate({
   identifier: "DeploymentDataInput",
@@ -5279,21 +5267,17 @@ export const GalleryImageIdentifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GalleryImageIdentifier>;
 
 /** This is the disk image base class. */
-export interface GalleryDiskImageInput {}
-export const GalleryDiskImageInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GalleryDiskImageInput",
-}) as any as S.Schema<GalleryDiskImageInput>;
+export type GalleryDiskImageInput = LogCollectionPropertiesInput;
+export const GalleryDiskImageInput = LogCollectionPropertiesInput;
 
 /** This is the storage profile of a Gallery Image Version. */
 export interface GalleryImageVersionStorageProfileInput {
-  osDiskImage?: GalleryDiskImageInput;
+  osDiskImage?: LogCollectionPropertiesInput;
 }
 export const GalleryImageVersionStorageProfileInput = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      osDiskImage: S.optional(GalleryDiskImageInput),
+      osDiskImage: S.optional(LogCollectionPropertiesInput),
     }),
 ).annotate({
   identifier: "GalleryImageVersionStorageProfileInput",
@@ -5717,21 +5701,10 @@ export const GalleryImagesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GalleryImagesGetResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface GalleryImagesGetResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const GalleryImagesGetResponseExtendedLocation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-).annotate({
-  identifier: "GalleryImagesGetResponseExtendedLocation",
-}) as any as S.Schema<GalleryImagesGetResponseExtendedLocation>;
+export type GalleryImagesGetResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
+export const GalleryImagesGetResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface GalleryImagesGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5748,7 +5721,7 @@ export interface GalleryImagesGetResponse {
   location: string;
   properties?: GalleryImageProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: GalleryImagesGetResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const GalleryImagesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5759,7 +5732,9 @@ export const GalleryImagesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(GalleryImagesGetResponseTagsMap),
     location: S.String,
     properties: S.optional(GalleryImageProperties),
-    extendedLocation: S.optional(GalleryImagesGetResponseExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "GalleryImagesGetResponse",
@@ -5795,20 +5770,10 @@ export const GalleryImagesTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GalleryImagesTagsMap>;
 
 /** The complex type of the extended location. */
-export interface GalleryImagesExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const GalleryImagesExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "GalleryImagesExtendedLocation",
-}) as any as S.Schema<GalleryImagesExtendedLocation>;
+export type GalleryImagesExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
+export const GalleryImagesExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The gallery images resource definition. */
 export interface GalleryImages {
@@ -5826,7 +5791,7 @@ export interface GalleryImages {
   location: string;
   properties?: GalleryImageProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: GalleryImagesExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const GalleryImages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5837,7 +5802,9 @@ export const GalleryImages = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(GalleryImagesTagsMap),
     location: S.String,
     properties: S.optional(GalleryImageProperties),
-    extendedLocation: S.optional(GalleryImagesExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({ identifier: "GalleryImages" }) as any as S.Schema<GalleryImages>;
 
@@ -5927,21 +5894,10 @@ export const GalleryImagesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GalleryImagesUpdateResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface GalleryImagesUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type GalleryImagesUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const GalleryImagesUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "GalleryImagesUpdateResponseExtendedLocation",
-  }) as any as S.Schema<GalleryImagesUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface GalleryImagesUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5958,7 +5914,7 @@ export interface GalleryImagesUpdateResponse {
   location: string;
   properties?: GalleryImageProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: GalleryImagesUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const GalleryImagesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5969,7 +5925,9 @@ export const GalleryImagesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(GalleryImagesUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(GalleryImageProperties),
-    extendedLocation: S.optional(GalleryImagesUpdateResponseExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "GalleryImagesUpdateResponse",
@@ -6502,12 +6460,8 @@ export const RouteTableInput = /*@__PURE__*/ S.suspend(() =>
 export type IPPoolInputIpPoolType = "vm" | "vippool";
 export const IPPoolInputIpPoolType = /*@__PURE__*/ S.String;
 
-export interface IPPoolInfoInput {}
-export const IPPoolInfoInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "IPPoolInfoInput",
-}) as any as S.Schema<IPPoolInfoInput>;
+export type IPPoolInfoInput = LogCollectionPropertiesInput;
+export const IPPoolInfoInput = LogCollectionPropertiesInput;
 
 export interface IPPoolInput {
   /** Name of the IP-Pool */
@@ -6518,7 +6472,7 @@ export interface IPPoolInput {
   start?: string;
   /** End of the IP address pool */
   end?: string;
-  info?: IPPoolInfoInput;
+  info?: LogCollectionPropertiesInput;
 }
 export const IPPoolInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6526,7 +6480,7 @@ export const IPPoolInput = /*@__PURE__*/ S.suspend(() =>
     ipPoolType: S.optional(IPPoolInputIpPoolType),
     start: S.optional(S.String),
     end: S.optional(S.String),
-    info: S.optional(IPPoolInfoInput),
+    info: S.optional(LogCollectionPropertiesInput),
   }),
 ).annotate({ identifier: "IPPoolInput" }) as any as S.Schema<IPPoolInput>;
 
@@ -6611,21 +6565,10 @@ export const LogicalNetworkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogicalNetworkPropertiesInput>;
 
 /** The complex type of the extended location. */
-export interface LogicalNetworksCreateOrUpdateRequestExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
-}
+export type LogicalNetworksCreateOrUpdateRequestExtendedLocation =
+  GalleryImagesCreateOrUpdateRequestExtendedLocation;
 export const LogicalNetworksCreateOrUpdateRequestExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "LogicalNetworksCreateOrUpdateRequestExtendedLocation",
-  }) as any as S.Schema<LogicalNetworksCreateOrUpdateRequestExtendedLocation>;
+  GalleryImagesCreateOrUpdateRequestExtendedLocation;
 
 export interface LogicalNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -6640,7 +6583,7 @@ export interface LogicalNetworksCreateOrUpdateRequest {
   location: string;
   properties?: LogicalNetworkPropertiesInput;
   /** The complex type of the extended location. */
-  extendedLocation?: LogicalNetworksCreateOrUpdateRequestExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateRequestExtendedLocation;
 }
 export const LogicalNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -6652,7 +6595,7 @@ export const LogicalNetworksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(LogicalNetworkPropertiesInput),
       extendedLocation: S.optional(
-        LogicalNetworksCreateOrUpdateRequestExtendedLocation,
+        GalleryImagesCreateOrUpdateRequestExtendedLocation,
       ),
     }).pipe(
       T.Http({
@@ -6707,25 +6650,17 @@ export type SubnetPropertiesFormatIpAllocationMethod = "Dynamic" | "Static";
 export const SubnetPropertiesFormatIpAllocationMethod = /*@__PURE__*/ S.String;
 
 /** IPConfigurationReference - Describes a IPConfiguration under the virtual network */
-export interface SubnetPropertiesFormatIpConfigurationReferencesItem {
-  /** IPConfigurationID */
-  ID?: string;
-}
+export type SubnetPropertiesFormatIpConfigurationReferencesItem =
+  SubnetPropertiesFormatInputIpConfigurationReferencesItem;
 export const SubnetPropertiesFormatIpConfigurationReferencesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ID: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SubnetPropertiesFormatIpConfigurationReferencesItem",
-  }) as any as S.Schema<SubnetPropertiesFormatIpConfigurationReferencesItem>;
+  SubnetPropertiesFormatInputIpConfigurationReferencesItem;
 
 /** IPConfigurationReferences - list of IPConfigurationReferences */
 export type SubnetPropertiesFormatIpConfigurationReferencesList =
-  Array<SubnetPropertiesFormatIpConfigurationReferencesItem>;
+  Array<SubnetPropertiesFormatInputIpConfigurationReferencesItem>;
 export const SubnetPropertiesFormatIpConfigurationReferencesList =
   /*@__PURE__*/ S.Array(
-    SubnetPropertiesFormatIpConfigurationReferencesItem,
+    SubnetPropertiesFormatInputIpConfigurationReferencesItem,
   ) as any as S.Schema<SubnetPropertiesFormatIpConfigurationReferencesList>;
 
 /** Route table resource. */
@@ -6920,21 +6855,10 @@ export const LogicalNetworkProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogicalNetworkProperties>;
 
 /** The complex type of the extended location. */
-export interface LogicalNetworksCreateOrUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type LogicalNetworksCreateOrUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const LogicalNetworksCreateOrUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "LogicalNetworksCreateOrUpdateResponseExtendedLocation",
-  }) as any as S.Schema<LogicalNetworksCreateOrUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface LogicalNetworksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6951,7 +6875,7 @@ export interface LogicalNetworksCreateOrUpdateResponse {
   location: string;
   properties?: LogicalNetworkProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: LogicalNetworksCreateOrUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const LogicalNetworksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -6964,7 +6888,7 @@ export const LogicalNetworksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(LogicalNetworkProperties),
       extendedLocation: S.optional(
-        LogicalNetworksCreateOrUpdateResponseExtendedLocation,
+        GalleryImagesCreateOrUpdateResponseExtendedLocation,
       ),
     }),
 ).annotate({
@@ -7038,21 +6962,10 @@ export const LogicalNetworksGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LogicalNetworksGetResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface LogicalNetworksGetResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type LogicalNetworksGetResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const LogicalNetworksGetResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "LogicalNetworksGetResponseExtendedLocation",
-  }) as any as S.Schema<LogicalNetworksGetResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface LogicalNetworksGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7069,7 +6982,7 @@ export interface LogicalNetworksGetResponse {
   location: string;
   properties?: LogicalNetworkProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: LogicalNetworksGetResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const LogicalNetworksGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7080,7 +6993,9 @@ export const LogicalNetworksGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(LogicalNetworksGetResponseTagsMap),
     location: S.String,
     properties: S.optional(LogicalNetworkProperties),
-    extendedLocation: S.optional(LogicalNetworksGetResponseExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "LogicalNetworksGetResponse",
@@ -7116,20 +7031,10 @@ export const LogicalNetworksTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LogicalNetworksTagsMap>;
 
 /** The complex type of the extended location. */
-export interface LogicalNetworksExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const LogicalNetworksExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "LogicalNetworksExtendedLocation",
-}) as any as S.Schema<LogicalNetworksExtendedLocation>;
+export type LogicalNetworksExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
+export const LogicalNetworksExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The logical network resource definition. */
 export interface LogicalNetworks {
@@ -7147,7 +7052,7 @@ export interface LogicalNetworks {
   location: string;
   properties?: LogicalNetworkProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: LogicalNetworksExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const LogicalNetworks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7158,7 +7063,9 @@ export const LogicalNetworks = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(LogicalNetworksTagsMap),
     location: S.String,
     properties: S.optional(LogicalNetworkProperties),
-    extendedLocation: S.optional(LogicalNetworksExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "LogicalNetworks",
@@ -7248,21 +7155,10 @@ export const LogicalNetworksUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LogicalNetworksUpdateResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface LogicalNetworksUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type LogicalNetworksUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const LogicalNetworksUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "LogicalNetworksUpdateResponseExtendedLocation",
-  }) as any as S.Schema<LogicalNetworksUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface LogicalNetworksUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7279,7 +7175,7 @@ export interface LogicalNetworksUpdateResponse {
   location: string;
   properties?: LogicalNetworkProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: LogicalNetworksUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const LogicalNetworksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7290,7 +7186,9 @@ export const LogicalNetworksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(LogicalNetworksUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(LogicalNetworkProperties),
-    extendedLocation: S.optional(LogicalNetworksUpdateResponseExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "LogicalNetworksUpdateResponse",
@@ -7361,21 +7259,10 @@ export const MarketplaceGalleryImagePropertiesInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MarketplaceGalleryImagePropertiesInput>;
 
 /** The complex type of the extended location. */
-export interface MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
-}
+export type MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation =
+  GalleryImagesCreateOrUpdateRequestExtendedLocation;
 export const MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation",
-  }) as any as S.Schema<MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation>;
+  GalleryImagesCreateOrUpdateRequestExtendedLocation;
 
 export interface MarketplaceGalleryImagesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -7390,7 +7277,7 @@ export interface MarketplaceGalleryImagesCreateOrUpdateRequest {
   location: string;
   properties?: MarketplaceGalleryImagePropertiesInput;
   /** The complex type of the extended location. */
-  extendedLocation?: MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateRequestExtendedLocation;
 }
 export const MarketplaceGalleryImagesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -7402,7 +7289,7 @@ export const MarketplaceGalleryImagesCreateOrUpdateRequest =
       location: S.String,
       properties: S.optional(MarketplaceGalleryImagePropertiesInput),
       extendedLocation: S.optional(
-        MarketplaceGalleryImagesCreateOrUpdateRequestExtendedLocation,
+        GalleryImagesCreateOrUpdateRequestExtendedLocation,
       ),
     }).pipe(
       T.Http({
@@ -7478,18 +7365,10 @@ export const MarketplaceGalleryImageStatusProvisioningStatus =
   }) as any as S.Schema<MarketplaceGalleryImageStatusProvisioningStatus>;
 
 /** The download status of the gallery image */
-export interface MarketplaceGalleryImageStatusDownloadStatus {
-  /** The downloaded sized of the image in MB */
-  downloadSizeInMB?: number;
-}
+export type MarketplaceGalleryImageStatusDownloadStatus =
+  GalleryImageStatusDownloadStatus;
 export const MarketplaceGalleryImageStatusDownloadStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      downloadSizeInMB: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "MarketplaceGalleryImageStatusDownloadStatus",
-  }) as any as S.Schema<MarketplaceGalleryImageStatusDownloadStatus>;
+  GalleryImageStatusDownloadStatus;
 
 /** The observed state of marketplace gallery images */
 export interface MarketplaceGalleryImageStatus {
@@ -7499,7 +7378,7 @@ export interface MarketplaceGalleryImageStatus {
   errorMessage?: string;
   provisioningStatus?: MarketplaceGalleryImageStatusProvisioningStatus;
   /** The download status of the gallery image */
-  downloadStatus?: MarketplaceGalleryImageStatusDownloadStatus;
+  downloadStatus?: GalleryImageStatusDownloadStatus;
   /** The progress of the operation in percentage */
   progressPercentage?: number;
 }
@@ -7510,7 +7389,7 @@ export const MarketplaceGalleryImageStatus = /*@__PURE__*/ S.suspend(() =>
     provisioningStatus: S.optional(
       MarketplaceGalleryImageStatusProvisioningStatus,
     ),
-    downloadStatus: S.optional(MarketplaceGalleryImageStatusDownloadStatus),
+    downloadStatus: S.optional(GalleryImageStatusDownloadStatus),
     progressPercentage: S.optional(S.Number),
   }),
 ).annotate({
@@ -7555,22 +7434,10 @@ export const MarketplaceGalleryImageProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarketplaceGalleryImageProperties>;
 
 /** The complex type of the extended location. */
-export interface MarketplaceGalleryImagesCreateOrUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type MarketplaceGalleryImagesCreateOrUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const MarketplaceGalleryImagesCreateOrUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier:
-      "MarketplaceGalleryImagesCreateOrUpdateResponseExtendedLocation",
-  }) as any as S.Schema<MarketplaceGalleryImagesCreateOrUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface MarketplaceGalleryImagesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7587,7 +7454,7 @@ export interface MarketplaceGalleryImagesCreateOrUpdateResponse {
   location: string;
   properties?: MarketplaceGalleryImageProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: MarketplaceGalleryImagesCreateOrUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const MarketplaceGalleryImagesCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -7600,7 +7467,7 @@ export const MarketplaceGalleryImagesCreateOrUpdateResponse =
       location: S.String,
       properties: S.optional(MarketplaceGalleryImageProperties),
       extendedLocation: S.optional(
-        MarketplaceGalleryImagesCreateOrUpdateResponseExtendedLocation,
+        GalleryImagesCreateOrUpdateResponseExtendedLocation,
       ),
     }),
   ).annotate({
@@ -7676,21 +7543,10 @@ export const MarketplaceGalleryImagesGetResponseTagsMap =
   ) as any as S.Schema<MarketplaceGalleryImagesGetResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface MarketplaceGalleryImagesGetResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type MarketplaceGalleryImagesGetResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const MarketplaceGalleryImagesGetResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "MarketplaceGalleryImagesGetResponseExtendedLocation",
-  }) as any as S.Schema<MarketplaceGalleryImagesGetResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface MarketplaceGalleryImagesGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7707,7 +7563,7 @@ export interface MarketplaceGalleryImagesGetResponse {
   location: string;
   properties?: MarketplaceGalleryImageProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: MarketplaceGalleryImagesGetResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const MarketplaceGalleryImagesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7719,7 +7575,7 @@ export const MarketplaceGalleryImagesGetResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(MarketplaceGalleryImageProperties),
     extendedLocation: S.optional(
-      MarketplaceGalleryImagesGetResponseExtendedLocation,
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
     ),
   }),
 ).annotate({
@@ -7758,21 +7614,10 @@ export const MarketplaceGalleryImagesTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MarketplaceGalleryImagesTagsMap>;
 
 /** The complex type of the extended location. */
-export interface MarketplaceGalleryImagesExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const MarketplaceGalleryImagesExtendedLocation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-).annotate({
-  identifier: "MarketplaceGalleryImagesExtendedLocation",
-}) as any as S.Schema<MarketplaceGalleryImagesExtendedLocation>;
+export type MarketplaceGalleryImagesExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
+export const MarketplaceGalleryImagesExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The marketplace gallery image resource definition. */
 export interface MarketplaceGalleryImages {
@@ -7790,7 +7635,7 @@ export interface MarketplaceGalleryImages {
   location: string;
   properties?: MarketplaceGalleryImageProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: MarketplaceGalleryImagesExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const MarketplaceGalleryImages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7801,7 +7646,9 @@ export const MarketplaceGalleryImages = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(MarketplaceGalleryImagesTagsMap),
     location: S.String,
     properties: S.optional(MarketplaceGalleryImageProperties),
-    extendedLocation: S.optional(MarketplaceGalleryImagesExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "MarketplaceGalleryImages",
@@ -7897,21 +7744,10 @@ export const MarketplaceGalleryImagesUpdateResponseTagsMap =
   ) as any as S.Schema<MarketplaceGalleryImagesUpdateResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface MarketplaceGalleryImagesUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type MarketplaceGalleryImagesUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const MarketplaceGalleryImagesUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "MarketplaceGalleryImagesUpdateResponseExtendedLocation",
-  }) as any as S.Schema<MarketplaceGalleryImagesUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface MarketplaceGalleryImagesUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -7928,7 +7764,7 @@ export interface MarketplaceGalleryImagesUpdateResponse {
   location: string;
   properties?: MarketplaceGalleryImageProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: MarketplaceGalleryImagesUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const MarketplaceGalleryImagesUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -7941,7 +7777,7 @@ export const MarketplaceGalleryImagesUpdateResponse = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(MarketplaceGalleryImageProperties),
       extendedLocation: S.optional(
-        MarketplaceGalleryImagesUpdateResponseExtendedLocation,
+        GalleryImagesCreateOrUpdateResponseExtendedLocation,
       ),
     }),
 ).annotate({
@@ -8052,21 +7888,10 @@ export const NetworkInterfacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterfacePropertiesInput>;
 
 /** The complex type of the extended location. */
-export interface NetworkInterfacesCreateOrUpdateRequestExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
-}
+export type NetworkInterfacesCreateOrUpdateRequestExtendedLocation =
+  GalleryImagesCreateOrUpdateRequestExtendedLocation;
 export const NetworkInterfacesCreateOrUpdateRequestExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "NetworkInterfacesCreateOrUpdateRequestExtendedLocation",
-  }) as any as S.Schema<NetworkInterfacesCreateOrUpdateRequestExtendedLocation>;
+  GalleryImagesCreateOrUpdateRequestExtendedLocation;
 
 export interface NetworkInterfacesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -8081,7 +7906,7 @@ export interface NetworkInterfacesCreateOrUpdateRequest {
   location: string;
   properties?: NetworkInterfacePropertiesInput;
   /** The complex type of the extended location. */
-  extendedLocation?: NetworkInterfacesCreateOrUpdateRequestExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateRequestExtendedLocation;
 }
 export const NetworkInterfacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -8093,7 +7918,7 @@ export const NetworkInterfacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(NetworkInterfacePropertiesInput),
       extendedLocation: S.optional(
-        NetworkInterfacesCreateOrUpdateRequestExtendedLocation,
+        GalleryImagesCreateOrUpdateRequestExtendedLocation,
       ),
     }).pipe(
       T.Http({
@@ -8118,17 +7943,10 @@ export const NetworkInterfacesCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<NetworkInterfacesCreateOrUpdateResponseTagsMap>;
 
 /** Subnet - Name of Subnet bound to the IP configuration. */
-export interface IPConfigurationPropertiesSubnet {
-  /** ID - The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/... */
-  id?: string;
-}
-export const IPConfigurationPropertiesSubnet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IPConfigurationPropertiesSubnet",
-}) as any as S.Schema<IPConfigurationPropertiesSubnet>;
+export type IPConfigurationPropertiesSubnet =
+  IPConfigurationInputPropertiesSubnet;
+export const IPConfigurationPropertiesSubnet =
+  IPConfigurationInputPropertiesSubnet;
 
 /** InterfaceIPConfigurationPropertiesFormat properties of IP configuration. */
 export interface IPConfigurationProperties {
@@ -8139,14 +7957,14 @@ export interface IPConfigurationProperties {
   /** PrivateIPAddress - Private IP address of the IP configuration. */
   privateIPAddress?: string;
   /** Subnet - Name of Subnet bound to the IP configuration. */
-  subnet?: IPConfigurationPropertiesSubnet;
+  subnet?: IPConfigurationInputPropertiesSubnet;
 }
 export const IPConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gateway: S.optional(S.String),
     prefixLength: S.optional(S.String),
     privateIPAddress: S.optional(S.String),
-    subnet: S.optional(IPConfigurationPropertiesSubnet),
+    subnet: S.optional(IPConfigurationInputPropertiesSubnet),
   }),
 ).annotate({
   identifier: "IPConfigurationProperties",
@@ -8256,21 +8074,10 @@ export const NetworkInterfaceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterfaceProperties>;
 
 /** The complex type of the extended location. */
-export interface NetworkInterfacesCreateOrUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type NetworkInterfacesCreateOrUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const NetworkInterfacesCreateOrUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "NetworkInterfacesCreateOrUpdateResponseExtendedLocation",
-  }) as any as S.Schema<NetworkInterfacesCreateOrUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface NetworkInterfacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8287,7 +8094,7 @@ export interface NetworkInterfacesCreateOrUpdateResponse {
   location: string;
   properties?: NetworkInterfaceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: NetworkInterfacesCreateOrUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const NetworkInterfacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -8300,7 +8107,7 @@ export const NetworkInterfacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(NetworkInterfaceProperties),
       extendedLocation: S.optional(
-        NetworkInterfacesCreateOrUpdateResponseExtendedLocation,
+        GalleryImagesCreateOrUpdateResponseExtendedLocation,
       ),
     }),
 ).annotate({
@@ -8374,21 +8181,10 @@ export const NetworkInterfacesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkInterfacesGetResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface NetworkInterfacesGetResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type NetworkInterfacesGetResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const NetworkInterfacesGetResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "NetworkInterfacesGetResponseExtendedLocation",
-  }) as any as S.Schema<NetworkInterfacesGetResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface NetworkInterfacesGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8405,7 +8201,7 @@ export interface NetworkInterfacesGetResponse {
   location: string;
   properties?: NetworkInterfaceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: NetworkInterfacesGetResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const NetworkInterfacesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8416,7 +8212,9 @@ export const NetworkInterfacesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkInterfacesGetResponseTagsMap),
     location: S.String,
     properties: S.optional(NetworkInterfaceProperties),
-    extendedLocation: S.optional(NetworkInterfacesGetResponseExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "NetworkInterfacesGetResponse",
@@ -8452,20 +8250,10 @@ export const NetworkInterfacesTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkInterfacesTagsMap>;
 
 /** The complex type of the extended location. */
-export interface NetworkInterfacesExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const NetworkInterfacesExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "NetworkInterfacesExtendedLocation",
-}) as any as S.Schema<NetworkInterfacesExtendedLocation>;
+export type NetworkInterfacesExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
+export const NetworkInterfacesExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The network interface resource definition. */
 export interface NetworkInterfaces {
@@ -8483,7 +8271,7 @@ export interface NetworkInterfaces {
   location: string;
   properties?: NetworkInterfaceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: NetworkInterfacesExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const NetworkInterfaces = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8494,7 +8282,9 @@ export const NetworkInterfaces = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkInterfacesTagsMap),
     location: S.String,
     properties: S.optional(NetworkInterfaceProperties),
-    extendedLocation: S.optional(NetworkInterfacesExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "NetworkInterfaces",
@@ -8584,21 +8374,10 @@ export const NetworkInterfacesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkInterfacesUpdateResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface NetworkInterfacesUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type NetworkInterfacesUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const NetworkInterfacesUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "NetworkInterfacesUpdateResponseExtendedLocation",
-  }) as any as S.Schema<NetworkInterfacesUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface NetworkInterfacesUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -8615,7 +8394,7 @@ export interface NetworkInterfacesUpdateResponse {
   location: string;
   properties?: NetworkInterfaceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: NetworkInterfacesUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const NetworkInterfacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8627,7 +8406,7 @@ export const NetworkInterfacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(NetworkInterfaceProperties),
     extendedLocation: S.optional(
-      NetworkInterfacesUpdateResponseExtendedLocation,
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
     ),
   }),
 ).annotate({
@@ -9476,21 +9255,10 @@ export const StorageContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageContainerPropertiesInput>;
 
 /** The complex type of the extended location. */
-export interface StorageContainersCreateOrUpdateRequestExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
-}
+export type StorageContainersCreateOrUpdateRequestExtendedLocation =
+  GalleryImagesCreateOrUpdateRequestExtendedLocation;
 export const StorageContainersCreateOrUpdateRequestExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "StorageContainersCreateOrUpdateRequestExtendedLocation",
-  }) as any as S.Schema<StorageContainersCreateOrUpdateRequestExtendedLocation>;
+  GalleryImagesCreateOrUpdateRequestExtendedLocation;
 
 export interface StorageContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -9505,7 +9273,7 @@ export interface StorageContainersCreateOrUpdateRequest {
   location: string;
   properties?: StorageContainerPropertiesInput;
   /** The complex type of the extended location. */
-  extendedLocation?: StorageContainersCreateOrUpdateRequestExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateRequestExtendedLocation;
 }
 export const StorageContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -9517,7 +9285,7 @@ export const StorageContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(StorageContainerPropertiesInput),
       extendedLocation: S.optional(
-        StorageContainersCreateOrUpdateRequestExtendedLocation,
+        GalleryImagesCreateOrUpdateRequestExtendedLocation,
       ),
     }).pipe(
       T.Http({
@@ -9619,21 +9387,10 @@ export const StorageContainerProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageContainerProperties>;
 
 /** The complex type of the extended location. */
-export interface StorageContainersCreateOrUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type StorageContainersCreateOrUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const StorageContainersCreateOrUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "StorageContainersCreateOrUpdateResponseExtendedLocation",
-  }) as any as S.Schema<StorageContainersCreateOrUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface StorageContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9650,7 +9407,7 @@ export interface StorageContainersCreateOrUpdateResponse {
   location: string;
   properties?: StorageContainerProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: StorageContainersCreateOrUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const StorageContainersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -9663,7 +9420,7 @@ export const StorageContainersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(StorageContainerProperties),
       extendedLocation: S.optional(
-        StorageContainersCreateOrUpdateResponseExtendedLocation,
+        GalleryImagesCreateOrUpdateResponseExtendedLocation,
       ),
     }),
 ).annotate({
@@ -9737,21 +9494,10 @@ export const StorageContainersGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageContainersGetResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface StorageContainersGetResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type StorageContainersGetResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const StorageContainersGetResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "StorageContainersGetResponseExtendedLocation",
-  }) as any as S.Schema<StorageContainersGetResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface StorageContainersGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9768,7 +9514,7 @@ export interface StorageContainersGetResponse {
   location: string;
   properties?: StorageContainerProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: StorageContainersGetResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const StorageContainersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9779,7 +9525,9 @@ export const StorageContainersGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(StorageContainersGetResponseTagsMap),
     location: S.String,
     properties: S.optional(StorageContainerProperties),
-    extendedLocation: S.optional(StorageContainersGetResponseExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "StorageContainersGetResponse",
@@ -9815,20 +9563,10 @@ export const StorageContainersTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageContainersTagsMap>;
 
 /** The complex type of the extended location. */
-export interface StorageContainersExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const StorageContainersExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "StorageContainersExtendedLocation",
-}) as any as S.Schema<StorageContainersExtendedLocation>;
+export type StorageContainersExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
+export const StorageContainersExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The storage container resource definition. */
 export interface StorageContainers {
@@ -9846,7 +9584,7 @@ export interface StorageContainers {
   location: string;
   properties?: StorageContainerProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: StorageContainersExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const StorageContainers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9857,7 +9595,9 @@ export const StorageContainers = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(StorageContainersTagsMap),
     location: S.String,
     properties: S.optional(StorageContainerProperties),
-    extendedLocation: S.optional(StorageContainersExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "StorageContainers",
@@ -9947,21 +9687,10 @@ export const StorageContainersUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageContainersUpdateResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface StorageContainersUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type StorageContainersUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const StorageContainersUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "StorageContainersUpdateResponseExtendedLocation",
-  }) as any as S.Schema<StorageContainersUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface StorageContainersUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -9978,7 +9707,7 @@ export interface StorageContainersUpdateResponse {
   location: string;
   properties?: StorageContainerProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: StorageContainersUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const StorageContainersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9990,7 +9719,7 @@ export const StorageContainersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(StorageContainerProperties),
     extendedLocation: S.optional(
-      StorageContainersUpdateResponseExtendedLocation,
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
     ),
   }),
 ).annotate({
@@ -11794,21 +11523,10 @@ export const VirtualHardDiskPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualHardDiskPropertiesInput>;
 
 /** The complex type of the extended location. */
-export interface VirtualHardDisksCreateOrUpdateRequestExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
-}
+export type VirtualHardDisksCreateOrUpdateRequestExtendedLocation =
+  GalleryImagesCreateOrUpdateRequestExtendedLocation;
 export const VirtualHardDisksCreateOrUpdateRequestExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "VirtualHardDisksCreateOrUpdateRequestExtendedLocation",
-  }) as any as S.Schema<VirtualHardDisksCreateOrUpdateRequestExtendedLocation>;
+  GalleryImagesCreateOrUpdateRequestExtendedLocation;
 
 export interface VirtualHardDisksCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -11823,7 +11541,7 @@ export interface VirtualHardDisksCreateOrUpdateRequest {
   location: string;
   properties?: VirtualHardDiskPropertiesInput;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualHardDisksCreateOrUpdateRequestExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateRequestExtendedLocation;
 }
 export const VirtualHardDisksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -11835,7 +11553,7 @@ export const VirtualHardDisksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(VirtualHardDiskPropertiesInput),
       extendedLocation: S.optional(
-        VirtualHardDisksCreateOrUpdateRequestExtendedLocation,
+        GalleryImagesCreateOrUpdateRequestExtendedLocation,
       ),
     }).pipe(
       T.Http({
@@ -11957,21 +11675,10 @@ export const VirtualHardDiskProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualHardDiskProperties>;
 
 /** The complex type of the extended location. */
-export interface VirtualHardDisksCreateOrUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type VirtualHardDisksCreateOrUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const VirtualHardDisksCreateOrUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "VirtualHardDisksCreateOrUpdateResponseExtendedLocation",
-  }) as any as S.Schema<VirtualHardDisksCreateOrUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface VirtualHardDisksCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11988,7 +11695,7 @@ export interface VirtualHardDisksCreateOrUpdateResponse {
   location: string;
   properties?: VirtualHardDiskProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualHardDisksCreateOrUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const VirtualHardDisksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -12001,7 +11708,7 @@ export const VirtualHardDisksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(VirtualHardDiskProperties),
       extendedLocation: S.optional(
-        VirtualHardDisksCreateOrUpdateResponseExtendedLocation,
+        GalleryImagesCreateOrUpdateResponseExtendedLocation,
       ),
     }),
 ).annotate({
@@ -12075,21 +11782,10 @@ export const VirtualHardDisksGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VirtualHardDisksGetResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface VirtualHardDisksGetResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type VirtualHardDisksGetResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const VirtualHardDisksGetResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "VirtualHardDisksGetResponseExtendedLocation",
-  }) as any as S.Schema<VirtualHardDisksGetResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface VirtualHardDisksGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -12106,7 +11802,7 @@ export interface VirtualHardDisksGetResponse {
   location: string;
   properties?: VirtualHardDiskProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualHardDisksGetResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const VirtualHardDisksGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12117,7 +11813,9 @@ export const VirtualHardDisksGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(VirtualHardDisksGetResponseTagsMap),
     location: S.String,
     properties: S.optional(VirtualHardDiskProperties),
-    extendedLocation: S.optional(VirtualHardDisksGetResponseExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "VirtualHardDisksGetResponse",
@@ -12153,20 +11851,10 @@ export const VirtualHardDisksTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VirtualHardDisksTagsMap>;
 
 /** The complex type of the extended location. */
-export interface VirtualHardDisksExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const VirtualHardDisksExtendedLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "VirtualHardDisksExtendedLocation",
-}) as any as S.Schema<VirtualHardDisksExtendedLocation>;
+export type VirtualHardDisksExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
+export const VirtualHardDisksExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The virtual hard disk resource definition. */
 export interface VirtualHardDisks {
@@ -12184,7 +11872,7 @@ export interface VirtualHardDisks {
   location: string;
   properties?: VirtualHardDiskProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualHardDisksExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const VirtualHardDisks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12195,7 +11883,9 @@ export const VirtualHardDisks = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(VirtualHardDisksTagsMap),
     location: S.String,
     properties: S.optional(VirtualHardDiskProperties),
-    extendedLocation: S.optional(VirtualHardDisksExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
   }),
 ).annotate({
   identifier: "VirtualHardDisks",
@@ -12285,21 +11975,10 @@ export const VirtualHardDisksUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<VirtualHardDisksUpdateResponseTagsMap>;
 
 /** The complex type of the extended location. */
-export interface VirtualHardDisksUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type VirtualHardDisksUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const VirtualHardDisksUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "VirtualHardDisksUpdateResponseExtendedLocation",
-  }) as any as S.Schema<VirtualHardDisksUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 export interface VirtualHardDisksUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -12316,7 +11995,7 @@ export interface VirtualHardDisksUpdateResponse {
   location: string;
   properties?: VirtualHardDiskProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualHardDisksUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
 }
 export const VirtualHardDisksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12328,7 +12007,7 @@ export const VirtualHardDisksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(VirtualHardDiskProperties),
     extendedLocation: S.optional(
-      VirtualHardDisksUpdateResponseExtendedLocation,
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
     ),
   }),
 ).annotate({
@@ -12727,12 +12406,8 @@ export const HttpProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpProxyConfiguration>;
 
 /** Defines the status of a guest agent installation. */
-export interface GuestAgentInstallStatusInput {}
-export const GuestAgentInstallStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GuestAgentInstallStatusInput",
-}) as any as S.Schema<GuestAgentInstallStatusInput>;
+export type GuestAgentInstallStatusInput = LogCollectionPropertiesInput;
+export const GuestAgentInstallStatusInput = LogCollectionPropertiesInput;
 
 /** Properties under the virtual machine instance resource */
 export interface VirtualMachineInstancePropertiesInput {
@@ -12749,7 +12424,7 @@ export interface VirtualMachineInstancePropertiesInput {
   /** HTTP Proxy configuration for the VM. */
   httpProxyConfig?: HttpProxyConfiguration;
   /** Guest agent install status. */
-  guestAgentInstallStatus?: GuestAgentInstallStatusInput;
+  guestAgentInstallStatus?: LogCollectionPropertiesInput;
   /** Unique identifier defined by ARC to identify the guest of the VM. */
   resourceUid?: string;
 }
@@ -12770,7 +12445,7 @@ export const VirtualMachineInstancePropertiesInput = /*@__PURE__*/ S.suspend(
         VirtualMachineInstancePropertiesInputStorageProfile,
       ),
       httpProxyConfig: S.optional(HttpProxyConfiguration),
-      guestAgentInstallStatus: S.optional(GuestAgentInstallStatusInput),
+      guestAgentInstallStatus: S.optional(LogCollectionPropertiesInput),
       resourceUid: S.optional(S.String),
     }),
 ).annotate({
@@ -12778,21 +12453,10 @@ export const VirtualMachineInstancePropertiesInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VirtualMachineInstancePropertiesInput>;
 
 /** The complex type of the extended location. */
-export interface VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType | (string & {});
-}
+export type VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation =
+  GalleryImagesCreateOrUpdateRequestExtendedLocation;
 export const VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation",
-  }) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation>;
+  GalleryImagesCreateOrUpdateRequestExtendedLocation;
 
 /** The identity type. */
 export type VirtualMachineInstancesCreateOrUpdateRequestIdentityType =
@@ -12823,7 +12487,7 @@ export interface VirtualMachineInstancesCreateOrUpdateRequest {
   resourceUri: string;
   properties?: VirtualMachineInstancePropertiesInput;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateRequestExtendedLocation;
   /** Identity for the resource. */
   identity?: VirtualMachineInstancesCreateOrUpdateRequestIdentity;
 }
@@ -12833,7 +12497,7 @@ export const VirtualMachineInstancesCreateOrUpdateRequest =
       resourceUri: S.String.pipe(T.Label()),
       properties: S.optional(VirtualMachineInstancePropertiesInput),
       extendedLocation: S.optional(
-        VirtualMachineInstancesCreateOrUpdateRequestExtendedLocation,
+        GalleryImagesCreateOrUpdateRequestExtendedLocation,
       ),
       identity: S.optional(
         VirtualMachineInstancesCreateOrUpdateRequestIdentity,
@@ -12877,23 +12541,10 @@ export type VirtualMachineInstancePropertiesHardwareProfileVmSize =
 export const VirtualMachineInstancePropertiesHardwareProfileVmSize =
   /*@__PURE__*/ S.String;
 
-export interface VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig {
-  maximumMemoryMB?: number;
-  minimumMemoryMB?: number;
-  /** Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need. This only applies to virtual systems with dynamic memory enabled. This property can be in the range of 5 to 2000. */
-  targetMemoryBuffer?: number;
-}
+export type VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig =
+  VirtualMachineInstancePropertiesInputHardwareProfileDynamicMemoryConfig;
 export const VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maximumMemoryMB: S.optional(S.Number),
-      minimumMemoryMB: S.optional(S.Number),
-      targetMemoryBuffer: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig",
-  }) as any as S.Schema<VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig>;
+  VirtualMachineInstancePropertiesInputHardwareProfileDynamicMemoryConfig;
 
 /** HardwareProfile - Specifies the hardware settings for the virtual machine instance. */
 export interface VirtualMachineInstancePropertiesHardwareProfile {
@@ -12902,7 +12553,7 @@ export interface VirtualMachineInstancePropertiesHardwareProfile {
   processors?: number;
   /** RAM in MB for the virtual machine instance */
   memoryMB?: number;
-  dynamicMemoryConfig?: VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig;
+  dynamicMemoryConfig?: VirtualMachineInstancePropertiesInputHardwareProfileDynamicMemoryConfig;
 }
 export const VirtualMachineInstancePropertiesHardwareProfile =
   /*@__PURE__*/ S.suspend(() =>
@@ -12911,33 +12562,24 @@ export const VirtualMachineInstancePropertiesHardwareProfile =
       processors: S.optional(S.Number),
       memoryMB: S.optional(S.Number),
       dynamicMemoryConfig: S.optional(
-        VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig,
+        VirtualMachineInstancePropertiesInputHardwareProfileDynamicMemoryConfig,
       ),
     }),
   ).annotate({
     identifier: "VirtualMachineInstancePropertiesHardwareProfile",
   }) as any as S.Schema<VirtualMachineInstancePropertiesHardwareProfile>;
 
-export interface VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem {
-  /** ID - Resource Id of the network interface */
-  id?: string;
-}
+export type VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem =
+  VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesItem;
 export const VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem",
-  }) as any as S.Schema<VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem>;
+  VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesItem;
 
 /** NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance */
 export type VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList =
-  Array<VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem>;
+  Array<VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesItem>;
 export const VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList =
   /*@__PURE__*/ S.Array(
-    VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem,
+    VirtualMachineInstancePropertiesInputNetworkProfileNetworkInterfacesItem,
   ) as any as S.Schema<VirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesList>;
 
 /** NetworkProfile - describes the network configuration the virtual machine instance */
@@ -12957,96 +12599,27 @@ export const VirtualMachineInstancePropertiesNetworkProfile =
   }) as any as S.Schema<VirtualMachineInstancePropertiesNetworkProfile>;
 
 /** LinuxConfiguration - linux specific configuration values for the virtual machine instance */
-export interface VirtualMachineInstancePropertiesOsProfileLinuxConfiguration {
-  /** DisablePasswordAuthentication - whether password authentication should be disabled */
-  disablePasswordAuthentication?: boolean;
-  /** Specifies the ssh key configuration for a Linux OS. */
-  ssh?: SshConfiguration;
-  /** Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process. */
-  provisionVMAgent?: boolean;
-  /** Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process. */
-  provisionVMConfigAgent?: boolean;
-}
+export type VirtualMachineInstancePropertiesOsProfileLinuxConfiguration =
+  VirtualMachineInstancePropertiesInputOsProfileLinuxConfiguration;
 export const VirtualMachineInstancePropertiesOsProfileLinuxConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disablePasswordAuthentication: S.optional(S.Boolean),
-      ssh: S.optional(SshConfiguration),
-      provisionVMAgent: S.optional(S.Boolean),
-      provisionVMConfigAgent: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancePropertiesOsProfileLinuxConfiguration",
-  }) as any as S.Schema<VirtualMachineInstancePropertiesOsProfileLinuxConfiguration>;
+  VirtualMachineInstancePropertiesInputOsProfileLinuxConfiguration;
 
 /** Windows Configuration for the virtual machine instance */
-export interface VirtualMachineInstancePropertiesOsProfileWindowsConfiguration {
-  /** Whether to EnableAutomaticUpdates on the machine */
-  enableAutomaticUpdates?: boolean;
-  /** Specifies the ssh key configuration for Windows OS. */
-  ssh?: SshConfiguration;
-  /** TimeZone for the virtual machine instance */
-  timeZone?: string;
-  /** Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process. */
-  provisionVMAgent?: boolean;
-  /** Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process. */
-  provisionVMConfigAgent?: boolean;
-}
+export type VirtualMachineInstancePropertiesOsProfileWindowsConfiguration =
+  VirtualMachineInstancePropertiesInputOsProfileWindowsConfiguration;
 export const VirtualMachineInstancePropertiesOsProfileWindowsConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enableAutomaticUpdates: S.optional(S.Boolean),
-      ssh: S.optional(SshConfiguration),
-      timeZone: S.optional(S.String),
-      provisionVMAgent: S.optional(S.Boolean),
-      provisionVMConfigAgent: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancePropertiesOsProfileWindowsConfiguration",
-  }) as any as S.Schema<VirtualMachineInstancePropertiesOsProfileWindowsConfiguration>;
+  VirtualMachineInstancePropertiesInputOsProfileWindowsConfiguration;
 
 /** OsProfile - describes the configuration of the operating system and sets login data */
-export interface VirtualMachineInstancePropertiesOsProfile {
-  /** AdminPassword - admin password */
-  adminPassword?: string | Redacted.Redacted<string>;
-  /** AdminUsername - admin username */
-  adminUsername?: string;
-  /** ComputerName - name of the compute */
-  computerName?: string;
-  /** LinuxConfiguration - linux specific configuration values for the virtual machine instance */
-  linuxConfiguration?: VirtualMachineInstancePropertiesOsProfileLinuxConfiguration;
-  /** Windows Configuration for the virtual machine instance */
-  windowsConfiguration?: VirtualMachineInstancePropertiesOsProfileWindowsConfiguration;
-}
+export type VirtualMachineInstancePropertiesOsProfile =
+  VirtualMachineInstancePropertiesInputOsProfile;
 export const VirtualMachineInstancePropertiesOsProfile =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-      adminUsername: S.optional(S.String),
-      computerName: S.optional(S.String),
-      linuxConfiguration: S.optional(
-        VirtualMachineInstancePropertiesOsProfileLinuxConfiguration,
-      ),
-      windowsConfiguration: S.optional(
-        VirtualMachineInstancePropertiesOsProfileWindowsConfiguration,
-      ),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancePropertiesOsProfile",
-  }) as any as S.Schema<VirtualMachineInstancePropertiesOsProfile>;
+  VirtualMachineInstancePropertiesInputOsProfile;
 
-export interface VirtualMachineInstancePropertiesSecurityProfileUefiSettings {
-  /** Specifies whether secure boot should be enabled on the virtual machine instance. */
-  secureBootEnabled?: boolean;
-}
+export type VirtualMachineInstancePropertiesSecurityProfileUefiSettings =
+  VirtualMachineInstancePropertiesInputSecurityProfileUefiSettings;
 export const VirtualMachineInstancePropertiesSecurityProfileUefiSettings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      secureBootEnabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancePropertiesSecurityProfileUefiSettings",
-  }) as any as S.Schema<VirtualMachineInstancePropertiesSecurityProfileUefiSettings>;
+  VirtualMachineInstancePropertiesInputSecurityProfileUefiSettings;
 
 /** Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function. */
 export type VirtualMachineInstancePropertiesSecurityProfileSecurityType =
@@ -13058,7 +12631,7 @@ export const VirtualMachineInstancePropertiesSecurityProfileSecurityType =
 /** SecurityProfile - Specifies the security settings for the virtual machine instance. */
 export interface VirtualMachineInstancePropertiesSecurityProfile {
   enableTPM?: boolean;
-  uefiSettings?: VirtualMachineInstancePropertiesSecurityProfileUefiSettings;
+  uefiSettings?: VirtualMachineInstancePropertiesInputSecurityProfileUefiSettings;
   /** Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function. */
   securityType?: VirtualMachineInstancePropertiesSecurityProfileSecurityType;
 }
@@ -13067,7 +12640,7 @@ export const VirtualMachineInstancePropertiesSecurityProfile =
     S.Struct({
       enableTPM: S.optional(S.Boolean),
       uefiSettings: S.optional(
-        VirtualMachineInstancePropertiesSecurityProfileUefiSettings,
+        VirtualMachineInstancePropertiesInputSecurityProfileUefiSettings,
       ),
       securityType: S.optional(
         VirtualMachineInstancePropertiesSecurityProfileSecurityType,
@@ -13077,40 +12650,24 @@ export const VirtualMachineInstancePropertiesSecurityProfile =
     identifier: "VirtualMachineInstancePropertiesSecurityProfile",
   }) as any as S.Schema<VirtualMachineInstancePropertiesSecurityProfile>;
 
-export interface VirtualMachineInstancePropertiesStorageProfileDataDisksItem {
-  /** Resource ID of the data disk */
-  id?: string;
-}
+export type VirtualMachineInstancePropertiesStorageProfileDataDisksItem =
+  VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem;
 export const VirtualMachineInstancePropertiesStorageProfileDataDisksItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancePropertiesStorageProfileDataDisksItem",
-  }) as any as S.Schema<VirtualMachineInstancePropertiesStorageProfileDataDisksItem>;
+  VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem;
 
 /** adds data disks to the virtual machine instance */
 export type VirtualMachineInstancePropertiesStorageProfileDataDisksList =
-  Array<VirtualMachineInstancePropertiesStorageProfileDataDisksItem>;
+  Array<VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem>;
 export const VirtualMachineInstancePropertiesStorageProfileDataDisksList =
   /*@__PURE__*/ S.Array(
-    VirtualMachineInstancePropertiesStorageProfileDataDisksItem,
+    VirtualMachineInstancePropertiesInputStorageProfileDataDisksItem,
   ) as any as S.Schema<VirtualMachineInstancePropertiesStorageProfileDataDisksList>;
 
 /** Which Image to use for the virtual machine instance */
-export interface VirtualMachineInstancePropertiesStorageProfileImageReference {
-  /** Resource ID of the image */
-  id?: string;
-}
+export type VirtualMachineInstancePropertiesStorageProfileImageReference =
+  VirtualMachineInstancePropertiesInputStorageProfileImageReference;
 export const VirtualMachineInstancePropertiesStorageProfileImageReference =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancePropertiesStorageProfileImageReference",
-  }) as any as S.Schema<VirtualMachineInstancePropertiesStorageProfileImageReference>;
+  VirtualMachineInstancePropertiesInputStorageProfileImageReference;
 
 /** This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.** */
 export type VirtualMachineInstancePropertiesStorageProfileOsDiskOsType =
@@ -13143,7 +12700,7 @@ export interface VirtualMachineInstancePropertiesStorageProfile {
   /** adds data disks to the virtual machine instance */
   dataDisks?: VirtualMachineInstancePropertiesStorageProfileDataDisksList;
   /** Which Image to use for the virtual machine instance */
-  imageReference?: VirtualMachineInstancePropertiesStorageProfileImageReference;
+  imageReference?: VirtualMachineInstancePropertiesInputStorageProfileImageReference;
   /** VHD to attach as OS disk */
   osDisk?: VirtualMachineInstancePropertiesStorageProfileOsDisk;
   /** Id of the storage container that hosts the VM configuration file */
@@ -13156,7 +12713,7 @@ export const VirtualMachineInstancePropertiesStorageProfile =
         VirtualMachineInstancePropertiesStorageProfileDataDisksList,
       ),
       imageReference: S.optional(
-        VirtualMachineInstancePropertiesStorageProfileImageReference,
+        VirtualMachineInstancePropertiesInputStorageProfileImageReference,
       ),
       osDisk: S.optional(VirtualMachineInstancePropertiesStorageProfileOsDisk),
       vmConfigStoragePathId: S.optional(S.String),
@@ -13442,7 +12999,7 @@ export interface VirtualMachineInstanceProperties {
   /** NetworkProfile - describes the network configuration the virtual machine instance */
   networkProfile?: VirtualMachineInstancePropertiesNetworkProfile;
   /** OsProfile - describes the configuration of the operating system and sets login data */
-  osProfile?: VirtualMachineInstancePropertiesOsProfile;
+  osProfile?: VirtualMachineInstancePropertiesInputOsProfile;
   /** SecurityProfile - Specifies the security settings for the virtual machine instance. */
   securityProfile?: VirtualMachineInstancePropertiesSecurityProfile;
   /** StorageProfile - contains information about the disks and storage information for the virtual machine instance */
@@ -13467,7 +13024,7 @@ export const VirtualMachineInstanceProperties = /*@__PURE__*/ S.suspend(() =>
       VirtualMachineInstancePropertiesHardwareProfile,
     ),
     networkProfile: S.optional(VirtualMachineInstancePropertiesNetworkProfile),
-    osProfile: S.optional(VirtualMachineInstancePropertiesOsProfile),
+    osProfile: S.optional(VirtualMachineInstancePropertiesInputOsProfile),
     securityProfile: S.optional(
       VirtualMachineInstancePropertiesSecurityProfile,
     ),
@@ -13487,21 +13044,10 @@ export const VirtualMachineInstanceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineInstanceProperties>;
 
 /** The complex type of the extended location. */
-export interface VirtualMachineInstancesCreateOrUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type VirtualMachineInstancesCreateOrUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const VirtualMachineInstancesCreateOrUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancesCreateOrUpdateResponseExtendedLocation",
-  }) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The identity type. */
 export type VirtualMachineInstancesCreateOrUpdateResponseIdentityType =
@@ -13542,7 +13088,7 @@ export interface VirtualMachineInstancesCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: VirtualMachineInstanceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualMachineInstancesCreateOrUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
   /** Identity for the resource. */
   identity?: VirtualMachineInstancesCreateOrUpdateResponseIdentity;
 }
@@ -13555,7 +13101,7 @@ export const VirtualMachineInstancesCreateOrUpdateResponse =
       systemData: S.optional(SystemData),
       properties: S.optional(VirtualMachineInstanceProperties),
       extendedLocation: S.optional(
-        VirtualMachineInstancesCreateOrUpdateResponseExtendedLocation,
+        GalleryImagesCreateOrUpdateResponseExtendedLocation,
       ),
       identity: S.optional(
         VirtualMachineInstancesCreateOrUpdateResponseIdentity,
@@ -13612,21 +13158,10 @@ export const VirtualMachineInstancesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineInstancesGetRequest>;
 
 /** The complex type of the extended location. */
-export interface VirtualMachineInstancesGetResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type VirtualMachineInstancesGetResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const VirtualMachineInstancesGetResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancesGetResponseExtendedLocation",
-  }) as any as S.Schema<VirtualMachineInstancesGetResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The identity type. */
 export type VirtualMachineInstancesGetResponseIdentityType = "SystemAssigned";
@@ -13664,7 +13199,7 @@ export interface VirtualMachineInstancesGetResponse {
   systemData?: SystemData;
   properties?: VirtualMachineInstanceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualMachineInstancesGetResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
   /** Identity for the resource. */
   identity?: VirtualMachineInstancesGetResponseIdentity;
 }
@@ -13676,7 +13211,7 @@ export const VirtualMachineInstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     properties: S.optional(VirtualMachineInstanceProperties),
     extendedLocation: S.optional(
-      VirtualMachineInstancesGetResponseExtendedLocation,
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
     ),
     identity: S.optional(VirtualMachineInstancesGetResponseIdentity),
   }),
@@ -13704,21 +13239,10 @@ export const VirtualMachineInstancesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineInstancesListRequest>;
 
 /** The complex type of the extended location. */
-export interface VirtualMachineInstanceExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
-export const VirtualMachineInstanceExtendedLocation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-).annotate({
-  identifier: "VirtualMachineInstanceExtendedLocation",
-}) as any as S.Schema<VirtualMachineInstanceExtendedLocation>;
+export type VirtualMachineInstanceExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
+export const VirtualMachineInstanceExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The identity type. */
 export type VirtualMachineInstanceIdentityType = "SystemAssigned";
@@ -13755,7 +13279,7 @@ export interface VirtualMachineInstance {
   systemData?: SystemData;
   properties?: VirtualMachineInstanceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualMachineInstanceExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
   /** Identity for the resource. */
   identity?: VirtualMachineInstanceIdentity;
 }
@@ -13766,7 +13290,9 @@ export const VirtualMachineInstance = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(VirtualMachineInstanceProperties),
-    extendedLocation: S.optional(VirtualMachineInstanceExtendedLocation),
+    extendedLocation: S.optional(
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
+    ),
     identity: S.optional(VirtualMachineInstanceIdentity),
   }),
 ).annotate({
@@ -13813,21 +13339,10 @@ export const VirtualMachineInstancesRestartRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VirtualMachineInstancesRestartRequest>;
 
 /** The complex type of the extended location. */
-export interface VirtualMachineInstancesRestartResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type VirtualMachineInstancesRestartResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const VirtualMachineInstancesRestartResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancesRestartResponseExtendedLocation",
-  }) as any as S.Schema<VirtualMachineInstancesRestartResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The identity type. */
 export type VirtualMachineInstancesRestartResponseIdentityType =
@@ -13866,7 +13381,7 @@ export interface VirtualMachineInstancesRestartResponse {
   systemData?: SystemData;
   properties?: VirtualMachineInstanceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualMachineInstancesRestartResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
   /** Identity for the resource. */
   identity?: VirtualMachineInstancesRestartResponseIdentity;
 }
@@ -13879,7 +13394,7 @@ export const VirtualMachineInstancesRestartResponse = /*@__PURE__*/ S.suspend(
       systemData: S.optional(SystemData),
       properties: S.optional(VirtualMachineInstanceProperties),
       extendedLocation: S.optional(
-        VirtualMachineInstancesRestartResponseExtendedLocation,
+        GalleryImagesCreateOrUpdateResponseExtendedLocation,
       ),
       identity: S.optional(VirtualMachineInstancesRestartResponseIdentity),
     }),
@@ -13907,21 +13422,10 @@ export const VirtualMachineInstancesStartRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineInstancesStartRequest>;
 
 /** The complex type of the extended location. */
-export interface VirtualMachineInstancesStartResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type VirtualMachineInstancesStartResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const VirtualMachineInstancesStartResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancesStartResponseExtendedLocation",
-  }) as any as S.Schema<VirtualMachineInstancesStartResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The identity type. */
 export type VirtualMachineInstancesStartResponseIdentityType = "SystemAssigned";
@@ -13959,7 +13463,7 @@ export interface VirtualMachineInstancesStartResponse {
   systemData?: SystemData;
   properties?: VirtualMachineInstanceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualMachineInstancesStartResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
   /** Identity for the resource. */
   identity?: VirtualMachineInstancesStartResponseIdentity;
 }
@@ -13972,7 +13476,7 @@ export const VirtualMachineInstancesStartResponse = /*@__PURE__*/ S.suspend(
       systemData: S.optional(SystemData),
       properties: S.optional(VirtualMachineInstanceProperties),
       extendedLocation: S.optional(
-        VirtualMachineInstancesStartResponseExtendedLocation,
+        GalleryImagesCreateOrUpdateResponseExtendedLocation,
       ),
       identity: S.optional(VirtualMachineInstancesStartResponseIdentity),
     }),
@@ -14000,21 +13504,10 @@ export const VirtualMachineInstancesStopRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachineInstancesStopRequest>;
 
 /** The complex type of the extended location. */
-export interface VirtualMachineInstancesStopResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type VirtualMachineInstancesStopResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const VirtualMachineInstancesStopResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancesStopResponseExtendedLocation",
-  }) as any as S.Schema<VirtualMachineInstancesStopResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The identity type. */
 export type VirtualMachineInstancesStopResponseIdentityType = "SystemAssigned";
@@ -14052,7 +13545,7 @@ export interface VirtualMachineInstancesStopResponse {
   systemData?: SystemData;
   properties?: VirtualMachineInstanceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualMachineInstancesStopResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
   /** Identity for the resource. */
   identity?: VirtualMachineInstancesStopResponseIdentity;
 }
@@ -14064,7 +13557,7 @@ export const VirtualMachineInstancesStopResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     properties: S.optional(VirtualMachineInstanceProperties),
     extendedLocation: S.optional(
-      VirtualMachineInstancesStopResponseExtendedLocation,
+      GalleryImagesCreateOrUpdateResponseExtendedLocation,
     ),
     identity: S.optional(VirtualMachineInstancesStopResponseIdentity),
   }),
@@ -14194,33 +13687,23 @@ export const OsProfileUpdateLinuxConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "OsProfileUpdateLinuxConfiguration",
 }) as any as S.Schema<OsProfileUpdateLinuxConfiguration>;
 
-export interface OsProfileUpdateWindowsConfiguration {
-  /** Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process. */
-  provisionVMAgent?: boolean;
-  /** Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process. */
-  provisionVMConfigAgent?: boolean;
-}
-export const OsProfileUpdateWindowsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisionVMAgent: S.optional(S.Boolean),
-    provisionVMConfigAgent: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "OsProfileUpdateWindowsConfiguration",
-}) as any as S.Schema<OsProfileUpdateWindowsConfiguration>;
+export type OsProfileUpdateWindowsConfiguration =
+  OsProfileUpdateLinuxConfiguration;
+export const OsProfileUpdateWindowsConfiguration =
+  OsProfileUpdateLinuxConfiguration;
 
 /** OsProfile - describes the update configuration of the operating system */
 export interface OsProfileUpdate {
   /** ComputerName - name of the computer */
   computerName?: string;
   linuxConfiguration?: OsProfileUpdateLinuxConfiguration;
-  windowsConfiguration?: OsProfileUpdateWindowsConfiguration;
+  windowsConfiguration?: OsProfileUpdateLinuxConfiguration;
 }
 export const OsProfileUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computerName: S.optional(S.String),
     linuxConfiguration: S.optional(OsProfileUpdateLinuxConfiguration),
-    windowsConfiguration: S.optional(OsProfileUpdateWindowsConfiguration),
+    windowsConfiguration: S.optional(OsProfileUpdateLinuxConfiguration),
   }),
 ).annotate({
   identifier: "OsProfileUpdate",
@@ -14290,21 +13773,10 @@ export const VirtualMachineInstancesUpdateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<VirtualMachineInstancesUpdateRequest>;
 
 /** The complex type of the extended location. */
-export interface VirtualMachineInstancesUpdateResponseExtendedLocation {
-  /** The name of the extended location. */
-  name?: string;
-  /** The type of the extended location. */
-  type?: ExtendedLocationType;
-}
+export type VirtualMachineInstancesUpdateResponseExtendedLocation =
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 export const VirtualMachineInstancesUpdateResponseExtendedLocation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(ExtendedLocationType),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineInstancesUpdateResponseExtendedLocation",
-  }) as any as S.Schema<VirtualMachineInstancesUpdateResponseExtendedLocation>;
+  GalleryImagesCreateOrUpdateResponseExtendedLocation;
 
 /** The identity type. */
 export type VirtualMachineInstancesUpdateResponseIdentityType =
@@ -14343,7 +13815,7 @@ export interface VirtualMachineInstancesUpdateResponse {
   systemData?: SystemData;
   properties?: VirtualMachineInstanceProperties;
   /** The complex type of the extended location. */
-  extendedLocation?: VirtualMachineInstancesUpdateResponseExtendedLocation;
+  extendedLocation?: GalleryImagesCreateOrUpdateResponseExtendedLocation;
   /** Identity for the resource. */
   identity?: VirtualMachineInstancesUpdateResponseIdentity;
 }
@@ -14356,7 +13828,7 @@ export const VirtualMachineInstancesUpdateResponse = /*@__PURE__*/ S.suspend(
       systemData: S.optional(SystemData),
       properties: S.optional(VirtualMachineInstanceProperties),
       extendedLocation: S.optional(
-        VirtualMachineInstancesUpdateResponseExtendedLocation,
+        GalleryImagesCreateOrUpdateResponseExtendedLocation,
       ),
       identity: S.optional(VirtualMachineInstancesUpdateResponseIdentity),
     }),

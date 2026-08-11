@@ -456,24 +456,10 @@ export const DeidServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DeidServicesGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface DeidServicesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const DeidServicesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "DeidServicesGetResponseIdentity",
-}) as any as S.Schema<DeidServicesGetResponseIdentity>;
+export type DeidServicesGetResponseIdentity =
+  DeidServicesCreateResponseIdentity;
+export const DeidServicesGetResponseIdentity =
+  DeidServicesCreateResponseIdentity;
 
 export interface DeidServicesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -491,7 +477,7 @@ export interface DeidServicesGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeidServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: DeidServicesGetResponseIdentity;
+  identity?: DeidServicesCreateResponseIdentity;
 }
 export const DeidServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -502,7 +488,7 @@ export const DeidServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DeidServicesGetResponseTagsMap),
     location: S.String,
     properties: S.optional(DeidServiceProperties),
-    identity: S.optional(DeidServicesGetResponseIdentity),
+    identity: S.optional(DeidServicesCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "DeidServicesGetResponse",
@@ -539,24 +525,8 @@ export const DeidServiceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DeidServiceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface DeidServiceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const DeidServiceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "DeidServiceIdentity",
-}) as any as S.Schema<DeidServiceIdentity>;
+export type DeidServiceIdentity = DeidServicesCreateResponseIdentity;
+export const DeidServiceIdentity = DeidServicesCreateResponseIdentity;
 
 /** A HealthDataAIServicesProviderHub resource */
 export interface DeidService {
@@ -575,7 +545,7 @@ export interface DeidService {
   /** The resource-specific properties for this resource. */
   properties?: DeidServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: DeidServiceIdentity;
+  identity?: DeidServicesCreateResponseIdentity;
 }
 export const DeidService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -586,7 +556,7 @@ export const DeidService = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DeidServiceTagsMap),
     location: S.String,
     properties: S.optional(DeidServiceProperties),
-    identity: S.optional(DeidServiceIdentity),
+    identity: S.optional(DeidServicesCreateResponseIdentity),
   }),
 ).annotate({ identifier: "DeidService" }) as any as S.Schema<DeidService>;
 
@@ -650,22 +620,19 @@ export type ManagedServiceIdentityUpdateInputType =
 export const ManagedServiceIdentityUpdateInputType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue {}
+export type ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
+  UserAssignedIdentityInput;
 export const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue",
-  }) as any as S.Schema<ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue>;
+  UserAssignedIdentityInput;
 
 /** The identities assigned to this resource by the user. */
 export type ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap = {
-  [key: string]:
-    | ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue
-    | undefined;
+  [key: string]: UserAssignedIdentityInput | undefined;
 };
 export const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue,
+    UserAssignedIdentityInput,
   ) as any as S.Schema<ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap>;
 
 /** The template for adding optional properties. */
@@ -687,17 +654,8 @@ export const ManagedServiceIdentityUpdateInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedServiceIdentityUpdateInput>;
 
 /** The template for adding optional properties. */
-export interface DeidPropertiesUpdate {
-  /** Gets or sets allow or disallow public network access to resource */
-  publicNetworkAccess?: PublicNetworkAccess | (string & {});
-}
-export const DeidPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicNetworkAccess: S.optional(PublicNetworkAccess),
-  }),
-).annotate({
-  identifier: "DeidPropertiesUpdate",
-}) as any as S.Schema<DeidPropertiesUpdate>;
+export type DeidPropertiesUpdate = DeidServicePropertiesInput;
+export const DeidPropertiesUpdate = DeidServicePropertiesInput;
 
 export interface DeidServicesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -711,7 +669,7 @@ export interface DeidServicesUpdateRequest {
   /** Updatable managed service identity */
   identity?: ManagedServiceIdentityUpdateInput;
   /** RP-specific properties */
-  properties?: DeidPropertiesUpdate;
+  properties?: DeidServicePropertiesInput;
 }
 export const DeidServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -720,7 +678,7 @@ export const DeidServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     deidServiceName: S.String.pipe(T.Label()),
     tags: S.optional(DeidServicesUpdateRequestTagsMap),
     identity: S.optional(ManagedServiceIdentityUpdateInput),
-    properties: S.optional(DeidPropertiesUpdate),
+    properties: S.optional(DeidServicePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -743,24 +701,10 @@ export const DeidServicesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DeidServicesUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface DeidServicesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const DeidServicesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "DeidServicesUpdateResponseIdentity",
-}) as any as S.Schema<DeidServicesUpdateResponseIdentity>;
+export type DeidServicesUpdateResponseIdentity =
+  DeidServicesCreateResponseIdentity;
+export const DeidServicesUpdateResponseIdentity =
+  DeidServicesCreateResponseIdentity;
 
 export interface DeidServicesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -778,7 +722,7 @@ export interface DeidServicesUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeidServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: DeidServicesUpdateResponseIdentity;
+  identity?: DeidServicesCreateResponseIdentity;
 }
 export const DeidServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -789,7 +733,7 @@ export const DeidServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DeidServicesUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(DeidServiceProperties),
-    identity: S.optional(DeidServicesUpdateResponseIdentity),
+    identity: S.optional(DeidServicesCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "DeidServicesUpdateResponse",
@@ -884,24 +828,20 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResponse>;
 
 /** The private endpoint resource. */
-export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PrivateEndpointInput",
-}) as any as S.Schema<PrivateEndpointInput>;
+export type PrivateEndpointInput = UserAssignedIdentityInput;
+export const PrivateEndpointInput = UserAssignedIdentityInput;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionsCreateRequestProperties {
   /** The private endpoint resource. */
-  privateEndpoint?: PrivateEndpointInput;
+  privateEndpoint?: UserAssignedIdentityInput;
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
 export const PrivateEndpointConnectionsCreateRequestProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateEndpoint: S.optional(UserAssignedIdentityInput),
       privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
     }),
   ).annotate({

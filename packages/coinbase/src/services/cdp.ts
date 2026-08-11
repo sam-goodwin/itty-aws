@@ -568,15 +568,8 @@ export const MFAMethodsTotp = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MFAMethodsTotp" }) as any as S.Schema<MFAMethodsTotp>;
 
 /** An object containing information about the end user's SMS MFA enrollment. */
-export interface MFAMethodsSms {
-  /** The date and time when the method was enrolled, in ISO 8601 format. */
-  enrolledAt: string;
-}
-export const MFAMethodsSms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enrolledAt: S.String,
-  }),
-).annotate({ identifier: "MFAMethodsSms" }) as any as S.Schema<MFAMethodsSms>;
+export type MFAMethodsSms = MFAMethodsTotp;
+export const MFAMethodsSms = MFAMethodsTotp;
 
 /** Information about the end user's MFA enrollments. */
 export interface MFAMethods {
@@ -585,13 +578,13 @@ export interface MFAMethods {
   /** An object containing information about the end user's TOTP enrollment. */
   totp?: MFAMethodsTotp;
   /** An object containing information about the end user's SMS MFA enrollment. */
-  sms?: MFAMethodsSms;
+  sms?: MFAMethodsTotp;
 }
 export const MFAMethods = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enrollmentPromptedAt: S.optional(S.String),
     totp: S.optional(MFAMethodsTotp),
-    sms: S.optional(MFAMethodsSms),
+    sms: S.optional(MFAMethodsTotp),
   }),
 ).annotate({ identifier: "MFAMethods" }) as any as S.Schema<MFAMethods>;
 
@@ -4870,74 +4863,24 @@ export const GetEvmSwapPriceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEvmSwapPriceRequest>;
 
 /** The estimated fees for the swap. */
-export interface GetSwapPriceResponseFees {
-  /** The estimated gas fee for the swap. */
-  gasFee: TokenFee | null;
-  /** The estimated protocol fee for the swap. */
-  protocolFee: TokenFee | null;
-}
-export const GetSwapPriceResponseFees = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gasFee: S.NullOr(TokenFee),
-    protocolFee: S.NullOr(TokenFee),
-  }),
-).annotate({
-  identifier: "GetSwapPriceResponseFees",
-}) as any as S.Schema<GetSwapPriceResponseFees>;
+export type GetSwapPriceResponseFees = CreateSwapQuoteResponseFees;
+export const GetSwapPriceResponseFees = CreateSwapQuoteResponseFees;
 
 /** Details of the allowances that the taker must set in order to execute the swap successfully. Null if no allowance is required. */
-export interface GetSwapPriceResponseIssuesAllowance {
-  /** The current allowance of the `fromToken` by the `taker`. */
-  currentAllowance: string;
-  /** The 0x-prefixed address of to set the allowance on. */
-  spender: string;
-}
-export const GetSwapPriceResponseIssuesAllowance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currentAllowance: S.String,
-    spender: S.String,
-  }),
-).annotate({
-  identifier: "GetSwapPriceResponseIssuesAllowance",
-}) as any as S.Schema<GetSwapPriceResponseIssuesAllowance>;
+export type GetSwapPriceResponseIssuesAllowance =
+  CreateSwapQuoteResponseIssuesAllowance;
+export const GetSwapPriceResponseIssuesAllowance =
+  CreateSwapQuoteResponseIssuesAllowance;
 
 /** Details of the balance of the `fromToken` that the `taker` must hold. Null if the `taker` has a sufficient balance. */
-export interface GetSwapPriceResponseIssuesBalance {
-  /** The 0x-prefixed contract address of the token. */
-  token: string;
-  /** The current balance of the `fromToken` by the `taker`. */
-  currentBalance: string;
-  /** The amount of the token that the `taker` must hold. */
-  requiredBalance: string;
-}
-export const GetSwapPriceResponseIssuesBalance = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.String,
-    currentBalance: S.String,
-    requiredBalance: S.String,
-  }),
-).annotate({
-  identifier: "GetSwapPriceResponseIssuesBalance",
-}) as any as S.Schema<GetSwapPriceResponseIssuesBalance>;
+export type GetSwapPriceResponseIssuesBalance =
+  CreateSwapQuoteResponseIssuesBalance;
+export const GetSwapPriceResponseIssuesBalance =
+  CreateSwapQuoteResponseIssuesBalance;
 
 /** An object containing potential issues discovered during validation that could prevent the swap from being executed successfully. */
-export interface GetSwapPriceResponseIssues {
-  /** Details of the allowances that the taker must set in order to execute the swap successfully. Null if no allowance is required. */
-  allowance: GetSwapPriceResponseIssuesAllowance | null;
-  /** Details of the balance of the `fromToken` that the `taker` must hold. Null if the `taker` has a sufficient balance. */
-  balance: GetSwapPriceResponseIssuesBalance | null;
-  /** This is set to true when the transaction cannot be validated. This can happen when the taker has an insufficient balance of the `fromToken`. Note that this does not necessarily mean that the trade will revert. */
-  simulationIncomplete: boolean;
-}
-export const GetSwapPriceResponseIssues = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowance: S.NullOr(GetSwapPriceResponseIssuesAllowance),
-    balance: S.NullOr(GetSwapPriceResponseIssuesBalance),
-    simulationIncomplete: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetSwapPriceResponseIssues",
-}) as any as S.Schema<GetSwapPriceResponseIssues>;
+export type GetSwapPriceResponseIssues = CreateSwapQuoteResponseIssues;
+export const GetSwapPriceResponseIssues = CreateSwapQuoteResponseIssues;
 
 export interface GetSwapPriceResponse {
   /** The block number at which the liquidity conditions were examined. */
@@ -4947,9 +4890,9 @@ export interface GetSwapPriceResponse {
   /** The 0x-prefixed contract address of the token that will be received. */
   toToken: string;
   /** The estimated fees for the swap. */
-  fees: GetSwapPriceResponseFees;
+  fees: CreateSwapQuoteResponseFees;
   /** An object containing potential issues discovered during validation that could prevent the swap from being executed successfully. */
-  issues: GetSwapPriceResponseIssues;
+  issues: CreateSwapQuoteResponseIssues;
   /** Whether sufficient liquidity is available to settle the swap. All other fields in the response will be empty if this is false. */
   liquidityAvailable: boolean;
   /** The minimum amount of the `toToken` that must be received for the swap to succeed, in atomic units of the `toToken`. For example, `1000000000000000000` when receiving ETH equates to 1 ETH, `1000000` when receiving USDC equates to 1 USDC, etc. This value is influenced by the `slippageBps` parameter. */
@@ -4968,8 +4911,8 @@ export const GetSwapPriceResponse = /*@__PURE__*/ S.suspend(() =>
     blockNumber: S.String,
     toAmount: S.String,
     toToken: S.String,
-    fees: GetSwapPriceResponseFees,
-    issues: GetSwapPriceResponseIssues,
+    fees: CreateSwapQuoteResponseFees,
+    issues: CreateSwapQuoteResponseIssues,
     liquidityAvailable: S.Boolean,
     minToAmount: S.String,
     fromAmount: S.String,

@@ -2,6 +2,7 @@
 import * as S from "@distilled.cloud/core/schema";
 import * as Redacted from "effect/Redacted";
 import * as API from "@distilled.cloud/core/api";
+import * as C from "@distilled.cloud/core/category";
 import * as T from "../traits.ts";
 import {
   PosthogProtocol,
@@ -17,7 +18,7 @@ export class BadRequest
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
 
@@ -26,7 +27,7 @@ export class Forbidden
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
 
@@ -35,7 +36,7 @@ export class NotFound
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
 
@@ -218,28 +219,16 @@ export const ExternalDataSchemaEnabledColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExternalDataSchemaEnabledColumnsList>;
 
-export interface ExternalDataSchemaRowFiltersItem {
-  column: string;
-  /** One of: > >= < <= = != IN "NOT IN". */
-  operator: string;
-  /** Comparison value; must match the column's type. For `IN` / `NOT IN`, a comma-separated list (e.g. `1, 2, 3` or `'a','b'`). */
-  value: unknown;
-}
-export const ExternalDataSchemaRowFiltersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    column: S.String,
-    operator: S.String,
-    value: S.Unknown,
-  }),
-).annotate({
-  identifier: "ExternalDataSchemaRowFiltersItem",
-}) as any as S.Schema<ExternalDataSchemaRowFiltersItem>;
+export type ExternalDataSchemaRowFiltersItem =
+  ExternalDataSourceBulkUpdateSchemaRowFiltersItem;
+export const ExternalDataSchemaRowFiltersItem =
+  ExternalDataSourceBulkUpdateSchemaRowFiltersItem;
 
 /** Predicates ANDed onto the source query so only matching rows sync. Each is `{column, operator, value}`; `null`/empty (default) syncs all rows. The operator must be one of `> >= < <= = != IN "NOT IN"` and the value must match the column's type (for `IN`/`NOT IN`, a comma-separated list like `1, 2, 3` or `'a','b'`). Applied on the next sync — not retroactive to already-synced rows. */
 export type ExternalDataSchemaRowFiltersList =
-  Array<ExternalDataSchemaRowFiltersItem>;
+  Array<ExternalDataSourceBulkUpdateSchemaRowFiltersItem>;
 export const ExternalDataSchemaRowFiltersList = /*@__PURE__*/ S.Array(
-  ExternalDataSchemaRowFiltersItem,
+  ExternalDataSourceBulkUpdateSchemaRowFiltersItem,
 ) as any as S.Schema<ExternalDataSchemaRowFiltersList>;
 
 export interface ExternalDataSchemaAvailableColumnsItem {

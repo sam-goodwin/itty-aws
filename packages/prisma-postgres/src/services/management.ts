@@ -2,6 +2,7 @@
 import * as S from "@distilled.cloud/core/schema";
 import * as API from "@distilled.cloud/core/api";
 import type * as Redacted from "effect/Redacted";
+import * as C from "@distilled.cloud/core/category";
 import * as T from "../traits.ts";
 import {
   PrismaPostgresProtocol,
@@ -18,7 +19,7 @@ export class BadRequest
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
 
@@ -27,7 +28,7 @@ export class Conflict
     /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withConflictError),
     [{ status: 409 }],
   ) {}
 
@@ -36,7 +37,7 @@ export class Forbidden
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
 
@@ -45,7 +46,7 @@ export class NotFound
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
 
@@ -54,7 +55,7 @@ export class UnprocessableEntity
     /*@__PURE__*/ S.TaggedError<UnprocessableEntity>()("UnprocessableEntity", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 422 }],
   ) {}
 
@@ -401,54 +402,20 @@ export const GetV1AppsByAppIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1AppsByAppIdRequest",
 }) as any as S.Schema<GetV1AppsByAppIdRequest>;
 
-export interface GetV1AppsByAppIdResponseDataRegion {
-  id: string;
-  name: string;
-}
-export const GetV1AppsByAppIdResponseDataRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "GetV1AppsByAppIdResponseDataRegion",
-}) as any as S.Schema<GetV1AppsByAppIdResponseDataRegion>;
+export type GetV1AppsByAppIdResponseDataRegion =
+  GetV1AppsResponseDataItemRegion;
+export const GetV1AppsByAppIdResponseDataRegion =
+  GetV1AppsResponseDataItemRegion;
 
-export interface GetV1AppsByAppIdResponseData {
-  id: string;
-  type: string;
-  url: string;
-  name: string;
-  region: GetV1AppsByAppIdResponseDataRegion;
-  projectId: string;
-  branchId: string | null;
-  latestDeploymentId: string | null;
-  appEndpointDomain: string;
-  createdAt: string;
-}
-export const GetV1AppsByAppIdResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    region: GetV1AppsByAppIdResponseDataRegion,
-    projectId: S.String,
-    branchId: S.NullOr(S.String),
-    latestDeploymentId: S.NullOr(S.String),
-    appEndpointDomain: S.String,
-    createdAt: S.String,
-  }),
-).annotate({
-  identifier: "GetV1AppsByAppIdResponseData",
-}) as any as S.Schema<GetV1AppsByAppIdResponseData>;
+export type GetV1AppsByAppIdResponseData = GetV1AppsResponseDataItem;
+export const GetV1AppsByAppIdResponseData = GetV1AppsResponseDataItem;
 
 export interface GetV1AppsByAppIdResponse {
-  data: GetV1AppsByAppIdResponseData;
+  data: GetV1AppsResponseDataItem;
 }
 export const GetV1AppsByAppIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: GetV1AppsByAppIdResponseData,
+    data: GetV1AppsResponseDataItem,
   }),
 ).annotate({
   identifier: "GetV1AppsByAppIdResponse",
@@ -498,30 +465,19 @@ export const GetV1AppsByAppIdDeploymentsResponseDataList =
     GetV1AppsByAppIdDeploymentsResponseDataItem,
   ) as any as S.Schema<GetV1AppsByAppIdDeploymentsResponseDataList>;
 
-export interface GetV1AppsByAppIdDeploymentsResponsePagination {
-  /** Next cursor to continue pagination */
-  nextCursor: string | null;
-  /** Whether there are more items to paginate */
-  hasMore: boolean;
-}
+export type GetV1AppsByAppIdDeploymentsResponsePagination =
+  GetV1AppsResponsePagination;
 export const GetV1AppsByAppIdDeploymentsResponsePagination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextCursor: S.NullOr(S.String),
-      hasMore: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetV1AppsByAppIdDeploymentsResponsePagination",
-  }) as any as S.Schema<GetV1AppsByAppIdDeploymentsResponsePagination>;
+  GetV1AppsResponsePagination;
 
 export interface GetV1AppsByAppIdDeploymentsResponse {
   data: GetV1AppsByAppIdDeploymentsResponseDataList;
-  pagination: GetV1AppsByAppIdDeploymentsResponsePagination;
+  pagination: GetV1AppsResponsePagination;
 }
 export const GetV1AppsByAppIdDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: GetV1AppsByAppIdDeploymentsResponseDataList,
-    pagination: GetV1AppsByAppIdDeploymentsResponsePagination,
+    pagination: GetV1AppsResponsePagination,
   }),
 ).annotate({
   identifier: "GetV1AppsByAppIdDeploymentsResponse",
@@ -787,47 +743,27 @@ export const GetV1ConnectionsResponseDataItemEndpointsDirect =
     identifier: "GetV1ConnectionsResponseDataItemEndpointsDirect",
   }) as any as S.Schema<GetV1ConnectionsResponseDataItemEndpointsDirect>;
 
-export interface GetV1ConnectionsResponseDataItemEndpointsPooled {
-  host: string;
-  port: number;
-}
+export type GetV1ConnectionsResponseDataItemEndpointsPooled =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1ConnectionsResponseDataItemEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier: "GetV1ConnectionsResponseDataItemEndpointsPooled",
-  }) as any as S.Schema<GetV1ConnectionsResponseDataItemEndpointsPooled>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1ConnectionsResponseDataItemEndpointsAccelerate {
-  host: string;
-  port: number;
-}
+export type GetV1ConnectionsResponseDataItemEndpointsAccelerate =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1ConnectionsResponseDataItemEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier: "GetV1ConnectionsResponseDataItemEndpointsAccelerate",
-  }) as any as S.Schema<GetV1ConnectionsResponseDataItemEndpointsAccelerate>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
 export interface GetV1ConnectionsResponseDataItemEndpoints {
   direct?: GetV1ConnectionsResponseDataItemEndpointsDirect;
-  pooled?: GetV1ConnectionsResponseDataItemEndpointsPooled;
-  accelerate?: GetV1ConnectionsResponseDataItemEndpointsAccelerate;
+  pooled?: GetV1ConnectionsResponseDataItemEndpointsDirect;
+  accelerate?: GetV1ConnectionsResponseDataItemEndpointsDirect;
 }
 export const GetV1ConnectionsResponseDataItemEndpoints =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       direct: S.optional(GetV1ConnectionsResponseDataItemEndpointsDirect),
-      pooled: S.optional(GetV1ConnectionsResponseDataItemEndpointsPooled),
-      accelerate: S.optional(
-        GetV1ConnectionsResponseDataItemEndpointsAccelerate,
-      ),
+      pooled: S.optional(GetV1ConnectionsResponseDataItemEndpointsDirect),
+      accelerate: S.optional(GetV1ConnectionsResponseDataItemEndpointsDirect),
     }),
   ).annotate({
     identifier: "GetV1ConnectionsResponseDataItemEndpoints",
@@ -850,21 +786,10 @@ export const GetV1ConnectionsResponseDataItemDirectConnection =
     identifier: "GetV1ConnectionsResponseDataItemDirectConnection",
   }) as any as S.Schema<GetV1ConnectionsResponseDataItemDirectConnection>;
 
-export interface GetV1ConnectionsResponseDataItemDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
-export const GetV1ConnectionsResponseDataItemDatabase = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "GetV1ConnectionsResponseDataItemDatabase",
-}) as any as S.Schema<GetV1ConnectionsResponseDataItemDatabase>;
+export type GetV1ConnectionsResponseDataItemDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
+export const GetV1ConnectionsResponseDataItemDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface GetV1ConnectionsResponseDataItem {
   id: string;
@@ -876,7 +801,7 @@ export interface GetV1ConnectionsResponseDataItem {
   endpoints: GetV1ConnectionsResponseDataItemEndpoints;
   /** Deprecated: use `endpoints.direct` instead. */
   directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
-  database: GetV1ConnectionsResponseDataItemDatabase;
+  database: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const GetV1ConnectionsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -890,7 +815,7 @@ export const GetV1ConnectionsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
     directConnection: S.optional(
       S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
     ),
-    database: GetV1ConnectionsResponseDataItemDatabase,
+    database: GetV1BranchesByBranchIdResponseDataProject,
   }),
 ).annotate({
   identifier: "GetV1ConnectionsResponseDataItem",
@@ -902,29 +827,17 @@ export const GetV1ConnectionsResponseDataList = /*@__PURE__*/ S.Array(
   GetV1ConnectionsResponseDataItem,
 ) as any as S.Schema<GetV1ConnectionsResponseDataList>;
 
-export interface GetV1ConnectionsResponsePagination {
-  /** Next cursor to continue pagination */
-  nextCursor: string | null;
-  /** Whether there are more items to paginate */
-  hasMore: boolean;
-}
-export const GetV1ConnectionsResponsePagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextCursor: S.NullOr(S.String),
-    hasMore: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetV1ConnectionsResponsePagination",
-}) as any as S.Schema<GetV1ConnectionsResponsePagination>;
+export type GetV1ConnectionsResponsePagination = GetV1AppsResponsePagination;
+export const GetV1ConnectionsResponsePagination = GetV1AppsResponsePagination;
 
 export interface GetV1ConnectionsResponse {
   data: GetV1ConnectionsResponseDataList;
-  pagination: GetV1ConnectionsResponsePagination;
+  pagination: GetV1AppsResponsePagination;
 }
 export const GetV1ConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: GetV1ConnectionsResponseDataList,
-    pagination: GetV1ConnectionsResponsePagination,
+    pagination: GetV1AppsResponsePagination,
   }),
 ).annotate({
   identifier: "GetV1ConnectionsResponse",
@@ -944,98 +857,36 @@ export const GetV1ConnectionsByIdRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetV1ConnectionsByIdResponseDataKind = "postgres" | "accelerate";
 export const GetV1ConnectionsByIdResponseDataKind = /*@__PURE__*/ S.String;
 
-export interface GetV1ConnectionsByIdResponseDataEndpointsDirect {
-  host: string;
-  port: number;
-}
+export type GetV1ConnectionsByIdResponseDataEndpointsDirect =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1ConnectionsByIdResponseDataEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier: "GetV1ConnectionsByIdResponseDataEndpointsDirect",
-  }) as any as S.Schema<GetV1ConnectionsByIdResponseDataEndpointsDirect>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1ConnectionsByIdResponseDataEndpointsPooled {
-  host: string;
-  port: number;
-}
+export type GetV1ConnectionsByIdResponseDataEndpointsPooled =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1ConnectionsByIdResponseDataEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier: "GetV1ConnectionsByIdResponseDataEndpointsPooled",
-  }) as any as S.Schema<GetV1ConnectionsByIdResponseDataEndpointsPooled>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1ConnectionsByIdResponseDataEndpointsAccelerate {
-  host: string;
-  port: number;
-}
+export type GetV1ConnectionsByIdResponseDataEndpointsAccelerate =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1ConnectionsByIdResponseDataEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier: "GetV1ConnectionsByIdResponseDataEndpointsAccelerate",
-  }) as any as S.Schema<GetV1ConnectionsByIdResponseDataEndpointsAccelerate>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1ConnectionsByIdResponseDataEndpoints {
-  direct?: GetV1ConnectionsByIdResponseDataEndpointsDirect;
-  pooled?: GetV1ConnectionsByIdResponseDataEndpointsPooled;
-  accelerate?: GetV1ConnectionsByIdResponseDataEndpointsAccelerate;
-}
+export type GetV1ConnectionsByIdResponseDataEndpoints =
+  GetV1ConnectionsResponseDataItemEndpoints;
 export const GetV1ConnectionsByIdResponseDataEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(GetV1ConnectionsByIdResponseDataEndpointsDirect),
-      pooled: S.optional(GetV1ConnectionsByIdResponseDataEndpointsPooled),
-      accelerate: S.optional(
-        GetV1ConnectionsByIdResponseDataEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetV1ConnectionsByIdResponseDataEndpoints",
-  }) as any as S.Schema<GetV1ConnectionsByIdResponseDataEndpoints>;
+  GetV1ConnectionsResponseDataItemEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface GetV1ConnectionsByIdResponseDataDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type GetV1ConnectionsByIdResponseDataDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const GetV1ConnectionsByIdResponseDataDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1ConnectionsByIdResponseDataDirectConnection",
-  }) as any as S.Schema<GetV1ConnectionsByIdResponseDataDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface GetV1ConnectionsByIdResponseDataDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
-export const GetV1ConnectionsByIdResponseDataDatabase = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "GetV1ConnectionsByIdResponseDataDatabase",
-}) as any as S.Schema<GetV1ConnectionsByIdResponseDataDatabase>;
+export type GetV1ConnectionsByIdResponseDataDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
+export const GetV1ConnectionsByIdResponseDataDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface GetV1ConnectionsByIdResponseData {
   id: string;
@@ -1044,10 +895,10 @@ export interface GetV1ConnectionsByIdResponseData {
   name: string;
   createdAt: string;
   kind: GetV1ConnectionsByIdResponseDataKind;
-  endpoints: GetV1ConnectionsByIdResponseDataEndpoints;
+  endpoints: GetV1ConnectionsResponseDataItemEndpoints;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: GetV1ConnectionsByIdResponseDataDirectConnection | null;
-  database: GetV1ConnectionsByIdResponseDataDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const GetV1ConnectionsByIdResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1057,11 +908,11 @@ export const GetV1ConnectionsByIdResponseData = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     createdAt: S.String,
     kind: GetV1ConnectionsByIdResponseDataKind,
-    endpoints: GetV1ConnectionsByIdResponseDataEndpoints,
+    endpoints: GetV1ConnectionsResponseDataItemEndpoints,
     directConnection: S.optional(
-      S.NullOr(GetV1ConnectionsByIdResponseDataDirectConnection),
+      S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
     ),
-    database: GetV1ConnectionsByIdResponseDataDatabase,
+    database: GetV1BranchesByBranchIdResponseDataProject,
   }),
 ).annotate({
   identifier: "GetV1ConnectionsByIdResponseData",
@@ -1110,103 +961,36 @@ export type GetV1DatabasesResponseDataItemConnectionsItemKind =
 export const GetV1DatabasesResponseDataItemConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
-export interface GetV1DatabasesResponseDataItemConnectionsItemEndpointsDirect {
-  host: string;
-  port: number;
-}
+export type GetV1DatabasesResponseDataItemConnectionsItemEndpointsDirect =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1DatabasesResponseDataItemConnectionsItemEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesResponseDataItemConnectionsItemEndpointsDirect",
-  }) as any as S.Schema<GetV1DatabasesResponseDataItemConnectionsItemEndpointsDirect>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1DatabasesResponseDataItemConnectionsItemEndpointsPooled {
-  host: string;
-  port: number;
-}
+export type GetV1DatabasesResponseDataItemConnectionsItemEndpointsPooled =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1DatabasesResponseDataItemConnectionsItemEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesResponseDataItemConnectionsItemEndpointsPooled",
-  }) as any as S.Schema<GetV1DatabasesResponseDataItemConnectionsItemEndpointsPooled>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1DatabasesResponseDataItemConnectionsItemEndpointsAccelerate {
-  host: string;
-  port: number;
-}
+export type GetV1DatabasesResponseDataItemConnectionsItemEndpointsAccelerate =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1DatabasesResponseDataItemConnectionsItemEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1DatabasesResponseDataItemConnectionsItemEndpointsAccelerate",
-  }) as any as S.Schema<GetV1DatabasesResponseDataItemConnectionsItemEndpointsAccelerate>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1DatabasesResponseDataItemConnectionsItemEndpoints {
-  direct?: GetV1DatabasesResponseDataItemConnectionsItemEndpointsDirect;
-  pooled?: GetV1DatabasesResponseDataItemConnectionsItemEndpointsPooled;
-  accelerate?: GetV1DatabasesResponseDataItemConnectionsItemEndpointsAccelerate;
-}
+export type GetV1DatabasesResponseDataItemConnectionsItemEndpoints =
+  GetV1ConnectionsResponseDataItemEndpoints;
 export const GetV1DatabasesResponseDataItemConnectionsItemEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(
-        GetV1DatabasesResponseDataItemConnectionsItemEndpointsDirect,
-      ),
-      pooled: S.optional(
-        GetV1DatabasesResponseDataItemConnectionsItemEndpointsPooled,
-      ),
-      accelerate: S.optional(
-        GetV1DatabasesResponseDataItemConnectionsItemEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesResponseDataItemConnectionsItemEndpoints",
-  }) as any as S.Schema<GetV1DatabasesResponseDataItemConnectionsItemEndpoints>;
+  GetV1ConnectionsResponseDataItemEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface GetV1DatabasesResponseDataItemConnectionsItemDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type GetV1DatabasesResponseDataItemConnectionsItemDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const GetV1DatabasesResponseDataItemConnectionsItemDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesResponseDataItemConnectionsItemDirectConnection",
-  }) as any as S.Schema<GetV1DatabasesResponseDataItemConnectionsItemDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface GetV1DatabasesResponseDataItemConnectionsItemDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
+export type GetV1DatabasesResponseDataItemConnectionsItemDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const GetV1DatabasesResponseDataItemConnectionsItemDatabase =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesResponseDataItemConnectionsItemDatabase",
-  }) as any as S.Schema<GetV1DatabasesResponseDataItemConnectionsItemDatabase>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface GetV1DatabasesResponseDataItemConnectionsItem {
   id: string;
@@ -1215,10 +999,10 @@ export interface GetV1DatabasesResponseDataItemConnectionsItem {
   name: string;
   createdAt: string;
   kind: GetV1DatabasesResponseDataItemConnectionsItemKind;
-  endpoints: GetV1DatabasesResponseDataItemConnectionsItemEndpoints;
+  endpoints: GetV1ConnectionsResponseDataItemEndpoints;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: GetV1DatabasesResponseDataItemConnectionsItemDirectConnection | null;
-  database: GetV1DatabasesResponseDataItemConnectionsItemDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const GetV1DatabasesResponseDataItemConnectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1229,11 +1013,11 @@ export const GetV1DatabasesResponseDataItemConnectionsItem =
       name: S.String,
       createdAt: S.String,
       kind: GetV1DatabasesResponseDataItemConnectionsItemKind,
-      endpoints: GetV1DatabasesResponseDataItemConnectionsItemEndpoints,
+      endpoints: GetV1ConnectionsResponseDataItemEndpoints,
       directConnection: S.optional(
-        S.NullOr(GetV1DatabasesResponseDataItemConnectionsItemDirectConnection),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
-      database: GetV1DatabasesResponseDataItemConnectionsItemDatabase,
+      database: GetV1BranchesByBranchIdResponseDataProject,
     }),
   ).annotate({
     identifier: "GetV1DatabasesResponseDataItemConnectionsItem",
@@ -1246,35 +1030,15 @@ export const GetV1DatabasesResponseDataItemConnectionsList =
     GetV1DatabasesResponseDataItemConnectionsItem,
   ) as any as S.Schema<GetV1DatabasesResponseDataItemConnectionsList>;
 
-export interface GetV1DatabasesResponseDataItemProject {
-  id: string;
-  url: string;
-  name: string;
-}
-export const GetV1DatabasesResponseDataItemProject = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "GetV1DatabasesResponseDataItemProject",
-}) as any as S.Schema<GetV1DatabasesResponseDataItemProject>;
+export type GetV1DatabasesResponseDataItemProject =
+  GetV1BranchesByBranchIdResponseDataProject;
+export const GetV1DatabasesResponseDataItemProject =
+  GetV1BranchesByBranchIdResponseDataProject;
 
-export interface GetV1DatabasesResponseDataItemRegion {
-  id: string;
-  name: string;
-}
-export const GetV1DatabasesResponseDataItemRegion = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "GetV1DatabasesResponseDataItemRegion",
-}) as any as S.Schema<GetV1DatabasesResponseDataItemRegion>;
+export type GetV1DatabasesResponseDataItemRegion =
+  GetV1AppsResponseDataItemRegion;
+export const GetV1DatabasesResponseDataItemRegion =
+  GetV1AppsResponseDataItemRegion;
 
 export interface GetV1DatabasesResponseDataItemSourceCase0 {
   type: string;
@@ -1342,8 +1106,8 @@ export interface GetV1DatabasesResponseDataItem {
   isDefault: boolean;
   defaultConnectionId: string | null;
   connections: GetV1DatabasesResponseDataItemConnectionsList;
-  project: GetV1DatabasesResponseDataItemProject;
-  region: GetV1DatabasesResponseDataItemRegion | null;
+  project: GetV1BranchesByBranchIdResponseDataProject;
+  region: GetV1AppsResponseDataItemRegion | null;
   source: GetV1DatabasesResponseDataItemSource | null;
   branchId: string | null;
 }
@@ -1358,8 +1122,8 @@ export const GetV1DatabasesResponseDataItem = /*@__PURE__*/ S.suspend(() =>
     isDefault: S.Boolean,
     defaultConnectionId: S.NullOr(S.String),
     connections: GetV1DatabasesResponseDataItemConnectionsList,
-    project: GetV1DatabasesResponseDataItemProject,
-    region: S.NullOr(GetV1DatabasesResponseDataItemRegion),
+    project: GetV1BranchesByBranchIdResponseDataProject,
+    region: S.NullOr(GetV1AppsResponseDataItemRegion),
     source: S.NullOr(GetV1DatabasesResponseDataItemSource),
     branchId: S.NullOr(S.String),
   }),
@@ -1373,29 +1137,17 @@ export const GetV1DatabasesResponseDataList = /*@__PURE__*/ S.Array(
   GetV1DatabasesResponseDataItem,
 ) as any as S.Schema<GetV1DatabasesResponseDataList>;
 
-export interface GetV1DatabasesResponsePagination {
-  /** Next cursor to continue pagination */
-  nextCursor: string | null;
-  /** Whether there are more items to paginate */
-  hasMore: boolean;
-}
-export const GetV1DatabasesResponsePagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextCursor: S.NullOr(S.String),
-    hasMore: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetV1DatabasesResponsePagination",
-}) as any as S.Schema<GetV1DatabasesResponsePagination>;
+export type GetV1DatabasesResponsePagination = GetV1AppsResponsePagination;
+export const GetV1DatabasesResponsePagination = GetV1AppsResponsePagination;
 
 export interface GetV1DatabasesResponse {
   data: GetV1DatabasesResponseDataList;
-  pagination: GetV1DatabasesResponsePagination;
+  pagination: GetV1AppsResponsePagination;
 }
 export const GetV1DatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: GetV1DatabasesResponseDataList,
-    pagination: GetV1DatabasesResponsePagination,
+    pagination: GetV1AppsResponsePagination,
   }),
 ).annotate({
   identifier: "GetV1DatabasesResponse",
@@ -1428,107 +1180,36 @@ export type GetV1DatabasesByDatabaseIdResponseDataConnectionsItemKind =
 export const GetV1DatabasesByDatabaseIdResponseDataConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
-export interface GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect {
-  host: string;
-  port: number;
-}
+export type GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled {
-  host: string;
-  port: number;
-}
+export type GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate {
-  host: string;
-  port: number;
-}
+export type GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints {
-  direct?: GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect;
-  pooled?: GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled;
-  accelerate?: GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate;
-}
+export type GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints =
+  GetV1ConnectionsResponseDataItemEndpoints;
 export const GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(
-        GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect,
-      ),
-      pooled: S.optional(
-        GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled,
-      ),
-      accelerate: S.optional(
-        GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints>;
+  GetV1ConnectionsResponseDataItemEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
+export type GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface GetV1DatabasesByDatabaseIdResponseDataConnectionsItem {
   id: string;
@@ -1537,10 +1218,10 @@ export interface GetV1DatabasesByDatabaseIdResponseDataConnectionsItem {
   name: string;
   createdAt: string;
   kind: GetV1DatabasesByDatabaseIdResponseDataConnectionsItemKind;
-  endpoints: GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints;
+  endpoints: GetV1ConnectionsResponseDataItemEndpoints;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection | null;
-  database: GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const GetV1DatabasesByDatabaseIdResponseDataConnectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1551,13 +1232,11 @@ export const GetV1DatabasesByDatabaseIdResponseDataConnectionsItem =
       name: S.String,
       createdAt: S.String,
       kind: GetV1DatabasesByDatabaseIdResponseDataConnectionsItemKind,
-      endpoints: GetV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints,
+      endpoints: GetV1ConnectionsResponseDataItemEndpoints,
       directConnection: S.optional(
-        S.NullOr(
-          GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection,
-        ),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
-      database: GetV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase,
+      database: GetV1BranchesByBranchIdResponseDataProject,
     }),
   ).annotate({
     identifier: "GetV1DatabasesByDatabaseIdResponseDataConnectionsItem",
@@ -1570,83 +1249,35 @@ export const GetV1DatabasesByDatabaseIdResponseDataConnectionsList =
     GetV1DatabasesByDatabaseIdResponseDataConnectionsItem,
   ) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataConnectionsList>;
 
-export interface GetV1DatabasesByDatabaseIdResponseDataProject {
-  id: string;
-  url: string;
-  name: string;
-}
+export type GetV1DatabasesByDatabaseIdResponseDataProject =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const GetV1DatabasesByDatabaseIdResponseDataProject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesByDatabaseIdResponseDataProject",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataProject>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
-export interface GetV1DatabasesByDatabaseIdResponseDataRegion {
-  id: string;
-  name: string;
-}
+export type GetV1DatabasesByDatabaseIdResponseDataRegion =
+  GetV1AppsResponseDataItemRegion;
 export const GetV1DatabasesByDatabaseIdResponseDataRegion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesByDatabaseIdResponseDataRegion",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataRegion>;
+  GetV1AppsResponseDataItemRegion;
 
-export interface GetV1DatabasesByDatabaseIdResponseDataSourceCase0 {
-  type: string;
-}
+export type GetV1DatabasesByDatabaseIdResponseDataSourceCase0 =
+  GetV1DatabasesResponseDataItemSourceCase0;
 export const GetV1DatabasesByDatabaseIdResponseDataSourceCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesByDatabaseIdResponseDataSourceCase0",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataSourceCase0>;
+  GetV1DatabasesResponseDataItemSourceCase0;
 
-export interface GetV1DatabasesByDatabaseIdResponseDataSourceCase1 {
-  type: string;
-  databaseId: string;
-  /** ID of the backup to restore from */
-  backupId: string;
-}
+export type GetV1DatabasesByDatabaseIdResponseDataSourceCase1 =
+  GetV1DatabasesResponseDataItemSourceCase1;
 export const GetV1DatabasesByDatabaseIdResponseDataSourceCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-      backupId: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesByDatabaseIdResponseDataSourceCase1",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataSourceCase1>;
+  GetV1DatabasesResponseDataItemSourceCase1;
 
-export interface GetV1DatabasesByDatabaseIdResponseDataSourceCase2 {
-  type: string;
-  databaseId: string;
-}
+export type GetV1DatabasesByDatabaseIdResponseDataSourceCase2 =
+  GetV1DatabasesResponseDataItemSourceCase2;
 export const GetV1DatabasesByDatabaseIdResponseDataSourceCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesByDatabaseIdResponseDataSourceCase2",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdResponseDataSourceCase2>;
+  GetV1DatabasesResponseDataItemSourceCase2;
 
 export type GetV1DatabasesByDatabaseIdResponseDataSource =
-  | GetV1DatabasesByDatabaseIdResponseDataSourceCase0
-  | GetV1DatabasesByDatabaseIdResponseDataSourceCase1
-  | GetV1DatabasesByDatabaseIdResponseDataSourceCase2;
+  | GetV1DatabasesResponseDataItemSourceCase0
+  | GetV1DatabasesResponseDataItemSourceCase1
+  | GetV1DatabasesResponseDataItemSourceCase2;
 export const GetV1DatabasesByDatabaseIdResponseDataSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Union([
@@ -1666,8 +1297,8 @@ export interface GetV1DatabasesByDatabaseIdResponseData {
   isDefault: boolean;
   defaultConnectionId: string | null;
   connections: GetV1DatabasesByDatabaseIdResponseDataConnectionsList;
-  project: GetV1DatabasesByDatabaseIdResponseDataProject;
-  region: GetV1DatabasesByDatabaseIdResponseDataRegion | null;
+  project: GetV1BranchesByBranchIdResponseDataProject;
+  region: GetV1AppsResponseDataItemRegion | null;
   source: GetV1DatabasesByDatabaseIdResponseDataSource | null;
   branchId: string | null;
 }
@@ -1683,8 +1314,8 @@ export const GetV1DatabasesByDatabaseIdResponseData = /*@__PURE__*/ S.suspend(
       isDefault: S.Boolean,
       defaultConnectionId: S.NullOr(S.String),
       connections: GetV1DatabasesByDatabaseIdResponseDataConnectionsList,
-      project: GetV1DatabasesByDatabaseIdResponseDataProject,
-      region: S.NullOr(GetV1DatabasesByDatabaseIdResponseDataRegion),
+      project: GetV1BranchesByBranchIdResponseDataProject,
+      region: S.NullOr(GetV1AppsResponseDataItemRegion),
       source: S.NullOr(GetV1DatabasesByDatabaseIdResponseDataSource),
       branchId: S.NullOr(S.String),
     }),
@@ -1843,107 +1474,36 @@ export type GetV1DatabasesByDatabaseIdConnectionsResponseDataItemKind =
 export const GetV1DatabasesByDatabaseIdConnectionsResponseDataItemKind =
   /*@__PURE__*/ S.String;
 
-export interface GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsDirect {
-  host: string;
-  port: number;
-}
+export type GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsDirect =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsDirect",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsDirect>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsPooled {
-  host: string;
-  port: number;
-}
+export type GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsPooled =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsPooled",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsPooled>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsAccelerate {
-  host: string;
-  port: number;
-}
+export type GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsAccelerate =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsAccelerate",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsAccelerate>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpoints {
-  direct?: GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsDirect;
-  pooled?: GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsPooled;
-  accelerate?: GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsAccelerate;
-}
+export type GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpoints =
+  GetV1ConnectionsResponseDataItemEndpoints;
 export const GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(
-        GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsDirect,
-      ),
-      pooled: S.optional(
-        GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsPooled,
-      ),
-      accelerate: S.optional(
-        GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpoints",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpoints>;
+  GetV1ConnectionsResponseDataItemEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDirectConnection",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
+export type GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDatabase =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDatabase",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDatabase>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface GetV1DatabasesByDatabaseIdConnectionsResponseDataItem {
   id: string;
@@ -1952,10 +1512,10 @@ export interface GetV1DatabasesByDatabaseIdConnectionsResponseDataItem {
   name: string;
   createdAt: string;
   kind: GetV1DatabasesByDatabaseIdConnectionsResponseDataItemKind;
-  endpoints: GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpoints;
+  endpoints: GetV1ConnectionsResponseDataItemEndpoints;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDirectConnection | null;
-  database: GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const GetV1DatabasesByDatabaseIdConnectionsResponseDataItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -1966,13 +1526,11 @@ export const GetV1DatabasesByDatabaseIdConnectionsResponseDataItem =
       name: S.String,
       createdAt: S.String,
       kind: GetV1DatabasesByDatabaseIdConnectionsResponseDataItemKind,
-      endpoints: GetV1DatabasesByDatabaseIdConnectionsResponseDataItemEndpoints,
+      endpoints: GetV1ConnectionsResponseDataItemEndpoints,
       directConnection: S.optional(
-        S.NullOr(
-          GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDirectConnection,
-        ),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
-      database: GetV1DatabasesByDatabaseIdConnectionsResponseDataItemDatabase,
+      database: GetV1BranchesByBranchIdResponseDataProject,
     }),
   ).annotate({
     identifier: "GetV1DatabasesByDatabaseIdConnectionsResponseDataItem",
@@ -1985,31 +1543,20 @@ export const GetV1DatabasesByDatabaseIdConnectionsResponseDataList =
     GetV1DatabasesByDatabaseIdConnectionsResponseDataItem,
   ) as any as S.Schema<GetV1DatabasesByDatabaseIdConnectionsResponseDataList>;
 
-export interface GetV1DatabasesByDatabaseIdConnectionsResponsePagination {
-  /** Next cursor to continue pagination */
-  nextCursor: string | null;
-  /** Whether there are more items to paginate */
-  hasMore: boolean;
-}
+export type GetV1DatabasesByDatabaseIdConnectionsResponsePagination =
+  GetV1AppsResponsePagination;
 export const GetV1DatabasesByDatabaseIdConnectionsResponsePagination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextCursor: S.NullOr(S.String),
-      hasMore: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesByDatabaseIdConnectionsResponsePagination",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdConnectionsResponsePagination>;
+  GetV1AppsResponsePagination;
 
 export interface GetV1DatabasesByDatabaseIdConnectionsResponse {
   data: GetV1DatabasesByDatabaseIdConnectionsResponseDataList;
-  pagination: GetV1DatabasesByDatabaseIdConnectionsResponsePagination;
+  pagination: GetV1AppsResponsePagination;
 }
 export const GetV1DatabasesByDatabaseIdConnectionsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: GetV1DatabasesByDatabaseIdConnectionsResponseDataList,
-      pagination: GetV1DatabasesByDatabaseIdConnectionsResponsePagination,
+      pagination: GetV1AppsResponsePagination,
     }),
   ).annotate({
     identifier: "GetV1DatabasesByDatabaseIdConnectionsResponse",
@@ -2065,29 +1612,20 @@ export const GetV1DatabasesByDatabaseIdUsageResponseMetricsOperations =
     identifier: "GetV1DatabasesByDatabaseIdUsageResponseMetricsOperations",
   }) as any as S.Schema<GetV1DatabasesByDatabaseIdUsageResponseMetricsOperations>;
 
-export interface GetV1DatabasesByDatabaseIdUsageResponseMetricsStorage {
-  used: number;
-  unit: string;
-}
+export type GetV1DatabasesByDatabaseIdUsageResponseMetricsStorage =
+  GetV1DatabasesByDatabaseIdUsageResponseMetricsOperations;
 export const GetV1DatabasesByDatabaseIdUsageResponseMetricsStorage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      used: S.Number,
-      unit: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1DatabasesByDatabaseIdUsageResponseMetricsStorage",
-  }) as any as S.Schema<GetV1DatabasesByDatabaseIdUsageResponseMetricsStorage>;
+  GetV1DatabasesByDatabaseIdUsageResponseMetricsOperations;
 
 export interface GetV1DatabasesByDatabaseIdUsageResponseMetrics {
   operations: GetV1DatabasesByDatabaseIdUsageResponseMetricsOperations;
-  storage: GetV1DatabasesByDatabaseIdUsageResponseMetricsStorage;
+  storage: GetV1DatabasesByDatabaseIdUsageResponseMetricsOperations;
 }
 export const GetV1DatabasesByDatabaseIdUsageResponseMetrics =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operations: GetV1DatabasesByDatabaseIdUsageResponseMetricsOperations,
-      storage: GetV1DatabasesByDatabaseIdUsageResponseMetricsStorage,
+      storage: GetV1DatabasesByDatabaseIdUsageResponseMetricsOperations,
     }),
   ).annotate({
     identifier: "GetV1DatabasesByDatabaseIdUsageResponseMetrics",
@@ -2261,29 +1799,16 @@ export type GetV1DomainsByDomainIdResponseDataFailureCategory =
 export const GetV1DomainsByDomainIdResponseDataFailureCategory =
   /*@__PURE__*/ S.String;
 
-export interface GetV1DomainsByDomainIdResponseDataDnsRecordsItem {
-  type: string;
-  name: string;
-  value: string;
-  ttl: number | null;
-}
+export type GetV1DomainsByDomainIdResponseDataDnsRecordsItem =
+  GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem;
 export const GetV1DomainsByDomainIdResponseDataDnsRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      name: S.String,
-      value: S.String,
-      ttl: S.NullOr(S.Number),
-    }),
-  ).annotate({
-    identifier: "GetV1DomainsByDomainIdResponseDataDnsRecordsItem",
-  }) as any as S.Schema<GetV1DomainsByDomainIdResponseDataDnsRecordsItem>;
+  GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem;
 
 export type GetV1DomainsByDomainIdResponseDataDnsRecordsList =
-  Array<GetV1DomainsByDomainIdResponseDataDnsRecordsItem>;
+  Array<GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem>;
 export const GetV1DomainsByDomainIdResponseDataDnsRecordsList =
   /*@__PURE__*/ S.Array(
-    GetV1DomainsByDomainIdResponseDataDnsRecordsItem,
+    GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem,
   ) as any as S.Schema<GetV1DomainsByDomainIdResponseDataDnsRecordsList>;
 
 export interface GetV1DomainsByDomainIdResponseData {
@@ -2407,30 +1932,19 @@ export const GetV1EnvironmentVariablesResponseDataList = /*@__PURE__*/ S.Array(
   GetV1EnvironmentVariablesResponseDataItem,
 ) as any as S.Schema<GetV1EnvironmentVariablesResponseDataList>;
 
-export interface GetV1EnvironmentVariablesResponsePagination {
-  /** Next cursor to continue pagination */
-  nextCursor: string | null;
-  /** Whether there are more items to paginate */
-  hasMore: boolean;
-}
+export type GetV1EnvironmentVariablesResponsePagination =
+  GetV1AppsResponsePagination;
 export const GetV1EnvironmentVariablesResponsePagination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextCursor: S.NullOr(S.String),
-      hasMore: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetV1EnvironmentVariablesResponsePagination",
-  }) as any as S.Schema<GetV1EnvironmentVariablesResponsePagination>;
+  GetV1AppsResponsePagination;
 
 export interface GetV1EnvironmentVariablesResponse {
   data: GetV1EnvironmentVariablesResponseDataList;
-  pagination: GetV1EnvironmentVariablesResponsePagination;
+  pagination: GetV1AppsResponsePagination;
 }
 export const GetV1EnvironmentVariablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: GetV1EnvironmentVariablesResponseDataList,
-    pagination: GetV1EnvironmentVariablesResponsePagination,
+    pagination: GetV1AppsResponsePagination,
   }),
 ).annotate({
   identifier: "GetV1EnvironmentVariablesResponse",
@@ -2584,29 +2098,17 @@ export const GetV1IntegrationsResponseDataList = /*@__PURE__*/ S.Array(
   GetV1IntegrationsResponseDataItem,
 ) as any as S.Schema<GetV1IntegrationsResponseDataList>;
 
-export interface GetV1IntegrationsResponsePagination {
-  /** Next cursor to continue pagination */
-  nextCursor: string | null;
-  /** Whether there are more items to paginate */
-  hasMore: boolean;
-}
-export const GetV1IntegrationsResponsePagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextCursor: S.NullOr(S.String),
-    hasMore: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetV1IntegrationsResponsePagination",
-}) as any as S.Schema<GetV1IntegrationsResponsePagination>;
+export type GetV1IntegrationsResponsePagination = GetV1AppsResponsePagination;
+export const GetV1IntegrationsResponsePagination = GetV1AppsResponsePagination;
 
 export interface GetV1IntegrationsResponse {
   data: GetV1IntegrationsResponseDataList;
-  pagination: GetV1IntegrationsResponsePagination;
+  pagination: GetV1AppsResponsePagination;
 }
 export const GetV1IntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: GetV1IntegrationsResponseDataList,
-    pagination: GetV1IntegrationsResponsePagination,
+    pagination: GetV1AppsResponsePagination,
   }),
 ).annotate({
   identifier: "GetV1IntegrationsResponse",
@@ -2629,45 +2131,23 @@ export const GetV1IntegrationsByIdResponseDataScopesList =
     S.String,
   ) as any as S.Schema<GetV1IntegrationsByIdResponseDataScopesList>;
 
-export interface GetV1IntegrationsByIdResponseDataClient {
-  id: string;
-  name: string;
-  createdAt: string;
-}
-export const GetV1IntegrationsByIdResponseDataClient = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      createdAt: S.String,
-    }),
-).annotate({
-  identifier: "GetV1IntegrationsByIdResponseDataClient",
-}) as any as S.Schema<GetV1IntegrationsByIdResponseDataClient>;
+export type GetV1IntegrationsByIdResponseDataClient =
+  GetV1IntegrationsResponseDataItemClient;
+export const GetV1IntegrationsByIdResponseDataClient =
+  GetV1IntegrationsResponseDataItemClient;
 
-export interface GetV1IntegrationsByIdResponseDataCreatedByUser {
-  id: string;
-  email: string;
-  displayName: string | null;
-}
+export type GetV1IntegrationsByIdResponseDataCreatedByUser =
+  GetV1IntegrationsResponseDataItemCreatedByUser;
 export const GetV1IntegrationsByIdResponseDataCreatedByUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      email: S.String,
-      displayName: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "GetV1IntegrationsByIdResponseDataCreatedByUser",
-  }) as any as S.Schema<GetV1IntegrationsByIdResponseDataCreatedByUser>;
+  GetV1IntegrationsResponseDataItemCreatedByUser;
 
 export interface GetV1IntegrationsByIdResponseData {
   id: string;
   url: string;
   createdAt: string;
   scopes: GetV1IntegrationsByIdResponseDataScopesList;
-  client: GetV1IntegrationsByIdResponseDataClient;
-  createdByUser: GetV1IntegrationsByIdResponseDataCreatedByUser;
+  client: GetV1IntegrationsResponseDataItemClient;
+  createdByUser: GetV1IntegrationsResponseDataItemCreatedByUser;
 }
 export const GetV1IntegrationsByIdResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2675,8 +2155,8 @@ export const GetV1IntegrationsByIdResponseData = /*@__PURE__*/ S.suspend(() =>
     url: S.String,
     createdAt: S.String,
     scopes: GetV1IntegrationsByIdResponseDataScopesList,
-    client: GetV1IntegrationsByIdResponseDataClient,
-    createdByUser: GetV1IntegrationsByIdResponseDataCreatedByUser,
+    client: GetV1IntegrationsResponseDataItemClient,
+    createdByUser: GetV1IntegrationsResponseDataItemCreatedByUser,
   }),
 ).annotate({
   identifier: "GetV1IntegrationsByIdResponseData",
@@ -2713,18 +2193,8 @@ export const GetV1MeResponseDataUser = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1MeResponseDataUser",
 }) as any as S.Schema<GetV1MeResponseDataUser>;
 
-export interface GetV1MeResponseDataWorkspace {
-  id: string;
-  name: string;
-}
-export const GetV1MeResponseDataWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "GetV1MeResponseDataWorkspace",
-}) as any as S.Schema<GetV1MeResponseDataWorkspace>;
+export type GetV1MeResponseDataWorkspace = GetV1AppsResponseDataItemRegion;
+export const GetV1MeResponseDataWorkspace = GetV1AppsResponseDataItemRegion;
 
 export type GetV1MeResponseDataCredentialType =
   | "oauth"
@@ -2749,13 +2219,13 @@ export const GetV1MeResponseDataCredential = /*@__PURE__*/ S.suspend(() =>
 
 export interface GetV1MeResponseData {
   user: GetV1MeResponseDataUser | null;
-  workspace: GetV1MeResponseDataWorkspace | null;
+  workspace: GetV1AppsResponseDataItemRegion | null;
   credential: GetV1MeResponseDataCredential;
 }
 export const GetV1MeResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.NullOr(GetV1MeResponseDataUser),
-    workspace: S.NullOr(GetV1MeResponseDataWorkspace),
+    workspace: S.NullOr(GetV1AppsResponseDataItemRegion),
     credential: GetV1MeResponseDataCredential,
   }),
 ).annotate({
@@ -2786,21 +2256,10 @@ export const GetV1ProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1ProjectsRequest",
 }) as any as S.Schema<GetV1ProjectsRequest>;
 
-export interface GetV1ProjectsResponseDataItemWorkspace {
-  id: string;
-  url: string;
-  name: string;
-}
-export const GetV1ProjectsResponseDataItemWorkspace = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "GetV1ProjectsResponseDataItemWorkspace",
-}) as any as S.Schema<GetV1ProjectsResponseDataItemWorkspace>;
+export type GetV1ProjectsResponseDataItemWorkspace =
+  GetV1BranchesByBranchIdResponseDataProject;
+export const GetV1ProjectsResponseDataItemWorkspace =
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface GetV1ProjectsResponseDataItem {
   id: string;
@@ -2809,7 +2268,7 @@ export interface GetV1ProjectsResponseDataItem {
   name: string;
   createdAt: string;
   defaultRegion: string | null;
-  workspace: GetV1ProjectsResponseDataItemWorkspace;
+  workspace: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const GetV1ProjectsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2819,7 +2278,7 @@ export const GetV1ProjectsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     createdAt: S.String,
     defaultRegion: S.NullOr(S.String),
-    workspace: GetV1ProjectsResponseDataItemWorkspace,
+    workspace: GetV1BranchesByBranchIdResponseDataProject,
   }),
 ).annotate({
   identifier: "GetV1ProjectsResponseDataItem",
@@ -2831,29 +2290,17 @@ export const GetV1ProjectsResponseDataList = /*@__PURE__*/ S.Array(
   GetV1ProjectsResponseDataItem,
 ) as any as S.Schema<GetV1ProjectsResponseDataList>;
 
-export interface GetV1ProjectsResponsePagination {
-  /** Next cursor to continue pagination */
-  nextCursor: string | null;
-  /** Whether there are more items to paginate */
-  hasMore: boolean;
-}
-export const GetV1ProjectsResponsePagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextCursor: S.NullOr(S.String),
-    hasMore: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetV1ProjectsResponsePagination",
-}) as any as S.Schema<GetV1ProjectsResponsePagination>;
+export type GetV1ProjectsResponsePagination = GetV1AppsResponsePagination;
+export const GetV1ProjectsResponsePagination = GetV1AppsResponsePagination;
 
 export interface GetV1ProjectsResponse {
   data: GetV1ProjectsResponseDataList;
-  pagination: GetV1ProjectsResponsePagination;
+  pagination: GetV1AppsResponsePagination;
 }
 export const GetV1ProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: GetV1ProjectsResponseDataList,
-    pagination: GetV1ProjectsResponsePagination,
+    pagination: GetV1AppsResponsePagination,
   }),
 ).annotate({
   identifier: "GetV1ProjectsResponse",
@@ -2870,51 +2317,20 @@ export const GetV1ProjectsByIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1ProjectsByIdRequest",
 }) as any as S.Schema<GetV1ProjectsByIdRequest>;
 
-export interface GetV1ProjectsByIdResponseDataWorkspace {
-  id: string;
-  url: string;
-  name: string;
-}
-export const GetV1ProjectsByIdResponseDataWorkspace = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "GetV1ProjectsByIdResponseDataWorkspace",
-}) as any as S.Schema<GetV1ProjectsByIdResponseDataWorkspace>;
+export type GetV1ProjectsByIdResponseDataWorkspace =
+  GetV1BranchesByBranchIdResponseDataProject;
+export const GetV1ProjectsByIdResponseDataWorkspace =
+  GetV1BranchesByBranchIdResponseDataProject;
 
-export interface GetV1ProjectsByIdResponseData {
-  id: string;
-  type: string;
-  url: string;
-  name: string;
-  createdAt: string;
-  defaultRegion: string | null;
-  workspace: GetV1ProjectsByIdResponseDataWorkspace;
-}
-export const GetV1ProjectsByIdResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    defaultRegion: S.NullOr(S.String),
-    workspace: GetV1ProjectsByIdResponseDataWorkspace,
-  }),
-).annotate({
-  identifier: "GetV1ProjectsByIdResponseData",
-}) as any as S.Schema<GetV1ProjectsByIdResponseData>;
+export type GetV1ProjectsByIdResponseData = GetV1ProjectsResponseDataItem;
+export const GetV1ProjectsByIdResponseData = GetV1ProjectsResponseDataItem;
 
 export interface GetV1ProjectsByIdResponse {
-  data: GetV1ProjectsByIdResponseData;
+  data: GetV1ProjectsResponseDataItem;
 }
 export const GetV1ProjectsByIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: GetV1ProjectsByIdResponseData,
+    data: GetV1ProjectsResponseDataItem,
   }),
 ).annotate({
   identifier: "GetV1ProjectsByIdResponse",
@@ -2953,21 +2369,10 @@ export const GetV1ProjectsByProjectIdBranchesResponseDataItemRole =
   /*@__PURE__*/ S.String;
 
 /** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
-export interface GetV1ProjectsByProjectIdBranchesResponseDataItemProject {
-  id: string;
-  url: string;
-  name: string;
-}
+export type GetV1ProjectsByProjectIdBranchesResponseDataItemProject =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const GetV1ProjectsByProjectIdBranchesResponseDataItemProject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1ProjectsByProjectIdBranchesResponseDataItemProject",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdBranchesResponseDataItemProject>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface GetV1ProjectsByProjectIdBranchesResponseDataItem {
   id: string;
@@ -2979,7 +2384,7 @@ export interface GetV1ProjectsByProjectIdBranchesResponseDataItem {
   createdAt: string;
   updatedAt: string;
   /** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
-  project: GetV1ProjectsByProjectIdBranchesResponseDataItemProject;
+  project: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const GetV1ProjectsByProjectIdBranchesResponseDataItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -2992,7 +2397,7 @@ export const GetV1ProjectsByProjectIdBranchesResponseDataItem =
       role: GetV1ProjectsByProjectIdBranchesResponseDataItemRole,
       createdAt: S.String,
       updatedAt: S.String,
-      project: GetV1ProjectsByProjectIdBranchesResponseDataItemProject,
+      project: GetV1BranchesByBranchIdResponseDataProject,
     }),
   ).annotate({
     identifier: "GetV1ProjectsByProjectIdBranchesResponseDataItem",
@@ -3055,26 +2460,17 @@ export const GetV1ProjectsByProjectIdComputeServicesRequest =
     identifier: "GetV1ProjectsByProjectIdComputeServicesRequest",
   }) as any as S.Schema<GetV1ProjectsByProjectIdComputeServicesRequest>;
 
-export interface GetV1ProjectsByProjectIdComputeServicesResponseDataItemRegion {
-  id: string;
-  name: string;
-}
+export type GetV1ProjectsByProjectIdComputeServicesResponseDataItemRegion =
+  GetV1AppsResponseDataItemRegion;
 export const GetV1ProjectsByProjectIdComputeServicesResponseDataItemRegion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1ProjectsByProjectIdComputeServicesResponseDataItemRegion",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdComputeServicesResponseDataItemRegion>;
+  GetV1AppsResponseDataItemRegion;
 
 export interface GetV1ProjectsByProjectIdComputeServicesResponseDataItem {
   id: string;
   type: string;
   url: string;
   name: string;
-  region: GetV1ProjectsByProjectIdComputeServicesResponseDataItemRegion;
+  region: GetV1AppsResponseDataItemRegion;
   projectId: string;
   branchId: string | null;
   latestVersionId: string | null;
@@ -3088,7 +2484,7 @@ export const GetV1ProjectsByProjectIdComputeServicesResponseDataItem =
       type: S.String,
       url: S.String,
       name: S.String,
-      region: GetV1ProjectsByProjectIdComputeServicesResponseDataItemRegion,
+      region: GetV1AppsResponseDataItemRegion,
       projectId: S.String,
       branchId: S.NullOr(S.String),
       latestVersionId: S.NullOr(S.String),
@@ -3106,31 +2502,20 @@ export const GetV1ProjectsByProjectIdComputeServicesResponseDataList =
     GetV1ProjectsByProjectIdComputeServicesResponseDataItem,
   ) as any as S.Schema<GetV1ProjectsByProjectIdComputeServicesResponseDataList>;
 
-export interface GetV1ProjectsByProjectIdComputeServicesResponsePagination {
-  /** Next cursor to continue pagination */
-  nextCursor: string | null;
-  /** Whether there are more items to paginate */
-  hasMore: boolean;
-}
+export type GetV1ProjectsByProjectIdComputeServicesResponsePagination =
+  GetV1AppsResponsePagination;
 export const GetV1ProjectsByProjectIdComputeServicesResponsePagination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextCursor: S.NullOr(S.String),
-      hasMore: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetV1ProjectsByProjectIdComputeServicesResponsePagination",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdComputeServicesResponsePagination>;
+  GetV1AppsResponsePagination;
 
 export interface GetV1ProjectsByProjectIdComputeServicesResponse {
   data: GetV1ProjectsByProjectIdComputeServicesResponseDataList;
-  pagination: GetV1ProjectsByProjectIdComputeServicesResponsePagination;
+  pagination: GetV1AppsResponsePagination;
 }
 export const GetV1ProjectsByProjectIdComputeServicesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: GetV1ProjectsByProjectIdComputeServicesResponseDataList,
-      pagination: GetV1ProjectsByProjectIdComputeServicesResponsePagination,
+      pagination: GetV1AppsResponsePagination,
     }),
   ).annotate({
     identifier: "GetV1ProjectsByProjectIdComputeServicesResponse",
@@ -3171,108 +2556,36 @@ export type GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemKind
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
-export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsDirect {
-  host: string;
-  port: number;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsDirect =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsDirect",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsDirect>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsPooled {
-  host: string;
-  port: number;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsPooled =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsPooled",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsPooled>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsAccelerate {
-  host: string;
-  port: number;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsAccelerate =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsAccelerate",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsAccelerate>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpoints {
-  direct?: GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsDirect;
-  pooled?: GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsPooled;
-  accelerate?: GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsAccelerate;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpoints =
+  GetV1ConnectionsResponseDataItemEndpoints;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(
-        GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsDirect,
-      ),
-      pooled: S.optional(
-        GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsPooled,
-      ),
-      accelerate: S.optional(
-        GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpoints",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpoints>;
+  GetV1ConnectionsResponseDataItemEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDirectConnection",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDatabase =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDatabase",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDatabase>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItem {
   id: string;
@@ -3281,10 +2594,10 @@ export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsIte
   name: string;
   createdAt: string;
   kind: GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemKind;
-  endpoints: GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpoints;
+  endpoints: GetV1ConnectionsResponseDataItemEndpoints;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDirectConnection | null;
-  database: GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -3295,15 +2608,11 @@ export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItem =
       name: S.String,
       createdAt: S.String,
       kind: GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemKind,
-      endpoints:
-        GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemEndpoints,
+      endpoints: GetV1ConnectionsResponseDataItemEndpoints,
       directConnection: S.optional(
-        S.NullOr(
-          GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDirectConnection,
-        ),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
-      database:
-        GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItemDatabase,
+      database: GetV1BranchesByBranchIdResponseDataProject,
     }),
   ).annotate({
     identifier:
@@ -3317,83 +2626,35 @@ export const GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsList =
     GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsItem,
   ) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsList>;
 
-export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemProject {
-  id: string;
-  url: string;
-  name: string;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponseDataItemProject =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemProject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1ProjectsByProjectIdDatabasesResponseDataItemProject",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemProject>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
-export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemRegion {
-  id: string;
-  name: string;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponseDataItemRegion =
+  GetV1AppsResponseDataItemRegion;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemRegion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1ProjectsByProjectIdDatabasesResponseDataItemRegion",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemRegion>;
+  GetV1AppsResponseDataItemRegion;
 
-export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase0 {
-  type: string;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase0 =
+  GetV1DatabasesResponseDataItemSourceCase0;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase0",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase0>;
+  GetV1DatabasesResponseDataItemSourceCase0;
 
-export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase1 {
-  type: string;
-  databaseId: string;
-  /** ID of the backup to restore from */
-  backupId: string;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase1 =
+  GetV1DatabasesResponseDataItemSourceCase1;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-      backupId: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase1",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase1>;
+  GetV1DatabasesResponseDataItemSourceCase1;
 
-export interface GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase2 {
-  type: string;
-  databaseId: string;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase2 =
+  GetV1DatabasesResponseDataItemSourceCase2;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-    }),
-  ).annotate({
-    identifier: "GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase2",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase2>;
+  GetV1DatabasesResponseDataItemSourceCase2;
 
 export type GetV1ProjectsByProjectIdDatabasesResponseDataItemSource =
-  | GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase0
-  | GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase1
-  | GetV1ProjectsByProjectIdDatabasesResponseDataItemSourceCase2;
+  | GetV1DatabasesResponseDataItemSourceCase0
+  | GetV1DatabasesResponseDataItemSourceCase1
+  | GetV1DatabasesResponseDataItemSourceCase2;
 export const GetV1ProjectsByProjectIdDatabasesResponseDataItemSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Union([
@@ -3413,8 +2674,8 @@ export interface GetV1ProjectsByProjectIdDatabasesResponseDataItem {
   isDefault: boolean;
   defaultConnectionId: string | null;
   connections: GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsList;
-  project: GetV1ProjectsByProjectIdDatabasesResponseDataItemProject;
-  region: GetV1ProjectsByProjectIdDatabasesResponseDataItemRegion | null;
+  project: GetV1BranchesByBranchIdResponseDataProject;
+  region: GetV1AppsResponseDataItemRegion | null;
   source: GetV1ProjectsByProjectIdDatabasesResponseDataItemSource | null;
   branchId: string | null;
 }
@@ -3431,8 +2692,8 @@ export const GetV1ProjectsByProjectIdDatabasesResponseDataItem =
       defaultConnectionId: S.NullOr(S.String),
       connections:
         GetV1ProjectsByProjectIdDatabasesResponseDataItemConnectionsList,
-      project: GetV1ProjectsByProjectIdDatabasesResponseDataItemProject,
-      region: S.NullOr(GetV1ProjectsByProjectIdDatabasesResponseDataItemRegion),
+      project: GetV1BranchesByBranchIdResponseDataProject,
+      region: S.NullOr(GetV1AppsResponseDataItemRegion),
       source: S.NullOr(GetV1ProjectsByProjectIdDatabasesResponseDataItemSource),
       branchId: S.NullOr(S.String),
     }),
@@ -3447,31 +2708,20 @@ export const GetV1ProjectsByProjectIdDatabasesResponseDataList =
     GetV1ProjectsByProjectIdDatabasesResponseDataItem,
   ) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponseDataList>;
 
-export interface GetV1ProjectsByProjectIdDatabasesResponsePagination {
-  /** Next cursor to continue pagination */
-  nextCursor: string | null;
-  /** Whether there are more items to paginate */
-  hasMore: boolean;
-}
+export type GetV1ProjectsByProjectIdDatabasesResponsePagination =
+  GetV1AppsResponsePagination;
 export const GetV1ProjectsByProjectIdDatabasesResponsePagination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextCursor: S.NullOr(S.String),
-      hasMore: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetV1ProjectsByProjectIdDatabasesResponsePagination",
-  }) as any as S.Schema<GetV1ProjectsByProjectIdDatabasesResponsePagination>;
+  GetV1AppsResponsePagination;
 
 export interface GetV1ProjectsByProjectIdDatabasesResponse {
   data: GetV1ProjectsByProjectIdDatabasesResponseDataList;
-  pagination: GetV1ProjectsByProjectIdDatabasesResponsePagination;
+  pagination: GetV1AppsResponsePagination;
 }
 export const GetV1ProjectsByProjectIdDatabasesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: GetV1ProjectsByProjectIdDatabasesResponseDataList,
-      pagination: GetV1ProjectsByProjectIdDatabasesResponsePagination,
+      pagination: GetV1AppsResponsePagination,
     }),
   ).annotate({
     identifier: "GetV1ProjectsByProjectIdDatabasesResponse",
@@ -3689,30 +2939,19 @@ export const GetV1ScmInstallationsResponseDataList = /*@__PURE__*/ S.Array(
   GetV1ScmInstallationsResponseDataItem,
 ) as any as S.Schema<GetV1ScmInstallationsResponseDataList>;
 
-export interface GetV1ScmInstallationsResponsePagination {
-  /** Next cursor to continue pagination */
-  nextCursor: string | null;
-  /** Whether there are more items to paginate */
-  hasMore: boolean;
-}
-export const GetV1ScmInstallationsResponsePagination = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextCursor: S.NullOr(S.String),
-      hasMore: S.Boolean,
-    }),
-).annotate({
-  identifier: "GetV1ScmInstallationsResponsePagination",
-}) as any as S.Schema<GetV1ScmInstallationsResponsePagination>;
+export type GetV1ScmInstallationsResponsePagination =
+  GetV1AppsResponsePagination;
+export const GetV1ScmInstallationsResponsePagination =
+  GetV1AppsResponsePagination;
 
 export interface GetV1ScmInstallationsResponse {
   data: GetV1ScmInstallationsResponseDataList;
-  pagination: GetV1ScmInstallationsResponsePagination;
+  pagination: GetV1AppsResponsePagination;
 }
 export const GetV1ScmInstallationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: GetV1ScmInstallationsResponseDataList,
-    pagination: GetV1ScmInstallationsResponsePagination,
+    pagination: GetV1AppsResponsePagination,
   }),
 ).annotate({
   identifier: "GetV1ScmInstallationsResponse",
@@ -3770,31 +3009,20 @@ export const GetV1ScmInstallationsByInstallationIdRepositoriesResponseDataList =
     GetV1ScmInstallationsByInstallationIdRepositoriesResponseDataItem,
   ) as any as S.Schema<GetV1ScmInstallationsByInstallationIdRepositoriesResponseDataList>;
 
-export interface GetV1ScmInstallationsByInstallationIdRepositoriesResponsePagination {
-  nextCursor: string | null;
-  hasMore: boolean;
-}
+export type GetV1ScmInstallationsByInstallationIdRepositoriesResponsePagination =
+  GetV1ProjectsByProjectIdBranchesResponsePagination;
 export const GetV1ScmInstallationsByInstallationIdRepositoriesResponsePagination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextCursor: S.NullOr(S.String),
-      hasMore: S.Boolean,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1ScmInstallationsByInstallationIdRepositoriesResponsePagination",
-  }) as any as S.Schema<GetV1ScmInstallationsByInstallationIdRepositoriesResponsePagination>;
+  GetV1ProjectsByProjectIdBranchesResponsePagination;
 
 export interface GetV1ScmInstallationsByInstallationIdRepositoriesResponse {
   data: GetV1ScmInstallationsByInstallationIdRepositoriesResponseDataList;
-  pagination: GetV1ScmInstallationsByInstallationIdRepositoriesResponsePagination;
+  pagination: GetV1ProjectsByProjectIdBranchesResponsePagination;
 }
 export const GetV1ScmInstallationsByInstallationIdRepositoriesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: GetV1ScmInstallationsByInstallationIdRepositoriesResponseDataList,
-      pagination:
-        GetV1ScmInstallationsByInstallationIdRepositoriesResponsePagination,
+      pagination: GetV1ProjectsByProjectIdBranchesResponsePagination,
     }),
   ).annotate({
     identifier: "GetV1ScmInstallationsByInstallationIdRepositoriesResponse",
@@ -3867,28 +3095,19 @@ export const GetV1SourceRepositoriesResponseDataList = /*@__PURE__*/ S.Array(
   GetV1SourceRepositoriesResponseDataItem,
 ) as any as S.Schema<GetV1SourceRepositoriesResponseDataList>;
 
-export interface GetV1SourceRepositoriesResponsePagination {
-  nextCursor: string | null;
-  hasMore: boolean;
-}
+export type GetV1SourceRepositoriesResponsePagination =
+  GetV1ProjectsByProjectIdBranchesResponsePagination;
 export const GetV1SourceRepositoriesResponsePagination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextCursor: S.NullOr(S.String),
-      hasMore: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetV1SourceRepositoriesResponsePagination",
-  }) as any as S.Schema<GetV1SourceRepositoriesResponsePagination>;
+  GetV1ProjectsByProjectIdBranchesResponsePagination;
 
 export interface GetV1SourceRepositoriesResponse {
   data: GetV1SourceRepositoriesResponseDataList;
-  pagination: GetV1SourceRepositoriesResponsePagination;
+  pagination: GetV1ProjectsByProjectIdBranchesResponsePagination;
 }
 export const GetV1SourceRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: GetV1SourceRepositoriesResponseDataList,
-    pagination: GetV1SourceRepositoriesResponsePagination,
+    pagination: GetV1ProjectsByProjectIdBranchesResponsePagination,
   }),
 ).annotate({
   identifier: "GetV1SourceRepositoriesResponse",
@@ -4002,29 +3221,17 @@ export const GetV1WorkspacesResponseDataList = /*@__PURE__*/ S.Array(
   GetV1WorkspacesResponseDataItem,
 ) as any as S.Schema<GetV1WorkspacesResponseDataList>;
 
-export interface GetV1WorkspacesResponsePagination {
-  /** Next cursor to continue pagination */
-  nextCursor: string | null;
-  /** Whether there are more items to paginate */
-  hasMore: boolean;
-}
-export const GetV1WorkspacesResponsePagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextCursor: S.NullOr(S.String),
-    hasMore: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetV1WorkspacesResponsePagination",
-}) as any as S.Schema<GetV1WorkspacesResponsePagination>;
+export type GetV1WorkspacesResponsePagination = GetV1AppsResponsePagination;
+export const GetV1WorkspacesResponsePagination = GetV1AppsResponsePagination;
 
 export interface GetV1WorkspacesResponse {
   data: GetV1WorkspacesResponseDataList;
-  pagination: GetV1WorkspacesResponsePagination;
+  pagination: GetV1AppsResponsePagination;
 }
 export const GetV1WorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: GetV1WorkspacesResponseDataList,
-    pagination: GetV1WorkspacesResponsePagination,
+    pagination: GetV1AppsResponsePagination,
   }),
 ).annotate({
   identifier: "GetV1WorkspacesResponse",
@@ -4041,31 +3248,15 @@ export const GetV1WorkspacesByIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetV1WorkspacesByIdRequest",
 }) as any as S.Schema<GetV1WorkspacesByIdRequest>;
 
-export interface GetV1WorkspacesByIdResponseData {
-  id: string;
-  type: string;
-  url: string;
-  name: string;
-  createdAt: string;
-}
-export const GetV1WorkspacesByIdResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-  }),
-).annotate({
-  identifier: "GetV1WorkspacesByIdResponseData",
-}) as any as S.Schema<GetV1WorkspacesByIdResponseData>;
+export type GetV1WorkspacesByIdResponseData = GetV1WorkspacesResponseDataItem;
+export const GetV1WorkspacesByIdResponseData = GetV1WorkspacesResponseDataItem;
 
 export interface GetV1WorkspacesByIdResponse {
-  data: GetV1WorkspacesByIdResponseData;
+  data: GetV1WorkspacesResponseDataItem;
 }
 export const GetV1WorkspacesByIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: GetV1WorkspacesByIdResponseData,
+    data: GetV1WorkspacesResponseDataItem,
   }),
 ).annotate({
   identifier: "GetV1WorkspacesByIdResponse",
@@ -4100,47 +3291,23 @@ export const GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemScopesList 
     S.String,
   ) as any as S.Schema<GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemScopesList>;
 
-export interface GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemClient {
-  id: string;
-  name: string;
-  createdAt: string;
-}
+export type GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemClient =
+  GetV1IntegrationsResponseDataItemClient;
 export const GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemClient =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      createdAt: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemClient",
-  }) as any as S.Schema<GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemClient>;
+  GetV1IntegrationsResponseDataItemClient;
 
-export interface GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemCreatedByUser {
-  id: string;
-  email: string;
-  displayName: string | null;
-}
+export type GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemCreatedByUser =
+  GetV1IntegrationsResponseDataItemCreatedByUser;
 export const GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemCreatedByUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      email: S.String,
-      displayName: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemCreatedByUser",
-  }) as any as S.Schema<GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemCreatedByUser>;
+  GetV1IntegrationsResponseDataItemCreatedByUser;
 
 export interface GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItem {
   id: string;
   url: string;
   createdAt: string;
   scopes: GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemScopesList;
-  client: GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemClient;
-  createdByUser: GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemCreatedByUser;
+  client: GetV1IntegrationsResponseDataItemClient;
+  createdByUser: GetV1IntegrationsResponseDataItemCreatedByUser;
 }
 export const GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -4150,9 +3317,8 @@ export const GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItem =
       createdAt: S.String,
       scopes:
         GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemScopesList,
-      client: GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemClient,
-      createdByUser:
-        GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItemCreatedByUser,
+      client: GetV1IntegrationsResponseDataItemClient,
+      createdByUser: GetV1IntegrationsResponseDataItemCreatedByUser,
     }),
   ).annotate({
     identifier: "GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItem",
@@ -4165,31 +3331,20 @@ export const GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataList =
     GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataItem,
   ) as any as S.Schema<GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataList>;
 
-export interface GetV1WorkspacesByWorkspaceIdIntegrationsResponsePagination {
-  /** Next cursor to continue pagination */
-  nextCursor: string | null;
-  /** Whether there are more items to paginate */
-  hasMore: boolean;
-}
+export type GetV1WorkspacesByWorkspaceIdIntegrationsResponsePagination =
+  GetV1AppsResponsePagination;
 export const GetV1WorkspacesByWorkspaceIdIntegrationsResponsePagination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextCursor: S.NullOr(S.String),
-      hasMore: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "GetV1WorkspacesByWorkspaceIdIntegrationsResponsePagination",
-  }) as any as S.Schema<GetV1WorkspacesByWorkspaceIdIntegrationsResponsePagination>;
+  GetV1AppsResponsePagination;
 
 export interface GetV1WorkspacesByWorkspaceIdIntegrationsResponse {
   data: GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataList;
-  pagination: GetV1WorkspacesByWorkspaceIdIntegrationsResponsePagination;
+  pagination: GetV1AppsResponsePagination;
 }
 export const GetV1WorkspacesByWorkspaceIdIntegrationsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: GetV1WorkspacesByWorkspaceIdIntegrationsResponseDataList,
-      pagination: GetV1WorkspacesByWorkspaceIdIntegrationsResponsePagination,
+      pagination: GetV1AppsResponsePagination,
     }),
   ).annotate({
     identifier: "GetV1WorkspacesByWorkspaceIdIntegrationsResponse",
@@ -4212,55 +3367,20 @@ export const PatchV1AppsByAppIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchV1AppsByAppIdRequest",
 }) as any as S.Schema<PatchV1AppsByAppIdRequest>;
 
-export interface PatchV1AppsByAppIdResponseDataRegion {
-  id: string;
-  name: string;
-}
-export const PatchV1AppsByAppIdResponseDataRegion = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "PatchV1AppsByAppIdResponseDataRegion",
-}) as any as S.Schema<PatchV1AppsByAppIdResponseDataRegion>;
+export type PatchV1AppsByAppIdResponseDataRegion =
+  GetV1AppsResponseDataItemRegion;
+export const PatchV1AppsByAppIdResponseDataRegion =
+  GetV1AppsResponseDataItemRegion;
 
-export interface PatchV1AppsByAppIdResponseData {
-  id: string;
-  type: string;
-  url: string;
-  name: string;
-  region: PatchV1AppsByAppIdResponseDataRegion;
-  projectId: string;
-  branchId: string | null;
-  latestDeploymentId: string | null;
-  appEndpointDomain: string;
-  createdAt: string;
-}
-export const PatchV1AppsByAppIdResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    region: PatchV1AppsByAppIdResponseDataRegion,
-    projectId: S.String,
-    branchId: S.NullOr(S.String),
-    latestDeploymentId: S.NullOr(S.String),
-    appEndpointDomain: S.String,
-    createdAt: S.String,
-  }),
-).annotate({
-  identifier: "PatchV1AppsByAppIdResponseData",
-}) as any as S.Schema<PatchV1AppsByAppIdResponseData>;
+export type PatchV1AppsByAppIdResponseData = GetV1AppsResponseDataItem;
+export const PatchV1AppsByAppIdResponseData = GetV1AppsResponseDataItem;
 
 export interface PatchV1AppsByAppIdResponse {
-  data: PatchV1AppsByAppIdResponseData;
+  data: GetV1AppsResponseDataItem;
 }
 export const PatchV1AppsByAppIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: PatchV1AppsByAppIdResponseData,
+    data: GetV1AppsResponseDataItem,
   }),
 ).annotate({
   identifier: "PatchV1AppsByAppIdResponse",
@@ -4287,21 +3407,10 @@ export type PatchV1BranchesByBranchIdResponseDataRole =
 export const PatchV1BranchesByBranchIdResponseDataRole = /*@__PURE__*/ S.String;
 
 /** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
-export interface PatchV1BranchesByBranchIdResponseDataProject {
-  id: string;
-  url: string;
-  name: string;
-}
+export type PatchV1BranchesByBranchIdResponseDataProject =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const PatchV1BranchesByBranchIdResponseDataProject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PatchV1BranchesByBranchIdResponseDataProject",
-  }) as any as S.Schema<PatchV1BranchesByBranchIdResponseDataProject>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface PatchV1BranchesByBranchIdResponseData {
   id: string;
@@ -4313,7 +3422,7 @@ export interface PatchV1BranchesByBranchIdResponseData {
   createdAt: string;
   updatedAt: string;
   /** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
-  project: PatchV1BranchesByBranchIdResponseDataProject;
+  project: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const PatchV1BranchesByBranchIdResponseData = /*@__PURE__*/ S.suspend(
   () =>
@@ -4326,7 +3435,7 @@ export const PatchV1BranchesByBranchIdResponseData = /*@__PURE__*/ S.suspend(
       role: PatchV1BranchesByBranchIdResponseDataRole,
       createdAt: S.String,
       updatedAt: S.String,
-      project: PatchV1BranchesByBranchIdResponseDataProject,
+      project: GetV1BranchesByBranchIdResponseDataProject,
     }),
 ).annotate({
   identifier: "PatchV1BranchesByBranchIdResponseData",
@@ -4377,108 +3486,36 @@ export type PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemKind =
 export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
-export interface PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect {
-  host: string;
-  port: number;
-}
+export type PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect",
-  }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled {
-  host: string;
-  port: number;
-}
+export type PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled",
-  }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate {
-  host: string;
-  port: number;
-}
+export type PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate",
-  }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints {
-  direct?: PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect;
-  pooled?: PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled;
-  accelerate?: PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate;
-}
+export type PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints =
+  GetV1ConnectionsResponseDataItemEndpoints;
 export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(
-        PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsDirect,
-      ),
-      pooled: S.optional(
-        PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsPooled,
-      ),
-      accelerate: S.optional(
-        PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints",
-  }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints>;
+  GetV1ConnectionsResponseDataItemEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection",
-  }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
+export type PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase",
-  }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface PatchV1DatabasesByDatabaseIdResponseDataConnectionsItem {
   id: string;
@@ -4487,10 +3524,10 @@ export interface PatchV1DatabasesByDatabaseIdResponseDataConnectionsItem {
   name: string;
   createdAt: string;
   kind: PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemKind;
-  endpoints: PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints;
+  endpoints: GetV1ConnectionsResponseDataItemEndpoints;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection | null;
-  database: PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -4501,14 +3538,11 @@ export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsItem =
       name: S.String,
       createdAt: S.String,
       kind: PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemKind,
-      endpoints:
-        PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemEndpoints,
+      endpoints: GetV1ConnectionsResponseDataItemEndpoints,
       directConnection: S.optional(
-        S.NullOr(
-          PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDirectConnection,
-        ),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
-      database: PatchV1DatabasesByDatabaseIdResponseDataConnectionsItemDatabase,
+      database: GetV1BranchesByBranchIdResponseDataProject,
     }),
   ).annotate({
     identifier: "PatchV1DatabasesByDatabaseIdResponseDataConnectionsItem",
@@ -4521,83 +3555,35 @@ export const PatchV1DatabasesByDatabaseIdResponseDataConnectionsList =
     PatchV1DatabasesByDatabaseIdResponseDataConnectionsItem,
   ) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataConnectionsList>;
 
-export interface PatchV1DatabasesByDatabaseIdResponseDataProject {
-  id: string;
-  url: string;
-  name: string;
-}
+export type PatchV1DatabasesByDatabaseIdResponseDataProject =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const PatchV1DatabasesByDatabaseIdResponseDataProject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PatchV1DatabasesByDatabaseIdResponseDataProject",
-  }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataProject>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
-export interface PatchV1DatabasesByDatabaseIdResponseDataRegion {
-  id: string;
-  name: string;
-}
+export type PatchV1DatabasesByDatabaseIdResponseDataRegion =
+  GetV1AppsResponseDataItemRegion;
 export const PatchV1DatabasesByDatabaseIdResponseDataRegion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PatchV1DatabasesByDatabaseIdResponseDataRegion",
-  }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataRegion>;
+  GetV1AppsResponseDataItemRegion;
 
-export interface PatchV1DatabasesByDatabaseIdResponseDataSourceCase0 {
-  type: string;
-}
+export type PatchV1DatabasesByDatabaseIdResponseDataSourceCase0 =
+  GetV1DatabasesResponseDataItemSourceCase0;
 export const PatchV1DatabasesByDatabaseIdResponseDataSourceCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "PatchV1DatabasesByDatabaseIdResponseDataSourceCase0",
-  }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataSourceCase0>;
+  GetV1DatabasesResponseDataItemSourceCase0;
 
-export interface PatchV1DatabasesByDatabaseIdResponseDataSourceCase1 {
-  type: string;
-  databaseId: string;
-  /** ID of the backup to restore from */
-  backupId: string;
-}
+export type PatchV1DatabasesByDatabaseIdResponseDataSourceCase1 =
+  GetV1DatabasesResponseDataItemSourceCase1;
 export const PatchV1DatabasesByDatabaseIdResponseDataSourceCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-      backupId: S.String,
-    }),
-  ).annotate({
-    identifier: "PatchV1DatabasesByDatabaseIdResponseDataSourceCase1",
-  }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataSourceCase1>;
+  GetV1DatabasesResponseDataItemSourceCase1;
 
-export interface PatchV1DatabasesByDatabaseIdResponseDataSourceCase2 {
-  type: string;
-  databaseId: string;
-}
+export type PatchV1DatabasesByDatabaseIdResponseDataSourceCase2 =
+  GetV1DatabasesResponseDataItemSourceCase2;
 export const PatchV1DatabasesByDatabaseIdResponseDataSourceCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-    }),
-  ).annotate({
-    identifier: "PatchV1DatabasesByDatabaseIdResponseDataSourceCase2",
-  }) as any as S.Schema<PatchV1DatabasesByDatabaseIdResponseDataSourceCase2>;
+  GetV1DatabasesResponseDataItemSourceCase2;
 
 export type PatchV1DatabasesByDatabaseIdResponseDataSource =
-  | PatchV1DatabasesByDatabaseIdResponseDataSourceCase0
-  | PatchV1DatabasesByDatabaseIdResponseDataSourceCase1
-  | PatchV1DatabasesByDatabaseIdResponseDataSourceCase2;
+  | GetV1DatabasesResponseDataItemSourceCase0
+  | GetV1DatabasesResponseDataItemSourceCase1
+  | GetV1DatabasesResponseDataItemSourceCase2;
 export const PatchV1DatabasesByDatabaseIdResponseDataSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Union([
@@ -4617,8 +3603,8 @@ export interface PatchV1DatabasesByDatabaseIdResponseData {
   isDefault: boolean;
   defaultConnectionId: string | null;
   connections: PatchV1DatabasesByDatabaseIdResponseDataConnectionsList;
-  project: PatchV1DatabasesByDatabaseIdResponseDataProject;
-  region: PatchV1DatabasesByDatabaseIdResponseDataRegion | null;
+  project: GetV1BranchesByBranchIdResponseDataProject;
+  region: GetV1AppsResponseDataItemRegion | null;
   source: PatchV1DatabasesByDatabaseIdResponseDataSource | null;
   branchId: string | null;
 }
@@ -4634,8 +3620,8 @@ export const PatchV1DatabasesByDatabaseIdResponseData = /*@__PURE__*/ S.suspend(
       isDefault: S.Boolean,
       defaultConnectionId: S.NullOr(S.String),
       connections: PatchV1DatabasesByDatabaseIdResponseDataConnectionsList,
-      project: PatchV1DatabasesByDatabaseIdResponseDataProject,
-      region: S.NullOr(PatchV1DatabasesByDatabaseIdResponseDataRegion),
+      project: GetV1BranchesByBranchIdResponseDataProject,
+      region: S.NullOr(GetV1AppsResponseDataItemRegion),
       source: S.NullOr(PatchV1DatabasesByDatabaseIdResponseDataSource),
       branchId: S.NullOr(S.String),
     }),
@@ -4748,51 +3734,20 @@ export const PatchV1ProjectsByIdRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchV1ProjectsByIdRequest",
 }) as any as S.Schema<PatchV1ProjectsByIdRequest>;
 
-export interface PatchV1ProjectsByIdResponseDataWorkspace {
-  id: string;
-  url: string;
-  name: string;
-}
-export const PatchV1ProjectsByIdResponseDataWorkspace = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "PatchV1ProjectsByIdResponseDataWorkspace",
-}) as any as S.Schema<PatchV1ProjectsByIdResponseDataWorkspace>;
+export type PatchV1ProjectsByIdResponseDataWorkspace =
+  GetV1BranchesByBranchIdResponseDataProject;
+export const PatchV1ProjectsByIdResponseDataWorkspace =
+  GetV1BranchesByBranchIdResponseDataProject;
 
-export interface PatchV1ProjectsByIdResponseData {
-  id: string;
-  type: string;
-  url: string;
-  name: string;
-  createdAt: string;
-  defaultRegion: string | null;
-  workspace: PatchV1ProjectsByIdResponseDataWorkspace;
-}
-export const PatchV1ProjectsByIdResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    createdAt: S.String,
-    defaultRegion: S.NullOr(S.String),
-    workspace: PatchV1ProjectsByIdResponseDataWorkspace,
-  }),
-).annotate({
-  identifier: "PatchV1ProjectsByIdResponseData",
-}) as any as S.Schema<PatchV1ProjectsByIdResponseData>;
+export type PatchV1ProjectsByIdResponseData = GetV1ProjectsResponseDataItem;
+export const PatchV1ProjectsByIdResponseData = GetV1ProjectsResponseDataItem;
 
 export interface PatchV1ProjectsByIdResponse {
-  data: PatchV1ProjectsByIdResponseData;
+  data: GetV1ProjectsResponseDataItem;
 }
 export const PatchV1ProjectsByIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: PatchV1ProjectsByIdResponseData,
+    data: GetV1ProjectsResponseDataItem,
   }),
 ).annotate({
   identifier: "PatchV1ProjectsByIdResponse",
@@ -4826,54 +3781,18 @@ export const PostV1AppsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostV1AppsRequest",
 }) as any as S.Schema<PostV1AppsRequest>;
 
-export interface PostV1AppsResponseDataRegion {
-  id: string;
-  name: string;
-}
-export const PostV1AppsResponseDataRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "PostV1AppsResponseDataRegion",
-}) as any as S.Schema<PostV1AppsResponseDataRegion>;
+export type PostV1AppsResponseDataRegion = GetV1AppsResponseDataItemRegion;
+export const PostV1AppsResponseDataRegion = GetV1AppsResponseDataItemRegion;
 
-export interface PostV1AppsResponseData {
-  id: string;
-  type: string;
-  url: string;
-  name: string;
-  region: PostV1AppsResponseDataRegion;
-  projectId: string;
-  branchId: string | null;
-  latestDeploymentId: string | null;
-  appEndpointDomain: string;
-  createdAt: string;
-}
-export const PostV1AppsResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    name: S.String,
-    region: PostV1AppsResponseDataRegion,
-    projectId: S.String,
-    branchId: S.NullOr(S.String),
-    latestDeploymentId: S.NullOr(S.String),
-    appEndpointDomain: S.String,
-    createdAt: S.String,
-  }),
-).annotate({
-  identifier: "PostV1AppsResponseData",
-}) as any as S.Schema<PostV1AppsResponseData>;
+export type PostV1AppsResponseData = GetV1AppsResponseDataItem;
+export const PostV1AppsResponseData = GetV1AppsResponseDataItem;
 
 export interface PostV1AppsResponse {
-  data: PostV1AppsResponseData;
+  data: GetV1AppsResponseDataItem;
 }
 export const PostV1AppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: PostV1AppsResponseData,
+    data: GetV1AppsResponseDataItem,
   }),
 ).annotate({
   identifier: "PostV1AppsResponse",
@@ -4974,29 +3893,16 @@ export type PostV1AppsByAppIdDomainsResponseDataFailureCategory =
 export const PostV1AppsByAppIdDomainsResponseDataFailureCategory =
   /*@__PURE__*/ S.String;
 
-export interface PostV1AppsByAppIdDomainsResponseDataDnsRecordsItem {
-  type: string;
-  name: string;
-  value: string;
-  ttl: number | null;
-}
+export type PostV1AppsByAppIdDomainsResponseDataDnsRecordsItem =
+  GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem;
 export const PostV1AppsByAppIdDomainsResponseDataDnsRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      name: S.String,
-      value: S.String,
-      ttl: S.NullOr(S.Number),
-    }),
-  ).annotate({
-    identifier: "PostV1AppsByAppIdDomainsResponseDataDnsRecordsItem",
-  }) as any as S.Schema<PostV1AppsByAppIdDomainsResponseDataDnsRecordsItem>;
+  GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem;
 
 export type PostV1AppsByAppIdDomainsResponseDataDnsRecordsList =
-  Array<PostV1AppsByAppIdDomainsResponseDataDnsRecordsItem>;
+  Array<GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem>;
 export const PostV1AppsByAppIdDomainsResponseDataDnsRecordsList =
   /*@__PURE__*/ S.Array(
-    PostV1AppsByAppIdDomainsResponseDataDnsRecordsItem,
+    GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem,
   ) as any as S.Schema<PostV1AppsByAppIdDomainsResponseDataDnsRecordsList>;
 
 export interface PostV1AppsByAppIdDomainsResponseData {
@@ -5112,26 +4018,17 @@ export const PostV1AppsByAppIdRollbackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostV1AppsByAppIdRollbackRequest",
 }) as any as S.Schema<PostV1AppsByAppIdRollbackRequest>;
 
-export interface PostV1AppsByAppIdRollbackResponseData {
-  appEndpointDomain: string;
-  reassignedDomains: number;
-}
-export const PostV1AppsByAppIdRollbackResponseData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      appEndpointDomain: S.String,
-      reassignedDomains: S.Number,
-    }),
-).annotate({
-  identifier: "PostV1AppsByAppIdRollbackResponseData",
-}) as any as S.Schema<PostV1AppsByAppIdRollbackResponseData>;
+export type PostV1AppsByAppIdRollbackResponseData =
+  PostV1AppsByAppIdPromoteResponseData;
+export const PostV1AppsByAppIdRollbackResponseData =
+  PostV1AppsByAppIdPromoteResponseData;
 
 export interface PostV1AppsByAppIdRollbackResponse {
-  data: PostV1AppsByAppIdRollbackResponseData;
+  data: PostV1AppsByAppIdPromoteResponseData;
 }
 export const PostV1AppsByAppIdRollbackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: PostV1AppsByAppIdRollbackResponseData,
+    data: PostV1AppsByAppIdPromoteResponseData,
   }),
 ).annotate({
   identifier: "PostV1AppsByAppIdRollbackResponse",
@@ -5169,86 +4066,42 @@ export const PostV1ConnectionsResponseDataEndpointsDirect =
     identifier: "PostV1ConnectionsResponseDataEndpointsDirect",
   }) as any as S.Schema<PostV1ConnectionsResponseDataEndpointsDirect>;
 
-export interface PostV1ConnectionsResponseDataEndpointsPooled {
-  host: string;
-  port: number;
-  connectionString: string | Redacted.Redacted<string>;
-}
+export type PostV1ConnectionsResponseDataEndpointsPooled =
+  PostV1ConnectionsResponseDataEndpointsDirect;
 export const PostV1ConnectionsResponseDataEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.String.pipe(T.SensitiveValue({})),
-    }),
-  ).annotate({
-    identifier: "PostV1ConnectionsResponseDataEndpointsPooled",
-  }) as any as S.Schema<PostV1ConnectionsResponseDataEndpointsPooled>;
+  PostV1ConnectionsResponseDataEndpointsDirect;
 
-export interface PostV1ConnectionsResponseDataEndpointsAccelerate {
-  host: string;
-  port: number;
-  connectionString: string | Redacted.Redacted<string>;
-}
+export type PostV1ConnectionsResponseDataEndpointsAccelerate =
+  PostV1ConnectionsResponseDataEndpointsDirect;
 export const PostV1ConnectionsResponseDataEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.String.pipe(T.SensitiveValue({})),
-    }),
-  ).annotate({
-    identifier: "PostV1ConnectionsResponseDataEndpointsAccelerate",
-  }) as any as S.Schema<PostV1ConnectionsResponseDataEndpointsAccelerate>;
+  PostV1ConnectionsResponseDataEndpointsDirect;
 
 export interface PostV1ConnectionsResponseDataEndpoints {
   direct?: PostV1ConnectionsResponseDataEndpointsDirect;
-  pooled?: PostV1ConnectionsResponseDataEndpointsPooled;
-  accelerate?: PostV1ConnectionsResponseDataEndpointsAccelerate;
+  pooled?: PostV1ConnectionsResponseDataEndpointsDirect;
+  accelerate?: PostV1ConnectionsResponseDataEndpointsDirect;
 }
 export const PostV1ConnectionsResponseDataEndpoints = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       direct: S.optional(PostV1ConnectionsResponseDataEndpointsDirect),
-      pooled: S.optional(PostV1ConnectionsResponseDataEndpointsPooled),
-      accelerate: S.optional(PostV1ConnectionsResponseDataEndpointsAccelerate),
+      pooled: S.optional(PostV1ConnectionsResponseDataEndpointsDirect),
+      accelerate: S.optional(PostV1ConnectionsResponseDataEndpointsDirect),
     }),
 ).annotate({
   identifier: "PostV1ConnectionsResponseDataEndpoints",
 }) as any as S.Schema<PostV1ConnectionsResponseDataEndpoints>;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface PostV1ConnectionsResponseDataDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type PostV1ConnectionsResponseDataDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const PostV1ConnectionsResponseDataDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ConnectionsResponseDataDirectConnection",
-  }) as any as S.Schema<PostV1ConnectionsResponseDataDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface PostV1ConnectionsResponseDataDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
-export const PostV1ConnectionsResponseDataDatabase = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "PostV1ConnectionsResponseDataDatabase",
-}) as any as S.Schema<PostV1ConnectionsResponseDataDatabase>;
+export type PostV1ConnectionsResponseDataDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
+export const PostV1ConnectionsResponseDataDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface PostV1ConnectionsResponseData {
   id: string;
@@ -5261,8 +4114,8 @@ export interface PostV1ConnectionsResponseData {
   /** Deprecated: use `endpoints.direct.connectionString` or `endpoints.pooled.connectionString` instead. */
   connectionString: string | Redacted.Redacted<string>;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: PostV1ConnectionsResponseDataDirectConnection | null;
-  database: PostV1ConnectionsResponseDataDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
   /** Deprecated: use `endpoints.direct` instead. */
   host: string | null;
   /** Deprecated: use `endpoints.direct.connectionString` or `endpoints.pooled.connectionString` instead. */
@@ -5281,9 +4134,9 @@ export const PostV1ConnectionsResponseData = /*@__PURE__*/ S.suspend(() =>
     endpoints: PostV1ConnectionsResponseDataEndpoints,
     connectionString: S.String.pipe(T.SensitiveValue({})),
     directConnection: S.optional(
-      S.NullOr(PostV1ConnectionsResponseDataDirectConnection),
+      S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
     ),
-    database: PostV1ConnectionsResponseDataDatabase,
+    database: GetV1BranchesByBranchIdResponseDataProject,
     host: S.NullOr(S.String),
     pass: S.NullOr(S.String),
     user: S.NullOr(S.String),
@@ -5322,108 +4175,36 @@ export type PostV1ConnectionsByIdRotateResponseDataKind =
 export const PostV1ConnectionsByIdRotateResponseDataKind =
   /*@__PURE__*/ S.String;
 
-export interface PostV1ConnectionsByIdRotateResponseDataEndpointsDirect {
-  host: string;
-  port: number;
-  connectionString: string | Redacted.Redacted<string>;
-}
+export type PostV1ConnectionsByIdRotateResponseDataEndpointsDirect =
+  PostV1ConnectionsResponseDataEndpointsDirect;
 export const PostV1ConnectionsByIdRotateResponseDataEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.String.pipe(T.SensitiveValue({})),
-    }),
-  ).annotate({
-    identifier: "PostV1ConnectionsByIdRotateResponseDataEndpointsDirect",
-  }) as any as S.Schema<PostV1ConnectionsByIdRotateResponseDataEndpointsDirect>;
+  PostV1ConnectionsResponseDataEndpointsDirect;
 
-export interface PostV1ConnectionsByIdRotateResponseDataEndpointsPooled {
-  host: string;
-  port: number;
-  connectionString: string | Redacted.Redacted<string>;
-}
+export type PostV1ConnectionsByIdRotateResponseDataEndpointsPooled =
+  PostV1ConnectionsResponseDataEndpointsDirect;
 export const PostV1ConnectionsByIdRotateResponseDataEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.String.pipe(T.SensitiveValue({})),
-    }),
-  ).annotate({
-    identifier: "PostV1ConnectionsByIdRotateResponseDataEndpointsPooled",
-  }) as any as S.Schema<PostV1ConnectionsByIdRotateResponseDataEndpointsPooled>;
+  PostV1ConnectionsResponseDataEndpointsDirect;
 
-export interface PostV1ConnectionsByIdRotateResponseDataEndpointsAccelerate {
-  host: string;
-  port: number;
-  connectionString: string | Redacted.Redacted<string>;
-}
+export type PostV1ConnectionsByIdRotateResponseDataEndpointsAccelerate =
+  PostV1ConnectionsResponseDataEndpointsDirect;
 export const PostV1ConnectionsByIdRotateResponseDataEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.String.pipe(T.SensitiveValue({})),
-    }),
-  ).annotate({
-    identifier: "PostV1ConnectionsByIdRotateResponseDataEndpointsAccelerate",
-  }) as any as S.Schema<PostV1ConnectionsByIdRotateResponseDataEndpointsAccelerate>;
+  PostV1ConnectionsResponseDataEndpointsDirect;
 
-export interface PostV1ConnectionsByIdRotateResponseDataEndpoints {
-  direct?: PostV1ConnectionsByIdRotateResponseDataEndpointsDirect;
-  pooled?: PostV1ConnectionsByIdRotateResponseDataEndpointsPooled;
-  accelerate?: PostV1ConnectionsByIdRotateResponseDataEndpointsAccelerate;
-}
+export type PostV1ConnectionsByIdRotateResponseDataEndpoints =
+  PostV1ConnectionsResponseDataEndpoints;
 export const PostV1ConnectionsByIdRotateResponseDataEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(
-        PostV1ConnectionsByIdRotateResponseDataEndpointsDirect,
-      ),
-      pooled: S.optional(
-        PostV1ConnectionsByIdRotateResponseDataEndpointsPooled,
-      ),
-      accelerate: S.optional(
-        PostV1ConnectionsByIdRotateResponseDataEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier: "PostV1ConnectionsByIdRotateResponseDataEndpoints",
-  }) as any as S.Schema<PostV1ConnectionsByIdRotateResponseDataEndpoints>;
+  PostV1ConnectionsResponseDataEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface PostV1ConnectionsByIdRotateResponseDataDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type PostV1ConnectionsByIdRotateResponseDataDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const PostV1ConnectionsByIdRotateResponseDataDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ConnectionsByIdRotateResponseDataDirectConnection",
-  }) as any as S.Schema<PostV1ConnectionsByIdRotateResponseDataDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface PostV1ConnectionsByIdRotateResponseDataDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
+export type PostV1ConnectionsByIdRotateResponseDataDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const PostV1ConnectionsByIdRotateResponseDataDatabase =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ConnectionsByIdRotateResponseDataDatabase",
-  }) as any as S.Schema<PostV1ConnectionsByIdRotateResponseDataDatabase>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface PostV1ConnectionsByIdRotateResponseData {
   id: string;
@@ -5432,12 +4213,12 @@ export interface PostV1ConnectionsByIdRotateResponseData {
   name: string;
   createdAt: string;
   kind: PostV1ConnectionsByIdRotateResponseDataKind;
-  endpoints: PostV1ConnectionsByIdRotateResponseDataEndpoints;
+  endpoints: PostV1ConnectionsResponseDataEndpoints;
   /** Deprecated: use `endpoints.direct.connectionString` or `endpoints.pooled.connectionString` instead. */
   connectionString: string | Redacted.Redacted<string>;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: PostV1ConnectionsByIdRotateResponseDataDirectConnection | null;
-  database: PostV1ConnectionsByIdRotateResponseDataDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
   /** Deprecated: use `endpoints.direct` instead. */
   host: string | null;
   /** Deprecated: use `endpoints.direct.connectionString` or `endpoints.pooled.connectionString` instead. */
@@ -5454,12 +4235,12 @@ export const PostV1ConnectionsByIdRotateResponseData = /*@__PURE__*/ S.suspend(
       name: S.String,
       createdAt: S.String,
       kind: PostV1ConnectionsByIdRotateResponseDataKind,
-      endpoints: PostV1ConnectionsByIdRotateResponseDataEndpoints,
+      endpoints: PostV1ConnectionsResponseDataEndpoints,
       connectionString: S.String.pipe(T.SensitiveValue({})),
       directConnection: S.optional(
-        S.NullOr(PostV1ConnectionsByIdRotateResponseDataDirectConnection),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
-      database: PostV1ConnectionsByIdRotateResponseDataDatabase,
+      database: GetV1BranchesByBranchIdResponseDataProject,
       host: S.NullOr(S.String),
       pass: S.NullOr(S.String),
       user: S.NullOr(S.String),
@@ -5490,16 +4271,10 @@ export type PostV1DatabasesRequestRegion =
   | "inherit";
 export const PostV1DatabasesRequestRegion = /*@__PURE__*/ S.String;
 
-export interface PostV1DatabasesRequestSourceCase0 {
-  type: string;
-}
-export const PostV1DatabasesRequestSourceCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-  }),
-).annotate({
-  identifier: "PostV1DatabasesRequestSourceCase0",
-}) as any as S.Schema<PostV1DatabasesRequestSourceCase0>;
+export type PostV1DatabasesRequestSourceCase0 =
+  GetV1DatabasesResponseDataItemSourceCase0;
+export const PostV1DatabasesRequestSourceCase0 =
+  GetV1DatabasesResponseDataItemSourceCase0;
 
 export interface PostV1DatabasesRequestSourceCase1 {
   type: string;
@@ -5534,7 +4309,7 @@ export const PostV1DatabasesRequestSourceCase2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Source to create the database from. Omit to create an empty database. */
 export type PostV1DatabasesRequestSource =
-  | PostV1DatabasesRequestSourceCase0
+  | GetV1DatabasesResponseDataItemSourceCase0
   | PostV1DatabasesRequestSourceCase1
   | PostV1DatabasesRequestSourceCase2;
 export const PostV1DatabasesRequestSource = /*@__PURE__*/ S.suspend(() =>
@@ -5602,42 +4377,20 @@ export const PostV1DatabasesResponseDataConnectionsItemEndpointsDirect =
     identifier: "PostV1DatabasesResponseDataConnectionsItemEndpointsDirect",
   }) as any as S.Schema<PostV1DatabasesResponseDataConnectionsItemEndpointsDirect>;
 
-export interface PostV1DatabasesResponseDataConnectionsItemEndpointsPooled {
-  host: string;
-  port: number;
-  connectionString?: string | Redacted.Redacted<string>;
-}
+export type PostV1DatabasesResponseDataConnectionsItemEndpointsPooled =
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 export const PostV1DatabasesResponseDataConnectionsItemEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "PostV1DatabasesResponseDataConnectionsItemEndpointsPooled",
-  }) as any as S.Schema<PostV1DatabasesResponseDataConnectionsItemEndpointsPooled>;
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 
-export interface PostV1DatabasesResponseDataConnectionsItemEndpointsAccelerate {
-  host: string;
-  port: number;
-  connectionString?: string | Redacted.Redacted<string>;
-}
+export type PostV1DatabasesResponseDataConnectionsItemEndpointsAccelerate =
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 export const PostV1DatabasesResponseDataConnectionsItemEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier: "PostV1DatabasesResponseDataConnectionsItemEndpointsAccelerate",
-  }) as any as S.Schema<PostV1DatabasesResponseDataConnectionsItemEndpointsAccelerate>;
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 
 export interface PostV1DatabasesResponseDataConnectionsItemEndpoints {
   direct?: PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
-  pooled?: PostV1DatabasesResponseDataConnectionsItemEndpointsPooled;
-  accelerate?: PostV1DatabasesResponseDataConnectionsItemEndpointsAccelerate;
+  pooled?: PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
+  accelerate?: PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 }
 export const PostV1DatabasesResponseDataConnectionsItemEndpoints =
   /*@__PURE__*/ S.suspend(() =>
@@ -5646,10 +4399,10 @@ export const PostV1DatabasesResponseDataConnectionsItemEndpoints =
         PostV1DatabasesResponseDataConnectionsItemEndpointsDirect,
       ),
       pooled: S.optional(
-        PostV1DatabasesResponseDataConnectionsItemEndpointsPooled,
+        PostV1DatabasesResponseDataConnectionsItemEndpointsDirect,
       ),
       accelerate: S.optional(
-        PostV1DatabasesResponseDataConnectionsItemEndpointsAccelerate,
+        PostV1DatabasesResponseDataConnectionsItemEndpointsDirect,
       ),
     }),
   ).annotate({
@@ -5657,37 +4410,15 @@ export const PostV1DatabasesResponseDataConnectionsItemEndpoints =
   }) as any as S.Schema<PostV1DatabasesResponseDataConnectionsItemEndpoints>;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface PostV1DatabasesResponseDataConnectionsItemDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type PostV1DatabasesResponseDataConnectionsItemDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const PostV1DatabasesResponseDataConnectionsItemDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1DatabasesResponseDataConnectionsItemDirectConnection",
-  }) as any as S.Schema<PostV1DatabasesResponseDataConnectionsItemDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface PostV1DatabasesResponseDataConnectionsItemDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
+export type PostV1DatabasesResponseDataConnectionsItemDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const PostV1DatabasesResponseDataConnectionsItemDatabase =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1DatabasesResponseDataConnectionsItemDatabase",
-  }) as any as S.Schema<PostV1DatabasesResponseDataConnectionsItemDatabase>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface PostV1DatabasesResponseDataConnectionsItem {
   id: string;
@@ -5698,8 +4429,8 @@ export interface PostV1DatabasesResponseDataConnectionsItem {
   kind: PostV1DatabasesResponseDataConnectionsItemKind;
   endpoints: PostV1DatabasesResponseDataConnectionsItemEndpoints;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: PostV1DatabasesResponseDataConnectionsItemDirectConnection | null;
-  database: PostV1DatabasesResponseDataConnectionsItemDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const PostV1DatabasesResponseDataConnectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -5712,9 +4443,9 @@ export const PostV1DatabasesResponseDataConnectionsItem =
       kind: PostV1DatabasesResponseDataConnectionsItemKind,
       endpoints: PostV1DatabasesResponseDataConnectionsItemEndpoints,
       directConnection: S.optional(
-        S.NullOr(PostV1DatabasesResponseDataConnectionsItemDirectConnection),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
-      database: PostV1DatabasesResponseDataConnectionsItemDatabase,
+      database: GetV1BranchesByBranchIdResponseDataProject,
     }),
   ).annotate({
     identifier: "PostV1DatabasesResponseDataConnectionsItem",
@@ -5726,81 +4457,34 @@ export const PostV1DatabasesResponseDataConnectionsList = /*@__PURE__*/ S.Array(
   PostV1DatabasesResponseDataConnectionsItem,
 ) as any as S.Schema<PostV1DatabasesResponseDataConnectionsList>;
 
-export interface PostV1DatabasesResponseDataProject {
-  id: string;
-  url: string;
-  name: string;
-}
-export const PostV1DatabasesResponseDataProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    url: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "PostV1DatabasesResponseDataProject",
-}) as any as S.Schema<PostV1DatabasesResponseDataProject>;
+export type PostV1DatabasesResponseDataProject =
+  GetV1BranchesByBranchIdResponseDataProject;
+export const PostV1DatabasesResponseDataProject =
+  GetV1BranchesByBranchIdResponseDataProject;
 
-export interface PostV1DatabasesResponseDataRegion {
-  id: string;
-  name: string;
-}
-export const PostV1DatabasesResponseDataRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "PostV1DatabasesResponseDataRegion",
-}) as any as S.Schema<PostV1DatabasesResponseDataRegion>;
+export type PostV1DatabasesResponseDataRegion = GetV1AppsResponseDataItemRegion;
+export const PostV1DatabasesResponseDataRegion =
+  GetV1AppsResponseDataItemRegion;
 
-export interface PostV1DatabasesResponseDataSourceCase0 {
-  type: string;
-}
-export const PostV1DatabasesResponseDataSourceCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.String,
-    }),
-).annotate({
-  identifier: "PostV1DatabasesResponseDataSourceCase0",
-}) as any as S.Schema<PostV1DatabasesResponseDataSourceCase0>;
+export type PostV1DatabasesResponseDataSourceCase0 =
+  GetV1DatabasesResponseDataItemSourceCase0;
+export const PostV1DatabasesResponseDataSourceCase0 =
+  GetV1DatabasesResponseDataItemSourceCase0;
 
-export interface PostV1DatabasesResponseDataSourceCase1 {
-  type: string;
-  databaseId: string;
-  /** ID of the backup to restore from */
-  backupId: string;
-}
-export const PostV1DatabasesResponseDataSourceCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-      backupId: S.String,
-    }),
-).annotate({
-  identifier: "PostV1DatabasesResponseDataSourceCase1",
-}) as any as S.Schema<PostV1DatabasesResponseDataSourceCase1>;
+export type PostV1DatabasesResponseDataSourceCase1 =
+  GetV1DatabasesResponseDataItemSourceCase1;
+export const PostV1DatabasesResponseDataSourceCase1 =
+  GetV1DatabasesResponseDataItemSourceCase1;
 
-export interface PostV1DatabasesResponseDataSourceCase2 {
-  type: string;
-  databaseId: string;
-}
-export const PostV1DatabasesResponseDataSourceCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-    }),
-).annotate({
-  identifier: "PostV1DatabasesResponseDataSourceCase2",
-}) as any as S.Schema<PostV1DatabasesResponseDataSourceCase2>;
+export type PostV1DatabasesResponseDataSourceCase2 =
+  GetV1DatabasesResponseDataItemSourceCase2;
+export const PostV1DatabasesResponseDataSourceCase2 =
+  GetV1DatabasesResponseDataItemSourceCase2;
 
 export type PostV1DatabasesResponseDataSource =
-  | PostV1DatabasesResponseDataSourceCase0
-  | PostV1DatabasesResponseDataSourceCase1
-  | PostV1DatabasesResponseDataSourceCase2;
+  | GetV1DatabasesResponseDataItemSourceCase0
+  | GetV1DatabasesResponseDataItemSourceCase1
+  | GetV1DatabasesResponseDataItemSourceCase2;
 export const PostV1DatabasesResponseDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Union([
     PostV1DatabasesResponseDataSourceCase0,
@@ -5819,8 +4503,8 @@ export interface PostV1DatabasesResponseData {
   isDefault: boolean;
   defaultConnectionId: string | null;
   connections: PostV1DatabasesResponseDataConnectionsList;
-  project: PostV1DatabasesResponseDataProject;
-  region: PostV1DatabasesResponseDataRegion | null;
+  project: GetV1BranchesByBranchIdResponseDataProject;
+  region: GetV1AppsResponseDataItemRegion | null;
   source: PostV1DatabasesResponseDataSource | null;
   branchId: string | null;
 }
@@ -5835,8 +4519,8 @@ export const PostV1DatabasesResponseData = /*@__PURE__*/ S.suspend(() =>
     isDefault: S.Boolean,
     defaultConnectionId: S.NullOr(S.String),
     connections: PostV1DatabasesResponseDataConnectionsList,
-    project: PostV1DatabasesResponseDataProject,
-    region: S.NullOr(PostV1DatabasesResponseDataRegion),
+    project: GetV1BranchesByBranchIdResponseDataProject,
+    region: S.NullOr(GetV1AppsResponseDataItemRegion),
     source: S.NullOr(PostV1DatabasesResponseDataSource),
     branchId: S.NullOr(S.String),
   }),
@@ -5881,112 +4565,36 @@ export type PostV1DatabasesByDatabaseIdConnectionsResponseDataKind =
 export const PostV1DatabasesByDatabaseIdConnectionsResponseDataKind =
   /*@__PURE__*/ S.String;
 
-export interface PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsDirect {
-  host: string;
-  port: number;
-  connectionString: string | Redacted.Redacted<string>;
-}
+export type PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsDirect =
+  PostV1ConnectionsResponseDataEndpointsDirect;
 export const PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.String.pipe(T.SensitiveValue({})),
-    }),
-  ).annotate({
-    identifier:
-      "PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsDirect",
-  }) as any as S.Schema<PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsDirect>;
+  PostV1ConnectionsResponseDataEndpointsDirect;
 
-export interface PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsPooled {
-  host: string;
-  port: number;
-  connectionString: string | Redacted.Redacted<string>;
-}
+export type PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsPooled =
+  PostV1ConnectionsResponseDataEndpointsDirect;
 export const PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.String.pipe(T.SensitiveValue({})),
-    }),
-  ).annotate({
-    identifier:
-      "PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsPooled",
-  }) as any as S.Schema<PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsPooled>;
+  PostV1ConnectionsResponseDataEndpointsDirect;
 
-export interface PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsAccelerate {
-  host: string;
-  port: number;
-  connectionString: string | Redacted.Redacted<string>;
-}
+export type PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsAccelerate =
+  PostV1ConnectionsResponseDataEndpointsDirect;
 export const PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.String.pipe(T.SensitiveValue({})),
-    }),
-  ).annotate({
-    identifier:
-      "PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsAccelerate",
-  }) as any as S.Schema<PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsAccelerate>;
+  PostV1ConnectionsResponseDataEndpointsDirect;
 
-export interface PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpoints {
-  direct?: PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsDirect;
-  pooled?: PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsPooled;
-  accelerate?: PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsAccelerate;
-}
+export type PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpoints =
+  PostV1ConnectionsResponseDataEndpoints;
 export const PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(
-        PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsDirect,
-      ),
-      pooled: S.optional(
-        PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsPooled,
-      ),
-      accelerate: S.optional(
-        PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier: "PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpoints",
-  }) as any as S.Schema<PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpoints>;
+  PostV1ConnectionsResponseDataEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface PostV1DatabasesByDatabaseIdConnectionsResponseDataDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type PostV1DatabasesByDatabaseIdConnectionsResponseDataDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const PostV1DatabasesByDatabaseIdConnectionsResponseDataDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1DatabasesByDatabaseIdConnectionsResponseDataDirectConnection",
-  }) as any as S.Schema<PostV1DatabasesByDatabaseIdConnectionsResponseDataDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface PostV1DatabasesByDatabaseIdConnectionsResponseDataDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
+export type PostV1DatabasesByDatabaseIdConnectionsResponseDataDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const PostV1DatabasesByDatabaseIdConnectionsResponseDataDatabase =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1DatabasesByDatabaseIdConnectionsResponseDataDatabase",
-  }) as any as S.Schema<PostV1DatabasesByDatabaseIdConnectionsResponseDataDatabase>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface PostV1DatabasesByDatabaseIdConnectionsResponseData {
   id: string;
@@ -5995,12 +4603,12 @@ export interface PostV1DatabasesByDatabaseIdConnectionsResponseData {
   name: string;
   createdAt: string;
   kind: PostV1DatabasesByDatabaseIdConnectionsResponseDataKind;
-  endpoints: PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpoints;
+  endpoints: PostV1ConnectionsResponseDataEndpoints;
   /** Deprecated: use `endpoints.direct.connectionString` or `endpoints.pooled.connectionString` instead. */
   connectionString: string | Redacted.Redacted<string>;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: PostV1DatabasesByDatabaseIdConnectionsResponseDataDirectConnection | null;
-  database: PostV1DatabasesByDatabaseIdConnectionsResponseDataDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
   /** Deprecated: use `endpoints.direct` instead. */
   host: string | null;
   /** Deprecated: use `endpoints.direct.connectionString` or `endpoints.pooled.connectionString` instead. */
@@ -6017,14 +4625,12 @@ export const PostV1DatabasesByDatabaseIdConnectionsResponseData =
       name: S.String,
       createdAt: S.String,
       kind: PostV1DatabasesByDatabaseIdConnectionsResponseDataKind,
-      endpoints: PostV1DatabasesByDatabaseIdConnectionsResponseDataEndpoints,
+      endpoints: PostV1ConnectionsResponseDataEndpoints,
       connectionString: S.String.pipe(T.SensitiveValue({})),
       directConnection: S.optional(
-        S.NullOr(
-          PostV1DatabasesByDatabaseIdConnectionsResponseDataDirectConnection,
-        ),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
-      database: PostV1DatabasesByDatabaseIdConnectionsResponseDataDatabase,
+      database: GetV1BranchesByBranchIdResponseDataProject,
       host: S.NullOr(S.String),
       pass: S.NullOr(S.String),
       user: S.NullOr(S.String),
@@ -6045,33 +4651,20 @@ export const PostV1DatabasesByDatabaseIdConnectionsResponse =
     identifier: "PostV1DatabasesByDatabaseIdConnectionsResponse",
   }) as any as S.Schema<PostV1DatabasesByDatabaseIdConnectionsResponse>;
 
-export interface PostV1DatabasesByTargetDatabaseIdRestoreRequestSource {
-  type: string;
-  /** ID of the database the backup belongs to */
-  databaseId: string;
-  /** ID of the backup to restore from */
-  backupId: string;
-}
+export type PostV1DatabasesByTargetDatabaseIdRestoreRequestSource =
+  PostV1DatabasesRequestSourceCase1;
 export const PostV1DatabasesByTargetDatabaseIdRestoreRequestSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-      backupId: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1DatabasesByTargetDatabaseIdRestoreRequestSource",
-  }) as any as S.Schema<PostV1DatabasesByTargetDatabaseIdRestoreRequestSource>;
+  PostV1DatabasesRequestSourceCase1;
 
 export interface PostV1DatabasesByTargetDatabaseIdRestoreRequest {
   targetDatabaseId: string;
-  source: PostV1DatabasesByTargetDatabaseIdRestoreRequestSource;
+  source: PostV1DatabasesRequestSourceCase1;
 }
 export const PostV1DatabasesByTargetDatabaseIdRestoreRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetDatabaseId: S.String.pipe(T.Label()),
-      source: PostV1DatabasesByTargetDatabaseIdRestoreRequestSource,
+      source: PostV1DatabasesRequestSourceCase1,
     }).pipe(
       T.Http({
         method: "POST",
@@ -6096,108 +4689,36 @@ export type PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemK
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
-export interface PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsDirect {
-  host: string;
-  port: number;
-}
+export type PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsDirect =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsDirect",
-  }) as any as S.Schema<PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsDirect>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsPooled {
-  host: string;
-  port: number;
-}
+export type PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsPooled =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsPooled",
-  }) as any as S.Schema<PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsPooled>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsAccelerate {
-  host: string;
-  port: number;
-}
+export type PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsAccelerate =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsAccelerate",
-  }) as any as S.Schema<PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsAccelerate>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpoints {
-  direct?: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsDirect;
-  pooled?: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsPooled;
-  accelerate?: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsAccelerate;
-}
+export type PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpoints =
+  GetV1ConnectionsResponseDataItemEndpoints;
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(
-        PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsDirect,
-      ),
-      pooled: S.optional(
-        PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsPooled,
-      ),
-      accelerate: S.optional(
-        PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpoints",
-  }) as any as S.Schema<PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpoints>;
+  GetV1ConnectionsResponseDataItemEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDirectConnection",
-  }) as any as S.Schema<PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
+export type PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDatabase =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDatabase",
-  }) as any as S.Schema<PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDatabase>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItem {
   id: string;
@@ -6206,10 +4727,10 @@ export interface PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnections
   name: string;
   createdAt: string;
   kind: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemKind;
-  endpoints: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpoints;
+  endpoints: GetV1ConnectionsResponseDataItemEndpoints;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDirectConnection | null;
-  database: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -6220,15 +4741,11 @@ export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItem
       name: S.String,
       createdAt: S.String,
       kind: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemKind,
-      endpoints:
-        PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemEndpoints,
+      endpoints: GetV1ConnectionsResponseDataItemEndpoints,
       directConnection: S.optional(
-        S.NullOr(
-          PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDirectConnection,
-        ),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
-      database:
-        PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItemDatabase,
+      database: GetV1BranchesByBranchIdResponseDataProject,
     }),
   ).annotate({
     identifier:
@@ -6242,35 +4759,15 @@ export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsList
     PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsItem,
   ) as any as S.Schema<PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsList>;
 
-export interface PostV1DatabasesByTargetDatabaseIdRestoreResponseDataProject {
-  id: string;
-  url: string;
-  name: string;
-}
+export type PostV1DatabasesByTargetDatabaseIdRestoreResponseDataProject =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataProject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1DatabasesByTargetDatabaseIdRestoreResponseDataProject",
-  }) as any as S.Schema<PostV1DatabasesByTargetDatabaseIdRestoreResponseDataProject>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
-export interface PostV1DatabasesByTargetDatabaseIdRestoreResponseDataRegion {
-  id: string;
-  name: string;
-}
+export type PostV1DatabasesByTargetDatabaseIdRestoreResponseDataRegion =
+  GetV1AppsResponseDataItemRegion;
 export const PostV1DatabasesByTargetDatabaseIdRestoreResponseDataRegion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1DatabasesByTargetDatabaseIdRestoreResponseDataRegion",
-  }) as any as S.Schema<PostV1DatabasesByTargetDatabaseIdRestoreResponseDataRegion>;
+  GetV1AppsResponseDataItemRegion;
 
 export interface PostV1DatabasesByTargetDatabaseIdRestoreResponseDataSource {
   type: string;
@@ -6298,8 +4795,8 @@ export interface PostV1DatabasesByTargetDatabaseIdRestoreResponseData {
   isDefault: boolean;
   defaultConnectionId: string | null;
   connections: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsList;
-  project: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataProject;
-  region: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataRegion | null;
+  project: GetV1BranchesByBranchIdResponseDataProject;
+  region: GetV1AppsResponseDataItemRegion | null;
   source: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataSource;
   branchId: string | null;
 }
@@ -6316,10 +4813,8 @@ export const PostV1DatabasesByTargetDatabaseIdRestoreResponseData =
       defaultConnectionId: S.NullOr(S.String),
       connections:
         PostV1DatabasesByTargetDatabaseIdRestoreResponseDataConnectionsList,
-      project: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataProject,
-      region: S.NullOr(
-        PostV1DatabasesByTargetDatabaseIdRestoreResponseDataRegion,
-      ),
+      project: GetV1BranchesByBranchIdResponseDataProject,
+      region: S.NullOr(GetV1AppsResponseDataItemRegion),
       source: PostV1DatabasesByTargetDatabaseIdRestoreResponseDataSource,
       branchId: S.NullOr(S.String),
     }),
@@ -6437,29 +4932,16 @@ export type PostV1DomainsByDomainIdRetryResponseDataFailureCategory =
 export const PostV1DomainsByDomainIdRetryResponseDataFailureCategory =
   /*@__PURE__*/ S.String;
 
-export interface PostV1DomainsByDomainIdRetryResponseDataDnsRecordsItem {
-  type: string;
-  name: string;
-  value: string;
-  ttl: number | null;
-}
+export type PostV1DomainsByDomainIdRetryResponseDataDnsRecordsItem =
+  GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem;
 export const PostV1DomainsByDomainIdRetryResponseDataDnsRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      name: S.String,
-      value: S.String,
-      ttl: S.NullOr(S.Number),
-    }),
-  ).annotate({
-    identifier: "PostV1DomainsByDomainIdRetryResponseDataDnsRecordsItem",
-  }) as any as S.Schema<PostV1DomainsByDomainIdRetryResponseDataDnsRecordsItem>;
+  GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem;
 
 export type PostV1DomainsByDomainIdRetryResponseDataDnsRecordsList =
-  Array<PostV1DomainsByDomainIdRetryResponseDataDnsRecordsItem>;
+  Array<GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem>;
 export const PostV1DomainsByDomainIdRetryResponseDataDnsRecordsList =
   /*@__PURE__*/ S.Array(
-    PostV1DomainsByDomainIdRetryResponseDataDnsRecordsItem,
+    GetV1AppsByAppIdDomainsResponseDataItemDnsRecordsItem,
   ) as any as S.Schema<PostV1DomainsByDomainIdRetryResponseDataDnsRecordsList>;
 
 export interface PostV1DomainsByDomainIdRetryResponseData {
@@ -6612,20 +5094,10 @@ export const PostV1ProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostV1ProjectsRequest",
 }) as any as S.Schema<PostV1ProjectsRequest>;
 
-export interface PostV1ProjectsResponseDataWorkspace {
-  id: string;
-  url: string;
-  name: string;
-}
-export const PostV1ProjectsResponseDataWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    url: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "PostV1ProjectsResponseDataWorkspace",
-}) as any as S.Schema<PostV1ProjectsResponseDataWorkspace>;
+export type PostV1ProjectsResponseDataWorkspace =
+  GetV1BranchesByBranchIdResponseDataProject;
+export const PostV1ProjectsResponseDataWorkspace =
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export type PostV1ProjectsResponseDataDatabaseStatus = "provisioning" | "ready";
 export const PostV1ProjectsResponseDataDatabaseStatus = /*@__PURE__*/ S.String;
@@ -6636,112 +5108,36 @@ export type PostV1ProjectsResponseDataDatabaseConnectionsItemKind =
 export const PostV1ProjectsResponseDataDatabaseConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
-export interface PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsDirect {
-  host: string;
-  port: number;
-  connectionString?: string | Redacted.Redacted<string>;
-}
+export type PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsDirect =
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 export const PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsDirect",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsDirect>;
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 
-export interface PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsPooled {
-  host: string;
-  port: number;
-  connectionString?: string | Redacted.Redacted<string>;
-}
+export type PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsPooled =
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 export const PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsPooled",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsPooled>;
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 
-export interface PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsAccelerate {
-  host: string;
-  port: number;
-  connectionString?: string | Redacted.Redacted<string>;
-}
+export type PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsAccelerate =
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 export const PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsAccelerate",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsAccelerate>;
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 
-export interface PostV1ProjectsResponseDataDatabaseConnectionsItemEndpoints {
-  direct?: PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsDirect;
-  pooled?: PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsPooled;
-  accelerate?: PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsAccelerate;
-}
+export type PostV1ProjectsResponseDataDatabaseConnectionsItemEndpoints =
+  PostV1DatabasesResponseDataConnectionsItemEndpoints;
 export const PostV1ProjectsResponseDataDatabaseConnectionsItemEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(
-        PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsDirect,
-      ),
-      pooled: S.optional(
-        PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsPooled,
-      ),
-      accelerate: S.optional(
-        PostV1ProjectsResponseDataDatabaseConnectionsItemEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsResponseDataDatabaseConnectionsItemEndpoints",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseConnectionsItemEndpoints>;
+  PostV1DatabasesResponseDataConnectionsItemEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface PostV1ProjectsResponseDataDatabaseConnectionsItemDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type PostV1ProjectsResponseDataDatabaseConnectionsItemDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const PostV1ProjectsResponseDataDatabaseConnectionsItemDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsResponseDataDatabaseConnectionsItemDirectConnection",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseConnectionsItemDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface PostV1ProjectsResponseDataDatabaseConnectionsItemDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
+export type PostV1ProjectsResponseDataDatabaseConnectionsItemDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const PostV1ProjectsResponseDataDatabaseConnectionsItemDatabase =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsResponseDataDatabaseConnectionsItemDatabase",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseConnectionsItemDatabase>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface PostV1ProjectsResponseDataDatabaseConnectionsItem {
   id: string;
@@ -6750,10 +5146,10 @@ export interface PostV1ProjectsResponseDataDatabaseConnectionsItem {
   name: string;
   createdAt: string;
   kind: PostV1ProjectsResponseDataDatabaseConnectionsItemKind;
-  endpoints: PostV1ProjectsResponseDataDatabaseConnectionsItemEndpoints;
+  endpoints: PostV1DatabasesResponseDataConnectionsItemEndpoints;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: PostV1ProjectsResponseDataDatabaseConnectionsItemDirectConnection | null;
-  database: PostV1ProjectsResponseDataDatabaseConnectionsItemDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const PostV1ProjectsResponseDataDatabaseConnectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -6764,13 +5160,11 @@ export const PostV1ProjectsResponseDataDatabaseConnectionsItem =
       name: S.String,
       createdAt: S.String,
       kind: PostV1ProjectsResponseDataDatabaseConnectionsItemKind,
-      endpoints: PostV1ProjectsResponseDataDatabaseConnectionsItemEndpoints,
+      endpoints: PostV1DatabasesResponseDataConnectionsItemEndpoints,
       directConnection: S.optional(
-        S.NullOr(
-          PostV1ProjectsResponseDataDatabaseConnectionsItemDirectConnection,
-        ),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
-      database: PostV1ProjectsResponseDataDatabaseConnectionsItemDatabase,
+      database: GetV1BranchesByBranchIdResponseDataProject,
     }),
   ).annotate({
     identifier: "PostV1ProjectsResponseDataDatabaseConnectionsItem",
@@ -6783,67 +5177,30 @@ export const PostV1ProjectsResponseDataDatabaseConnectionsList =
     PostV1ProjectsResponseDataDatabaseConnectionsItem,
   ) as any as S.Schema<PostV1ProjectsResponseDataDatabaseConnectionsList>;
 
-export interface PostV1ProjectsResponseDataDatabaseRegion {
-  id: string;
-  name: string;
-}
-export const PostV1ProjectsResponseDataDatabaseRegion = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "PostV1ProjectsResponseDataDatabaseRegion",
-}) as any as S.Schema<PostV1ProjectsResponseDataDatabaseRegion>;
+export type PostV1ProjectsResponseDataDatabaseRegion =
+  GetV1AppsResponseDataItemRegion;
+export const PostV1ProjectsResponseDataDatabaseRegion =
+  GetV1AppsResponseDataItemRegion;
 
-export interface PostV1ProjectsResponseDataDatabaseSourceCase0 {
-  type: string;
-}
+export type PostV1ProjectsResponseDataDatabaseSourceCase0 =
+  GetV1DatabasesResponseDataItemSourceCase0;
 export const PostV1ProjectsResponseDataDatabaseSourceCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsResponseDataDatabaseSourceCase0",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseSourceCase0>;
+  GetV1DatabasesResponseDataItemSourceCase0;
 
-export interface PostV1ProjectsResponseDataDatabaseSourceCase1 {
-  type: string;
-  databaseId: string;
-  /** ID of the backup to restore from */
-  backupId: string;
-}
+export type PostV1ProjectsResponseDataDatabaseSourceCase1 =
+  GetV1DatabasesResponseDataItemSourceCase1;
 export const PostV1ProjectsResponseDataDatabaseSourceCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-      backupId: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsResponseDataDatabaseSourceCase1",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseSourceCase1>;
+  GetV1DatabasesResponseDataItemSourceCase1;
 
-export interface PostV1ProjectsResponseDataDatabaseSourceCase2 {
-  type: string;
-  databaseId: string;
-}
+export type PostV1ProjectsResponseDataDatabaseSourceCase2 =
+  GetV1DatabasesResponseDataItemSourceCase2;
 export const PostV1ProjectsResponseDataDatabaseSourceCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsResponseDataDatabaseSourceCase2",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseSourceCase2>;
+  GetV1DatabasesResponseDataItemSourceCase2;
 
 export type PostV1ProjectsResponseDataDatabaseSource =
-  | PostV1ProjectsResponseDataDatabaseSourceCase0
-  | PostV1ProjectsResponseDataDatabaseSourceCase1
-  | PostV1ProjectsResponseDataDatabaseSourceCase2;
+  | GetV1DatabasesResponseDataItemSourceCase0
+  | GetV1DatabasesResponseDataItemSourceCase1
+  | GetV1DatabasesResponseDataItemSourceCase2;
 export const PostV1ProjectsResponseDataDatabaseSource = /*@__PURE__*/ S.suspend(
   () =>
     S.Union([
@@ -6859,87 +5216,31 @@ export type PostV1ProjectsResponseDataDatabaseApiKeysItemKind =
 export const PostV1ProjectsResponseDataDatabaseApiKeysItemKind =
   /*@__PURE__*/ S.String;
 
-export interface PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsDirect {
-  host: string;
-  port: number;
-}
+export type PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsDirect =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsDirect",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsDirect>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsPooled {
-  host: string;
-  port: number;
-}
+export type PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsPooled =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsPooled",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsPooled>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsAccelerate {
-  host: string;
-  port: number;
-}
+export type PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsAccelerate =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsAccelerate",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsAccelerate>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface PostV1ProjectsResponseDataDatabaseApiKeysItemEndpoints {
-  direct?: PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsDirect;
-  pooled?: PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsPooled;
-  accelerate?: PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsAccelerate;
-}
+export type PostV1ProjectsResponseDataDatabaseApiKeysItemEndpoints =
+  GetV1ConnectionsResponseDataItemEndpoints;
 export const PostV1ProjectsResponseDataDatabaseApiKeysItemEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(
-        PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsDirect,
-      ),
-      pooled: S.optional(
-        PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsPooled,
-      ),
-      accelerate: S.optional(
-        PostV1ProjectsResponseDataDatabaseApiKeysItemEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsResponseDataDatabaseApiKeysItemEndpoints",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseApiKeysItemEndpoints>;
+  GetV1ConnectionsResponseDataItemEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface PostV1ProjectsResponseDataDatabaseApiKeysItemDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type PostV1ProjectsResponseDataDatabaseApiKeysItemDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const PostV1ProjectsResponseDataDatabaseApiKeysItemDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsResponseDataDatabaseApiKeysItemDirectConnection",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseApiKeysItemDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
 export interface PostV1ProjectsResponseDataDatabaseApiKeysItem {
   id: string;
@@ -6948,11 +5249,11 @@ export interface PostV1ProjectsResponseDataDatabaseApiKeysItem {
   name: string;
   createdAt: string;
   kind: PostV1ProjectsResponseDataDatabaseApiKeysItemKind;
-  endpoints: PostV1ProjectsResponseDataDatabaseApiKeysItemEndpoints;
+  endpoints: GetV1ConnectionsResponseDataItemEndpoints;
   /** Deprecated: use `endpoints.direct.connectionString` or `endpoints.pooled.connectionString` instead. */
   connectionString: string | Redacted.Redacted<string>;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: PostV1ProjectsResponseDataDatabaseApiKeysItemDirectConnection | null;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
 }
 export const PostV1ProjectsResponseDataDatabaseApiKeysItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -6963,10 +5264,10 @@ export const PostV1ProjectsResponseDataDatabaseApiKeysItem =
       name: S.String,
       createdAt: S.String,
       kind: PostV1ProjectsResponseDataDatabaseApiKeysItemKind,
-      endpoints: PostV1ProjectsResponseDataDatabaseApiKeysItemEndpoints,
+      endpoints: GetV1ConnectionsResponseDataItemEndpoints,
       connectionString: S.String.pipe(T.SensitiveValue({})),
       directConnection: S.optional(
-        S.NullOr(PostV1ProjectsResponseDataDatabaseApiKeysItemDirectConnection),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
     }),
   ).annotate({
@@ -6982,21 +5283,10 @@ export const PostV1ProjectsResponseDataDatabaseApiKeysList =
   ) as any as S.Schema<PostV1ProjectsResponseDataDatabaseApiKeysList>;
 
 /** Deprecated: use `connections[].endpoints.direct` instead. */
-export interface PostV1ProjectsResponseDataDatabaseDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type PostV1ProjectsResponseDataDatabaseDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const PostV1ProjectsResponseDataDatabaseDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsResponseDataDatabaseDirectConnection",
-  }) as any as S.Schema<PostV1ProjectsResponseDataDatabaseDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
 export interface PostV1ProjectsResponseDataDatabase {
   id: string;
@@ -7008,7 +5298,7 @@ export interface PostV1ProjectsResponseDataDatabase {
   isDefault: boolean;
   defaultConnectionId: string | null;
   connections: PostV1ProjectsResponseDataDatabaseConnectionsList;
-  region: PostV1ProjectsResponseDataDatabaseRegion;
+  region: GetV1AppsResponseDataItemRegion;
   source: PostV1ProjectsResponseDataDatabaseSource | null;
   branchId: string | null;
   /** Deprecated: use `connections[]` instead. */
@@ -7016,7 +5306,7 @@ export interface PostV1ProjectsResponseDataDatabase {
   /** Deprecated: use `connections[].endpoints.direct.connectionString` or `connections[].endpoints.pooled.connectionString`. */
   connectionString: string | Redacted.Redacted<string>;
   /** Deprecated: use `connections[].endpoints.direct` instead. */
-  directConnection: PostV1ProjectsResponseDataDatabaseDirectConnection | null;
+  directConnection: GetV1ConnectionsResponseDataItemDirectConnection | null;
 }
 export const PostV1ProjectsResponseDataDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7029,13 +5319,13 @@ export const PostV1ProjectsResponseDataDatabase = /*@__PURE__*/ S.suspend(() =>
     isDefault: S.Boolean,
     defaultConnectionId: S.NullOr(S.String),
     connections: PostV1ProjectsResponseDataDatabaseConnectionsList,
-    region: PostV1ProjectsResponseDataDatabaseRegion,
+    region: GetV1AppsResponseDataItemRegion,
     source: S.NullOr(PostV1ProjectsResponseDataDatabaseSource),
     branchId: S.NullOr(S.String),
     apiKeys: PostV1ProjectsResponseDataDatabaseApiKeysList,
     connectionString: S.NullOr(S.String).pipe(T.SensitiveValue({})),
     directConnection: S.NullOr(
-      PostV1ProjectsResponseDataDatabaseDirectConnection,
+      GetV1ConnectionsResponseDataItemDirectConnection,
     ),
   }),
 ).annotate({
@@ -7049,7 +5339,7 @@ export interface PostV1ProjectsResponseData {
   name: string;
   createdAt: string;
   defaultRegion: string | null;
-  workspace: PostV1ProjectsResponseDataWorkspace;
+  workspace: GetV1BranchesByBranchIdResponseDataProject;
   database: PostV1ProjectsResponseDataDatabase | null;
 }
 export const PostV1ProjectsResponseData = /*@__PURE__*/ S.suspend(() =>
@@ -7060,7 +5350,7 @@ export const PostV1ProjectsResponseData = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     createdAt: S.String,
     defaultRegion: S.NullOr(S.String),
-    workspace: PostV1ProjectsResponseDataWorkspace,
+    workspace: GetV1BranchesByBranchIdResponseDataProject,
     database: S.NullOr(PostV1ProjectsResponseDataDatabase),
   }),
 ).annotate({
@@ -7129,21 +5419,10 @@ export const PostV1ProjectsByProjectIdBranchesResponseDataRole =
   /*@__PURE__*/ S.String;
 
 /** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
-export interface PostV1ProjectsByProjectIdBranchesResponseDataProject {
-  id: string;
-  url: string;
-  name: string;
-}
+export type PostV1ProjectsByProjectIdBranchesResponseDataProject =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const PostV1ProjectsByProjectIdBranchesResponseDataProject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdBranchesResponseDataProject",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdBranchesResponseDataProject>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface PostV1ProjectsByProjectIdBranchesResponseData {
   id: string;
@@ -7155,7 +5434,7 @@ export interface PostV1ProjectsByProjectIdBranchesResponseData {
   createdAt: string;
   updatedAt: string;
   /** Thin reference to the parent Project. Member resources are intentionally NOT inlined — list /v1/databases?branchId=<br_xxx> or /v1/compute-services?branchId=<br_xxx> instead (see API design principles "Flat and Hierarchical Coexistence"). */
-  project: PostV1ProjectsByProjectIdBranchesResponseDataProject;
+  project: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const PostV1ProjectsByProjectIdBranchesResponseData =
   /*@__PURE__*/ S.suspend(() =>
@@ -7168,7 +5447,7 @@ export const PostV1ProjectsByProjectIdBranchesResponseData =
       role: PostV1ProjectsByProjectIdBranchesResponseDataRole,
       createdAt: S.String,
       updatedAt: S.String,
-      project: PostV1ProjectsByProjectIdBranchesResponseDataProject,
+      project: GetV1BranchesByBranchIdResponseDataProject,
     }),
   ).annotate({
     identifier: "PostV1ProjectsByProjectIdBranchesResponseData",
@@ -7226,57 +5505,23 @@ export const PostV1ProjectsByProjectIdComputeServicesRequest =
     identifier: "PostV1ProjectsByProjectIdComputeServicesRequest",
   }) as any as S.Schema<PostV1ProjectsByProjectIdComputeServicesRequest>;
 
-export interface PostV1ProjectsByProjectIdComputeServicesResponseDataRegion {
-  id: string;
-  name: string;
-}
+export type PostV1ProjectsByProjectIdComputeServicesResponseDataRegion =
+  GetV1AppsResponseDataItemRegion;
 export const PostV1ProjectsByProjectIdComputeServicesResponseDataRegion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdComputeServicesResponseDataRegion",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdComputeServicesResponseDataRegion>;
+  GetV1AppsResponseDataItemRegion;
 
-export interface PostV1ProjectsByProjectIdComputeServicesResponseData {
-  id: string;
-  type: string;
-  url: string;
-  name: string;
-  region: PostV1ProjectsByProjectIdComputeServicesResponseDataRegion;
-  projectId: string;
-  branchId: string | null;
-  latestVersionId: string | null;
-  serviceEndpointDomain: string;
-  createdAt: string;
-}
+export type PostV1ProjectsByProjectIdComputeServicesResponseData =
+  GetV1ProjectsByProjectIdComputeServicesResponseDataItem;
 export const PostV1ProjectsByProjectIdComputeServicesResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      type: S.String,
-      url: S.String,
-      name: S.String,
-      region: PostV1ProjectsByProjectIdComputeServicesResponseDataRegion,
-      projectId: S.String,
-      branchId: S.NullOr(S.String),
-      latestVersionId: S.NullOr(S.String),
-      serviceEndpointDomain: S.String,
-      createdAt: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdComputeServicesResponseData",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdComputeServicesResponseData>;
+  GetV1ProjectsByProjectIdComputeServicesResponseDataItem;
 
 export interface PostV1ProjectsByProjectIdComputeServicesResponse {
-  data: PostV1ProjectsByProjectIdComputeServicesResponseData;
+  data: GetV1ProjectsByProjectIdComputeServicesResponseDataItem;
 }
 export const PostV1ProjectsByProjectIdComputeServicesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      data: PostV1ProjectsByProjectIdComputeServicesResponseData,
+      data: GetV1ProjectsByProjectIdComputeServicesResponseDataItem,
     }),
   ).annotate({
     identifier: "PostV1ProjectsByProjectIdComputeServicesResponse",
@@ -7309,55 +5554,25 @@ export const PostV1ProjectsByProjectIdDatabasesRequestFromDatabase =
     identifier: "PostV1ProjectsByProjectIdDatabasesRequestFromDatabase",
   }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesRequestFromDatabase>;
 
-export interface PostV1ProjectsByProjectIdDatabasesRequestSourceCase0 {
-  type: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesRequestSourceCase0 =
+  GetV1DatabasesResponseDataItemSourceCase0;
 export const PostV1ProjectsByProjectIdDatabasesRequestSourceCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdDatabasesRequestSourceCase0",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesRequestSourceCase0>;
+  GetV1DatabasesResponseDataItemSourceCase0;
 
-export interface PostV1ProjectsByProjectIdDatabasesRequestSourceCase1 {
-  type: string;
-  /** ID of the database the backup belongs to */
-  databaseId: string;
-  /** ID of the backup to restore from */
-  backupId: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesRequestSourceCase1 =
+  PostV1DatabasesRequestSourceCase1;
 export const PostV1ProjectsByProjectIdDatabasesRequestSourceCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-      backupId: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdDatabasesRequestSourceCase1",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesRequestSourceCase1>;
+  PostV1DatabasesRequestSourceCase1;
 
-export interface PostV1ProjectsByProjectIdDatabasesRequestSourceCase2 {
-  type: string;
-  /** ID of the database to clone from */
-  databaseId: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesRequestSourceCase2 =
+  PostV1DatabasesRequestSourceCase2;
 export const PostV1ProjectsByProjectIdDatabasesRequestSourceCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdDatabasesRequestSourceCase2",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesRequestSourceCase2>;
+  PostV1DatabasesRequestSourceCase2;
 
 export type PostV1ProjectsByProjectIdDatabasesRequestSource =
-  | PostV1ProjectsByProjectIdDatabasesRequestSourceCase0
-  | PostV1ProjectsByProjectIdDatabasesRequestSourceCase1
-  | PostV1ProjectsByProjectIdDatabasesRequestSourceCase2;
+  | GetV1DatabasesResponseDataItemSourceCase0
+  | PostV1DatabasesRequestSourceCase1
+  | PostV1DatabasesRequestSourceCase2;
 export const PostV1ProjectsByProjectIdDatabasesRequestSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Union([
@@ -7410,114 +5625,36 @@ export type PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemKind =
 export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemKind =
   /*@__PURE__*/ S.String;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsDirect {
-  host: string;
-  port: number;
-  connectionString?: string | Redacted.Redacted<string>;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsDirect =
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsDirect",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsDirect>;
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsPooled {
-  host: string;
-  port: number;
-  connectionString?: string | Redacted.Redacted<string>;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsPooled =
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsPooled",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsPooled>;
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsAccelerate {
-  host: string;
-  port: number;
-  connectionString?: string | Redacted.Redacted<string>;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsAccelerate =
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-      connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsAccelerate",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsAccelerate>;
+  PostV1DatabasesResponseDataConnectionsItemEndpointsDirect;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpoints {
-  direct?: PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsDirect;
-  pooled?: PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsPooled;
-  accelerate?: PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsAccelerate;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpoints =
+  PostV1DatabasesResponseDataConnectionsItemEndpoints;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(
-        PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsDirect,
-      ),
-      pooled: S.optional(
-        PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsPooled,
-      ),
-      accelerate: S.optional(
-        PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpoints",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpoints>;
+  PostV1DatabasesResponseDataConnectionsItemEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDirectConnection",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDatabase {
-  id: string;
-  url: string;
-  name: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDatabase =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDatabase =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDatabase",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDatabase>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
 export interface PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItem {
   id: string;
@@ -7526,10 +5663,10 @@ export interface PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItem {
   name: string;
   createdAt: string;
   kind: PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemKind;
-  endpoints: PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpoints;
+  endpoints: PostV1DatabasesResponseDataConnectionsItemEndpoints;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDirectConnection | null;
-  database: PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDatabase;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
+  database: GetV1BranchesByBranchIdResponseDataProject;
 }
 export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -7540,15 +5677,11 @@ export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItem =
       name: S.String,
       createdAt: S.String,
       kind: PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemKind,
-      endpoints:
-        PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemEndpoints,
+      endpoints: PostV1DatabasesResponseDataConnectionsItemEndpoints,
       directConnection: S.optional(
-        S.NullOr(
-          PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDirectConnection,
-        ),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
-      database:
-        PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItemDatabase,
+      database: GetV1BranchesByBranchIdResponseDataProject,
     }),
   ).annotate({
     identifier: "PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItem",
@@ -7561,83 +5694,35 @@ export const PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsList =
     PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsItem,
   ) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsList>;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataProject {
-  id: string;
-  url: string;
-  name: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataProject =
+  GetV1BranchesByBranchIdResponseDataProject;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataProject =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      url: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdDatabasesResponseDataProject",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataProject>;
+  GetV1BranchesByBranchIdResponseDataProject;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataRegion {
-  id: string;
-  name: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataRegion =
+  GetV1AppsResponseDataItemRegion;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataRegion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdDatabasesResponseDataRegion",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataRegion>;
+  GetV1AppsResponseDataItemRegion;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase0 {
-  type: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase0 =
+  GetV1DatabasesResponseDataItemSourceCase0;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase0",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase0>;
+  GetV1DatabasesResponseDataItemSourceCase0;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase1 {
-  type: string;
-  databaseId: string;
-  /** ID of the backup to restore from */
-  backupId: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase1 =
+  GetV1DatabasesResponseDataItemSourceCase1;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-      backupId: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase1",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase1>;
+  GetV1DatabasesResponseDataItemSourceCase1;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase2 {
-  type: string;
-  databaseId: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase2 =
+  GetV1DatabasesResponseDataItemSourceCase2;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      databaseId: S.String,
-    }),
-  ).annotate({
-    identifier: "PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase2",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase2>;
+  GetV1DatabasesResponseDataItemSourceCase2;
 
 export type PostV1ProjectsByProjectIdDatabasesResponseDataSource =
-  | PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase0
-  | PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase1
-  | PostV1ProjectsByProjectIdDatabasesResponseDataSourceCase2;
+  | GetV1DatabasesResponseDataItemSourceCase0
+  | GetV1DatabasesResponseDataItemSourceCase1
+  | GetV1DatabasesResponseDataItemSourceCase2;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataSource =
   /*@__PURE__*/ S.suspend(() =>
     S.Union([
@@ -7653,91 +5738,31 @@ export type PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemKind =
 export const PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemKind =
   /*@__PURE__*/ S.String;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsDirect {
-  host: string;
-  port: number;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsDirect =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsDirect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsDirect",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsDirect>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsPooled {
-  host: string;
-  port: number;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsPooled =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsPooled =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsPooled",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsPooled>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsAccelerate {
-  host: string;
-  port: number;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsAccelerate =
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsAccelerate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      port: S.Number,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsAccelerate",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsAccelerate>;
+  GetV1ConnectionsResponseDataItemEndpointsDirect;
 
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpoints {
-  direct?: PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsDirect;
-  pooled?: PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsPooled;
-  accelerate?: PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsAccelerate;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpoints =
+  GetV1ConnectionsResponseDataItemEndpoints;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpoints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direct: S.optional(
-        PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsDirect,
-      ),
-      pooled: S.optional(
-        PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsPooled,
-      ),
-      accelerate: S.optional(
-        PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpointsAccelerate,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpoints",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpoints>;
+  GetV1ConnectionsResponseDataItemEndpoints;
 
 /** Deprecated: use `endpoints.direct` instead. */
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemDirectConnection",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
 export interface PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItem {
   id: string;
@@ -7746,11 +5771,11 @@ export interface PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItem {
   name: string;
   createdAt: string;
   kind: PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemKind;
-  endpoints: PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpoints;
+  endpoints: GetV1ConnectionsResponseDataItemEndpoints;
   /** Deprecated: use `endpoints.direct.connectionString` or `endpoints.pooled.connectionString` instead. */
   connectionString: string | Redacted.Redacted<string>;
   /** Deprecated: use `endpoints.direct` instead. */
-  directConnection?: PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemDirectConnection | null;
+  directConnection?: GetV1ConnectionsResponseDataItemDirectConnection | null;
 }
 export const PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -7761,13 +5786,10 @@ export const PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItem =
       name: S.String,
       createdAt: S.String,
       kind: PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemKind,
-      endpoints:
-        PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemEndpoints,
+      endpoints: GetV1ConnectionsResponseDataItemEndpoints,
       connectionString: S.String.pipe(T.SensitiveValue({})),
       directConnection: S.optional(
-        S.NullOr(
-          PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysItemDirectConnection,
-        ),
+        S.NullOr(GetV1ConnectionsResponseDataItemDirectConnection),
       ),
     }),
   ).annotate({
@@ -7783,22 +5805,10 @@ export const PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysList =
   ) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysList>;
 
 /** Deprecated: use `connections[].endpoints.direct` instead. */
-export interface PostV1ProjectsByProjectIdDatabasesResponseDataDirectConnection {
-  host: string;
-  pass: string;
-  user: string;
-}
+export type PostV1ProjectsByProjectIdDatabasesResponseDataDirectConnection =
+  GetV1ConnectionsResponseDataItemDirectConnection;
 export const PostV1ProjectsByProjectIdDatabasesResponseDataDirectConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      pass: S.String,
-      user: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PostV1ProjectsByProjectIdDatabasesResponseDataDirectConnection",
-  }) as any as S.Schema<PostV1ProjectsByProjectIdDatabasesResponseDataDirectConnection>;
+  GetV1ConnectionsResponseDataItemDirectConnection;
 
 export interface PostV1ProjectsByProjectIdDatabasesResponseData {
   id: string;
@@ -7810,8 +5820,8 @@ export interface PostV1ProjectsByProjectIdDatabasesResponseData {
   isDefault: boolean;
   defaultConnectionId: string | null;
   connections: PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsList;
-  project: PostV1ProjectsByProjectIdDatabasesResponseDataProject;
-  region: PostV1ProjectsByProjectIdDatabasesResponseDataRegion;
+  project: GetV1BranchesByBranchIdResponseDataProject;
+  region: GetV1AppsResponseDataItemRegion;
   source: PostV1ProjectsByProjectIdDatabasesResponseDataSource | null;
   branchId: string | null;
   /** Deprecated: use `connections[]` instead. */
@@ -7819,7 +5829,7 @@ export interface PostV1ProjectsByProjectIdDatabasesResponseData {
   /** Deprecated: use `connections[].endpoints.direct.connectionString` or `connections[].endpoints.pooled.connectionString`. */
   connectionString: string | Redacted.Redacted<string>;
   /** Deprecated: use `connections[].endpoints.direct` instead. */
-  directConnection: PostV1ProjectsByProjectIdDatabasesResponseDataDirectConnection | null;
+  directConnection: GetV1ConnectionsResponseDataItemDirectConnection | null;
 }
 export const PostV1ProjectsByProjectIdDatabasesResponseData =
   /*@__PURE__*/ S.suspend(() =>
@@ -7834,14 +5844,14 @@ export const PostV1ProjectsByProjectIdDatabasesResponseData =
       defaultConnectionId: S.NullOr(S.String),
       connections:
         PostV1ProjectsByProjectIdDatabasesResponseDataConnectionsList,
-      project: PostV1ProjectsByProjectIdDatabasesResponseDataProject,
-      region: PostV1ProjectsByProjectIdDatabasesResponseDataRegion,
+      project: GetV1BranchesByBranchIdResponseDataProject,
+      region: GetV1AppsResponseDataItemRegion,
       source: S.NullOr(PostV1ProjectsByProjectIdDatabasesResponseDataSource),
       branchId: S.NullOr(S.String),
       apiKeys: PostV1ProjectsByProjectIdDatabasesResponseDataApiKeysList,
       connectionString: S.NullOr(S.String).pipe(T.SensitiveValue({})),
       directConnection: S.NullOr(
-        PostV1ProjectsByProjectIdDatabasesResponseDataDirectConnection,
+        GetV1ConnectionsResponseDataItemDirectConnection,
       ),
     }),
   ).annotate({

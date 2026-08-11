@@ -843,50 +843,16 @@ export const ManufacturingDataServicesGetResponseTagsMap =
   ) as any as S.Schema<ManufacturingDataServicesGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManufacturingDataServicesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type ManufacturingDataServicesGetResponseIdentity =
+  ManufacturingDataServicesCreateOrUpdateResponseIdentity;
 export const ManufacturingDataServicesGetResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "ManufacturingDataServicesGetResponseIdentity",
-  }) as any as S.Schema<ManufacturingDataServicesGetResponseIdentity>;
+  ManufacturingDataServicesCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ManufacturingDataServicesGetResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ManufacturingDataServicesGetResponseSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "ManufacturingDataServicesGetResponseSku",
-}) as any as S.Schema<ManufacturingDataServicesGetResponseSku>;
+export type ManufacturingDataServicesGetResponseSku =
+  ManufacturingDataServicesCreateOrUpdateResponseSku;
+export const ManufacturingDataServicesGetResponseSku =
+  ManufacturingDataServicesCreateOrUpdateResponseSku;
 
 export interface ManufacturingDataServicesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -904,9 +870,9 @@ export interface ManufacturingDataServicesGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: MdsResourceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManufacturingDataServicesGetResponseIdentity;
+  identity?: ManufacturingDataServicesCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: ManufacturingDataServicesGetResponseSku;
+  sku?: ManufacturingDataServicesCreateOrUpdateResponseSku;
 }
 export const ManufacturingDataServicesGetResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -918,8 +884,10 @@ export const ManufacturingDataServicesGetResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(ManufacturingDataServicesGetResponseTagsMap),
       location: S.String,
       properties: S.optional(MdsResourceProperties),
-      identity: S.optional(ManufacturingDataServicesGetResponseIdentity),
-      sku: S.optional(ManufacturingDataServicesGetResponseSku),
+      identity: S.optional(
+        ManufacturingDataServicesCreateOrUpdateResponseIdentity,
+      ),
+      sku: S.optional(ManufacturingDataServicesCreateOrUpdateResponseSku),
     }),
 ).annotate({
   identifier: "ManufacturingDataServicesGetResponse",
@@ -1023,46 +991,15 @@ export const MdsResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MdsResourceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface MdsResourceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const MdsResourceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "MdsResourceIdentity",
-}) as any as S.Schema<MdsResourceIdentity>;
+export type MdsResourceIdentity =
+  ManufacturingDataServicesCreateOrUpdateResponseIdentity;
+export const MdsResourceIdentity =
+  ManufacturingDataServicesCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface MdsResourceSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const MdsResourceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "MdsResourceSku" }) as any as S.Schema<MdsResourceSku>;
+export type MdsResourceSku = ManufacturingDataServicesCreateOrUpdateResponseSku;
+export const MdsResourceSku =
+  ManufacturingDataServicesCreateOrUpdateResponseSku;
 
 /** A ManufacturingPlatformProviderHub resource */
 export interface MdsResource {
@@ -1081,9 +1018,9 @@ export interface MdsResource {
   /** The resource-specific properties for this resource. */
   properties?: MdsResourceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MdsResourceIdentity;
+  identity?: ManufacturingDataServicesCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: MdsResourceSku;
+  sku?: ManufacturingDataServicesCreateOrUpdateResponseSku;
 }
 export const MdsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1094,8 +1031,10 @@ export const MdsResource = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(MdsResourceTagsMap),
     location: S.String,
     properties: S.optional(MdsResourceProperties),
-    identity: S.optional(MdsResourceIdentity),
-    sku: S.optional(MdsResourceSku),
+    identity: S.optional(
+      ManufacturingDataServicesCreateOrUpdateResponseIdentity,
+    ),
+    sku: S.optional(ManufacturingDataServicesCreateOrUpdateResponseSku),
   }),
 ).annotate({ identifier: "MdsResource" }) as any as S.Schema<MdsResource>;
 
@@ -1148,24 +1087,18 @@ export const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputTyp
   /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue {}
+export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
+  UserAssignedIdentityInput;
 export const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue",
-  }) as any as S.Schema<AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue>;
+  UserAssignedIdentityInput;
 
 /** The identities assigned to this resource by the user. */
 export type AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
-  {
-    [key: string]:
-      | AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue
-      | undefined;
-  };
+  { [key: string]: UserAssignedIdentityInput | undefined };
 export const AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue,
+    UserAssignedIdentityInput,
   ) as any as S.Schema<AzureResourceManagerCommonTypesManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1370,50 +1303,16 @@ export const ManufacturingDataServicesUpdateResponseTagsMap =
   ) as any as S.Schema<ManufacturingDataServicesUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManufacturingDataServicesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type ManufacturingDataServicesUpdateResponseIdentity =
+  ManufacturingDataServicesCreateOrUpdateResponseIdentity;
 export const ManufacturingDataServicesUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "ManufacturingDataServicesUpdateResponseIdentity",
-  }) as any as S.Schema<ManufacturingDataServicesUpdateResponseIdentity>;
+  ManufacturingDataServicesCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ManufacturingDataServicesUpdateResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
+export type ManufacturingDataServicesUpdateResponseSku =
+  ManufacturingDataServicesCreateOrUpdateResponseSku;
 export const ManufacturingDataServicesUpdateResponseSku =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ManufacturingDataServicesUpdateResponseSku",
-  }) as any as S.Schema<ManufacturingDataServicesUpdateResponseSku>;
+  ManufacturingDataServicesCreateOrUpdateResponseSku;
 
 export interface ManufacturingDataServicesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1431,9 +1330,9 @@ export interface ManufacturingDataServicesUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: MdsResourceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManufacturingDataServicesUpdateResponseIdentity;
+  identity?: ManufacturingDataServicesCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: ManufacturingDataServicesUpdateResponseSku;
+  sku?: ManufacturingDataServicesCreateOrUpdateResponseSku;
 }
 export const ManufacturingDataServicesUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -1445,8 +1344,10 @@ export const ManufacturingDataServicesUpdateResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(ManufacturingDataServicesUpdateResponseTagsMap),
       location: S.String,
       properties: S.optional(MdsResourceProperties),
-      identity: S.optional(ManufacturingDataServicesUpdateResponseIdentity),
-      sku: S.optional(ManufacturingDataServicesUpdateResponseSku),
+      identity: S.optional(
+        ManufacturingDataServicesCreateOrUpdateResponseIdentity,
+      ),
+      sku: S.optional(ManufacturingDataServicesCreateOrUpdateResponseSku),
     }),
 ).annotate({
   identifier: "ManufacturingDataServicesUpdateResponse",

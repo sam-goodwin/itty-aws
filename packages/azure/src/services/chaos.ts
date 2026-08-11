@@ -596,20 +596,16 @@ export type ManagedServiceIdentityType =
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = CapabilityPropertiesInput;
+export const UserAssignedIdentityInput = CapabilityPropertiesInput;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: CapabilityPropertiesInput | undefined;
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentityInput,
+  CapabilityPropertiesInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1225,24 +1221,10 @@ export const ExperimentsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ExperimentsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ExperimentsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ExperimentsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ExperimentsGetResponseIdentity",
-}) as any as S.Schema<ExperimentsGetResponseIdentity>;
+export type ExperimentsGetResponseIdentity =
+  ExperimentsCreateOrUpdateResponseIdentity;
+export const ExperimentsGetResponseIdentity =
+  ExperimentsCreateOrUpdateResponseIdentity;
 
 export interface ExperimentsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1258,7 +1240,7 @@ export interface ExperimentsGetResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ExperimentsGetResponseIdentity;
+  identity?: ExperimentsCreateOrUpdateResponseIdentity;
   /** The properties of the experiment resource. */
   properties: ExperimentProperties;
 }
@@ -1270,7 +1252,7 @@ export const ExperimentsGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(ExperimentsGetResponseTagsMap),
     location: S.String,
-    identity: S.optional(ExperimentsGetResponseIdentity),
+    identity: S.optional(ExperimentsCreateOrUpdateResponseIdentity),
     properties: ExperimentProperties,
   }),
 ).annotate({
@@ -1384,24 +1366,8 @@ export const ExperimentTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ExperimentTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ExperimentIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ExperimentIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ExperimentIdentity",
-}) as any as S.Schema<ExperimentIdentity>;
+export type ExperimentIdentity = ExperimentsCreateOrUpdateResponseIdentity;
+export const ExperimentIdentity = ExperimentsCreateOrUpdateResponseIdentity;
 
 /** Model that represents a Experiment resource. */
 export interface Experiment {
@@ -1418,7 +1384,7 @@ export interface Experiment {
   /** The geo-location where the resource lives */
   location: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ExperimentIdentity;
+  identity?: ExperimentsCreateOrUpdateResponseIdentity;
   /** The properties of the experiment resource. */
   properties: ExperimentProperties;
 }
@@ -1430,7 +1396,7 @@ export const Experiment = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(ExperimentTagsMap),
     location: S.String,
-    identity: S.optional(ExperimentIdentity),
+    identity: S.optional(ExperimentsCreateOrUpdateResponseIdentity),
     properties: ExperimentProperties,
   }),
 ).annotate({ identifier: "Experiment" }) as any as S.Schema<Experiment>;
@@ -1596,18 +1562,10 @@ export const ExperimentsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ExperimentsUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ExperimentsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const ExperimentsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "ExperimentsUpdateRequestIdentity",
-}) as any as S.Schema<ExperimentsUpdateRequestIdentity>;
+export type ExperimentsUpdateRequestIdentity =
+  ExperimentsCreateOrUpdateRequestIdentity;
+export const ExperimentsUpdateRequestIdentity =
+  ExperimentsCreateOrUpdateRequestIdentity;
 
 export interface ExperimentsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1619,7 +1577,7 @@ export interface ExperimentsUpdateRequest {
   /** Resource tags. */
   tags?: ExperimentsUpdateRequestTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ExperimentsUpdateRequestIdentity;
+  identity?: ExperimentsCreateOrUpdateRequestIdentity;
 }
 export const ExperimentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1627,7 +1585,7 @@ export const ExperimentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     experimentName: S.String.pipe(T.Label()),
     tags: S.optional(ExperimentsUpdateRequestTagsMap),
-    identity: S.optional(ExperimentsUpdateRequestIdentity),
+    identity: S.optional(ExperimentsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -1650,24 +1608,10 @@ export const ExperimentsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ExperimentsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ExperimentsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ExperimentsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ExperimentsUpdateResponseIdentity",
-}) as any as S.Schema<ExperimentsUpdateResponseIdentity>;
+export type ExperimentsUpdateResponseIdentity =
+  ExperimentsCreateOrUpdateResponseIdentity;
+export const ExperimentsUpdateResponseIdentity =
+  ExperimentsCreateOrUpdateResponseIdentity;
 
 export interface ExperimentsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1683,7 +1627,7 @@ export interface ExperimentsUpdateResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ExperimentsUpdateResponseIdentity;
+  identity?: ExperimentsCreateOrUpdateResponseIdentity;
   /** The properties of the experiment resource. */
   properties: ExperimentProperties;
 }
@@ -1695,7 +1639,7 @@ export const ExperimentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     tags: S.optional(ExperimentsUpdateResponseTagsMap),
     location: S.String,
-    identity: S.optional(ExperimentsUpdateResponseIdentity),
+    identity: S.optional(ExperimentsCreateOrUpdateResponseIdentity),
     properties: ExperimentProperties,
   }),
 ).annotate({

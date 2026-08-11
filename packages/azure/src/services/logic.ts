@@ -921,44 +921,8 @@ export const X12AgreementContent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<X12AgreementContent>;
 
 /** The Edifact agreement validation settings. */
-export interface EdifactValidationSettings {
-  /** The value indicating whether to validate character set in the message. */
-  validateCharacterSet: boolean;
-  /** The value indicating whether to check for duplicate interchange control number. */
-  checkDuplicateInterchangeControlNumber: boolean;
-  /** The validity period of interchange control number. */
-  interchangeControlNumberValidityDays: number;
-  /** The value indicating whether to check for duplicate group control number. */
-  checkDuplicateGroupControlNumber: boolean;
-  /** The value indicating whether to check for duplicate transaction set control number. */
-  checkDuplicateTransactionSetControlNumber: boolean;
-  /** The value indicating whether to Whether to validate EDI types. */
-  validateEDITypes: boolean;
-  /** The value indicating whether to Whether to validate XSD types. */
-  validateXSDTypes: boolean;
-  /** The value indicating whether to allow leading and trailing spaces and zeroes. */
-  allowLeadingAndTrailingSpacesAndZeroes: boolean;
-  /** The value indicating whether to trim leading and trailing spaces and zeroes. */
-  trimLeadingAndTrailingSpacesAndZeroes: boolean;
-  /** The trailing separator policy. */
-  trailingSeparatorPolicy: TrailingSeparatorPolicy | (string & {});
-}
-export const EdifactValidationSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validateCharacterSet: S.Boolean,
-    checkDuplicateInterchangeControlNumber: S.Boolean,
-    interchangeControlNumberValidityDays: S.Number,
-    checkDuplicateGroupControlNumber: S.Boolean,
-    checkDuplicateTransactionSetControlNumber: S.Boolean,
-    validateEDITypes: S.Boolean,
-    validateXSDTypes: S.Boolean,
-    allowLeadingAndTrailingSpacesAndZeroes: S.Boolean,
-    trimLeadingAndTrailingSpacesAndZeroes: S.Boolean,
-    trailingSeparatorPolicy: TrailingSeparatorPolicy,
-  }),
-).annotate({
-  identifier: "EdifactValidationSettings",
-}) as any as S.Schema<EdifactValidationSettings>;
+export type EdifactValidationSettings = X12ValidationSettings;
+export const EdifactValidationSettings = X12ValidationSettings;
 
 /** The edifact character set. */
 export type EdifactCharacterSet =
@@ -1207,17 +1171,8 @@ export const EdifactAcknowledgementSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EdifactAcknowledgementSettings>;
 
 /** The Edifact message filter for odata query. */
-export interface EdifactMessageFilter {
-  /** The message filter type. */
-  messageFilterType: MessageFilterType | (string & {});
-}
-export const EdifactMessageFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    messageFilterType: MessageFilterType,
-  }),
-).annotate({
-  identifier: "EdifactMessageFilter",
-}) as any as S.Schema<EdifactMessageFilter>;
+export type EdifactMessageFilter = X12MessageFilter;
+export const EdifactMessageFilter = X12MessageFilter;
 
 /** The Edifact agreement protocol settings. */
 export interface EdifactProcessingSettings {
@@ -1463,7 +1418,7 @@ export const EdifactProtocolSettingsEdifactDelimiterOverridesList =
 /** The Edifact agreement protocol settings. */
 export interface EdifactProtocolSettings {
   /** The EDIFACT validation settings. */
-  validationSettings: EdifactValidationSettings;
+  validationSettings: X12ValidationSettings;
   /** The EDIFACT framing settings. */
   framingSettings: EdifactFramingSettings;
   /** The EDIFACT envelope settings. */
@@ -1471,7 +1426,7 @@ export interface EdifactProtocolSettings {
   /** The EDIFACT acknowledgement settings. */
   acknowledgementSettings: EdifactAcknowledgementSettings;
   /** The EDIFACT message filter. */
-  messageFilter: EdifactMessageFilter;
+  messageFilter: X12MessageFilter;
   /** The EDIFACT processing Settings. */
   processingSettings: EdifactProcessingSettings;
   /** The EDIFACT envelope override settings. */
@@ -1487,11 +1442,11 @@ export interface EdifactProtocolSettings {
 }
 export const EdifactProtocolSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    validationSettings: EdifactValidationSettings,
+    validationSettings: X12ValidationSettings,
     framingSettings: EdifactFramingSettings,
     envelopeSettings: EdifactEnvelopeSettings,
     acknowledgementSettings: EdifactAcknowledgementSettings,
-    messageFilter: EdifactMessageFilter,
+    messageFilter: X12MessageFilter,
     processingSettings: EdifactProcessingSettings,
     envelopeOverrides: S.optional(EdifactProtocolSettingsEnvelopeOverridesList),
     messageFilterList: S.optional(EdifactProtocolSettingsMessageFilterListList),
@@ -3385,25 +3340,17 @@ export const IntegrationAccountMapsCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<IntegrationAccountMapsCreateOrUpdateResponseTagsMap>;
 
 /** The parameters schema of integration account map. */
-export interface IntegrationAccountMapPropertiesParametersSchema {
-  /** The reference name. */
-  ref?: string;
-}
+export type IntegrationAccountMapPropertiesParametersSchema =
+  IntegrationAccountMapPropertiesInputParametersSchema;
 export const IntegrationAccountMapPropertiesParametersSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ref: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "IntegrationAccountMapPropertiesParametersSchema",
-  }) as any as S.Schema<IntegrationAccountMapPropertiesParametersSchema>;
+  IntegrationAccountMapPropertiesInputParametersSchema;
 
 /** The integration account map. */
 export interface IntegrationAccountMapProperties {
   /** The map type. */
   mapType: MapType;
   /** The parameters schema of integration account map. */
-  parametersSchema?: IntegrationAccountMapPropertiesParametersSchema;
+  parametersSchema?: IntegrationAccountMapPropertiesInputParametersSchema;
   /** The created time. */
   createdTime?: string;
   /** The changed time. */
@@ -3421,7 +3368,7 @@ export const IntegrationAccountMapProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mapType: MapType,
     parametersSchema: S.optional(
-      IntegrationAccountMapPropertiesParametersSchema,
+      IntegrationAccountMapPropertiesInputParametersSchema,
     ),
     createdTime: S.optional(S.String),
     changedTime: S.optional(S.String),
@@ -4486,17 +4433,8 @@ export const IntegrationAccountsCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<IntegrationAccountsCreateOrUpdateRequestTagsMap>;
 
 /** The resource reference. */
-export interface ResourceReferenceInput {
-  /** The resource id. */
-  id?: string;
-}
-export const ResourceReferenceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceReferenceInput",
-}) as any as S.Schema<ResourceReferenceInput>;
+export type ResourceReferenceInput = KeyVaultKeyReferenceInputKeyVault;
+export const ResourceReferenceInput = KeyVaultKeyReferenceInputKeyVault;
 
 /** The workflow state. */
 export type WorkflowState =
@@ -4511,13 +4449,15 @@ export const WorkflowState = /*@__PURE__*/ S.String;
 /** The integration account properties. */
 export interface IntegrationAccountPropertiesInput {
   /** The integration service environment. */
-  integrationServiceEnvironment?: ResourceReferenceInput;
+  integrationServiceEnvironment?: KeyVaultKeyReferenceInputKeyVault;
   /** The workflow state. */
   state?: WorkflowState | (string & {});
 }
 export const IntegrationAccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    integrationServiceEnvironment: S.optional(ResourceReferenceInput),
+    integrationServiceEnvironment: S.optional(
+      KeyVaultKeyReferenceInputKeyVault,
+    ),
     state: S.optional(WorkflowState),
   }),
 ).annotate({
@@ -5223,17 +5163,8 @@ export const CallbackUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CallbackUrl" }) as any as S.Schema<CallbackUrl>;
 
 /** The key vault reference. */
-export interface KeyVaultReferenceInput {
-  /** The resource id. */
-  id?: string;
-}
-export const KeyVaultReferenceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "KeyVaultReferenceInput",
-}) as any as S.Schema<KeyVaultReferenceInput>;
+export type KeyVaultReferenceInput = KeyVaultKeyReferenceInputKeyVault;
+export const KeyVaultReferenceInput = KeyVaultKeyReferenceInputKeyVault;
 
 export interface IntegrationAccountsListKeyVaultKeysRequest {
   /** The subscription id. */
@@ -5243,7 +5174,7 @@ export interface IntegrationAccountsListKeyVaultKeysRequest {
   /** The integration account name. */
   integrationAccountName: string;
   /** The key vault reference. */
-  keyVault: KeyVaultReferenceInput;
+  keyVault: KeyVaultKeyReferenceInputKeyVault;
   /** The skip token. */
   skipToken?: string;
 }
@@ -5253,7 +5184,7 @@ export const IntegrationAccountsListKeyVaultKeysRequest =
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
       integrationAccountName: S.String.pipe(T.Label()),
-      keyVault: KeyVaultReferenceInput,
+      keyVault: KeyVaultKeyReferenceInputKeyVault,
       skipToken: S.optional(S.String),
     }).pipe(
       T.Http({
@@ -6707,14 +6638,16 @@ export const IntegrationServiceEnvironmentManagedApiDeploymentParametersInput =
 /** The integration service environment managed api properties. */
 export interface IntegrationServiceEnvironmentManagedApiPropertiesInput {
   /** The integration service environment reference. */
-  integrationServiceEnvironment?: ResourceReferenceInput;
+  integrationServiceEnvironment?: KeyVaultKeyReferenceInputKeyVault;
   /** The integration service environment managed api deployment parameters. */
   deploymentParameters?: IntegrationServiceEnvironmentManagedApiDeploymentParametersInput;
 }
 export const IntegrationServiceEnvironmentManagedApiPropertiesInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      integrationServiceEnvironment: S.optional(ResourceReferenceInput),
+      integrationServiceEnvironment: S.optional(
+        KeyVaultKeyReferenceInputKeyVault,
+      ),
       deploymentParameters: S.optional(
         IntegrationServiceEnvironmentManagedApiDeploymentParametersInput,
       ),
@@ -7124,9 +7057,9 @@ export const IntegrationServiceEnvironmentAccessEndpoint =
 
 /** The subnets. */
 export type NetworkConfigurationInputSubnetsList =
-  Array<ResourceReferenceInput>;
+  Array<KeyVaultKeyReferenceInputKeyVault>;
 export const NetworkConfigurationInputSubnetsList = /*@__PURE__*/ S.Array(
-  ResourceReferenceInput,
+  KeyVaultKeyReferenceInputKeyVault,
 ) as any as S.Schema<NetworkConfigurationInputSubnetsList>;
 
 /** The network configuration. */
@@ -7151,7 +7084,7 @@ export const NetworkConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 /** The encryption key details for the integration service environment. */
 export interface IntegrationServiceEnvironmenEncryptionKeyReferenceInput {
   /** The key vault reference. */
-  keyVault?: ResourceReferenceInput;
+  keyVault?: KeyVaultKeyReferenceInputKeyVault;
   /** Gets the key name in the Key Vault. */
   keyName?: string;
   /** Gets the version of the key specified in the keyName property. */
@@ -7160,7 +7093,7 @@ export interface IntegrationServiceEnvironmenEncryptionKeyReferenceInput {
 export const IntegrationServiceEnvironmenEncryptionKeyReferenceInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      keyVault: S.optional(ResourceReferenceInput),
+      keyVault: S.optional(KeyVaultKeyReferenceInputKeyVault),
       keyName: S.optional(S.String),
       keyVersion: S.optional(S.String),
     }),
@@ -9721,9 +9654,9 @@ export interface WorkflowPropertiesInput {
   /** The access control configuration. */
   accessControl?: FlowAccessControlConfiguration;
   /** The integration account. */
-  integrationAccount?: ResourceReferenceInput;
+  integrationAccount?: KeyVaultKeyReferenceInputKeyVault;
   /** The integration service environment. */
-  integrationServiceEnvironment?: ResourceReferenceInput;
+  integrationServiceEnvironment?: KeyVaultKeyReferenceInputKeyVault;
   /** The definition. */
   definition?: unknown;
   /** The parameters. */
@@ -9734,8 +9667,10 @@ export const WorkflowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     state: S.optional(WorkflowState),
     endpointsConfiguration: S.optional(FlowEndpointsConfiguration),
     accessControl: S.optional(FlowAccessControlConfiguration),
-    integrationAccount: S.optional(ResourceReferenceInput),
-    integrationServiceEnvironment: S.optional(ResourceReferenceInput),
+    integrationAccount: S.optional(KeyVaultKeyReferenceInputKeyVault),
+    integrationServiceEnvironment: S.optional(
+      KeyVaultKeyReferenceInputKeyVault,
+    ),
     definition: S.optional(S.Unknown),
     parameters: S.optional(WorkflowPropertiesInputParametersMap),
   }),

@@ -914,12 +914,8 @@ export const AkriConnectorTemplateResourceListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AkriConnectorTemplateResourceListResult>;
 
 /** AkriService properties. */
-export interface AkriServicePropertiesInput {}
-export const AkriServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AkriServicePropertiesInput",
-}) as any as S.Schema<AkriServicePropertiesInput>;
+export type AkriServicePropertiesInput = AkriConnectorPropertiesInput;
+export const AkriServicePropertiesInput = AkriConnectorPropertiesInput;
 
 export interface AkriServiceCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -931,7 +927,7 @@ export interface AkriServiceCreateOrUpdateRequest {
   /** Name of AkriService resource. */
   akriServiceName: string;
   /** The resource-specific properties for this resource. */
-  properties?: AkriServicePropertiesInput;
+  properties?: AkriConnectorPropertiesInput;
   /** Edge location of the resource. */
   extendedLocation?: ExtendedLocation;
 }
@@ -941,7 +937,7 @@ export const AkriServiceCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     instanceName: S.String.pipe(T.Label()),
     akriServiceName: S.String.pipe(T.Label()),
-    properties: S.optional(AkriServicePropertiesInput),
+    properties: S.optional(AkriConnectorPropertiesInput),
     extendedLocation: S.optional(ExtendedLocation),
   }).pipe(
     T.Http({
@@ -2277,17 +2273,8 @@ export const Cardinality = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cardinality" }) as any as S.Schema<Cardinality>;
 
 /** Diagnostic Log properties */
-export interface DiagnosticsLogs {
-  /** The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'. */
-  level?: string;
-}
-export const DiagnosticsLogs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    level: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DiagnosticsLogs",
-}) as any as S.Schema<DiagnosticsLogs>;
+export type DiagnosticsLogs = AkriConnectorsDiagnosticsLogs;
+export const DiagnosticsLogs = AkriConnectorsDiagnosticsLogs;
 
 /** Diagnostic Metrics properties */
 export interface Metrics {
@@ -2366,7 +2353,7 @@ export const Traces = /*@__PURE__*/ S.suspend(() =>
 /** Broker Diagnostic Setting properties */
 export interface BrokerDiagnostics {
   /** Diagnostic log settings for the resource. */
-  logs?: DiagnosticsLogs;
+  logs?: AkriConnectorsDiagnosticsLogs;
   /** The metrics settings for the resource. */
   metrics?: Metrics;
   /** The self check properties. */
@@ -2376,7 +2363,7 @@ export interface BrokerDiagnostics {
 }
 export const BrokerDiagnostics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    logs: S.optional(DiagnosticsLogs),
+    logs: S.optional(AkriConnectorsDiagnosticsLogs),
     metrics: S.optional(Metrics),
     selfCheck: S.optional(SelfCheck),
     traces: S.optional(Traces),
@@ -4171,28 +4158,10 @@ export const DataflowEndpointDataLakeStorage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataflowEndpointDataLakeStorage>;
 
 /** Microsoft Fabric endpoint. Authentication properties. NOTE - Only one method is supported for one entry */
-export interface DataflowEndpointFabricOneLakeAuthentication {
-  /** Mode of Authentication. */
-  method: ManagedIdentityMethod | (string & {});
-  /** System-assigned managed identity authentication. */
-  systemAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationSystemAssignedManagedIdentity;
-  /** User-assigned managed identity authentication. */
-  userAssignedManagedIdentitySettings?: DataflowEndpointAuthenticationUserAssignedManagedIdentity;
-}
+export type DataflowEndpointFabricOneLakeAuthentication =
+  DataflowEndpointDataExplorerAuthentication;
 export const DataflowEndpointFabricOneLakeAuthentication =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      method: ManagedIdentityMethod,
-      systemAssignedManagedIdentitySettings: S.optional(
-        DataflowEndpointAuthenticationSystemAssignedManagedIdentity,
-      ),
-      userAssignedManagedIdentitySettings: S.optional(
-        DataflowEndpointAuthenticationUserAssignedManagedIdentity,
-      ),
-    }),
-  ).annotate({
-    identifier: "DataflowEndpointFabricOneLakeAuthentication",
-  }) as any as S.Schema<DataflowEndpointFabricOneLakeAuthentication>;
+  DataflowEndpointDataExplorerAuthentication;
 
 /** Microsoft Fabric endpoint Names properties */
 export interface DataflowEndpointFabricOneLakeNames {
@@ -4217,7 +4186,7 @@ export const DataflowEndpointFabricPathType = /*@__PURE__*/ S.String;
 /** Microsoft Fabric endpoint properties */
 export interface DataflowEndpointFabricOneLake {
   /** Authentication configuration. NOTE - only one authentication property is allowed per entry. */
-  authentication: DataflowEndpointFabricOneLakeAuthentication;
+  authentication: DataflowEndpointDataExplorerAuthentication;
   /** Names of the workspace and lakehouse. */
   names: DataflowEndpointFabricOneLakeNames;
   /** Type of location of the data in the workspace. Can be either tables or files. */
@@ -4229,7 +4198,7 @@ export interface DataflowEndpointFabricOneLake {
 }
 export const DataflowEndpointFabricOneLake = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    authentication: DataflowEndpointFabricOneLakeAuthentication,
+    authentication: DataflowEndpointDataExplorerAuthentication,
     names: DataflowEndpointFabricOneLakeNames,
     oneLakePathType: DataflowEndpointFabricPathType,
     host: S.String,
@@ -5470,13 +5439,13 @@ export const DataflowResourceListResult = /*@__PURE__*/ S.suspend(() =>
 /** DataflowProfile Diagnostics properties */
 export interface ProfileDiagnostics {
   /** Diagnostic log settings for the resource. */
-  logs?: DiagnosticsLogs;
+  logs?: AkriConnectorsDiagnosticsLogs;
   /** The metrics settings for the resource. */
   metrics?: Metrics;
 }
 export const ProfileDiagnostics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    logs: S.optional(DiagnosticsLogs),
+    logs: S.optional(AkriConnectorsDiagnosticsLogs),
     metrics: S.optional(Metrics),
   }),
 ).annotate({
@@ -5895,20 +5864,16 @@ export type ManagedServiceIdentityType =
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = AkriConnectorPropertiesInput;
+export const UserAssignedIdentityInput = AkriConnectorPropertiesInput;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: AkriConnectorPropertiesInput | undefined;
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentityInput,
+  AkriConnectorPropertiesInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6173,24 +6138,10 @@ export const InstanceGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<InstanceGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface InstanceGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const InstanceGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "InstanceGetResponseIdentity",
-}) as any as S.Schema<InstanceGetResponseIdentity>;
+export type InstanceGetResponseIdentity =
+  InstanceCreateOrUpdateResponseIdentity;
+export const InstanceGetResponseIdentity =
+  InstanceCreateOrUpdateResponseIdentity;
 
 export interface InstanceGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6210,7 +6161,7 @@ export interface InstanceGetResponse {
   /** Edge location of the resource. */
   extendedLocation: ExtendedLocation;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: InstanceGetResponseIdentity;
+  identity?: InstanceCreateOrUpdateResponseIdentity;
 }
 export const InstanceGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6222,7 +6173,7 @@ export const InstanceGetResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(InstanceProperties),
     extendedLocation: ExtendedLocation,
-    identity: S.optional(InstanceGetResponseIdentity),
+    identity: S.optional(InstanceCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "InstanceGetResponse",
@@ -6258,24 +6209,8 @@ export const InstanceResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<InstanceResourceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface InstanceResourceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const InstanceResourceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "InstanceResourceIdentity",
-}) as any as S.Schema<InstanceResourceIdentity>;
+export type InstanceResourceIdentity = InstanceCreateOrUpdateResponseIdentity;
+export const InstanceResourceIdentity = InstanceCreateOrUpdateResponseIdentity;
 
 /** A Instance resource is a logical container for a set of child resources. */
 export interface InstanceResource {
@@ -6296,7 +6231,7 @@ export interface InstanceResource {
   /** Edge location of the resource. */
   extendedLocation: ExtendedLocation;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: InstanceResourceIdentity;
+  identity?: InstanceCreateOrUpdateResponseIdentity;
 }
 export const InstanceResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6308,7 +6243,7 @@ export const InstanceResource = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(InstanceProperties),
     extendedLocation: ExtendedLocation,
-    identity: S.optional(InstanceResourceIdentity),
+    identity: S.optional(InstanceCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "InstanceResource",
@@ -6365,18 +6300,10 @@ export const InstanceUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<InstanceUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface InstanceUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const InstanceUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "InstanceUpdateRequestIdentity",
-}) as any as S.Schema<InstanceUpdateRequestIdentity>;
+export type InstanceUpdateRequestIdentity =
+  InstanceCreateOrUpdateRequestIdentity;
+export const InstanceUpdateRequestIdentity =
+  InstanceCreateOrUpdateRequestIdentity;
 
 export interface InstanceUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6388,7 +6315,7 @@ export interface InstanceUpdateRequest {
   /** Resource tags. */
   tags?: InstanceUpdateRequestTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: InstanceUpdateRequestIdentity;
+  identity?: InstanceCreateOrUpdateRequestIdentity;
 }
 export const InstanceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6396,7 +6323,7 @@ export const InstanceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     instanceName: S.String.pipe(T.Label()),
     tags: S.optional(InstanceUpdateRequestTagsMap),
-    identity: S.optional(InstanceUpdateRequestIdentity),
+    identity: S.optional(InstanceCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -6419,24 +6346,10 @@ export const InstanceUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<InstanceUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface InstanceUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const InstanceUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "InstanceUpdateResponseIdentity",
-}) as any as S.Schema<InstanceUpdateResponseIdentity>;
+export type InstanceUpdateResponseIdentity =
+  InstanceCreateOrUpdateResponseIdentity;
+export const InstanceUpdateResponseIdentity =
+  InstanceCreateOrUpdateResponseIdentity;
 
 export interface InstanceUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6456,7 +6369,7 @@ export interface InstanceUpdateResponse {
   /** Edge location of the resource. */
   extendedLocation: ExtendedLocation;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: InstanceUpdateResponseIdentity;
+  identity?: InstanceCreateOrUpdateResponseIdentity;
 }
 export const InstanceUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6468,7 +6381,7 @@ export const InstanceUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(InstanceProperties),
     extendedLocation: ExtendedLocation,
-    identity: S.optional(InstanceUpdateResponseIdentity),
+    identity: S.optional(InstanceCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "InstanceUpdateResponse",

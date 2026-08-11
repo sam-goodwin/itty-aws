@@ -267,17 +267,10 @@ export const SingleSessionSummaryExceptionEventIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SingleSessionSummaryExceptionEventIdsList>;
 
 /** Optional context passed to the summary at generation time (e.g. `focus_area`). */
-export interface SingleSessionSummaryExtraSummaryContext {
-  focus_area?: string;
-}
-export const SingleSessionSummaryExtraSummaryContext = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      focus_area: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SingleSessionSummaryExtraSummaryContext",
-}) as any as S.Schema<SingleSessionSummaryExtraSummaryContext>;
+export type SingleSessionSummaryExtraSummaryContext =
+  SingleSessionSummaryMinimalExtraSummaryContext;
+export const SingleSessionSummaryExtraSummaryContext =
+  SingleSessionSummaryMinimalExtraSummaryContext;
 
 /** Full session summary, including the generated `summary` JSON content. */
 export interface SingleSessionSummary {
@@ -295,7 +288,7 @@ export interface SingleSessionSummary {
   /** Event IDs (capped at 100) where exceptions occurred during the session — extracted from the summary for searchability. */
   exception_event_ids: SingleSessionSummaryExceptionEventIdsList;
   /** Optional context passed to the summary at generation time (e.g. `focus_area`). */
-  extra_summary_context: SingleSessionSummaryExtraSummaryContext | null;
+  extra_summary_context: SingleSessionSummaryMinimalExtraSummaryContext | null;
   /** `SessionSummaryRunMeta` — model used, whether video-based visual confirmation was applied, and visual-confirmation event-to-asset mappings. */
   run_metadata: unknown | null;
   created_at: string;
@@ -310,7 +303,9 @@ export const SingleSessionSummary = /*@__PURE__*/ S.suspend(() =>
     session_duration: S.NullOr(S.Number),
     summary: SingleSessionSummarySummaryMap,
     exception_event_ids: SingleSessionSummaryExceptionEventIdsList,
-    extra_summary_context: S.NullOr(SingleSessionSummaryExtraSummaryContext),
+    extra_summary_context: S.NullOr(
+      SingleSessionSummaryMinimalExtraSummaryContext,
+    ),
     run_metadata: S.NullOr(S.Unknown),
     created_at: S.String,
     created_by: S.NullOr(UserBasic),

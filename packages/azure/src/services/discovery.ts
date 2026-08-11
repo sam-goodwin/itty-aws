@@ -678,20 +678,19 @@ export const BookshelvesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BookshelvesCreateOrUpdateRequestTagsMap>;
 
 /** User assigned identity properties */
-export interface BookshelfPropertiesInputWorkloadIdentitiesValue {}
+export type BookshelfPropertiesInputWorkloadIdentitiesValue =
+  PrivateEndpointInput;
 export const BookshelfPropertiesInputWorkloadIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BookshelfPropertiesInputWorkloadIdentitiesValue",
-  }) as any as S.Schema<BookshelfPropertiesInputWorkloadIdentitiesValue>;
+  PrivateEndpointInput;
 
 /** User assigned identity IDs to be used by knowledgebase workloads. The key value must be the resource ID of the identity resource. */
 export type BookshelfPropertiesInputWorkloadIdentitiesMap = {
-  [key: string]: BookshelfPropertiesInputWorkloadIdentitiesValue | undefined;
+  [key: string]: PrivateEndpointInput | undefined;
 };
 export const BookshelfPropertiesInputWorkloadIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    BookshelfPropertiesInputWorkloadIdentitiesValue,
+    PrivateEndpointInput,
   ) as any as S.Schema<BookshelfPropertiesInputWorkloadIdentitiesMap>;
 
 /** State of customer managed key usage. */
@@ -3564,22 +3563,19 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
 
 /** User assigned identity properties */
-export interface SupercomputerIdentitiesInputWorkloadIdentitiesValue {}
+export type SupercomputerIdentitiesInputWorkloadIdentitiesValue =
+  PrivateEndpointInput;
 export const SupercomputerIdentitiesInputWorkloadIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SupercomputerIdentitiesInputWorkloadIdentitiesValue",
-  }) as any as S.Schema<SupercomputerIdentitiesInputWorkloadIdentitiesValue>;
+  PrivateEndpointInput;
 
 /** User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource. */
 export type SupercomputerIdentitiesInputWorkloadIdentitiesMap = {
-  [key: string]:
-    | SupercomputerIdentitiesInputWorkloadIdentitiesValue
-    | undefined;
+  [key: string]: PrivateEndpointInput | undefined;
 };
 export const SupercomputerIdentitiesInputWorkloadIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    SupercomputerIdentitiesInputWorkloadIdentitiesValue,
+    PrivateEndpointInput,
   ) as any as S.Schema<SupercomputerIdentitiesInputWorkloadIdentitiesMap>;
 
 /** Dictionary of identity properties for the Supercomputer. */
@@ -3706,30 +3702,19 @@ export type SupercomputerPropertiesOutboundType = "LoadBalancer" | "None";
 export const SupercomputerPropertiesOutboundType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface SupercomputerIdentitiesWorkloadIdentitiesValue {
-  /** The principal ID of the assigned identity. */
-  principalId?: string;
-  /** The client ID of the assigned identity. */
-  clientId?: string;
-}
+export type SupercomputerIdentitiesWorkloadIdentitiesValue =
+  BookshelfPropertiesWorkloadIdentitiesValue;
 export const SupercomputerIdentitiesWorkloadIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      clientId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SupercomputerIdentitiesWorkloadIdentitiesValue",
-  }) as any as S.Schema<SupercomputerIdentitiesWorkloadIdentitiesValue>;
+  BookshelfPropertiesWorkloadIdentitiesValue;
 
 /** User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource. */
 export type SupercomputerIdentitiesWorkloadIdentitiesMap = {
-  [key: string]: SupercomputerIdentitiesWorkloadIdentitiesValue | undefined;
+  [key: string]: BookshelfPropertiesWorkloadIdentitiesValue | undefined;
 };
 export const SupercomputerIdentitiesWorkloadIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    SupercomputerIdentitiesWorkloadIdentitiesValue,
+    BookshelfPropertiesWorkloadIdentitiesValue,
   ) as any as S.Schema<SupercomputerIdentitiesWorkloadIdentitiesMap>;
 
 /** Dictionary of identity properties for the Supercomputer. */
@@ -3916,22 +3901,10 @@ export const SupercomputersGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SupercomputersGetResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface SupercomputersGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const SupercomputersGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "SupercomputersGetResponseIdentity",
-}) as any as S.Schema<SupercomputersGetResponseIdentity>;
+export type SupercomputersGetResponseIdentity =
+  SupercomputersCreateOrUpdateResponseIdentity;
+export const SupercomputersGetResponseIdentity =
+  SupercomputersCreateOrUpdateResponseIdentity;
 
 export interface SupercomputersGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3949,7 +3922,7 @@ export interface SupercomputersGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: SupercomputerProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: SupercomputersGetResponseIdentity;
+  identity?: SupercomputersCreateOrUpdateResponseIdentity;
 }
 export const SupercomputersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3960,7 +3933,7 @@ export const SupercomputersGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(SupercomputersGetResponseTagsMap),
     location: S.String,
     properties: S.optional(SupercomputerProperties),
-    identity: S.optional(SupercomputersGetResponseIdentity),
+    identity: S.optional(SupercomputersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "SupercomputersGetResponse",
@@ -3997,22 +3970,10 @@ export const SupercomputerTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SupercomputerTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface SupercomputerIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const SupercomputerIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "SupercomputerIdentity",
-}) as any as S.Schema<SupercomputerIdentity>;
+export type SupercomputerIdentity =
+  SupercomputersCreateOrUpdateResponseIdentity;
+export const SupercomputerIdentity =
+  SupercomputersCreateOrUpdateResponseIdentity;
 
 /** Supercomputer tracked resource */
 export interface Supercomputer {
@@ -4031,7 +3992,7 @@ export interface Supercomputer {
   /** The resource-specific properties for this resource. */
   properties?: SupercomputerProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: SupercomputerIdentity;
+  identity?: SupercomputersCreateOrUpdateResponseIdentity;
 }
 export const Supercomputer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4042,7 +4003,7 @@ export const Supercomputer = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(SupercomputerTagsMap),
     location: S.String,
     properties: S.optional(SupercomputerProperties),
-    identity: S.optional(SupercomputerIdentity),
+    identity: S.optional(SupercomputersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "Supercomputer" }) as any as S.Schema<Supercomputer>;
 
@@ -4098,22 +4059,19 @@ export const SupercomputersUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SupercomputersUpdateRequestTagsMap>;
 
 /** User assigned identity properties */
-export interface SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue {}
+export type SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue =
+  PrivateEndpointInput;
 export const SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue",
-  }) as any as S.Schema<SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue>;
+  PrivateEndpointInput;
 
 /** User assigned identity IDs to be used by workloads as federated credentials running on supercomputer. The key value must be the resource ID of the identity resource. */
 export type SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap = {
-  [key: string]:
-    | SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue
-    | undefined;
+  [key: string]: PrivateEndpointInput | undefined;
 };
 export const SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    SupercomputerIdentitiesUpdateInputWorkloadIdentitiesValue,
+    PrivateEndpointInput,
   ) as any as S.Schema<SupercomputerIdentitiesUpdateInputWorkloadIdentitiesMap>;
 
 /** Dictionary of identity properties for the Supercomputer. */
@@ -4215,23 +4173,10 @@ export const SupercomputersUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SupercomputersUpdateResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface SupercomputersUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const SupercomputersUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: SystemAssignedServiceIdentityType,
-    }),
-).annotate({
-  identifier: "SupercomputersUpdateResponseIdentity",
-}) as any as S.Schema<SupercomputersUpdateResponseIdentity>;
+export type SupercomputersUpdateResponseIdentity =
+  SupercomputersCreateOrUpdateResponseIdentity;
+export const SupercomputersUpdateResponseIdentity =
+  SupercomputersCreateOrUpdateResponseIdentity;
 
 export interface SupercomputersUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4249,7 +4194,7 @@ export interface SupercomputersUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SupercomputerProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: SupercomputersUpdateResponseIdentity;
+  identity?: SupercomputersCreateOrUpdateResponseIdentity;
 }
 export const SupercomputersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4260,7 +4205,7 @@ export const SupercomputersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(SupercomputersUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(SupercomputerProperties),
-    identity: S.optional(SupercomputersUpdateResponseIdentity),
+    identity: S.optional(SupercomputersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "SupercomputersUpdateResponse",
@@ -4733,22 +4678,10 @@ export const ToolsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ToolsUpdateResponse>;
 
 /** Properties of the private endpoint connection. */
-export interface WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties {
-  /** The private endpoint resource. */
-  privateEndpoint?: PrivateEndpointInput;
-  /** A collection of information about the state of the connection between service consumer and provider. */
-  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
-}
+export type WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties =
+  BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties;
 export const WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointInput),
-      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
-    }),
-  ).annotate({
-    identifier:
-      "WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties",
-  }) as any as S.Schema<WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties>;
+  BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties;
 
 export interface WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4760,7 +4693,7 @@ export interface WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
   /** Properties of the private endpoint connection. */
-  properties?: WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties;
+  properties?: BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties;
 }
 export const WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -4770,7 +4703,7 @@ export const WorkspacePrivateEndpointConnectionsCreateOrUpdateRequest =
       workspaceName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
       properties: S.optional(
-        WorkspacePrivateEndpointConnectionsCreateOrUpdateRequestProperties,
+        BookshelfPrivateEndpointConnectionsCreateOrUpdateRequestProperties,
       ),
     }).pipe(
       T.Http({
@@ -5412,37 +5345,17 @@ export const WorkspacePropertiesSupercomputerIdsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<WorkspacePropertiesSupercomputerIdsList>;
 
 /** The private endpoint connection resource. */
-export interface WorkspacePropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type WorkspacePropertiesPrivateEndpointConnectionsItem =
+  BookshelfPropertiesPrivateEndpointConnectionsItem;
 export const WorkspacePropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "WorkspacePropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsItem>;
+  BookshelfPropertiesPrivateEndpointConnectionsItem;
 
 /** List of private endpoint connections. */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  Array<WorkspacePropertiesPrivateEndpointConnectionsItem>;
+  Array<BookshelfPropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    WorkspacePropertiesPrivateEndpointConnectionsItem,
+    BookshelfPropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
 
 /** Workspace properties */
@@ -5745,34 +5658,22 @@ export const WorkspacePropertiesUpdateSupercomputerIdsList =
   ) as any as S.Schema<WorkspacePropertiesUpdateSupercomputerIdsList>;
 
 /** For Key Vault Key references */
-export interface KeyVaultPropertiesUpdate {
-  /** The Key Name in Key Vault */
-  keyName?: string;
-  /** The Key Version in Key Vault */
-  keyVersion?: string;
-}
-export const KeyVaultPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyName: S.optional(S.String),
-    keyVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "KeyVaultPropertiesUpdate",
-}) as any as S.Schema<KeyVaultPropertiesUpdate>;
+export type KeyVaultPropertiesUpdate = BookshelfKeyVaultPropertiesUpdate;
+export const KeyVaultPropertiesUpdate = BookshelfKeyVaultPropertiesUpdate;
 
 /** Workspace properties */
 export interface WorkspacePropertiesUpdate {
   /** List of linked SuperComputers. */
   supercomputerIds?: WorkspacePropertiesUpdateSupercomputerIdsList;
   /** The key to use for encrypting data at rest when customer managed keys are enabled. */
-  keyVaultProperties?: KeyVaultPropertiesUpdate;
+  keyVaultProperties?: BookshelfKeyVaultPropertiesUpdate;
   /** Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible. */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
 export const WorkspacePropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supercomputerIds: S.optional(WorkspacePropertiesUpdateSupercomputerIdsList),
-    keyVaultProperties: S.optional(KeyVaultPropertiesUpdate),
+    keyVaultProperties: S.optional(BookshelfKeyVaultPropertiesUpdate),
     publicNetworkAccess: S.optional(PublicNetworkAccess),
   }),
 ).annotate({

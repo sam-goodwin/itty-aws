@@ -476,12 +476,8 @@ export const AiGatewaysPatchResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AiGatewaysPatchResponse>;
 
 /** A wrapper for an ARM resource id */
-export interface ArmIdWrapperInput {}
-export const ArmIdWrapperInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ArmIdWrapperInput",
-}) as any as S.Schema<ArmIdWrapperInput>;
+export type ArmIdWrapperInput = AiGatewayPropertiesInput;
+export const ArmIdWrapperInput = AiGatewayPropertiesInput;
 
 /** The state of a private link connection */
 export interface PrivateLinkConnectionState {
@@ -513,7 +509,7 @@ export const RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddresse
 /** RemotePrivateEndpointConnectionARMResource resource specific properties */
 export interface RemotePrivateEndpointConnectionARMResourcePropertiesInput {
   /** PrivateEndpoint of a remote private endpoint connection */
-  privateEndpoint?: ArmIdWrapperInput;
+  privateEndpoint?: AiGatewayPropertiesInput;
   /** The state of a private link connection */
   privateLinkServiceConnectionState?: PrivateLinkConnectionState;
   /** Private IPAddresses mapped to the remote private endpoint */
@@ -522,7 +518,7 @@ export interface RemotePrivateEndpointConnectionARMResourcePropertiesInput {
 export const RemotePrivateEndpointConnectionARMResourcePropertiesInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      privateEndpoint: S.optional(ArmIdWrapperInput),
+      privateEndpoint: S.optional(AiGatewayPropertiesInput),
       privateLinkServiceConnectionState: S.optional(PrivateLinkConnectionState),
       ipAddresses: S.optional(
         RemotePrivateEndpointConnectionARMResourcePropertiesInputIpAddressesList,
@@ -6451,21 +6447,17 @@ export const ExtendedLocationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtendedLocationInput>;
 
 /** User Assigned identity. */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = AiGatewayPropertiesInput;
+export const UserAssignedIdentityInput = AiGatewayPropertiesInput;
 
 /** The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} */
 export type ManagedServiceIdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: AiGatewayPropertiesInput | undefined;
 };
 export const ManagedServiceIdentityInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserAssignedIdentityInput,
+    AiGatewayPropertiesInput,
   ) as any as S.Schema<ManagedServiceIdentityInputUserAssignedIdentitiesMap>;
 
 /** Managed service identity. */
@@ -18794,27 +18786,10 @@ export const StaticSitesGetLinkedBackendRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StaticSitesGetLinkedBackendRequest>;
 
 /** StaticSiteLinkedBackendARMResource resource specific properties */
-export interface StaticSiteLinkedBackendARMResourceProperties {
-  /** The resource id of the backend linked to the static site */
-  backendResourceId?: string;
-  /** The region of the backend linked to the static site */
-  region?: string;
-  /** The date and time on which the backend was linked to the static site. */
-  createdOn?: string;
-  /** The provisioning state of the linking process. */
-  provisioningState?: string;
-}
+export type StaticSiteLinkedBackendARMResourceProperties =
+  StaticSiteLinkedBackend;
 export const StaticSiteLinkedBackendARMResourceProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      backendResourceId: S.optional(S.String),
-      region: S.optional(S.String),
-      createdOn: S.optional(S.String),
-      provisioningState: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "StaticSiteLinkedBackendARMResourceProperties",
-  }) as any as S.Schema<StaticSiteLinkedBackendARMResourceProperties>;
+  StaticSiteLinkedBackend;
 
 export interface StaticSitesGetLinkedBackendResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -18826,7 +18801,7 @@ export interface StaticSitesGetLinkedBackendResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** StaticSiteLinkedBackendARMResource resource specific properties */
-  properties?: StaticSiteLinkedBackendARMResourceProperties;
+  properties?: StaticSiteLinkedBackend;
   /** Kind of resource. */
   kind?: string;
 }
@@ -18836,7 +18811,7 @@ export const StaticSitesGetLinkedBackendResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(StaticSiteLinkedBackendARMResourceProperties),
+    properties: S.optional(StaticSiteLinkedBackend),
     kind: S.optional(S.String),
   }),
 ).annotate({
@@ -18885,7 +18860,7 @@ export interface StaticSitesGetLinkedBackendForBuildResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** StaticSiteLinkedBackendARMResource resource specific properties */
-  properties?: StaticSiteLinkedBackendARMResourceProperties;
+  properties?: StaticSiteLinkedBackend;
   /** Kind of resource. */
   kind?: string;
 }
@@ -18896,7 +18871,7 @@ export const StaticSitesGetLinkedBackendForBuildResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(StaticSiteLinkedBackendARMResourceProperties),
+      properties: S.optional(StaticSiteLinkedBackend),
       kind: S.optional(S.String),
     }),
   ).annotate({
@@ -18939,7 +18914,7 @@ export interface StaticSiteLinkedBackendARMResource {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** StaticSiteLinkedBackendARMResource resource specific properties */
-  properties?: StaticSiteLinkedBackendARMResourceProperties;
+  properties?: StaticSiteLinkedBackend;
   /** Kind of resource. */
   kind?: string;
 }
@@ -18949,7 +18924,7 @@ export const StaticSiteLinkedBackendARMResource = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(StaticSiteLinkedBackendARMResourceProperties),
+    properties: S.optional(StaticSiteLinkedBackend),
     kind: S.optional(S.String),
   }),
 ).annotate({
@@ -19592,24 +19567,10 @@ export const StaticSitesGetUserProvidedFunctionAppForStaticSiteRequest =
   }) as any as S.Schema<StaticSitesGetUserProvidedFunctionAppForStaticSiteRequest>;
 
 /** StaticSiteUserProvidedFunctionAppARMResource resource specific properties */
-export interface StaticSiteUserProvidedFunctionAppARMResourceProperties {
-  /** The resource id of the function app registered with the static site */
-  functionAppResourceId?: string;
-  /** The region of the function app registered with the static site */
-  functionAppRegion?: string;
-  /** The date and time on which the function app was registered with the static site. */
-  createdOn?: string;
-}
+export type StaticSiteUserProvidedFunctionAppARMResourceProperties =
+  StaticSiteUserProvidedFunctionAppProperties;
 export const StaticSiteUserProvidedFunctionAppARMResourceProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      functionAppResourceId: S.optional(S.String),
-      functionAppRegion: S.optional(S.String),
-      createdOn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "StaticSiteUserProvidedFunctionAppARMResourceProperties",
-  }) as any as S.Schema<StaticSiteUserProvidedFunctionAppARMResourceProperties>;
+  StaticSiteUserProvidedFunctionAppProperties;
 
 export interface StaticSitesGetUserProvidedFunctionAppForStaticSiteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -19621,7 +19582,7 @@ export interface StaticSitesGetUserProvidedFunctionAppForStaticSiteResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** StaticSiteUserProvidedFunctionAppARMResource resource specific properties */
-  properties?: StaticSiteUserProvidedFunctionAppARMResourceProperties;
+  properties?: StaticSiteUserProvidedFunctionAppProperties;
   /** Kind of resource. */
   kind?: string;
 }
@@ -19632,9 +19593,7 @@ export const StaticSitesGetUserProvidedFunctionAppForStaticSiteResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(
-        StaticSiteUserProvidedFunctionAppARMResourceProperties,
-      ),
+      properties: S.optional(StaticSiteUserProvidedFunctionAppProperties),
       kind: S.optional(S.String),
     }),
   ).annotate({
@@ -19684,7 +19643,7 @@ export interface StaticSitesGetUserProvidedFunctionAppForStaticSiteBuildResponse
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** StaticSiteUserProvidedFunctionAppARMResource resource specific properties */
-  properties?: StaticSiteUserProvidedFunctionAppARMResourceProperties;
+  properties?: StaticSiteUserProvidedFunctionAppProperties;
   /** Kind of resource. */
   kind?: string;
 }
@@ -19695,9 +19654,7 @@ export const StaticSitesGetUserProvidedFunctionAppForStaticSiteBuildResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(
-        StaticSiteUserProvidedFunctionAppARMResourceProperties,
-      ),
+      properties: S.optional(StaticSiteUserProvidedFunctionAppProperties),
       kind: S.optional(S.String),
     }),
   ).annotate({
@@ -19742,7 +19699,7 @@ export interface StaticSiteUserProvidedFunctionAppARMResource {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** StaticSiteUserProvidedFunctionAppARMResource resource specific properties */
-  properties?: StaticSiteUserProvidedFunctionAppARMResourceProperties;
+  properties?: StaticSiteUserProvidedFunctionAppProperties;
   /** Kind of resource. */
   kind?: string;
 }
@@ -19753,9 +19710,7 @@ export const StaticSiteUserProvidedFunctionAppARMResource =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(
-        StaticSiteUserProvidedFunctionAppARMResourceProperties,
-      ),
+      properties: S.optional(StaticSiteUserProvidedFunctionAppProperties),
       kind: S.optional(S.String),
     }),
   ).annotate({
@@ -19878,7 +19833,7 @@ export interface StaticSitesLinkBackendResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** StaticSiteLinkedBackendARMResource resource specific properties */
-  properties?: StaticSiteLinkedBackendARMResourceProperties;
+  properties?: StaticSiteLinkedBackend;
   /** Kind of resource. */
   kind?: string;
 }
@@ -19888,7 +19843,7 @@ export const StaticSitesLinkBackendResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(StaticSiteLinkedBackendARMResourceProperties),
+    properties: S.optional(StaticSiteLinkedBackend),
     kind: S.optional(S.String),
   }),
 ).annotate({
@@ -19943,7 +19898,7 @@ export interface StaticSitesLinkBackendToBuildResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** StaticSiteLinkedBackendARMResource resource specific properties */
-  properties?: StaticSiteLinkedBackendARMResourceProperties;
+  properties?: StaticSiteLinkedBackend;
   /** Kind of resource. */
   kind?: string;
 }
@@ -19954,7 +19909,7 @@ export const StaticSitesLinkBackendToBuildResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(StaticSiteLinkedBackendARMResourceProperties),
+      properties: S.optional(StaticSiteLinkedBackend),
       kind: S.optional(S.String),
     }),
 ).annotate({
@@ -20905,7 +20860,7 @@ export interface StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteRespons
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** StaticSiteUserProvidedFunctionAppARMResource resource specific properties */
-  properties?: StaticSiteUserProvidedFunctionAppARMResourceProperties;
+  properties?: StaticSiteUserProvidedFunctionAppProperties;
   /** Kind of resource. */
   kind?: string;
 }
@@ -20916,9 +20871,7 @@ export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(
-        StaticSiteUserProvidedFunctionAppARMResourceProperties,
-      ),
+      properties: S.optional(StaticSiteUserProvidedFunctionAppProperties),
       kind: S.optional(S.String),
     }),
   ).annotate({
@@ -20980,7 +20933,7 @@ export interface StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildRe
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** StaticSiteUserProvidedFunctionAppARMResource resource specific properties */
-  properties?: StaticSiteUserProvidedFunctionAppARMResourceProperties;
+  properties?: StaticSiteUserProvidedFunctionAppProperties;
   /** Kind of resource. */
   kind?: string;
 }
@@ -20991,9 +20944,7 @@ export const StaticSitesRegisterUserProvidedFunctionAppWithStaticSiteBuildRespon
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(
-        StaticSiteUserProvidedFunctionAppARMResourceProperties,
-      ),
+      properties: S.optional(StaticSiteUserProvidedFunctionAppProperties),
       kind: S.optional(S.String),
     }),
   ).annotate({
@@ -29489,34 +29440,22 @@ export const Twitter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Twitter" }) as any as S.Schema<Twitter>;
 
 /** The configuration settings of the registration for the Apple provider */
-export interface AppleRegistration {
-  /** The Client ID of the app used for login. */
-  clientId?: string;
-  /** The app setting name that contains the client secret. */
-  clientSecretSettingName?: string;
-}
-export const AppleRegistration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.optional(S.String),
-    clientSecretSettingName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppleRegistration",
-}) as any as S.Schema<AppleRegistration>;
+export type AppleRegistration = ClientRegistration;
+export const AppleRegistration = ClientRegistration;
 
 /** The configuration settings of the Apple provider. */
 export interface Apple {
   /** <code>false</code> if the Apple provider should not be enabled despite the set registration; otherwise, <code>true</code>. */
   enabled?: boolean;
   /** The configuration settings of the Apple registration. */
-  registration?: AppleRegistration;
+  registration?: ClientRegistration;
   /** The configuration settings of the login flow. */
   login?: LoginScopes;
 }
 export const Apple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
-    registration: S.optional(AppleRegistration),
+    registration: S.optional(ClientRegistration),
     login: S.optional(LoginScopes),
   }),
 ).annotate({ identifier: "Apple" }) as any as S.Schema<Apple>;
@@ -46318,29 +46257,8 @@ export const WebAppsUpdateMetadataSlotResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAppsUpdateMetadataSlotResponse>;
 
 /** PremierAddOnPatchResource resource specific properties */
-export interface PremierAddOnPatchResourceProperties {
-  /** Premier add on SKU. */
-  sku?: string;
-  /** Premier add on Product. */
-  product?: string;
-  /** Premier add on Vendor. */
-  vendor?: string;
-  /** Premier add on Marketplace publisher. */
-  marketplacePublisher?: string;
-  /** Premier add on Marketplace offer. */
-  marketplaceOffer?: string;
-}
-export const PremierAddOnPatchResourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sku: S.optional(S.String),
-    product: S.optional(S.String),
-    vendor: S.optional(S.String),
-    marketplacePublisher: S.optional(S.String),
-    marketplaceOffer: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PremierAddOnPatchResourceProperties",
-}) as any as S.Schema<PremierAddOnPatchResourceProperties>;
+export type PremierAddOnPatchResourceProperties = PremierAddOnProperties;
+export const PremierAddOnPatchResourceProperties = PremierAddOnProperties;
 
 export interface WebAppsUpdatePremierAddOnRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46354,7 +46272,7 @@ export interface WebAppsUpdatePremierAddOnRequest {
   /** Kind of resource. */
   kind?: string;
   /** PremierAddOnPatchResource resource specific properties */
-  properties?: PremierAddOnPatchResourceProperties;
+  properties?: PremierAddOnProperties;
 }
 export const WebAppsUpdatePremierAddOnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -46363,7 +46281,7 @@ export const WebAppsUpdatePremierAddOnRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     premierAddOnName: S.String.pipe(T.Label()),
     kind: S.optional(S.String),
-    properties: S.optional(PremierAddOnPatchResourceProperties),
+    properties: S.optional(PremierAddOnProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -46432,7 +46350,7 @@ export interface WebAppsUpdatePremierAddOnSlotRequest {
   /** Kind of resource. */
   kind?: string;
   /** PremierAddOnPatchResource resource specific properties */
-  properties?: PremierAddOnPatchResourceProperties;
+  properties?: PremierAddOnProperties;
 }
 export const WebAppsUpdatePremierAddOnSlotRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -46443,7 +46361,7 @@ export const WebAppsUpdatePremierAddOnSlotRequest = /*@__PURE__*/ S.suspend(
       slot: S.String.pipe(T.Label()),
       premierAddOnName: S.String.pipe(T.Label()),
       kind: S.optional(S.String),
-      properties: S.optional(PremierAddOnPatchResourceProperties),
+      properties: S.optional(PremierAddOnProperties),
     }).pipe(
       T.Http({
         method: "PATCH",

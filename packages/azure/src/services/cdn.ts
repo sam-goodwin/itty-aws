@@ -1615,32 +1615,10 @@ export const AFDOriginGroupsListResourceUsageRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AFDOriginGroupsListResourceUsageRequest>;
 
 /** The JSON object that contains the properties of the origin group. */
-export interface AFDOriginGroupUpdatePropertiesParametersInput {
-  /** Load balancing settings for a backend pool */
-  loadBalancingSettings?: LoadBalancingSettingsParameters;
-  /** Health probe settings to the origin that is used to determine the health of the origin. */
-  healthProbeSettings?: HealthProbeParameters;
-  /** Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported. */
-  trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: number;
-  /** Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled' */
-  sessionAffinityState?: EnabledState | (string & {});
-  /** Authentication settings for origin in origin group. */
-  authentication?: OriginAuthenticationProperties;
-}
+export type AFDOriginGroupUpdatePropertiesParametersInput =
+  AFDOriginGroupPropertiesInput;
 export const AFDOriginGroupUpdatePropertiesParametersInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      loadBalancingSettings: S.optional(LoadBalancingSettingsParameters),
-      healthProbeSettings: S.optional(HealthProbeParameters),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(
-        S.Number,
-      ),
-      sessionAffinityState: S.optional(EnabledState),
-      authentication: S.optional(OriginAuthenticationProperties),
-    }),
-  ).annotate({
-    identifier: "AFDOriginGroupUpdatePropertiesParametersInput",
-  }) as any as S.Schema<AFDOriginGroupUpdatePropertiesParametersInput>;
+  AFDOriginGroupPropertiesInput;
 
 export interface AFDOriginGroupsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1652,7 +1630,7 @@ export interface AFDOriginGroupsUpdateRequest {
   /** Name of the origin group which is unique within the endpoint. */
   originGroupName: string;
   /** The JSON object that contains the properties of the origin group. */
-  properties?: AFDOriginGroupUpdatePropertiesParametersInput;
+  properties?: AFDOriginGroupPropertiesInput;
 }
 export const AFDOriginGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1660,7 +1638,7 @@ export const AFDOriginGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     profileName: S.String.pipe(T.Label()),
     originGroupName: S.String.pipe(T.Label()),
-    properties: S.optional(AFDOriginGroupUpdatePropertiesParametersInput),
+    properties: S.optional(AFDOriginGroupPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2044,47 +2022,9 @@ export const AFDOriginListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AFDOriginListResult>;
 
 /** The JSON object that contains the properties of the origin. */
-export interface AFDOriginUpdatePropertiesParametersInput {
-  /** Resource reference to the Azure origin resource. */
-  azureOrigin?: ResourceReference;
-  /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
-  hostName?: string;
-  /** The value of the HTTP port. Must be between 1 and 65535. */
-  httpPort?: number;
-  /** The value of the HTTPS port. Must be between 1 and 65535. */
-  httpsPort?: number;
-  /** The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint */
-  originHostHeader?: string;
-  /** Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5 */
-  priority?: number;
-  /** Weight of the origin in given origin group for load balancing. Must be between 1 and 1000 */
-  weight?: number;
-  /** The properties of the private link resource for private origin. */
-  sharedPrivateLinkResource?: SharedPrivateLinkResourceProperties;
-  /** Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool. */
-  enabledState?: EnabledState | (string & {});
-  /** Whether to enable certificate name check at origin level */
-  enforceCertificateNameCheck?: boolean;
-}
-export const AFDOriginUpdatePropertiesParametersInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      azureOrigin: S.optional(ResourceReference),
-      hostName: S.optional(S.String),
-      httpPort: S.optional(S.Number),
-      httpsPort: S.optional(S.Number),
-      originHostHeader: S.optional(S.String),
-      priority: S.optional(S.Number),
-      weight: S.optional(S.Number),
-      sharedPrivateLinkResource: S.optional(
-        SharedPrivateLinkResourceProperties,
-      ),
-      enabledState: S.optional(EnabledState),
-      enforceCertificateNameCheck: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "AFDOriginUpdatePropertiesParametersInput",
-}) as any as S.Schema<AFDOriginUpdatePropertiesParametersInput>;
+export type AFDOriginUpdatePropertiesParametersInput = AFDOriginPropertiesInput;
+export const AFDOriginUpdatePropertiesParametersInput =
+  AFDOriginPropertiesInput;
 
 export interface AFDOriginsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2098,7 +2038,7 @@ export interface AFDOriginsUpdateRequest {
   /** Name of the origin which is unique within the profile. */
   originName: string;
   /** The JSON object that contains the properties of the origin. */
-  properties?: AFDOriginUpdatePropertiesParametersInput;
+  properties?: AFDOriginPropertiesInput;
 }
 export const AFDOriginsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2107,7 +2047,7 @@ export const AFDOriginsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     profileName: S.String.pipe(T.Label()),
     originGroupName: S.String.pipe(T.Label()),
     originName: S.String.pipe(T.Label()),
-    properties: S.optional(AFDOriginUpdatePropertiesParametersInput),
+    properties: S.optional(AFDOriginPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3549,19 +3489,10 @@ export const EndpointPropertiesUpdateParametersDeliveryPolicy =
   }) as any as S.Schema<EndpointPropertiesUpdateParametersDeliveryPolicy>;
 
 /** Defines the Web Application Firewall policy for the endpoint (if applicable) */
-export interface EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink {
-  /** Resource ID. */
-  id?: string;
-}
+export type EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink =
+  ResourceReference;
 export const EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink",
-  }) as any as S.Schema<EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink>;
+  ResourceReference;
 
 /** The approval status for the connection to the Private Link */
 export type PrivateEndpointStatus =
@@ -3783,7 +3714,7 @@ export interface EndpointPropertiesInput {
   /** A policy that specifies the delivery rules to be used for an endpoint. */
   deliveryPolicy?: EndpointPropertiesUpdateParametersDeliveryPolicy;
   /** Defines the Web Application Firewall policy for the endpoint (if applicable) */
-  webApplicationFirewallPolicyLink?: EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink;
+  webApplicationFirewallPolicyLink?: ResourceReference;
   /** The source of the content being delivered via CDN. */
   origins: EndpointPropertiesInputOriginsList;
   /** The origin groups comprising of origins that are used for load balancing the traffic based on availability. */
@@ -3810,9 +3741,7 @@ export const EndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     deliveryPolicy: S.optional(
       EndpointPropertiesUpdateParametersDeliveryPolicy,
     ),
-    webApplicationFirewallPolicyLink: S.optional(
-      EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink,
-    ),
+    webApplicationFirewallPolicyLink: S.optional(ResourceReference),
     origins: EndpointPropertiesInputOriginsList,
     originGroups: S.optional(EndpointPropertiesInputOriginGroupsList),
   }),
@@ -3993,7 +3922,7 @@ export interface EndpointProperties {
   /** A policy that specifies the delivery rules to be used for an endpoint. */
   deliveryPolicy?: EndpointPropertiesUpdateParametersDeliveryPolicy;
   /** Defines the Web Application Firewall policy for the endpoint (if applicable) */
-  webApplicationFirewallPolicyLink?: EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink;
+  webApplicationFirewallPolicyLink?: ResourceReference;
   /** The host name of the endpoint structured as {endpointName}.{DNSZone}, e.g. contoso.azureedge.net */
   hostName?: string;
   /** The source of the content being delivered via CDN. */
@@ -4028,9 +3957,7 @@ export const EndpointProperties = /*@__PURE__*/ S.suspend(() =>
     deliveryPolicy: S.optional(
       EndpointPropertiesUpdateParametersDeliveryPolicy,
     ),
-    webApplicationFirewallPolicyLink: S.optional(
-      EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink,
-    ),
+    webApplicationFirewallPolicyLink: S.optional(ResourceReference),
     hostName: S.optional(S.String),
     origins: EndpointPropertiesOriginsList,
     originGroups: S.optional(EndpointPropertiesOriginGroupsList),
@@ -4625,7 +4552,7 @@ export interface EndpointPropertiesUpdateParameters {
   /** A policy that specifies the delivery rules to be used for an endpoint. */
   deliveryPolicy?: EndpointPropertiesUpdateParametersDeliveryPolicy;
   /** Defines the Web Application Firewall policy for the endpoint (if applicable) */
-  webApplicationFirewallPolicyLink?: EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink;
+  webApplicationFirewallPolicyLink?: ResourceReference;
 }
 export const EndpointPropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4650,9 +4577,7 @@ export const EndpointPropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
     deliveryPolicy: S.optional(
       EndpointPropertiesUpdateParametersDeliveryPolicy,
     ),
-    webApplicationFirewallPolicyLink: S.optional(
-      EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink,
-    ),
+    webApplicationFirewallPolicyLink: S.optional(ResourceReference),
   }),
 ).annotate({
   identifier: "EndpointPropertiesUpdateParameters",
@@ -5303,27 +5228,15 @@ export const ResourcesResponseEndpointsList = /*@__PURE__*/ S.Array(
   ResourcesResponseEndpointsItem,
 ) as any as S.Schema<ResourcesResponseEndpointsList>;
 
-export interface ResourcesResponseCustomDomainsItem {
-  id?: string;
-  name?: string;
-  endpointId?: string;
-  history?: boolean;
-}
-export const ResourcesResponseCustomDomainsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    endpointId: S.optional(S.String),
-    history: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ResourcesResponseCustomDomainsItem",
-}) as any as S.Schema<ResourcesResponseCustomDomainsItem>;
+export type ResourcesResponseCustomDomainsItem =
+  ResourcesResponseEndpointsPropertiesItemsItem;
+export const ResourcesResponseCustomDomainsItem =
+  ResourcesResponseEndpointsPropertiesItemsItem;
 
 export type ResourcesResponseCustomDomainsList =
-  Array<ResourcesResponseCustomDomainsItem>;
+  Array<ResourcesResponseEndpointsPropertiesItemsItem>;
 export const ResourcesResponseCustomDomainsList = /*@__PURE__*/ S.Array(
-  ResourcesResponseCustomDomainsItem,
+  ResourcesResponseEndpointsPropertiesItemsItem,
 ) as any as S.Schema<ResourcesResponseCustomDomainsList>;
 
 /** Resources Response */
@@ -5465,45 +5378,26 @@ export const WafMetricsGranularity = /*@__PURE__*/ S.String;
 export type WafMetricsSeriesUnit = "count";
 export const WafMetricsSeriesUnit = /*@__PURE__*/ S.String;
 
-export interface WafMetricsResponseSeriesPropertiesItemsItem {
-  name?: string;
-  value?: string;
-}
+export type WafMetricsResponseSeriesPropertiesItemsItem =
+  MetricsResponseSeriesPropertiesItemsItem;
 export const WafMetricsResponseSeriesPropertiesItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "WafMetricsResponseSeriesPropertiesItemsItem",
-  }) as any as S.Schema<WafMetricsResponseSeriesPropertiesItemsItem>;
+  MetricsResponseSeriesPropertiesItemsItem;
 
 export type WafMetricsResponseSeriesItemGroupsList =
-  Array<WafMetricsResponseSeriesPropertiesItemsItem>;
+  Array<MetricsResponseSeriesPropertiesItemsItem>;
 export const WafMetricsResponseSeriesItemGroupsList = /*@__PURE__*/ S.Array(
-  WafMetricsResponseSeriesPropertiesItemsItem,
+  MetricsResponseSeriesPropertiesItemsItem,
 ) as any as S.Schema<WafMetricsResponseSeriesItemGroupsList>;
 
-export interface Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems {
-  dateTime?: string;
-  value?: number;
-}
+export type Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems =
+  Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems;
 export const Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dateTime: S.optional(S.String),
-      value: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems",
-  }) as any as S.Schema<Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems>;
+  Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems;
 
 export type WafMetricsResponseSeriesItemDataList =
-  Array<Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems>;
+  Array<Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems>;
 export const WafMetricsResponseSeriesItemDataList = /*@__PURE__*/ S.Array(
-  Components18OrqelSchemasWafmetricsresponsePropertiesSeriesItemsPropertiesDataItems,
+  Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems,
 ) as any as S.Schema<WafMetricsResponseSeriesItemDataList>;
 
 export interface WafMetricsResponseSeriesItem {
@@ -5672,27 +5566,15 @@ export const WafRankingsResponseDataItemGroupValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WafRankingsResponseDataItemGroupValuesList>;
 
-export interface ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems {
-  metric?: string;
-  value?: number;
-  percentage?: number;
-}
+export type ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems =
+  RankingsResponseTablesPropertiesItemsMetricsItem;
 export const ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metric: S.optional(S.String),
-      value: S.optional(S.Number),
-      percentage: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems",
-  }) as any as S.Schema<ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems>;
+  RankingsResponseTablesPropertiesItemsMetricsItem;
 
 export type WafRankingsResponseDataItemMetricsList =
-  Array<ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems>;
+  Array<RankingsResponseTablesPropertiesItemsMetricsItem>;
 export const WafRankingsResponseDataItemMetricsList = /*@__PURE__*/ S.Array(
-  ComponentsKpo1PjSchemasWafrankingsresponsePropertiesDataItemsPropertiesMetricsItems,
+  RankingsResponseTablesPropertiesItemsMetricsItem,
 ) as any as S.Schema<WafRankingsResponseDataItemMetricsList>;
 
 export interface WafRankingsResponseDataItem {
@@ -8764,23 +8646,13 @@ export const ResourceUsageListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceUsageListRequest>;
 
 /** Reference to another resource along with its state. */
-export interface ActivatedResourceReferenceInput {
-  /** Resource ID. */
-  id?: string;
-}
-export const ActivatedResourceReferenceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ActivatedResourceReferenceInput",
-}) as any as S.Schema<ActivatedResourceReferenceInput>;
+export type ActivatedResourceReferenceInput = ResourceReference;
+export const ActivatedResourceReferenceInput = ResourceReference;
 
 /** Domains referenced by this endpoint. */
-export type RoutePropertiesInputCustomDomainsList =
-  Array<ActivatedResourceReferenceInput>;
+export type RoutePropertiesInputCustomDomainsList = Array<ResourceReference>;
 export const RoutePropertiesInputCustomDomainsList = /*@__PURE__*/ S.Array(
-  ActivatedResourceReferenceInput,
+  ResourceReference,
 ) as any as S.Schema<RoutePropertiesInputCustomDomainsList>;
 
 /** rule sets referenced by this endpoint. */
@@ -9250,10 +9122,10 @@ export const RouteListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Domains referenced by this endpoint. */
 export type RouteUpdatePropertiesParametersInputCustomDomainsList =
-  Array<ActivatedResourceReferenceInput>;
+  Array<ResourceReference>;
 export const RouteUpdatePropertiesParametersInputCustomDomainsList =
   /*@__PURE__*/ S.Array(
-    ActivatedResourceReferenceInput,
+    ResourceReference,
   ) as any as S.Schema<RouteUpdatePropertiesParametersInputCustomDomainsList>;
 
 /** rule sets referenced by this endpoint. */
@@ -10751,17 +10623,8 @@ export const SecurityPolicyListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityPolicyListResult>;
 
 /** The json object that contains properties required to update a security policy */
-export interface SecurityPolicyUpdateProperties {
-  /** object which contains security policy parameters */
-  parameters?: SecurityPolicyPropertiesParameters;
-}
-export const SecurityPolicyUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameters: S.optional(SecurityPolicyPropertiesParameters),
-  }),
-).annotate({
-  identifier: "SecurityPolicyUpdateProperties",
-}) as any as S.Schema<SecurityPolicyUpdateProperties>;
+export type SecurityPolicyUpdateProperties = SecurityPolicyPropertiesInput;
+export const SecurityPolicyUpdateProperties = SecurityPolicyPropertiesInput;
 
 export interface SecurityPoliciesPatchRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10773,7 +10636,7 @@ export interface SecurityPoliciesPatchRequest {
   /** Name of the security policy under the profile. */
   securityPolicyName: string;
   /** The json object that contains properties required to update a security policy */
-  properties?: SecurityPolicyUpdateProperties;
+  properties?: SecurityPolicyPropertiesInput;
 }
 export const SecurityPoliciesPatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10781,7 +10644,7 @@ export const SecurityPoliciesPatchRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     profileName: S.String.pipe(T.Label()),
     securityPolicyName: S.String.pipe(T.Label()),
-    properties: S.optional(SecurityPolicyUpdateProperties),
+    properties: S.optional(SecurityPolicyPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",

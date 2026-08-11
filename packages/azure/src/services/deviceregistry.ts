@@ -2368,37 +2368,22 @@ export const StatusConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatusConfig" }) as any as S.Schema<StatusConfig>;
 
 /** Defines the message schema reference properties. */
-export interface NamespaceMessageSchemaReference {
-  /** The message schema registry namespace. */
-  schemaRegistryNamespace: string;
-  /** The message schema name. */
-  schemaName: string;
-  /** The message schema version. */
-  schemaVersion: string;
-}
-export const NamespaceMessageSchemaReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaRegistryNamespace: S.String,
-    schemaName: S.String,
-    schemaVersion: S.String,
-  }),
-).annotate({
-  identifier: "NamespaceMessageSchemaReference",
-}) as any as S.Schema<NamespaceMessageSchemaReference>;
+export type NamespaceMessageSchemaReference = MessageSchemaReference;
+export const NamespaceMessageSchemaReference = MessageSchemaReference;
 
 /** Defines the asset status dataset properties. */
 export interface NamespaceAssetStatusDataset {
   /** The name of the dataset. Must be unique within the status.datasets array. This name is used to correlate between the spec and status dataset information. */
   name: string;
   /** The message schema reference object. */
-  messageSchemaReference?: NamespaceMessageSchemaReference;
+  messageSchemaReference?: MessageSchemaReference;
   /** Object to transfer and persist errors that originate from the edge. */
   error?: StatusError;
 }
 export const NamespaceAssetStatusDataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-    messageSchemaReference: S.optional(NamespaceMessageSchemaReference),
+    messageSchemaReference: S.optional(MessageSchemaReference),
     error: S.optional(StatusError),
   }),
 ).annotate({
@@ -2417,14 +2402,14 @@ export interface NamespaceAssetStatusEvent {
   /** The name of the event. Must be unique within the status.events array. This name is used to correlate between the spec and status event information. */
   name: string;
   /** The message schema reference object. */
-  messageSchemaReference?: NamespaceMessageSchemaReference;
+  messageSchemaReference?: MessageSchemaReference;
   /** Object to transfer and persist errors that originate from the edge. */
   error?: StatusError;
 }
 export const NamespaceAssetStatusEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-    messageSchemaReference: S.optional(NamespaceMessageSchemaReference),
+    messageSchemaReference: S.optional(MessageSchemaReference),
     error: S.optional(StatusError),
   }),
 ).annotate({
@@ -2466,14 +2451,14 @@ export interface NamespaceAssetStatusStream {
   /** The name of the stream. Must be unique within the status.streams array. This name is used to correlate between the spec and status event information. */
   name: string;
   /** The message schema reference object. */
-  messageSchemaReference?: NamespaceMessageSchemaReference;
+  messageSchemaReference?: MessageSchemaReference;
   /** Object to transfer and persist errors that originate from the edge. */
   error?: StatusError;
 }
 export const NamespaceAssetStatusStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
-    messageSchemaReference: S.optional(NamespaceMessageSchemaReference),
+    messageSchemaReference: S.optional(MessageSchemaReference),
     error: S.optional(StatusError),
   }),
 ).annotate({
@@ -2491,9 +2476,9 @@ export interface NamespaceAssetStatusManagementAction {
   /** The name of the action. Must be unique within the status.actions array. This name is used to correlate between the spec and status event information. */
   name: string;
   /** The request message schema reference object for the action. */
-  requestMessageSchemaReference?: NamespaceMessageSchemaReference;
+  requestMessageSchemaReference?: MessageSchemaReference;
   /** The response message schema reference object for the action. */
-  responseMessageSchemaReference?: NamespaceMessageSchemaReference;
+  responseMessageSchemaReference?: MessageSchemaReference;
   /** Object to transfer and persist errors that originate from the edge. */
   error?: StatusError;
 }
@@ -2501,12 +2486,8 @@ export const NamespaceAssetStatusManagementAction = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String,
-      requestMessageSchemaReference: S.optional(
-        NamespaceMessageSchemaReference,
-      ),
-      responseMessageSchemaReference: S.optional(
-        NamespaceMessageSchemaReference,
-      ),
+      requestMessageSchemaReference: S.optional(MessageSchemaReference),
+      responseMessageSchemaReference: S.optional(MessageSchemaReference),
       error: S.optional(StatusError),
     }),
 ).annotate({
@@ -6395,22 +6376,10 @@ export const NamespacesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NamespacesGetResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface NamespacesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const NamespacesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "NamespacesGetResponseIdentity",
-}) as any as S.Schema<NamespacesGetResponseIdentity>;
+export type NamespacesGetResponseIdentity =
+  NamespacesCreateOrReplaceResponseIdentity;
+export const NamespacesGetResponseIdentity =
+  NamespacesCreateOrReplaceResponseIdentity;
 
 export interface NamespacesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6428,7 +6397,7 @@ export interface NamespacesGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: NamespaceProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: NamespacesGetResponseIdentity;
+  identity?: NamespacesCreateOrReplaceResponseIdentity;
 }
 export const NamespacesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6439,7 +6408,7 @@ export const NamespacesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NamespacesGetResponseTagsMap),
     location: S.String,
     properties: S.optional(NamespaceProperties),
-    identity: S.optional(NamespacesGetResponseIdentity),
+    identity: S.optional(NamespacesCreateOrReplaceResponseIdentity),
   }),
 ).annotate({
   identifier: "NamespacesGetResponse",
@@ -6476,22 +6445,8 @@ export const NamespaceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NamespaceTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface NamespaceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const NamespaceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "NamespaceIdentity",
-}) as any as S.Schema<NamespaceIdentity>;
+export type NamespaceIdentity = NamespacesCreateOrReplaceResponseIdentity;
+export const NamespaceIdentity = NamespacesCreateOrReplaceResponseIdentity;
 
 /** Namespace definition. */
 export interface Namespace {
@@ -6510,7 +6465,7 @@ export interface Namespace {
   /** The resource-specific properties for this resource. */
   properties?: NamespaceProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: NamespaceIdentity;
+  identity?: NamespacesCreateOrReplaceResponseIdentity;
 }
 export const Namespace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6521,7 +6476,7 @@ export const Namespace = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NamespaceTagsMap),
     location: S.String,
     properties: S.optional(NamespaceProperties),
-    identity: S.optional(NamespaceIdentity),
+    identity: S.optional(NamespacesCreateOrReplaceResponseIdentity),
   }),
 ).annotate({ identifier: "Namespace" }) as any as S.Schema<Namespace>;
 
@@ -6648,16 +6603,10 @@ export const NamespaceMigrateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespaceMigrateResponse>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface NamespacesUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType | (string & {});
-}
-export const NamespacesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "NamespacesUpdateRequestIdentity",
-}) as any as S.Schema<NamespacesUpdateRequestIdentity>;
+export type NamespacesUpdateRequestIdentity =
+  NamespacesCreateOrReplaceRequestIdentity;
+export const NamespacesUpdateRequestIdentity =
+  NamespacesCreateOrReplaceRequestIdentity;
 
 /** Resource tags. */
 export type NamespacesUpdateRequestTagsMap = {
@@ -6669,20 +6618,8 @@ export const NamespacesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NamespacesUpdateRequestTagsMap>;
 
 /** The updatable properties of the Namespace. */
-export interface NamespaceUpdateProperties {
-  /** Assigned and unassigned messaging endpoints. */
-  messaging?: Messaging;
-  /** Assigned and unassigned management endpoints. */
-  management?: Management;
-}
-export const NamespaceUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    messaging: S.optional(Messaging),
-    management: S.optional(Management),
-  }),
-).annotate({
-  identifier: "NamespaceUpdateProperties",
-}) as any as S.Schema<NamespaceUpdateProperties>;
+export type NamespaceUpdateProperties = NamespacePropertiesInput;
+export const NamespaceUpdateProperties = NamespacePropertiesInput;
 
 export interface NamespacesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6692,20 +6629,20 @@ export interface NamespacesUpdateRequest {
   /** The name of the namespace. */
   namespaceName: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: NamespacesUpdateRequestIdentity;
+  identity?: NamespacesCreateOrReplaceRequestIdentity;
   /** Resource tags. */
   tags?: NamespacesUpdateRequestTagsMap;
   /** The resource-specific properties for this resource. */
-  properties?: NamespaceUpdateProperties;
+  properties?: NamespacePropertiesInput;
 }
 export const NamespacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     namespaceName: S.String.pipe(T.Label()),
-    identity: S.optional(NamespacesUpdateRequestIdentity),
+    identity: S.optional(NamespacesCreateOrReplaceRequestIdentity),
     tags: S.optional(NamespacesUpdateRequestTagsMap),
-    properties: S.optional(NamespaceUpdateProperties),
+    properties: S.optional(NamespacePropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -6728,22 +6665,10 @@ export const NamespacesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NamespacesUpdateResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface NamespacesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const NamespacesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "NamespacesUpdateResponseIdentity",
-}) as any as S.Schema<NamespacesUpdateResponseIdentity>;
+export type NamespacesUpdateResponseIdentity =
+  NamespacesCreateOrReplaceResponseIdentity;
+export const NamespacesUpdateResponseIdentity =
+  NamespacesCreateOrReplaceResponseIdentity;
 
 export interface NamespacesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6761,7 +6686,7 @@ export interface NamespacesUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: NamespaceProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: NamespacesUpdateResponseIdentity;
+  identity?: NamespacesCreateOrReplaceResponseIdentity;
 }
 export const NamespacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6772,7 +6697,7 @@ export const NamespacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NamespacesUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(NamespaceProperties),
-    identity: S.optional(NamespacesUpdateResponseIdentity),
+    identity: S.optional(NamespacesCreateOrReplaceResponseIdentity),
   }),
 ).annotate({
   identifier: "NamespacesUpdateResponse",
@@ -7061,17 +6986,10 @@ export const SchemaRegistryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaRegistryPropertiesInput>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface SchemaRegistriesCreateOrReplaceRequestIdentity {
-  type: SystemAssignedServiceIdentityType | (string & {});
-}
+export type SchemaRegistriesCreateOrReplaceRequestIdentity =
+  NamespacesCreateOrReplaceRequestIdentity;
 export const SchemaRegistriesCreateOrReplaceRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: SystemAssignedServiceIdentityType,
-    }),
-  ).annotate({
-    identifier: "SchemaRegistriesCreateOrReplaceRequestIdentity",
-  }) as any as S.Schema<SchemaRegistriesCreateOrReplaceRequestIdentity>;
+  NamespacesCreateOrReplaceRequestIdentity;
 
 export interface SchemaRegistriesCreateOrReplaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7087,7 +7005,7 @@ export interface SchemaRegistriesCreateOrReplaceRequest {
   /** The resource-specific properties for this resource. */
   properties?: SchemaRegistryPropertiesInput;
   /** Managed service identity (either system assigned, or none) */
-  identity?: SchemaRegistriesCreateOrReplaceRequestIdentity;
+  identity?: NamespacesCreateOrReplaceRequestIdentity;
 }
 export const SchemaRegistriesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -7098,7 +7016,7 @@ export const SchemaRegistriesCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
       tags: S.optional(SchemaRegistriesCreateOrReplaceRequestTagsMap),
       location: S.String,
       properties: S.optional(SchemaRegistryPropertiesInput),
-      identity: S.optional(SchemaRegistriesCreateOrReplaceRequestIdentity),
+      identity: S.optional(NamespacesCreateOrReplaceRequestIdentity),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -7150,23 +7068,10 @@ export const SchemaRegistryProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaRegistryProperties>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface SchemaRegistriesCreateOrReplaceResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
+export type SchemaRegistriesCreateOrReplaceResponseIdentity =
+  NamespacesCreateOrReplaceResponseIdentity;
 export const SchemaRegistriesCreateOrReplaceResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: SystemAssignedServiceIdentityType,
-    }),
-  ).annotate({
-    identifier: "SchemaRegistriesCreateOrReplaceResponseIdentity",
-  }) as any as S.Schema<SchemaRegistriesCreateOrReplaceResponseIdentity>;
+  NamespacesCreateOrReplaceResponseIdentity;
 
 export interface SchemaRegistriesCreateOrReplaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7184,7 +7089,7 @@ export interface SchemaRegistriesCreateOrReplaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SchemaRegistryProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: SchemaRegistriesCreateOrReplaceResponseIdentity;
+  identity?: NamespacesCreateOrReplaceResponseIdentity;
 }
 export const SchemaRegistriesCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -7196,7 +7101,7 @@ export const SchemaRegistriesCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(SchemaRegistriesCreateOrReplaceResponseTagsMap),
       location: S.String,
       properties: S.optional(SchemaRegistryProperties),
-      identity: S.optional(SchemaRegistriesCreateOrReplaceResponseIdentity),
+      identity: S.optional(NamespacesCreateOrReplaceResponseIdentity),
     }),
 ).annotate({
   identifier: "SchemaRegistriesCreateOrReplaceResponse",
@@ -7269,22 +7174,10 @@ export const SchemaRegistriesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SchemaRegistriesGetResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface SchemaRegistriesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const SchemaRegistriesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "SchemaRegistriesGetResponseIdentity",
-}) as any as S.Schema<SchemaRegistriesGetResponseIdentity>;
+export type SchemaRegistriesGetResponseIdentity =
+  NamespacesCreateOrReplaceResponseIdentity;
+export const SchemaRegistriesGetResponseIdentity =
+  NamespacesCreateOrReplaceResponseIdentity;
 
 export interface SchemaRegistriesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7302,7 +7195,7 @@ export interface SchemaRegistriesGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: SchemaRegistryProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: SchemaRegistriesGetResponseIdentity;
+  identity?: NamespacesCreateOrReplaceResponseIdentity;
 }
 export const SchemaRegistriesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7313,7 +7206,7 @@ export const SchemaRegistriesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(SchemaRegistriesGetResponseTagsMap),
     location: S.String,
     properties: S.optional(SchemaRegistryProperties),
-    identity: S.optional(SchemaRegistriesGetResponseIdentity),
+    identity: S.optional(NamespacesCreateOrReplaceResponseIdentity),
   }),
 ).annotate({
   identifier: "SchemaRegistriesGetResponse",
@@ -7350,22 +7243,8 @@ export const SchemaRegistryTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SchemaRegistryTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface SchemaRegistryIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const SchemaRegistryIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "SchemaRegistryIdentity",
-}) as any as S.Schema<SchemaRegistryIdentity>;
+export type SchemaRegistryIdentity = NamespacesCreateOrReplaceResponseIdentity;
+export const SchemaRegistryIdentity = NamespacesCreateOrReplaceResponseIdentity;
 
 /** Schema registry definition. */
 export interface SchemaRegistry {
@@ -7384,7 +7263,7 @@ export interface SchemaRegistry {
   /** The resource-specific properties for this resource. */
   properties?: SchemaRegistryProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: SchemaRegistryIdentity;
+  identity?: NamespacesCreateOrReplaceResponseIdentity;
 }
 export const SchemaRegistry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7395,7 +7274,7 @@ export const SchemaRegistry = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(SchemaRegistryTagsMap),
     location: S.String,
     properties: S.optional(SchemaRegistryProperties),
-    identity: S.optional(SchemaRegistryIdentity),
+    identity: S.optional(NamespacesCreateOrReplaceResponseIdentity),
   }),
 ).annotate({ identifier: "SchemaRegistry" }) as any as S.Schema<SchemaRegistry>;
 
@@ -7442,17 +7321,10 @@ export const SchemaRegistriesListBySubscriptionRequest =
   }) as any as S.Schema<SchemaRegistriesListBySubscriptionRequest>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface SchemaRegistriesUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType | (string & {});
-}
-export const SchemaRegistriesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: SystemAssignedServiceIdentityType,
-    }),
-).annotate({
-  identifier: "SchemaRegistriesUpdateRequestIdentity",
-}) as any as S.Schema<SchemaRegistriesUpdateRequestIdentity>;
+export type SchemaRegistriesUpdateRequestIdentity =
+  NamespacesCreateOrReplaceRequestIdentity;
+export const SchemaRegistriesUpdateRequestIdentity =
+  NamespacesCreateOrReplaceRequestIdentity;
 
 /** Resource tags. */
 export type SchemaRegistriesUpdateRequestTagsMap = {
@@ -7487,7 +7359,7 @@ export interface SchemaRegistriesUpdateRequest {
   /** Schema registry name parameter. */
   schemaRegistryName: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: SchemaRegistriesUpdateRequestIdentity;
+  identity?: NamespacesCreateOrReplaceRequestIdentity;
   /** Resource tags. */
   tags?: SchemaRegistriesUpdateRequestTagsMap;
   /** The resource-specific properties for this resource. */
@@ -7498,7 +7370,7 @@ export const SchemaRegistriesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     schemaRegistryName: S.String.pipe(T.Label()),
-    identity: S.optional(SchemaRegistriesUpdateRequestIdentity),
+    identity: S.optional(NamespacesCreateOrReplaceRequestIdentity),
     tags: S.optional(SchemaRegistriesUpdateRequestTagsMap),
     properties: S.optional(SchemaRegistryUpdateProperties),
   }).pipe(
@@ -7523,23 +7395,10 @@ export const SchemaRegistriesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SchemaRegistriesUpdateResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface SchemaRegistriesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const SchemaRegistriesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: SystemAssignedServiceIdentityType,
-    }),
-).annotate({
-  identifier: "SchemaRegistriesUpdateResponseIdentity",
-}) as any as S.Schema<SchemaRegistriesUpdateResponseIdentity>;
+export type SchemaRegistriesUpdateResponseIdentity =
+  NamespacesCreateOrReplaceResponseIdentity;
+export const SchemaRegistriesUpdateResponseIdentity =
+  NamespacesCreateOrReplaceResponseIdentity;
 
 export interface SchemaRegistriesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7557,7 +7416,7 @@ export interface SchemaRegistriesUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SchemaRegistryProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: SchemaRegistriesUpdateResponseIdentity;
+  identity?: NamespacesCreateOrReplaceResponseIdentity;
 }
 export const SchemaRegistriesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7568,7 +7427,7 @@ export const SchemaRegistriesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(SchemaRegistriesUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(SchemaRegistryProperties),
-    identity: S.optional(SchemaRegistriesUpdateResponseIdentity),
+    identity: S.optional(NamespacesCreateOrReplaceResponseIdentity),
   }),
 ).annotate({
   identifier: "SchemaRegistriesUpdateResponse",

@@ -1507,25 +1507,12 @@ export const OutputDataSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutputDataSource>;
 
 /** Describes how data from an input is serialized or how data is serialized when written to an output. */
-export interface OutputPropertiesInputSerialization {
-  /** Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests. */
-  type: EventSerializationType | (string & {});
-}
-export const OutputPropertiesInputSerialization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: EventSerializationType,
-  }),
-).annotate({
-  identifier: "OutputPropertiesInputSerialization",
-}) as any as S.Schema<OutputPropertiesInputSerialization>;
+export type OutputPropertiesInputSerialization = Serialization;
+export const OutputPropertiesInputSerialization = Serialization;
 
 /** Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention. */
-export interface OutputPropertiesInputDiagnostics {}
-export const OutputPropertiesInputDiagnostics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OutputPropertiesInputDiagnostics",
-}) as any as S.Schema<OutputPropertiesInputDiagnostics>;
+export type OutputPropertiesInputDiagnostics = ClusterPropertiesInput;
+export const OutputPropertiesInputDiagnostics = ClusterPropertiesInput;
 
 /** The properties that are associated with an output. */
 export interface OutputPropertiesInput {
@@ -1536,17 +1523,17 @@ export interface OutputPropertiesInput {
   /** The size window to constrain a Stream Analytics output to. */
   sizeWindow?: number;
   /** Describes how data from an input is serialized or how data is serialized when written to an output. */
-  serialization?: OutputPropertiesInputSerialization;
+  serialization?: Serialization;
   /** Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention. */
-  diagnostics?: OutputPropertiesInputDiagnostics;
+  diagnostics?: ClusterPropertiesInput;
 }
 export const OutputPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasource: S.optional(OutputDataSource),
     timeWindow: S.optional(S.String),
     sizeWindow: S.optional(S.Number),
-    serialization: S.optional(OutputPropertiesInputSerialization),
-    diagnostics: S.optional(OutputPropertiesInputDiagnostics),
+    serialization: S.optional(Serialization),
+    diagnostics: S.optional(ClusterPropertiesInput),
   }),
 ).annotate({
   identifier: "OutputPropertiesInput",
@@ -1935,12 +1922,8 @@ export const PrivateLinkServiceConnectionPropertiesInputGroupIdsList =
   ) as any as S.Schema<PrivateLinkServiceConnectionPropertiesInputGroupIdsList>;
 
 /** A collection of read-only information about the state of the connection to the private remote resource. */
-export interface PrivateLinkConnectionStateInput {}
-export const PrivateLinkConnectionStateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PrivateLinkConnectionStateInput",
-}) as any as S.Schema<PrivateLinkConnectionStateInput>;
+export type PrivateLinkConnectionStateInput = ClusterPropertiesInput;
+export const PrivateLinkConnectionStateInput = ClusterPropertiesInput;
 
 /** Bag of properties defining a privatelinkServiceConnection. */
 export interface PrivateLinkServiceConnectionPropertiesInput {
@@ -1949,7 +1932,7 @@ export interface PrivateLinkServiceConnectionPropertiesInput {
   /** The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests. */
   groupIds?: PrivateLinkServiceConnectionPropertiesInputGroupIdsList;
   /** A collection of read-only information about the state of the connection to the private remote resource. */
-  privateLinkServiceConnectionState?: PrivateLinkConnectionStateInput;
+  privateLinkServiceConnectionState?: ClusterPropertiesInput;
 }
 export const PrivateLinkServiceConnectionPropertiesInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -1958,9 +1941,7 @@ export const PrivateLinkServiceConnectionPropertiesInput =
       groupIds: S.optional(
         PrivateLinkServiceConnectionPropertiesInputGroupIdsList,
       ),
-      privateLinkServiceConnectionState: S.optional(
-        PrivateLinkConnectionStateInput,
-      ),
+      privateLinkServiceConnectionState: S.optional(ClusterPropertiesInput),
     }),
   ).annotate({
     identifier: "PrivateLinkServiceConnectionPropertiesInput",
@@ -2645,32 +2626,13 @@ export type StreamingJobPropertiesJobType = "Cloud" | "Edge";
 export const StreamingJobPropertiesJobType = /*@__PURE__*/ S.String;
 
 /** An input object, containing all information associated with the named input. All inputs are contained under a streaming job. */
-export interface StreamingJobPropertiesInputsItem {
-  /** Resource Id */
-  id?: string;
-  /** Resource name */
-  name?: string;
-  /** Resource type */
-  type?: string;
-  /** The properties that are associated with an input. Required on PUT (CreateOrReplace) requests. */
-  properties?: InputProperties;
-}
-export const StreamingJobPropertiesInputsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(InputProperties),
-  }),
-).annotate({
-  identifier: "StreamingJobPropertiesInputsItem",
-}) as any as S.Schema<StreamingJobPropertiesInputsItem>;
+export type StreamingJobPropertiesInputsItem = Input;
+export const StreamingJobPropertiesInputsItem = Input;
 
 /** A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input. */
-export type StreamingJobPropertiesInputsList =
-  Array<StreamingJobPropertiesInputsItem>;
+export type StreamingJobPropertiesInputsList = Array<Input>;
 export const StreamingJobPropertiesInputsList = /*@__PURE__*/ S.Array(
-  StreamingJobPropertiesInputsItem,
+  Input,
 ) as any as S.Schema<StreamingJobPropertiesInputsList>;
 
 /** Specifies the valid streaming units a streaming job can scale to. */
@@ -2728,61 +2690,23 @@ export const StreamingJobPropertiesTransformation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StreamingJobPropertiesTransformation>;
 
 /** An output object, containing all information associated with the named output. All outputs are contained under a streaming job. */
-export interface StreamingJobPropertiesOutputsItem {
-  /** Resource Id */
-  id?: string;
-  /** Resource name */
-  name?: string;
-  /** Resource type */
-  type?: string;
-  /** The properties that are associated with an output. Required on PUT (CreateOrReplace) requests. */
-  properties?: OutputProperties;
-}
-export const StreamingJobPropertiesOutputsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(OutputProperties),
-  }),
-).annotate({
-  identifier: "StreamingJobPropertiesOutputsItem",
-}) as any as S.Schema<StreamingJobPropertiesOutputsItem>;
+export type StreamingJobPropertiesOutputsItem = Output;
+export const StreamingJobPropertiesOutputsItem = Output;
 
 /** A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output. */
-export type StreamingJobPropertiesOutputsList =
-  Array<StreamingJobPropertiesOutputsItem>;
+export type StreamingJobPropertiesOutputsList = Array<Output>;
 export const StreamingJobPropertiesOutputsList = /*@__PURE__*/ S.Array(
-  StreamingJobPropertiesOutputsItem,
+  Output,
 ) as any as S.Schema<StreamingJobPropertiesOutputsList>;
 
 /** A function object, containing all information associated with the named function. All functions are contained under a streaming job. */
-export interface StreamingJobPropertiesFunctionsItem {
-  /** Resource Id */
-  id?: string;
-  /** Resource name */
-  name?: string;
-  /** Resource type */
-  type?: string;
-  /** The properties that are associated with a function. */
-  properties?: FunctionProperties;
-}
-export const StreamingJobPropertiesFunctionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(FunctionProperties),
-  }),
-).annotate({
-  identifier: "StreamingJobPropertiesFunctionsItem",
-}) as any as S.Schema<StreamingJobPropertiesFunctionsItem>;
+export type StreamingJobPropertiesFunctionsItem = Function;
+export const StreamingJobPropertiesFunctionsItem = Function;
 
 /** A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation. */
-export type StreamingJobPropertiesFunctionsList =
-  Array<StreamingJobPropertiesFunctionsItem>;
+export type StreamingJobPropertiesFunctionsList = Array<Function>;
 export const StreamingJobPropertiesFunctionsList = /*@__PURE__*/ S.Array(
-  StreamingJobPropertiesFunctionsItem,
+  Function,
 ) as any as S.Schema<StreamingJobPropertiesFunctionsList>;
 
 /** Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify jobStorageAccount property. . */

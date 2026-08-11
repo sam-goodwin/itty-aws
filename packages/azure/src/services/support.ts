@@ -2060,12 +2060,8 @@ export const ServiceLevelAgreementInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceLevelAgreementInput>;
 
 /** Support engineer information. */
-export interface SupportEngineerInput {}
-export const SupportEngineerInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SupportEngineerInput",
-}) as any as S.Schema<SupportEngineerInput>;
+export type SupportEngineerInput = ServiceLevelAgreementInput;
+export const SupportEngineerInput = ServiceLevelAgreementInput;
 
 /** Additional information for technical support ticket. */
 export interface TechnicalTicketDetails {
@@ -2212,7 +2208,7 @@ export interface SupportTicketDetailsPropertiesInput {
   /** Service Level Agreement information for this support ticket. */
   serviceLevelAgreement?: ServiceLevelAgreementInput;
   /** Information about the support engineer working on this support ticket. */
-  supportEngineer?: SupportEngineerInput;
+  supportEngineer?: ServiceLevelAgreementInput;
   /** Title of the support ticket. */
   title: string;
   /** Time in UTC (ISO 8601 format) when the problem started. */
@@ -2245,7 +2241,7 @@ export const SupportTicketDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     supportPlanId: S.optional(S.String),
     contactDetails: ContactProfile,
     serviceLevelAgreement: S.optional(ServiceLevelAgreementInput),
-    supportEngineer: S.optional(SupportEngineerInput),
+    supportEngineer: S.optional(ServiceLevelAgreementInput),
     title: S.String,
     problemStartTime: S.optional(S.String),
     serviceId: S.String,

@@ -722,12 +722,8 @@ export const ApplicationTypesCreateOrUpdateRequestTagsMap =
   ) as any as S.Schema<ApplicationTypesCreateOrUpdateRequestTagsMap>;
 
 /** The application type name properties */
-export interface ApplicationTypeResourcePropertiesInput {}
-export const ApplicationTypeResourcePropertiesInput = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ApplicationTypeResourcePropertiesInput",
-}) as any as S.Schema<ApplicationTypeResourcePropertiesInput>;
+export type ApplicationTypeResourcePropertiesInput = UserAssignedIdentityInput;
+export const ApplicationTypeResourcePropertiesInput = UserAssignedIdentityInput;
 
 export interface ApplicationTypesCreateOrUpdateRequest {
   /** The customer subscription identifier. */
@@ -742,7 +738,7 @@ export interface ApplicationTypesCreateOrUpdateRequest {
   location?: string;
   /** Azure resource tags. */
   tags?: ApplicationTypesCreateOrUpdateRequestTagsMap;
-  properties?: ApplicationTypeResourcePropertiesInput;
+  properties?: UserAssignedIdentityInput;
 }
 export const ApplicationTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -753,7 +749,7 @@ export const ApplicationTypesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       applicationTypeName: S.String.pipe(T.Label()),
       location: S.optional(S.String),
       tags: S.optional(ApplicationTypesCreateOrUpdateRequestTagsMap),
-      properties: S.optional(ApplicationTypeResourcePropertiesInput),
+      properties: S.optional(UserAssignedIdentityInput),
     }).pipe(
       T.Http({
         method: "PUT",

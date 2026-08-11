@@ -666,21 +666,10 @@ export const WorkflowCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkflowCreateOrUpdateResponseTagsMap>;
 
 /** The fields needed for OIDC with GitHub. */
-export interface GitHubWorkflowProfileOidcCredentials {
-  /** Azure Application Client ID */
-  azureClientId?: string;
-  /** Azure Directory (tenant) ID */
-  azureTenantId?: string;
-}
-export const GitHubWorkflowProfileOidcCredentials = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      azureClientId: S.optional(S.String),
-      azureTenantId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GitHubWorkflowProfileOidcCredentials",
-}) as any as S.Schema<GitHubWorkflowProfileOidcCredentials>;
+export type GitHubWorkflowProfileOidcCredentials =
+  GitHubWorkflowProfileInputOidcCredentials;
+export const GitHubWorkflowProfileOidcCredentials =
+  GitHubWorkflowProfileInputOidcCredentials;
 
 /** The status of the Pull Request submitted against the users repository. */
 export type PullRequestStatus = "unknown" | "submitted" | "merged" | "removed";
@@ -725,7 +714,7 @@ export interface GitHubWorkflowProfile {
   namespace?: string;
   acr?: ACR;
   /** The fields needed for OIDC with GitHub. */
-  oidcCredentials?: GitHubWorkflowProfileOidcCredentials;
+  oidcCredentials?: GitHubWorkflowProfileInputOidcCredentials;
   /** The Azure Kubernetes Cluster Resource the application will be deployed to. */
   aksResourceId?: string;
   /** The URL to the Pull Request submitted against the users repository. */
@@ -746,7 +735,7 @@ export const GitHubWorkflowProfile = /*@__PURE__*/ S.suspend(() =>
     deploymentProperties: S.optional(DeploymentProperties),
     namespace: S.optional(S.String),
     acr: S.optional(ACR),
-    oidcCredentials: S.optional(GitHubWorkflowProfileOidcCredentials),
+    oidcCredentials: S.optional(GitHubWorkflowProfileInputOidcCredentials),
     aksResourceId: S.optional(S.String),
     prURL: S.optional(S.String),
     pullNumber: S.optional(S.Number),

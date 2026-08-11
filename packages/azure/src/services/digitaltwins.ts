@@ -124,12 +124,8 @@ export const DigitalTwinsIdentityInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DigitalTwinsIdentityInput>;
 
 /** The private endpoint property of a private endpoint connection. */
-export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PrivateEndpointInput",
-}) as any as S.Schema<PrivateEndpointInput>;
+export type PrivateEndpointInput = UserAssignedIdentityInput;
+export const PrivateEndpointInput = UserAssignedIdentityInput;
 
 /** The list of group ids for the private endpoint connection. */
 export type ConnectionPropertiesInputGroupIdsList = Array<string>;
@@ -167,7 +163,7 @@ export const ConnectionState = /*@__PURE__*/ S.suspend(() =>
 /** The properties of a private endpoint connection. */
 export interface ConnectionPropertiesInput {
   /** The private endpoint. */
-  privateEndpoint?: PrivateEndpointInput;
+  privateEndpoint?: UserAssignedIdentityInput;
   /** The list of group ids for the private endpoint connection. */
   groupIds?: ConnectionPropertiesInputGroupIdsList;
   /** The connection state. */
@@ -175,7 +171,7 @@ export interface ConnectionPropertiesInput {
 }
 export const ConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    privateEndpoint: S.optional(PrivateEndpointInput),
+    privateEndpoint: S.optional(UserAssignedIdentityInput),
     groupIds: S.optional(ConnectionPropertiesInputGroupIdsList),
     privateLinkServiceConnectionState: S.optional(ConnectionState),
   }),

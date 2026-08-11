@@ -64,11 +64,10 @@ export const DicomServicesCreateOrUpdateRequestIdentity =
   }) as any as S.Schema<DicomServicesCreateOrUpdateRequestIdentity>;
 
 /** Authentication configuration information */
-export interface DicomServiceAuthenticationConfigurationInput {}
+export type DicomServiceAuthenticationConfigurationInput =
+  UserAssignedIdentityInput;
 export const DicomServiceAuthenticationConfigurationInput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DicomServiceAuthenticationConfigurationInput",
-  }) as any as S.Schema<DicomServiceAuthenticationConfigurationInput>;
+  UserAssignedIdentityInput;
 
 /** The origins to be allowed via CORS. */
 export type CorsConfigurationOriginsList = Array<string>;
@@ -159,7 +158,7 @@ export const StorageConfiguration = /*@__PURE__*/ S.suspend(() =>
 /** Dicom Service properties. */
 export interface DicomServicePropertiesInput {
   /** Dicom Service authentication configuration. */
-  authenticationConfiguration?: DicomServiceAuthenticationConfigurationInput;
+  authenticationConfiguration?: UserAssignedIdentityInput;
   /** Dicom Service Cors configuration. */
   corsConfiguration?: CorsConfiguration;
   /** The encryption settings of the DICOM service */
@@ -171,9 +170,7 @@ export interface DicomServicePropertiesInput {
 }
 export const DicomServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    authenticationConfiguration: S.optional(
-      DicomServiceAuthenticationConfigurationInput,
-    ),
+    authenticationConfiguration: S.optional(UserAssignedIdentityInput),
     corsConfiguration: S.optional(CorsConfiguration),
     encryption: S.optional(Encryption),
     storageConfiguration: S.optional(StorageConfiguration),
@@ -1515,34 +1512,17 @@ export type FhirServicesCreateOrUpdateResponseKind = "fhir-Stu3" | "fhir-R4";
 export const FhirServicesCreateOrUpdateResponseKind = /*@__PURE__*/ S.String;
 
 /** The Private Endpoint Connection resource. */
-export interface FhirServicePropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type FhirServicePropertiesPrivateEndpointConnectionsItem =
+  DicomServicePropertiesPrivateEndpointConnectionsItem;
 export const FhirServicePropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "FhirServicePropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<FhirServicePropertiesPrivateEndpointConnectionsItem>;
+  DicomServicePropertiesPrivateEndpointConnectionsItem;
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type FhirServicePropertiesPrivateEndpointConnectionsList =
-  Array<FhirServicePropertiesPrivateEndpointConnectionsItem>;
+  Array<DicomServicePropertiesPrivateEndpointConnectionsItem>;
 export const FhirServicePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    FhirServicePropertiesPrivateEndpointConnectionsItem,
+    DicomServicePropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<FhirServicePropertiesPrivateEndpointConnectionsList>;
 
 /** Fhir Service properties. */
@@ -3170,24 +3150,20 @@ export const ListOperations = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOperations" }) as any as S.Schema<ListOperations>;
 
 /** The Private Endpoint resource. */
-export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PrivateEndpointInput",
-}) as any as S.Schema<PrivateEndpointInput>;
+export type PrivateEndpointInput = UserAssignedIdentityInput;
+export const PrivateEndpointInput = UserAssignedIdentityInput;
 
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The resource of private end point. */
-  privateEndpoint?: PrivateEndpointInput;
+  privateEndpoint?: UserAssignedIdentityInput;
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
 export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateEndpoint: S.optional(UserAssignedIdentityInput),
       privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
     }),
 ).annotate({
@@ -4017,17 +3993,8 @@ export const ServiceCorsConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceCorsConfigurationInfo>;
 
 /** Export operation configuration information */
-export interface ServiceExportConfigurationInfo {
-  /** The name of the default export storage account. */
-  storageAccountName?: string;
-}
-export const ServiceExportConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    storageAccountName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServiceExportConfigurationInfo",
-}) as any as S.Schema<ServiceExportConfigurationInfo>;
+export type ServiceExportConfigurationInfo = FhirServiceExportConfiguration;
+export const ServiceExportConfigurationInfo = FhirServiceExportConfiguration;
 
 /** The Private Endpoint Connection resource. */
 export interface ServicesPropertiesInputPrivateEndpointConnectionsItem {
@@ -4088,23 +4055,8 @@ export const ServiceAcrConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAcrConfigurationInfo>;
 
 /** Import operation configuration information */
-export interface ServiceImportConfigurationInfo {
-  /** The name of the default integration storage account. */
-  integrationDataStore?: string;
-  /** If the FHIR service is in InitialImportMode. */
-  initialImportMode?: boolean;
-  /** If the import operation is enabled. */
-  enabled?: boolean;
-}
-export const ServiceImportConfigurationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    integrationDataStore: S.optional(S.String),
-    initialImportMode: S.optional(S.Boolean),
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ServiceImportConfigurationInfo",
-}) as any as S.Schema<ServiceImportConfigurationInfo>;
+export type ServiceImportConfigurationInfo = FhirServiceImportConfiguration;
+export const ServiceImportConfigurationInfo = FhirServiceImportConfiguration;
 
 /** The properties of a service instance. */
 export interface ServicesPropertiesInput {
@@ -4117,7 +4069,7 @@ export interface ServicesPropertiesInput {
   /** The settings for the CORS configuration of the service instance. */
   corsConfiguration?: ServiceCorsConfigurationInfo;
   /** The settings for the export operation of the service instance. */
-  exportConfiguration?: ServiceExportConfigurationInfo;
+  exportConfiguration?: FhirServiceExportConfiguration;
   /** The list of private endpoint connections that are set up for this resource. */
   privateEndpointConnections?: ServicesPropertiesInputPrivateEndpointConnectionsList;
   /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
@@ -4127,7 +4079,7 @@ export interface ServicesPropertiesInput {
   /** The azure container registry settings used for convert data operation of the service instance. */
   acrConfiguration?: ServiceAcrConfigurationInfo;
   /** The settings for the import operation of the service instance. */
-  importConfiguration?: ServiceImportConfigurationInfo;
+  importConfiguration?: FhirServiceImportConfiguration;
 }
 export const ServicesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4137,13 +4089,13 @@ export const ServicesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
       ServiceAuthenticationConfigurationInfo,
     ),
     corsConfiguration: S.optional(ServiceCorsConfigurationInfo),
-    exportConfiguration: S.optional(ServiceExportConfigurationInfo),
+    exportConfiguration: S.optional(FhirServiceExportConfiguration),
     privateEndpointConnections: S.optional(
       ServicesPropertiesInputPrivateEndpointConnectionsList,
     ),
     publicNetworkAccess: S.optional(ServicesPropertiesInputPublicNetworkAccess),
     acrConfiguration: S.optional(ServiceAcrConfigurationInfo),
-    importConfiguration: S.optional(ServiceImportConfigurationInfo),
+    importConfiguration: S.optional(FhirServiceImportConfiguration),
   }),
 ).annotate({
   identifier: "ServicesPropertiesInput",
@@ -4236,34 +4188,17 @@ export const ServicesCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ServicesCreateOrUpdateResponseIdentity>;
 
 /** The Private Endpoint Connection resource. */
-export interface ServicesPropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type ServicesPropertiesPrivateEndpointConnectionsItem =
+  DicomServicePropertiesPrivateEndpointConnectionsItem;
 export const ServicesPropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "ServicesPropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<ServicesPropertiesPrivateEndpointConnectionsItem>;
+  DicomServicePropertiesPrivateEndpointConnectionsItem;
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type ServicesPropertiesPrivateEndpointConnectionsList =
-  Array<ServicesPropertiesPrivateEndpointConnectionsItem>;
+  Array<DicomServicePropertiesPrivateEndpointConnectionsItem>;
 export const ServicesPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    ServicesPropertiesPrivateEndpointConnectionsItem,
+    DicomServicePropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<ServicesPropertiesPrivateEndpointConnectionsList>;
 
 /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
@@ -4283,7 +4218,7 @@ export interface ServicesProperties {
   /** The settings for the CORS configuration of the service instance. */
   corsConfiguration?: ServiceCorsConfigurationInfo;
   /** The settings for the export operation of the service instance. */
-  exportConfiguration?: ServiceExportConfigurationInfo;
+  exportConfiguration?: FhirServiceExportConfiguration;
   /** The list of private endpoint connections that are set up for this resource. */
   privateEndpointConnections?: ServicesPropertiesPrivateEndpointConnectionsList;
   /** Control permission for data plane traffic coming from public networks while private endpoint is enabled. */
@@ -4291,7 +4226,7 @@ export interface ServicesProperties {
   /** The azure container registry settings used for convert data operation of the service instance. */
   acrConfiguration?: ServiceAcrConfigurationInfo;
   /** The settings for the import operation of the service instance. */
-  importConfiguration?: ServiceImportConfigurationInfo;
+  importConfiguration?: FhirServiceImportConfiguration;
 }
 export const ServicesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4302,13 +4237,13 @@ export const ServicesProperties = /*@__PURE__*/ S.suspend(() =>
       ServiceAuthenticationConfigurationInfo,
     ),
     corsConfiguration: S.optional(ServiceCorsConfigurationInfo),
-    exportConfiguration: S.optional(ServiceExportConfigurationInfo),
+    exportConfiguration: S.optional(FhirServiceExportConfiguration),
     privateEndpointConnections: S.optional(
       ServicesPropertiesPrivateEndpointConnectionsList,
     ),
     publicNetworkAccess: S.optional(ServicesPropertiesPublicNetworkAccess),
     acrConfiguration: S.optional(ServiceAcrConfigurationInfo),
-    importConfiguration: S.optional(ServiceImportConfigurationInfo),
+    importConfiguration: S.optional(FhirServiceImportConfiguration),
   }),
 ).annotate({
   identifier: "ServicesProperties",
@@ -5166,11 +5101,10 @@ export const WorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
 
 /** Workspaces resource specific properties. */
-export interface WorkspacesCreateOrUpdateRequestProperties {}
+export type WorkspacesCreateOrUpdateRequestProperties =
+  UserAssignedIdentityInput;
 export const WorkspacesCreateOrUpdateRequestProperties =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "WorkspacesCreateOrUpdateRequestProperties",
-  }) as any as S.Schema<WorkspacesCreateOrUpdateRequestProperties>;
+  UserAssignedIdentityInput;
 
 export interface WorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -5186,7 +5120,7 @@ export interface WorkspacesCreateOrUpdateRequest {
   /** The resource location. */
   location?: string;
   /** Workspaces resource specific properties. */
-  properties?: WorkspacesCreateOrUpdateRequestProperties;
+  properties?: UserAssignedIdentityInput;
 }
 export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5196,7 +5130,7 @@ export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(WorkspacesCreateOrUpdateRequestTagsMap),
     etag: S.optional(S.String),
     location: S.optional(S.String),
-    properties: S.optional(WorkspacesCreateOrUpdateRequestProperties),
+    properties: S.optional(UserAssignedIdentityInput),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -5219,35 +5153,17 @@ export const WorkspacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
 
 /** The Private Endpoint Connection resource. */
-export interface WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsItem =
+  DicomServicePropertiesPrivateEndpointConnectionsItem;
 export const WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier:
-      "WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsItem>;
+  DicomServicePropertiesPrivateEndpointConnectionsItem;
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  Array<WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsItem>;
+  Array<DicomServicePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsItem,
+    DicomServicePropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<WorkspacesCreateOrUpdateResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Workspaces resource specific properties. */
@@ -5372,34 +5288,17 @@ export const WorkspacesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesGetResponseTagsMap>;
 
 /** The Private Endpoint Connection resource. */
-export interface WorkspacesGetResponsePropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type WorkspacesGetResponsePropertiesPrivateEndpointConnectionsItem =
+  DicomServicePropertiesPrivateEndpointConnectionsItem;
 export const WorkspacesGetResponsePropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "WorkspacesGetResponsePropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<WorkspacesGetResponsePropertiesPrivateEndpointConnectionsItem>;
+  DicomServicePropertiesPrivateEndpointConnectionsItem;
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type WorkspacesGetResponsePropertiesPrivateEndpointConnectionsList =
-  Array<WorkspacesGetResponsePropertiesPrivateEndpointConnectionsItem>;
+  Array<DicomServicePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacesGetResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    WorkspacesGetResponsePropertiesPrivateEndpointConnectionsItem,
+    DicomServicePropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<WorkspacesGetResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Workspaces resource specific properties. */
@@ -5487,34 +5386,17 @@ export const WorkspaceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspaceTagsMap>;
 
 /** The Private Endpoint Connection resource. */
-export interface WorkspacePropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type WorkspacePropertiesPrivateEndpointConnectionsItem =
+  DicomServicePropertiesPrivateEndpointConnectionsItem;
 export const WorkspacePropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "WorkspacePropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsItem>;
+  DicomServicePropertiesPrivateEndpointConnectionsItem;
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  Array<WorkspacePropertiesPrivateEndpointConnectionsItem>;
+  Array<DicomServicePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    WorkspacePropertiesPrivateEndpointConnectionsItem,
+    DicomServicePropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
 
 /** Workspaces resource specific properties. */
@@ -5656,35 +5538,17 @@ export const WorkspacesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesUpdateResponseTagsMap>;
 
 /** The Private Endpoint Connection resource. */
-export interface WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsItem =
+  DicomServicePropertiesPrivateEndpointConnectionsItem;
 export const WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier:
-      "WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsItem>;
+  DicomServicePropertiesPrivateEndpointConnectionsItem;
 
 /** The list of private endpoint connections that are set up for this resource. */
 export type WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsList =
-  Array<WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsItem>;
+  Array<DicomServicePropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsItem,
+    DicomServicePropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<WorkspacesUpdateResponsePropertiesPrivateEndpointConnectionsList>;
 
 /** Workspaces resource specific properties. */

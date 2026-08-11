@@ -106,20 +106,8 @@ export const FieldNoteElementContextMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FieldNoteElementContextMap>;
 
 /** Viewport size when the field note was made, as {width, height}. */
-export interface FieldNoteViewport {
-  /** Viewport width in pixels. */
-  width?: number;
-  /** Viewport height in pixels. */
-  height?: number;
-}
-export const FieldNoteViewport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(S.Number),
-    height: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FieldNoteViewport",
-}) as any as S.Schema<FieldNoteViewport>;
+export type FieldNoteViewport = FieldNotesCreateRequestViewport;
+export const FieldNoteViewport = FieldNotesCreateRequestViewport;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -194,7 +182,7 @@ export interface FieldNote {
   /** Structured element metadata (inferred selectors, attributes, component hints). */
   element_context?: FieldNoteElementContextMap;
   /** Viewport size when the field note was made, as {width, height}. */
-  viewport?: FieldNoteViewport | null;
+  viewport?: FieldNotesCreateRequestViewport | null;
   /** URL of an uploaded screenshot captured with the field_note. */
   screenshot_url?: string | null;
   created_at: string;
@@ -214,7 +202,7 @@ export const FieldNote = /*@__PURE__*/ S.suspend(() =>
     element_text: S.optional(S.NullOr(S.String)),
     element_chain: S.optional(S.NullOr(S.String)),
     element_context: S.optional(FieldNoteElementContextMap),
-    viewport: S.optional(S.NullOr(FieldNoteViewport)),
+    viewport: S.optional(S.NullOr(FieldNotesCreateRequestViewport)),
     screenshot_url: S.optional(S.NullOr(S.String)),
     created_at: S.String,
     updated_at: S.NullOr(S.String),
@@ -322,21 +310,10 @@ export const FieldNotesPartialUpdateRequestElementContextMap =
   ) as any as S.Schema<FieldNotesPartialUpdateRequestElementContextMap>;
 
 /** Viewport size when the field note was made, as {width, height}. */
-export interface FieldNotesPartialUpdateRequestViewport {
-  /** Viewport width in pixels. */
-  width?: number;
-  /** Viewport height in pixels. */
-  height?: number;
-}
-export const FieldNotesPartialUpdateRequestViewport = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      width: S.optional(S.Number),
-      height: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "FieldNotesPartialUpdateRequestViewport",
-}) as any as S.Schema<FieldNotesPartialUpdateRequestViewport>;
+export type FieldNotesPartialUpdateRequestViewport =
+  FieldNotesCreateRequestViewport;
+export const FieldNotesPartialUpdateRequestViewport =
+  FieldNotesCreateRequestViewport;
 
 export interface FieldNotesPartialUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -364,7 +341,7 @@ export interface FieldNotesPartialUpdateRequest {
   /** Structured element metadata (inferred selectors, attributes, component hints). */
   element_context?: FieldNotesPartialUpdateRequestElementContextMap;
   /** Viewport size when the field note was made, as {width, height}. */
-  viewport?: FieldNotesPartialUpdateRequestViewport | null;
+  viewport?: FieldNotesCreateRequestViewport | null;
   /** URL of an uploaded screenshot captured with the field_note. */
   screenshot_url?: string | null;
 }
@@ -384,7 +361,7 @@ export const FieldNotesPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     element_context: S.optional(
       FieldNotesPartialUpdateRequestElementContextMap,
     ),
-    viewport: S.optional(S.NullOr(FieldNotesPartialUpdateRequestViewport)),
+    viewport: S.optional(S.NullOr(FieldNotesCreateRequestViewport)),
     screenshot_url: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
@@ -428,20 +405,8 @@ export const FieldNotesUpdateRequestElementContextMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FieldNotesUpdateRequestElementContextMap>;
 
 /** Viewport size when the field note was made, as {width, height}. */
-export interface FieldNotesUpdateRequestViewport {
-  /** Viewport width in pixels. */
-  width?: number;
-  /** Viewport height in pixels. */
-  height?: number;
-}
-export const FieldNotesUpdateRequestViewport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    width: S.optional(S.Number),
-    height: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "FieldNotesUpdateRequestViewport",
-}) as any as S.Schema<FieldNotesUpdateRequestViewport>;
+export type FieldNotesUpdateRequestViewport = FieldNotesCreateRequestViewport;
+export const FieldNotesUpdateRequestViewport = FieldNotesCreateRequestViewport;
 
 export interface FieldNotesUpdateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -469,7 +434,7 @@ export interface FieldNotesUpdateRequest {
   /** Structured element metadata (inferred selectors, attributes, component hints). */
   element_context?: FieldNotesUpdateRequestElementContextMap;
   /** Viewport size when the field note was made, as {width, height}. */
-  viewport?: FieldNotesUpdateRequestViewport | null;
+  viewport?: FieldNotesCreateRequestViewport | null;
   /** URL of an uploaded screenshot captured with the field_note. */
   screenshot_url?: string | null;
 }
@@ -487,7 +452,7 @@ export const FieldNotesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     element_text: S.optional(S.NullOr(S.String)),
     element_chain: S.optional(S.NullOr(S.String)),
     element_context: S.optional(FieldNotesUpdateRequestElementContextMap),
-    viewport: S.optional(S.NullOr(FieldNotesUpdateRequestViewport)),
+    viewport: S.optional(S.NullOr(FieldNotesCreateRequestViewport)),
     screenshot_url: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
