@@ -90,6 +90,7 @@ jobs:
           { "dir": "packages/supabase",        "name": "@distilled.cloud/supabase" },
           { "dir": "packages/turso",           "name": "@distilled.cloud/turso" },
           { "dir": "packages/typesense",       "name": "@distilled.cloud/typesense" },
+          { "dir": "packages/vercel",          "name": "@distilled.cloud/vercel" },
           { "dir": "packages/workos",          "name": "@distilled.cloud/workos" }
         ]
     secrets: inherit

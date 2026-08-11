@@ -352,6 +352,21 @@
         "effect": "catalog:",
       },
     },
+    "packages/vercel": {
+      "name": "@distilled.cloud/vercel",
+      "version": "1.0.0-rc.3",
+      "dependencies": {
+        "@distilled.cloud/core": "workspace:*",
+      },
+      "devDependencies": {
+        "@effect/platform-bun": "catalog:",
+        "@types/bun": "catalog:",
+        "@types/node": "catalog:",
+      },
+      "peerDependencies": {
+        "effect": "catalog:",
+      },
+    },
     "packages/workos": {
       "name": "@distilled.cloud/workos",
       "version": "1.0.0-rc.3",
@@ -470,6 +485,8 @@
     "@distilled.cloud/turso": ["@distilled.cloud/turso@workspace:packages/turso"],
 
     "@distilled.cloud/typesense": ["@distilled.cloud/typesense@workspace:packages/typesense"],
+
+    "@distilled.cloud/vercel": ["@distilled.cloud/vercel@workspace:packages/vercel"],
 
     "@distilled.cloud/workos": ["@distilled.cloud/workos@workspace:packages/workos"],
 
@@ -739,6 +756,8 @@
 
     "@distilled.cloud/typesense/@types/node": ["@types/node@26.2.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg=="],
 
+    "@distilled.cloud/vercel/@types/node": ["@types/node@26.2.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg=="],
+
     "@distilled.cloud/workos/@types/node": ["@types/node@26.2.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg=="],
 
     "@types/ws/@types/node": ["@types/node@25.9.3", "", { "dependencies": { "undici-types": ">=7.24.0 <7.24.7" } }, "sha512-603BddQMv3pUcr4U2dhujk83N2tTDVr/34wII2B6bJy6g+8WD6yUb11jszNs0gdi4PesVWl7ABt8nYMVpnLUcg=="],
@@ -786,6 +805,8 @@
     "@distilled.cloud/turso/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
 
     "@distilled.cloud/typesense/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
+
+    "@distilled.cloud/vercel/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
 
     "@distilled.cloud/workos/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
   }
