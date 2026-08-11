@@ -794,6 +794,18 @@
               }
             }
           },
+          "exports": {
+            "target": "smithy.api#Document",
+            "traits": {
+              "smithy.api#jsonName": "exports",
+              "com.cloudflare.protocols#keyDictionary": {
+                "cache": "cache",
+                "renamedTo": "renamed_to",
+                "transferredTo": "transferred_to",
+                "transferFrom": "transfer_from"
+              }
+            }
+          },
           "observability": {
             "target": "smithy.api#Document",
             "traits": {

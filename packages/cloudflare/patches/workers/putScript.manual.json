@@ -2958,6 +2958,17 @@
           "migrations": {
             "target": "com.cloudflare.workers#PutScriptMetadataMigrations"
           },
+          "exports": {
+            "target": "com.cloudflare.workers#PutScriptExports",
+            "traits": {
+              "com.cloudflare.protocols#keyDictionary": {
+                "cache": "cache",
+                "renamedTo": "renamed_to",
+                "transferredTo": "transferred_to",
+                "transferFrom": "transfer_from"
+              }
+            }
+          },
           "observability": {
             "target": "com.cloudflare.workers#PutScriptMetadataObservability"
           },

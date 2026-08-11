@@ -9712,6 +9712,162 @@ export const PutScriptMetadataMigrations = /*@__PURE__*/ S.Unknown.pipe(
   ]),
 );
 
+export type PutScriptWorkerExportType = "worker";
+export const PutScriptWorkerExportType = /*@__PURE__*/ S.String;
+
+export type PutScriptExportCreatedState = "created";
+export const PutScriptExportCreatedState = /*@__PURE__*/ S.String;
+
+export interface PutScriptWorkerExportCache {
+  enabled: boolean;
+}
+export const PutScriptWorkerExportCache = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+  }),
+).annotate({
+  identifier: "PutScriptWorkerExportCache",
+}) as any as S.Schema<PutScriptWorkerExportCache>;
+
+export interface PutScriptWorkerExport {
+  type: PutScriptWorkerExportType;
+  state?: PutScriptExportCreatedState | (string & {}) | null;
+  cache?: PutScriptWorkerExportCache | null;
+}
+export const PutScriptWorkerExport = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: PutScriptWorkerExportType,
+    state: S.optional(S.NullOr(PutScriptExportCreatedState)),
+    cache: S.optional(S.NullOr(PutScriptWorkerExportCache)),
+  }),
+).annotate({
+  identifier: "PutScriptWorkerExport",
+}) as any as S.Schema<PutScriptWorkerExport>;
+
+export type PutScriptDurableObjectExportType = "durable-object";
+export const PutScriptDurableObjectExportType = /*@__PURE__*/ S.String;
+
+export type PutScriptDurableObjectExportStorage = "sqlite" | "legacy-kv";
+export const PutScriptDurableObjectExportStorage = /*@__PURE__*/ S.String;
+
+export interface PutScriptDurableObjectLiveExport {
+  type: PutScriptDurableObjectExportType;
+  state?: PutScriptExportCreatedState | (string & {}) | null;
+  storage: PutScriptDurableObjectExportStorage | (string & {});
+  container?: string | null;
+}
+export const PutScriptDurableObjectLiveExport = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: PutScriptDurableObjectExportType,
+    state: S.optional(S.NullOr(PutScriptExportCreatedState)),
+    storage: PutScriptDurableObjectExportStorage,
+    container: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "PutScriptDurableObjectLiveExport",
+}) as any as S.Schema<PutScriptDurableObjectLiveExport>;
+
+export type PutScriptDurableObjectDeletedState = "deleted";
+export const PutScriptDurableObjectDeletedState = /*@__PURE__*/ S.String;
+
+export interface PutScriptDurableObjectDeletedExport {
+  type: PutScriptDurableObjectExportType;
+  state: PutScriptDurableObjectDeletedState;
+}
+export const PutScriptDurableObjectDeletedExport = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: PutScriptDurableObjectExportType,
+    state: PutScriptDurableObjectDeletedState,
+  }),
+).annotate({
+  identifier: "PutScriptDurableObjectDeletedExport",
+}) as any as S.Schema<PutScriptDurableObjectDeletedExport>;
+
+export type PutScriptDurableObjectRenamedState = "renamed";
+export const PutScriptDurableObjectRenamedState = /*@__PURE__*/ S.String;
+
+export interface PutScriptDurableObjectRenamedExport {
+  type: PutScriptDurableObjectExportType;
+  state: PutScriptDurableObjectRenamedState;
+  renamedTo: string;
+}
+export const PutScriptDurableObjectRenamedExport = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: PutScriptDurableObjectExportType,
+    state: PutScriptDurableObjectRenamedState,
+    renamedTo: S.String.pipe(T.Body("renamed_to")),
+  }),
+).annotate({
+  identifier: "PutScriptDurableObjectRenamedExport",
+}) as any as S.Schema<PutScriptDurableObjectRenamedExport>;
+
+export type PutScriptDurableObjectTransferredState = "transferred";
+export const PutScriptDurableObjectTransferredState = /*@__PURE__*/ S.String;
+
+export interface PutScriptDurableObjectTransferredExport {
+  type: PutScriptDurableObjectExportType;
+  state: PutScriptDurableObjectTransferredState;
+  transferredTo: string;
+}
+export const PutScriptDurableObjectTransferredExport = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      type: PutScriptDurableObjectExportType,
+      state: PutScriptDurableObjectTransferredState,
+      transferredTo: S.String.pipe(T.Body("transferred_to")),
+    }),
+).annotate({
+  identifier: "PutScriptDurableObjectTransferredExport",
+}) as any as S.Schema<PutScriptDurableObjectTransferredExport>;
+
+export type PutScriptDurableObjectExpectingTransferState = "expecting-transfer";
+export const PutScriptDurableObjectExpectingTransferState =
+  /*@__PURE__*/ S.String;
+
+export interface PutScriptDurableObjectExpectingTransferExport {
+  type: PutScriptDurableObjectExportType;
+  state: PutScriptDurableObjectExpectingTransferState;
+  storage: PutScriptDurableObjectExportStorage | (string & {});
+  transferFrom: string;
+  container?: string | null;
+}
+export const PutScriptDurableObjectExpectingTransferExport =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: PutScriptDurableObjectExportType,
+      state: PutScriptDurableObjectExpectingTransferState,
+      storage: PutScriptDurableObjectExportStorage,
+      transferFrom: S.String.pipe(T.Body("transfer_from")),
+      container: S.optional(S.NullOr(S.String)),
+    }),
+  ).annotate({
+    identifier: "PutScriptDurableObjectExpectingTransferExport",
+  }) as any as S.Schema<PutScriptDurableObjectExpectingTransferExport>;
+
+export type PutScriptExport =
+  | PutScriptWorkerExport
+  | PutScriptDurableObjectLiveExport
+  | PutScriptDurableObjectDeletedExport
+  | PutScriptDurableObjectRenamedExport
+  | PutScriptDurableObjectTransferredExport
+  | PutScriptDurableObjectExpectingTransferExport;
+export const PutScriptExport = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "state", "cache"],
+    ["type", "state", "storage", "container"],
+    ["type", "state"],
+    ["type", "state", "renamedTo"],
+    ["type", "state", "transferredTo"],
+    ["type", "state", "storage", "transferFrom", "container"],
+  ]),
+);
+
+export type PutScriptExports = { [key: string]: PutScriptExport | undefined };
+export const PutScriptExports = /*@__PURE__*/ S.Record(
+  S.String,
+  PutScriptExport,
+) as any as S.Schema<PutScriptExports>;
+
 export interface PutScriptObservabilityLogs {
   enabled: boolean;
   invocationLogs: boolean;
@@ -9978,6 +10134,7 @@ export interface PutScriptMetadata {
   logpush?: boolean;
   mainModule?: string;
   migrations?: PutScriptMetadataMigrations;
+  exports?: PutScriptExports;
   observability?: PutScriptMetadataObservability;
   placement?: PutScriptMetadataPlacement;
   tags?: PutScriptMetadataStringList;
@@ -10005,6 +10162,16 @@ export const PutScriptMetadata = /*@__PURE__*/ S.suspend(() =>
     logpush: S.optional(S.Boolean),
     mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
     migrations: S.optional(PutScriptMetadataMigrations),
+    exports: S.optional(
+      PutScriptExports.pipe(
+        T.KeyDictionary({
+          cache: "cache",
+          renamedTo: "renamed_to",
+          transferredTo: "transferred_to",
+          transferFrom: "transfer_from",
+        }),
+      ),
+    ),
     observability: S.optional(PutScriptMetadataObservability),
     placement: S.optional(PutScriptMetadataPlacement),
     tags: S.optional(PutScriptMetadataStringList),
@@ -17575,11 +17742,27 @@ export const ScriptsScriptAndVersionSettingsGetResponseExportsValueCache =
     identifier: "ScriptsScriptAndVersionSettingsGetResponseExportsValueCache",
   }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsValueCache>;
 
+export type ScriptsScriptAndVersionSettingsGetResponseExportStorage =
+  | "sqlite"
+  | "legacy-kv";
+export const ScriptsScriptAndVersionSettingsGetResponseExportStorage =
+  /*@__PURE__*/ S.String;
+
+export type ScriptsScriptAndVersionSettingsGetResponseExportState =
+  | "created"
+  | "expecting-transfer";
+export const ScriptsScriptAndVersionSettingsGetResponseExportState =
+  /*@__PURE__*/ S.String;
+
 export interface ScriptsScriptAndVersionSettingsGetResponseExportsValue {
   /** The kind of export. */
   type: ScriptsScriptAndVersionSettingsGetResponseExportsValueType;
   /** Cache override for this entrypoint. It applies only to */
   cache?: ScriptsScriptAndVersionSettingsGetResponseExportsValueCache | null;
+  storage?: ScriptsScriptAndVersionSettingsGetResponseExportStorage | null;
+  state?: ScriptsScriptAndVersionSettingsGetResponseExportState | null;
+  transferFrom?: string | null;
+  container?: string | null;
 }
 export const ScriptsScriptAndVersionSettingsGetResponseExportsValue =
   /*@__PURE__*/ S.suspend(() =>
@@ -17588,6 +17771,16 @@ export const ScriptsScriptAndVersionSettingsGetResponseExportsValue =
       cache: S.optional(
         S.NullOr(ScriptsScriptAndVersionSettingsGetResponseExportsValueCache),
       ),
+      storage: S.optional(
+        S.NullOr(ScriptsScriptAndVersionSettingsGetResponseExportStorage),
+      ),
+      state: S.optional(
+        S.NullOr(ScriptsScriptAndVersionSettingsGetResponseExportState),
+      ),
+      transferFrom: S.optional(
+        S.NullOr(S.String).pipe(T.Body("transfer_from")),
+      ),
+      container: S.optional(S.NullOr(S.String)),
     }),
   ).annotate({
     identifier: "ScriptsScriptAndVersionSettingsGetResponseExportsValue",
@@ -28104,6 +28297,176 @@ export type ScriptsUpdateResponseUsageModel =
   | "unbound";
 export const ScriptsUpdateResponseUsageModel = /*@__PURE__*/ S.String;
 
+export type PutScriptLiveExport =
+  | PutScriptWorkerExport
+  | PutScriptDurableObjectLiveExport
+  | PutScriptDurableObjectExpectingTransferExport;
+export const PutScriptLiveExport = /*@__PURE__*/ S.Unknown.pipe(
+  T.UnionCases([
+    ["type", "state", "cache"],
+    ["type", "state", "storage", "container"],
+    ["type", "state", "storage", "transferFrom", "container"],
+  ]),
+);
+
+export type PutScriptLiveExports = {
+  [key: string]: PutScriptLiveExport | undefined;
+};
+export const PutScriptLiveExports = /*@__PURE__*/ S.Record(
+  S.String,
+  PutScriptLiveExport,
+) as any as S.Schema<PutScriptLiveExports>;
+
+export interface PutScriptExportsReconciliationRenamedItem {
+  from: string;
+  to: string;
+}
+export const PutScriptExportsReconciliationRenamedItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      from: S.String,
+      to: S.String,
+    }),
+  ).annotate({
+    identifier: "PutScriptExportsReconciliationRenamedItem",
+  }) as any as S.Schema<PutScriptExportsReconciliationRenamedItem>;
+
+export type PutScriptExportsReconciliationRenamedList =
+  Array<PutScriptExportsReconciliationRenamedItem>;
+export const PutScriptExportsReconciliationRenamedList = /*@__PURE__*/ S.Array(
+  PutScriptExportsReconciliationRenamedItem,
+) as any as S.Schema<PutScriptExportsReconciliationRenamedList>;
+
+export type PutScriptExportsReconciliationTransferredPhase = "committed";
+export const PutScriptExportsReconciliationTransferredPhase =
+  /*@__PURE__*/ S.String;
+
+export interface PutScriptExportsReconciliationTransferredItem {
+  class: string;
+  to: string;
+  phase: PutScriptExportsReconciliationTransferredPhase;
+}
+export const PutScriptExportsReconciliationTransferredItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      class: S.String,
+      to: S.String,
+      phase: PutScriptExportsReconciliationTransferredPhase,
+    }),
+  ).annotate({
+    identifier: "PutScriptExportsReconciliationTransferredItem",
+  }) as any as S.Schema<PutScriptExportsReconciliationTransferredItem>;
+
+export type PutScriptExportsReconciliationTransferredList =
+  Array<PutScriptExportsReconciliationTransferredItem>;
+export const PutScriptExportsReconciliationTransferredList =
+  /*@__PURE__*/ S.Array(
+    PutScriptExportsReconciliationTransferredItem,
+  ) as any as S.Schema<PutScriptExportsReconciliationTransferredList>;
+
+export interface PutScriptExportsReconciliationTransferPendingItem {
+  class: string;
+  from: string;
+}
+export const PutScriptExportsReconciliationTransferPendingItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      class: S.String,
+      from: S.String,
+    }),
+  ).annotate({
+    identifier: "PutScriptExportsReconciliationTransferPendingItem",
+  }) as any as S.Schema<PutScriptExportsReconciliationTransferPendingItem>;
+
+export type PutScriptExportsReconciliationTransferPendingList =
+  Array<PutScriptExportsReconciliationTransferPendingItem>;
+export const PutScriptExportsReconciliationTransferPendingList =
+  /*@__PURE__*/ S.Array(
+    PutScriptExportsReconciliationTransferPendingItem,
+  ) as any as S.Schema<PutScriptExportsReconciliationTransferPendingList>;
+
+export interface PutScriptExportsReconciliationWarning {
+  class: string;
+  scenario: string;
+  message: string;
+  namespaceId?: string | null;
+}
+export const PutScriptExportsReconciliationWarning = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      class: S.String,
+      scenario: S.String,
+      message: S.String,
+      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
+    }),
+).annotate({
+  identifier: "PutScriptExportsReconciliationWarning",
+}) as any as S.Schema<PutScriptExportsReconciliationWarning>;
+
+export type PutScriptExportsReconciliationWarningsList =
+  Array<PutScriptExportsReconciliationWarning>;
+export const PutScriptExportsReconciliationWarningsList = /*@__PURE__*/ S.Array(
+  PutScriptExportsReconciliationWarning,
+) as any as S.Schema<PutScriptExportsReconciliationWarningsList>;
+
+export interface PutScriptExportsReconciliationInfo {
+  class: string;
+  scenario: string;
+  message: string;
+  namespaceId?: string | null;
+  referencingScripts?: PutScriptMetadataStringList | null;
+}
+export const PutScriptExportsReconciliationInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    class: S.String,
+    scenario: S.String,
+    message: S.String,
+    namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
+    referencingScripts: S.optional(
+      S.NullOr(PutScriptMetadataStringList).pipe(T.Body("referencing_scripts")),
+    ),
+  }),
+).annotate({
+  identifier: "PutScriptExportsReconciliationInfo",
+}) as any as S.Schema<PutScriptExportsReconciliationInfo>;
+
+export type PutScriptExportsReconciliationInfoList =
+  Array<PutScriptExportsReconciliationInfo>;
+export const PutScriptExportsReconciliationInfoList = /*@__PURE__*/ S.Array(
+  PutScriptExportsReconciliationInfo,
+) as any as S.Schema<PutScriptExportsReconciliationInfoList>;
+
+export interface PutScriptExportsReconciliation {
+  created: PutScriptMetadataStringList;
+  updated: PutScriptMetadataStringList;
+  deleted: PutScriptMetadataStringList;
+  renamed: PutScriptExportsReconciliationRenamedList;
+  transferred: PutScriptExportsReconciliationTransferredList;
+  transferPending: PutScriptExportsReconciliationTransferPendingList;
+  warnings: PutScriptExportsReconciliationWarningsList;
+  info: PutScriptExportsReconciliationInfoList;
+  removableEntries: PutScriptMetadataStringList;
+}
+export const PutScriptExportsReconciliation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    created: PutScriptMetadataStringList,
+    updated: PutScriptMetadataStringList,
+    deleted: PutScriptMetadataStringList,
+    renamed: PutScriptExportsReconciliationRenamedList,
+    transferred: PutScriptExportsReconciliationTransferredList,
+    transferPending: PutScriptExportsReconciliationTransferPendingList.pipe(
+      T.Body("transfer_pending"),
+    ),
+    warnings: PutScriptExportsReconciliationWarningsList,
+    info: PutScriptExportsReconciliationInfoList,
+    removableEntries: PutScriptMetadataStringList.pipe(
+      T.Body("removable_entries"),
+    ),
+  }),
+).annotate({
+  identifier: "PutScriptExportsReconciliation",
+}) as any as S.Schema<PutScriptExportsReconciliation>;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutScriptResponse {
   startupTimeMs: number;
@@ -28151,6 +28514,10 @@ export interface PutScriptResponse {
   tailConsumers?: ScriptsUpdateResponseTailConsumersList | null;
   /** Usage model for the Worker invocations. */
   usageModel?: ScriptsUpdateResponseUsageModel | null;
+  /** Live Worker entrypoints and Durable Object classes returned after upload reconciliation. */
+  exports?: PutScriptLiveExports | null;
+  /** Summary of the declarative exports reconciliation performed by this upload. */
+  exportsReconciliation?: PutScriptExportsReconciliation | null;
 }
 export const PutScriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -28207,6 +28574,21 @@ export const PutScriptResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     usageModel: S.optional(
       S.NullOr(ScriptsUpdateResponseUsageModel).pipe(T.Body("usage_model")),
+    ),
+    exports: S.optional(
+      S.NullOr(PutScriptLiveExports).pipe(
+        T.KeyDictionary({
+          cache: "cache",
+          renamedTo: "renamed_to",
+          transferredTo: "transferred_to",
+          transferFrom: "transfer_from",
+        }),
+      ),
+    ),
+    exportsReconciliation: S.optional(
+      S.NullOr(PutScriptExportsReconciliation).pipe(
+        T.Body("exports_reconciliation"),
+      ),
     ),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
