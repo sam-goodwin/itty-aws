@@ -1,0 +1,19 @@
+{
+  "name": "@distilled.cloud/stack-github",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "bun alchemy deploy",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "alchemy": "next",
+    "effect": "4.0.0-beta.103",
+    "@effect/platform-node": "4.0.0-beta.103",
+    "@effect/platform-bun": "4.0.0-beta.103"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^7.0.2"
+  }
+}
