@@ -1,0 +1,5350 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.security#UpdateAttackChallengeModeRequestBodyCase0": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "attackModeEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "attackModeActiveUntil": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateAttackChallengeModeRequestBodyCase1": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "attackModeEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateAttackChallengeModeRequestBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#UpdateAttackChallengeModeRequestBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.security#UpdateAttackChallengeModeRequestBodyCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateAttackChallengeModeRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "body": {
+          "target": "com.vercel.security#UpdateAttackChallengeModeRequestBody",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.security#UpdateAttackChallengeModeResponse": {
+      "type": "structure",
+      "members": {
+        "attackModeEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "attackModeUpdatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#UpdateAttackChallengeMode": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.security#UpdateAttackChallengeModeRequest"
+      },
+      "output": {
+        "target": "com.vercel.security#UpdateAttackChallengeModeResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/security/attack-mode",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update Attack Challenge mode\n\nUpdate the setting for determining if the project has Attack Challenge mode enabled."
+      }
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseActiveCrs": {
+      "type": "structure",
+      "members": {
+        "sd": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ma": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "lfi": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rfi": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rce": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "php": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "gen": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "xss": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sqli": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sf": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "java": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseActiveRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseActiveIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseActiveRulesetsCase0List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseActiveRulesets": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseActiveRulesetsCase0List"
+        },
+        "Case1": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseActiveChangesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseActiveManagedRules": {
+      "type": "structure",
+      "members": {
+        "bot_protection": {
+          "target": "smithy.api#Document"
+        },
+        "ai_bots": {
+          "target": "smithy.api#Document"
+        },
+        "owasp": {
+          "target": "smithy.api#Document"
+        },
+        "vercel_ruleset": {
+          "target": "smithy.api#Document"
+        },
+        "traffic_sources": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseActiveLogHeadersCase0List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseActiveLogHeadersCase1": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "*"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseActiveLogHeaders": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseActiveLogHeadersCase0List"
+        },
+        "Case1": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseActiveLogHeadersCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseActive": {
+      "type": "structure",
+      "members": {
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "firewallEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "crs": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseActiveCrs"
+        },
+        "rules": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseActiveRulesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ips": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseActiveIpsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rulesets": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseActiveRulesets"
+        },
+        "changes": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseActiveChangesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "managedRules": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseActiveManagedRules"
+        },
+        "botIdEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "logHeaders": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseActiveLogHeaders"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseDraftCrs": {
+      "type": "structure",
+      "members": {
+        "sd": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ma": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "lfi": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rfi": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rce": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "php": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "gen": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "xss": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sqli": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sf": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "java": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseDraftRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseDraftIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseDraftRulesetsCase0List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseDraftRulesets": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseDraftRulesetsCase0List"
+        },
+        "Case1": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseDraftChangesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseDraftManagedRules": {
+      "type": "structure",
+      "members": {
+        "bot_protection": {
+          "target": "smithy.api#Document"
+        },
+        "ai_bots": {
+          "target": "smithy.api#Document"
+        },
+        "owasp": {
+          "target": "smithy.api#Document"
+        },
+        "vercel_ruleset": {
+          "target": "smithy.api#Document"
+        },
+        "traffic_sources": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseDraftLogHeadersCase0List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseDraftLogHeadersCase1": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "*"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseDraftLogHeaders": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseDraftLogHeadersCase0List"
+        },
+        "Case1": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseDraftLogHeadersCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseDraft": {
+      "type": "structure",
+      "members": {
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "firewallEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "crs": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseDraftCrs"
+        },
+        "rules": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseDraftRulesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ips": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseDraftIpsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rulesets": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseDraftRulesets"
+        },
+        "changes": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseDraftChangesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "managedRules": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseDraftManagedRules"
+        },
+        "botIdEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "logHeaders": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseDraftLogHeaders"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseVersionsItemRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseVersionsItemIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseVersionsItemChangesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseVersionsItem": {
+      "type": "structure",
+      "members": {
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "firewallEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "crs": {
+          "target": "smithy.api#Document"
+        },
+        "rules": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseVersionsItemRulesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ips": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseVersionsItemIpsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rulesets": {
+          "target": "smithy.api#Document"
+        },
+        "changes": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseVersionsItemChangesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "managedRules": {
+          "target": "smithy.api#Document"
+        },
+        "botIdEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "logHeaders": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponseVersionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.security#ReturnsActivatedWafConfigResponseVersionsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfigResponse": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseActive",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "draft": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseDraft",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "versions": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfigResponseVersionsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "output": {
+        "target": "com.vercel.security#ReturnsActivatedWafConfigResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/security/firewall/config",
+          "code": 200
+        },
+        "smithy.api#documentation": "Returns activated WAF config\n\nLists WAF configs for a project"
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsSdAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsSd": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsSdAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools."
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsMaAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsMa": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsMaAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding."
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsLfiAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsLfi": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsLfiAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Local File Inclusion Attack - Prevent unauthorized access to local files through web applications."
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsRfiAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsRfi": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsRfiAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files."
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsRceAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsRce": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsRceAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands."
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsPhpAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsPhp": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsPhpAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PHP Attack - Safeguard against vulnerability exploits in PHP-based applications."
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsGenAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsGen": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsGenAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Generic Attack - Provide broad protection from various undefined or novel attack vectors."
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsXssAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsXss": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsXssAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "XSS Attack - Prevent injection of malicious scripts into trusted webpages."
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsSqliAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsSqli": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsSqliAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases."
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsSfAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsSf": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsSfAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs."
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsJavaAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrsJava": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsJavaAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Java Attack - Mitigate risks of exploitation targeting Java-based applications or components."
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestCrs": {
+      "type": "structure",
+      "members": {
+        "sd": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsSd",
+          "traits": {
+            "smithy.api#documentation": "Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools."
+          }
+        },
+        "ma": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsMa",
+          "traits": {
+            "smithy.api#documentation": "Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding."
+          }
+        },
+        "lfi": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsLfi",
+          "traits": {
+            "smithy.api#documentation": "Local File Inclusion Attack - Prevent unauthorized access to local files through web applications."
+          }
+        },
+        "rfi": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsRfi",
+          "traits": {
+            "smithy.api#documentation": "Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files."
+          }
+        },
+        "rce": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsRce",
+          "traits": {
+            "smithy.api#documentation": "Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands."
+          }
+        },
+        "php": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsPhp",
+          "traits": {
+            "smithy.api#documentation": "PHP Attack - Safeguard against vulnerability exploits in PHP-based applications."
+          }
+        },
+        "gen": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsGen",
+          "traits": {
+            "smithy.api#documentation": "Generic Attack - Provide broad protection from various undefined or novel attack vectors."
+          }
+        },
+        "xss": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsXss",
+          "traits": {
+            "smithy.api#documentation": "XSS Attack - Prevent injection of malicious scripts into trusted webpages."
+          }
+        },
+        "sqli": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsSqli",
+          "traits": {
+            "smithy.api#documentation": "SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases."
+          }
+        },
+        "sf": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsSf",
+          "traits": {
+            "smithy.api#documentation": "Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs."
+          }
+        },
+        "java": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrsJava",
+          "traits": {
+            "smithy.api#documentation": "Java Attack - Mitigate risks of exploitation targeting Java-based applications or components."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom Ruleset"
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestRulesItemConditionGroupList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestRulesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "conditionGroup": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestRulesItemConditionGroupList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "valid": {
+          "target": "smithy.api#Boolean"
+        },
+        "validationErrors": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.security#PutFirewallConfigurationRequestRulesItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestRulesetsCase0List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestRulesetsCase1Map": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestRulesets": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestRulesetsCase0List"
+        },
+        "Case1": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestRulesetsCase1Map"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestIpsItemAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BYPASS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bypass"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestIpsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String"
+        },
+        "action": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestIpsItemAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestIpsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.security#PutFirewallConfigurationRequestIpsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestLogHeadersCase1List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequestLogHeaders": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestLogHeadersCase1List"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "firewallEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "managedRules": {
+          "target": "smithy.api#Document"
+        },
+        "crs": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestCrs",
+          "traits": {
+            "smithy.api#documentation": "Custom Ruleset"
+          }
+        },
+        "rules": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestRulesList"
+        },
+        "rulesets": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestRulesets"
+        },
+        "ips": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestIpsList"
+        },
+        "botIdEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "logHeaders": {
+          "target": "com.vercel.security#PutFirewallConfigurationRequestLogHeaders"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationResponseActiveCrs": {
+      "type": "structure",
+      "members": {
+        "sd": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.",
+            "smithy.api#required": {}
+          }
+        },
+        "ma": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.",
+            "smithy.api#required": {}
+          }
+        },
+        "lfi": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.",
+            "smithy.api#required": {}
+          }
+        },
+        "rfi": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.",
+            "smithy.api#required": {}
+          }
+        },
+        "rce": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.",
+            "smithy.api#required": {}
+          }
+        },
+        "php": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.",
+            "smithy.api#required": {}
+          }
+        },
+        "gen": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Generic Attack - Provide broad protection from various undefined or novel attack vectors.",
+            "smithy.api#required": {}
+          }
+        },
+        "xss": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "XSS Attack - Prevent injection of malicious scripts into trusted webpages.",
+            "smithy.api#required": {}
+          }
+        },
+        "sqli": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.",
+            "smithy.api#required": {}
+          }
+        },
+        "sf": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.",
+            "smithy.api#required": {}
+          }
+        },
+        "java": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom Ruleset"
+      }
+    },
+    "com.vercel.security#PutFirewallConfigurationResponseActiveRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationResponseActiveIpsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationResponseActiveRulesetsCase0List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationResponseActiveRulesets": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#PutFirewallConfigurationResponseActiveRulesetsCase0List"
+        },
+        "Case1": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationResponseActiveChangesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationResponseActiveManagedRules": {
+      "type": "structure",
+      "members": {
+        "bot_protection": {
+          "target": "smithy.api#Document"
+        },
+        "ai_bots": {
+          "target": "smithy.api#Document"
+        },
+        "owasp": {
+          "target": "smithy.api#Document"
+        },
+        "vercel_ruleset": {
+          "target": "smithy.api#Document"
+        },
+        "traffic_sources": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationResponseActiveLogHeadersCase0List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationResponseActiveLogHeadersCase1": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "*"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationResponseActiveLogHeaders": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#PutFirewallConfigurationResponseActiveLogHeadersCase0List"
+        },
+        "Case1": {
+          "target": "com.vercel.security#PutFirewallConfigurationResponseActiveLogHeadersCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationResponseActive": {
+      "type": "structure",
+      "members": {
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "firewallEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "crs": {
+          "target": "com.vercel.security#PutFirewallConfigurationResponseActiveCrs",
+          "traits": {
+            "smithy.api#documentation": "Custom Ruleset"
+          }
+        },
+        "rules": {
+          "target": "com.vercel.security#PutFirewallConfigurationResponseActiveRulesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ips": {
+          "target": "com.vercel.security#PutFirewallConfigurationResponseActiveIpsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rulesets": {
+          "target": "com.vercel.security#PutFirewallConfigurationResponseActiveRulesets"
+        },
+        "changes": {
+          "target": "com.vercel.security#PutFirewallConfigurationResponseActiveChangesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "managedRules": {
+          "target": "com.vercel.security#PutFirewallConfigurationResponseActiveManagedRules"
+        },
+        "botIdEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "logHeaders": {
+          "target": "com.vercel.security#PutFirewallConfigurationResponseActiveLogHeaders"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#PutFirewallConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "com.vercel.security#PutFirewallConfigurationResponseActive",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#PutFirewallConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.security#PutFirewallConfigurationRequest"
+      },
+      "output": {
+        "target": "com.vercel.security#PutFirewallConfigurationResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/v1/security/firewall/config",
+          "code": 200
+        },
+        "smithy.api#documentation": "Put Firewall Configuration\n\nSet the firewall configuration to provided rules and settings. Creates or overwrite the existing firewall configuration."
+      }
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase0Action": {
+      "type": "enum",
+      "members": {
+        "FIREWALLENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firewallEnabled"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase0ValueConditionGroupList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase0Value": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "conditionGroup": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase0ValueConditionGroupList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "smithy.api#Document"
+        },
+        "valid": {
+          "target": "smithy.api#Boolean"
+        },
+        "validationErrors": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase0": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase0Action",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase0Value",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Add a ruleset"
+      }
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase1Action": {
+      "type": "enum",
+      "members": {
+        "RULES_INSERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rules.insert"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase1ValueConditionGroupList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase1Value": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "conditionGroup": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase1ValueConditionGroupList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "smithy.api#Document"
+        },
+        "valid": {
+          "target": "smithy.api#Boolean"
+        },
+        "validationErrors": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase1": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase1Action",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "value": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase1Value",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Update a ruleset"
+      }
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase2Action": {
+      "type": "enum",
+      "members": {
+        "RULES_UPDATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rules.update"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase2": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase2Action",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Remove a ruleset"
+      }
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase3Action": {
+      "type": "enum",
+      "members": {
+        "RULES_REMOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rules.remove"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase3ValueAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "ALLOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "allow"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase3Value": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase3ValueAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase3": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase3Action",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase3Value",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Set the action for a consumed ruleset (project scope)"
+      }
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase4Action": {
+      "type": "enum",
+      "members": {
+        "RULES_PRIORITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rules.priority"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase4": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase4Action",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Remove the action for a consumed ruleset (project scope)"
+      }
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequestBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase1"
+        },
+        "Case2": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase2"
+        },
+        "Case3": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase3"
+        },
+        "Case4": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBodyCase4"
+        },
+        "Case5": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#UpdateFirewallConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "body": {
+          "target": "com.vercel.security#UpdateFirewallConfigurationRequestBody",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.security#UpdateFirewallConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#UpdateFirewallConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.security#UpdateFirewallConfigurationRequest"
+      },
+      "output": {
+        "target": "com.vercel.security#UpdateFirewallConfigurationResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/v1/security/firewall/config",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update Firewall Configuration\n\nProcess updates to modify the existing firewall config for a project"
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "configVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The deployed configVersion for the firewall configuration"
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsSdAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsSd": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsSdAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools."
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsMaAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsMa": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsMaAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding."
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsLfiAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsLfi": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsLfiAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Local File Inclusion Attack - Prevent unauthorized access to local files through web applications."
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsRfiAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsRfi": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsRfiAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files."
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsRceAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsRce": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsRceAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands."
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsPhpAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsPhp": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsPhpAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "PHP Attack - Safeguard against vulnerability exploits in PHP-based applications."
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsGenAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsGen": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsGenAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Generic Attack - Provide broad protection from various undefined or novel attack vectors."
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsXssAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsXss": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsXssAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "XSS Attack - Prevent injection of malicious scripts into trusted webpages."
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsSqliAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsSqli": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsSqliAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases."
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsSfAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsSf": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsSfAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs."
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsJavaAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrsJava": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsJavaAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Java Attack - Mitigate risks of exploitation targeting Java-based applications or components."
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseCrs": {
+      "type": "structure",
+      "members": {
+        "sd": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsSd",
+          "traits": {
+            "smithy.api#documentation": "Scanner Detection - Detect and prevent reconnaissance activities from network scanning tools.",
+            "smithy.api#required": {}
+          }
+        },
+        "ma": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsMa",
+          "traits": {
+            "smithy.api#documentation": "Multipart Attack - Block attempts to bypass security controls using multipart/form-data encoding.",
+            "smithy.api#required": {}
+          }
+        },
+        "lfi": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsLfi",
+          "traits": {
+            "smithy.api#documentation": "Local File Inclusion Attack - Prevent unauthorized access to local files through web applications.",
+            "smithy.api#required": {}
+          }
+        },
+        "rfi": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsRfi",
+          "traits": {
+            "smithy.api#documentation": "Remote File Inclusion Attack - Prohibit unauthorized upload or execution of remote files.",
+            "smithy.api#required": {}
+          }
+        },
+        "rce": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsRce",
+          "traits": {
+            "smithy.api#documentation": "Remote Execution Attack - Prevent unauthorized execution of remote scripts or commands.",
+            "smithy.api#required": {}
+          }
+        },
+        "php": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsPhp",
+          "traits": {
+            "smithy.api#documentation": "PHP Attack - Safeguard against vulnerability exploits in PHP-based applications.",
+            "smithy.api#required": {}
+          }
+        },
+        "gen": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsGen",
+          "traits": {
+            "smithy.api#documentation": "Generic Attack - Provide broad protection from various undefined or novel attack vectors.",
+            "smithy.api#required": {}
+          }
+        },
+        "xss": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsXss",
+          "traits": {
+            "smithy.api#documentation": "XSS Attack - Prevent injection of malicious scripts into trusted webpages.",
+            "smithy.api#required": {}
+          }
+        },
+        "sqli": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsSqli",
+          "traits": {
+            "smithy.api#documentation": "SQL Injection Attack - Prohibit unauthorized use of SQL commands to manipulate databases.",
+            "smithy.api#required": {}
+          }
+        },
+        "sf": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsSf",
+          "traits": {
+            "smithy.api#documentation": "Session Fixation Attack - Prevent unauthorized takeover of user sessions by enforcing unique session IDs.",
+            "smithy.api#required": {}
+          }
+        },
+        "java": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrsJava",
+          "traits": {
+            "smithy.api#documentation": "Java Attack - Mitigate risks of exploitation targeting Java-based applications or components.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Custom Ruleset"
+      }
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseIpsItemAction": {
+      "type": "enum",
+      "members": {
+        "BYPASS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bypass"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseIpsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String"
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseIpsItemAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseIpsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.security#ReadFirewallConfigurationResponseIpsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseRulesetsCase0List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseRulesetsCase1Map": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseRulesets": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseRulesetsCase0List"
+        },
+        "Case1": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseRulesetsCase1Map"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseChangesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesBotProtectionAction": {
+      "type": "enum",
+      "members": {
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesBotProtection": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesBotProtectionAction"
+        },
+        "updatedAt": {
+          "target": "smithy.api#String"
+        },
+        "userId": {
+          "target": "smithy.api#String"
+        },
+        "username": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesAiBotsAction": {
+      "type": "enum",
+      "members": {
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesAiBots": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesAiBotsAction"
+        },
+        "updatedAt": {
+          "target": "smithy.api#String"
+        },
+        "userId": {
+          "target": "smithy.api#String"
+        },
+        "username": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesOwaspAction": {
+      "type": "enum",
+      "members": {
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesOwasp": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesOwaspAction"
+        },
+        "updatedAt": {
+          "target": "smithy.api#String"
+        },
+        "userId": {
+          "target": "smithy.api#String"
+        },
+        "username": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesVercelRulesetAction": {
+      "type": "enum",
+      "members": {
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesVercelRuleset": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesVercelRulesetAction"
+        },
+        "updatedAt": {
+          "target": "smithy.api#String"
+        },
+        "userId": {
+          "target": "smithy.api#String"
+        },
+        "username": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesTrafficSourcesAction": {
+      "type": "enum",
+      "members": {
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesTrafficSources": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesTrafficSourcesAction"
+        },
+        "updatedAt": {
+          "target": "smithy.api#String"
+        },
+        "userId": {
+          "target": "smithy.api#String"
+        },
+        "username": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseManagedRules": {
+      "type": "structure",
+      "members": {
+        "bot_protection": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesBotProtection"
+        },
+        "ai_bots": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesAiBots"
+        },
+        "owasp": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesOwasp"
+        },
+        "vercel_ruleset": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesVercelRuleset"
+        },
+        "traffic_sources": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseManagedRulesTrafficSources"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseLogHeadersCase0List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseLogHeadersCase1": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "*"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponseLogHeaders": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseLogHeadersCase0List"
+        },
+        "Case1": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseLogHeadersCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "firewallEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "crs": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseCrs",
+          "traits": {
+            "smithy.api#documentation": "Custom Ruleset"
+          }
+        },
+        "rules": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseRulesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ips": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseIpsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rulesets": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseRulesets"
+        },
+        "changes": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseChangesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "managedRules": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseManagedRules"
+        },
+        "botIdEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "logHeaders": {
+          "target": "com.vercel.security#ReadFirewallConfigurationResponseLogHeaders"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#ReadFirewallConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.security#ReadFirewallConfigurationRequest"
+      },
+      "output": {
+        "target": "com.vercel.security#ReadFirewallConfigurationResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/security/firewall/config/{configVersion}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Read Firewall Configuration\n\nRetrieve the specified firewall configuration for a project. The deployed configVersion will be `active`"
+      }
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig1Request": {
+      "type": "structure",
+      "members": {
+        "configVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The deployed configVersion for the firewall configuration"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig1ResponseBody": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig1Response": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig1ResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig1": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.security#ReturnsActivatedWafConfig1Request"
+      },
+      "output": {
+        "target": "com.vercel.security#ReturnsActivatedWafConfig1Response"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/security/firewall/config/{configVersion}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Returns activated WAF config\n\nPromotes a draft WAF config to an active config"
+      }
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2Request": {
+      "type": "structure",
+      "members": {
+        "configVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The deployed configVersion for the firewall configuration"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsSdAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsSd": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsSdAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsMaAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsMa": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsMaAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsLfiAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsLfi": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsLfiAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsRfiAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsRfi": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsRfiAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsRceAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsRce": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsRceAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsPhpAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsPhp": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsPhpAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsGenAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsGen": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsGenAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsXssAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsXss": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsXssAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsSqliAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsSqli": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsSqliAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsSfAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsSf": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsSfAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsJavaAction": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsJava": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsJavaAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrs": {
+      "type": "structure",
+      "members": {
+        "sd": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsSd",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ma": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsMa",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "lfi": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsLfi",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rfi": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsRfi",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rce": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsRce",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "php": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsPhp",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "gen": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsGen",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "xss": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsXss",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sqli": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsSqli",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sf": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsSf",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "java": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrsJava",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseIpsItemAction": {
+      "type": "enum",
+      "members": {
+        "BYPASS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bypass"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseIpsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String"
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseIpsItemAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseIpsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseIpsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseRulesetsCase0List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseRulesetsCase1Map": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseRulesets": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseRulesetsCase0List"
+        },
+        "Case1": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseRulesetsCase1Map"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseChangesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesBotProtectionAction": {
+      "type": "enum",
+      "members": {
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesBotProtection": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesBotProtectionAction"
+        },
+        "updatedAt": {
+          "target": "smithy.api#String"
+        },
+        "userId": {
+          "target": "smithy.api#String"
+        },
+        "username": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesAiBotsAction": {
+      "type": "enum",
+      "members": {
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesAiBots": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesAiBotsAction"
+        },
+        "updatedAt": {
+          "target": "smithy.api#String"
+        },
+        "userId": {
+          "target": "smithy.api#String"
+        },
+        "username": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesOwaspAction": {
+      "type": "enum",
+      "members": {
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesOwasp": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesOwaspAction"
+        },
+        "updatedAt": {
+          "target": "smithy.api#String"
+        },
+        "userId": {
+          "target": "smithy.api#String"
+        },
+        "username": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesVercelRulesetAction": {
+      "type": "enum",
+      "members": {
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesVercelRuleset": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesVercelRulesetAction"
+        },
+        "updatedAt": {
+          "target": "smithy.api#String"
+        },
+        "userId": {
+          "target": "smithy.api#String"
+        },
+        "username": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesTrafficSourcesAction": {
+      "type": "enum",
+      "members": {
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesTrafficSources": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesTrafficSourcesAction"
+        },
+        "updatedAt": {
+          "target": "smithy.api#String"
+        },
+        "userId": {
+          "target": "smithy.api#String"
+        },
+        "username": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRules": {
+      "type": "structure",
+      "members": {
+        "bot_protection": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesBotProtection"
+        },
+        "ai_bots": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesAiBots"
+        },
+        "owasp": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesOwasp"
+        },
+        "vercel_ruleset": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesVercelRuleset"
+        },
+        "traffic_sources": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRulesTrafficSources"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseLogHeadersCase0List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseLogHeadersCase1": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "*"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2ResponseLogHeaders": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseLogHeadersCase0List"
+        },
+        "Case1": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseLogHeadersCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2Response": {
+      "type": "structure",
+      "members": {
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "firewallEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "crs": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseCrs"
+        },
+        "rules": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseRulesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ips": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseIpsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rulesets": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseRulesets"
+        },
+        "changes": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseChangesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "managedRules": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseManagedRules"
+        },
+        "botIdEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "logHeaders": {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2ResponseLogHeaders"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#ReturnsActivatedWafConfig2": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.security#ReturnsActivatedWafConfig2Request"
+      },
+      "output": {
+        "target": "com.vercel.security#ReturnsActivatedWafConfig2Response"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/security/firewall/config/{configVersion}/activate",
+          "code": 200
+        },
+        "smithy.api#documentation": "Returns activated WAF config\n\nPromotes a draft WAF config to an active config"
+      }
+    },
+    "com.vercel.security#ReadActiveAttackDataRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "since": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "since"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.security#ReadActiveAttackDataResponseBodyCase1AnomaliesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadActiveAttackDataResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "anomalies": {
+          "target": "com.vercel.security#ReadActiveAttackDataResponseBodyCase1AnomaliesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadActiveAttackDataResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Document"
+        },
+        "Case1": {
+          "target": "com.vercel.security#ReadActiveAttackDataResponseBodyCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadActiveAttackDataResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.security#ReadActiveAttackDataResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#ReadActiveAttackData": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.security#ReadActiveAttackDataRequest"
+      },
+      "output": {
+        "target": "com.vercel.security#ReadActiveAttackDataResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/security/firewall/attack-status",
+          "code": 200
+        },
+        "smithy.api#documentation": "Read active attack data\n\nRetrieve active attack data within the last N days (default: 1 day)"
+      }
+    },
+    "com.vercel.security#ReadSystemBypassRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "limit"
+          }
+        },
+        "sourceIp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "sourceIp",
+            "smithy.api#documentation": "Filter by source IP"
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "domain",
+            "smithy.api#documentation": "Filter by domain"
+          }
+        },
+        "projectScope": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "projectScope",
+            "smithy.api#documentation": "Filter by project scoped rules"
+          }
+        },
+        "offset": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "offset",
+            "smithy.api#documentation": "Used for pagination. Retrieves results after the provided id"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.security#ReadSystemBypassResponseResultItemAction": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "BYPASS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bypass"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadSystemBypassResponseResultItem": {
+      "type": "structure",
+      "members": {
+        "OwnerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Action": {
+          "target": "com.vercel.security#ReadSystemBypassResponseResultItemAction"
+        },
+        "ProjectId": {
+          "target": "smithy.api#String"
+        },
+        "IsProjectRule": {
+          "target": "smithy.api#Boolean"
+        },
+        "Note": {
+          "target": "smithy.api#String"
+        },
+        "CreatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ActorId": {
+          "target": "smithy.api#String"
+        },
+        "UpdatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "UpdatedAtHour": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "DeletedAt": {
+          "target": "smithy.api#String"
+        },
+        "ExpiresAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadSystemBypassResponseResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.security#ReadSystemBypassResponseResultItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadSystemBypassResponsePagination": {
+      "type": "structure",
+      "members": {
+        "OwnerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "Id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadSystemBypassResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.vercel.security#ReadSystemBypassResponseResultList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pagination": {
+          "target": "com.vercel.security#ReadSystemBypassResponsePagination"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#ReadSystemBypass": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.security#ReadSystemBypassRequest"
+      },
+      "output": {
+        "target": "com.vercel.security#ReadSystemBypassResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/security/firewall/bypass",
+          "code": 200
+        },
+        "smithy.api#documentation": "Read System Bypass\n\nRetrieve the system bypass rules configured for the specified project"
+      }
+    },
+    "com.vercel.security#CreateSystemBypassRuleRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "projectScope": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the specified bypass will apply to all domains for a project."
+          }
+        },
+        "sourceIp": {
+          "target": "smithy.api#String"
+        },
+        "allSources": {
+          "target": "smithy.api#Boolean"
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time to live in milliseconds"
+          }
+        },
+        "note": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.security#CreateSystemBypassRuleResponseBodyCase0ResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#CreateSystemBypassRuleResponseBodyCase0": {
+      "type": "structure",
+      "members": {
+        "ok": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "result": {
+          "target": "com.vercel.security#CreateSystemBypassRuleResponseBodyCase0ResultList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pagination": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#CreateSystemBypassRuleResponseBodyCase1ResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#CreateSystemBypassRuleResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "ok": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "result": {
+          "target": "com.vercel.security#CreateSystemBypassRuleResponseBodyCase1ResultList"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#CreateSystemBypassRuleResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.security#CreateSystemBypassRuleResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.security#CreateSystemBypassRuleResponseBodyCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#CreateSystemBypassRuleResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.security#CreateSystemBypassRuleResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#CreateSystemBypassRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.security#CreateSystemBypassRuleRequest"
+      },
+      "output": {
+        "target": "com.vercel.security#CreateSystemBypassRuleResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/security/firewall/bypass",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create System Bypass Rule\n\nCreate new system bypass rules"
+      }
+    },
+    "com.vercel.security#RemoveSystemBypassRuleRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "projectScope": {
+          "target": "smithy.api#Boolean"
+        },
+        "sourceIp": {
+          "target": "smithy.api#String"
+        },
+        "allSources": {
+          "target": "smithy.api#Boolean"
+        },
+        "note": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.security#RemoveSystemBypassRuleResponse": {
+      "type": "structure",
+      "members": {
+        "ok": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#RemoveSystemBypassRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.security#RemoveSystemBypassRuleRequest"
+      },
+      "output": {
+        "target": "com.vercel.security#RemoveSystemBypassRuleResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/security/firewall/bypass",
+          "code": 200
+        },
+        "smithy.api#documentation": "Remove System Bypass Rule\n\nRemove system bypass rules"
+      }
+    },
+    "com.vercel.security#ReadFirewallActionsByProjectRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "startTimestamp": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "startTimestamp"
+          }
+        },
+        "endTimestamp": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "endTimestamp"
+          }
+        },
+        "hosts": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "hosts"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.security#ReadFirewallActionsByProjectResponseActionsItem": {
+      "type": "structure",
+      "members": {
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "isActive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "public_ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallActionsByProjectResponseActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.security#ReadFirewallActionsByProjectResponseActionsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#ReadFirewallActionsByProjectResponse": {
+      "type": "structure",
+      "members": {
+        "actions": {
+          "target": "com.vercel.security#ReadFirewallActionsByProjectResponseActionsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#ReadFirewallActionsByProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.security#ReadFirewallActionsByProjectRequest"
+      },
+      "output": {
+        "target": "com.vercel.security#ReadFirewallActionsByProjectResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/security/firewall/events",
+          "code": 200
+        },
+        "smithy.api#documentation": "Read Firewall Actions by Project\n\nRetrieve firewall actions for a project"
+      }
+    },
+    "com.vercel.security#GenerateAFirewallRuleFromNaturalLanguageRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.security#GenerateAFirewallRuleFromNaturalLanguageResponseRuleConditionGroupList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.security#GenerateAFirewallRuleFromNaturalLanguageResponseRuleAction": {
+      "type": "structure",
+      "members": {
+        "mitigate": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#GenerateAFirewallRuleFromNaturalLanguageResponseRule": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "conditionGroup": {
+          "target": "com.vercel.security#GenerateAFirewallRuleFromNaturalLanguageResponseRuleConditionGroupList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.security#GenerateAFirewallRuleFromNaturalLanguageResponseRuleAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.security#GenerateAFirewallRuleFromNaturalLanguageResponse": {
+      "type": "structure",
+      "members": {
+        "rule": {
+          "target": "com.vercel.security#GenerateAFirewallRuleFromNaturalLanguageResponseRule"
+        },
+        "error": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.security#GenerateAFirewallRuleFromNaturalLanguage": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.security#GenerateAFirewallRuleFromNaturalLanguageRequest"
+      },
+      "output": {
+        "target": "com.vercel.security#GenerateAFirewallRuleFromNaturalLanguageResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.security#BadRequest"
+        },
+        {
+          "target": "com.vercel.security#Forbidden"
+        },
+        {
+          "target": "com.vercel.security#NotFound"
+        },
+        {
+          "target": "com.vercel.security#RequestTimeout"
+        },
+        {
+          "target": "com.vercel.security#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/security/firewall/config/generate-rule",
+          "code": 200
+        },
+        "smithy.api#documentation": "Generate a firewall rule from natural language\n\nGenerate a firewall rule from a natural language description."
+      }
+    },
+    "com.vercel.security#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.security#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.security#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.security#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.security#PaymentRequired": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 402,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 402
+          }
+        ]
+      }
+    },
+    "com.vercel.security#RequestTimeout": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 408,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 408
+          }
+        ]
+      }
+    },
+    "com.vercel.security#Security": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.security#UpdateAttackChallengeMode"
+        },
+        {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig"
+        },
+        {
+          "target": "com.vercel.security#PutFirewallConfiguration"
+        },
+        {
+          "target": "com.vercel.security#UpdateFirewallConfiguration"
+        },
+        {
+          "target": "com.vercel.security#ReadFirewallConfiguration"
+        },
+        {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig1"
+        },
+        {
+          "target": "com.vercel.security#ReturnsActivatedWafConfig2"
+        },
+        {
+          "target": "com.vercel.security#ReadActiveAttackData"
+        },
+        {
+          "target": "com.vercel.security#ReadSystemBypass"
+        },
+        {
+          "target": "com.vercel.security#CreateSystemBypassRule"
+        },
+        {
+          "target": "com.vercel.security#RemoveSystemBypassRule"
+        },
+        {
+          "target": "com.vercel.security#ReadFirewallActionsByProject"
+        },
+        {
+          "target": "com.vercel.security#GenerateAFirewallRuleFromNaturalLanguage"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel security",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/security/."
+      }
+    }
+  }
+}

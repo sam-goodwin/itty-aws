@@ -7,16 +7,21 @@
  * `generateService` compiler. Conversion fidelity follows distilled v0's
  * `generate-openapi.ts` feature matrix:
  *
- *   • one operation per (path × get/post/put/patch/delete), deprecated
- *     skipped by default; op shape name = PascalCase(operationId)
+ *   • one operation per (path × get/post/put/patch/delete — plus head/options
+ *     when a provider opts in via `extraHttpMethods`), deprecated skipped by
+ *     default; op shape name = PascalCase(operationId)
  *   • input `<Op>Request`: path params → `smithy.api#httpLabel` (+required),
- *     query params → `smithy.api#httpQuery`, header/cookie params dropped,
- *     body properties flattened alongside (labels win, then query, then body);
+ *     query params → `smithy.api#httpQuery`, header params →
+ *     `smithy.api#httpHeader` when `headerParams` is on (dropped otherwise,
+ *     as cookie params always are),
+ *     body properties flattened alongside
+ *     (labels win, then query, then headers, then body);
  *     non-object bodies become a sole `body` member with `smithy.api#httpPayload`
  *   • `$ref`s become NAMED shapes (`components/schemas/X` → `<ns>#X`), reused
  *     across operations; anonymous nested objects synthesize names from the
  *     parent + member path
- *   • responses: 200 → 201 → 204 precedence, `application/json` only; object
+ *   • responses: 200 → 201 → 204 precedence (`successStatuses` overrides),
+ *     `application/json` only; object
  *     results become `<Op>Response` structures (a sole `$ref` reuses the named
  *     shape); bare array/scalar results wrap in a structure whose single
  *     member carries `com.distilled.openapi#rawResponse` (the SdkSpec maps it
@@ -123,6 +128,33 @@ export interface OpenApiConvertOptions {
   /** Skip operations marked `deprecated: true`. Default true. */
   readonly skipDeprecated?: boolean;
   /**
+   * HTTP methods to convert IN ADDITION to get/post/put/patch/delete —
+   * currently `"head"` and `"options"`. Opt-in, so a provider that models
+   * them (Vercel probes cache artifacts and sandbox files with HEAD) gets
+   * them without every other provider silently gaining operations.
+   */
+  readonly extraHttpMethods?: readonly ("head" | "options")[];
+  /**
+   * Emit `in: header` parameters as `smithy.api#httpHeader` members instead
+   * of dropping them. Opt-in for the same reason as
+   * {@link extraHttpMethods}: turning it on adds input members to every
+   * operation whose spec declares a header parameter, and most providers
+   * declare ones the protocol already sends itself (Accept, Authorization,
+   * an API-version pin). Providers whose headers are real per-call inputs
+   * — Vercel's `x-Artifact-*` remote-cache metadata, `x-Vercel-Digest` —
+   * ask for them.
+   */
+  readonly headerParams?: boolean;
+  /**
+   * Response statuses to read the operation's output shape from, most
+   * preferred first. Default `["200", "201", "204"]`. Extend it for an API
+   * that answers asynchronous work with a body under another status — Vercel
+   * returns `202 Accepted` with a payload from nine endpoints (artifact
+   * upload, account deletion, VCR blob/manifest writes), which would
+   * otherwise generate as a `void` output.
+   */
+  readonly successStatuses?: readonly string[];
+  /**
    * Azure-style fixed `api-version`: drops `api-version` query params and
    * stamps {@link API_VERSION_TRAIT} on every operation.
    */
@@ -175,6 +207,24 @@ const memberIdent = (name: string): string => {
   let out = name.replace(/[^A-Za-z0-9_]/g, "_");
   if (/^[0-9]/.test(out)) out = `_${out}`;
   return out || "_";
+};
+
+/**
+ * Header name → member identifier (`x-Artifact-Tag` → `xArtifactTag`). The
+ * wire name is carried by the `smithy.api#httpHeader` trait, so the member
+ * can read like the rest of the input rather than like a header.
+ */
+const headerMemberName = (name: string): string => {
+  const parts = name.split(/[^A-Za-z0-9]+/).filter(Boolean);
+  if (parts.length === 0) return "_";
+  const out = parts
+    .map((p, i) =>
+      i === 0
+        ? p.charAt(0).toLowerCase() + p.slice(1)
+        : p.charAt(0).toUpperCase() + p.slice(1),
+    )
+    .join("");
+  return /^[0-9]/.test(out) ? `_${out}` : out;
 };
 
 const enumMemberName = (value: string): string => {
@@ -937,7 +987,11 @@ const collectParams = (ctx: Ctx, pathItem: any, op: any): Param[] => {
     byKey.set(`${p.in} ${p.name}`, p);
   }
   return [...byKey.values()].filter(
-    (p) => p.in === "path" || p.in === "query" || p.in === "body",
+    (p) =>
+      p.in === "path" ||
+      p.in === "query" ||
+      p.in === "body" ||
+      p.in === "header",
   );
 };
 
@@ -1001,12 +1055,13 @@ const opDoc = (op: any): string | undefined => {
 // Responses
 // ============================================================================
 
-/** 200 → 201 → 204 precedence; response-level `$ref` resolved; JSON only. */
+/** First declared status in `order` wins; response-level `$ref` resolved; JSON only. */
 const successSchema = (
   ctx: Ctx,
   responses: any,
+  order: readonly string[],
 ): { schema: any | undefined } => {
-  for (const code of ["200", "201", "204"]) {
+  for (const code of order) {
     const raw = responses?.[code];
     if (!raw) continue;
     const resp = raw.$ref ? resolvePointer(ctx.spec, raw.$ref) : raw;
@@ -1099,6 +1154,14 @@ const detectPagination = (
 
 const HTTP_METHODS = ["get", "post", "put", "patch", "delete"] as const;
 
+/**
+ * Methods a spec may declare beyond {@link HTTP_METHODS}, opt-in via
+ * {@link OpenApiConvertOptions.extraHttpMethods} — a provider that models
+ * `head` (Vercel's cache-artifact and file existence probes) asks for it
+ * rather than every provider silently gaining operations on regeneration.
+ */
+const OPTIONAL_HTTP_METHODS = ["head", "options"] as const;
+
 const DEFAULT_STATUS_TO_ERROR_CLASS: Readonly<Record<string, string>> = {
   "400": "BadRequest",
   "403": "Forbidden",
@@ -1108,6 +1171,8 @@ const DEFAULT_STATUS_TO_ERROR_CLASS: Readonly<Record<string, string>> = {
 };
 
 const DEFAULT_ERROR_STATUSES = ["401", "429", "500", "503"];
+
+const DEFAULT_SUCCESS_STATUSES = ["200", "201", "204"];
 
 export const convertOpenApiToSmithy = (
   spec: unknown,
@@ -1131,6 +1196,13 @@ export const convertOpenApiToSmithy = (
     options.defaultErrorStatuses ?? DEFAULT_ERROR_STATUSES,
   );
   const skipDeprecated = options.skipDeprecated ?? true;
+  const successStatuses = options.successStatuses ?? DEFAULT_SUCCESS_STATUSES;
+  const httpMethods = [
+    ...HTTP_METHODS,
+    ...OPTIONAL_HTTP_METHODS.filter((m) =>
+      options.extraHttpMethods?.includes(m),
+    ),
+  ];
 
   // Error class names and the service name are reserved up front so schema
   // components can never steal them.
@@ -1145,7 +1217,7 @@ export const convertOpenApiToSmithy = (
 
   for (const [rawPath, pathItem] of Object.entries(doc.paths ?? {})) {
     if (!pathItem || typeof pathItem !== "object") continue;
-    for (const method of HTTP_METHODS) {
+    for (const method of httpMethods) {
       const op = (pathItem as any)[method];
       if (!op || typeof op !== "object") continue;
       if (skipDeprecated && op.deprecated === true) continue;
@@ -1210,6 +1282,32 @@ export const convertOpenApiToSmithy = (
               : {}),
           },
         });
+      }
+
+      // ---- Header params (opt-in) ----
+      if (options.headerParams) {
+        for (const p of params) {
+          if (p.in !== "header") continue;
+          const conv = convertSchema(
+            ctx,
+            p.schema,
+            `${opName}Request${pascal(p.name)}`,
+            0,
+            "in",
+          );
+          addMember(headerMemberName(p.name), {
+            target: conv.target,
+            traits: {
+              // The wire name rides on the trait, so the member is free to be
+              // a normal identifier.
+              "smithy.api#httpHeader": p.name,
+              ...(p.required ? { "smithy.api#required": {} } : {}),
+              ...(p.description
+                ? { "smithy.api#documentation": p.description }
+                : {}),
+            },
+          });
+        }
       }
 
       // ---- Request body (json > form-urlencoded > multipart) ----
@@ -1289,7 +1387,11 @@ export const convertOpenApiToSmithy = (
           : PRELUDE.Unit;
 
       // ---- Output shape ----
-      const { schema: respSchema } = successSchema(ctx, op.responses);
+      const { schema: respSchema } = successSchema(
+        ctx,
+        op.responses,
+        successStatuses,
+      );
       let outputTarget: string = PRELUDE.Unit;
       if (respSchema !== undefined) {
         const flat = flattenObject(ctx, respSchema);

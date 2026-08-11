@@ -1,0 +1,1368 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.other#ReplacedomainsbydomainrecordsRequest": {
+      "type": "structure",
+      "members": {
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The domain name"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.other#ReplacedomainsbydomainrecordsResponseRecordIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.other#ReplacedomainsbydomainrecordsResponse": {
+      "type": "structure",
+      "members": {
+        "recordIds": {
+          "target": "com.vercel.other#ReplacedomainsbydomainrecordsResponseRecordIdsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.other#Replacedomainsbydomainrecords": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.other#ReplacedomainsbydomainrecordsRequest"
+      },
+      "output": {
+        "target": "com.vercel.other#ReplacedomainsbydomainrecordsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.other#BadRequest"
+        },
+        {
+          "target": "com.vercel.other#Forbidden"
+        },
+        {
+          "target": "com.vercel.other#NotFound"
+        },
+        {
+          "target": "com.vercel.other#Conflict"
+        },
+        {
+          "target": "com.vercel.other#Gone"
+        },
+        {
+          "target": "com.vercel.other#UnsupportedMediaType"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/domains/{domain}/records",
+          "code": 200
+        },
+        "smithy.api#documentation": "PUT /domains/{domain}/records"
+      }
+    },
+    "com.vercel.other#GetdomainsrecordsbyrecordidRequest": {
+      "type": "structure",
+      "members": {
+        "recordId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique ID of the DNS record"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.other#GetdomainsrecordsbyrecordidResponseType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "ALIAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALIAS"
+          }
+        },
+        "CAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CAA"
+          }
+        },
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HTTPS"
+          }
+        },
+        "MX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MX"
+          }
+        },
+        "NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NS"
+          }
+        },
+        "SRV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SRV"
+          }
+        },
+        "TXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TXT"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.other#GetdomainsrecordsbyrecordidResponseRecordType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "ALIAS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ALIAS"
+          }
+        },
+        "CAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CAA"
+          }
+        },
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HTTPS"
+          }
+        },
+        "MX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MX"
+          }
+        },
+        "NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NS"
+          }
+        },
+        "SRV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SRV"
+          }
+        },
+        "TXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TXT"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.other#GetdomainsrecordsbyrecordidResponse": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.vercel.other#GetdomainsrecordsbyrecordidResponseType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "creator": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double"
+        },
+        "comment": {
+          "target": "smithy.api#String"
+        },
+        "recordType": {
+          "target": "com.vercel.other#GetdomainsrecordsbyrecordidResponseRecordType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.other#Getdomainsrecordsbyrecordid": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.other#GetdomainsrecordsbyrecordidRequest"
+      },
+      "output": {
+        "target": "com.vercel.other#GetdomainsrecordsbyrecordidResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.other#BadRequest"
+        },
+        {
+          "target": "com.vercel.other#Forbidden"
+        },
+        {
+          "target": "com.vercel.other#NotFound"
+        },
+        {
+          "target": "com.vercel.other#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/domains/records/{recordId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /domains/records/{recordId}"
+      }
+    },
+    "com.vercel.other#CreateapikeysRequestAiGatewayQuotaRefreshPeriod": {
+      "type": "enum",
+      "members": {
+        "DAILY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "daily"
+          }
+        },
+        "WEEKLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "weekly"
+          }
+        },
+        "MONTHLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monthly"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "How often the quota refreshes."
+      }
+    },
+    "com.vercel.other#CreateapikeysRequestAiGatewayQuotaAlertThresholdsItem": {
+      "type": "intEnum",
+      "members": {
+        "_50": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 50
+          }
+        },
+        "_75": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 75
+          }
+        },
+        "_100": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 100
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.other#CreateapikeysRequestAiGatewayQuotaAlertThresholdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.other#CreateapikeysRequestAiGatewayQuotaAlertThresholdsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Spend percentages (a subset of [50, 75, 100]) at which to send a spend alert."
+      }
+    },
+    "com.vercel.other#CreateapikeysRequestAiGatewayQuota": {
+      "type": "structure",
+      "members": {
+        "limitAmount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The quota limit amount.",
+            "smithy.api#required": {}
+          }
+        },
+        "includeByokInQuota": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to include BYOK (Bring Your Own Key) usage in the quota."
+          }
+        },
+        "refreshPeriod": {
+          "target": "com.vercel.other#CreateapikeysRequestAiGatewayQuotaRefreshPeriod",
+          "traits": {
+            "smithy.api#documentation": "How often the quota refreshes."
+          }
+        },
+        "alertThresholds": {
+          "target": "com.vercel.other#CreateapikeysRequestAiGatewayQuotaAlertThresholdsList",
+          "traits": {
+            "smithy.api#documentation": "Spend percentages (a subset of [50, 75, 100]) at which to send a spend alert."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional AI Gateway quota configuration for the API key."
+      }
+    },
+    "com.vercel.other#CreateapikeysRequestMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional generic metadata for the API key. The accepted shape depends on the key's `purpose` and is validated on creation; for `ai-gateway` keys this accepts `environment`."
+      }
+    },
+    "com.vercel.other#CreateapikeysRequest": {
+      "type": "structure",
+      "members": {
+        "purpose": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The API key's purpose, which restricts how it can be used.",
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An optional project to restrict the API key to."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An optional name for the API key."
+          }
+        },
+        "expiresAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The API key's expiration, expressed as a UNIX timestamp in milliseconds."
+          }
+        },
+        "aiGatewayQuota": {
+          "target": "com.vercel.other#CreateapikeysRequestAiGatewayQuota",
+          "traits": {
+            "smithy.api#documentation": "Optional AI Gateway quota configuration for the API key."
+          }
+        },
+        "metadata": {
+          "target": "com.vercel.other#CreateapikeysRequestMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "Optional generic metadata for the API key. The accepted shape depends on the key's `purpose` and is validated on creation; for `ai-gateway` keys this accepts `environment`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.other#CreateapikeysResponseApiKeyQuotaAlertThresholdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Spend percentages (a subset of [50, 75, 100]) at which to send a spend alert. Empty or undefined disables alerts."
+      }
+    },
+    "com.vercel.other#CreateapikeysResponseApiKeyQuota": {
+      "type": "structure",
+      "members": {
+        "quotaEntityId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the quota.",
+            "smithy.api#required": {}
+          }
+        },
+        "limitAmount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The quota limit amount.",
+            "smithy.api#required": {}
+          }
+        },
+        "currentSpend": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The current amount spent against the quota.",
+            "smithy.api#required": {}
+          }
+        },
+        "currentByokSpend": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The current BYOK spend (tracked separately).",
+            "smithy.api#required": {}
+          }
+        },
+        "includeByokInQuota": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether BYOK (Bring Your Own Key) spend counts against the quota.",
+            "smithy.api#required": {}
+          }
+        },
+        "refreshPeriod": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "How often the quota refreshes.",
+            "smithy.api#required": {}
+          }
+        },
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the quota is currently active.",
+            "smithy.api#required": {}
+          }
+        },
+        "archived": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the quota has been archived.",
+            "smithy.api#required": {}
+          }
+        },
+        "alertThresholds": {
+          "target": "com.vercel.other#CreateapikeysResponseApiKeyQuotaAlertThresholdsList",
+          "traits": {
+            "smithy.api#documentation": "Spend percentages (a subset of [50, 75, 100]) at which to send a spend alert. Empty or undefined disables alerts."
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp (in milliseconds) of when the quota was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp (in milliseconds) of when the quota was last updated.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "AI Gateway quota associated with an API key."
+      }
+    },
+    "com.vercel.other#CreateapikeysResponseApiKey": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the API key.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the API key.",
+            "smithy.api#required": {}
+          }
+        },
+        "partialKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The last few characters of the API key string, for helping identify the API key.",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the team that the API key grants access to.",
+            "smithy.api#required": {}
+          }
+        },
+        "purpose": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The API key's purpose, i.e. what resources it can be used with.",
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the project that this API key grants access to.\n\nWhen this is unset, the API key grants access to all projects in the team.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "expiresAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp (in milliseconds) of when the API key expires.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "activeAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp (in milliseconds) of when the API key was most recently used.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp (in milliseconds) of when the API key was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who created the API key.",
+            "smithy.api#required": {}
+          }
+        },
+        "leakedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp (in milliseconds) of when the API key was marked as leaked.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "leakedUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL where the API key was discovered as leaked.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdByAppId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the app that created the API key, if any",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "quota": {
+          "target": "com.vercel.other#CreateapikeysResponseApiKeyQuota",
+          "traits": {
+            "smithy.api#documentation": "AI Gateway quota associated with an API key."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Generic metadata attached to the API key.\n\nThe accepted shape depends on the key's `purpose` and is validated when the key is created. For `ai-gateway` keys this carries `environment` and `spendAttribution`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the newly created API key."
+      }
+    },
+    "com.vercel.other#CreateapikeysResponse": {
+      "type": "structure",
+      "members": {
+        "apiKeyString": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The API key's actual value. This value is only provided in this response, and can never be retrieved again in the future. Be sure to save it somewhere safe!",
+            "smithy.api#required": {}
+          }
+        },
+        "apiKey": {
+          "target": "com.vercel.other#CreateapikeysResponseApiKey",
+          "traits": {
+            "smithy.api#documentation": "Information about the newly created API key.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.other#Createapikeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.other#CreateapikeysRequest"
+      },
+      "output": {
+        "target": "com.vercel.other#CreateapikeysResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.other#BadRequest"
+        },
+        {
+          "target": "com.vercel.other#Forbidden"
+        },
+        {
+          "target": "com.vercel.other#Conflict"
+        },
+        {
+          "target": "com.vercel.other#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api-keys",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /api-keys"
+      }
+    },
+    "com.vercel.other#CreateobservabilityqueryRequestGroupByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dimensions to group results by. JSON dimensions support nested refs, for example event_data/checkout_step. Nested keys containing characters that OData cannot parse as an identifier, such as '-', spaces, quotes, or '/', must be wrapped in single quotes (escape embedded single quotes by doubling them), for example flags/'enable-comments-view' or event_data/'some property''s/value'."
+      }
+    },
+    "com.vercel.other#CreateobservabilityqueryRequestOrderDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Direction to order grouped results by. Defaults to desc."
+      }
+    },
+    "com.vercel.other#CreateobservabilityqueryRequest": {
+      "type": "structure",
+      "members": {
+        "metric": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metric id",
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Owner or project scope for the query",
+            "smithy.api#required": {}
+          }
+        },
+        "aggregation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Aggregation function to apply. Some aggregations require a dimension: use <agg>/<dimension>, for example unique/visitor_id."
+          }
+        },
+        "groupBy": {
+          "target": "com.vercel.other#CreateobservabilityqueryRequestGroupByList",
+          "traits": {
+            "smithy.api#documentation": "Dimensions to group results by. JSON dimensions support nested refs, for example event_data/checkout_step. Nested keys containing characters that OData cannot parse as an identifier, such as '-', spaces, quotes, or '/', must be wrapped in single quotes (escape embedded single quotes by doubling them), for example flags/'enable-comments-view' or event_data/'some property''s/value'."
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter to apply to the query. JSON dimensions support nested refs, for example event_data/checkout_step eq 'payment'. Nested keys containing characters that OData cannot parse as an identifier, such as '-', spaces, quotes, or '/', must be wrapped in single quotes (escape embedded single quotes by doubling them), for example flags/'enable-comments-view' eq true or event_data/'some property''s/value' eq true."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of results"
+          }
+        },
+        "orderBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Rollup column to order grouped results by. Use the generated rollup key for the requested metric and aggregation. Defaults to the query engine count rollup."
+          }
+        },
+        "orderDirection": {
+          "target": "com.vercel.other#CreateobservabilityqueryRequestOrderDirection",
+          "traits": {
+            "smithy.api#documentation": "Direction to order grouped results by. Defaults to desc."
+          }
+        },
+        "granularity": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Time bucket size"
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start timestamp"
+          }
+        },
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End timestamp"
+          }
+        },
+        "bucketTimezone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IANA timezone (e.g. Europe/Paris) used only to align calendar buckets (1d/1mo) to that zone's day/month boundaries. startTime/endTime and all output timestamps are always UTC. No effect on sub-day granularities."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.other#CreateobservabilityqueryResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.other#Createobservabilityquery": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.other#CreateobservabilityqueryRequest"
+      },
+      "output": {
+        "target": "com.vercel.other#CreateobservabilityqueryResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.other#BadRequest"
+        },
+        {
+          "target": "com.vercel.other#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.other#Forbidden"
+        },
+        {
+          "target": "com.vercel.other#RequestTimeout"
+        },
+        {
+          "target": "com.vercel.other#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v2/observability/query",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /v2/observability/query"
+      }
+    },
+    "com.vercel.other#GetobservabilityschemaResponseMetricsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.other#GetobservabilityschemaResponseMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.other#GetobservabilityschemaResponseMetricsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.other#GetobservabilityschemaResponse": {
+      "type": "structure",
+      "members": {
+        "metrics": {
+          "target": "com.vercel.other#GetobservabilityschemaResponseMetricsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.other#Getobservabilityschema": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "output": {
+        "target": "com.vercel.other#GetobservabilityschemaResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.other#BadRequest"
+        },
+        {
+          "target": "com.vercel.other#Forbidden"
+        },
+        {
+          "target": "com.vercel.other#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/observability/schema",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /v2/observability/schema"
+      }
+    },
+    "com.vercel.other#GetobservabilityschemabymetricidRequest": {
+      "type": "structure",
+      "members": {
+        "metricId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.other#GetobservabilityschemabymetricidResponseBodyItemDimensionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.other#GetobservabilityschemabymetricidResponseBodyItemAggregationsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.other#GetobservabilityschemabymetricidResponseBodyItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "dimensions": {
+          "target": "com.vercel.other#GetobservabilityschemabymetricidResponseBodyItemDimensionsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "aggregations": {
+          "target": "com.vercel.other#GetobservabilityschemabymetricidResponseBodyItemAggregationsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "defaultAggregation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.other#GetobservabilityschemabymetricidResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.other#GetobservabilityschemabymetricidResponseBodyItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.other#GetobservabilityschemabymetricidResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.other#GetobservabilityschemabymetricidResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.other#Getobservabilityschemabymetricid": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.other#GetobservabilityschemabymetricidRequest"
+      },
+      "output": {
+        "target": "com.vercel.other#GetobservabilityschemabymetricidResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.other#BadRequest"
+        },
+        {
+          "target": "com.vercel.other#Forbidden"
+        },
+        {
+          "target": "com.vercel.other#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/observability/schema/{metricId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "GET /v2/observability/schema/{metricId}"
+      }
+    },
+    "com.vercel.other#CreatespeedinsightstoggleRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.other#CreatespeedinsightstoggleResponse": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.other#Createspeedinsightstoggle": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.other#CreatespeedinsightstoggleRequest"
+      },
+      "output": {
+        "target": "com.vercel.other#CreatespeedinsightstoggleResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.other#BadRequest"
+        },
+        {
+          "target": "com.vercel.other#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.other#Forbidden"
+        },
+        {
+          "target": "com.vercel.other#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/speed-insights/toggle",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /speed-insights/toggle"
+      }
+    },
+    "com.vercel.other#CreatewebinsightstoggleRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.other#CreatewebinsightstoggleResponse": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.other#Createwebinsightstoggle": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.other#CreatewebinsightstoggleRequest"
+      },
+      "output": {
+        "target": "com.vercel.other#CreatewebinsightstoggleResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.other#BadRequest"
+        },
+        {
+          "target": "com.vercel.other#Forbidden"
+        },
+        {
+          "target": "com.vercel.other#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/web/insights/toggle",
+          "code": 200
+        },
+        "smithy.api#documentation": "POST /web/insights/toggle"
+      }
+    },
+    "com.vercel.other#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.other#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.other#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.other#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
+    "com.vercel.other#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.other#UnsupportedMediaType": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 415,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 415
+          }
+        ]
+      }
+    },
+    "com.vercel.other#PaymentRequired": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 402,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 402
+          }
+        ]
+      }
+    },
+    "com.vercel.other#RequestTimeout": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 408,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 408
+          }
+        ]
+      }
+    },
+    "com.vercel.other#Other": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.other#Replacedomainsbydomainrecords"
+        },
+        {
+          "target": "com.vercel.other#Getdomainsrecordsbyrecordid"
+        },
+        {
+          "target": "com.vercel.other#Createapikeys"
+        },
+        {
+          "target": "com.vercel.other#Createobservabilityquery"
+        },
+        {
+          "target": "com.vercel.other#Getobservabilityschema"
+        },
+        {
+          "target": "com.vercel.other#Getobservabilityschemabymetricid"
+        },
+        {
+          "target": "com.vercel.other#Createspeedinsightstoggle"
+        },
+        {
+          "target": "com.vercel.other#Createwebinsightstoggle"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel Other",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/other/."
+      }
+    }
+  }
+}

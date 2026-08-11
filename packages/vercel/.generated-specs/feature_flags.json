@@ -1,0 +1,6520 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.feature_flags#ListFlagsRequestState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlagsRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlagsRequestMaintainerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlagsRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "state": {
+          "target": "com.vercel.feature_flags#ListFlagsRequestState",
+          "traits": {
+            "smithy.api#httpQuery": "state",
+            "smithy.api#documentation": "The state of the flags to retrieve. Defaults to `active`."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Maximum number of flags to return."
+          }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "cursor",
+            "smithy.api#documentation": "Pagination cursor to continue from."
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "search",
+            "smithy.api#documentation": "Search flags by their slug or description. Case-insensitive."
+          }
+        },
+        "tags": {
+          "target": "com.vercel.feature_flags#ListFlagsRequestTagsList",
+          "traits": {
+            "smithy.api#httpQuery": "tags",
+            "smithy.api#documentation": "Filter flags by tag. Repeat the parameter for multiple tags (all must match)."
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "createdBy",
+            "smithy.api#documentation": "Filter flags by the id of the entity that created them (a user or team id)."
+          }
+        },
+        "maintainerIds": {
+          "target": "com.vercel.feature_flags#ListFlagsRequestMaintainerIdsList",
+          "traits": {
+            "smithy.api#httpQuery": "maintainerIds",
+            "smithy.api#documentation": "Filter flags by maintainer user id. Repeat the parameter for multiple maintainers (any may match)."
+          }
+        },
+        "includeMarketplaceFlags": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "includeMarketplaceFlags",
+            "smithy.api#documentation": "Whether to include Marketplace experimentation items in the paginated response. Defaults to false."
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#ListFlagsResponsePagination": {
+      "type": "structure",
+      "members": {
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlagsResponseDataList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlagsResponse": {
+      "type": "structure",
+      "members": {
+        "pagination": {
+          "target": "com.vercel.feature_flags#ListFlagsResponsePagination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "data": {
+          "target": "com.vercel.feature_flags#ListFlagsResponseDataList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#ListFlags": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#ListFlagsRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#ListFlagsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/projects/{projectIdOrName}/feature-flags/flags",
+          "code": 200
+        },
+        "smithy.api#documentation": "List flags\n\nRetrieve feature flags for a project. Returns an opaque cursor for pagination.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "cursor",
+          "outputToken": "pagination.next",
+          "items": "data"
+        }
+      }
+    },
+    "com.vercel.feature_flags#ListFlags1RequestState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlags1RequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlags1Request": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "state": {
+          "target": "com.vercel.feature_flags#ListFlags1RequestState",
+          "traits": {
+            "smithy.api#httpQuery": "state",
+            "smithy.api#documentation": "The state of the flags to retrieve. Defaults to `active`."
+          }
+        },
+        "withMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "withMetadata",
+            "smithy.api#documentation": "Deprecated. Whether to include creator metadata in each flag in the response. Resolve creator identity client-side (e.g. via the team members endpoint) instead; this parameter will be removed in a future release. Use `GET /v1/projects/:id/feature-flags/flags/:flagIdOrSlug?withMetadata=true` for single-flag lookups that need creator metadata."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Maximum number of flags to return. When not set, all flags are returned."
+          }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "cursor",
+            "smithy.api#documentation": "Pagination cursor to continue from."
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "search",
+            "smithy.api#documentation": "Search flags by their slug or description. Case-insensitive."
+          }
+        },
+        "tags": {
+          "target": "com.vercel.feature_flags#ListFlags1RequestTagsList",
+          "traits": {
+            "smithy.api#httpQuery": "tags",
+            "smithy.api#documentation": "Filter flags by tag. Repeat the parameter for multiple tags (all must match)."
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#ListFlags1ResponseDataItemMaintainerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlags1ResponseDataItemTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlags1ResponseDataItemVariantsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlags1ResponseDataItemKind": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlags1ResponseDataItemState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlags1ResponseDataItemTypeName": {
+      "type": "enum",
+      "members": {
+        "FLAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlags1ResponseDataItem": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "maintainerIds": {
+          "target": "com.vercel.feature_flags#ListFlags1ResponseDataItemMaintainerIdsList"
+        },
+        "permanent": {
+          "target": "smithy.api#Boolean"
+        },
+        "tags": {
+          "target": "com.vercel.feature_flags#ListFlags1ResponseDataItemTagsList"
+        },
+        "experiment": {
+          "target": "smithy.api#Document"
+        },
+        "updatedBy": {
+          "target": "smithy.api#String"
+        },
+        "variants": {
+          "target": "com.vercel.feature_flags#ListFlags1ResponseDataItemVariantsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environments": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.vercel.feature_flags#ListFlags1ResponseDataItemKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "seed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.vercel.feature_flags#ListFlags1ResponseDataItemState",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "typeName": {
+          "target": "com.vercel.feature_flags#ListFlags1ResponseDataItemTypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlags1ResponseDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.feature_flags#ListFlags1ResponseDataItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlags1ResponsePagination": {
+      "type": "structure",
+      "members": {
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlags1Response": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.vercel.feature_flags#ListFlags1ResponseDataList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pagination": {
+          "target": "com.vercel.feature_flags#ListFlags1ResponsePagination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#ListFlags1": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#ListFlags1Request"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#ListFlags1Response"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/flags",
+          "code": 200
+        },
+        "smithy.api#documentation": "List flags\n\nRetrieve feature flags for a project. The list can be filtered by state and supports pagination.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "cursor",
+          "outputToken": "pagination.next",
+          "items": "data"
+        }
+      }
+    },
+    "com.vercel.feature_flags#CreateAFlagRequestKind": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The kind of flag"
+      }
+    },
+    "com.vercel.feature_flags#CreateAFlagRequestVariantsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the variant",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A label for the variant"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the variant"
+          }
+        },
+        "value": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagRequestVariantsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.feature_flags#CreateAFlagRequestVariantsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The variants of the flag"
+      }
+    },
+    "com.vercel.feature_flags#CreateAFlagRequestEnvironmentsValueRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagRequestEnvironmentsValue": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "reuse": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Allows linking this environment to another environment so this flag will be evaluated with the other flag's configuration"
+          }
+        },
+        "targets": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Allows assigning targets to variants while bypassing the flag's rules"
+          }
+        },
+        "pausedOutcome": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.vercel.feature_flags#CreateAFlagRequestEnvironmentsValueRulesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "fallthrough": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The revision of the environment config"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagRequestEnvironmentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.vercel.feature_flags#CreateAFlagRequestEnvironmentsValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration for the flag in different environments"
+      }
+    },
+    "com.vercel.feature_flags#CreateAFlagRequestState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagRequestMaintainerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user ids of the maintainers of the flag"
+      }
+    },
+    "com.vercel.feature_flags#CreateAFlagRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for categorizing the flag"
+      }
+    },
+    "com.vercel.feature_flags#CreateAFlagRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "kind": {
+          "target": "com.vercel.feature_flags#CreateAFlagRequestKind",
+          "traits": {
+            "smithy.api#documentation": "The kind of flag",
+            "smithy.api#required": {}
+          }
+        },
+        "variants": {
+          "target": "com.vercel.feature_flags#CreateAFlagRequestVariantsList",
+          "traits": {
+            "smithy.api#documentation": "The variants of the flag"
+          }
+        },
+        "environments": {
+          "target": "com.vercel.feature_flags#CreateAFlagRequestEnvironmentsMap",
+          "traits": {
+            "smithy.api#documentation": "The configuration for the flag in different environments",
+            "smithy.api#required": {}
+          }
+        },
+        "seed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A random seed to prevent split points in different flags from having the same targets"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the flag"
+          }
+        },
+        "state": {
+          "target": "com.vercel.feature_flags#CreateAFlagRequestState"
+        },
+        "maintainerIds": {
+          "target": "com.vercel.feature_flags#CreateAFlagRequestMaintainerIdsList",
+          "traits": {
+            "smithy.api#documentation": "The user ids of the maintainers of the flag"
+          }
+        },
+        "permanent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this flag is marked as permanent, indicating it should not be removed"
+          }
+        },
+        "tags": {
+          "target": "com.vercel.feature_flags#CreateAFlagRequestTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags for categorizing the flag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseMaintainerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseExperimentGuardrailMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseExperimentDevice": {
+      "type": "enum",
+      "members": {
+        "ANDROID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "android"
+          }
+        },
+        "DESKTOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desktop"
+          }
+        },
+        "IOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ios"
+          }
+        },
+        "MWEB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mweb"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseExperimentDurationUnit": {
+      "type": "enum",
+      "members": {
+        "DAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "days"
+          }
+        },
+        "EXPOSURES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "exposures"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseExperimentAllocationUnit": {
+      "type": "enum",
+      "members": {
+        "COOKIEID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookieId"
+          }
+        },
+        "USERID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "userId"
+          }
+        },
+        "VISITORID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "visitorId"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseExperimentPrimaryMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseExperimentStatus": {
+      "type": "enum",
+      "members": {
+        "CLOSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "closed"
+          }
+        },
+        "DRAFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "draft"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseExperiment": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "numVariants": {
+          "target": "smithy.api#Double"
+        },
+        "surfaceArea": {
+          "target": "smithy.api#String"
+        },
+        "stickyRequirement": {
+          "target": "smithy.api#Boolean"
+        },
+        "layer": {
+          "target": "smithy.api#String"
+        },
+        "guardrailMetrics": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseExperimentGuardrailMetricsList"
+        },
+        "hypothesis": {
+          "target": "smithy.api#String"
+        },
+        "device": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseExperimentDevice"
+        },
+        "controlVariantId": {
+          "target": "smithy.api#String"
+        },
+        "startedAt": {
+          "target": "smithy.api#Double"
+        },
+        "endedAt": {
+          "target": "smithy.api#Double"
+        },
+        "decision": {
+          "target": "smithy.api#String"
+        },
+        "decisionReason": {
+          "target": "smithy.api#String"
+        },
+        "duration": {
+          "target": "smithy.api#Double"
+        },
+        "durationUnit": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseExperimentDurationUnit"
+        },
+        "allocationPercent": {
+          "target": "smithy.api#Double"
+        },
+        "allocationUnit": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseExperimentAllocationUnit",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "primaryMetrics": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseExperimentPrimaryMetricsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseExperimentStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseVariantsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseEnvironmentsValueRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseEnvironmentsValue": {
+      "type": "structure",
+      "members": {
+        "reuse": {
+          "target": "smithy.api#Document"
+        },
+        "targets": {
+          "target": "smithy.api#Document"
+        },
+        "revision": {
+          "target": "smithy.api#Double"
+        },
+        "pausedOutcome": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "fallthrough": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseEnvironmentsValueRulesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseEnvironmentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.vercel.feature_flags#CreateAFlagResponseEnvironmentsValue"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseKind": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponseTypeName": {
+      "type": "enum",
+      "members": {
+        "FLAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAFlagResponse": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "maintainerIds": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseMaintainerIdsList"
+        },
+        "permanent": {
+          "target": "smithy.api#Boolean"
+        },
+        "tags": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseTagsList"
+        },
+        "experiment": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseExperiment"
+        },
+        "updatedBy": {
+          "target": "smithy.api#String"
+        },
+        "variants": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseVariantsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environments": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseEnvironmentsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "seed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseState",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "typeName": {
+          "target": "com.vercel.feature_flags#CreateAFlagResponseTypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#CreateAFlag": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#CreateAFlagRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#CreateAFlagResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Conflict"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/flags",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a flag\n\nCreate a new feature flag for a project. The flag must have a unique slug within the project and specify its kind (boolean, string, number, or json)."
+      }
+    },
+    "com.vercel.feature_flags#GetAFlagRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "flagIdOrSlug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The flag id or name"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "ifMatch",
+            "smithy.api#documentation": "Etag to match, can be used interchangeably with the `if-match` header"
+          }
+        },
+        "withMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "withMetadata",
+            "smithy.api#documentation": "Whether to include metadata in the response"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#GetAFlagResponseMaintainerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseExperimentGuardrailMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseExperimentDevice": {
+      "type": "enum",
+      "members": {
+        "ANDROID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "android"
+          }
+        },
+        "DESKTOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desktop"
+          }
+        },
+        "IOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ios"
+          }
+        },
+        "MWEB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mweb"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseExperimentDurationUnit": {
+      "type": "enum",
+      "members": {
+        "DAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "days"
+          }
+        },
+        "EXPOSURES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "exposures"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseExperimentAllocationUnit": {
+      "type": "enum",
+      "members": {
+        "COOKIEID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookieId"
+          }
+        },
+        "USERID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "userId"
+          }
+        },
+        "VISITORID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "visitorId"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseExperimentPrimaryMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseExperimentStatus": {
+      "type": "enum",
+      "members": {
+        "CLOSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "closed"
+          }
+        },
+        "DRAFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "draft"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseExperiment": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "numVariants": {
+          "target": "smithy.api#Double"
+        },
+        "surfaceArea": {
+          "target": "smithy.api#String"
+        },
+        "stickyRequirement": {
+          "target": "smithy.api#Boolean"
+        },
+        "layer": {
+          "target": "smithy.api#String"
+        },
+        "guardrailMetrics": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseExperimentGuardrailMetricsList"
+        },
+        "hypothesis": {
+          "target": "smithy.api#String"
+        },
+        "device": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseExperimentDevice"
+        },
+        "controlVariantId": {
+          "target": "smithy.api#String"
+        },
+        "startedAt": {
+          "target": "smithy.api#Double"
+        },
+        "endedAt": {
+          "target": "smithy.api#Double"
+        },
+        "decision": {
+          "target": "smithy.api#String"
+        },
+        "decisionReason": {
+          "target": "smithy.api#String"
+        },
+        "duration": {
+          "target": "smithy.api#Double"
+        },
+        "durationUnit": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseExperimentDurationUnit"
+        },
+        "allocationPercent": {
+          "target": "smithy.api#Double"
+        },
+        "allocationUnit": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseExperimentAllocationUnit",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "primaryMetrics": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseExperimentPrimaryMetricsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseExperimentStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseVariantsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseEnvironmentsValueRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseEnvironmentsValue": {
+      "type": "structure",
+      "members": {
+        "reuse": {
+          "target": "smithy.api#Document"
+        },
+        "targets": {
+          "target": "smithy.api#Document"
+        },
+        "revision": {
+          "target": "smithy.api#Double"
+        },
+        "pausedOutcome": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "fallthrough": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseEnvironmentsValueRulesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseEnvironmentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.vercel.feature_flags#GetAFlagResponseEnvironmentsValue"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseKind": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseTypeName": {
+      "type": "enum",
+      "members": {
+        "FLAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseMetadataCreator": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponseMetadata": {
+      "type": "structure",
+      "members": {
+        "creator": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseMetadataCreator"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAFlagResponse": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "maintainerIds": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseMaintainerIdsList"
+        },
+        "permanent": {
+          "target": "smithy.api#Boolean"
+        },
+        "tags": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseTagsList"
+        },
+        "experiment": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseExperiment"
+        },
+        "updatedBy": {
+          "target": "smithy.api#String"
+        },
+        "variants": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseVariantsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environments": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseEnvironmentsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "seed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseState",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "typeName": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseTypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.vercel.feature_flags#GetAFlagResponseMetadata"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#GetAFlag": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#GetAFlagRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#GetAFlagResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/flags/{flagIdOrSlug}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get a flag\n\nRetrieve a specific feature flag by its ID or slug."
+      }
+    },
+    "com.vercel.feature_flags#UpdateAFlagRequestVariantsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the variant",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A label for the variant"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the variant"
+          }
+        },
+        "value": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagRequestVariantsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.feature_flags#UpdateAFlagRequestVariantsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The variants of the flag"
+      }
+    },
+    "com.vercel.feature_flags#UpdateAFlagRequestEnvironmentsValueRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagRequestEnvironmentsValue": {
+      "type": "structure",
+      "members": {
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "reuse": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Allows linking this environment to another environment so this flag will be evaluated with the other flag's configuration"
+          }
+        },
+        "targets": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Allows assigning targets to variants while bypassing the flag's rules"
+          }
+        },
+        "pausedOutcome": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.vercel.feature_flags#UpdateAFlagRequestEnvironmentsValueRulesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "fallthrough": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The revision of the environment config"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagRequestEnvironmentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.vercel.feature_flags#UpdateAFlagRequestEnvironmentsValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration for the flag in different environments"
+      }
+    },
+    "com.vercel.feature_flags#UpdateAFlagRequestState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagRequestMaintainerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The user ids of the maintainers of the flag"
+      }
+    },
+    "com.vercel.feature_flags#UpdateAFlagRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags for categorizing the flag"
+      }
+    },
+    "com.vercel.feature_flags#UpdateAFlagRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "flagIdOrSlug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The flag id or name"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "ifMatch",
+            "smithy.api#documentation": "Etag to match, can be used interchangeably with the `if-match` header"
+          }
+        },
+        "withMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "withMetadata",
+            "smithy.api#documentation": "Whether to include metadata in the response"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user who created this patch"
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Additional message for this version"
+          }
+        },
+        "variants": {
+          "target": "com.vercel.feature_flags#UpdateAFlagRequestVariantsList",
+          "traits": {
+            "smithy.api#documentation": "The variants of the flag"
+          }
+        },
+        "environments": {
+          "target": "com.vercel.feature_flags#UpdateAFlagRequestEnvironmentsMap",
+          "traits": {
+            "smithy.api#documentation": "The configuration for the flag in different environments"
+          }
+        },
+        "seed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A random seed to prevent split points in different flags from having the same targets"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A description of the flag"
+          }
+        },
+        "state": {
+          "target": "com.vercel.feature_flags#UpdateAFlagRequestState"
+        },
+        "maintainerIds": {
+          "target": "com.vercel.feature_flags#UpdateAFlagRequestMaintainerIdsList",
+          "traits": {
+            "smithy.api#documentation": "The user ids of the maintainers of the flag"
+          }
+        },
+        "permanent": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this flag is marked as permanent, indicating it should not be removed"
+          }
+        },
+        "tags": {
+          "target": "com.vercel.feature_flags#UpdateAFlagRequestTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags for categorizing the flag"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0MaintainerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0TagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0ExperimentGuardrailMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0ExperimentDevice": {
+      "type": "enum",
+      "members": {
+        "ANDROID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "android"
+          }
+        },
+        "DESKTOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desktop"
+          }
+        },
+        "IOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ios"
+          }
+        },
+        "MWEB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mweb"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0ExperimentDurationUnit": {
+      "type": "enum",
+      "members": {
+        "DAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "days"
+          }
+        },
+        "EXPOSURES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "exposures"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0ExperimentAllocationUnit": {
+      "type": "enum",
+      "members": {
+        "COOKIEID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookieId"
+          }
+        },
+        "USERID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "userId"
+          }
+        },
+        "VISITORID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "visitorId"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0ExperimentPrimaryMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0ExperimentStatus": {
+      "type": "enum",
+      "members": {
+        "CLOSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "closed"
+          }
+        },
+        "DRAFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "draft"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0Experiment": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "numVariants": {
+          "target": "smithy.api#Double"
+        },
+        "surfaceArea": {
+          "target": "smithy.api#String"
+        },
+        "stickyRequirement": {
+          "target": "smithy.api#Boolean"
+        },
+        "layer": {
+          "target": "smithy.api#String"
+        },
+        "guardrailMetrics": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0ExperimentGuardrailMetricsList"
+        },
+        "hypothesis": {
+          "target": "smithy.api#String"
+        },
+        "device": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0ExperimentDevice"
+        },
+        "controlVariantId": {
+          "target": "smithy.api#String"
+        },
+        "startedAt": {
+          "target": "smithy.api#Double"
+        },
+        "endedAt": {
+          "target": "smithy.api#Double"
+        },
+        "decision": {
+          "target": "smithy.api#String"
+        },
+        "decisionReason": {
+          "target": "smithy.api#String"
+        },
+        "duration": {
+          "target": "smithy.api#Double"
+        },
+        "durationUnit": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0ExperimentDurationUnit"
+        },
+        "allocationPercent": {
+          "target": "smithy.api#Double"
+        },
+        "allocationUnit": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0ExperimentAllocationUnit",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "primaryMetrics": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0ExperimentPrimaryMetricsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0ExperimentStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0VariantsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0EnvironmentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0Kind": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0State": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0TypeName": {
+      "type": "enum",
+      "members": {
+        "FLAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "maintainerIds": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0MaintainerIdsList"
+        },
+        "permanent": {
+          "target": "smithy.api#Boolean"
+        },
+        "tags": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0TagsList"
+        },
+        "experiment": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0Experiment"
+        },
+        "updatedBy": {
+          "target": "smithy.api#String"
+        },
+        "variants": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0VariantsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environments": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0EnvironmentsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0Kind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "seed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0State",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "typeName": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0TypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1MaintainerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1TagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1ExperimentGuardrailMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1ExperimentDevice": {
+      "type": "enum",
+      "members": {
+        "ANDROID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "android"
+          }
+        },
+        "DESKTOP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desktop"
+          }
+        },
+        "IOS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ios"
+          }
+        },
+        "MWEB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mweb"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1ExperimentDurationUnit": {
+      "type": "enum",
+      "members": {
+        "DAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "days"
+          }
+        },
+        "EXPOSURES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "exposures"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1ExperimentAllocationUnit": {
+      "type": "enum",
+      "members": {
+        "COOKIEID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cookieId"
+          }
+        },
+        "USERID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "userId"
+          }
+        },
+        "VISITORID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "visitorId"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1ExperimentPrimaryMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1ExperimentStatus": {
+      "type": "enum",
+      "members": {
+        "CLOSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "closed"
+          }
+        },
+        "DRAFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "draft"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1Experiment": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "numVariants": {
+          "target": "smithy.api#Double"
+        },
+        "surfaceArea": {
+          "target": "smithy.api#String"
+        },
+        "stickyRequirement": {
+          "target": "smithy.api#Boolean"
+        },
+        "layer": {
+          "target": "smithy.api#String"
+        },
+        "guardrailMetrics": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1ExperimentGuardrailMetricsList"
+        },
+        "hypothesis": {
+          "target": "smithy.api#String"
+        },
+        "device": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1ExperimentDevice"
+        },
+        "controlVariantId": {
+          "target": "smithy.api#String"
+        },
+        "startedAt": {
+          "target": "smithy.api#Double"
+        },
+        "endedAt": {
+          "target": "smithy.api#Double"
+        },
+        "decision": {
+          "target": "smithy.api#String"
+        },
+        "decisionReason": {
+          "target": "smithy.api#String"
+        },
+        "duration": {
+          "target": "smithy.api#Double"
+        },
+        "durationUnit": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1ExperimentDurationUnit"
+        },
+        "allocationPercent": {
+          "target": "smithy.api#Double"
+        },
+        "allocationUnit": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1ExperimentAllocationUnit",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "primaryMetrics": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1ExperimentPrimaryMetricsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1ExperimentStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1VariantsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1EnvironmentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1Kind": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1State": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1TypeName": {
+      "type": "enum",
+      "members": {
+        "FLAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1Metadata": {
+      "type": "structure",
+      "members": {
+        "creator": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "maintainerIds": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1MaintainerIdsList"
+        },
+        "permanent": {
+          "target": "smithy.api#Boolean"
+        },
+        "tags": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1TagsList"
+        },
+        "experiment": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1Experiment"
+        },
+        "updatedBy": {
+          "target": "smithy.api#String"
+        },
+        "variants": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1VariantsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environments": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1EnvironmentsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1Kind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "seed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1State",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "typeName": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1TypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1Metadata"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBodyCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateAFlagResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.feature_flags#UpdateAFlagResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#UpdateAFlag": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#UpdateAFlagRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#UpdateAFlagResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Conflict"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/flags/{flagIdOrSlug}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update a flag\n\nUpdate an existing feature flag. This endpoint supports partial updates, allowing you to modify specific properties like variants, environments, or state without providing the full flag configuration."
+      }
+    },
+    "com.vercel.feature_flags#DeleteAFlagRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "flagIdOrSlug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The flag id or name"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "ifMatch",
+            "smithy.api#documentation": "Etag to match, can be used interchangeably with the `if-match` header"
+          }
+        },
+        "withMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "withMetadata",
+            "smithy.api#documentation": "Whether to include metadata in the response"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#DeleteAFlag": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#DeleteAFlagRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Conflict"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/flags/{flagIdOrSlug}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a flag\n\nPermanently delete a feature flag from the project. This action cannot be undone. Consider archiving the flag instead if you may need it in the future."
+      }
+    },
+    "com.vercel.feature_flags#ListFlagVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "flagIdOrSlug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "limit"
+          }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "cursor",
+            "smithy.api#documentation": "Pagination cursor"
+          }
+        },
+        "environment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "environment",
+            "smithy.api#documentation": "Environment to filter by"
+          }
+        },
+        "withMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "withMetadata",
+            "smithy.api#documentation": "Whether to include metadata"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#ListFlagVersionsResponseVersionsItemChangedEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlagVersionsResponseVersionsItem": {
+      "type": "structure",
+      "members": {
+        "createdBy": {
+          "target": "smithy.api#String"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        },
+        "data": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "flagId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "changedEnvironments": {
+          "target": "com.vercel.feature_flags#ListFlagVersionsResponseVersionsItemChangedEnvironmentsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlagVersionsResponseVersionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.feature_flags#ListFlagVersionsResponseVersionsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListFlagVersionsResponse": {
+      "type": "structure",
+      "members": {
+        "versions": {
+          "target": "com.vercel.feature_flags#ListFlagVersionsResponseVersionsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pagination": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#ListFlagVersions": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#ListFlagVersionsRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#ListFlagVersionsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/flags/{flagIdOrSlug}/versions",
+          "code": 200
+        },
+        "smithy.api#documentation": "List flag versions\n\nLists flag versions for a given flag."
+      }
+    },
+    "com.vercel.feature_flags#GetProjectFlagSettingsRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#GetProjectFlagSettingsResponseTypeName": {
+      "type": "enum",
+      "members": {
+        "SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "settings"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetProjectFlagSettingsResponseEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetProjectFlagSettingsResponseEntitiesItemAttributesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetProjectFlagSettingsResponseEntitiesItem": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "attributes": {
+          "target": "com.vercel.feature_flags#GetProjectFlagSettingsResponseEntitiesItemAttributesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetProjectFlagSettingsResponseEntitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.feature_flags#GetProjectFlagSettingsResponseEntitiesItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetProjectFlagSettingsResponseMetadata": {
+      "type": "structure",
+      "members": {
+        "activeFlagCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "archivedFlagCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "segmentCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "packSizeInBytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "packRevision": {
+          "target": "smithy.api#Double"
+        },
+        "configUpdatedAt": {
+          "target": "smithy.api#Double"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetProjectFlagSettingsResponse": {
+      "type": "structure",
+      "members": {
+        "typeName": {
+          "target": "com.vercel.feature_flags#GetProjectFlagSettingsResponseTypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String"
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environments": {
+          "target": "com.vercel.feature_flags#GetProjectFlagSettingsResponseEnvironmentsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "entities": {
+          "target": "com.vercel.feature_flags#GetProjectFlagSettingsResponseEntitiesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double"
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double"
+        },
+        "metadata": {
+          "target": "com.vercel.feature_flags#GetProjectFlagSettingsResponseMetadata",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#GetProjectFlagSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#GetProjectFlagSettingsRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#GetProjectFlagSettingsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/settings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get project flag settings\n\nRetrieve feature flag settings for a project."
+      }
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettingsRequestEntitiesItemAttributesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettingsRequestEntitiesItem": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "attributes": {
+          "target": "com.vercel.feature_flags#UpdateProjectFlagSettingsRequestEntitiesItemAttributesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettingsRequestEntitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.feature_flags#UpdateProjectFlagSettingsRequestEntitiesItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettingsRequestEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The environments to sync"
+      }
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettingsRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "entities": {
+          "target": "com.vercel.feature_flags#UpdateProjectFlagSettingsRequestEntitiesList"
+        },
+        "environments": {
+          "target": "com.vercel.feature_flags#UpdateProjectFlagSettingsRequestEnvironmentsList",
+          "traits": {
+            "smithy.api#documentation": "The environments to sync"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettingsResponseTypeName": {
+      "type": "enum",
+      "members": {
+        "SETTINGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "settings"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettingsResponseEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettingsResponseEntitiesItemAttributesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettingsResponseEntitiesItem": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "attributes": {
+          "target": "com.vercel.feature_flags#UpdateProjectFlagSettingsResponseEntitiesItemAttributesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettingsResponseEntitiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.feature_flags#UpdateProjectFlagSettingsResponseEntitiesItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettingsResponseMetadata": {
+      "type": "structure",
+      "members": {
+        "activeFlagCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "archivedFlagCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "segmentCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "packSizeInBytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "packRevision": {
+          "target": "smithy.api#Double"
+        },
+        "configUpdatedAt": {
+          "target": "smithy.api#Double"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettingsResponse": {
+      "type": "structure",
+      "members": {
+        "typeName": {
+          "target": "com.vercel.feature_flags#UpdateProjectFlagSettingsResponseTypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String"
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environments": {
+          "target": "com.vercel.feature_flags#UpdateProjectFlagSettingsResponseEnvironmentsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "entities": {
+          "target": "com.vercel.feature_flags#UpdateProjectFlagSettingsResponseEntitiesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double"
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double"
+        },
+        "metadata": {
+          "target": "com.vercel.feature_flags#UpdateProjectFlagSettingsResponseMetadata",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#UpdateProjectFlagSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#UpdateProjectFlagSettingsRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#UpdateProjectFlagSettingsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Conflict"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/settings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update project flag settings\n\nUpdate feature flag settings for a project."
+      }
+    },
+    "com.vercel.feature_flags#ListTeamProjectFlagSettingsRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Maximum number of settings to return."
+          }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "cursor",
+            "smithy.api#documentation": "Pagination cursor to continue from."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#ListTeamProjectFlagSettingsResponseBodyCase1DataList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListTeamProjectFlagSettingsResponseBodyCase1Pagination": {
+      "type": "structure",
+      "members": {
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListTeamProjectFlagSettingsResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.vercel.feature_flags#ListTeamProjectFlagSettingsResponseBodyCase1DataList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pagination": {
+          "target": "com.vercel.feature_flags#ListTeamProjectFlagSettingsResponseBodyCase1Pagination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListTeamProjectFlagSettingsResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Document"
+        },
+        "Case1": {
+          "target": "com.vercel.feature_flags#ListTeamProjectFlagSettingsResponseBodyCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListTeamProjectFlagSettingsResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.feature_flags#ListTeamProjectFlagSettingsResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#ListTeamProjectFlagSettings": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#ListTeamProjectFlagSettingsRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#ListTeamProjectFlagSettingsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/teams/{teamId}/feature-flags/settings",
+          "code": 200
+        },
+        "smithy.api#documentation": "List team project flag settings\n\nRetrieve feature flag settings for projects in a team."
+      }
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeamRequestState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeamRequestKind": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeamRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeamRequestMaintainerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeamRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "state": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeamRequestState",
+          "traits": {
+            "smithy.api#httpQuery": "state",
+            "smithy.api#documentation": "The state of the flags to retrieve. Defaults to `active`."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Maximum number of flags to return."
+          }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "cursor",
+            "smithy.api#documentation": "Pagination cursor to continue from."
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "search",
+            "smithy.api#documentation": "Search flags by their slug or description. Case-insensitive."
+          }
+        },
+        "kind": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeamRequestKind",
+          "traits": {
+            "smithy.api#httpQuery": "kind",
+            "smithy.api#documentation": "The kind of flags to retrieve."
+          }
+        },
+        "tags": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeamRequestTagsList",
+          "traits": {
+            "smithy.api#httpQuery": "tags",
+            "smithy.api#documentation": "Filter flags by tag. Repeat the parameter for multiple tags (all must match)."
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "createdBy",
+            "smithy.api#documentation": "Filter flags by the id of the entity that created them (a user or team id)."
+          }
+        },
+        "maintainerIds": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeamRequestMaintainerIdsList",
+          "traits": {
+            "smithy.api#httpQuery": "maintainerIds",
+            "smithy.api#documentation": "Filter flags by maintainer user id. Repeat the parameter for multiple maintainers (any may match)."
+          }
+        },
+        "includeMarketplaceFlags": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "includeMarketplaceFlags",
+            "smithy.api#documentation": "Whether to include Marketplace experimentation items in the paginated response. Defaults to false."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeamResponsePagination": {
+      "type": "structure",
+      "members": {
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeamResponseDataList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeamResponse": {
+      "type": "structure",
+      "members": {
+        "pagination": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeamResponsePagination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "data": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeamResponseDataList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#ListAllFlagsForATeamRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#ListAllFlagsForATeamResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v2/teams/{teamId}/feature-flags/flags",
+          "code": 200
+        },
+        "smithy.api#documentation": "List all flags for a team\n\nRetrieve all feature flags for a team across all projects. Returns an opaque cursor for pagination.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "cursor",
+          "outputToken": "pagination.next",
+          "items": "data"
+        }
+      }
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1RequestState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1RequestKind": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1RequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1Request": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "state": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam1RequestState",
+          "traits": {
+            "smithy.api#httpQuery": "state",
+            "smithy.api#documentation": "The state of the flags to retrieve. Defaults to `active`."
+          }
+        },
+        "withMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "withMetadata",
+            "smithy.api#documentation": "Deprecated. Whether to include creator metadata in each flag in the response. Resolve creator identity client-side (e.g. via the team members endpoint) instead; this parameter will be removed in a future release."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Maximum number of flags to return."
+          }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "cursor",
+            "smithy.api#documentation": "Pagination cursor to continue from."
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "search",
+            "smithy.api#documentation": "Search flags by their slug or description. Case-insensitive."
+          }
+        },
+        "kind": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam1RequestKind",
+          "traits": {
+            "smithy.api#httpQuery": "kind",
+            "smithy.api#documentation": "The kind of flags to retrieve."
+          }
+        },
+        "tags": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam1RequestTagsList",
+          "traits": {
+            "smithy.api#httpQuery": "tags",
+            "smithy.api#documentation": "Filter flags by tag. Repeat the parameter for multiple tags (all must match)."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItemMaintainerIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItemTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItemVariantsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItemKind": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItemState": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "ARCHIVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "archived"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItemTypeName": {
+      "type": "enum",
+      "members": {
+        "FLAG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flag"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItem": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "maintainerIds": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItemMaintainerIdsList"
+        },
+        "permanent": {
+          "target": "smithy.api#Boolean"
+        },
+        "tags": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItemTagsList"
+        },
+        "experiment": {
+          "target": "smithy.api#Document"
+        },
+        "updatedBy": {
+          "target": "smithy.api#String"
+        },
+        "variants": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItemVariantsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environments": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItemKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "seed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItemState",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "typeName": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItemTypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1ResponsePagination": {
+      "type": "structure",
+      "members": {
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1Response": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam1ResponseDataList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pagination": {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam1ResponsePagination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#ListAllFlagsForATeam1": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#ListAllFlagsForATeam1Request"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#ListAllFlagsForATeam1Response"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/teams/{teamId}/feature-flags/flags",
+          "code": 200
+        },
+        "smithy.api#documentation": "List all flags for a team\n\nRetrieve all feature flags for a team across all projects. The list can be filtered by state and supports pagination.",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "cursor",
+          "outputToken": "pagination.next",
+          "items": "data"
+        }
+      }
+    },
+    "com.vercel.feature_flags#ListSegmentsRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "withMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "withMetadata",
+            "smithy.api#documentation": "Whether to include metadata"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#ListSegmentsResponseDataItemUsedByFlagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListSegmentsResponseDataItemUsedBySegmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListSegmentsResponseDataItemTypeName": {
+      "type": "enum",
+      "members": {
+        "SEGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "segment"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListSegmentsResponseDataItem": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "createdBy": {
+          "target": "smithy.api#String"
+        },
+        "usedByFlags": {
+          "target": "com.vercel.feature_flags#ListSegmentsResponseDataItemUsedByFlagsList"
+        },
+        "usedBySegments": {
+          "target": "com.vercel.feature_flags#ListSegmentsResponseDataItemUsedBySegmentsList"
+        },
+        "data": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "typeName": {
+          "target": "com.vercel.feature_flags#ListSegmentsResponseDataItemTypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListSegmentsResponseDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.feature_flags#ListSegmentsResponseDataItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#ListSegmentsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.vercel.feature_flags#ListSegmentsResponseDataList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#ListSegments": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#ListSegmentsRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#ListSegmentsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/segments",
+          "code": 200
+        },
+        "smithy.api#documentation": "List segments\n\nList all feature flag segments for a project."
+      }
+    },
+    "com.vercel.feature_flags#CreateASegmentRequestDataRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateASegmentRequestDataIncludeMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateASegmentRequestDataExcludeMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateASegmentRequestData": {
+      "type": "structure",
+      "members": {
+        "rules": {
+          "target": "com.vercel.feature_flags#CreateASegmentRequestDataRulesList"
+        },
+        "include": {
+          "target": "com.vercel.feature_flags#CreateASegmentRequestDataIncludeMap"
+        },
+        "exclude": {
+          "target": "com.vercel.feature_flags#CreateASegmentRequestDataExcludeMap"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The data of the segment"
+      }
+    },
+    "com.vercel.feature_flags#CreateASegmentRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The entity who created the segment"
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "data": {
+          "target": "com.vercel.feature_flags#CreateASegmentRequestData",
+          "traits": {
+            "smithy.api#documentation": "The data of the segment",
+            "smithy.api#required": {}
+          }
+        },
+        "hint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#CreateASegmentResponseUsedByFlagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateASegmentResponseUsedBySegmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateASegmentResponseDataRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateASegmentResponseDataIncludeMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateASegmentResponseDataExcludeMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateASegmentResponseData": {
+      "type": "structure",
+      "members": {
+        "rules": {
+          "target": "com.vercel.feature_flags#CreateASegmentResponseDataRulesList"
+        },
+        "include": {
+          "target": "com.vercel.feature_flags#CreateASegmentResponseDataIncludeMap"
+        },
+        "exclude": {
+          "target": "com.vercel.feature_flags#CreateASegmentResponseDataExcludeMap"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateASegmentResponseTypeName": {
+      "type": "enum",
+      "members": {
+        "SEGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "segment"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateASegmentResponse": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "createdBy": {
+          "target": "smithy.api#String"
+        },
+        "usedByFlags": {
+          "target": "com.vercel.feature_flags#CreateASegmentResponseUsedByFlagsList"
+        },
+        "usedBySegments": {
+          "target": "com.vercel.feature_flags#CreateASegmentResponseUsedBySegmentsList"
+        },
+        "data": {
+          "target": "com.vercel.feature_flags#CreateASegmentResponseData",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "typeName": {
+          "target": "com.vercel.feature_flags#CreateASegmentResponseTypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#CreateASegment": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#CreateASegmentRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#CreateASegmentResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Conflict"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/segments",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a segment\n\nCreate a new feature flag segment."
+      }
+    },
+    "com.vercel.feature_flags#GetASegmentRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "segmentIdOrSlug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The segment slug"
+          }
+        },
+        "withMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "withMetadata",
+            "smithy.api#documentation": "Whether to include metadata"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#GetASegmentResponseUsedByFlagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetASegmentResponseUsedBySegmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetASegmentResponseDataRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetASegmentResponseDataIncludeMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetASegmentResponseDataExcludeMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetASegmentResponseData": {
+      "type": "structure",
+      "members": {
+        "rules": {
+          "target": "com.vercel.feature_flags#GetASegmentResponseDataRulesList"
+        },
+        "include": {
+          "target": "com.vercel.feature_flags#GetASegmentResponseDataIncludeMap"
+        },
+        "exclude": {
+          "target": "com.vercel.feature_flags#GetASegmentResponseDataExcludeMap"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetASegmentResponseTypeName": {
+      "type": "enum",
+      "members": {
+        "SEGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "segment"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetASegmentResponseMetadataCreator": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetASegmentResponseMetadata": {
+      "type": "structure",
+      "members": {
+        "creator": {
+          "target": "com.vercel.feature_flags#GetASegmentResponseMetadataCreator"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetASegmentResponse": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "createdBy": {
+          "target": "smithy.api#String"
+        },
+        "usedByFlags": {
+          "target": "com.vercel.feature_flags#GetASegmentResponseUsedByFlagsList"
+        },
+        "usedBySegments": {
+          "target": "com.vercel.feature_flags#GetASegmentResponseUsedBySegmentsList"
+        },
+        "data": {
+          "target": "com.vercel.feature_flags#GetASegmentResponseData",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "typeName": {
+          "target": "com.vercel.feature_flags#GetASegmentResponseTypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.vercel.feature_flags#GetASegmentResponseMetadata"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#GetASegment": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#GetASegmentRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#GetASegmentResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/segments/{segmentIdOrSlug}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get a segment\n\nRetrieve a feature flag segment by ID or slug."
+      }
+    },
+    "com.vercel.feature_flags#UpdateASegmentRequestOperationsItemAction": {
+      "type": "enum",
+      "members": {
+        "ADD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "add"
+          }
+        },
+        "REMOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "remove"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentRequestOperationsItemField": {
+      "type": "enum",
+      "members": {
+        "INCLUDE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "include"
+          }
+        },
+        "EXCLUDE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "exclude"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentRequestOperationsItem": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.vercel.feature_flags#UpdateASegmentRequestOperationsItemAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "field": {
+          "target": "com.vercel.feature_flags#UpdateASegmentRequestOperationsItemField",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "entity": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentRequestOperationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.feature_flags#UpdateASegmentRequestOperationsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentRequestDataRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentRequestDataIncludeMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentRequestDataExcludeMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentRequestData": {
+      "type": "structure",
+      "members": {
+        "rules": {
+          "target": "com.vercel.feature_flags#UpdateASegmentRequestDataRulesList"
+        },
+        "include": {
+          "target": "com.vercel.feature_flags#UpdateASegmentRequestDataIncludeMap"
+        },
+        "exclude": {
+          "target": "com.vercel.feature_flags#UpdateASegmentRequestDataExcludeMap"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The data of the segment"
+      }
+    },
+    "com.vercel.feature_flags#UpdateASegmentRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "segmentIdOrSlug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The segment slug"
+          }
+        },
+        "withMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "withMetadata",
+            "smithy.api#documentation": "Whether to include metadata"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "operations": {
+          "target": "com.vercel.feature_flags#UpdateASegmentRequestOperationsList"
+        },
+        "label": {
+          "target": "smithy.api#String"
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "data": {
+          "target": "com.vercel.feature_flags#UpdateASegmentRequestData",
+          "traits": {
+            "smithy.api#documentation": "The data of the segment"
+          }
+        },
+        "hint": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase0UsedByFlagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase0UsedBySegmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase0DataRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase0Data": {
+      "type": "structure",
+      "members": {
+        "rules": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase0DataRulesList"
+        },
+        "include": {
+          "target": "smithy.api#Document"
+        },
+        "exclude": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase0TypeName": {
+      "type": "enum",
+      "members": {
+        "SEGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "segment"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase0": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "createdBy": {
+          "target": "smithy.api#String"
+        },
+        "usedByFlags": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase0UsedByFlagsList"
+        },
+        "usedBySegments": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase0UsedBySegmentsList"
+        },
+        "data": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase0Data",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "typeName": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase0TypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1UsedByFlagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1UsedBySegmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1DataRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1Data": {
+      "type": "structure",
+      "members": {
+        "rules": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1DataRulesList"
+        },
+        "include": {
+          "target": "smithy.api#Document"
+        },
+        "exclude": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1TypeName": {
+      "type": "enum",
+      "members": {
+        "SEGMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "segment"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1Metadata": {
+      "type": "structure",
+      "members": {
+        "creator": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "createdBy": {
+          "target": "smithy.api#String"
+        },
+        "usedByFlags": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1UsedByFlagsList"
+        },
+        "usedBySegments": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1UsedBySegmentsList"
+        },
+        "data": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1Data",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "typeName": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1TypeName",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1Metadata"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBodyCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#UpdateASegmentResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.feature_flags#UpdateASegmentResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#UpdateASegment": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#UpdateASegmentRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#UpdateASegmentResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Conflict"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/segments/{segmentIdOrSlug}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update a segment\n\nUpdate an existing feature flag segment."
+      }
+    },
+    "com.vercel.feature_flags#DeleteASegmentRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "segmentIdOrSlug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The segment slug"
+          }
+        },
+        "withMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "withMetadata",
+            "smithy.api#documentation": "Whether to include metadata"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#DeleteASegment": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#DeleteASegmentRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Conflict"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/segments/{segmentIdOrSlug}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a segment\n\nDelete a feature flag segment."
+      }
+    },
+    "com.vercel.feature_flags#RetrieveTheFeatureFlagsOfADeploymentRequest": {
+      "type": "structure",
+      "members": {
+        "deploymentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#RetrieveTheFeatureFlagsOfADeploymentResponseFlagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#RetrieveTheFeatureFlagsOfADeploymentResponseStatus": {
+      "type": "structure",
+      "members": {
+        "deploymentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "responseStatus": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The HTTP status code from the flags discovery endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "flagCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of flag definitions returned by the flags discovery endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#RetrieveTheFeatureFlagsOfADeploymentResponse": {
+      "type": "structure",
+      "members": {
+        "flags": {
+          "target": "com.vercel.feature_flags#RetrieveTheFeatureFlagsOfADeploymentResponseFlagsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.feature_flags#RetrieveTheFeatureFlagsOfADeploymentResponseStatus",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#RetrieveTheFeatureFlagsOfADeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#RetrieveTheFeatureFlagsOfADeploymentRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#RetrieveTheFeatureFlagsOfADeploymentResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/deployments/{deploymentId}/feature-flags",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve the feature flags of a deployment\n\nRetrieve the feature flags of a deployment."
+      }
+    },
+    "com.vercel.feature_flags#GetAllSdkKeysRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#GetAllSdkKeysResponseDataItemType": {
+      "type": "enum",
+      "members": {
+        "CLIENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        },
+        "SERVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "server"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAllSdkKeysResponseDataItem": {
+      "type": "structure",
+      "members": {
+        "hashKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.vercel.feature_flags#GetAllSdkKeysResponseDataItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String"
+        },
+        "deletedAt": {
+          "target": "smithy.api#Double"
+        },
+        "partialKeyValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Partially-masked representation of the SDK key value, safe to display in UIs. The value is the `vf_<type>_` prefix followed by the first 3 characters of the secret portion and a fixed 8-character `*` mask (e.g. `vf_server_abc********`).",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Shared metadata for a Flags SDK key, safe to return on both LIST and CREATE. Never contains cleartext secrets."
+      }
+    },
+    "com.vercel.feature_flags#GetAllSdkKeysResponseDataList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.feature_flags#GetAllSdkKeysResponseDataItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#GetAllSdkKeysResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.vercel.feature_flags#GetAllSdkKeysResponseDataList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#GetAllSdkKeys": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#GetAllSdkKeysRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#GetAllSdkKeysResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/sdk-keys",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get all SDK keys\n\nGets all SDK keys for a project."
+      }
+    },
+    "com.vercel.feature_flags#CreateAnSdkKeyRequestSdkKeyType": {
+      "type": "enum",
+      "members": {
+        "SERVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "server"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        },
+        "CLIENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAnSdkKeyRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "sdkKeyType": {
+          "target": "com.vercel.feature_flags#CreateAnSdkKeyRequestSdkKeyType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#CreateAnSdkKeyResponseType": {
+      "type": "enum",
+      "members": {
+        "CLIENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "client"
+          }
+        },
+        "MOBILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile"
+          }
+        },
+        "SERVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "server"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.feature_flags#CreateAnSdkKeyResponse": {
+      "type": "structure",
+      "members": {
+        "hashKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.vercel.feature_flags#CreateAnSdkKeyResponseType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String"
+        },
+        "deletedAt": {
+          "target": "smithy.api#Double"
+        },
+        "partialKeyValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Partially-masked representation of the SDK key value, safe to display in UIs. The value is the `vf_<type>_` prefix followed by the first 3 characters of the secret portion and a fixed 8-character `*` mask (e.g. `vf_server_abc********`).",
+            "smithy.api#required": {}
+          }
+        },
+        "keyValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cleartext value of the SDK key.",
+            "smithy.api#required": {}
+          }
+        },
+        "tokenValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cleartext value of the Edge Config token, when the project has an Edge Config connection."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.feature_flags#CreateAnSdkKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#CreateAnSdkKeyRequest"
+      },
+      "output": {
+        "target": "com.vercel.feature_flags#CreateAnSdkKeyResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Conflict"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/sdk-keys",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create an SDK key\n\nCreates an SDK key."
+      }
+    },
+    "com.vercel.feature_flags#DeleteAnSdkKeyRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The project id or name"
+          }
+        },
+        "hashKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The SDK key hash key to delete"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.feature_flags#DeleteAnSdkKey": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.feature_flags#DeleteAnSdkKeyRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.feature_flags#BadRequest"
+        },
+        {
+          "target": "com.vercel.feature_flags#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.feature_flags#Forbidden"
+        },
+        {
+          "target": "com.vercel.feature_flags#NotFound"
+        },
+        {
+          "target": "com.vercel.feature_flags#Conflict"
+        },
+        {
+          "target": "com.vercel.feature_flags#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/projects/{projectIdOrName}/feature-flags/sdk-keys/{hashKey}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete an SDK key\n\nDeletes an SDK key."
+      }
+    },
+    "com.vercel.feature_flags#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.feature_flags#PaymentRequired": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 402,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 402
+          }
+        ]
+      }
+    },
+    "com.vercel.feature_flags#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.feature_flags#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.feature_flags#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.feature_flags#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
+    "com.vercel.feature_flags#FeatureFlags": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.feature_flags#ListFlags"
+        },
+        {
+          "target": "com.vercel.feature_flags#ListFlags1"
+        },
+        {
+          "target": "com.vercel.feature_flags#CreateAFlag"
+        },
+        {
+          "target": "com.vercel.feature_flags#GetAFlag"
+        },
+        {
+          "target": "com.vercel.feature_flags#UpdateAFlag"
+        },
+        {
+          "target": "com.vercel.feature_flags#DeleteAFlag"
+        },
+        {
+          "target": "com.vercel.feature_flags#ListFlagVersions"
+        },
+        {
+          "target": "com.vercel.feature_flags#GetProjectFlagSettings"
+        },
+        {
+          "target": "com.vercel.feature_flags#UpdateProjectFlagSettings"
+        },
+        {
+          "target": "com.vercel.feature_flags#ListTeamProjectFlagSettings"
+        },
+        {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam"
+        },
+        {
+          "target": "com.vercel.feature_flags#ListAllFlagsForATeam1"
+        },
+        {
+          "target": "com.vercel.feature_flags#ListSegments"
+        },
+        {
+          "target": "com.vercel.feature_flags#CreateASegment"
+        },
+        {
+          "target": "com.vercel.feature_flags#GetASegment"
+        },
+        {
+          "target": "com.vercel.feature_flags#UpdateASegment"
+        },
+        {
+          "target": "com.vercel.feature_flags#DeleteASegment"
+        },
+        {
+          "target": "com.vercel.feature_flags#RetrieveTheFeatureFlagsOfADeployment"
+        },
+        {
+          "target": "com.vercel.feature_flags#GetAllSdkKeys"
+        },
+        {
+          "target": "com.vercel.feature_flags#CreateAnSdkKey"
+        },
+        {
+          "target": "com.vercel.feature_flags#DeleteAnSdkKey"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel feature-flags",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/feature_flags/."
+      }
+    }
+  }
+}

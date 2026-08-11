@@ -1,0 +1,1742 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsRequestSortBy": {
+      "type": "enum",
+      "members": {
+        "SOURCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "source"
+          }
+        },
+        "DESTINATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "destination"
+          }
+        },
+        "STATUSCODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "statusCode"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsRequestSortOrder": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "versionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "versionId"
+          }
+        },
+        "q": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "q"
+          }
+        },
+        "diff": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "diff"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "sort_by": {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsRequestSortBy",
+          "traits": {
+            "smithy.api#httpQuery": "sort_by"
+          }
+        },
+        "sort_order": {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsRequestSortOrder",
+          "traits": {
+            "smithy.api#httpQuery": "sort_order"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase0Map": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase1Version": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the version. The key may be duplicated across versions if the contents are the same as a different version.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional name for the version. If not provided, defaults to an ISO timestamp string."
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version has not been promoted to production yet and is not serving end users."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "redirectCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of redirects in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging link for previewing redirects in this version."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase1RedirectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase1Pagination": {
+      "type": "structure",
+      "members": {
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "numPages": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase1Version",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "redirects": {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase1RedirectsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pagination": {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase1Pagination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase2RedirectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase2Version": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the version. The key may be duplicated across versions if the contents are the same as a different version.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional name for the version. If not provided, defaults to an ISO timestamp string."
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version has not been promoted to production yet and is not serving end users."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "redirectCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of redirects in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging link for previewing redirects in this version."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase2Pagination": {
+      "type": "structure",
+      "members": {
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "numPages": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase2": {
+      "type": "structure",
+      "members": {
+        "redirects": {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase2RedirectsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase2Version"
+        },
+        "pagination": {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase2Pagination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase0Map"
+        },
+        "Case1": {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase1"
+        },
+        "Case2": {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBodyCase2"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.bulk_redirects#GetsProjectLevelRedirects": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsRequest"
+      },
+      "output": {
+        "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirectsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.bulk_redirects#BadRequest"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Forbidden"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#NotFound"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/bulk-redirects",
+          "code": 200
+        },
+        "smithy.api#documentation": "Gets project-level redirects.\n\nGet the version history for a project's bulk redirects"
+      }
+    },
+    "com.vercel.bulk_redirects#StagesNewRedirectsForAProjectRequestRedirectsItem": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "destination": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "statusCode": {
+          "target": "smithy.api#Document"
+        },
+        "permanent": {
+          "target": "smithy.api#Boolean"
+        },
+        "caseSensitive": {
+          "target": "smithy.api#Boolean"
+        },
+        "query": {
+          "target": "smithy.api#Boolean"
+        },
+        "preserveQueryParams": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#StagesNewRedirectsForAProjectRequestRedirectsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.bulk_redirects#StagesNewRedirectsForAProjectRequestRedirectsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#StagesNewRedirectsForAProjectRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "overwrite": {
+          "target": "smithy.api#Boolean"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "redirects": {
+          "target": "com.vercel.bulk_redirects#StagesNewRedirectsForAProjectRequestRedirectsList"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.bulk_redirects#StagesNewRedirectsForAProjectResponseVersion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the version. The key may be duplicated across versions if the contents are the same as a different version.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional name for the version. If not provided, defaults to an ISO timestamp string."
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version has not been promoted to production yet and is not serving end users."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "redirectCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of redirects in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging link for previewing redirects in this version."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#StagesNewRedirectsForAProjectResponse": {
+      "type": "structure",
+      "members": {
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "version": {
+          "target": "com.vercel.bulk_redirects#StagesNewRedirectsForAProjectResponseVersion",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.bulk_redirects#StagesNewRedirectsForAProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.bulk_redirects#StagesNewRedirectsForAProjectRequest"
+      },
+      "output": {
+        "target": "com.vercel.bulk_redirects#StagesNewRedirectsForAProjectResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.bulk_redirects#BadRequest"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Forbidden"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/v1/bulk-redirects",
+          "code": 200
+        },
+        "smithy.api#documentation": "Stages new redirects for a project.\n\nStages new redirects for a project and returns the new version."
+      }
+    },
+    "com.vercel.bulk_redirects#EditAProjectLevelRedirectRequestRedirect": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "destination": {
+          "target": "smithy.api#String"
+        },
+        "statusCode": {
+          "target": "smithy.api#Double"
+        },
+        "permanent": {
+          "target": "smithy.api#Boolean"
+        },
+        "caseSensitive": {
+          "target": "smithy.api#Boolean"
+        },
+        "query": {
+          "target": "smithy.api#Boolean"
+        },
+        "preserveQueryParams": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The redirect object to edit. The source field is used to match the redirect to modify."
+      }
+    },
+    "com.vercel.bulk_redirects#EditAProjectLevelRedirectRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "redirect": {
+          "target": "com.vercel.bulk_redirects#EditAProjectLevelRedirectRequestRedirect",
+          "traits": {
+            "smithy.api#documentation": "The redirect object to edit. The source field is used to match the redirect to modify.",
+            "smithy.api#required": {}
+          }
+        },
+        "restore": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, restores the redirect from the latest production version to staging."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.bulk_redirects#EditAProjectLevelRedirectResponseVersion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the version. The key may be duplicated across versions if the contents are the same as a different version.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional name for the version. If not provided, defaults to an ISO timestamp string."
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version has not been promoted to production yet and is not serving end users."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "redirectCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of redirects in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging link for previewing redirects in this version."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#EditAProjectLevelRedirectResponse": {
+      "type": "structure",
+      "members": {
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "version": {
+          "target": "com.vercel.bulk_redirects#EditAProjectLevelRedirectResponseVersion",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.bulk_redirects#EditAProjectLevelRedirect": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.bulk_redirects#EditAProjectLevelRedirectRequest"
+      },
+      "output": {
+        "target": "com.vercel.bulk_redirects#EditAProjectLevelRedirectResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.bulk_redirects#BadRequest"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Forbidden"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#NotFound"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/v1/bulk-redirects",
+          "code": 200
+        },
+        "smithy.api#documentation": "Edit a project-level redirect.\n\nEdits a single redirect identified by its source path. Stages a new change with the modified redirect and returns the alias for the new version in the response."
+      }
+    },
+    "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsRequestRedirectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The redirects to delete. The source of the redirect is used to match the redirect to delete."
+      }
+    },
+    "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "redirects": {
+          "target": "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsRequestRedirectsList",
+          "traits": {
+            "smithy.api#documentation": "The redirects to delete. The source of the redirect is used to match the redirect to delete.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBodyCase0Version": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the version. The key may be duplicated across versions if the contents are the same as a different version.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional name for the version. If not provided, defaults to an ISO timestamp string."
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version has not been promoted to production yet and is not serving end users."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "redirectCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of redirects in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging link for previewing redirects in this version."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBodyCase0": {
+      "type": "structure",
+      "members": {
+        "alias": {
+          "target": "smithy.api#String"
+        },
+        "version": {
+          "target": "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBodyCase0Version",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBodyCase1Version": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the version. The key may be duplicated across versions if the contents are the same as a different version.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional name for the version. If not provided, defaults to an ISO timestamp string."
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version has not been promoted to production yet and is not serving end users."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "redirectCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of redirects in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging link for previewing redirects in this version."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "alias": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "version": {
+          "target": "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBodyCase1Version",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBodyCase2Version": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the version. The key may be duplicated across versions if the contents are the same as a different version.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional name for the version. If not provided, defaults to an ISO timestamp string."
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version has not been promoted to production yet and is not serving end users."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "redirectCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of redirects in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging link for previewing redirects in this version."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBodyCase2": {
+      "type": "structure",
+      "members": {
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "version": {
+          "target": "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBodyCase2Version",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBodyCase1"
+        },
+        "Case2": {
+          "target": "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBodyCase2"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.bulk_redirects#DeleteProjectLevelRedirects": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsRequest"
+      },
+      "output": {
+        "target": "com.vercel.bulk_redirects#DeleteProjectLevelRedirectsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.bulk_redirects#BadRequest"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Forbidden"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#NotFound"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/bulk-redirects",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete project-level redirects.\n\nDeletes the provided redirects from the latest version of the projects' bulk redirects. Stages a new change with the new redirects and returns the alias for the new version in the response."
+      }
+    },
+    "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersionRequestRedirectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The redirects to restore. The source of the redirect is used to match the redirect to restore."
+      }
+    },
+    "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersionRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "redirects": {
+          "target": "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersionRequestRedirectsList",
+          "traits": {
+            "smithy.api#documentation": "The redirects to restore. The source of the redirect is used to match the redirect to restore.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersionResponseVersion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the version. The key may be duplicated across versions if the contents are the same as a different version.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional name for the version. If not provided, defaults to an ISO timestamp string."
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version has not been promoted to production yet and is not serving end users."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "redirectCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of redirects in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging link for previewing redirects in this version."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersionResponseRestoredList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersionResponseFailedToRestoreList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersionResponse": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersionResponseVersion",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "restored": {
+          "target": "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersionResponseRestoredList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "failedToRestore": {
+          "target": "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersionResponseFailedToRestoreList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersionRequest"
+      },
+      "output": {
+        "target": "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersionResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.bulk_redirects#BadRequest"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Forbidden"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#NotFound"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/bulk-redirects/restore",
+          "code": 200
+        },
+        "smithy.api#documentation": "Restore staged project-level redirects to their production version.\n\nRestores the provided redirects in the staging version to the value in the production version. If no production version exists, removes the redirects from staging."
+      }
+    },
+    "com.vercel.bulk_redirects#GetTheVersionHistoryForAProjectSRedirectsRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.bulk_redirects#GetTheVersionHistoryForAProjectSRedirectsResponseVersionsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the version. The key may be duplicated across versions if the contents are the same as a different version.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional name for the version. If not provided, defaults to an ISO timestamp string."
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version has not been promoted to production yet and is not serving end users."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "redirectCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of redirects in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging link for previewing redirects in this version."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetTheVersionHistoryForAProjectSRedirectsResponseVersionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.bulk_redirects#GetTheVersionHistoryForAProjectSRedirectsResponseVersionsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#GetTheVersionHistoryForAProjectSRedirectsResponse": {
+      "type": "structure",
+      "members": {
+        "versions": {
+          "target": "com.vercel.bulk_redirects#GetTheVersionHistoryForAProjectSRedirectsResponseVersionsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.bulk_redirects#GetTheVersionHistoryForAProjectSRedirects": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.bulk_redirects#GetTheVersionHistoryForAProjectSRedirectsRequest"
+      },
+      "output": {
+        "target": "com.vercel.bulk_redirects#GetTheVersionHistoryForAProjectSRedirectsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.bulk_redirects#BadRequest"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Forbidden"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/bulk-redirects/versions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the version history for a project's redirects.\n\nGet the version history for a project's bulk redirects"
+      }
+    },
+    "com.vercel.bulk_redirects#PromoteAStagingVersionToProductionOrRestoreAPreviousProductionVersionRequestAction": {
+      "type": "enum",
+      "members": {
+        "PROMOTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "promote"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restore"
+          }
+        },
+        "DISCARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "discard"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#PromoteAStagingVersionToProductionOrRestoreAPreviousProductionVersionRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.bulk_redirects#PromoteAStagingVersionToProductionOrRestoreAPreviousProductionVersionRequestAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.bulk_redirects#PromoteAStagingVersionToProductionOrRestoreAPreviousProductionVersionResponseVersion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The key of the version. The key may be duplicated across versions if the contents are the same as a different version.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional name for the version. If not provided, defaults to an ISO timestamp string."
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version has not been promoted to production yet and is not serving end users."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "redirectCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of redirects in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging link for previewing redirects in this version."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.bulk_redirects#PromoteAStagingVersionToProductionOrRestoreAPreviousProductionVersionResponse": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.vercel.bulk_redirects#PromoteAStagingVersionToProductionOrRestoreAPreviousProductionVersionResponseVersion",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.bulk_redirects#PromoteAStagingVersionToProductionOrRestoreAPreviousProductionVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.bulk_redirects#PromoteAStagingVersionToProductionOrRestoreAPreviousProductionVersionRequest"
+      },
+      "output": {
+        "target": "com.vercel.bulk_redirects#PromoteAStagingVersionToProductionOrRestoreAPreviousProductionVersionResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.bulk_redirects#BadRequest"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Forbidden"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#NotFound"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/bulk-redirects/versions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Promote a staging version to production or restore a previous production version.\n\nUpdate a version by promoting staging to production or restoring a previous production version"
+      }
+    },
+    "com.vercel.bulk_redirects#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.bulk_redirects#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.bulk_redirects#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.bulk_redirects#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.bulk_redirects#BulkRedirects": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.bulk_redirects#GetsProjectLevelRedirects"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#StagesNewRedirectsForAProject"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#EditAProjectLevelRedirect"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#DeleteProjectLevelRedirects"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#RestoreStagedProjectLevelRedirectsToTheirProductionVersion"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#GetTheVersionHistoryForAProjectSRedirects"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#PromoteAStagingVersionToProductionOrRestoreAPreviousProductionVersion"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel bulk-redirects",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/bulk_redirects/."
+      }
+    }
+  }
+}

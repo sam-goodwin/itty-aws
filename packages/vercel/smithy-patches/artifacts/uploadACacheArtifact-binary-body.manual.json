@@ -1,0 +1,22 @@
+{
+  "description": "PUT /v8/artifacts/{hash} takes the artifact bytes as an application/octet-stream body. The shared OpenAPI converter models application/json request bodies only, so the operation would otherwise go out with no body at all — every upload would store an empty artifact. Adds the whole-body member plus the media type the protocol sends it under.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.vercel.artifacts#UploadACacheArtifact/traits/smithy.api#http/bodyMediaType",
+      "value": "application/octet-stream"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.vercel.artifacts#UploadACacheArtifactRequest/members/body",
+      "value": {
+        "target": "smithy.api#Blob",
+        "traits": {
+          "smithy.api#httpPayload": {},
+          "smithy.api#required": {},
+          "smithy.api#documentation": "The artifact bytes, sent verbatim as application/octet-stream."
+        }
+      }
+    }
+  ]
+}

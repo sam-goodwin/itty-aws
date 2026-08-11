@@ -1,0 +1,1698 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.microfrontends#ListMicrofrontendsGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.microfrontends#ListMicrofrontendsGroupsResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.microfrontends#ListMicrofrontendsGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.microfrontends#ListMicrofrontendsGroupsRequest"
+      },
+      "output": {
+        "target": "com.vercel.microfrontends#ListMicrofrontendsGroupsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.microfrontends#BadRequest"
+        },
+        {
+          "target": "com.vercel.microfrontends#Forbidden"
+        },
+        {
+          "target": "com.vercel.microfrontends#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/microfrontends/groups",
+          "code": 200
+        },
+        "smithy.api#documentation": "List microfrontends groups\n\nGet the microfrontends group IDs for a team."
+      }
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupRequest": {
+      "type": "structure",
+      "members": {
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemAliasList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemConnectConfigurationsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemEnvList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemCustomEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemFramework": {
+      "type": "enum",
+      "members": {
+        "ACTIX_WEB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "actix-web"
+          }
+        },
+        "ANGULAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "angular"
+          }
+        },
+        "ASH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ash"
+          }
+        },
+        "ASTRO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "astro"
+          }
+        },
+        "AXUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "axum"
+          }
+        },
+        "BLITZJS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "blitzjs"
+          }
+        },
+        "BRUNCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "brunch"
+          }
+        },
+        "BUN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bun"
+          }
+        },
+        "CONTAINER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "container"
+          }
+        },
+        "CREATE_REACT_APP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "create-react-app"
+          }
+        },
+        "DJANGO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "django"
+          }
+        },
+        "DOCUSAURUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "docusaurus"
+          }
+        },
+        "DOCUSAURUS_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "docusaurus-2"
+          }
+        },
+        "DOJO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dojo"
+          }
+        },
+        "ELEVENTY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eleventy"
+          }
+        },
+        "ELYSIA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "elysia"
+          }
+        },
+        "EMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ember"
+          }
+        },
+        "EVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "eve"
+          }
+        },
+        "EXPRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "express"
+          }
+        },
+        "FASTAPI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fastapi"
+          }
+        },
+        "FASTHTML": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fasthtml"
+          }
+        },
+        "FASTIFY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fastify"
+          }
+        },
+        "FLASK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flask"
+          }
+        },
+        "GATSBY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gatsby"
+          }
+        },
+        "GO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "go"
+          }
+        },
+        "GRIDSOME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gridsome"
+          }
+        },
+        "H3": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "h3"
+          }
+        },
+        "HEXO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hexo"
+          }
+        },
+        "HONO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hono"
+          }
+        },
+        "HUGO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hugo"
+          }
+        },
+        "HYDROGEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hydrogen"
+          }
+        },
+        "IONIC_ANGULAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ionic-angular"
+          }
+        },
+        "IONIC_REACT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ionic-react"
+          }
+        },
+        "JEKYLL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "jekyll"
+          }
+        },
+        "KOA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "koa"
+          }
+        },
+        "MASTRA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mastra"
+          }
+        },
+        "MIDDLEMAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "middleman"
+          }
+        },
+        "NESTJS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nestjs"
+          }
+        },
+        "NEXTJS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nextjs"
+          }
+        },
+        "NITRO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nitro"
+          }
+        },
+        "NODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "node"
+          }
+        },
+        "NUXTJS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "nuxtjs"
+          }
+        },
+        "PARCEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parcel"
+          }
+        },
+        "POLYMER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "polymer"
+          }
+        },
+        "PREACT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "preact"
+          }
+        },
+        "PYTHON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "python"
+          }
+        },
+        "REACT_ROUTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "react-router"
+          }
+        },
+        "REDWOODJS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "redwoodjs"
+          }
+        },
+        "REMIX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "remix"
+          }
+        },
+        "RUBY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ruby"
+          }
+        },
+        "RUST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rust"
+          }
+        },
+        "SABER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "saber"
+          }
+        },
+        "SANITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sanity"
+          }
+        },
+        "SANITY_V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sanity-v2"
+          }
+        },
+        "SAPPER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sapper"
+          }
+        },
+        "SCULLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "scully"
+          }
+        },
+        "SERVICES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "services"
+          }
+        },
+        "SOLIDSTART": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "solidstart"
+          }
+        },
+        "SOLIDSTART_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "solidstart-1"
+          }
+        },
+        "STENCIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stencil"
+          }
+        },
+        "STORYBOOK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "storybook"
+          }
+        },
+        "SVELTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "svelte"
+          }
+        },
+        "SVELTEKIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sveltekit"
+          }
+        },
+        "SVELTEKIT_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sveltekit-1"
+          }
+        },
+        "TANSTACK_START": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tanstack-start"
+          }
+        },
+        "TANSTACK_START_LOVABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tanstack-start-lovable"
+          }
+        },
+        "UMIJS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "umijs"
+          }
+        },
+        "VITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vite"
+          }
+        },
+        "VITEPRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vitepress"
+          }
+        },
+        "VUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vue"
+          }
+        },
+        "VUEPRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vuepress"
+          }
+        },
+        "XMCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "xmcp"
+          }
+        },
+        "ZOLA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zola"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemServicesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemIpBucketsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemLatestDeploymentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemNodeVersion": {
+      "type": "enum",
+      "members": {
+        "_10_X": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "10.x"
+          }
+        },
+        "_12_X": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "12.x"
+          }
+        },
+        "_14_X": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "14.x"
+          }
+        },
+        "_16_X": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "16.x"
+          }
+        },
+        "_18_X": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "18.x"
+          }
+        },
+        "_20_X": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "20.x"
+          }
+        },
+        "_22_X": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "22.x"
+          }
+        },
+        "_24_X": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "24.x"
+          }
+        },
+        "_8_10_X": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "8.10.x"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemSkewProtectionAllowedDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemInternalRoutesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemDismissedToastsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItem": {
+      "type": "structure",
+      "members": {
+        "accountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "creator": {
+          "target": "smithy.api#Document"
+        },
+        "alias": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemAliasList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "analytics": {
+          "target": "smithy.api#Document"
+        },
+        "appliedCve55182Migration": {
+          "target": "smithy.api#Boolean"
+        },
+        "speedInsights": {
+          "target": "smithy.api#Document"
+        },
+        "autoExposeSystemEnvs": {
+          "target": "smithy.api#Boolean"
+        },
+        "autoAssignCustomDomains": {
+          "target": "smithy.api#Boolean"
+        },
+        "autoAssignCustomDomainsUpdatedBy": {
+          "target": "smithy.api#String"
+        },
+        "buildCommand": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "commandForIgnoringBuildStep": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "connectConfigurations": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemConnectConfigurationsList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "connectConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "connectBuildsEnabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "passiveConnectConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double"
+        },
+        "customerSupportCodeVisibility": {
+          "target": "smithy.api#Boolean"
+        },
+        "crons": {
+          "target": "smithy.api#Document"
+        },
+        "dataCache": {
+          "target": "smithy.api#Document"
+        },
+        "deploymentExpiration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.",
+            "smithy.api#required": {}
+          }
+        },
+        "expiration": {
+          "target": "smithy.api#Document"
+        },
+        "devCommand": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "directoryListing": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "installCommand": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "env": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemEnvList"
+        },
+        "customEnvironments": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemCustomEnvironmentsList"
+        },
+        "framework": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemFramework",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "services": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemServicesList"
+        },
+        "gitForkProtection": {
+          "target": "smithy.api#Boolean"
+        },
+        "gitLFS": {
+          "target": "smithy.api#Boolean"
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ipBuckets": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemIpBucketsList"
+        },
+        "jobs": {
+          "target": "smithy.api#Document"
+        },
+        "latestDeployments": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemLatestDeploymentsList"
+        },
+        "link": {
+          "target": "smithy.api#Document"
+        },
+        "blobs": {
+          "target": "smithy.api#Document"
+        },
+        "microfrontends": {
+          "target": "smithy.api#Document"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "nodeVersion": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemNodeVersion",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "optionsAllowlist": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "outputDirectory": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passwordProtection": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "passport": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "protectionConfig": {
+          "target": "smithy.api#Document"
+        },
+        "sandbox": {
+          "target": "smithy.api#Document"
+        },
+        "productionDeploymentsFastLane": {
+          "target": "smithy.api#Boolean"
+        },
+        "resourceConfig": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rollbackDescription": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
+          }
+        },
+        "rollingRelease": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Project-level rolling release configuration that defines how deployments should be gradually rolled out",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "defaultResourceConfig": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rootDirectory": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "serverlessFunctionZeroConfigFailover": {
+          "target": "smithy.api#Boolean"
+        },
+        "skewProtectionBoundaryAt": {
+          "target": "smithy.api#Double"
+        },
+        "skewProtectionMaxAge": {
+          "target": "smithy.api#Double"
+        },
+        "skewProtectionAllowedDomains": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemSkewProtectionAllowedDomainsList"
+        },
+        "skipGitConnectDuringLink": {
+          "target": "smithy.api#Boolean"
+        },
+        "staticIps": {
+          "target": "smithy.api#Document"
+        },
+        "sourceFilesOutsideRootDirectory": {
+          "target": "smithy.api#Boolean"
+        },
+        "enableAffectedProjectsDeployments": {
+          "target": "smithy.api#Boolean"
+        },
+        "enableExternalRewriteCaching": {
+          "target": "smithy.api#Boolean"
+        },
+        "ssoProtection": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "targets": {
+          "target": "smithy.api#Document"
+        },
+        "transferCompletedAt": {
+          "target": "smithy.api#Double"
+        },
+        "transferStartedAt": {
+          "target": "smithy.api#Double"
+        },
+        "transferToAccountId": {
+          "target": "smithy.api#String"
+        },
+        "transferredFromAccountId": {
+          "target": "smithy.api#String"
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double"
+        },
+        "live": {
+          "target": "smithy.api#Boolean"
+        },
+        "enablePreviewFeedback": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "enableProductionFeedback": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "permissions": {
+          "target": "smithy.api#Document"
+        },
+        "lastRollbackTarget": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "lastAliasRequest": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "protectionBypass": {
+          "target": "smithy.api#Document"
+        },
+        "hasActiveBranches": {
+          "target": "smithy.api#Boolean"
+        },
+        "trustedIps": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "trustedSources": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "gitComments": {
+          "target": "smithy.api#Document"
+        },
+        "gitProviderOptions": {
+          "target": "smithy.api#Document"
+        },
+        "paused": {
+          "target": "smithy.api#Boolean"
+        },
+        "concurrencyBucketName": {
+          "target": "smithy.api#String"
+        },
+        "webAnalytics": {
+          "target": "smithy.api#Document"
+        },
+        "security": {
+          "target": "smithy.api#Document"
+        },
+        "oidcTokenConfig": {
+          "target": "smithy.api#Document"
+        },
+        "deploymentPolicy": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Project shape. `null` on a rule list clears the project's override for that rule type (fall back to team for every env); omitting is equivalent. Setting `deploymentPolicy` itself to `null` clears every override at once. Kept structurally distinct from {@link TeamDeploymentPolicy} so the two storage locations don't share a type by accident.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tier": {
+          "target": "smithy.api#String"
+        },
+        "usageStatus": {
+          "target": "smithy.api#Document"
+        },
+        "features": {
+          "target": "smithy.api#Document"
+        },
+        "v0": {
+          "target": "smithy.api#Boolean"
+        },
+        "v0Created": {
+          "target": "smithy.api#Boolean"
+        },
+        "abuse": {
+          "target": "smithy.api#Document"
+        },
+        "internalRoutes": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemInternalRoutesList"
+        },
+        "hasDeployments": {
+          "target": "smithy.api#Boolean"
+        },
+        "dismissedToasts": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItemDismissedToastsList"
+        },
+        "protectedSourcemaps": {
+          "target": "smithy.api#Boolean"
+        },
+        "tracing": {
+          "target": "smithy.api#Document"
+        },
+        "avatar": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponse": {
+      "type": "structure",
+      "members": {
+        "projects": {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponseProjectsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroup": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupRequest"
+      },
+      "output": {
+        "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroupResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.microfrontends#BadRequest"
+        },
+        {
+          "target": "com.vercel.microfrontends#Forbidden"
+        },
+        {
+          "target": "com.vercel.microfrontends#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/microfrontends/groups/{groupId}/projects",
+          "code": 200
+        },
+        "smithy.api#documentation": "List projects in a microfrontends group\n\nGet the microfrontends for a given group ID."
+      }
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForADeploymentRequest": {
+      "type": "structure",
+      "members": {
+        "deploymentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique deployment identifier"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForADeploymentResponseConfigVersion": {
+      "type": "enum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The version of the microfrontends config schema."
+      }
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForADeploymentResponseConfigApplicationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForADeploymentResponseConfigOptions": {
+      "type": "structure",
+      "members": {
+        "disableOverrides": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If you want to disable the overrides for the site. For example, if you are managing rewrites between applications externally, you may wish to disable the overrides on the toolbar as they will have no effect. See https://vercel.com/docs/microfrontends/managing-microfrontends/vercel-toolbar#routing-overrides."
+          }
+        },
+        "localProxyPort": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The port number used by the local proxy server. The default value is 3024. See https://vercel.com/docs/microfrontends/local-development."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional configuration options for the microfrontend."
+      }
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForADeploymentResponseConfig": {
+      "type": "structure",
+      "members": {
+        "_schema": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "See https://openapi.vercel.sh/microfrontends.json.",
+            "smithy.api#jsonName": "$schema"
+          }
+        },
+        "version": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForADeploymentResponseConfigVersion",
+          "traits": {
+            "smithy.api#documentation": "The version of the microfrontends config schema."
+          }
+        },
+        "applications": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForADeploymentResponseConfigApplicationsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForADeploymentResponseConfigOptions",
+          "traits": {
+            "smithy.api#documentation": "Optional configuration options for the microfrontend."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "projectIds are added when the config is uploaded to s3 deployment assets."
+      }
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForADeploymentResponse": {
+      "type": "structure",
+      "members": {
+        "config": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForADeploymentResponseConfig",
+          "traits": {
+            "smithy.api#documentation": "projectIds are added when the config is uploaded to s3 deployment assets.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForADeployment": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForADeploymentRequest"
+      },
+      "output": {
+        "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForADeploymentResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.microfrontends#BadRequest"
+        },
+        {
+          "target": "com.vercel.microfrontends#Forbidden"
+        },
+        {
+          "target": "com.vercel.microfrontends#NotFound"
+        },
+        {
+          "target": "com.vercel.microfrontends#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/microfrontends/{deploymentId}/config",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get microfrontends config for a deployment\n\nGet the microfrontends config for a deployment."
+      }
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForAProjectRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name or ID of the project"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForAProjectResponseConfigVersion": {
+      "type": "enum",
+      "members": {
+        "_1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "1"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The version of the microfrontends config schema."
+      }
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForAProjectResponseConfigApplicationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForAProjectResponseConfigOptions": {
+      "type": "structure",
+      "members": {
+        "disableOverrides": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If you want to disable the overrides for the site. For example, if you are managing rewrites between applications externally, you may wish to disable the overrides on the toolbar as they will have no effect. See https://vercel.com/docs/microfrontends/managing-microfrontends/vercel-toolbar#routing-overrides."
+          }
+        },
+        "localProxyPort": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The port number used by the local proxy server. The default value is 3024. See https://vercel.com/docs/microfrontends/local-development."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional configuration options for the microfrontend."
+      }
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForAProjectResponseConfig": {
+      "type": "structure",
+      "members": {
+        "_schema": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "See https://openapi.vercel.sh/microfrontends.json.",
+            "smithy.api#jsonName": "$schema"
+          }
+        },
+        "version": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForAProjectResponseConfigVersion",
+          "traits": {
+            "smithy.api#documentation": "The version of the microfrontends config schema."
+          }
+        },
+        "applications": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForAProjectResponseConfigApplicationsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForAProjectResponseConfigOptions",
+          "traits": {
+            "smithy.api#documentation": "Optional configuration options for the microfrontend."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "projectIds are added when the config is uploaded to s3 deployment assets."
+      }
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForAProjectResponse": {
+      "type": "structure",
+      "members": {
+        "config": {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForAProjectResponseConfig",
+          "traits": {
+            "smithy.api#documentation": "projectIds are added when the config is uploaded to s3 deployment assets.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.microfrontends#GetMicrofrontendsConfigForAProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForAProjectRequest"
+      },
+      "output": {
+        "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForAProjectResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.microfrontends#BadRequest"
+        },
+        {
+          "target": "com.vercel.microfrontends#Forbidden"
+        },
+        {
+          "target": "com.vercel.microfrontends#NotFound"
+        },
+        {
+          "target": "com.vercel.microfrontends#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/microfrontends/projects/{projectIdOrName}/production-mfe-config",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get microfrontends config for a project\n\nGet the microfrontends config for a project by ID or name."
+      }
+    },
+    "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplicationsRequestDefaultApp": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the project that will be used as the default app for the new microfrontend group",
+            "smithy.api#required": {}
+          }
+        },
+        "defaultRoute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default route for the default app of the new microfrontend group"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The default app for the new microfrontend group"
+      }
+    },
+    "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplicationsRequestOtherApplicationsItem": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of the project that will be used in the new microfrontend group",
+            "smithy.api#required": {}
+          }
+        },
+        "defaultRoute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The default route for the application in the new microfrontend group"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplicationsRequestOtherApplicationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplicationsRequestOtherApplicationsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of other applications that will be used in the new microfrontend group"
+      }
+    },
+    "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplicationsRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "groupName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the microfrontends group that will be used to identify the group",
+            "smithy.api#required": {}
+          }
+        },
+        "defaultApp": {
+          "target": "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplicationsRequestDefaultApp",
+          "traits": {
+            "smithy.api#documentation": "The default app for the new microfrontend group",
+            "smithy.api#required": {}
+          }
+        },
+        "otherApplications": {
+          "target": "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplicationsRequestOtherApplicationsList",
+          "traits": {
+            "smithy.api#documentation": "The list of other applications that will be used in the new microfrontend group",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplicationsResponseNewMicrofrontendsGroup": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "fallbackEnvironment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplicationsResponse": {
+      "type": "structure",
+      "members": {
+        "newMicrofrontendsGroup": {
+          "target": "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplicationsResponseNewMicrofrontendsGroup",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplications": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplicationsRequest"
+      },
+      "output": {
+        "target": "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplicationsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.microfrontends#BadRequest"
+        },
+        {
+          "target": "com.vercel.microfrontends#Forbidden"
+        },
+        {
+          "target": "com.vercel.microfrontends#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/microfrontends/group",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a microfrontends group with applications\n\nCreates a microfrontends group and attaches multiple projects in a single request."
+      }
+    },
+    "com.vercel.microfrontends#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.microfrontends#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.microfrontends#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.microfrontends#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.microfrontends#Microfrontends": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.microfrontends#ListMicrofrontendsGroups"
+        },
+        {
+          "target": "com.vercel.microfrontends#ListProjectsInAMicrofrontendsGroup"
+        },
+        {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForADeployment"
+        },
+        {
+          "target": "com.vercel.microfrontends#GetMicrofrontendsConfigForAProject"
+        },
+        {
+          "target": "com.vercel.microfrontends#CreateAMicrofrontendsGroupWithApplications"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel microfrontends",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/microfrontends/."
+      }
+    }
+  }
+}

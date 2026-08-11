@@ -1,0 +1,21 @@
+{
+  "description": "POST /v2/files takes the file bytes as an application/octet-stream body. The shared OpenAPI converter models application/json request bodies only, so the operation would otherwise upload nothing — and every `createANewDeployment` that references files depends on this call having actually sent them. Adds the whole-body member plus the media type the protocol sends it under.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.vercel.deployments#UploadDeploymentFiles/traits/smithy.api#http/bodyMediaType",
+      "value": "application/octet-stream"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.vercel.deployments#UploadDeploymentFilesRequest/members/body",
+      "value": {
+        "target": "smithy.api#Blob",
+        "traits": {
+          "smithy.api#httpPayload": {},
+          "smithy.api#documentation": "The file contents, sent verbatim as application/octet-stream. The docs mark the body optional — Vercel accepts a bodyless call that only registers the `x-Vercel-Digest` of an already-uploaded file."
+        }
+      }
+    }
+  ]
+}

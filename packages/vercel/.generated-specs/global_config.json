@@ -1,0 +1,2837 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.global_config#GetGlobalConfigsRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigsResponsePurposeCase0Type": {
+      "type": "enum",
+      "members": {
+        "FLAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flags"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigsResponsePurposeCase0": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.vercel.global_config#GetGlobalConfigsResponsePurposeCase0Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigsResponsePurposeCase1Type": {
+      "type": "enum",
+      "members": {
+        "EXPERIMENTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "experimentation"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigsResponsePurposeCase1": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.vercel.global_config#GetGlobalConfigsResponsePurposeCase1Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigsResponsePurpose": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.global_config#GetGlobalConfigsResponsePurposeCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.global_config#GetGlobalConfigsResponsePurposeCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigsResponseTransfer": {
+      "type": "structure",
+      "members": {
+        "fromAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "startedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "doneAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Keeps track of the current state of the Edge Config while it gets transferred."
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigsResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who created the Edge Config, optional because it is not always set."
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).",
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "purpose": {
+          "target": "com.vercel.global_config#GetGlobalConfigsResponsePurpose"
+        },
+        "deletedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "transfer": {
+          "target": "com.vercel.global_config#GetGlobalConfigsResponseTransfer",
+          "traits": {
+            "smithy.api#documentation": "Keeps track of the current state of the Edge Config while it gets transferred."
+          }
+        },
+        "schema": {
+          "target": "smithy.api#Document"
+        },
+        "syncedToDynamoAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating."
+          }
+        },
+        "sizeInBytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "itemCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigs": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#GetGlobalConfigsRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#GetGlobalConfigsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/global-config",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Global Configs\n\nReturns all Global Configs."
+      }
+    },
+    "com.vercel.global_config#CreateAGlobalConfigRequestItemsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#CreateAGlobalConfigRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "items": {
+          "target": "com.vercel.global_config#CreateAGlobalConfigRequestItemsMap"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#CreateAGlobalConfigResponsePurposeCase0Type": {
+      "type": "enum",
+      "members": {
+        "FLAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flags"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#CreateAGlobalConfigResponsePurposeCase0": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.vercel.global_config#CreateAGlobalConfigResponsePurposeCase0Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#CreateAGlobalConfigResponsePurposeCase1Type": {
+      "type": "enum",
+      "members": {
+        "EXPERIMENTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "experimentation"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#CreateAGlobalConfigResponsePurposeCase1": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.vercel.global_config#CreateAGlobalConfigResponsePurposeCase1Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#CreateAGlobalConfigResponsePurpose": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.global_config#CreateAGlobalConfigResponsePurposeCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.global_config#CreateAGlobalConfigResponsePurposeCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#CreateAGlobalConfigResponseTransfer": {
+      "type": "structure",
+      "members": {
+        "fromAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "startedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "doneAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Keeps track of the current state of the Edge Config while it gets transferred."
+      }
+    },
+    "com.vercel.global_config#CreateAGlobalConfigResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who created the Edge Config, optional because it is not always set."
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).",
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "purpose": {
+          "target": "com.vercel.global_config#CreateAGlobalConfigResponsePurpose"
+        },
+        "deletedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "transfer": {
+          "target": "com.vercel.global_config#CreateAGlobalConfigResponseTransfer",
+          "traits": {
+            "smithy.api#documentation": "Keeps track of the current state of the Edge Config while it gets transferred."
+          }
+        },
+        "schema": {
+          "target": "smithy.api#Document"
+        },
+        "syncedToDynamoAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating."
+          }
+        },
+        "sizeInBytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "itemCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#CreateAGlobalConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#CreateAGlobalConfigRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#CreateAGlobalConfigResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/global-config",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a Global Config\n\nCreates a Global Config."
+      }
+    },
+    "com.vercel.global_config#GetAGlobalConfigRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#GetAGlobalConfigResponsePurposeCase0Type": {
+      "type": "enum",
+      "members": {
+        "FLAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flags"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetAGlobalConfigResponsePurposeCase0": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.vercel.global_config#GetAGlobalConfigResponsePurposeCase0Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetAGlobalConfigResponsePurposeCase1Type": {
+      "type": "enum",
+      "members": {
+        "EXPERIMENTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "experimentation"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetAGlobalConfigResponsePurposeCase1": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.vercel.global_config#GetAGlobalConfigResponsePurposeCase1Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetAGlobalConfigResponsePurpose": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.global_config#GetAGlobalConfigResponsePurposeCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.global_config#GetAGlobalConfigResponsePurposeCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetAGlobalConfigResponseTransfer": {
+      "type": "structure",
+      "members": {
+        "fromAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "startedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "doneAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Keeps track of the current state of the Edge Config while it gets transferred."
+      }
+    },
+    "com.vercel.global_config#GetAGlobalConfigResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who created the Edge Config, optional because it is not always set."
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).",
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "purpose": {
+          "target": "com.vercel.global_config#GetAGlobalConfigResponsePurpose"
+        },
+        "deletedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "transfer": {
+          "target": "com.vercel.global_config#GetAGlobalConfigResponseTransfer",
+          "traits": {
+            "smithy.api#documentation": "Keeps track of the current state of the Edge Config while it gets transferred."
+          }
+        },
+        "schema": {
+          "target": "smithy.api#Document"
+        },
+        "syncedToDynamoAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating."
+          }
+        },
+        "sizeInBytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "itemCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#GetAGlobalConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#GetAGlobalConfigRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#GetAGlobalConfigResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/global-config/{edgeConfigId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get a Global Config\n\nReturns a Global Config."
+      }
+    },
+    "com.vercel.global_config#UpdateAGlobalConfigRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#UpdateAGlobalConfigResponsePurposeCase0Type": {
+      "type": "enum",
+      "members": {
+        "FLAGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "flags"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#UpdateAGlobalConfigResponsePurposeCase0": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.vercel.global_config#UpdateAGlobalConfigResponsePurposeCase0Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#UpdateAGlobalConfigResponsePurposeCase1Type": {
+      "type": "enum",
+      "members": {
+        "EXPERIMENTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "experimentation"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#UpdateAGlobalConfigResponsePurposeCase1": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.vercel.global_config#UpdateAGlobalConfigResponsePurposeCase1Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#UpdateAGlobalConfigResponsePurpose": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.global_config#UpdateAGlobalConfigResponsePurposeCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.global_config#UpdateAGlobalConfigResponsePurposeCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#UpdateAGlobalConfigResponseTransfer": {
+      "type": "structure",
+      "members": {
+        "fromAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "startedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "doneAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Keeps track of the current state of the Edge Config while it gets transferred."
+      }
+    },
+    "com.vercel.global_config#UpdateAGlobalConfigResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user who created the Edge Config, optional because it is not always set."
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).",
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "purpose": {
+          "target": "com.vercel.global_config#UpdateAGlobalConfigResponsePurpose"
+        },
+        "deletedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "transfer": {
+          "target": "com.vercel.global_config#UpdateAGlobalConfigResponseTransfer",
+          "traits": {
+            "smithy.api#documentation": "Keeps track of the current state of the Edge Config while it gets transferred."
+          }
+        },
+        "schema": {
+          "target": "smithy.api#Document"
+        },
+        "syncedToDynamoAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when the Edge Config was synced to DynamoDB initially. It is only set when syncing the entire Edge Config, not when updating."
+          }
+        },
+        "sizeInBytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "itemCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#UpdateAGlobalConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#UpdateAGlobalConfigRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#UpdateAGlobalConfigResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Conflict"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/v1/global-config/{edgeConfigId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update a Global Config\n\nUpdates a Global Config."
+      }
+    },
+    "com.vercel.global_config#DeleteAGlobalConfigRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#DeleteAGlobalConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#DeleteAGlobalConfigRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Conflict"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/global-config/{edgeConfigId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a Global Config\n\nDelete a Global Config by id."
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigItemsRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigItemsResponseBodyItemValueCase3List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigItemsResponseBodyItemValue": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Double"
+        },
+        "Case2": {
+          "target": "smithy.api#Document"
+        },
+        "Case3": {
+          "target": "com.vercel.global_config#GetGlobalConfigItemsResponseBodyItemValueCase3List"
+        },
+        "Case4": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigItemsResponseBodyItem": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "com.vercel.global_config#GetGlobalConfigItemsResponseBodyItemValue",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The Global Config."
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigItemsResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.global_config#GetGlobalConfigItemsResponseBodyItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigItemsResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.global_config#GetGlobalConfigItemsResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigItems": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#GetGlobalConfigItemsRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#GetGlobalConfigItemsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/global-config/{edgeConfigId}/items",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Global Config items\n\nReturns all items of a Global Config."
+      }
+    },
+    "com.vercel.global_config#UpdateGlobalConfigItemsInBatchRequestItemsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#UpdateGlobalConfigItemsInBatchRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "items": {
+          "target": "com.vercel.global_config#UpdateGlobalConfigItemsInBatchRequestItemsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#UpdateGlobalConfigItemsInBatchResponse": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#UpdateGlobalConfigItemsInBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#UpdateGlobalConfigItemsInBatchRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#UpdateGlobalConfigItemsInBatchResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Conflict"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        },
+        {
+          "target": "com.vercel.global_config#PreconditionFailed"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/v1/global-config/{edgeConfigId}/items",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update Global Config items in batch\n\nUpdate multiple Global Config Items in batch."
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigSchemaResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#GetGlobalConfigSchemaRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#GetGlobalConfigSchemaResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/global-config/{edgeConfigId}/schema",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Global Config schema\n\nReturns the schema of a Global Config."
+      }
+    },
+    "com.vercel.global_config#UpdateGlobalConfigSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "dryRun": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "dryRun"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "definition": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#UpdateGlobalConfigSchemaResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#UpdateGlobalConfigSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#UpdateGlobalConfigSchemaRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#UpdateGlobalConfigSchemaResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Conflict"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/global-config/{edgeConfigId}/schema",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update Global Config schema\n\nUpdate a Global Config's schema."
+      }
+    },
+    "com.vercel.global_config#DeleteAGlobalConfigSSchemaRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#DeleteAGlobalConfigSSchema": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#DeleteAGlobalConfigSSchemaRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Conflict"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/global-config/{edgeConfigId}/schema",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a Global Config's schema\n\nDeletes the schema of existing Global Config."
+      }
+    },
+    "com.vercel.global_config#GetAGlobalConfigItemRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "edgeConfigItemKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#GetAGlobalConfigItemResponseValueCase2Map": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetAGlobalConfigItemResponseValueCase3List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetAGlobalConfigItemResponseValue": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Double"
+        },
+        "Case2": {
+          "target": "com.vercel.global_config#GetAGlobalConfigItemResponseValueCase2Map"
+        },
+        "Case3": {
+          "target": "com.vercel.global_config#GetAGlobalConfigItemResponseValueCase3List"
+        },
+        "Case4": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetAGlobalConfigItemResponse": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "com.vercel.global_config#GetAGlobalConfigItemResponseValue",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#GetAGlobalConfigItem": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#GetAGlobalConfigItemRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#GetAGlobalConfigItemResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/global-config/{edgeConfigId}/item/{edgeConfigItemKey}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get a Global Config item\n\nReturns a specific Global Config Item."
+      }
+    },
+    "com.vercel.global_config#GetAllTokensOfAGlobalConfigRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#GetAllTokensOfAGlobalConfigResponse": {
+      "type": "structure",
+      "members": {
+        "partialToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A partially-masked representation of the token, safe to display in UIs. The format is the first 3 characters of the token followed by a fixed 8-character `*` mask (e.g. `550e8400-e29b-41d4-a716-446655440000` → `550********`). The mask length is intentionally fixed (not proportional to the original token length) to avoid leaking the token length. Prefer this field for display/reference in UIs and logs. The full, plaintext token is only disclosed once at creation time via `POST /v1/edge-config/:edgeConfigId/token`; use `id` to reference a token in subsequent calls (e.g. when deleting).",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is not the token itself, but rather an id to identify the token by",
+            "smithy.api#required": {}
+          }
+        },
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deprecated: the full, plaintext token. - Returned once by `POST /v1/edge-config/:edgeConfigId/token` (create). - Still returned by `GET /v1/edge-config/:edgeConfigId/token/:token` (detail) for backwards compatibility, but scheduled for removal. - **Not** returned by `GET /v1/edge-config/:edgeConfigId/tokens` (list); use `partialToken` for display and `id` to reference tokens. Do not rely on this field being present on read operations. Prefer `partialToken` for display and `id` for references."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#GetAllTokensOfAGlobalConfig": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#GetAllTokensOfAGlobalConfigRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#GetAllTokensOfAGlobalConfigResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/global-config/{edgeConfigId}/tokens",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get all tokens of a Global Config\n\nReturns all tokens of a Global Config."
+      }
+    },
+    "com.vercel.global_config#DeleteOneOrMoreGlobalConfigTokensRequestTokensList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#DeleteOneOrMoreGlobalConfigTokensRequestIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#DeleteOneOrMoreGlobalConfigTokensRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "tokens": {
+          "target": "com.vercel.global_config#DeleteOneOrMoreGlobalConfigTokensRequestTokensList"
+        },
+        "ids": {
+          "target": "com.vercel.global_config#DeleteOneOrMoreGlobalConfigTokensRequestIdsList"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#DeleteOneOrMoreGlobalConfigTokens": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#DeleteOneOrMoreGlobalConfigTokensRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Conflict"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/global-config/{edgeConfigId}/tokens",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete one or more Global Config tokens\n\nDeletes one or more tokens of an existing Global Config."
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigTokenMetaDataRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigTokenMetaDataResponse": {
+      "type": "structure",
+      "members": {
+        "partialToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A partially-masked representation of the token, safe to display in UIs. The format is the first 3 characters of the token followed by a fixed 8-character `*` mask (e.g. `550e8400-e29b-41d4-a716-446655440000` → `550********`). The mask length is intentionally fixed (not proportional to the original token length) to avoid leaking the token length. Prefer this field for display/reference in UIs and logs. The full, plaintext token is only disclosed once at creation time via `POST /v1/edge-config/:edgeConfigId/token`; use `id` to reference a token in subsequent calls (e.g. when deleting).",
+            "smithy.api#required": {}
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This is not the token itself, but rather an id to identify the token by",
+            "smithy.api#required": {}
+          }
+        },
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deprecated: the full, plaintext token. - Returned once by `POST /v1/edge-config/:edgeConfigId/token` (create). - Still returned by `GET /v1/edge-config/:edgeConfigId/token/:token` (detail) for backwards compatibility, but scheduled for removal. - **Not** returned by `GET /v1/edge-config/:edgeConfigId/tokens` (list); use `partialToken` for display and `id` to reference tokens. Do not rely on this field being present on read operations. Prefer `partialToken` for display and `id` for references."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigTokenMetaData": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#GetGlobalConfigTokenMetaDataRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#GetGlobalConfigTokenMetaDataResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/global-config/{edgeConfigId}/token/{token}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Global Config token meta data\n\nReturn meta data about a Global Config token."
+      }
+    },
+    "com.vercel.global_config#CreateAGlobalConfigTokenRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#CreateAGlobalConfigTokenResponse": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#CreateAGlobalConfigToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#CreateAGlobalConfigTokenRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#CreateAGlobalConfigTokenResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Conflict"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/global-config/{edgeConfigId}/token",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a Global Config token\n\nAdds a token to an existing Global Config."
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "edgeConfigBackupVersionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase0Backup": {
+      "type": "structure",
+      "members": {
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).",
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "items": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase0Metadata": {
+      "type": "structure",
+      "members": {
+        "updatedAt": {
+          "target": "smithy.api#String"
+        },
+        "updatedBy": {
+          "target": "smithy.api#String"
+        },
+        "itemsCount": {
+          "target": "smithy.api#Double"
+        },
+        "itemsBytes": {
+          "target": "smithy.api#Double"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase0User": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "avatar": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase0": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "backup": {
+          "target": "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase0Backup",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase0Metadata",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "user": {
+          "target": "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase0User"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The object the API responds with when requesting an Edge Config backup"
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase1User": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "avatar": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase1Backup": {
+      "type": "structure",
+      "members": {
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name for the Edge Config Names are not unique. Must start with an alphabetic character and can contain only alphanumeric characters and underscores).",
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "items": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase1Metadata": {
+      "type": "structure",
+      "members": {
+        "updatedAt": {
+          "target": "smithy.api#String"
+        },
+        "updatedBy": {
+          "target": "smithy.api#String"
+        },
+        "itemsCount": {
+          "target": "smithy.api#Double"
+        },
+        "itemsBytes": {
+          "target": "smithy.api#Double"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "user": {
+          "target": "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase1User",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "backup": {
+          "target": "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase1Backup",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase1Metadata",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.global_config#GetGlobalConfigBackupResponseBodyCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.global_config#GetGlobalConfigBackupResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#GetGlobalConfigBackupRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#GetGlobalConfigBackupResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/global-config/{edgeConfigId}/backups/{edgeConfigBackupVersionId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Global Config backup\n\nRetrieves a specific version of a Global Config from backup storage."
+      }
+    },
+    "com.vercel.global_config#RestoreGlobalConfigBackupRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "edgeConfigBackupVersionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#RestoreGlobalConfigBackupResponseStatus": {
+      "type": "enum",
+      "members": {
+        "OK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ok"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#RestoreGlobalConfigBackupResponse": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.vercel.global_config#RestoreGlobalConfigBackupResponseStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "restoredFrom": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "previousDigest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "digest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#RestoreGlobalConfigBackup": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#RestoreGlobalConfigBackupRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#RestoreGlobalConfigBackupResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Conflict"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        },
+        {
+          "target": "com.vercel.global_config#PreconditionFailed"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/global-config/{edgeConfigId}/backups/{edgeConfigBackupVersionId}/restore",
+          "code": 200
+        },
+        "smithy.api#documentation": "Restore Global Config backup\n\nRestores a Global Config backup."
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupsRequest": {
+      "type": "structure",
+      "members": {
+        "edgeConfigId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "next": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "next"
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "limit"
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "metadata"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupsResponseBackupsItem": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "smithy.api#Document"
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupsResponseBackupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.global_config#GetGlobalConfigBackupsResponseBackupsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupsResponsePagination": {
+      "type": "structure",
+      "members": {
+        "hasNext": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "next": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.global_config#GetGlobalConfigBackupsResponse": {
+      "type": "structure",
+      "members": {
+        "backups": {
+          "target": "com.vercel.global_config#GetGlobalConfigBackupsResponseBackupsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pagination": {
+          "target": "com.vercel.global_config#GetGlobalConfigBackupsResponsePagination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.global_config#GetGlobalConfigBackups": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.global_config#GetGlobalConfigBackupsRequest"
+      },
+      "output": {
+        "target": "com.vercel.global_config#GetGlobalConfigBackupsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.global_config#BadRequest"
+        },
+        {
+          "target": "com.vercel.global_config#Forbidden"
+        },
+        {
+          "target": "com.vercel.global_config#NotFound"
+        },
+        {
+          "target": "com.vercel.global_config#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/global-config/{edgeConfigId}/backups",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Global Config backups\n\nReturns backups of a Global Config."
+      }
+    },
+    "com.vercel.global_config#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.global_config#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.global_config#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.global_config#PaymentRequired": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 402,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 402
+          }
+        ]
+      }
+    },
+    "com.vercel.global_config#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.global_config#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
+    "com.vercel.global_config#PreconditionFailed": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 412,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 412
+          }
+        ]
+      }
+    },
+    "com.vercel.global_config#GlobalConfig": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.global_config#GetGlobalConfigs"
+        },
+        {
+          "target": "com.vercel.global_config#CreateAGlobalConfig"
+        },
+        {
+          "target": "com.vercel.global_config#GetAGlobalConfig"
+        },
+        {
+          "target": "com.vercel.global_config#UpdateAGlobalConfig"
+        },
+        {
+          "target": "com.vercel.global_config#DeleteAGlobalConfig"
+        },
+        {
+          "target": "com.vercel.global_config#GetGlobalConfigItems"
+        },
+        {
+          "target": "com.vercel.global_config#UpdateGlobalConfigItemsInBatch"
+        },
+        {
+          "target": "com.vercel.global_config#GetGlobalConfigSchema"
+        },
+        {
+          "target": "com.vercel.global_config#UpdateGlobalConfigSchema"
+        },
+        {
+          "target": "com.vercel.global_config#DeleteAGlobalConfigSSchema"
+        },
+        {
+          "target": "com.vercel.global_config#GetAGlobalConfigItem"
+        },
+        {
+          "target": "com.vercel.global_config#GetAllTokensOfAGlobalConfig"
+        },
+        {
+          "target": "com.vercel.global_config#DeleteOneOrMoreGlobalConfigTokens"
+        },
+        {
+          "target": "com.vercel.global_config#GetGlobalConfigTokenMetaData"
+        },
+        {
+          "target": "com.vercel.global_config#CreateAGlobalConfigToken"
+        },
+        {
+          "target": "com.vercel.global_config#GetGlobalConfigBackup"
+        },
+        {
+          "target": "com.vercel.global_config#RestoreGlobalConfigBackup"
+        },
+        {
+          "target": "com.vercel.global_config#GetGlobalConfigBackups"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel global-config",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/global_config/."
+      }
+    }
+  }
+}

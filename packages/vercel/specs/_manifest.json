@@ -1,0 +1,2248 @@
+{
+  "source": "https://vercel.com/docs/rest-api.md",
+  "count": 367,
+  "groups": [
+    "Other",
+    "access-groups",
+    "ai-gateway",
+    "aliases",
+    "artifacts",
+    "authentication",
+    "billing",
+    "bulk-redirects",
+    "certs",
+    "checks-v2",
+    "connect",
+    "deployments",
+    "dns",
+    "domains",
+    "domains-registrar",
+    "drains",
+    "edge-cache",
+    "environment",
+    "feature-flags",
+    "global-config",
+    "integrations",
+    "logs",
+    "marketplace",
+    "microfrontends",
+    "networking",
+    "observability",
+    "project-routes",
+    "projectMembers",
+    "projects",
+    "rolling-release",
+    "sandboxes",
+    "security",
+    "storage",
+    "teams",
+    "user",
+    "vcr",
+    "web-analytics",
+    "webhooks"
+  ],
+  "pages": [
+    {
+      "group": "access-groups",
+      "page": "https://vercel.com/docs/rest-api/access-groups/reads-an-access-group",
+      "markdown": "https://vercel.com/docs/rest-api/access-groups/reads-an-access-group.md",
+      "file": "rest-api/access-groups/reads-an-access-group.md"
+    },
+    {
+      "group": "access-groups",
+      "page": "https://vercel.com/docs/rest-api/access-groups/update-an-access-group",
+      "markdown": "https://vercel.com/docs/rest-api/access-groups/update-an-access-group.md",
+      "file": "rest-api/access-groups/update-an-access-group.md"
+    },
+    {
+      "group": "access-groups",
+      "page": "https://vercel.com/docs/rest-api/access-groups/deletes-an-access-group",
+      "markdown": "https://vercel.com/docs/rest-api/access-groups/deletes-an-access-group.md",
+      "file": "rest-api/access-groups/deletes-an-access-group.md"
+    },
+    {
+      "group": "access-groups",
+      "page": "https://vercel.com/docs/rest-api/access-groups/list-members-of-an-access-group",
+      "markdown": "https://vercel.com/docs/rest-api/access-groups/list-members-of-an-access-group.md",
+      "file": "rest-api/access-groups/list-members-of-an-access-group.md"
+    },
+    {
+      "group": "access-groups",
+      "page": "https://vercel.com/docs/rest-api/access-groups/list-access-groups-for-a-team-project-or-member",
+      "markdown": "https://vercel.com/docs/rest-api/access-groups/list-access-groups-for-a-team-project-or-member.md",
+      "file": "rest-api/access-groups/list-access-groups-for-a-team-project-or-member.md"
+    },
+    {
+      "group": "access-groups",
+      "page": "https://vercel.com/docs/rest-api/access-groups/creates-an-access-group",
+      "markdown": "https://vercel.com/docs/rest-api/access-groups/creates-an-access-group.md",
+      "file": "rest-api/access-groups/creates-an-access-group.md"
+    },
+    {
+      "group": "access-groups",
+      "page": "https://vercel.com/docs/rest-api/access-groups/list-projects-of-an-access-group",
+      "markdown": "https://vercel.com/docs/rest-api/access-groups/list-projects-of-an-access-group.md",
+      "file": "rest-api/access-groups/list-projects-of-an-access-group.md"
+    },
+    {
+      "group": "access-groups",
+      "page": "https://vercel.com/docs/rest-api/access-groups/create-an-access-group-project",
+      "markdown": "https://vercel.com/docs/rest-api/access-groups/create-an-access-group-project.md",
+      "file": "rest-api/access-groups/create-an-access-group-project.md"
+    },
+    {
+      "group": "access-groups",
+      "page": "https://vercel.com/docs/rest-api/access-groups/reads-an-access-group-project",
+      "markdown": "https://vercel.com/docs/rest-api/access-groups/reads-an-access-group-project.md",
+      "file": "rest-api/access-groups/reads-an-access-group-project.md"
+    },
+    {
+      "group": "access-groups",
+      "page": "https://vercel.com/docs/rest-api/access-groups/update-an-access-group-project",
+      "markdown": "https://vercel.com/docs/rest-api/access-groups/update-an-access-group-project.md",
+      "file": "rest-api/access-groups/update-an-access-group-project.md"
+    },
+    {
+      "group": "access-groups",
+      "page": "https://vercel.com/docs/rest-api/access-groups/delete-an-access-group-project",
+      "markdown": "https://vercel.com/docs/rest-api/access-groups/delete-an-access-group-project.md",
+      "file": "rest-api/access-groups/delete-an-access-group-project.md"
+    },
+    {
+      "group": "ai-gateway",
+      "page": "https://vercel.com/docs/rest-api/ai-gateway/list-rules",
+      "markdown": "https://vercel.com/docs/rest-api/ai-gateway/list-rules.md",
+      "file": "rest-api/ai-gateway/list-rules.md"
+    },
+    {
+      "group": "ai-gateway",
+      "page": "https://vercel.com/docs/rest-api/ai-gateway/create-rule",
+      "markdown": "https://vercel.com/docs/rest-api/ai-gateway/create-rule.md",
+      "file": "rest-api/ai-gateway/create-rule.md"
+    },
+    {
+      "group": "ai-gateway",
+      "page": "https://vercel.com/docs/rest-api/ai-gateway/update-rule",
+      "markdown": "https://vercel.com/docs/rest-api/ai-gateway/update-rule.md",
+      "file": "rest-api/ai-gateway/update-rule.md"
+    },
+    {
+      "group": "ai-gateway",
+      "page": "https://vercel.com/docs/rest-api/ai-gateway/delete-rule",
+      "markdown": "https://vercel.com/docs/rest-api/ai-gateway/delete-rule.md",
+      "file": "rest-api/ai-gateway/delete-rule.md"
+    },
+    {
+      "group": "artifacts",
+      "page": "https://vercel.com/docs/rest-api/artifacts/record-an-artifacts-cache-usage-event",
+      "markdown": "https://vercel.com/docs/rest-api/artifacts/record-an-artifacts-cache-usage-event.md",
+      "file": "rest-api/artifacts/record-an-artifacts-cache-usage-event.md"
+    },
+    {
+      "group": "artifacts",
+      "page": "https://vercel.com/docs/rest-api/artifacts/get-status-of-remote-caching-for-this-principal",
+      "markdown": "https://vercel.com/docs/rest-api/artifacts/get-status-of-remote-caching-for-this-principal.md",
+      "file": "rest-api/artifacts/get-status-of-remote-caching-for-this-principal.md"
+    },
+    {
+      "group": "artifacts",
+      "page": "https://vercel.com/docs/rest-api/artifacts/download-a-cache-artifact",
+      "markdown": "https://vercel.com/docs/rest-api/artifacts/download-a-cache-artifact.md",
+      "file": "rest-api/artifacts/download-a-cache-artifact.md"
+    },
+    {
+      "group": "artifacts",
+      "page": "https://vercel.com/docs/rest-api/artifacts/upload-a-cache-artifact",
+      "markdown": "https://vercel.com/docs/rest-api/artifacts/upload-a-cache-artifact.md",
+      "file": "rest-api/artifacts/upload-a-cache-artifact.md"
+    },
+    {
+      "group": "artifacts",
+      "page": "https://vercel.com/docs/rest-api/artifacts/check-if-a-cache-artifact-exists",
+      "markdown": "https://vercel.com/docs/rest-api/artifacts/check-if-a-cache-artifact-exists.md",
+      "file": "rest-api/artifacts/check-if-a-cache-artifact-exists.md"
+    },
+    {
+      "group": "artifacts",
+      "page": "https://vercel.com/docs/rest-api/artifacts/query-information-about-an-artifact",
+      "markdown": "https://vercel.com/docs/rest-api/artifacts/query-information-about-an-artifact.md",
+      "file": "rest-api/artifacts/query-information-about-an-artifact.md"
+    },
+    {
+      "group": "artifacts",
+      "page": "https://vercel.com/docs/rest-api/artifacts/delete-all-cache-artifacts",
+      "markdown": "https://vercel.com/docs/rest-api/artifacts/delete-all-cache-artifacts.md",
+      "file": "rest-api/artifacts/delete-all-cache-artifacts.md"
+    },
+    {
+      "group": "billing",
+      "page": "https://vercel.com/docs/rest-api/billing/list-focus-billing-charges",
+      "markdown": "https://vercel.com/docs/rest-api/billing/list-focus-billing-charges.md",
+      "file": "rest-api/billing/list-focus-billing-charges.md"
+    },
+    {
+      "group": "billing",
+      "page": "https://vercel.com/docs/rest-api/billing/list-focus-contract-commitments",
+      "markdown": "https://vercel.com/docs/rest-api/billing/list-focus-contract-commitments.md",
+      "file": "rest-api/billing/list-focus-contract-commitments.md"
+    },
+    {
+      "group": "billing",
+      "page": "https://vercel.com/docs/rest-api/billing/purchase-credits",
+      "markdown": "https://vercel.com/docs/rest-api/billing/purchase-credits.md",
+      "file": "rest-api/billing/purchase-credits.md"
+    },
+    {
+      "group": "bulk-redirects",
+      "page": "https://vercel.com/docs/rest-api/bulk-redirects/gets-project-level-redirects",
+      "markdown": "https://vercel.com/docs/rest-api/bulk-redirects/gets-project-level-redirects.md",
+      "file": "rest-api/bulk-redirects/gets-project-level-redirects.md"
+    },
+    {
+      "group": "bulk-redirects",
+      "page": "https://vercel.com/docs/rest-api/bulk-redirects/stages-new-redirects-for-a-project",
+      "markdown": "https://vercel.com/docs/rest-api/bulk-redirects/stages-new-redirects-for-a-project.md",
+      "file": "rest-api/bulk-redirects/stages-new-redirects-for-a-project.md"
+    },
+    {
+      "group": "bulk-redirects",
+      "page": "https://vercel.com/docs/rest-api/bulk-redirects/edit-a-project-level-redirect",
+      "markdown": "https://vercel.com/docs/rest-api/bulk-redirects/edit-a-project-level-redirect.md",
+      "file": "rest-api/bulk-redirects/edit-a-project-level-redirect.md"
+    },
+    {
+      "group": "bulk-redirects",
+      "page": "https://vercel.com/docs/rest-api/bulk-redirects/delete-project-level-redirects",
+      "markdown": "https://vercel.com/docs/rest-api/bulk-redirects/delete-project-level-redirects.md",
+      "file": "rest-api/bulk-redirects/delete-project-level-redirects.md"
+    },
+    {
+      "group": "bulk-redirects",
+      "page": "https://vercel.com/docs/rest-api/bulk-redirects/restore-staged-project-level-redirects-to-their-production-version",
+      "markdown": "https://vercel.com/docs/rest-api/bulk-redirects/restore-staged-project-level-redirects-to-their-production-version.md",
+      "file": "rest-api/bulk-redirects/restore-staged-project-level-redirects-to-their-production-version.md"
+    },
+    {
+      "group": "bulk-redirects",
+      "page": "https://vercel.com/docs/rest-api/bulk-redirects/get-the-version-history-for-a-project-s-redirects",
+      "markdown": "https://vercel.com/docs/rest-api/bulk-redirects/get-the-version-history-for-a-project-s-redirects.md",
+      "file": "rest-api/bulk-redirects/get-the-version-history-for-a-project-s-redirects.md"
+    },
+    {
+      "group": "bulk-redirects",
+      "page": "https://vercel.com/docs/rest-api/bulk-redirects/promote-a-staging-version-to-production-or-restore-a-previous-production-version",
+      "markdown": "https://vercel.com/docs/rest-api/bulk-redirects/promote-a-staging-version-to-production-or-restore-a-previous-production-version.md",
+      "file": "rest-api/bulk-redirects/promote-a-staging-version-to-production-or-restore-a-previous-production-version.md"
+    },
+    {
+      "group": "checks-v2",
+      "page": "https://vercel.com/docs/rest-api/checks-v2/list-all-checks-for-a-project",
+      "markdown": "https://vercel.com/docs/rest-api/checks-v2/list-all-checks-for-a-project.md",
+      "file": "rest-api/checks-v2/list-all-checks-for-a-project.md"
+    },
+    {
+      "group": "checks-v2",
+      "page": "https://vercel.com/docs/rest-api/checks-v2/create-a-check",
+      "markdown": "https://vercel.com/docs/rest-api/checks-v2/create-a-check.md",
+      "file": "rest-api/checks-v2/create-a-check.md"
+    },
+    {
+      "group": "checks-v2",
+      "page": "https://vercel.com/docs/rest-api/checks-v2/get-a-check",
+      "markdown": "https://vercel.com/docs/rest-api/checks-v2/get-a-check.md",
+      "file": "rest-api/checks-v2/get-a-check.md"
+    },
+    {
+      "group": "checks-v2",
+      "page": "https://vercel.com/docs/rest-api/checks-v2/update-a-check",
+      "markdown": "https://vercel.com/docs/rest-api/checks-v2/update-a-check.md",
+      "file": "rest-api/checks-v2/update-a-check.md"
+    },
+    {
+      "group": "checks-v2",
+      "page": "https://vercel.com/docs/rest-api/checks-v2/delete-a-check",
+      "markdown": "https://vercel.com/docs/rest-api/checks-v2/delete-a-check.md",
+      "file": "rest-api/checks-v2/delete-a-check.md"
+    },
+    {
+      "group": "checks-v2",
+      "page": "https://vercel.com/docs/rest-api/checks-v2/list-runs-for-a-check",
+      "markdown": "https://vercel.com/docs/rest-api/checks-v2/list-runs-for-a-check.md",
+      "file": "rest-api/checks-v2/list-runs-for-a-check.md"
+    },
+    {
+      "group": "checks-v2",
+      "page": "https://vercel.com/docs/rest-api/checks-v2/list-check-runs-for-a-deployment",
+      "markdown": "https://vercel.com/docs/rest-api/checks-v2/list-check-runs-for-a-deployment.md",
+      "file": "rest-api/checks-v2/list-check-runs-for-a-deployment.md"
+    },
+    {
+      "group": "checks-v2",
+      "page": "https://vercel.com/docs/rest-api/checks-v2/create-a-check-run",
+      "markdown": "https://vercel.com/docs/rest-api/checks-v2/create-a-check-run.md",
+      "file": "rest-api/checks-v2/create-a-check-run.md"
+    },
+    {
+      "group": "checks-v2",
+      "page": "https://vercel.com/docs/rest-api/checks-v2/get-a-check-run",
+      "markdown": "https://vercel.com/docs/rest-api/checks-v2/get-a-check-run.md",
+      "file": "rest-api/checks-v2/get-a-check-run.md"
+    },
+    {
+      "group": "checks-v2",
+      "page": "https://vercel.com/docs/rest-api/checks-v2/update-a-check-run",
+      "markdown": "https://vercel.com/docs/rest-api/checks-v2/update-a-check-run.md",
+      "file": "rest-api/checks-v2/update-a-check-run.md"
+    },
+    {
+      "group": "networking",
+      "page": "https://vercel.com/docs/rest-api/networking/list-secure-compute-networks",
+      "markdown": "https://vercel.com/docs/rest-api/networking/list-secure-compute-networks.md",
+      "file": "rest-api/networking/list-secure-compute-networks.md"
+    },
+    {
+      "group": "networking",
+      "page": "https://vercel.com/docs/rest-api/networking/create-a-secure-compute-network",
+      "markdown": "https://vercel.com/docs/rest-api/networking/create-a-secure-compute-network.md",
+      "file": "rest-api/networking/create-a-secure-compute-network.md"
+    },
+    {
+      "group": "networking",
+      "page": "https://vercel.com/docs/rest-api/networking/read-a-secure-compute-network",
+      "markdown": "https://vercel.com/docs/rest-api/networking/read-a-secure-compute-network.md",
+      "file": "rest-api/networking/read-a-secure-compute-network.md"
+    },
+    {
+      "group": "networking",
+      "page": "https://vercel.com/docs/rest-api/networking/update-a-secure-compute-network",
+      "markdown": "https://vercel.com/docs/rest-api/networking/update-a-secure-compute-network.md",
+      "file": "rest-api/networking/update-a-secure-compute-network.md"
+    },
+    {
+      "group": "networking",
+      "page": "https://vercel.com/docs/rest-api/networking/delete-a-secure-compute-network",
+      "markdown": "https://vercel.com/docs/rest-api/networking/delete-a-secure-compute-network.md",
+      "file": "rest-api/networking/delete-a-secure-compute-network.md"
+    },
+    {
+      "group": "networking",
+      "page": "https://vercel.com/docs/rest-api/networking/configures-static-ips-for-a-project",
+      "markdown": "https://vercel.com/docs/rest-api/networking/configures-static-ips-for-a-project.md",
+      "file": "rest-api/networking/configures-static-ips-for-a-project.md"
+    },
+    {
+      "group": "connect",
+      "page": "https://vercel.com/docs/rest-api/connect/create-a-connector",
+      "markdown": "https://vercel.com/docs/rest-api/connect/create-a-connector.md",
+      "file": "rest-api/connect/create-a-connector.md"
+    },
+    {
+      "group": "connect",
+      "page": "https://vercel.com/docs/rest-api/connect/get-a-connect-token",
+      "markdown": "https://vercel.com/docs/rest-api/connect/get-a-connect-token.md",
+      "file": "rest-api/connect/get-a-connect-token.md"
+    },
+    {
+      "group": "connect",
+      "page": "https://vercel.com/docs/rest-api/connect/import-connect-tokens",
+      "markdown": "https://vercel.com/docs/rest-api/connect/import-connect-tokens.md",
+      "file": "rest-api/connect/import-connect-tokens.md"
+    },
+    {
+      "group": "connect",
+      "page": "https://vercel.com/docs/rest-api/connect/create-a-connect-authorization-request",
+      "markdown": "https://vercel.com/docs/rest-api/connect/create-a-connect-authorization-request.md",
+      "file": "rest-api/connect/create-a-connect-authorization-request.md"
+    },
+    {
+      "group": "connect",
+      "page": "https://vercel.com/docs/rest-api/connect/create-a-connect-installation-request",
+      "markdown": "https://vercel.com/docs/rest-api/connect/create-a-connect-installation-request.md",
+      "file": "rest-api/connect/create-a-connect-installation-request.md"
+    },
+    {
+      "group": "deployments",
+      "page": "https://vercel.com/docs/rest-api/deployments/get-deployment-events",
+      "markdown": "https://vercel.com/docs/rest-api/deployments/get-deployment-events.md",
+      "file": "rest-api/deployments/get-deployment-events.md"
+    },
+    {
+      "group": "deployments",
+      "page": "https://vercel.com/docs/rest-api/deployments/update-deployment-integration-action",
+      "markdown": "https://vercel.com/docs/rest-api/deployments/update-deployment-integration-action.md",
+      "file": "rest-api/deployments/update-deployment-integration-action.md"
+    },
+    {
+      "group": "deployments",
+      "page": "https://vercel.com/docs/rest-api/deployments/get-a-deployment-by-id-or-url",
+      "markdown": "https://vercel.com/docs/rest-api/deployments/get-a-deployment-by-id-or-url.md",
+      "file": "rest-api/deployments/get-a-deployment-by-id-or-url.md"
+    },
+    {
+      "group": "deployments",
+      "page": "https://vercel.com/docs/rest-api/deployments/create-a-new-deployment",
+      "markdown": "https://vercel.com/docs/rest-api/deployments/create-a-new-deployment.md",
+      "file": "rest-api/deployments/create-a-new-deployment.md"
+    },
+    {
+      "group": "deployments",
+      "page": "https://vercel.com/docs/rest-api/deployments/cancel-a-deployment",
+      "markdown": "https://vercel.com/docs/rest-api/deployments/cancel-a-deployment.md",
+      "file": "rest-api/deployments/cancel-a-deployment.md"
+    },
+    {
+      "group": "deployments",
+      "page": "https://vercel.com/docs/rest-api/deployments/upload-deployment-files",
+      "markdown": "https://vercel.com/docs/rest-api/deployments/upload-deployment-files.md",
+      "file": "rest-api/deployments/upload-deployment-files.md"
+    },
+    {
+      "group": "deployments",
+      "page": "https://vercel.com/docs/rest-api/deployments/list-deployment-files",
+      "markdown": "https://vercel.com/docs/rest-api/deployments/list-deployment-files.md",
+      "file": "rest-api/deployments/list-deployment-files.md"
+    },
+    {
+      "group": "deployments",
+      "page": "https://vercel.com/docs/rest-api/deployments/get-deployment-file-contents",
+      "markdown": "https://vercel.com/docs/rest-api/deployments/get-deployment-file-contents.md",
+      "file": "rest-api/deployments/get-deployment-file-contents.md"
+    },
+    {
+      "group": "deployments",
+      "page": "https://vercel.com/docs/rest-api/deployments/list-deployments",
+      "markdown": "https://vercel.com/docs/rest-api/deployments/list-deployments.md",
+      "file": "rest-api/deployments/list-deployments.md"
+    },
+    {
+      "group": "deployments",
+      "page": "https://vercel.com/docs/rest-api/deployments/delete-a-deployment",
+      "markdown": "https://vercel.com/docs/rest-api/deployments/delete-a-deployment.md",
+      "file": "rest-api/deployments/delete-a-deployment.md"
+    },
+    {
+      "group": "dns",
+      "page": "https://vercel.com/docs/rest-api/dns/list-existing-dns-records",
+      "markdown": "https://vercel.com/docs/rest-api/dns/list-existing-dns-records.md",
+      "file": "rest-api/dns/list-existing-dns-records.md"
+    },
+    {
+      "group": "dns",
+      "page": "https://vercel.com/docs/rest-api/dns/create-a-dns-record",
+      "markdown": "https://vercel.com/docs/rest-api/dns/create-a-dns-record.md",
+      "file": "rest-api/dns/create-a-dns-record.md"
+    },
+    {
+      "group": "dns",
+      "page": "https://vercel.com/docs/rest-api/dns/update-an-existing-dns-record",
+      "markdown": "https://vercel.com/docs/rest-api/dns/update-an-existing-dns-record.md",
+      "file": "rest-api/dns/update-an-existing-dns-record.md"
+    },
+    {
+      "group": "dns",
+      "page": "https://vercel.com/docs/rest-api/dns/delete-a-dns-record",
+      "markdown": "https://vercel.com/docs/rest-api/dns/delete-a-dns-record.md",
+      "file": "rest-api/dns/delete-a-dns-record.md"
+    },
+    {
+      "group": "Other",
+      "page": "https://vercel.com/docs/rest-api/untagged/replacedomainsbydomainrecords",
+      "markdown": "https://vercel.com/docs/rest-api/untagged/replacedomainsbydomainrecords.md",
+      "file": "rest-api/untagged/replacedomainsbydomainrecords.md"
+    },
+    {
+      "group": "Other",
+      "page": "https://vercel.com/docs/rest-api/untagged/getdomainsrecordsbyrecordid",
+      "markdown": "https://vercel.com/docs/rest-api/untagged/getdomainsrecordsbyrecordid.md",
+      "file": "rest-api/untagged/getdomainsrecordsbyrecordid.md"
+    },
+    {
+      "group": "Other",
+      "page": "https://vercel.com/docs/rest-api/untagged/createapikeys",
+      "markdown": "https://vercel.com/docs/rest-api/untagged/createapikeys.md",
+      "file": "rest-api/untagged/createapikeys.md"
+    },
+    {
+      "group": "Other",
+      "page": "https://vercel.com/docs/rest-api/untagged/createobservabilityquery",
+      "markdown": "https://vercel.com/docs/rest-api/untagged/createobservabilityquery.md",
+      "file": "rest-api/untagged/createobservabilityquery.md"
+    },
+    {
+      "group": "Other",
+      "page": "https://vercel.com/docs/rest-api/untagged/getobservabilityschema",
+      "markdown": "https://vercel.com/docs/rest-api/untagged/getobservabilityschema.md",
+      "file": "rest-api/untagged/getobservabilityschema.md"
+    },
+    {
+      "group": "Other",
+      "page": "https://vercel.com/docs/rest-api/untagged/getobservabilityschemabymetricid",
+      "markdown": "https://vercel.com/docs/rest-api/untagged/getobservabilityschemabymetricid.md",
+      "file": "rest-api/untagged/getobservabilityschemabymetricid.md"
+    },
+    {
+      "group": "Other",
+      "page": "https://vercel.com/docs/rest-api/untagged/createspeedinsightstoggle",
+      "markdown": "https://vercel.com/docs/rest-api/untagged/createspeedinsightstoggle.md",
+      "file": "rest-api/untagged/createspeedinsightstoggle.md"
+    },
+    {
+      "group": "Other",
+      "page": "https://vercel.com/docs/rest-api/untagged/createwebinsightstoggle",
+      "markdown": "https://vercel.com/docs/rest-api/untagged/createwebinsightstoggle.md",
+      "file": "rest-api/untagged/createwebinsightstoggle.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/get-supported-tlds",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/get-supported-tlds.md",
+      "file": "rest-api/domains-registrar/get-supported-tlds.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/get-tld",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/get-tld.md",
+      "file": "rest-api/domains-registrar/get-tld.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/get-tld-price-data",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/get-tld-price-data.md",
+      "file": "rest-api/domains-registrar/get-tld-price-data.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/get-availability-for-a-domain",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/get-availability-for-a-domain.md",
+      "file": "rest-api/domains-registrar/get-availability-for-a-domain.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/get-price-data-for-a-domain",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/get-price-data-for-a-domain.md",
+      "file": "rest-api/domains-registrar/get-price-data-for-a-domain.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/get-availability-for-multiple-domains",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/get-availability-for-multiple-domains.md",
+      "file": "rest-api/domains-registrar/get-availability-for-multiple-domains.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/get-the-auth-code-for-a-domain",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/get-the-auth-code-for-a-domain.md",
+      "file": "rest-api/domains-registrar/get-the-auth-code-for-a-domain.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/buy-a-domain",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/buy-a-domain.md",
+      "file": "rest-api/domains-registrar/buy-a-domain.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/buy-multiple-domains",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/buy-multiple-domains.md",
+      "file": "rest-api/domains-registrar/buy-multiple-domains.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/get-a-domain-s-transfer-status",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/get-a-domain-s-transfer-status.md",
+      "file": "rest-api/domains-registrar/get-a-domain-s-transfer-status.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/transfer-in-a-domain",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/transfer-in-a-domain.md",
+      "file": "rest-api/domains-registrar/transfer-in-a-domain.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/renew-a-domain",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/renew-a-domain.md",
+      "file": "rest-api/domains-registrar/renew-a-domain.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/update-auto-renew-for-a-domain",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/update-auto-renew-for-a-domain.md",
+      "file": "rest-api/domains-registrar/update-auto-renew-for-a-domain.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/update-nameservers-for-a-domain",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/update-nameservers-for-a-domain.md",
+      "file": "rest-api/domains-registrar/update-nameservers-for-a-domain.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/get-contact-verification-status-for-a-domain",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/get-contact-verification-status-for-a-domain.md",
+      "file": "rest-api/domains-registrar/get-contact-verification-status-for-a-domain.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/get-contact-info-schema",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/get-contact-info-schema.md",
+      "file": "rest-api/domains-registrar/get-contact-info-schema.md"
+    },
+    {
+      "group": "domains-registrar",
+      "page": "https://vercel.com/docs/rest-api/domains-registrar/get-a-domain-order",
+      "markdown": "https://vercel.com/docs/rest-api/domains-registrar/get-a-domain-order.md",
+      "file": "rest-api/domains-registrar/get-a-domain-order.md"
+    },
+    {
+      "group": "domains",
+      "page": "https://vercel.com/docs/rest-api/domains/get-a-domain-s-configuration",
+      "markdown": "https://vercel.com/docs/rest-api/domains/get-a-domain-s-configuration.md",
+      "file": "rest-api/domains/get-a-domain-s-configuration.md"
+    },
+    {
+      "group": "domains",
+      "page": "https://vercel.com/docs/rest-api/domains/get-domain-verification-record",
+      "markdown": "https://vercel.com/docs/rest-api/domains/get-domain-verification-record.md",
+      "file": "rest-api/domains/get-domain-verification-record.md"
+    },
+    {
+      "group": "domains",
+      "page": "https://vercel.com/docs/rest-api/domains/claim-domain-ownership",
+      "markdown": "https://vercel.com/docs/rest-api/domains/claim-domain-ownership.md",
+      "file": "rest-api/domains/claim-domain-ownership.md"
+    },
+    {
+      "group": "domains",
+      "page": "https://vercel.com/docs/rest-api/domains/list-project-domains-by-apex-domain",
+      "markdown": "https://vercel.com/docs/rest-api/domains/list-project-domains-by-apex-domain.md",
+      "file": "rest-api/domains/list-project-domains-by-apex-domain.md"
+    },
+    {
+      "group": "domains",
+      "page": "https://vercel.com/docs/rest-api/domains/get-information-for-a-single-domain",
+      "markdown": "https://vercel.com/docs/rest-api/domains/get-information-for-a-single-domain.md",
+      "file": "rest-api/domains/get-information-for-a-single-domain.md"
+    },
+    {
+      "group": "domains",
+      "page": "https://vercel.com/docs/rest-api/domains/list-all-the-domains",
+      "markdown": "https://vercel.com/docs/rest-api/domains/list-all-the-domains.md",
+      "file": "rest-api/domains/list-all-the-domains.md"
+    },
+    {
+      "group": "domains",
+      "page": "https://vercel.com/docs/rest-api/domains/add-an-existing-domain-to-the-vercel-platform",
+      "markdown": "https://vercel.com/docs/rest-api/domains/add-an-existing-domain-to-the-vercel-platform.md",
+      "file": "rest-api/domains/add-an-existing-domain-to-the-vercel-platform.md"
+    },
+    {
+      "group": "domains",
+      "page": "https://vercel.com/docs/rest-api/domains/update-or-move-apex-domain",
+      "markdown": "https://vercel.com/docs/rest-api/domains/update-or-move-apex-domain.md",
+      "file": "rest-api/domains/update-or-move-apex-domain.md"
+    },
+    {
+      "group": "domains",
+      "page": "https://vercel.com/docs/rest-api/domains/remove-a-domain-by-name",
+      "markdown": "https://vercel.com/docs/rest-api/domains/remove-a-domain-by-name.md",
+      "file": "rest-api/domains/remove-a-domain-by-name.md"
+    },
+    {
+      "group": "drains",
+      "page": "https://vercel.com/docs/rest-api/drains/retrieve-a-list-of-all-drains",
+      "markdown": "https://vercel.com/docs/rest-api/drains/retrieve-a-list-of-all-drains.md",
+      "file": "rest-api/drains/retrieve-a-list-of-all-drains.md"
+    },
+    {
+      "group": "drains",
+      "page": "https://vercel.com/docs/rest-api/drains/create-a-new-drain",
+      "markdown": "https://vercel.com/docs/rest-api/drains/create-a-new-drain.md",
+      "file": "rest-api/drains/create-a-new-drain.md"
+    },
+    {
+      "group": "drains",
+      "page": "https://vercel.com/docs/rest-api/drains/find-a-drain-by-id",
+      "markdown": "https://vercel.com/docs/rest-api/drains/find-a-drain-by-id.md",
+      "file": "rest-api/drains/find-a-drain-by-id.md"
+    },
+    {
+      "group": "drains",
+      "page": "https://vercel.com/docs/rest-api/drains/update-an-existing-drain",
+      "markdown": "https://vercel.com/docs/rest-api/drains/update-an-existing-drain.md",
+      "file": "rest-api/drains/update-an-existing-drain.md"
+    },
+    {
+      "group": "drains",
+      "page": "https://vercel.com/docs/rest-api/drains/delete-a-drain",
+      "markdown": "https://vercel.com/docs/rest-api/drains/delete-a-drain.md",
+      "file": "rest-api/drains/delete-a-drain.md"
+    },
+    {
+      "group": "drains",
+      "page": "https://vercel.com/docs/rest-api/drains/validate-drain-delivery-configuration",
+      "markdown": "https://vercel.com/docs/rest-api/drains/validate-drain-delivery-configuration.md",
+      "file": "rest-api/drains/validate-drain-delivery-configuration.md"
+    },
+    {
+      "group": "edge-cache",
+      "page": "https://vercel.com/docs/rest-api/edge-cache/invalidate-by-tag",
+      "markdown": "https://vercel.com/docs/rest-api/edge-cache/invalidate-by-tag.md",
+      "file": "rest-api/edge-cache/invalidate-by-tag.md"
+    },
+    {
+      "group": "edge-cache",
+      "page": "https://vercel.com/docs/rest-api/edge-cache/dangerously-delete-by-tag",
+      "markdown": "https://vercel.com/docs/rest-api/edge-cache/dangerously-delete-by-tag.md",
+      "file": "rest-api/edge-cache/dangerously-delete-by-tag.md"
+    },
+    {
+      "group": "edge-cache",
+      "page": "https://vercel.com/docs/rest-api/edge-cache/invalidate-by-source-image",
+      "markdown": "https://vercel.com/docs/rest-api/edge-cache/invalidate-by-source-image.md",
+      "file": "rest-api/edge-cache/invalidate-by-source-image.md"
+    },
+    {
+      "group": "edge-cache",
+      "page": "https://vercel.com/docs/rest-api/edge-cache/dangerously-delete-by-source-image",
+      "markdown": "https://vercel.com/docs/rest-api/edge-cache/dangerously-delete-by-source-image.md",
+      "file": "rest-api/edge-cache/dangerously-delete-by-source-image.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/get-global-configs",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/get-global-configs.md",
+      "file": "rest-api/global-config/get-global-configs.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/create-a-global-config",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/create-a-global-config.md",
+      "file": "rest-api/global-config/create-a-global-config.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/get-a-global-config",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/get-a-global-config.md",
+      "file": "rest-api/global-config/get-a-global-config.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/update-a-global-config",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/update-a-global-config.md",
+      "file": "rest-api/global-config/update-a-global-config.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/delete-a-global-config",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/delete-a-global-config.md",
+      "file": "rest-api/global-config/delete-a-global-config.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/get-global-config-items",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/get-global-config-items.md",
+      "file": "rest-api/global-config/get-global-config-items.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/update-global-config-items-in-batch",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/update-global-config-items-in-batch.md",
+      "file": "rest-api/global-config/update-global-config-items-in-batch.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/get-global-config-schema",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/get-global-config-schema.md",
+      "file": "rest-api/global-config/get-global-config-schema.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/update-global-config-schema",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/update-global-config-schema.md",
+      "file": "rest-api/global-config/update-global-config-schema.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/delete-a-global-config-s-schema",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/delete-a-global-config-s-schema.md",
+      "file": "rest-api/global-config/delete-a-global-config-s-schema.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/get-a-global-config-item",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/get-a-global-config-item.md",
+      "file": "rest-api/global-config/get-a-global-config-item.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/get-all-tokens-of-a-global-config",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/get-all-tokens-of-a-global-config.md",
+      "file": "rest-api/global-config/get-all-tokens-of-a-global-config.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/delete-one-or-more-global-config-tokens",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/delete-one-or-more-global-config-tokens.md",
+      "file": "rest-api/global-config/delete-one-or-more-global-config-tokens.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/get-global-config-token-meta-data",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/get-global-config-token-meta-data.md",
+      "file": "rest-api/global-config/get-global-config-token-meta-data.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/create-a-global-config-token",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/create-a-global-config-token.md",
+      "file": "rest-api/global-config/create-a-global-config-token.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/get-global-config-backup",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/get-global-config-backup.md",
+      "file": "rest-api/global-config/get-global-config-backup.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/restore-global-config-backup",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/restore-global-config-backup.md",
+      "file": "rest-api/global-config/restore-global-config-backup.md"
+    },
+    {
+      "group": "global-config",
+      "page": "https://vercel.com/docs/rest-api/global-config/get-global-config-backups",
+      "markdown": "https://vercel.com/docs/rest-api/global-config/get-global-config-backups.md",
+      "file": "rest-api/global-config/get-global-config-backups.md"
+    },
+    {
+      "group": "environment",
+      "page": "https://vercel.com/docs/rest-api/environment/lists-all-shared-environment-variables-for-a-team",
+      "markdown": "https://vercel.com/docs/rest-api/environment/lists-all-shared-environment-variables-for-a-team.md",
+      "file": "rest-api/environment/lists-all-shared-environment-variables-for-a-team.md"
+    },
+    {
+      "group": "environment",
+      "page": "https://vercel.com/docs/rest-api/environment/create-one-or-more-shared-environment-variables",
+      "markdown": "https://vercel.com/docs/rest-api/environment/create-one-or-more-shared-environment-variables.md",
+      "file": "rest-api/environment/create-one-or-more-shared-environment-variables.md"
+    },
+    {
+      "group": "environment",
+      "page": "https://vercel.com/docs/rest-api/environment/updates-one-or-more-shared-environment-variables",
+      "markdown": "https://vercel.com/docs/rest-api/environment/updates-one-or-more-shared-environment-variables.md",
+      "file": "rest-api/environment/updates-one-or-more-shared-environment-variables.md"
+    },
+    {
+      "group": "environment",
+      "page": "https://vercel.com/docs/rest-api/environment/delete-one-or-more-env-var",
+      "markdown": "https://vercel.com/docs/rest-api/environment/delete-one-or-more-env-var.md",
+      "file": "rest-api/environment/delete-one-or-more-env-var.md"
+    },
+    {
+      "group": "environment",
+      "page": "https://vercel.com/docs/rest-api/environment/retrieve-the-decrypted-value-of-a-shared-environment-variable-by-id",
+      "markdown": "https://vercel.com/docs/rest-api/environment/retrieve-the-decrypted-value-of-a-shared-environment-variable-by-id.md",
+      "file": "rest-api/environment/retrieve-the-decrypted-value-of-a-shared-environment-variable-by-id.md"
+    },
+    {
+      "group": "environment",
+      "page": "https://vercel.com/docs/rest-api/environment/disconnects-a-shared-environment-variable-for-a-given-project",
+      "markdown": "https://vercel.com/docs/rest-api/environment/disconnects-a-shared-environment-variable-for-a-given-project.md",
+      "file": "rest-api/environment/disconnects-a-shared-environment-variable-for-a-given-project.md"
+    },
+    {
+      "group": "environment",
+      "page": "https://vercel.com/docs/rest-api/environment/retrieve-custom-environments",
+      "markdown": "https://vercel.com/docs/rest-api/environment/retrieve-custom-environments.md",
+      "file": "rest-api/environment/retrieve-custom-environments.md"
+    },
+    {
+      "group": "environment",
+      "page": "https://vercel.com/docs/rest-api/environment/create-a-custom-environment-for-the-current-project",
+      "markdown": "https://vercel.com/docs/rest-api/environment/create-a-custom-environment-for-the-current-project.md",
+      "file": "rest-api/environment/create-a-custom-environment-for-the-current-project.md"
+    },
+    {
+      "group": "environment",
+      "page": "https://vercel.com/docs/rest-api/environment/retrieve-a-custom-environment",
+      "markdown": "https://vercel.com/docs/rest-api/environment/retrieve-a-custom-environment.md",
+      "file": "rest-api/environment/retrieve-a-custom-environment.md"
+    },
+    {
+      "group": "environment",
+      "page": "https://vercel.com/docs/rest-api/environment/update-a-custom-environment",
+      "markdown": "https://vercel.com/docs/rest-api/environment/update-a-custom-environment.md",
+      "file": "rest-api/environment/update-a-custom-environment.md"
+    },
+    {
+      "group": "environment",
+      "page": "https://vercel.com/docs/rest-api/environment/remove-a-custom-environment",
+      "markdown": "https://vercel.com/docs/rest-api/environment/remove-a-custom-environment.md",
+      "file": "rest-api/environment/remove-a-custom-environment.md"
+    },
+    {
+      "group": "user",
+      "page": "https://vercel.com/docs/rest-api/user/list-user-events",
+      "markdown": "https://vercel.com/docs/rest-api/user/list-user-events.md",
+      "file": "rest-api/user/list-user-events.md"
+    },
+    {
+      "group": "user",
+      "page": "https://vercel.com/docs/rest-api/user/list-event-types",
+      "markdown": "https://vercel.com/docs/rest-api/user/list-event-types.md",
+      "file": "rest-api/user/list-event-types.md"
+    },
+    {
+      "group": "user",
+      "page": "https://vercel.com/docs/rest-api/user/get-the-user",
+      "markdown": "https://vercel.com/docs/rest-api/user/get-the-user.md",
+      "file": "rest-api/user/get-the-user.md"
+    },
+    {
+      "group": "user",
+      "page": "https://vercel.com/docs/rest-api/user/delete-user-account",
+      "markdown": "https://vercel.com/docs/rest-api/user/delete-user-account.md",
+      "file": "rest-api/user/delete-user-account.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/list-flags",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/list-flags.md",
+      "file": "rest-api/feature-flags/list-flags.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/list-flags-1",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/list-flags-1.md",
+      "file": "rest-api/feature-flags/list-flags-1.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/create-a-flag",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/create-a-flag.md",
+      "file": "rest-api/feature-flags/create-a-flag.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/get-a-flag",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/get-a-flag.md",
+      "file": "rest-api/feature-flags/get-a-flag.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/update-a-flag",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/update-a-flag.md",
+      "file": "rest-api/feature-flags/update-a-flag.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/delete-a-flag",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/delete-a-flag.md",
+      "file": "rest-api/feature-flags/delete-a-flag.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/list-flag-versions",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/list-flag-versions.md",
+      "file": "rest-api/feature-flags/list-flag-versions.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/get-project-flag-settings",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/get-project-flag-settings.md",
+      "file": "rest-api/feature-flags/get-project-flag-settings.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/update-project-flag-settings",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/update-project-flag-settings.md",
+      "file": "rest-api/feature-flags/update-project-flag-settings.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/list-team-project-flag-settings",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/list-team-project-flag-settings.md",
+      "file": "rest-api/feature-flags/list-team-project-flag-settings.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/list-all-flags-for-a-team",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/list-all-flags-for-a-team.md",
+      "file": "rest-api/feature-flags/list-all-flags-for-a-team.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/list-all-flags-for-a-team-1",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/list-all-flags-for-a-team-1.md",
+      "file": "rest-api/feature-flags/list-all-flags-for-a-team-1.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/list-segments",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/list-segments.md",
+      "file": "rest-api/feature-flags/list-segments.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/create-a-segment",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/create-a-segment.md",
+      "file": "rest-api/feature-flags/create-a-segment.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/get-a-segment",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/get-a-segment.md",
+      "file": "rest-api/feature-flags/get-a-segment.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/update-a-segment",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/update-a-segment.md",
+      "file": "rest-api/feature-flags/update-a-segment.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/delete-a-segment",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/delete-a-segment.md",
+      "file": "rest-api/feature-flags/delete-a-segment.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/retrieve-the-feature-flags-of-a-deployment",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/retrieve-the-feature-flags-of-a-deployment.md",
+      "file": "rest-api/feature-flags/retrieve-the-feature-flags-of-a-deployment.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/get-all-sdk-keys",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/get-all-sdk-keys.md",
+      "file": "rest-api/feature-flags/get-all-sdk-keys.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/create-an-sdk-key",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/create-an-sdk-key.md",
+      "file": "rest-api/feature-flags/create-an-sdk-key.md"
+    },
+    {
+      "group": "feature-flags",
+      "page": "https://vercel.com/docs/rest-api/feature-flags/delete-an-sdk-key",
+      "markdown": "https://vercel.com/docs/rest-api/feature-flags/delete-an-sdk-key.md",
+      "file": "rest-api/feature-flags/delete-an-sdk-key.md"
+    },
+    {
+      "group": "integrations",
+      "page": "https://vercel.com/docs/rest-api/integrations/list-git-namespaces-by-provider",
+      "markdown": "https://vercel.com/docs/rest-api/integrations/list-git-namespaces-by-provider.md",
+      "file": "rest-api/integrations/list-git-namespaces-by-provider.md"
+    },
+    {
+      "group": "integrations",
+      "page": "https://vercel.com/docs/rest-api/integrations/list-git-repositories-linked-to-namespace-by-provider",
+      "markdown": "https://vercel.com/docs/rest-api/integrations/list-git-repositories-linked-to-namespace-by-provider.md",
+      "file": "rest-api/integrations/list-git-repositories-linked-to-namespace-by-provider.md"
+    },
+    {
+      "group": "integrations",
+      "page": "https://vercel.com/docs/rest-api/integrations/list-integration-billing-plans",
+      "markdown": "https://vercel.com/docs/rest-api/integrations/list-integration-billing-plans.md",
+      "file": "rest-api/integrations/list-integration-billing-plans.md"
+    },
+    {
+      "group": "integrations",
+      "page": "https://vercel.com/docs/rest-api/integrations/connect-integration-resource-to-project",
+      "markdown": "https://vercel.com/docs/rest-api/integrations/connect-integration-resource-to-project.md",
+      "file": "rest-api/integrations/connect-integration-resource-to-project.md"
+    },
+    {
+      "group": "integrations",
+      "page": "https://vercel.com/docs/rest-api/integrations/get-configurations-for-the-authenticated-user-or-team",
+      "markdown": "https://vercel.com/docs/rest-api/integrations/get-configurations-for-the-authenticated-user-or-team.md",
+      "file": "rest-api/integrations/get-configurations-for-the-authenticated-user-or-team.md"
+    },
+    {
+      "group": "integrations",
+      "page": "https://vercel.com/docs/rest-api/integrations/retrieve-an-integration-configuration",
+      "markdown": "https://vercel.com/docs/rest-api/integrations/retrieve-an-integration-configuration.md",
+      "file": "rest-api/integrations/retrieve-an-integration-configuration.md"
+    },
+    {
+      "group": "integrations",
+      "page": "https://vercel.com/docs/rest-api/integrations/delete-an-integration-configuration",
+      "markdown": "https://vercel.com/docs/rest-api/integrations/delete-an-integration-configuration.md",
+      "file": "rest-api/integrations/delete-an-integration-configuration.md"
+    },
+    {
+      "group": "integrations",
+      "page": "https://vercel.com/docs/rest-api/integrations/list-products-for-integration-configuration",
+      "markdown": "https://vercel.com/docs/rest-api/integrations/list-products-for-integration-configuration.md",
+      "file": "rest-api/integrations/list-products-for-integration-configuration.md"
+    },
+    {
+      "group": "integrations",
+      "page": "https://vercel.com/docs/rest-api/integrations/create-integration-store-free-and-paid-plans",
+      "markdown": "https://vercel.com/docs/rest-api/integrations/create-integration-store-free-and-paid-plans.md",
+      "file": "rest-api/integrations/create-integration-store-free-and-paid-plans.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/update-installation",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/update-installation.md",
+      "file": "rest-api/marketplace/update-installation.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/get-account-information",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/get-account-information.md",
+      "file": "rest-api/marketplace/get-account-information.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/get-member-information",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/get-member-information.md",
+      "file": "rest-api/marketplace/get-member-information.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/create-event",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/create-event.md",
+      "file": "rest-api/marketplace/create-event.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/get-integration-resources",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/get-integration-resources.md",
+      "file": "rest-api/marketplace/get-integration-resources.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/get-integration-resource",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/get-integration-resource.md",
+      "file": "rest-api/marketplace/get-integration-resource.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/import-resource",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/import-resource.md",
+      "file": "rest-api/marketplace/import-resource.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/update-resource",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/update-resource.md",
+      "file": "rest-api/marketplace/update-resource.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/delete-integration-resource",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/delete-integration-resource.md",
+      "file": "rest-api/marketplace/delete-integration-resource.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/submit-billing-data",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/submit-billing-data.md",
+      "file": "rest-api/marketplace/submit-billing-data.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/submit-invoice",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/submit-invoice.md",
+      "file": "rest-api/marketplace/submit-invoice.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/finalize-installation",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/finalize-installation.md",
+      "file": "rest-api/marketplace/finalize-installation.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/get-invoice",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/get-invoice.md",
+      "file": "rest-api/marketplace/get-invoice.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/invoice-actions",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/invoice-actions.md",
+      "file": "rest-api/marketplace/invoice-actions.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/submit-prepayment-balances",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/submit-prepayment-balances.md",
+      "file": "rest-api/marketplace/submit-prepayment-balances.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/update-resource-secrets",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/update-resource-secrets.md",
+      "file": "rest-api/marketplace/update-resource-secrets.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/create-one-or-multiple-experimentation-items",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/create-one-or-multiple-experimentation-items.md",
+      "file": "rest-api/marketplace/create-one-or-multiple-experimentation-items.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/patch-an-existing-experimentation-item",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/patch-an-existing-experimentation-item.md",
+      "file": "rest-api/marketplace/patch-an-existing-experimentation-item.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/delete-an-existing-experimentation-item",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/delete-an-existing-experimentation-item.md",
+      "file": "rest-api/marketplace/delete-an-existing-experimentation-item.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/get-the-data-of-a-user-provided-global-config",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/get-the-data-of-a-user-provided-global-config.md",
+      "file": "rest-api/marketplace/get-the-data-of-a-user-provided-global-config.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/push-data-into-a-user-provided-global-config",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/push-data-into-a-user-provided-global-config.md",
+      "file": "rest-api/marketplace/push-data-into-a-user-provided-global-config.md"
+    },
+    {
+      "group": "marketplace",
+      "page": "https://vercel.com/docs/rest-api/marketplace/get-the-data-of-a-user-provided-global-config-1",
+      "markdown": "https://vercel.com/docs/rest-api/marketplace/get-the-data-of-a-user-provided-global-config-1.md",
+      "file": "rest-api/marketplace/get-the-data-of-a-user-provided-global-config-1.md"
+    },
+    {
+      "group": "authentication",
+      "page": "https://vercel.com/docs/rest-api/authentication/sso-token-exchange",
+      "markdown": "https://vercel.com/docs/rest-api/authentication/sso-token-exchange.md",
+      "file": "rest-api/authentication/sso-token-exchange.md"
+    },
+    {
+      "group": "authentication",
+      "page": "https://vercel.com/docs/rest-api/authentication/list-auth-tokens",
+      "markdown": "https://vercel.com/docs/rest-api/authentication/list-auth-tokens.md",
+      "file": "rest-api/authentication/list-auth-tokens.md"
+    },
+    {
+      "group": "authentication",
+      "page": "https://vercel.com/docs/rest-api/authentication/create-an-auth-token",
+      "markdown": "https://vercel.com/docs/rest-api/authentication/create-an-auth-token.md",
+      "file": "rest-api/authentication/create-an-auth-token.md"
+    },
+    {
+      "group": "authentication",
+      "page": "https://vercel.com/docs/rest-api/authentication/get-auth-token-metadata",
+      "markdown": "https://vercel.com/docs/rest-api/authentication/get-auth-token-metadata.md",
+      "file": "rest-api/authentication/get-auth-token-metadata.md"
+    },
+    {
+      "group": "authentication",
+      "page": "https://vercel.com/docs/rest-api/authentication/delete-an-authentication-token",
+      "markdown": "https://vercel.com/docs/rest-api/authentication/delete-an-authentication-token.md",
+      "file": "rest-api/authentication/delete-an-authentication-token.md"
+    },
+    {
+      "group": "logs",
+      "page": "https://vercel.com/docs/rest-api/logs/get-logs-for-a-deployment",
+      "markdown": "https://vercel.com/docs/rest-api/logs/get-logs-for-a-deployment.md",
+      "file": "rest-api/logs/get-logs-for-a-deployment.md"
+    },
+    {
+      "group": "microfrontends",
+      "page": "https://vercel.com/docs/rest-api/microfrontends/list-microfrontends-groups",
+      "markdown": "https://vercel.com/docs/rest-api/microfrontends/list-microfrontends-groups.md",
+      "file": "rest-api/microfrontends/list-microfrontends-groups.md"
+    },
+    {
+      "group": "microfrontends",
+      "page": "https://vercel.com/docs/rest-api/microfrontends/list-projects-in-a-microfrontends-group",
+      "markdown": "https://vercel.com/docs/rest-api/microfrontends/list-projects-in-a-microfrontends-group.md",
+      "file": "rest-api/microfrontends/list-projects-in-a-microfrontends-group.md"
+    },
+    {
+      "group": "microfrontends",
+      "page": "https://vercel.com/docs/rest-api/microfrontends/get-microfrontends-config-for-a-deployment",
+      "markdown": "https://vercel.com/docs/rest-api/microfrontends/get-microfrontends-config-for-a-deployment.md",
+      "file": "rest-api/microfrontends/get-microfrontends-config-for-a-deployment.md"
+    },
+    {
+      "group": "microfrontends",
+      "page": "https://vercel.com/docs/rest-api/microfrontends/get-microfrontends-config-for-a-project",
+      "markdown": "https://vercel.com/docs/rest-api/microfrontends/get-microfrontends-config-for-a-project.md",
+      "file": "rest-api/microfrontends/get-microfrontends-config-for-a-project.md"
+    },
+    {
+      "group": "microfrontends",
+      "page": "https://vercel.com/docs/rest-api/microfrontends/create-a-microfrontends-group-with-applications",
+      "markdown": "https://vercel.com/docs/rest-api/microfrontends/create-a-microfrontends-group-with-applications.md",
+      "file": "rest-api/microfrontends/create-a-microfrontends-group-with-applications.md"
+    },
+    {
+      "group": "observability",
+      "page": "https://vercel.com/docs/rest-api/observability/lists-disabled-observability-plus-projects",
+      "markdown": "https://vercel.com/docs/rest-api/observability/lists-disabled-observability-plus-projects.md",
+      "file": "rest-api/observability/lists-disabled-observability-plus-projects.md"
+    },
+    {
+      "group": "observability",
+      "page": "https://vercel.com/docs/rest-api/observability/updates-a-disabled-observability-plus-project-setting",
+      "markdown": "https://vercel.com/docs/rest-api/observability/updates-a-disabled-observability-plus-project-setting.md",
+      "file": "rest-api/observability/updates-a-disabled-observability-plus-project-setting.md"
+    },
+    {
+      "group": "projectMembers",
+      "page": "https://vercel.com/docs/rest-api/projectmembers/list-project-members",
+      "markdown": "https://vercel.com/docs/rest-api/projectmembers/list-project-members.md",
+      "file": "rest-api/projectmembers/list-project-members.md"
+    },
+    {
+      "group": "projectMembers",
+      "page": "https://vercel.com/docs/rest-api/projectmembers/adds-a-new-member-to-a-project",
+      "markdown": "https://vercel.com/docs/rest-api/projectmembers/adds-a-new-member-to-a-project.md",
+      "file": "rest-api/projectmembers/adds-a-new-member-to-a-project.md"
+    },
+    {
+      "group": "projectMembers",
+      "page": "https://vercel.com/docs/rest-api/projectmembers/remove-a-project-member",
+      "markdown": "https://vercel.com/docs/rest-api/projectmembers/remove-a-project-member.md",
+      "file": "rest-api/projectmembers/remove-a-project-member.md"
+    },
+    {
+      "group": "project-routes",
+      "page": "https://vercel.com/docs/rest-api/project-routes/get-project-routing-rules",
+      "markdown": "https://vercel.com/docs/rest-api/project-routes/get-project-routing-rules.md",
+      "file": "rest-api/project-routes/get-project-routing-rules.md"
+    },
+    {
+      "group": "project-routes",
+      "page": "https://vercel.com/docs/rest-api/project-routes/add-a-routing-rule",
+      "markdown": "https://vercel.com/docs/rest-api/project-routes/add-a-routing-rule.md",
+      "file": "rest-api/project-routes/add-a-routing-rule.md"
+    },
+    {
+      "group": "project-routes",
+      "page": "https://vercel.com/docs/rest-api/project-routes/stage-routing-rules",
+      "markdown": "https://vercel.com/docs/rest-api/project-routes/stage-routing-rules.md",
+      "file": "rest-api/project-routes/stage-routing-rules.md"
+    },
+    {
+      "group": "project-routes",
+      "page": "https://vercel.com/docs/rest-api/project-routes/delete-routing-rules",
+      "markdown": "https://vercel.com/docs/rest-api/project-routes/delete-routing-rules.md",
+      "file": "rest-api/project-routes/delete-routing-rules.md"
+    },
+    {
+      "group": "project-routes",
+      "page": "https://vercel.com/docs/rest-api/project-routes/edit-a-routing-rule",
+      "markdown": "https://vercel.com/docs/rest-api/project-routes/edit-a-routing-rule.md",
+      "file": "rest-api/project-routes/edit-a-routing-rule.md"
+    },
+    {
+      "group": "project-routes",
+      "page": "https://vercel.com/docs/rest-api/project-routes/generate-a-routing-rule-from-natural-language",
+      "markdown": "https://vercel.com/docs/rest-api/project-routes/generate-a-routing-rule-from-natural-language.md",
+      "file": "rest-api/project-routes/generate-a-routing-rule-from-natural-language.md"
+    },
+    {
+      "group": "project-routes",
+      "page": "https://vercel.com/docs/rest-api/project-routes/get-routing-rule-version-history",
+      "markdown": "https://vercel.com/docs/rest-api/project-routes/get-routing-rule-version-history.md",
+      "file": "rest-api/project-routes/get-routing-rule-version-history.md"
+    },
+    {
+      "group": "project-routes",
+      "page": "https://vercel.com/docs/rest-api/project-routes/promote-restore-or-discard-a-routing-rule-version",
+      "markdown": "https://vercel.com/docs/rest-api/project-routes/promote-restore-or-discard-a-routing-rule-version.md",
+      "file": "rest-api/project-routes/promote-restore-or-discard-a-routing-rule-version.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/retrieve-a-list-of-projects",
+      "markdown": "https://vercel.com/docs/rest-api/projects/retrieve-a-list-of-projects.md",
+      "file": "rest-api/projects/retrieve-a-list-of-projects.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/get-a-project-trace-by-request-id",
+      "markdown": "https://vercel.com/docs/rest-api/projects/get-a-project-trace-by-request-id.md",
+      "file": "rest-api/projects/get-a-project-trace-by-request-id.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/create-a-new-project",
+      "markdown": "https://vercel.com/docs/rest-api/projects/create-a-new-project.md",
+      "file": "rest-api/projects/create-a-new-project.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/generate-a-project-oidc-token",
+      "markdown": "https://vercel.com/docs/rest-api/projects/generate-a-project-oidc-token.md",
+      "file": "rest-api/projects/generate-a-project-oidc-token.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/create-a-trace-session-token-for-a-deployment",
+      "markdown": "https://vercel.com/docs/rest-api/projects/create-a-trace-session-token-for-a-deployment.md",
+      "file": "rest-api/projects/create-a-trace-session-token-for-a-deployment.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/find-a-project-by-id-or-name",
+      "markdown": "https://vercel.com/docs/rest-api/projects/find-a-project-by-id-or-name.md",
+      "file": "rest-api/projects/find-a-project-by-id-or-name.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/update-an-existing-project",
+      "markdown": "https://vercel.com/docs/rest-api/projects/update-an-existing-project.md",
+      "file": "rest-api/projects/update-an-existing-project.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/delete-a-project",
+      "markdown": "https://vercel.com/docs/rest-api/projects/delete-a-project.md",
+      "file": "rest-api/projects/delete-a-project.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/upload-a-project-avatar",
+      "markdown": "https://vercel.com/docs/rest-api/projects/upload-a-project-avatar.md",
+      "file": "rest-api/projects/upload-a-project-avatar.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/retrieve-project-domains-by-project-by-id-or-name",
+      "markdown": "https://vercel.com/docs/rest-api/projects/retrieve-project-domains-by-project-by-id-or-name.md",
+      "file": "rest-api/projects/retrieve-project-domains-by-project-by-id-or-name.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/get-a-project-domain",
+      "markdown": "https://vercel.com/docs/rest-api/projects/get-a-project-domain.md",
+      "file": "rest-api/projects/get-a-project-domain.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/update-a-project-domain",
+      "markdown": "https://vercel.com/docs/rest-api/projects/update-a-project-domain.md",
+      "file": "rest-api/projects/update-a-project-domain.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/remove-a-domain-from-a-project",
+      "markdown": "https://vercel.com/docs/rest-api/projects/remove-a-domain-from-a-project.md",
+      "file": "rest-api/projects/remove-a-domain-from-a-project.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/add-a-domain-to-a-project",
+      "markdown": "https://vercel.com/docs/rest-api/projects/add-a-domain-to-a-project.md",
+      "file": "rest-api/projects/add-a-domain-to-a-project.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/move-a-project-domain",
+      "markdown": "https://vercel.com/docs/rest-api/projects/move-a-project-domain.md",
+      "file": "rest-api/projects/move-a-project-domain.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/verify-project-domain",
+      "markdown": "https://vercel.com/docs/rest-api/projects/verify-project-domain.md",
+      "file": "rest-api/projects/verify-project-domain.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/retrieve-the-environment-variables-of-a-project-by-id-or-name",
+      "markdown": "https://vercel.com/docs/rest-api/projects/retrieve-the-environment-variables-of-a-project-by-id-or-name.md",
+      "file": "rest-api/projects/retrieve-the-environment-variables-of-a-project-by-id-or-name.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/create-one-or-more-environment-variables",
+      "markdown": "https://vercel.com/docs/rest-api/projects/create-one-or-more-environment-variables.md",
+      "file": "rest-api/projects/create-one-or-more-environment-variables.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/retrieve-the-decrypted-value-of-an-environment-variable-of-a-project-by-id",
+      "markdown": "https://vercel.com/docs/rest-api/projects/retrieve-the-decrypted-value-of-an-environment-variable-of-a-project-by-id.md",
+      "file": "rest-api/projects/retrieve-the-decrypted-value-of-an-environment-variable-of-a-project-by-id.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/edit-an-environment-variable",
+      "markdown": "https://vercel.com/docs/rest-api/projects/edit-an-environment-variable.md",
+      "file": "rest-api/projects/edit-an-environment-variable.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/remove-an-environment-variable",
+      "markdown": "https://vercel.com/docs/rest-api/projects/remove-an-environment-variable.md",
+      "file": "rest-api/projects/remove-an-environment-variable.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/batch-remove-environment-variables",
+      "markdown": "https://vercel.com/docs/rest-api/projects/batch-remove-environment-variables.md",
+      "file": "rest-api/projects/batch-remove-environment-variables.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/create-project-transfer-request",
+      "markdown": "https://vercel.com/docs/rest-api/projects/create-project-transfer-request.md",
+      "file": "rest-api/projects/create-project-transfer-request.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/accept-project-transfer-request",
+      "markdown": "https://vercel.com/docs/rest-api/projects/accept-project-transfer-request.md",
+      "file": "rest-api/projects/accept-project-transfer-request.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/update-protection-bypass-for-automation",
+      "markdown": "https://vercel.com/docs/rest-api/projects/update-protection-bypass-for-automation.md",
+      "file": "rest-api/projects/update-protection-bypass-for-automation.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/point-production-traffic-to-a-previous-production-deployment-by-id",
+      "markdown": "https://vercel.com/docs/rest-api/projects/point-production-traffic-to-a-previous-production-deployment-by-id.md",
+      "file": "rest-api/projects/point-production-traffic-to-a-previous-production-deployment-by-id.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/updates-the-description-for-a-rollback",
+      "markdown": "https://vercel.com/docs/rest-api/projects/updates-the-description-for-a-rollback.md",
+      "file": "rest-api/projects/updates-the-description-for-a-rollback.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/update-the-microfrontends-settings",
+      "markdown": "https://vercel.com/docs/rest-api/projects/update-the-microfrontends-settings.md",
+      "file": "rest-api/projects/update-the-microfrontends-settings.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/point-production-traffic-to-a-given-deployment",
+      "markdown": "https://vercel.com/docs/rest-api/projects/point-production-traffic-to-a-given-deployment.md",
+      "file": "rest-api/projects/point-production-traffic-to-a-given-deployment.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/gets-a-list-of-aliases-with-status-for-the-current-promote",
+      "markdown": "https://vercel.com/docs/rest-api/projects/gets-a-list-of-aliases-with-status-for-the-current-promote.md",
+      "file": "rest-api/projects/gets-a-list-of-aliases-with-status-for-the-current-promote.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/pause-a-project",
+      "markdown": "https://vercel.com/docs/rest-api/projects/pause-a-project.md",
+      "file": "rest-api/projects/pause-a-project.md"
+    },
+    {
+      "group": "projects",
+      "page": "https://vercel.com/docs/rest-api/projects/unpause-a-project",
+      "markdown": "https://vercel.com/docs/rest-api/projects/unpause-a-project.md",
+      "file": "rest-api/projects/unpause-a-project.md"
+    },
+    {
+      "group": "rolling-release",
+      "page": "https://vercel.com/docs/rest-api/rolling-release/get-rolling-release-billing-status",
+      "markdown": "https://vercel.com/docs/rest-api/rolling-release/get-rolling-release-billing-status.md",
+      "file": "rest-api/rolling-release/get-rolling-release-billing-status.md"
+    },
+    {
+      "group": "rolling-release",
+      "page": "https://vercel.com/docs/rest-api/rolling-release/get-rolling-release-configuration",
+      "markdown": "https://vercel.com/docs/rest-api/rolling-release/get-rolling-release-configuration.md",
+      "file": "rest-api/rolling-release/get-rolling-release-configuration.md"
+    },
+    {
+      "group": "rolling-release",
+      "page": "https://vercel.com/docs/rest-api/rolling-release/update-the-rolling-release-settings-for-the-project",
+      "markdown": "https://vercel.com/docs/rest-api/rolling-release/update-the-rolling-release-settings-for-the-project.md",
+      "file": "rest-api/rolling-release/update-the-rolling-release-settings-for-the-project.md"
+    },
+    {
+      "group": "rolling-release",
+      "page": "https://vercel.com/docs/rest-api/rolling-release/delete-rolling-release-configuration",
+      "markdown": "https://vercel.com/docs/rest-api/rolling-release/delete-rolling-release-configuration.md",
+      "file": "rest-api/rolling-release/delete-rolling-release-configuration.md"
+    },
+    {
+      "group": "rolling-release",
+      "page": "https://vercel.com/docs/rest-api/rolling-release/get-the-active-rolling-release-information-for-a-project",
+      "markdown": "https://vercel.com/docs/rest-api/rolling-release/get-the-active-rolling-release-information-for-a-project.md",
+      "file": "rest-api/rolling-release/get-the-active-rolling-release-information-for-a-project.md"
+    },
+    {
+      "group": "rolling-release",
+      "page": "https://vercel.com/docs/rest-api/rolling-release/update-the-active-rolling-release-to-the-next-stage-for-a-project",
+      "markdown": "https://vercel.com/docs/rest-api/rolling-release/update-the-active-rolling-release-to-the-next-stage-for-a-project.md",
+      "file": "rest-api/rolling-release/update-the-active-rolling-release-to-the-next-stage-for-a-project.md"
+    },
+    {
+      "group": "rolling-release",
+      "page": "https://vercel.com/docs/rest-api/rolling-release/start-a-rolling-release-for-the-project",
+      "markdown": "https://vercel.com/docs/rest-api/rolling-release/start-a-rolling-release-for-the-project.md",
+      "file": "rest-api/rolling-release/start-a-rolling-release-for-the-project.md"
+    },
+    {
+      "group": "rolling-release",
+      "page": "https://vercel.com/docs/rest-api/rolling-release/complete-the-rolling-release-for-the-project",
+      "markdown": "https://vercel.com/docs/rest-api/rolling-release/complete-the-rolling-release-for-the-project.md",
+      "file": "rest-api/rolling-release/complete-the-rolling-release-for-the-project.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/list-sandboxes",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/list-sandboxes.md",
+      "file": "rest-api/sandboxes/list-sandboxes.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/create-a-named-sandbox",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/create-a-named-sandbox.md",
+      "file": "rest-api/sandboxes/create-a-named-sandbox.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/list-drives",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/list-drives.md",
+      "file": "rest-api/sandboxes/list-drives.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/get-or-create-a-drive",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/get-or-create-a-drive.md",
+      "file": "rest-api/sandboxes/get-or-create-a-drive.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/delete-a-drive",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/delete-a-drive.md",
+      "file": "rest-api/sandboxes/delete-a-drive.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/list-snapshots",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/list-snapshots.md",
+      "file": "rest-api/sandboxes/list-snapshots.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/get-a-snapshot",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/get-a-snapshot.md",
+      "file": "rest-api/sandboxes/get-a-snapshot.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/delete-a-snapshot",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/delete-a-snapshot.md",
+      "file": "rest-api/sandboxes/delete-a-snapshot.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/list-sessions",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/list-sessions.md",
+      "file": "rest-api/sandboxes/list-sessions.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/get-a-session",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/get-a-session.md",
+      "file": "rest-api/sandboxes/get-a-session.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/get-a-named-sandbox",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/get-a-named-sandbox.md",
+      "file": "rest-api/sandboxes/get-a-named-sandbox.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/update-a-sandbox",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/update-a-sandbox.md",
+      "file": "rest-api/sandboxes/update-a-sandbox.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/delete-a-sandbox",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/delete-a-sandbox.md",
+      "file": "rest-api/sandboxes/delete-a-sandbox.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/list-commands",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/list-commands.md",
+      "file": "rest-api/sandboxes/list-commands.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/execute-a-command",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/execute-a-command.md",
+      "file": "rest-api/sandboxes/execute-a-command.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/get-a-command",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/get-a-command.md",
+      "file": "rest-api/sandboxes/get-a-command.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/kill-a-command",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/kill-a-command.md",
+      "file": "rest-api/sandboxes/kill-a-command.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/stream-command-logs",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/stream-command-logs.md",
+      "file": "rest-api/sandboxes/stream-command-logs.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/stop-a-session",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/stop-a-session.md",
+      "file": "rest-api/sandboxes/stop-a-session.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/extend-session-timeout",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/extend-session-timeout.md",
+      "file": "rest-api/sandboxes/extend-session-timeout.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/update-network-policy",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/update-network-policy.md",
+      "file": "rest-api/sandboxes/update-network-policy.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/read-a-file",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/read-a-file.md",
+      "file": "rest-api/sandboxes/read-a-file.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/create-a-directory",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/create-a-directory.md",
+      "file": "rest-api/sandboxes/create-a-directory.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/write-files",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/write-files.md",
+      "file": "rest-api/sandboxes/write-files.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/create-a-snapshot",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/create-a-snapshot.md",
+      "file": "rest-api/sandboxes/create-a-snapshot.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/fork-a-named-sandbox",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/fork-a-named-sandbox.md",
+      "file": "rest-api/sandboxes/fork-a-named-sandbox.md"
+    },
+    {
+      "group": "sandboxes",
+      "page": "https://vercel.com/docs/rest-api/sandboxes/create-a-named-sandbox-1",
+      "markdown": "https://vercel.com/docs/rest-api/sandboxes/create-a-named-sandbox-1.md",
+      "file": "rest-api/sandboxes/create-a-named-sandbox-1.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/update-attack-challenge-mode",
+      "markdown": "https://vercel.com/docs/rest-api/security/update-attack-challenge-mode.md",
+      "file": "rest-api/security/update-attack-challenge-mode.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/returns-activated-waf-config",
+      "markdown": "https://vercel.com/docs/rest-api/security/returns-activated-waf-config.md",
+      "file": "rest-api/security/returns-activated-waf-config.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/put-firewall-configuration",
+      "markdown": "https://vercel.com/docs/rest-api/security/put-firewall-configuration.md",
+      "file": "rest-api/security/put-firewall-configuration.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/update-firewall-configuration",
+      "markdown": "https://vercel.com/docs/rest-api/security/update-firewall-configuration.md",
+      "file": "rest-api/security/update-firewall-configuration.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/read-firewall-configuration",
+      "markdown": "https://vercel.com/docs/rest-api/security/read-firewall-configuration.md",
+      "file": "rest-api/security/read-firewall-configuration.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/returns-activated-waf-config-1",
+      "markdown": "https://vercel.com/docs/rest-api/security/returns-activated-waf-config-1.md",
+      "file": "rest-api/security/returns-activated-waf-config-1.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/returns-activated-waf-config-2",
+      "markdown": "https://vercel.com/docs/rest-api/security/returns-activated-waf-config-2.md",
+      "file": "rest-api/security/returns-activated-waf-config-2.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/read-active-attack-data",
+      "markdown": "https://vercel.com/docs/rest-api/security/read-active-attack-data.md",
+      "file": "rest-api/security/read-active-attack-data.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/read-system-bypass",
+      "markdown": "https://vercel.com/docs/rest-api/security/read-system-bypass.md",
+      "file": "rest-api/security/read-system-bypass.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/create-system-bypass-rule",
+      "markdown": "https://vercel.com/docs/rest-api/security/create-system-bypass-rule.md",
+      "file": "rest-api/security/create-system-bypass-rule.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/remove-system-bypass-rule",
+      "markdown": "https://vercel.com/docs/rest-api/security/remove-system-bypass-rule.md",
+      "file": "rest-api/security/remove-system-bypass-rule.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/read-firewall-actions-by-project",
+      "markdown": "https://vercel.com/docs/rest-api/security/read-firewall-actions-by-project.md",
+      "file": "rest-api/security/read-firewall-actions-by-project.md"
+    },
+    {
+      "group": "security",
+      "page": "https://vercel.com/docs/rest-api/security/generate-a-firewall-rule-from-natural-language",
+      "markdown": "https://vercel.com/docs/rest-api/security/generate-a-firewall-rule-from-natural-language.md",
+      "file": "rest-api/security/generate-a-firewall-rule-from-natural-language.md"
+    },
+    {
+      "group": "storage",
+      "page": "https://vercel.com/docs/rest-api/storage/get-a-store",
+      "markdown": "https://vercel.com/docs/rest-api/storage/get-a-store.md",
+      "file": "rest-api/storage/get-a-store.md"
+    },
+    {
+      "group": "storage",
+      "page": "https://vercel.com/docs/rest-api/storage/create-a-blob-store",
+      "markdown": "https://vercel.com/docs/rest-api/storage/create-a-blob-store.md",
+      "file": "rest-api/storage/create-a-blob-store.md"
+    },
+    {
+      "group": "storage",
+      "page": "https://vercel.com/docs/rest-api/storage/delete-a-blob-store",
+      "markdown": "https://vercel.com/docs/rest-api/storage/delete-a-blob-store.md",
+      "file": "rest-api/storage/delete-a-blob-store.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/list-team-members",
+      "markdown": "https://vercel.com/docs/rest-api/teams/list-team-members.md",
+      "file": "rest-api/teams/list-team-members.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/invite-a-user",
+      "markdown": "https://vercel.com/docs/rest-api/teams/invite-a-user.md",
+      "file": "rest-api/teams/invite-a-user.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/request-access-to-a-team",
+      "markdown": "https://vercel.com/docs/rest-api/teams/request-access-to-a-team.md",
+      "file": "rest-api/teams/request-access-to-a-team.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/get-access-request-status",
+      "markdown": "https://vercel.com/docs/rest-api/teams/get-access-request-status.md",
+      "file": "rest-api/teams/get-access-request-status.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/join-a-team",
+      "markdown": "https://vercel.com/docs/rest-api/teams/join-a-team.md",
+      "file": "rest-api/teams/join-a-team.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/update-a-team-member",
+      "markdown": "https://vercel.com/docs/rest-api/teams/update-a-team-member.md",
+      "file": "rest-api/teams/update-a-team-member.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/remove-a-team-member",
+      "markdown": "https://vercel.com/docs/rest-api/teams/remove-a-team-member.md",
+      "file": "rest-api/teams/remove-a-team-member.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/get-a-team",
+      "markdown": "https://vercel.com/docs/rest-api/teams/get-a-team.md",
+      "file": "rest-api/teams/get-a-team.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/update-a-team",
+      "markdown": "https://vercel.com/docs/rest-api/teams/update-a-team.md",
+      "file": "rest-api/teams/update-a-team.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/list-all-teams",
+      "markdown": "https://vercel.com/docs/rest-api/teams/list-all-teams.md",
+      "file": "rest-api/teams/list-all-teams.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/create-a-team",
+      "markdown": "https://vercel.com/docs/rest-api/teams/create-a-team.md",
+      "file": "rest-api/teams/create-a-team.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/update-team-directory-sync-role-mappings",
+      "markdown": "https://vercel.com/docs/rest-api/teams/update-team-directory-sync-role-mappings.md",
+      "file": "rest-api/teams/update-team-directory-sync-role-mappings.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/delete-a-team",
+      "markdown": "https://vercel.com/docs/rest-api/teams/delete-a-team.md",
+      "file": "rest-api/teams/delete-a-team.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/delete-a-team-invite-code",
+      "markdown": "https://vercel.com/docs/rest-api/teams/delete-a-team-invite-code.md",
+      "file": "rest-api/teams/delete-a-team-invite-code.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/update-a-microfrontends-group",
+      "markdown": "https://vercel.com/docs/rest-api/teams/update-a-microfrontends-group.md",
+      "file": "rest-api/teams/update-a-microfrontends-group.md"
+    },
+    {
+      "group": "teams",
+      "page": "https://vercel.com/docs/rest-api/teams/delete-a-microfrontends-group",
+      "markdown": "https://vercel.com/docs/rest-api/teams/delete-a-microfrontends-group.md",
+      "file": "rest-api/teams/delete-a-microfrontends-group.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/list-repositories",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/list-repositories.md",
+      "file": "rest-api/vcr/list-repositories.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/create-a-repository",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/create-a-repository.md",
+      "file": "rest-api/vcr/create-a-repository.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/get-a-repository",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/get-a-repository.md",
+      "file": "rest-api/vcr/get-a-repository.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/delete-a-repository",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/delete-a-repository.md",
+      "file": "rest-api/vcr/delete-a-repository.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/list-repository-images",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/list-repository-images.md",
+      "file": "rest-api/vcr/list-repository-images.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/list-repository-permissions",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/list-repository-permissions.md",
+      "file": "rest-api/vcr/list-repository-permissions.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/add-a-repository-permission",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/add-a-repository-permission.md",
+      "file": "rest-api/vcr/add-a-repository-permission.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/remove-a-repository-permission",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/remove-a-repository-permission.md",
+      "file": "rest-api/vcr/remove-a-repository-permission.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/clear-all-repository-permissions",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/clear-all-repository-permissions.md",
+      "file": "rest-api/vcr/clear-all-repository-permissions.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/list-repository-tags",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/list-repository-tags.md",
+      "file": "rest-api/vcr/list-repository-tags.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/get-a-repository-tag",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/get-a-repository-tag.md",
+      "file": "rest-api/vcr/get-a-repository-tag.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/get-a-repository-image",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/get-a-repository-image.md",
+      "file": "rest-api/vcr/get-a-repository-image.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/delete-a-repository-image",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/delete-a-repository-image.md",
+      "file": "rest-api/vcr/delete-a-repository-image.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/check-registry-api-version-support",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/check-registry-api-version-support.md",
+      "file": "rest-api/vcr/check-registry-api-version-support.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/download-a-blob",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/download-a-blob.md",
+      "file": "rest-api/vcr/download-a-blob.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/delete-a-blob",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/delete-a-blob.md",
+      "file": "rest-api/vcr/delete-a-blob.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/check-if-a-blob-exists",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/check-if-a-blob-exists.md",
+      "file": "rest-api/vcr/check-if-a-blob-exists.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/get-blob-upload-status",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/get-blob-upload-status.md",
+      "file": "rest-api/vcr/get-blob-upload-status.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/complete-a-blob-upload",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/complete-a-blob-upload.md",
+      "file": "rest-api/vcr/complete-a-blob-upload.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/upload-a-blob-chunk",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/upload-a-blob-chunk.md",
+      "file": "rest-api/vcr/upload-a-blob-chunk.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/cancel-a-blob-upload",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/cancel-a-blob-upload.md",
+      "file": "rest-api/vcr/cancel-a-blob-upload.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/start-a-blob-upload",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/start-a-blob-upload.md",
+      "file": "rest-api/vcr/start-a-blob-upload.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/pull-an-image-manifest",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/pull-an-image-manifest.md",
+      "file": "rest-api/vcr/pull-an-image-manifest.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/push-an-image-manifest",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/push-an-image-manifest.md",
+      "file": "rest-api/vcr/push-an-image-manifest.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/delete-an-image-manifest",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/delete-an-image-manifest.md",
+      "file": "rest-api/vcr/delete-an-image-manifest.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/check-if-a-manifest-exists",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/check-if-a-manifest-exists.md",
+      "file": "rest-api/vcr/check-if-a-manifest-exists.md"
+    },
+    {
+      "group": "vcr",
+      "page": "https://vercel.com/docs/rest-api/vcr/list-image-tags",
+      "markdown": "https://vercel.com/docs/rest-api/vcr/list-image-tags.md",
+      "file": "rest-api/vcr/list-image-tags.md"
+    },
+    {
+      "group": "web-analytics",
+      "page": "https://vercel.com/docs/rest-api/web-analytics/aggregates-page-views",
+      "markdown": "https://vercel.com/docs/rest-api/web-analytics/aggregates-page-views.md",
+      "file": "rest-api/web-analytics/aggregates-page-views.md"
+    },
+    {
+      "group": "web-analytics",
+      "page": "https://vercel.com/docs/rest-api/web-analytics/aggregates-custom-events",
+      "markdown": "https://vercel.com/docs/rest-api/web-analytics/aggregates-custom-events.md",
+      "file": "rest-api/web-analytics/aggregates-custom-events.md"
+    },
+    {
+      "group": "web-analytics",
+      "page": "https://vercel.com/docs/rest-api/web-analytics/counts-page-views",
+      "markdown": "https://vercel.com/docs/rest-api/web-analytics/counts-page-views.md",
+      "file": "rest-api/web-analytics/counts-page-views.md"
+    },
+    {
+      "group": "web-analytics",
+      "page": "https://vercel.com/docs/rest-api/web-analytics/counts-custom-events",
+      "markdown": "https://vercel.com/docs/rest-api/web-analytics/counts-custom-events.md",
+      "file": "rest-api/web-analytics/counts-custom-events.md"
+    },
+    {
+      "group": "webhooks",
+      "page": "https://vercel.com/docs/rest-api/webhooks/get-a-list-of-webhooks",
+      "markdown": "https://vercel.com/docs/rest-api/webhooks/get-a-list-of-webhooks.md",
+      "file": "rest-api/webhooks/get-a-list-of-webhooks.md"
+    },
+    {
+      "group": "webhooks",
+      "page": "https://vercel.com/docs/rest-api/webhooks/creates-a-webhook",
+      "markdown": "https://vercel.com/docs/rest-api/webhooks/creates-a-webhook.md",
+      "file": "rest-api/webhooks/creates-a-webhook.md"
+    },
+    {
+      "group": "webhooks",
+      "page": "https://vercel.com/docs/rest-api/webhooks/get-a-webhook",
+      "markdown": "https://vercel.com/docs/rest-api/webhooks/get-a-webhook.md",
+      "file": "rest-api/webhooks/get-a-webhook.md"
+    },
+    {
+      "group": "webhooks",
+      "page": "https://vercel.com/docs/rest-api/webhooks/deletes-a-webhook",
+      "markdown": "https://vercel.com/docs/rest-api/webhooks/deletes-a-webhook.md",
+      "file": "rest-api/webhooks/deletes-a-webhook.md"
+    },
+    {
+      "group": "aliases",
+      "page": "https://vercel.com/docs/rest-api/aliases/list-deployment-aliases",
+      "markdown": "https://vercel.com/docs/rest-api/aliases/list-deployment-aliases.md",
+      "file": "rest-api/aliases/list-deployment-aliases.md"
+    },
+    {
+      "group": "aliases",
+      "page": "https://vercel.com/docs/rest-api/aliases/assign-an-alias",
+      "markdown": "https://vercel.com/docs/rest-api/aliases/assign-an-alias.md",
+      "file": "rest-api/aliases/assign-an-alias.md"
+    },
+    {
+      "group": "aliases",
+      "page": "https://vercel.com/docs/rest-api/aliases/list-aliases",
+      "markdown": "https://vercel.com/docs/rest-api/aliases/list-aliases.md",
+      "file": "rest-api/aliases/list-aliases.md"
+    },
+    {
+      "group": "aliases",
+      "page": "https://vercel.com/docs/rest-api/aliases/get-an-alias",
+      "markdown": "https://vercel.com/docs/rest-api/aliases/get-an-alias.md",
+      "file": "rest-api/aliases/get-an-alias.md"
+    },
+    {
+      "group": "aliases",
+      "page": "https://vercel.com/docs/rest-api/aliases/delete-an-alias",
+      "markdown": "https://vercel.com/docs/rest-api/aliases/delete-an-alias.md",
+      "file": "rest-api/aliases/delete-an-alias.md"
+    },
+    {
+      "group": "aliases",
+      "page": "https://vercel.com/docs/rest-api/aliases/update-the-protection-bypass-for-a-url",
+      "markdown": "https://vercel.com/docs/rest-api/aliases/update-the-protection-bypass-for-a-url.md",
+      "file": "rest-api/aliases/update-the-protection-bypass-for-a-url.md"
+    },
+    {
+      "group": "certs",
+      "page": "https://vercel.com/docs/rest-api/certs/get-cert-by-id",
+      "markdown": "https://vercel.com/docs/rest-api/certs/get-cert-by-id.md",
+      "file": "rest-api/certs/get-cert-by-id.md"
+    },
+    {
+      "group": "certs",
+      "page": "https://vercel.com/docs/rest-api/certs/remove-cert",
+      "markdown": "https://vercel.com/docs/rest-api/certs/remove-cert.md",
+      "file": "rest-api/certs/remove-cert.md"
+    },
+    {
+      "group": "certs",
+      "page": "https://vercel.com/docs/rest-api/certs/get-certs",
+      "markdown": "https://vercel.com/docs/rest-api/certs/get-certs.md",
+      "file": "rest-api/certs/get-certs.md"
+    },
+    {
+      "group": "certs",
+      "page": "https://vercel.com/docs/rest-api/certs/issue-a-new-cert",
+      "markdown": "https://vercel.com/docs/rest-api/certs/issue-a-new-cert.md",
+      "file": "rest-api/certs/issue-a-new-cert.md"
+    },
+    {
+      "group": "certs",
+      "page": "https://vercel.com/docs/rest-api/certs/upload-a-cert",
+      "markdown": "https://vercel.com/docs/rest-api/certs/upload-a-cert.md",
+      "file": "rest-api/certs/upload-a-cert.md"
+    },
+    {
+      "group": "$shared",
+      "page": "https://vercel.com/docs/rest-api/errors",
+      "markdown": "https://vercel.com/docs/rest-api/errors.md",
+      "file": "rest-api/errors.md"
+    },
+    {
+      "group": "$shared",
+      "page": "https://vercel.com/docs/rest-api/sdk",
+      "markdown": "https://vercel.com/docs/rest-api/sdk.md",
+      "file": "rest-api/sdk.md"
+    }
+  ]
+}

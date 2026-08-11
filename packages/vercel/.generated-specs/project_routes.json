@@ -1,0 +1,2552 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.project_routes#GetProjectRoutingRulesRequestFilter": {
+      "type": "enum",
+      "members": {
+        "REWRITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rewrite"
+          }
+        },
+        "REDIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "redirect"
+          }
+        },
+        "SET_STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "set_status"
+          }
+        },
+        "TRANSFORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "transform"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "versionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "versionId"
+          }
+        },
+        "q": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "q"
+          }
+        },
+        "filter": {
+          "target": "com.vercel.project_routes#GetProjectRoutingRulesRequestFilter",
+          "traits": {
+            "smithy.api#httpQuery": "filter"
+          }
+        },
+        "diff": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "diff"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase1RoutesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase1Version": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "s3Key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The S3 key where the routing rules are stored.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when this version was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user who created this version.",
+            "smithy.api#required": {}
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is staged and not yet promoted to production."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "ruleCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of routing rules in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging alias for previewing this version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A version of routing rules stored in S3."
+      }
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "routes": {
+          "target": "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase1RoutesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase1Version",
+          "traits": {
+            "smithy.api#documentation": "A version of routing rules stored in S3.",
+            "smithy.api#required": {}
+          }
+        },
+        "diffCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase2RoutesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase2Version": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "s3Key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The S3 key where the routing rules are stored.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when this version was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user who created this version.",
+            "smithy.api#required": {}
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is staged and not yet promoted to production."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "ruleCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of routing rules in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging alias for previewing this version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A version of routing rules stored in S3."
+      }
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase2": {
+      "type": "structure",
+      "members": {
+        "routes": {
+          "target": "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase2RoutesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase2Version",
+          "traits": {
+            "smithy.api#documentation": "A version of routing rules stored in S3.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase3RoutesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase3Version": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "s3Key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The S3 key where the routing rules are stored.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when this version was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user who created this version.",
+            "smithy.api#required": {}
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is staged and not yet promoted to production."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "ruleCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of routing rules in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging alias for previewing this version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A version of routing rules stored in S3."
+      }
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase3Limit": {
+      "type": "structure",
+      "members": {
+        "maxRoutes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "currentRoutes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase3": {
+      "type": "structure",
+      "members": {
+        "routes": {
+          "target": "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase3RoutesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase3Version",
+          "traits": {
+            "smithy.api#documentation": "A version of routing rules stored in S3.",
+            "smithy.api#required": {}
+          }
+        },
+        "limit": {
+          "target": "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase3Limit",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Document"
+        },
+        "Case1": {
+          "target": "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase1"
+        },
+        "Case2": {
+          "target": "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase2"
+        },
+        "Case3": {
+          "target": "com.vercel.project_routes#GetProjectRoutingRulesResponseBodyCase3"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GetProjectRoutingRulesResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.project_routes#GetProjectRoutingRulesResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.project_routes#GetProjectRoutingRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.project_routes#GetProjectRoutingRulesRequest"
+      },
+      "output": {
+        "target": "com.vercel.project_routes#GetProjectRoutingRulesResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.project_routes#BadRequest"
+        },
+        {
+          "target": "com.vercel.project_routes#Forbidden"
+        },
+        {
+          "target": "com.vercel.project_routes#NotFound"
+        },
+        {
+          "target": "com.vercel.project_routes#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/projects/{projectId}/routes",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get project routing rules\n\nGet the routing rules for a project. Supports searching by name/ID/pattern, filtering by route type, and diffing staged changes against production."
+      }
+    },
+    "com.vercel.project_routes#AddARoutingRuleRequestRouteSrcSyntax": {
+      "type": "enum",
+      "members": {
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        },
+        "PATH_TO_REGEXP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "path-to-regexp"
+          }
+        },
+        "REGEX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "regex"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Pattern syntax type. If not provided, inferred from pattern."
+      }
+    },
+    "com.vercel.project_routes#AddARoutingRuleRequestRouteRouteHasList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#AddARoutingRuleRequestRouteRouteMissingList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#AddARoutingRuleRequestRouteRouteTransformsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#AddARoutingRuleRequestRouteRoute": {
+      "type": "structure",
+      "members": {
+        "src": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "dest": {
+          "target": "smithy.api#String"
+        },
+        "headers": {
+          "target": "smithy.api#Document"
+        },
+        "caseSensitive": {
+          "target": "smithy.api#Boolean"
+        },
+        "status": {
+          "target": "smithy.api#Integer"
+        },
+        "has": {
+          "target": "com.vercel.project_routes#AddARoutingRuleRequestRouteRouteHasList"
+        },
+        "missing": {
+          "target": "com.vercel.project_routes#AddARoutingRuleRequestRouteRouteMissingList"
+        },
+        "transforms": {
+          "target": "com.vercel.project_routes#AddARoutingRuleRequestRouteRouteTransformsList"
+        },
+        "respectOriginCacheControl": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#AddARoutingRuleRequestRoute": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "srcSyntax": {
+          "target": "com.vercel.project_routes#AddARoutingRuleRequestRouteSrcSyntax",
+          "traits": {
+            "smithy.api#documentation": "Pattern syntax type. If not provided, inferred from pattern."
+          }
+        },
+        "route": {
+          "target": "com.vercel.project_routes#AddARoutingRuleRequestRouteRoute",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#AddARoutingRuleRequestPositionPlacement": {
+      "type": "enum",
+      "members": {
+        "START": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "start"
+          }
+        },
+        "END": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "end"
+          }
+        },
+        "AFTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "after"
+          }
+        },
+        "BEFORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "before"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "\"after\"/\"before\" require referenceId."
+      }
+    },
+    "com.vercel.project_routes#AddARoutingRuleRequestPosition": {
+      "type": "structure",
+      "members": {
+        "placement": {
+          "target": "com.vercel.project_routes#AddARoutingRuleRequestPositionPlacement",
+          "traits": {
+            "smithy.api#documentation": "\"after\"/\"before\" require referenceId."
+          }
+        },
+        "referenceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Route ID to insert after/before. Required for \"after\"/\"before\"."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Controls where the route is inserted. Defaults to \"end\" if omitted."
+      }
+    },
+    "com.vercel.project_routes#AddARoutingRuleRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "route": {
+          "target": "com.vercel.project_routes#AddARoutingRuleRequestRoute",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "position": {
+          "target": "com.vercel.project_routes#AddARoutingRuleRequestPosition",
+          "traits": {
+            "smithy.api#documentation": "Controls where the route is inserted. Defaults to \"end\" if omitted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteType": {
+      "type": "enum",
+      "members": {
+        "REDIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "redirect"
+          }
+        },
+        "REWRITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rewrite"
+          }
+        },
+        "SET_STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "set_status"
+          }
+        },
+        "TRANSFORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "transform"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteMethodsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteHasList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteMissingList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteTransformsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteEnvList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteMiddlewareRawSrcList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The original middleware matchers."
+      }
+    },
+    "com.vercel.project_routes#AddARoutingRuleResponseRouteRoute": {
+      "type": "structure",
+      "members": {
+        "src": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "dest": {
+          "target": "smithy.api#String"
+        },
+        "headers": {
+          "target": "smithy.api#Document"
+        },
+        "methods": {
+          "target": "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteMethodsList"
+        },
+        "continue": {
+          "target": "smithy.api#Boolean"
+        },
+        "override": {
+          "target": "smithy.api#Boolean"
+        },
+        "caseSensitive": {
+          "target": "smithy.api#Boolean"
+        },
+        "check": {
+          "target": "smithy.api#Boolean"
+        },
+        "important": {
+          "target": "smithy.api#Boolean"
+        },
+        "status": {
+          "target": "smithy.api#Double"
+        },
+        "has": {
+          "target": "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteHasList"
+        },
+        "missing": {
+          "target": "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteMissingList"
+        },
+        "mitigate": {
+          "target": "smithy.api#Document"
+        },
+        "transforms": {
+          "target": "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteTransformsList"
+        },
+        "env": {
+          "target": "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteEnvList"
+        },
+        "locale": {
+          "target": "smithy.api#Document"
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`)."
+          }
+        },
+        "destination": {
+          "target": "smithy.api#Document"
+        },
+        "statusCode": {
+          "target": "smithy.api#Double"
+        },
+        "middlewarePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A middleware key within the `output` key under the build result. Overrides a `middleware` definition."
+          }
+        },
+        "middlewareRawSrc": {
+          "target": "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteMiddlewareRawSrcList",
+          "traits": {
+            "smithy.api#documentation": "The original middleware matchers."
+          }
+        },
+        "middleware": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A middleware index in the `middleware` key under the build result"
+          }
+        },
+        "respectOriginCacheControl": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The route definition from @vercel/routing-utils."
+      }
+    },
+    "com.vercel.project_routes#AddARoutingRuleResponseRouteSrcSyntax": {
+      "type": "enum",
+      "members": {
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        },
+        "PATH_TO_REGEXP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "path-to-regexp"
+          }
+        },
+        "REGEX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "regex"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The syntax type of the source pattern. Determines how the pattern is compiled to regex."
+      }
+    },
+    "com.vercel.project_routes#AddARoutingRuleResponseRoute": {
+      "type": "structure",
+      "members": {
+        "routeType": {
+          "target": "com.vercel.project_routes#AddARoutingRuleResponseRouteRouteType"
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the routing rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name for the routing rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional description of what the routing rule does."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the routing rule is enabled. Defaults to true."
+          }
+        },
+        "staged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this route is new and not yet published to production. Set to true only when a route is first created via add-route. Cleared (set to false) when a version is promoted to production."
+          }
+        },
+        "route": {
+          "target": "com.vercel.project_routes#AddARoutingRuleResponseRouteRoute",
+          "traits": {
+            "smithy.api#documentation": "The route definition from @vercel/routing-utils.",
+            "smithy.api#required": {}
+          }
+        },
+        "rawSrc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Original source pattern provided by user (path-to-regexp or regex). Used to display the user's input in API responses."
+          }
+        },
+        "rawDest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Original destination provided by user."
+          }
+        },
+        "srcSyntax": {
+          "target": "com.vercel.project_routes#AddARoutingRuleResponseRouteSrcSyntax",
+          "traits": {
+            "smithy.api#documentation": "The syntax type of the source pattern. Determines how the pattern is compiled to regex."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#AddARoutingRuleResponseVersion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "s3Key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The S3 key where the routing rules are stored.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when this version was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user who created this version.",
+            "smithy.api#required": {}
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is staged and not yet promoted to production."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "ruleCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of routing rules in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging alias for previewing this version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A version of routing rules stored in S3."
+      }
+    },
+    "com.vercel.project_routes#AddARoutingRuleResponse": {
+      "type": "structure",
+      "members": {
+        "route": {
+          "target": "com.vercel.project_routes#AddARoutingRuleResponseRoute",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "com.vercel.project_routes#AddARoutingRuleResponseVersion",
+          "traits": {
+            "smithy.api#documentation": "A version of routing rules stored in S3.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.project_routes#AddARoutingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.project_routes#AddARoutingRuleRequest"
+      },
+      "output": {
+        "target": "com.vercel.project_routes#AddARoutingRuleResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.project_routes#BadRequest"
+        },
+        {
+          "target": "com.vercel.project_routes#Forbidden"
+        },
+        {
+          "target": "com.vercel.project_routes#Conflict"
+        },
+        {
+          "target": "com.vercel.project_routes#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/projects/{projectId}/routes",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add a routing rule\n\nAdd a single routing rule to a project at a specified position. Defaults to the end of the list if no position is provided. The route is enabled by default. Stages a new version with the added route."
+      }
+    },
+    "com.vercel.project_routes#StageRoutingRulesRequestRoutesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "route": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#StageRoutingRulesRequestRoutesList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.project_routes#StageRoutingRulesRequestRoutesItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#StageRoutingRulesRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "overwrite": {
+          "target": "smithy.api#Boolean"
+        },
+        "routes": {
+          "target": "com.vercel.project_routes#StageRoutingRulesRequestRoutesList"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.project_routes#StageRoutingRulesResponseVersion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "s3Key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The S3 key where the routing rules are stored.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when this version was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user who created this version.",
+            "smithy.api#required": {}
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is staged and not yet promoted to production."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "ruleCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of routing rules in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging alias for previewing this version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A version of routing rules stored in S3."
+      }
+    },
+    "com.vercel.project_routes#StageRoutingRulesResponse": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.vercel.project_routes#StageRoutingRulesResponseVersion",
+          "traits": {
+            "smithy.api#documentation": "A version of routing rules stored in S3.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.project_routes#StageRoutingRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.project_routes#StageRoutingRulesRequest"
+      },
+      "output": {
+        "target": "com.vercel.project_routes#StageRoutingRulesResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.project_routes#BadRequest"
+        },
+        {
+          "target": "com.vercel.project_routes#Forbidden"
+        },
+        {
+          "target": "com.vercel.project_routes#Conflict"
+        },
+        {
+          "target": "com.vercel.project_routes#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/v1/projects/{projectId}/routes",
+          "code": 200
+        },
+        "smithy.api#documentation": "Stage routing rules\n\nStage routing rules for a project. Set `overwrite` to true to replace all existing rules, or omit it to merge with existing rules by ID. Returns the new staged version."
+      }
+    },
+    "com.vercel.project_routes#DeleteRoutingRulesRequestRouteIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The IDs of the routes to delete"
+      }
+    },
+    "com.vercel.project_routes#DeleteRoutingRulesRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "routeIds": {
+          "target": "com.vercel.project_routes#DeleteRoutingRulesRequestRouteIdsList",
+          "traits": {
+            "smithy.api#documentation": "The IDs of the routes to delete",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.project_routes#DeleteRoutingRulesResponseVersion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "s3Key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The S3 key where the routing rules are stored.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when this version was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user who created this version.",
+            "smithy.api#required": {}
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is staged and not yet promoted to production."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "ruleCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of routing rules in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging alias for previewing this version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A version of routing rules stored in S3."
+      }
+    },
+    "com.vercel.project_routes#DeleteRoutingRulesResponse": {
+      "type": "structure",
+      "members": {
+        "deletedCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "com.vercel.project_routes#DeleteRoutingRulesResponseVersion",
+          "traits": {
+            "smithy.api#documentation": "A version of routing rules stored in S3.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.project_routes#DeleteRoutingRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.project_routes#DeleteRoutingRulesRequest"
+      },
+      "output": {
+        "target": "com.vercel.project_routes#DeleteRoutingRulesResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.project_routes#BadRequest"
+        },
+        {
+          "target": "com.vercel.project_routes#Forbidden"
+        },
+        {
+          "target": "com.vercel.project_routes#NotFound"
+        },
+        {
+          "target": "com.vercel.project_routes#Conflict"
+        },
+        {
+          "target": "com.vercel.project_routes#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/projects/{projectId}/routes",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete routing rules\n\nDelete one or more routing rules from a project by ID. Stages a new version with the routes removed."
+      }
+    },
+    "com.vercel.project_routes#EditARoutingRuleRequestRouteSrcSyntax": {
+      "type": "enum",
+      "members": {
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        },
+        "PATH_TO_REGEXP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "path-to-regexp"
+          }
+        },
+        "REGEX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "regex"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Pattern syntax type. If not provided, inferred from pattern."
+      }
+    },
+    "com.vercel.project_routes#EditARoutingRuleRequestRouteRouteHasList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#EditARoutingRuleRequestRouteRouteMissingList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#EditARoutingRuleRequestRouteRouteTransformsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#EditARoutingRuleRequestRouteRoute": {
+      "type": "structure",
+      "members": {
+        "src": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "dest": {
+          "target": "smithy.api#String"
+        },
+        "headers": {
+          "target": "smithy.api#Document"
+        },
+        "caseSensitive": {
+          "target": "smithy.api#Boolean"
+        },
+        "status": {
+          "target": "smithy.api#Integer"
+        },
+        "has": {
+          "target": "com.vercel.project_routes#EditARoutingRuleRequestRouteRouteHasList"
+        },
+        "missing": {
+          "target": "com.vercel.project_routes#EditARoutingRuleRequestRouteRouteMissingList"
+        },
+        "transforms": {
+          "target": "com.vercel.project_routes#EditARoutingRuleRequestRouteRouteTransformsList"
+        },
+        "respectOriginCacheControl": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#EditARoutingRuleRequestRoute": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean"
+        },
+        "srcSyntax": {
+          "target": "com.vercel.project_routes#EditARoutingRuleRequestRouteSrcSyntax",
+          "traits": {
+            "smithy.api#documentation": "Pattern syntax type. If not provided, inferred from pattern."
+          }
+        },
+        "route": {
+          "target": "com.vercel.project_routes#EditARoutingRuleRequestRouteRoute",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The full route object to replace the existing route with"
+      }
+    },
+    "com.vercel.project_routes#EditARoutingRuleRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "routeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "route": {
+          "target": "com.vercel.project_routes#EditARoutingRuleRequestRoute",
+          "traits": {
+            "smithy.api#documentation": "The full route object to replace the existing route with"
+          }
+        },
+        "restore": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, restores the staged route to the value in the production version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteType": {
+      "type": "enum",
+      "members": {
+        "REDIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "redirect"
+          }
+        },
+        "REWRITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rewrite"
+          }
+        },
+        "SET_STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "set_status"
+          }
+        },
+        "TRANSFORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "transform"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteMethodsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteHasList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteMissingList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteTransformsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteEnvList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteMiddlewareRawSrcList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The original middleware matchers."
+      }
+    },
+    "com.vercel.project_routes#EditARoutingRuleResponseRouteRoute": {
+      "type": "structure",
+      "members": {
+        "src": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "dest": {
+          "target": "smithy.api#String"
+        },
+        "headers": {
+          "target": "smithy.api#Document"
+        },
+        "methods": {
+          "target": "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteMethodsList"
+        },
+        "continue": {
+          "target": "smithy.api#Boolean"
+        },
+        "override": {
+          "target": "smithy.api#Boolean"
+        },
+        "caseSensitive": {
+          "target": "smithy.api#Boolean"
+        },
+        "check": {
+          "target": "smithy.api#Boolean"
+        },
+        "important": {
+          "target": "smithy.api#Boolean"
+        },
+        "status": {
+          "target": "smithy.api#Double"
+        },
+        "has": {
+          "target": "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteHasList"
+        },
+        "missing": {
+          "target": "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteMissingList"
+        },
+        "mitigate": {
+          "target": "smithy.api#Document"
+        },
+        "transforms": {
+          "target": "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteTransformsList"
+        },
+        "env": {
+          "target": "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteEnvList"
+        },
+        "locale": {
+          "target": "smithy.api#Document"
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Aliases for `src`, `dest`, and `status`. These provide consistency with the `rewrites`, `redirects`, and `headers` fields which use `source`, `destination`, and `statusCode`. During normalization, the string forms are converted to their canonical forms (`src`, `dest`, `status`) and stripped from the route object. `destination` may also be a service-targeted object, in which case routing is delegated into the named service's internal route table and the object is preserved as-is (not folded into `dest`)."
+          }
+        },
+        "destination": {
+          "target": "smithy.api#Document"
+        },
+        "statusCode": {
+          "target": "smithy.api#Double"
+        },
+        "middlewarePath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A middleware key within the `output` key under the build result. Overrides a `middleware` definition."
+          }
+        },
+        "middlewareRawSrc": {
+          "target": "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteMiddlewareRawSrcList",
+          "traits": {
+            "smithy.api#documentation": "The original middleware matchers."
+          }
+        },
+        "middleware": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A middleware index in the `middleware` key under the build result"
+          }
+        },
+        "respectOriginCacheControl": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The route definition from @vercel/routing-utils."
+      }
+    },
+    "com.vercel.project_routes#EditARoutingRuleResponseRouteSrcSyntax": {
+      "type": "enum",
+      "members": {
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        },
+        "PATH_TO_REGEXP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "path-to-regexp"
+          }
+        },
+        "REGEX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "regex"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The syntax type of the source pattern. Determines how the pattern is compiled to regex."
+      }
+    },
+    "com.vercel.project_routes#EditARoutingRuleResponseRoute": {
+      "type": "structure",
+      "members": {
+        "routeType": {
+          "target": "com.vercel.project_routes#EditARoutingRuleResponseRouteRouteType"
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the routing rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name for the routing rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional description of what the routing rule does."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the routing rule is enabled. Defaults to true."
+          }
+        },
+        "staged": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this route is new and not yet published to production. Set to true only when a route is first created via add-route. Cleared (set to false) when a version is promoted to production."
+          }
+        },
+        "route": {
+          "target": "com.vercel.project_routes#EditARoutingRuleResponseRouteRoute",
+          "traits": {
+            "smithy.api#documentation": "The route definition from @vercel/routing-utils.",
+            "smithy.api#required": {}
+          }
+        },
+        "rawSrc": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Original source pattern provided by user (path-to-regexp or regex). Used to display the user's input in API responses."
+          }
+        },
+        "rawDest": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Original destination provided by user."
+          }
+        },
+        "srcSyntax": {
+          "target": "com.vercel.project_routes#EditARoutingRuleResponseRouteSrcSyntax",
+          "traits": {
+            "smithy.api#documentation": "The syntax type of the source pattern. Determines how the pattern is compiled to regex."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#EditARoutingRuleResponseVersion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "s3Key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The S3 key where the routing rules are stored.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when this version was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user who created this version.",
+            "smithy.api#required": {}
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is staged and not yet promoted to production."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "ruleCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of routing rules in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging alias for previewing this version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A version of routing rules stored in S3."
+      }
+    },
+    "com.vercel.project_routes#EditARoutingRuleResponse": {
+      "type": "structure",
+      "members": {
+        "route": {
+          "target": "com.vercel.project_routes#EditARoutingRuleResponseRoute"
+        },
+        "version": {
+          "target": "com.vercel.project_routes#EditARoutingRuleResponseVersion",
+          "traits": {
+            "smithy.api#documentation": "A version of routing rules stored in S3.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.project_routes#EditARoutingRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.project_routes#EditARoutingRuleRequest"
+      },
+      "output": {
+        "target": "com.vercel.project_routes#EditARoutingRuleResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.project_routes#BadRequest"
+        },
+        {
+          "target": "com.vercel.project_routes#Forbidden"
+        },
+        {
+          "target": "com.vercel.project_routes#NotFound"
+        },
+        {
+          "target": "com.vercel.project_routes#Conflict"
+        },
+        {
+          "target": "com.vercel.project_routes#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/v1/projects/{projectId}/routes/{routeId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Edit a routing rule\n\nReplace a routing rule identified by its ID, or restore it from the current production version. Stages a new version with the modified route."
+      }
+    },
+    "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageRequestCurrentRoutePathCondition": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String"
+        },
+        "syntax": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageRequestCurrentRouteConditionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageRequestCurrentRouteActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageRequestCurrentRoute": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "pathCondition": {
+          "target": "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageRequestCurrentRoutePathCondition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "conditions": {
+          "target": "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageRequestCurrentRouteConditionsList"
+        },
+        "actions": {
+          "target": "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageRequestCurrentRouteActionsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "prompt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "currentRoute": {
+          "target": "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageRequestCurrentRoute"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageResponseRoutePathConditionSyntax": {
+      "type": "enum",
+      "members": {
+        "EQUALS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "equals"
+          }
+        },
+        "PATH_TO_REGEXP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "path-to-regexp"
+          }
+        },
+        "REGEX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "regex"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageResponseRoutePathCondition": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "syntax": {
+          "target": "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageResponseRoutePathConditionSyntax",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageResponseRouteConditionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageResponseRouteActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageResponseRoute": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pathCondition": {
+          "target": "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageResponseRoutePathCondition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "conditions": {
+          "target": "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageResponseRouteConditionsList"
+        },
+        "actions": {
+          "target": "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageResponseRouteActionsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageResponse": {
+      "type": "structure",
+      "members": {
+        "route": {
+          "target": "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageResponseRoute"
+        },
+        "error": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguage": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageRequest"
+      },
+      "output": {
+        "target": "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguageResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.project_routes#BadRequest"
+        },
+        {
+          "target": "com.vercel.project_routes#Forbidden"
+        },
+        {
+          "target": "com.vercel.project_routes#RequestTimeout"
+        },
+        {
+          "target": "com.vercel.project_routes#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/projects/{projectId}/routes/generate",
+          "code": 200
+        },
+        "smithy.api#documentation": "Generate a routing rule from natural language\n\nGenerate a routing rule configuration from a natural language description. Returns a suggested route configuration that can be reviewed and saved."
+      }
+    },
+    "com.vercel.project_routes#GetRoutingRuleVersionHistoryRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.project_routes#GetRoutingRuleVersionHistoryResponseVersionsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "s3Key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The S3 key where the routing rules are stored.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when this version was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user who created this version.",
+            "smithy.api#required": {}
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is staged and not yet promoted to production."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "ruleCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of routing rules in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging alias for previewing this version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A version of routing rules stored in S3."
+      }
+    },
+    "com.vercel.project_routes#GetRoutingRuleVersionHistoryResponseVersionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.project_routes#GetRoutingRuleVersionHistoryResponseVersionsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#GetRoutingRuleVersionHistoryResponse": {
+      "type": "structure",
+      "members": {
+        "versions": {
+          "target": "com.vercel.project_routes#GetRoutingRuleVersionHistoryResponseVersionsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.project_routes#GetRoutingRuleVersionHistory": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.project_routes#GetRoutingRuleVersionHistoryRequest"
+      },
+      "output": {
+        "target": "com.vercel.project_routes#GetRoutingRuleVersionHistoryResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.project_routes#BadRequest"
+        },
+        {
+          "target": "com.vercel.project_routes#Forbidden"
+        },
+        {
+          "target": "com.vercel.project_routes#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/projects/{projectId}/routes/versions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get routing rule version history\n\nGet the version history for a project's routing rules. Returns the staging version (if one exists) followed by production versions, most recent first. The staging version has `isStaging: true` and the current production version has `isLive: true`."
+      }
+    },
+    "com.vercel.project_routes#PromoteRestoreOrDiscardARoutingRuleVersionRequestAction": {
+      "type": "enum",
+      "members": {
+        "PROMOTE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "promote"
+          }
+        },
+        "RESTORE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "restore"
+          }
+        },
+        "DISCARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "discard"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.project_routes#PromoteRestoreOrDiscardARoutingRuleVersionRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.vercel.project_routes#PromoteRestoreOrDiscardARoutingRuleVersionRequestAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.project_routes#PromoteRestoreOrDiscardARoutingRuleVersionResponseVersion": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the version.",
+            "smithy.api#required": {}
+          }
+        },
+        "s3Key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The S3 key where the routing rules are stored.",
+            "smithy.api#required": {}
+          }
+        },
+        "lastModified": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of when this version was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user who created this version.",
+            "smithy.api#required": {}
+          }
+        },
+        "isStaging": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is staged and not yet promoted to production."
+          }
+        },
+        "isLive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this version is currently live in production."
+          }
+        },
+        "ruleCount": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of routing rules in this version."
+          }
+        },
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The staging alias for previewing this version."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A version of routing rules stored in S3."
+      }
+    },
+    "com.vercel.project_routes#PromoteRestoreOrDiscardARoutingRuleVersionResponse": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.vercel.project_routes#PromoteRestoreOrDiscardARoutingRuleVersionResponseVersion",
+          "traits": {
+            "smithy.api#documentation": "A version of routing rules stored in S3.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.project_routes#PromoteRestoreOrDiscardARoutingRuleVersion": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.project_routes#PromoteRestoreOrDiscardARoutingRuleVersionRequest"
+      },
+      "output": {
+        "target": "com.vercel.project_routes#PromoteRestoreOrDiscardARoutingRuleVersionResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.project_routes#BadRequest"
+        },
+        {
+          "target": "com.vercel.project_routes#Forbidden"
+        },
+        {
+          "target": "com.vercel.project_routes#NotFound"
+        },
+        {
+          "target": "com.vercel.project_routes#Conflict"
+        },
+        {
+          "target": "com.vercel.project_routes#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/projects/{projectId}/routes/versions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Promote, restore, or discard a routing rule version\n\nPromote staged routing rules to production, restore a previous production version, or discard staged changes. - `promote`: Publishes the staging version to production. - `restore`: Rolls back to a previous production version. - `discard`: Removes the staging version without publishing."
+      }
+    },
+    "com.vercel.project_routes#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.project_routes#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.project_routes#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.project_routes#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.project_routes#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
+    "com.vercel.project_routes#RequestTimeout": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 408,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 408
+          }
+        ]
+      }
+    },
+    "com.vercel.project_routes#ProjectRoutes": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.project_routes#GetProjectRoutingRules"
+        },
+        {
+          "target": "com.vercel.project_routes#AddARoutingRule"
+        },
+        {
+          "target": "com.vercel.project_routes#StageRoutingRules"
+        },
+        {
+          "target": "com.vercel.project_routes#DeleteRoutingRules"
+        },
+        {
+          "target": "com.vercel.project_routes#EditARoutingRule"
+        },
+        {
+          "target": "com.vercel.project_routes#GenerateARoutingRuleFromNaturalLanguage"
+        },
+        {
+          "target": "com.vercel.project_routes#GetRoutingRuleVersionHistory"
+        },
+        {
+          "target": "com.vercel.project_routes#PromoteRestoreOrDiscardARoutingRuleVersion"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel project-routes",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/project_routes/."
+      }
+    }
+  }
+}

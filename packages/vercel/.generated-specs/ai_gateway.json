@@ -1,0 +1,667 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.ai_gateway#ListRulesRequestIncludeDisabled": {
+      "type": "enum",
+      "members": {
+        "TRUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "true"
+          }
+        },
+        "FALSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "false"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.ai_gateway#ListRulesRequest": {
+      "type": "structure",
+      "members": {
+        "includeDisabled": {
+          "target": "com.vercel.ai_gateway#ListRulesRequestIncludeDisabled",
+          "traits": {
+            "smithy.api#httpQuery": "includeDisabled"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.ai_gateway#ListRulesResponseRulesItemType": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "REWRITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rewrite"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.ai_gateway#ListRulesResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ruleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.vercel.ai_gateway#ListRulesResponseRulesItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "match": {
+          "target": "smithy.api#Document"
+        },
+        "action": {
+          "target": "smithy.api#Document"
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean"
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "createdBy": {
+          "target": "smithy.api#String"
+        },
+        "updatedBy": {
+          "target": "smithy.api#String"
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Public response shape for AI Gateway routing rules. Used so OpenAPI generation can avoid ElectroDB's recursive EntityItem types."
+      }
+    },
+    "com.vercel.ai_gateway#ListRulesResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.ai_gateway#ListRulesResponseRulesItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.ai_gateway#ListRulesResponse": {
+      "type": "structure",
+      "members": {
+        "rules": {
+          "target": "com.vercel.ai_gateway#ListRulesResponseRulesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.ai_gateway#ListRules": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.ai_gateway#ListRulesRequest"
+      },
+      "output": {
+        "target": "com.vercel.ai_gateway#ListRulesResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.ai_gateway#BadRequest"
+        },
+        {
+          "target": "com.vercel.ai_gateway#Forbidden"
+        },
+        {
+          "target": "com.vercel.ai_gateway#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/ai-gateway/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "List rules\n\nList the authenticated team's routing rules"
+      }
+    },
+    "com.vercel.ai_gateway#CreateRuleRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.ai_gateway#CreateRuleResponseType": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "REWRITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rewrite"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.ai_gateway#CreateRuleResponseMatch": {
+      "type": "structure",
+      "members": {
+        "model": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.ai_gateway#CreateRuleResponseAction": {
+      "type": "structure",
+      "members": {
+        "rewriteModel": {
+          "target": "smithy.api#String"
+        },
+        "reason": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.ai_gateway#CreateRuleResponse": {
+      "type": "structure",
+      "members": {
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ruleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.vercel.ai_gateway#CreateRuleResponseType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "match": {
+          "target": "com.vercel.ai_gateway#CreateRuleResponseMatch"
+        },
+        "action": {
+          "target": "com.vercel.ai_gateway#CreateRuleResponseAction"
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean"
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "createdBy": {
+          "target": "smithy.api#String"
+        },
+        "updatedBy": {
+          "target": "smithy.api#String"
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.ai_gateway#CreateRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.ai_gateway#CreateRuleRequest"
+      },
+      "output": {
+        "target": "com.vercel.ai_gateway#CreateRuleResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.ai_gateway#BadRequest"
+        },
+        {
+          "target": "com.vercel.ai_gateway#Forbidden"
+        },
+        {
+          "target": "com.vercel.ai_gateway#Conflict"
+        },
+        {
+          "target": "com.vercel.ai_gateway#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/ai-gateway/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create rule\n\nCreate a routing rule"
+      }
+    },
+    "com.vercel.ai_gateway#UpdateRuleRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.ai_gateway#UpdateRuleResponseType": {
+      "type": "enum",
+      "members": {
+        "DENY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deny"
+          }
+        },
+        "REWRITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rewrite"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.ai_gateway#UpdateRuleResponseMatch": {
+      "type": "structure",
+      "members": {
+        "model": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.ai_gateway#UpdateRuleResponseAction": {
+      "type": "structure",
+      "members": {
+        "rewriteModel": {
+          "target": "smithy.api#String"
+        },
+        "reason": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.ai_gateway#UpdateRuleResponse": {
+      "type": "structure",
+      "members": {
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ruleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.vercel.ai_gateway#UpdateRuleResponseType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "match": {
+          "target": "com.vercel.ai_gateway#UpdateRuleResponseMatch"
+        },
+        "action": {
+          "target": "com.vercel.ai_gateway#UpdateRuleResponseAction"
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deleted": {
+          "target": "smithy.api#Boolean"
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "createdBy": {
+          "target": "smithy.api#String"
+        },
+        "updatedBy": {
+          "target": "smithy.api#String"
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.ai_gateway#UpdateRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.ai_gateway#UpdateRuleRequest"
+      },
+      "output": {
+        "target": "com.vercel.ai_gateway#UpdateRuleResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.ai_gateway#BadRequest"
+        },
+        {
+          "target": "com.vercel.ai_gateway#Forbidden"
+        },
+        {
+          "target": "com.vercel.ai_gateway#NotFound"
+        },
+        {
+          "target": "com.vercel.ai_gateway#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/v1/ai-gateway/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update rule\n\nUpdate a routing rule (enabled, action, or description)"
+      }
+    },
+    "com.vercel.ai_gateway#DeleteRuleRequest": {
+      "type": "structure",
+      "members": {
+        "ruleId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "ruleId",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.ai_gateway#DeleteRuleResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.ai_gateway#DeleteRule": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.ai_gateway#DeleteRuleRequest"
+      },
+      "output": {
+        "target": "com.vercel.ai_gateway#DeleteRuleResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.ai_gateway#BadRequest"
+        },
+        {
+          "target": "com.vercel.ai_gateway#Forbidden"
+        },
+        {
+          "target": "com.vercel.ai_gateway#NotFound"
+        },
+        {
+          "target": "com.vercel.ai_gateway#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/ai-gateway/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete rule\n\nDelete a routing rule (soft delete)"
+      }
+    },
+    "com.vercel.ai_gateway#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.ai_gateway#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.ai_gateway#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.ai_gateway#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
+    "com.vercel.ai_gateway#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.ai_gateway#AiGateway": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.ai_gateway#ListRules"
+        },
+        {
+          "target": "com.vercel.ai_gateway#CreateRule"
+        },
+        {
+          "target": "com.vercel.ai_gateway#UpdateRule"
+        },
+        {
+          "target": "com.vercel.ai_gateway#DeleteRule"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel ai-gateway",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/ai_gateway/."
+      }
+    }
+  }
+}

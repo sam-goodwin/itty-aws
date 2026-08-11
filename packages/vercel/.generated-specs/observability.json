@@ -1,0 +1,269 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.observability#ListsDisabledObservabilityPlusProjectsRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.observability#ListsDisabledObservabilityPlusProjectsResponseDisabledProjectsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.observability#ListsDisabledObservabilityPlusProjectsResponseDisabledProjectsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.observability#ListsDisabledObservabilityPlusProjectsResponseDisabledProjectsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.observability#ListsDisabledObservabilityPlusProjectsResponse": {
+      "type": "structure",
+      "members": {
+        "disabledProjects": {
+          "target": "com.vercel.observability#ListsDisabledObservabilityPlusProjectsResponseDisabledProjectsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.observability#ListsDisabledObservabilityPlusProjects": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.observability#ListsDisabledObservabilityPlusProjectsRequest"
+      },
+      "output": {
+        "target": "com.vercel.observability#ListsDisabledObservabilityPlusProjectsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.observability#BadRequest"
+        },
+        {
+          "target": "com.vercel.observability#Forbidden"
+        },
+        {
+          "target": "com.vercel.observability#NotFound"
+        },
+        {
+          "target": "com.vercel.observability#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/observability/manage/configuration/projects",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists disabled Observability Plus projects\n\nLists the projects that are currently configured as disabled for Observability Plus on a team."
+      }
+    },
+    "com.vercel.observability#UpdatesADisabledObservabilityPlusProjectSettingRequest": {
+      "type": "structure",
+      "members": {
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID or name of the project to update"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "disabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Observability Plus should be disabled for the project",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.observability#UpdatesADisabledObservabilityPlusProjectSettingResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.observability#UpdatesADisabledObservabilityPlusProjectSetting": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.observability#UpdatesADisabledObservabilityPlusProjectSettingRequest"
+      },
+      "output": {
+        "target": "com.vercel.observability#UpdatesADisabledObservabilityPlusProjectSettingResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.observability#BadRequest"
+        },
+        {
+          "target": "com.vercel.observability#Forbidden"
+        },
+        {
+          "target": "com.vercel.observability#NotFound"
+        },
+        {
+          "target": "com.vercel.observability#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/v1/observability/manage/configuration/projects/{projectIdOrName}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates a disabled Observability Plus project setting\n\nUpdates whether Observability Plus is disabled for a single project."
+      }
+    },
+    "com.vercel.observability#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.observability#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.observability#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.observability#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.observability#Observability": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.observability#ListsDisabledObservabilityPlusProjects"
+        },
+        {
+          "target": "com.vercel.observability#UpdatesADisabledObservabilityPlusProjectSetting"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel observability",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/observability/."
+      }
+    }
+  }
+}

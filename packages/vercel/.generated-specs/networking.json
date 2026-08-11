@@ -1,0 +1,1560 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.networking#ListSecureComputeNetworksRequest": {
+      "type": "structure",
+      "members": {
+        "includeHostedZones": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "includeHostedZones",
+            "smithy.api#documentation": "Whether to include Hosted Zones in the response"
+          }
+        },
+        "includePeeringConnections": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "includePeeringConnections",
+            "smithy.api#documentation": "Whether to include VPC Peering connections in the response"
+          }
+        },
+        "includeProjects": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "includeProjects",
+            "smithy.api#documentation": "Whether to include projects in the response"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "search",
+            "smithy.api#documentation": "The query to use as a filter for returned networks"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemAwsAvailabilityZoneIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The IDs of the AWS Availability Zones in which the network exists, if specified during creation."
+      }
+    },
+    "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemEgressIpAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemHostedZones": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of AWS Route53 Hosted Zones associated with the Network.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+      }
+    },
+    "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemPeeringConnections": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of AWS Route53 Hosted Zones associated with the Network.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+      }
+    },
+    "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemProjectsIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemProjects": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ids": {
+          "target": "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemProjectsIdsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about any projects associated with the Network."
+      }
+    },
+    "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemStatus": {
+      "type": "enum",
+      "members": {
+        "CREATE_IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "create_in_progress"
+          }
+        },
+        "DELETE_IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delete_in_progress"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the Network."
+      }
+    },
+    "com.vercel.networking#ListSecureComputeNetworksResponseBodyItem": {
+      "type": "structure",
+      "members": {
+        "awsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the AWS Account in which the network exists.",
+            "smithy.api#required": {}
+          }
+        },
+        "awsAvailabilityZoneIds": {
+          "target": "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemAwsAvailabilityZoneIdsList",
+          "traits": {
+            "smithy.api#documentation": "The IDs of the AWS Availability Zones in which the network exists, if specified during creation."
+          }
+        },
+        "awsRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The AWS Region in which the network exists.",
+            "smithy.api#required": {}
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CIDR range of the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The date at which the Network was created, represented as a UNIX timestamp since EPOCH.",
+            "smithy.api#required": {}
+          }
+        },
+        "egressIpAddresses": {
+          "target": "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemEgressIpAddressesList"
+        },
+        "egressCidrBlock": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The single contiguous CIDR block from which all egress (NAT gateway) IP addresses are allocated. Present only for networks created with the egress CIDR block feature enabled. Customers can allowlist this range instead of individual egress IPs so it keeps working when AZs are added."
+          }
+        },
+        "hostedZones": {
+          "target": "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemHostedZones",
+          "traits": {
+            "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the network.",
+            "smithy.api#required": {}
+          }
+        },
+        "peeringConnections": {
+          "target": "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemPeeringConnections",
+          "traits": {
+            "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+          }
+        },
+        "projects": {
+          "target": "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemProjects",
+          "traits": {
+            "smithy.api#documentation": "Metadata about any projects associated with the Network."
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Vercel region in which the Network exists."
+          }
+        },
+        "status": {
+          "target": "com.vercel.networking#ListSecureComputeNetworksResponseBodyItemStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the Team that owns the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "vpcId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the VPC which hosts the network."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ListSecureComputeNetworksResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.networking#ListSecureComputeNetworksResponseBodyItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ListSecureComputeNetworksResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.networking#ListSecureComputeNetworksResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.networking#ListSecureComputeNetworks": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.networking#ListSecureComputeNetworksRequest"
+      },
+      "output": {
+        "target": "com.vercel.networking#ListSecureComputeNetworksResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.networking#BadRequest"
+        },
+        {
+          "target": "com.vercel.networking#Forbidden"
+        },
+        {
+          "target": "com.vercel.networking#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/connect/networks",
+          "code": 200
+        },
+        "smithy.api#documentation": "List Secure Compute networks\n\nAllows to list Secure Compute networks."
+      }
+    },
+    "com.vercel.networking#CreateASecureComputeNetworkRequestAwsAvailabilityZoneIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#CreateASecureComputeNetworkRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "awsAvailabilityZoneIds": {
+          "target": "com.vercel.networking#CreateASecureComputeNetworkRequestAwsAvailabilityZoneIdsList"
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CIDR block of the network",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the network",
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The region where the network will be created",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.networking#CreateASecureComputeNetworkResponseAwsAvailabilityZoneIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The IDs of the AWS Availability Zones in which the network exists, if specified during creation."
+      }
+    },
+    "com.vercel.networking#CreateASecureComputeNetworkResponseEgressIpAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#CreateASecureComputeNetworkResponseHostedZones": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of AWS Route53 Hosted Zones associated with the Network.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+      }
+    },
+    "com.vercel.networking#CreateASecureComputeNetworkResponsePeeringConnections": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of AWS Route53 Hosted Zones associated with the Network.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+      }
+    },
+    "com.vercel.networking#CreateASecureComputeNetworkResponseProjectsIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#CreateASecureComputeNetworkResponseProjects": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ids": {
+          "target": "com.vercel.networking#CreateASecureComputeNetworkResponseProjectsIdsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about any projects associated with the Network."
+      }
+    },
+    "com.vercel.networking#CreateASecureComputeNetworkResponseStatus": {
+      "type": "enum",
+      "members": {
+        "CREATE_IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "create_in_progress"
+          }
+        },
+        "DELETE_IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delete_in_progress"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the Network."
+      }
+    },
+    "com.vercel.networking#CreateASecureComputeNetworkResponse": {
+      "type": "structure",
+      "members": {
+        "awsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the AWS Account in which the network exists.",
+            "smithy.api#required": {}
+          }
+        },
+        "awsAvailabilityZoneIds": {
+          "target": "com.vercel.networking#CreateASecureComputeNetworkResponseAwsAvailabilityZoneIdsList",
+          "traits": {
+            "smithy.api#documentation": "The IDs of the AWS Availability Zones in which the network exists, if specified during creation."
+          }
+        },
+        "awsRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The AWS Region in which the network exists.",
+            "smithy.api#required": {}
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CIDR range of the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The date at which the Network was created, represented as a UNIX timestamp since EPOCH.",
+            "smithy.api#required": {}
+          }
+        },
+        "egressIpAddresses": {
+          "target": "com.vercel.networking#CreateASecureComputeNetworkResponseEgressIpAddressesList"
+        },
+        "egressCidrBlock": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The single contiguous CIDR block from which all egress (NAT gateway) IP addresses are allocated. Present only for networks created with the egress CIDR block feature enabled. Customers can allowlist this range instead of individual egress IPs so it keeps working when AZs are added."
+          }
+        },
+        "hostedZones": {
+          "target": "com.vercel.networking#CreateASecureComputeNetworkResponseHostedZones",
+          "traits": {
+            "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the network.",
+            "smithy.api#required": {}
+          }
+        },
+        "peeringConnections": {
+          "target": "com.vercel.networking#CreateASecureComputeNetworkResponsePeeringConnections",
+          "traits": {
+            "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+          }
+        },
+        "projects": {
+          "target": "com.vercel.networking#CreateASecureComputeNetworkResponseProjects",
+          "traits": {
+            "smithy.api#documentation": "Metadata about any projects associated with the Network."
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Vercel region in which the Network exists."
+          }
+        },
+        "status": {
+          "target": "com.vercel.networking#CreateASecureComputeNetworkResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the Team that owns the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "vpcId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the VPC which hosts the network."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.networking#CreateASecureComputeNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.networking#CreateASecureComputeNetworkRequest"
+      },
+      "output": {
+        "target": "com.vercel.networking#CreateASecureComputeNetworkResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.networking#BadRequest"
+        },
+        {
+          "target": "com.vercel.networking#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.networking#Forbidden"
+        },
+        {
+          "target": "com.vercel.networking#Conflict"
+        },
+        {
+          "target": "com.vercel.networking#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/connect/networks",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a Secure Compute network\n\nAllows to create a Secure Compute network."
+      }
+    },
+    "com.vercel.networking#ReadASecureComputeNetworkRequest": {
+      "type": "structure",
+      "members": {
+        "networkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the Secure Compute network"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.networking#ReadASecureComputeNetworkResponseAwsAvailabilityZoneIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The IDs of the AWS Availability Zones in which the network exists, if specified during creation."
+      }
+    },
+    "com.vercel.networking#ReadASecureComputeNetworkResponseEgressIpAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ReadASecureComputeNetworkResponseHostedZones": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of AWS Route53 Hosted Zones associated with the Network.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+      }
+    },
+    "com.vercel.networking#ReadASecureComputeNetworkResponsePeeringConnections": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of AWS Route53 Hosted Zones associated with the Network.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+      }
+    },
+    "com.vercel.networking#ReadASecureComputeNetworkResponseProjectsIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ReadASecureComputeNetworkResponseProjects": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ids": {
+          "target": "com.vercel.networking#ReadASecureComputeNetworkResponseProjectsIdsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about any projects associated with the Network."
+      }
+    },
+    "com.vercel.networking#ReadASecureComputeNetworkResponseStatus": {
+      "type": "enum",
+      "members": {
+        "CREATE_IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "create_in_progress"
+          }
+        },
+        "DELETE_IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delete_in_progress"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the Network."
+      }
+    },
+    "com.vercel.networking#ReadASecureComputeNetworkResponse": {
+      "type": "structure",
+      "members": {
+        "awsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the AWS Account in which the network exists.",
+            "smithy.api#required": {}
+          }
+        },
+        "awsAvailabilityZoneIds": {
+          "target": "com.vercel.networking#ReadASecureComputeNetworkResponseAwsAvailabilityZoneIdsList",
+          "traits": {
+            "smithy.api#documentation": "The IDs of the AWS Availability Zones in which the network exists, if specified during creation."
+          }
+        },
+        "awsRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The AWS Region in which the network exists.",
+            "smithy.api#required": {}
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CIDR range of the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The date at which the Network was created, represented as a UNIX timestamp since EPOCH.",
+            "smithy.api#required": {}
+          }
+        },
+        "egressIpAddresses": {
+          "target": "com.vercel.networking#ReadASecureComputeNetworkResponseEgressIpAddressesList"
+        },
+        "egressCidrBlock": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The single contiguous CIDR block from which all egress (NAT gateway) IP addresses are allocated. Present only for networks created with the egress CIDR block feature enabled. Customers can allowlist this range instead of individual egress IPs so it keeps working when AZs are added."
+          }
+        },
+        "hostedZones": {
+          "target": "com.vercel.networking#ReadASecureComputeNetworkResponseHostedZones",
+          "traits": {
+            "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the network.",
+            "smithy.api#required": {}
+          }
+        },
+        "peeringConnections": {
+          "target": "com.vercel.networking#ReadASecureComputeNetworkResponsePeeringConnections",
+          "traits": {
+            "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+          }
+        },
+        "projects": {
+          "target": "com.vercel.networking#ReadASecureComputeNetworkResponseProjects",
+          "traits": {
+            "smithy.api#documentation": "Metadata about any projects associated with the Network."
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Vercel region in which the Network exists."
+          }
+        },
+        "status": {
+          "target": "com.vercel.networking#ReadASecureComputeNetworkResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the Team that owns the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "vpcId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the VPC which hosts the network."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.networking#ReadASecureComputeNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.networking#ReadASecureComputeNetworkRequest"
+      },
+      "output": {
+        "target": "com.vercel.networking#ReadASecureComputeNetworkResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.networking#BadRequest"
+        },
+        {
+          "target": "com.vercel.networking#Forbidden"
+        },
+        {
+          "target": "com.vercel.networking#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/connect/networks/{networkId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Read a Secure Compute network\n\nAllows to read a Secure Compute network."
+      }
+    },
+    "com.vercel.networking#UpdateASecureComputeNetworkRequest": {
+      "type": "structure",
+      "members": {
+        "networkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique identifier of the Secure Compute network"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the Secure Compute network",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.networking#UpdateASecureComputeNetworkResponseAwsAvailabilityZoneIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The IDs of the AWS Availability Zones in which the network exists, if specified during creation."
+      }
+    },
+    "com.vercel.networking#UpdateASecureComputeNetworkResponseEgressIpAddressesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#UpdateASecureComputeNetworkResponseHostedZones": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of AWS Route53 Hosted Zones associated with the Network.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+      }
+    },
+    "com.vercel.networking#UpdateASecureComputeNetworkResponsePeeringConnections": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of AWS Route53 Hosted Zones associated with the Network.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+      }
+    },
+    "com.vercel.networking#UpdateASecureComputeNetworkResponseProjectsIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#UpdateASecureComputeNetworkResponseProjects": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ids": {
+          "target": "com.vercel.networking#UpdateASecureComputeNetworkResponseProjectsIdsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about any projects associated with the Network."
+      }
+    },
+    "com.vercel.networking#UpdateASecureComputeNetworkResponseStatus": {
+      "type": "enum",
+      "members": {
+        "CREATE_IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "create_in_progress"
+          }
+        },
+        "DELETE_IN_PROGRESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delete_in_progress"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the Network."
+      }
+    },
+    "com.vercel.networking#UpdateASecureComputeNetworkResponse": {
+      "type": "structure",
+      "members": {
+        "awsAccountId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the AWS Account in which the network exists.",
+            "smithy.api#required": {}
+          }
+        },
+        "awsAvailabilityZoneIds": {
+          "target": "com.vercel.networking#UpdateASecureComputeNetworkResponseAwsAvailabilityZoneIdsList",
+          "traits": {
+            "smithy.api#documentation": "The IDs of the AWS Availability Zones in which the network exists, if specified during creation."
+          }
+        },
+        "awsRegion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The AWS Region in which the network exists.",
+            "smithy.api#required": {}
+          }
+        },
+        "cidr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The CIDR range of the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The date at which the Network was created, represented as a UNIX timestamp since EPOCH.",
+            "smithy.api#required": {}
+          }
+        },
+        "egressIpAddresses": {
+          "target": "com.vercel.networking#UpdateASecureComputeNetworkResponseEgressIpAddressesList"
+        },
+        "egressCidrBlock": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The single contiguous CIDR block from which all egress (NAT gateway) IP addresses are allocated. Present only for networks created with the egress CIDR block feature enabled. Customers can allowlist this range instead of individual egress IPs so it keeps working when AZs are added."
+          }
+        },
+        "hostedZones": {
+          "target": "com.vercel.networking#UpdateASecureComputeNetworkResponseHostedZones",
+          "traits": {
+            "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the network.",
+            "smithy.api#required": {}
+          }
+        },
+        "peeringConnections": {
+          "target": "com.vercel.networking#UpdateASecureComputeNetworkResponsePeeringConnections",
+          "traits": {
+            "smithy.api#documentation": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+          }
+        },
+        "projects": {
+          "target": "com.vercel.networking#UpdateASecureComputeNetworkResponseProjects",
+          "traits": {
+            "smithy.api#documentation": "Metadata about any projects associated with the Network."
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Vercel region in which the Network exists."
+          }
+        },
+        "status": {
+          "target": "com.vercel.networking#UpdateASecureComputeNetworkResponseStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the Team that owns the Network.",
+            "smithy.api#required": {}
+          }
+        },
+        "vpcId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the VPC which hosts the network."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.networking#UpdateASecureComputeNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.networking#UpdateASecureComputeNetworkRequest"
+      },
+      "output": {
+        "target": "com.vercel.networking#UpdateASecureComputeNetworkResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.networking#BadRequest"
+        },
+        {
+          "target": "com.vercel.networking#Forbidden"
+        },
+        {
+          "target": "com.vercel.networking#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/v1/connect/networks/{networkId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update a Secure Compute network\n\nAllows to update a Secure Compute network."
+      }
+    },
+    "com.vercel.networking#DeleteASecureComputeNetworkRequest": {
+      "type": "structure",
+      "members": {
+        "networkId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the network to delete"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.networking#DeleteASecureComputeNetwork": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.networking#DeleteASecureComputeNetworkRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.networking#BadRequest"
+        },
+        {
+          "target": "com.vercel.networking#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.networking#Forbidden"
+        },
+        {
+          "target": "com.vercel.networking#Conflict"
+        },
+        {
+          "target": "com.vercel.networking#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/connect/networks/{networkId}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a Secure Compute network\n\nAllows to delete a Secure Compute network."
+      }
+    },
+    "com.vercel.networking#ConfiguresStaticIpsForAProjectRequestRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ConfiguresStaticIpsForAProjectRequest": {
+      "type": "structure",
+      "members": {
+        "idOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The unique project identifier or the project name"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "builds": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to use Static IPs for builds."
+          }
+        },
+        "regions": {
+          "target": "com.vercel.networking#ConfiguresStaticIpsForAProjectRequestRegionsList"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.networking#ConfiguresStaticIpsForAProjectResponseBodyItemEnvIdCase1": {
+      "type": "enum",
+      "members": {
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "preview"
+          }
+        },
+        "PRODUCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "production"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ConfiguresStaticIpsForAProjectResponseBodyItemEnvId": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "com.vercel.networking#ConfiguresStaticIpsForAProjectResponseBodyItemEnvIdCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ConfiguresStaticIpsForAProjectResponseBodyItemAwsSubnetIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ConfiguresStaticIpsForAProjectResponseBodyItemAws": {
+      "type": "structure",
+      "members": {
+        "subnetIds": {
+          "target": "com.vercel.networking#ConfiguresStaticIpsForAProjectResponseBodyItemAwsSubnetIdsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "securityGroupId": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ConfiguresStaticIpsForAProjectResponseBodyItem": {
+      "type": "structure",
+      "members": {
+        "envId": {
+          "target": "com.vercel.networking#ConfiguresStaticIpsForAProjectResponseBodyItemEnvId",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "connectConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "dc": {
+          "target": "smithy.api#String"
+        },
+        "passive": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "buildsEnabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "aws": {
+          "target": "com.vercel.networking#ConfiguresStaticIpsForAProjectResponseBodyItemAws"
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ConfiguresStaticIpsForAProjectResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.networking#ConfiguresStaticIpsForAProjectResponseBodyItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.networking#ConfiguresStaticIpsForAProjectResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.networking#ConfiguresStaticIpsForAProjectResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.networking#ConfiguresStaticIpsForAProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.networking#ConfiguresStaticIpsForAProjectRequest"
+      },
+      "output": {
+        "target": "com.vercel.networking#ConfiguresStaticIpsForAProjectResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.networking#BadRequest"
+        },
+        {
+          "target": "com.vercel.networking#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.networking#Forbidden"
+        },
+        {
+          "target": "com.vercel.networking#NotFound"
+        },
+        {
+          "target": "com.vercel.networking#Conflict"
+        },
+        {
+          "target": "com.vercel.networking#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/v1/projects/{idOrName}/shared-connect-links",
+          "code": 200
+        },
+        "smithy.api#documentation": "Configures Static IPs for a project\n\nAllows configuring Static IPs for a project"
+      }
+    },
+    "com.vercel.networking#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.networking#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.networking#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.networking#PaymentRequired": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 402,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 402
+          }
+        ]
+      }
+    },
+    "com.vercel.networking#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
+    "com.vercel.networking#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.networking#Networking": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.networking#ListSecureComputeNetworks"
+        },
+        {
+          "target": "com.vercel.networking#CreateASecureComputeNetwork"
+        },
+        {
+          "target": "com.vercel.networking#ReadASecureComputeNetwork"
+        },
+        {
+          "target": "com.vercel.networking#UpdateASecureComputeNetwork"
+        },
+        {
+          "target": "com.vercel.networking#DeleteASecureComputeNetwork"
+        },
+        {
+          "target": "com.vercel.networking#ConfiguresStaticIpsForAProject"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel networking",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/networking/."
+      }
+    }
+  }
+}

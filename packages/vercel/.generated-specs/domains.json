@@ -1,0 +1,2170 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.domains#GetADomainSConfigurationRequestStrict": {
+      "type": "enum",
+      "members": {
+        "TRUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "true"
+          }
+        },
+        "FALSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "false"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#GetADomainSConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the domain."
+          }
+        },
+        "projectIdOrName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectIdOrName",
+            "smithy.api#documentation": "The project id or name that will be associated with the domain. Use this when the domain is not yet associated with a project."
+          }
+        },
+        "strict": {
+          "target": "com.vercel.domains#GetADomainSConfigurationRequestStrict",
+          "traits": {
+            "smithy.api#httpQuery": "strict",
+            "smithy.api#documentation": "When true, the response will only include the nameservers assigned directly to the specified domain. When false and there are no nameservers assigned directly to the specified domain, the response will include the nameservers of the domain's parent zone."
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.domains#GetADomainSConfigurationResponseConfiguredBy": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        },
+        "DNS_01": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns-01"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel."
+      }
+    },
+    "com.vercel.domains#GetADomainSConfigurationResponseAcceptedChallengesItem": {
+      "type": "enum",
+      "members": {
+        "DNS_01": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns-01"
+          }
+        },
+        "HTTP_01": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http-01"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Which challenge types the domain can use for issuing certs."
+      }
+    },
+    "com.vercel.domains#GetADomainSConfigurationResponseAcceptedChallengesList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.domains#GetADomainSConfigurationResponseAcceptedChallengesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Which challenge types the domain can use for issuing certs."
+      }
+    },
+    "com.vercel.domains#GetADomainSConfigurationResponseRecommendedIPv4ItemValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#GetADomainSConfigurationResponseRecommendedIPv4Item": {
+      "type": "structure",
+      "members": {
+        "rank": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "com.vercel.domains#GetADomainSConfigurationResponseRecommendedIPv4ItemValueList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable."
+      }
+    },
+    "com.vercel.domains#GetADomainSConfigurationResponseRecommendedIPv4List": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.domains#GetADomainSConfigurationResponseRecommendedIPv4Item"
+      },
+      "traits": {
+        "smithy.api#documentation": "Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable."
+      }
+    },
+    "com.vercel.domains#GetADomainSConfigurationResponseRecommendedCNAMEItem": {
+      "type": "structure",
+      "members": {
+        "rank": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Recommended CNAMEs for the domain. rank=1 is the preferred value to use."
+      }
+    },
+    "com.vercel.domains#GetADomainSConfigurationResponseRecommendedCNAMEList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.domains#GetADomainSConfigurationResponseRecommendedCNAMEItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Recommended CNAMEs for the domain. rank=1 is the preferred value to use."
+      }
+    },
+    "com.vercel.domains#GetADomainSConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "configuredBy": {
+          "target": "com.vercel.domains#GetADomainSConfigurationResponseConfiguredBy",
+          "traits": {
+            "smithy.api#documentation": "How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "acceptedChallenges": {
+          "target": "com.vercel.domains#GetADomainSConfigurationResponseAcceptedChallengesList",
+          "traits": {
+            "smithy.api#documentation": "Which challenge types the domain can use for issuing certs.",
+            "smithy.api#required": {}
+          }
+        },
+        "recommendedIPv4": {
+          "target": "com.vercel.domains#GetADomainSConfigurationResponseRecommendedIPv4List",
+          "traits": {
+            "smithy.api#documentation": "Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable.",
+            "smithy.api#required": {}
+          }
+        },
+        "recommendedCNAME": {
+          "target": "com.vercel.domains#GetADomainSConfigurationResponseRecommendedCNAMEList",
+          "traits": {
+            "smithy.api#documentation": "Recommended CNAMEs for the domain. rank=1 is the preferred value to use.",
+            "smithy.api#required": {}
+          }
+        },
+        "misconfigured": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not the domain is configured AND we can automatically generate a TLS certificate.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.domains#GetADomainSConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.domains#GetADomainSConfigurationRequest"
+      },
+      "output": {
+        "target": "com.vercel.domains#GetADomainSConfigurationResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.domains#BadRequest"
+        },
+        {
+          "target": "com.vercel.domains#Forbidden"
+        },
+        {
+          "target": "com.vercel.domains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v6/domains/{domain}/config",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get a Domain's configuration\n\nGet a Domain's configuration."
+      }
+    },
+    "com.vercel.domains#GetDomainVerificationRecordRequest": {
+      "type": "structure",
+      "members": {
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The domain name to get the verification record for"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.domains#GetDomainVerificationRecordResponse": {
+      "type": "structure",
+      "members": {
+        "txtRecord": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "verificationDomain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.domains#GetDomainVerificationRecord": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.domains#GetDomainVerificationRecordRequest"
+      },
+      "output": {
+        "target": "com.vercel.domains#GetDomainVerificationRecordResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.domains#BadRequest"
+        },
+        {
+          "target": "com.vercel.domains#Forbidden"
+        },
+        {
+          "target": "com.vercel.domains#NotFound"
+        },
+        {
+          "target": "com.vercel.domains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v9/domains/{domain}/verification",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Domain Verification Record\n\nGet the TXT verification record needed to claim ownership of a domain for the authenticated team. The caller must add this TXT record to `_vercel.{domain}` in their DNS configuration, then call POST /domains/:domain/claim to complete the ownership transfer."
+      }
+    },
+    "com.vercel.domains#ClaimDomainOwnershipRequest": {
+      "type": "structure",
+      "members": {
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The domain name to claim ownership of"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.domains#ClaimDomainOwnershipResponseDomainNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of the current nameservers of the domain."
+      }
+    },
+    "com.vercel.domains#ClaimDomainOwnershipResponseDomainIntendedNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of the intended nameservers for the domain to point to Vercel DNS."
+      }
+    },
+    "com.vercel.domains#ClaimDomainOwnershipResponseDomainCustomNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel."
+      }
+    },
+    "com.vercel.domains#ClaimDomainOwnershipResponseDomainCreator": {
+      "type": "structure",
+      "members": {
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "customerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isDomainReseller": {
+          "target": "smithy.api#Boolean"
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email."
+      }
+    },
+    "com.vercel.domains#ClaimDomainOwnershipResponseDomainServiceType": {
+      "type": "enum",
+      "members": {
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "NA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "na"
+          }
+        },
+        "ZEIT_WORLD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zeit.world"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available."
+      }
+    },
+    "com.vercel.domains#ClaimDomainOwnershipResponseDomain": {
+      "type": "structure",
+      "members": {
+        "expiresAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp in milliseconds at which the domain is set to expire. null if not bought with Vercel.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "verified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the domain has the ownership verified.",
+            "smithy.api#required": {}
+          }
+        },
+        "nameservers": {
+          "target": "com.vercel.domains#ClaimDomainOwnershipResponseDomainNameserversList",
+          "traits": {
+            "smithy.api#documentation": "A list of the current nameservers of the domain.",
+            "smithy.api#required": {}
+          }
+        },
+        "intendedNameservers": {
+          "target": "com.vercel.domains#ClaimDomainOwnershipResponseDomainIntendedNameserversList",
+          "traits": {
+            "smithy.api#documentation": "A list of the intended nameservers for the domain to point to Vercel DNS.",
+            "smithy.api#required": {}
+          }
+        },
+        "customNameservers": {
+          "target": "com.vercel.domains#ClaimDomainOwnershipResponseDomainCustomNameserversList",
+          "traits": {
+            "smithy.api#documentation": "A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel."
+          }
+        },
+        "creator": {
+          "target": "com.vercel.domains#ClaimDomainOwnershipResponseDomainCreator",
+          "traits": {
+            "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain name.",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "boughtAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp in milliseconds when the domain was created in the registry.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the domain.",
+            "smithy.api#required": {}
+          }
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the domain is set to automatically renew."
+          }
+        },
+        "serviceType": {
+          "target": "com.vercel.domains#ClaimDomainOwnershipResponseDomainServiceType",
+          "traits": {
+            "smithy.api#documentation": "The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.",
+            "smithy.api#required": {}
+          }
+        },
+        "transferredAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp in milliseconds at which the domain was successfully transferred into Vercel. `null` if the transfer is still processing or was never transferred in.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "transferStartedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "If transferred into Vercel, timestamp in milliseconds when the domain transfer was initiated."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#ClaimDomainOwnershipResponse": {
+      "type": "structure",
+      "members": {
+        "domain": {
+          "target": "com.vercel.domains#ClaimDomainOwnershipResponseDomain",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.domains#ClaimDomainOwnership": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.domains#ClaimDomainOwnershipRequest"
+      },
+      "output": {
+        "target": "com.vercel.domains#ClaimDomainOwnershipResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.domains#BadRequest"
+        },
+        {
+          "target": "com.vercel.domains#Forbidden"
+        },
+        {
+          "target": "com.vercel.domains#NotFound"
+        },
+        {
+          "target": "com.vercel.domains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v9/domains/{domain}/claim",
+          "code": 200
+        },
+        "smithy.api#documentation": "Claim Domain Ownership\n\nClaim ownership of a domain for the authenticated team by verifying a TXT record. The caller must first add a TXT record to `_vercel.{domain}` (obtained from GET /domains/:domain/verification), then call this endpoint to complete the ownership transfer. If the TXT record is verified, the domain ownership will be transferred to the caller's team, even if the domain is currently owned by another user or team."
+      }
+    },
+    "com.vercel.domains#ListProjectDomainsByApexDomainRequest": {
+      "type": "structure",
+      "members": {
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The apex domain name."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Maximum number of project domains to list from a request."
+          }
+        },
+        "since": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "since",
+            "smithy.api#documentation": "Get project domains created after this JavaScript timestamp."
+          }
+        },
+        "until": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "until",
+            "smithy.api#documentation": "Get project domains created before this JavaScript timestamp."
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.domains#ListProjectDomainsByApexDomainResponseProjectDomainsItemRedirectStatusCode": {
+      "type": "intEnum",
+      "members": {
+        "_301": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 301
+          }
+        },
+        "_302": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 302
+          }
+        },
+        "_307": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 307
+          }
+        },
+        "_308": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": 308
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#ListProjectDomainsByApexDomainResponseProjectDomainsItemVerificationList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+      }
+    },
+    "com.vercel.domains#ListProjectDomainsByApexDomainResponseProjectDomainsItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "apexName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "redirect": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "redirectStatusCode": {
+          "target": "com.vercel.domains#ListProjectDomainsByApexDomainResponseProjectDomainsItemRedirectStatusCode",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "gitBranch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "customEnvironmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double"
+        },
+        "createdAt": {
+          "target": "smithy.api#Double"
+        },
+        "verified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "`true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed.",
+            "smithy.api#required": {}
+          }
+        },
+        "verification": {
+          "target": "com.vercel.domains#ListProjectDomainsByApexDomainResponseProjectDomainsItemVerificationList",
+          "traits": {
+            "smithy.api#documentation": "A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#ListProjectDomainsByApexDomainResponseProjectDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.domains#ListProjectDomainsByApexDomainResponseProjectDomainsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#ListProjectDomainsByApexDomainResponsePagination": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Amount of items in the current page.",
+            "smithy.api#required": {}
+          }
+        },
+        "next": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp that must be used to request the next page.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "prev": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp that must be used to request the previous page.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data."
+      }
+    },
+    "com.vercel.domains#ListProjectDomainsByApexDomainResponse": {
+      "type": "structure",
+      "members": {
+        "projectDomains": {
+          "target": "com.vercel.domains#ListProjectDomainsByApexDomainResponseProjectDomainsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pagination": {
+          "target": "com.vercel.domains#ListProjectDomainsByApexDomainResponsePagination",
+          "traits": {
+            "smithy.api#documentation": "This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.domains#ListProjectDomainsByApexDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.domains#ListProjectDomainsByApexDomainRequest"
+      },
+      "output": {
+        "target": "com.vercel.domains#ListProjectDomainsByApexDomainResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.domains#BadRequest"
+        },
+        {
+          "target": "com.vercel.domains#Forbidden"
+        },
+        {
+          "target": "com.vercel.domains#NotFound"
+        },
+        {
+          "target": "com.vercel.domains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/domains/{domain}/project-domains",
+          "code": 200
+        },
+        "smithy.api#documentation": "List Project Domains by Apex Domain\n\nList all project domains associated with an apex domain owned by the authenticated account."
+      }
+    },
+    "com.vercel.domains#GetInformationForASingleDomainRequest": {
+      "type": "structure",
+      "members": {
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the domain."
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.domains#GetInformationForASingleDomainResponseDomainNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of the current nameservers of the domain."
+      }
+    },
+    "com.vercel.domains#GetInformationForASingleDomainResponseDomainIntendedNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of the intended nameservers for the domain to point to Vercel DNS."
+      }
+    },
+    "com.vercel.domains#GetInformationForASingleDomainResponseDomainCustomNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel."
+      }
+    },
+    "com.vercel.domains#GetInformationForASingleDomainResponseDomainCreator": {
+      "type": "structure",
+      "members": {
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "customerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isDomainReseller": {
+          "target": "smithy.api#Boolean"
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email."
+      }
+    },
+    "com.vercel.domains#GetInformationForASingleDomainResponseDomainServiceType": {
+      "type": "enum",
+      "members": {
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "NA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "na"
+          }
+        },
+        "ZEIT_WORLD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zeit.world"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available."
+      }
+    },
+    "com.vercel.domains#GetInformationForASingleDomainResponseDomain": {
+      "type": "structure",
+      "members": {
+        "suffix": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "expiresAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp in milliseconds at which the domain is set to expire. null if not bought with Vercel.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "verified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the domain has the ownership verified.",
+            "smithy.api#required": {}
+          }
+        },
+        "nameservers": {
+          "target": "com.vercel.domains#GetInformationForASingleDomainResponseDomainNameserversList",
+          "traits": {
+            "smithy.api#documentation": "A list of the current nameservers of the domain.",
+            "smithy.api#required": {}
+          }
+        },
+        "intendedNameservers": {
+          "target": "com.vercel.domains#GetInformationForASingleDomainResponseDomainIntendedNameserversList",
+          "traits": {
+            "smithy.api#documentation": "A list of the intended nameservers for the domain to point to Vercel DNS.",
+            "smithy.api#required": {}
+          }
+        },
+        "customNameservers": {
+          "target": "com.vercel.domains#GetInformationForASingleDomainResponseDomainCustomNameserversList",
+          "traits": {
+            "smithy.api#documentation": "A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel."
+          }
+        },
+        "creator": {
+          "target": "com.vercel.domains#GetInformationForASingleDomainResponseDomainCreator",
+          "traits": {
+            "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain name.",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "boughtAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp in milliseconds when the domain was created in the registry.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the domain.",
+            "smithy.api#required": {}
+          }
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the domain is set to automatically renew."
+          }
+        },
+        "serviceType": {
+          "target": "com.vercel.domains#GetInformationForASingleDomainResponseDomainServiceType",
+          "traits": {
+            "smithy.api#documentation": "The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.",
+            "smithy.api#required": {}
+          }
+        },
+        "transferredAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp in milliseconds at which the domain was successfully transferred into Vercel. `null` if the transfer is still processing or was never transferred in.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "transferStartedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "If transferred into Vercel, timestamp in milliseconds when the domain transfer was initiated."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#GetInformationForASingleDomainResponse": {
+      "type": "structure",
+      "members": {
+        "domain": {
+          "target": "com.vercel.domains#GetInformationForASingleDomainResponseDomain",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.domains#GetInformationForASingleDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.domains#GetInformationForASingleDomainRequest"
+      },
+      "output": {
+        "target": "com.vercel.domains#GetInformationForASingleDomainResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.domains#BadRequest"
+        },
+        {
+          "target": "com.vercel.domains#Forbidden"
+        },
+        {
+          "target": "com.vercel.domains#NotFound"
+        },
+        {
+          "target": "com.vercel.domains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v5/domains/{domain}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Information for a Single Domain\n\nGet information for a single domain in an account or team."
+      }
+    },
+    "com.vercel.domains#ListAllTheDomainsRequest": {
+      "type": "structure",
+      "members": {
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "Maximum number of domains to list from a request."
+          }
+        },
+        "since": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "since",
+            "smithy.api#documentation": "Get domains created after this JavaScript timestamp."
+          }
+        },
+        "until": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "until",
+            "smithy.api#documentation": "Get domains created before this JavaScript timestamp."
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.domains#ListAllTheDomainsResponseDomainsItemNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of the current nameservers of the domain."
+      }
+    },
+    "com.vercel.domains#ListAllTheDomainsResponseDomainsItemIntendedNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of the intended nameservers for the domain to point to Vercel DNS."
+      }
+    },
+    "com.vercel.domains#ListAllTheDomainsResponseDomainsItemCustomNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel."
+      }
+    },
+    "com.vercel.domains#ListAllTheDomainsResponseDomainsItemServiceType": {
+      "type": "enum",
+      "members": {
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "NA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "na"
+          }
+        },
+        "ZEIT_WORLD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zeit.world"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available."
+      }
+    },
+    "com.vercel.domains#ListAllTheDomainsResponseDomainsItem": {
+      "type": "structure",
+      "members": {
+        "expiresAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp in milliseconds at which the domain is set to expire. null if not bought with Vercel.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "verified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the domain has the ownership verified.",
+            "smithy.api#required": {}
+          }
+        },
+        "nameservers": {
+          "target": "com.vercel.domains#ListAllTheDomainsResponseDomainsItemNameserversList",
+          "traits": {
+            "smithy.api#documentation": "A list of the current nameservers of the domain.",
+            "smithy.api#required": {}
+          }
+        },
+        "intendedNameservers": {
+          "target": "com.vercel.domains#ListAllTheDomainsResponseDomainsItemIntendedNameserversList",
+          "traits": {
+            "smithy.api#documentation": "A list of the intended nameservers for the domain to point to Vercel DNS.",
+            "smithy.api#required": {}
+          }
+        },
+        "customNameservers": {
+          "target": "com.vercel.domains#ListAllTheDomainsResponseDomainsItemCustomNameserversList",
+          "traits": {
+            "smithy.api#documentation": "A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel."
+          }
+        },
+        "creator": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain name.",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "boughtAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp in milliseconds when the domain was created in the registry.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the domain.",
+            "smithy.api#required": {}
+          }
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the domain is set to automatically renew."
+          }
+        },
+        "serviceType": {
+          "target": "com.vercel.domains#ListAllTheDomainsResponseDomainsItemServiceType",
+          "traits": {
+            "smithy.api#documentation": "The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.",
+            "smithy.api#required": {}
+          }
+        },
+        "transferredAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp in milliseconds at which the domain was successfully transferred into Vercel. `null` if the transfer is still processing or was never transferred in.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "transferStartedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "If transferred into Vercel, timestamp in milliseconds when the domain transfer was initiated."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#ListAllTheDomainsResponseDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.domains#ListAllTheDomainsResponseDomainsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#ListAllTheDomainsResponsePagination": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Amount of items in the current page.",
+            "smithy.api#required": {}
+          }
+        },
+        "next": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp that must be used to request the next page.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "prev": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp that must be used to request the previous page.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data."
+      }
+    },
+    "com.vercel.domains#ListAllTheDomainsResponse": {
+      "type": "structure",
+      "members": {
+        "domains": {
+          "target": "com.vercel.domains#ListAllTheDomainsResponseDomainsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "pagination": {
+          "target": "com.vercel.domains#ListAllTheDomainsResponsePagination",
+          "traits": {
+            "smithy.api#documentation": "This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.domains#ListAllTheDomains": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.domains#ListAllTheDomainsRequest"
+      },
+      "output": {
+        "target": "com.vercel.domains#ListAllTheDomainsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.domains#BadRequest"
+        },
+        {
+          "target": "com.vercel.domains#Forbidden"
+        },
+        {
+          "target": "com.vercel.domains#Conflict"
+        },
+        {
+          "target": "com.vercel.domains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v5/domains",
+          "code": 200
+        },
+        "smithy.api#documentation": "List all the domains\n\nRetrieves a list of domains registered for the authenticated user or team. By default it returns the last 20 domains if no limit is provided."
+      }
+    },
+    "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain operation to perform. It can be either `add` or `move-in`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponseDomainNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of the current nameservers of the domain."
+      }
+    },
+    "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponseDomainIntendedNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of the intended nameservers for the domain to point to Vercel DNS."
+      }
+    },
+    "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponseDomainCustomNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel."
+      }
+    },
+    "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponseDomainCreator": {
+      "type": "structure",
+      "members": {
+        "username": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "customerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "isDomainReseller": {
+          "target": "smithy.api#Boolean"
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email."
+      }
+    },
+    "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponseDomainServiceType": {
+      "type": "enum",
+      "members": {
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "NA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "na"
+          }
+        },
+        "ZEIT_WORLD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zeit.world"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available."
+      }
+    },
+    "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponseDomain": {
+      "type": "structure",
+      "members": {
+        "expiresAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp in milliseconds at which the domain is set to expire. null if not bought with Vercel.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "verified": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If the domain has the ownership verified.",
+            "smithy.api#required": {}
+          }
+        },
+        "nameservers": {
+          "target": "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponseDomainNameserversList",
+          "traits": {
+            "smithy.api#documentation": "A list of the current nameservers of the domain.",
+            "smithy.api#required": {}
+          }
+        },
+        "intendedNameservers": {
+          "target": "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponseDomainIntendedNameserversList",
+          "traits": {
+            "smithy.api#documentation": "A list of the intended nameservers for the domain to point to Vercel DNS.",
+            "smithy.api#required": {}
+          }
+        },
+        "customNameservers": {
+          "target": "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponseDomainCustomNameserversList",
+          "traits": {
+            "smithy.api#documentation": "A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel."
+          }
+        },
+        "creator": {
+          "target": "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponseDomainCreator",
+          "traits": {
+            "smithy.api#documentation": "An object containing information of the domain creator, including the user's id, username, and email.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The domain name.",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "boughtAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "If it was purchased through Vercel, the timestamp in milliseconds when it was purchased.",
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp in milliseconds when the domain was created in the registry.",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the domain.",
+            "smithy.api#required": {}
+          }
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether the domain is set to automatically renew."
+          }
+        },
+        "serviceType": {
+          "target": "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponseDomainServiceType",
+          "traits": {
+            "smithy.api#documentation": "The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available.",
+            "smithy.api#required": {}
+          }
+        },
+        "transferredAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Timestamp in milliseconds at which the domain was successfully transferred into Vercel. `null` if the transfer is still processing or was never transferred in.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "transferStartedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "If transferred into Vercel, timestamp in milliseconds when the domain transfer was initiated."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponse": {
+      "type": "structure",
+      "members": {
+        "domain": {
+          "target": "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponseDomain",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.domains#AddAnExistingDomainToTheVercelPlatform": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformRequest"
+      },
+      "output": {
+        "target": "com.vercel.domains#AddAnExistingDomainToTheVercelPlatformResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.domains#BadRequest"
+        },
+        {
+          "target": "com.vercel.domains#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.domains#Forbidden"
+        },
+        {
+          "target": "com.vercel.domains#NotFound"
+        },
+        {
+          "target": "com.vercel.domains#Conflict"
+        },
+        {
+          "target": "com.vercel.domains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v7/domains",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add an existing domain to the Vercel platform\n\nThis endpoint is used for adding a new apex domain name with Vercel for the authenticating user. Note: This endpoint is no longer used for initiating domain transfers from external registrars to Vercel. For this, please use the endpoint [Transfer-in a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/transfer-in-a-domain)."
+      }
+    },
+    "com.vercel.domains#UpdateOrMoveApexDomainRequestBodyCase0CustomNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "This field is deprecated. Please use PATCH /v1/registrar/domains/{domainName}/nameservers instead."
+      }
+    },
+    "com.vercel.domains#UpdateOrMoveApexDomainRequestBodyCase0": {
+      "type": "structure",
+      "members": {
+        "op": {
+          "target": "smithy.api#String"
+        },
+        "renew": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "This field is deprecated. Please use PATCH /v1/registrar/domains/{domainName}/auto-renew instead."
+          }
+        },
+        "customNameservers": {
+          "target": "com.vercel.domains#UpdateOrMoveApexDomainRequestBodyCase0CustomNameserversList",
+          "traits": {
+            "smithy.api#documentation": "This field is deprecated. Please use PATCH /v1/registrar/domains/{domainName}/nameservers instead."
+          }
+        },
+        "zone": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Specifies whether this is a DNS zone that intends to use Vercel's nameservers."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "update"
+      }
+    },
+    "com.vercel.domains#UpdateOrMoveApexDomainRequestBodyCase1": {
+      "type": "structure",
+      "members": {
+        "op": {
+          "target": "smithy.api#String"
+        },
+        "destination": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "User or team to move domain to"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "move-out"
+      }
+    },
+    "com.vercel.domains#UpdateOrMoveApexDomainRequestBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.domains#UpdateOrMoveApexDomainRequestBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.domains#UpdateOrMoveApexDomainRequestBodyCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#UpdateOrMoveApexDomainRequest": {
+      "type": "structure",
+      "members": {
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "body": {
+          "target": "com.vercel.domains#UpdateOrMoveApexDomainRequestBody",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.domains#UpdateOrMoveApexDomainResponseBodyCase0": {
+      "type": "structure",
+      "members": {
+        "moved": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#UpdateOrMoveApexDomainResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "moved": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#UpdateOrMoveApexDomainResponseBodyCase2CustomNameserversList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#UpdateOrMoveApexDomainResponseBodyCase2": {
+      "type": "structure",
+      "members": {
+        "renew": {
+          "target": "smithy.api#Boolean"
+        },
+        "customNameservers": {
+          "target": "com.vercel.domains#UpdateOrMoveApexDomainResponseBodyCase2CustomNameserversList"
+        },
+        "zone": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#UpdateOrMoveApexDomainResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.domains#UpdateOrMoveApexDomainResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.domains#UpdateOrMoveApexDomainResponseBodyCase1"
+        },
+        "Case2": {
+          "target": "com.vercel.domains#UpdateOrMoveApexDomainResponseBodyCase2"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.domains#UpdateOrMoveApexDomainResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.domains#UpdateOrMoveApexDomainResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.domains#UpdateOrMoveApexDomain": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.domains#UpdateOrMoveApexDomainRequest"
+      },
+      "output": {
+        "target": "com.vercel.domains#UpdateOrMoveApexDomainResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.domains#BadRequest"
+        },
+        {
+          "target": "com.vercel.domains#Forbidden"
+        },
+        {
+          "target": "com.vercel.domains#NotFound"
+        },
+        {
+          "target": "com.vercel.domains#Conflict"
+        },
+        {
+          "target": "com.vercel.domains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/v3/domains/{domain}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update or move apex domain\n\nUpdate or move apex domain. Note: This endpoint is no longer used for updating auto-renew or nameservers. For this, please use the endpoints [Update auto-renew for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-auto-renew-for-a-domain) and [Update nameservers for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/update-nameservers-for-a-domain)."
+      }
+    },
+    "com.vercel.domains#RemoveADomainByNameRequest": {
+      "type": "structure",
+      "members": {
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The name of the domain."
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.domains#RemoveADomainByNameResponse": {
+      "type": "structure",
+      "members": {
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.domains#RemoveADomainByName": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.domains#RemoveADomainByNameRequest"
+      },
+      "output": {
+        "target": "com.vercel.domains#RemoveADomainByNameResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.domains#BadRequest"
+        },
+        {
+          "target": "com.vercel.domains#Forbidden"
+        },
+        {
+          "target": "com.vercel.domains#NotFound"
+        },
+        {
+          "target": "com.vercel.domains#Conflict"
+        },
+        {
+          "target": "com.vercel.domains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v6/domains/{domain}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Remove a domain by name\n\nDelete a previously registered domain name from Vercel. Deleting a domain will automatically remove any associated aliases."
+      }
+    },
+    "com.vercel.domains#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.domains#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.domains#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.domains#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.domains#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
+    "com.vercel.domains#PaymentRequired": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 402,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 402
+          }
+        ]
+      }
+    },
+    "com.vercel.domains#Domains": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.domains#GetADomainSConfiguration"
+        },
+        {
+          "target": "com.vercel.domains#GetDomainVerificationRecord"
+        },
+        {
+          "target": "com.vercel.domains#ClaimDomainOwnership"
+        },
+        {
+          "target": "com.vercel.domains#ListProjectDomainsByApexDomain"
+        },
+        {
+          "target": "com.vercel.domains#GetInformationForASingleDomain"
+        },
+        {
+          "target": "com.vercel.domains#ListAllTheDomains"
+        },
+        {
+          "target": "com.vercel.domains#AddAnExistingDomainToTheVercelPlatform"
+        },
+        {
+          "target": "com.vercel.domains#UpdateOrMoveApexDomain"
+        },
+        {
+          "target": "com.vercel.domains#RemoveADomainByName"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel domains",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/domains/."
+      }
+    }
+  }
+}

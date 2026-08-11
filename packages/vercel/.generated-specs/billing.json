@@ -1,0 +1,690 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.billing#ListFocusBillingChargesRequest": {
+      "type": "structure",
+      "members": {
+        "from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "from",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Inclusive start of the date range as an ISO 8601 date-time string in UTC."
+          }
+        },
+        "to": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "to",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Exclusive end of the date range as an ISO 8601 date-time string in UTC."
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.billing#ListFocusBillingCharges": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.billing#ListFocusBillingChargesRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.billing#BadRequest"
+        },
+        {
+          "target": "com.vercel.billing#Forbidden"
+        },
+        {
+          "target": "com.vercel.billing#NotFound"
+        },
+        {
+          "target": "com.vercel.billing#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/billing/charges",
+          "code": 200
+        },
+        "smithy.api#documentation": "List FOCUS billing charges\n\nReturns the billing charge data in FOCUS v1.3 JSONL format for a specified Vercel team, within a date range specified by `from` and `to` query parameters. Supports 1-day granularity with a maximum date range of 1 year. The response is streamed as newline-delimited JSON (JSONL) and can be optionally compressed with gzip if the `Accept-Encoding: gzip` header is provided. This is only available for Owner, Member, Developer, Security, Billing, and Enterprise Viewer roles for the supplied team."
+      }
+    },
+    "com.vercel.billing#ListFocusContractCommitmentsRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.billing#ListFocusContractCommitments": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.billing#ListFocusContractCommitmentsRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.billing#BadRequest"
+        },
+        {
+          "target": "com.vercel.billing#Forbidden"
+        },
+        {
+          "target": "com.vercel.billing#NotFound"
+        },
+        {
+          "target": "com.vercel.billing#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/billing/contract-commitments",
+          "code": 200
+        },
+        "smithy.api#documentation": "List FOCUS contract commitments\n\nReturns commitment allocations per contract period in FOCUS v1.3 JSONL format for a specified Vercel team. The response is streamed as newline-delimited JSON (JSONL). This endpoint is only applicable to Enterprise Vercel customers. An empty response is returned for non-Enterprise (Pro/Flex) customers."
+      }
+    },
+    "com.vercel.billing#PurchaseCreditsRequestItemType": {
+      "type": "enum",
+      "members": {
+        "CREDITS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "credits"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of item to purchase."
+      }
+    },
+    "com.vercel.billing#PurchaseCreditsRequestItemCreditType": {
+      "type": "enum",
+      "members": {
+        "V0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v0"
+          }
+        },
+        "GATEWAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gateway"
+          }
+        },
+        "AGENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "agent"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of credits to purchase."
+      }
+    },
+    "com.vercel.billing#PurchaseCreditsRequestItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.vercel.billing#PurchaseCreditsRequestItemType",
+          "traits": {
+            "smithy.api#documentation": "The type of item to purchase.",
+            "smithy.api#required": {}
+          }
+        },
+        "creditType": {
+          "target": "com.vercel.billing#PurchaseCreditsRequestItemCreditType",
+          "traits": {
+            "smithy.api#documentation": "The type of credits to purchase.",
+            "smithy.api#required": {}
+          }
+        },
+        "amount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The amount of credits to purchase.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.billing#PurchaseCreditsRequest": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "source",
+            "smithy.api#documentation": "The source of the purchase request. Defaults to `api` if not specified."
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "item": {
+          "target": "com.vercel.billing#PurchaseCreditsRequestItem",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.billing#PurchaseCreditsResponseBodyCase0": {
+      "type": "structure",
+      "members": {
+        "checkoutSessionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "checkoutSessionUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.billing#PurchaseCreditsResponseBodyCase1PurchaseIntentCurrency": {
+      "type": "enum",
+      "members": {
+        "MIU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "miu"
+          }
+        },
+        "USD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "usd"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The currency for the purchase intent"
+      }
+    },
+    "com.vercel.billing#PurchaseCreditsResponseBodyCase1PurchaseIntentStatus": {
+      "type": "enum",
+      "members": {
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the Purchase Intent."
+      }
+    },
+    "com.vercel.billing#PurchaseCreditsResponseBodyCase1PurchaseIntentLineItemsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The line items that make up the Purchase Intent."
+      }
+    },
+    "com.vercel.billing#PurchaseCreditsResponseBodyCase1PurchaseIntent": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of a Purchase Intent. Uses the format `pur_*`",
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The datetime when the Purchase Intent was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "currency": {
+          "target": "com.vercel.billing#PurchaseCreditsResponseBodyCase1PurchaseIntentCurrency",
+          "traits": {
+            "smithy.api#documentation": "The currency for the purchase intent",
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the owner of the Purchase Intent.",
+            "smithy.api#required": {}
+          }
+        },
+        "provider": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.billing#PurchaseCreditsResponseBodyCase1PurchaseIntentStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Purchase Intent.",
+            "smithy.api#required": {}
+          }
+        },
+        "subtotal": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The subtotal of the Purchase Intent.",
+            "smithy.api#required": {}
+          }
+        },
+        "tax": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The tax due on the Purchase Intent.",
+            "smithy.api#required": {}
+          }
+        },
+        "total": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The total balance due on the Purchase Intent.",
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The datetime when the Purchase Intent was last updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "dispute": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The dispute details, if any."
+          }
+        },
+        "lineItems": {
+          "target": "com.vercel.billing#PurchaseCreditsResponseBodyCase1PurchaseIntentLineItemsList",
+          "traits": {
+            "smithy.api#documentation": "The line items that make up the Purchase Intent."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Optional metadata associated with the purchase intent"
+          }
+        },
+        "refund": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The amount of the purchase intent that has been refunded"
+          }
+        },
+        "returnUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The URL to redirect to after the purchase is complete"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The created purchase intent"
+      }
+    },
+    "com.vercel.billing#PurchaseCreditsResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "purchaseIntent": {
+          "target": "com.vercel.billing#PurchaseCreditsResponseBodyCase1PurchaseIntent",
+          "traits": {
+            "smithy.api#documentation": "The created purchase intent",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.billing#PurchaseCreditsResponseBodyCase2OrbSubscriptionIntentStatus": {
+      "type": "enum",
+      "members": {
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "SUCCEEDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "succeeded"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The status of the Orb subscription intent."
+      }
+    },
+    "com.vercel.billing#PurchaseCreditsResponseBodyCase2OrbSubscriptionIntent": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Orb subscription intent with the format `orbsubint_`.",
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ISO 8601 date-time that the intent was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "orbSubscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Orb subscription ID this intent is associated with.",
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The owner ID for this intent (e.g., team or user ID).",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.billing#PurchaseCreditsResponseBodyCase2OrbSubscriptionIntentStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Orb subscription intent.",
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ISO 8601 date-time that the intent was last updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "purchaseIntentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional purchase intent ID if this is associated with a purchase."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.billing#PurchaseCreditsResponseBodyCase2": {
+      "type": "structure",
+      "members": {
+        "orbSubscriptionIntent": {
+          "target": "com.vercel.billing#PurchaseCreditsResponseBodyCase2OrbSubscriptionIntent",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.billing#PurchaseCreditsResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.billing#PurchaseCreditsResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.billing#PurchaseCreditsResponseBodyCase1"
+        },
+        "Case2": {
+          "target": "com.vercel.billing#PurchaseCreditsResponseBodyCase2"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.billing#PurchaseCreditsResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.billing#PurchaseCreditsResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.billing#PurchaseCredits": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.billing#PurchaseCreditsRequest"
+      },
+      "output": {
+        "target": "com.vercel.billing#PurchaseCreditsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.billing#BadRequest"
+        },
+        {
+          "target": "com.vercel.billing#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.billing#Forbidden"
+        },
+        {
+          "target": "com.vercel.billing#NotFound"
+        },
+        {
+          "target": "com.vercel.billing#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/billing/buy",
+          "code": 200
+        },
+        "smithy.api#documentation": "Purchase credits\n\nPurchases credits for a Vercel team using the default payment method on file. The purchase is charged immediately via Stripe invoice. Supported credit types are `v0`, `gateway`, and `agent`. The `amount` field specifies the number of credits to purchase and must be a positive integer. An optional `source` query parameter can be provided to identify the caller. Defaults to `api` if not specified. This is only available for Owner, Member, Developer, Security, and Billing roles for the supplied team."
+      }
+    },
+    "com.vercel.billing#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.billing#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.billing#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.billing#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.billing#PaymentRequired": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 402,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 402
+          }
+        ]
+      }
+    },
+    "com.vercel.billing#Billing": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.billing#ListFocusBillingCharges"
+        },
+        {
+          "target": "com.vercel.billing#ListFocusContractCommitments"
+        },
+        {
+          "target": "com.vercel.billing#PurchaseCredits"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel billing",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/billing/."
+      }
+    }
+  }
+}

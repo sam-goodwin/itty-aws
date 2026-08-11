@@ -1,0 +1,3265 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.drains#RetrieveAListOfAllDrainsRequest": {
+      "type": "structure",
+      "members": {
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "projectId"
+          }
+        },
+        "includeMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "includeMetadata"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.drains#RetrieveAListOfAllDrainsResponseDrainsCase0List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#RetrieveAListOfAllDrainsResponseDrainsCase1List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#RetrieveAListOfAllDrainsResponseDrains": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.drains#RetrieveAListOfAllDrainsResponseDrainsCase0List"
+        },
+        "Case1": {
+          "target": "com.vercel.drains#RetrieveAListOfAllDrainsResponseDrainsCase1List"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#RetrieveAListOfAllDrainsResponse": {
+      "type": "structure",
+      "members": {
+        "drains": {
+          "target": "com.vercel.drains#RetrieveAListOfAllDrainsResponseDrains",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.drains#RetrieveAListOfAllDrains": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.drains#RetrieveAListOfAllDrainsRequest"
+      },
+      "output": {
+        "target": "com.vercel.drains#RetrieveAListOfAllDrainsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.drains#BadRequest"
+        },
+        {
+          "target": "com.vercel.drains#Forbidden"
+        },
+        {
+          "target": "com.vercel.drains#NotFound"
+        },
+        {
+          "target": "com.vercel.drains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/drains",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve a list of all Drains\n\nAllows to retrieve the list of Drains of the authenticated team."
+      }
+    },
+    "com.vercel.drains#CreateANewDrainRequestProjects": {
+      "type": "enum",
+      "members": {
+        "SOME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "some"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestProjectIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestFilter": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestSchemasValue": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestSchemasMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.vercel.drains#CreateANewDrainRequestSchemasValue"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestDeliveryCase0Compression": {
+      "type": "enum",
+      "members": {
+        "GZIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestDeliveryCase0Encoding": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestDeliveryCase0": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.vercel.drains#CreateANewDrainRequestDeliveryCase0Compression"
+        },
+        "encoding": {
+          "target": "com.vercel.drains#CreateANewDrainRequestDeliveryCase0Encoding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "headers": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "secret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestDeliveryCase1Encoding": {
+      "type": "enum",
+      "members": {
+        "PROTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proto"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestDeliveryCase1": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "encoding": {
+          "target": "com.vercel.drains#CreateANewDrainRequestDeliveryCase1Encoding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "headers": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "secret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestDeliveryCase2Encoding": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestDeliveryCase2Compression": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestDeliveryCase2FileStructure": {
+      "type": "enum",
+      "members": {
+        "HIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hive"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestDeliveryCase2ServerSideEncryption": {
+      "type": "enum",
+      "members": {
+        "AES256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AES256"
+          }
+        },
+        "AWS_KMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws:kms"
+          }
+        },
+        "AWS_KMS_DSSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws:kms:dsse"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestDeliveryCase2ObjectAcl": {
+      "type": "enum",
+      "members": {
+        "PRIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "private"
+          }
+        },
+        "BUCKET_OWNER_READ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bucket-owner-read"
+          }
+        },
+        "BUCKET_OWNER_FULL_CONTROL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bucket-owner-full-control"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestDeliveryCase2": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "encoding": {
+          "target": "com.vercel.drains#CreateANewDrainRequestDeliveryCase2Encoding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.vercel.drains#CreateANewDrainRequestDeliveryCase2Compression",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "fileStructure": {
+          "target": "com.vercel.drains#CreateANewDrainRequestDeliveryCase2FileStructure",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "roleArn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "serverSideEncryption": {
+          "target": "com.vercel.drains#CreateANewDrainRequestDeliveryCase2ServerSideEncryption"
+        },
+        "objectAcl": {
+          "target": "com.vercel.drains#CreateANewDrainRequestDeliveryCase2ObjectAcl"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestDelivery": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.drains#CreateANewDrainRequestDeliveryCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.drains#CreateANewDrainRequestDeliveryCase1"
+        },
+        "Case2": {
+          "target": "com.vercel.drains#CreateANewDrainRequestDeliveryCase2"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestSamplingItemEnv": {
+      "type": "enum",
+      "members": {
+        "PRODUCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "production"
+          }
+        },
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "preview"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Environment to apply sampling to"
+      }
+    },
+    "com.vercel.drains#CreateANewDrainRequestSamplingItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Sampling rate from 0 to 1 (e.g., 0.1 for 10%)",
+            "smithy.api#required": {}
+          }
+        },
+        "env": {
+          "target": "com.vercel.drains#CreateANewDrainRequestSamplingItemEnv",
+          "traits": {
+            "smithy.api#documentation": "Environment to apply sampling to"
+          }
+        },
+        "requestPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Request path prefix to apply the sampling rule to"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestSamplingList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.drains#CreateANewDrainRequestSamplingItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestTransformsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestTransformsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.drains#CreateANewDrainRequestTransformsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestSourceCase1": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequestSource": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Document"
+        },
+        "Case1": {
+          "target": "com.vercel.drains#CreateANewDrainRequestSourceCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projects": {
+          "target": "com.vercel.drains#CreateANewDrainRequestProjects",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectIds": {
+          "target": "com.vercel.drains#CreateANewDrainRequestProjectIdsList"
+        },
+        "filter": {
+          "target": "com.vercel.drains#CreateANewDrainRequestFilter"
+        },
+        "schemas": {
+          "target": "com.vercel.drains#CreateANewDrainRequestSchemasMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "delivery": {
+          "target": "com.vercel.drains#CreateANewDrainRequestDelivery"
+        },
+        "sampling": {
+          "target": "com.vercel.drains#CreateANewDrainRequestSamplingList"
+        },
+        "transforms": {
+          "target": "com.vercel.drains#CreateANewDrainRequestTransformsList"
+        },
+        "source": {
+          "target": "com.vercel.drains#CreateANewDrainRequestSource"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase0ProjectIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase0Status": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "errored"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase0DisabledReason": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT_PLAN_DOWNGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account-plan-downgrade"
+          }
+        },
+        "DISABLED_BY_ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-admin"
+          }
+        },
+        "DISABLED_BY_OWNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-owner"
+          }
+        },
+        "FEATURE_NOT_AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "feature-not-available"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase0Schemas": {
+      "type": "structure",
+      "members": {
+        "log": {
+          "target": "smithy.api#Document"
+        },
+        "trace": {
+          "target": "smithy.api#Document"
+        },
+        "analytics": {
+          "target": "smithy.api#Document"
+        },
+        "speed_insights": {
+          "target": "smithy.api#Document"
+        },
+        "ai_gateway": {
+          "target": "smithy.api#Document"
+        },
+        "audit_log": {
+          "target": "smithy.api#Document"
+        },
+        "connect": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase0SamplingList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase0FilterV2Version": {
+      "type": "enum",
+      "members": {
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v2"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase0FilterV2": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase0FilterV2Version",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase0": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectIds": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase0ProjectIdsList"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase0Status"
+        },
+        "firstErrorTimestamp": {
+          "target": "smithy.api#Double"
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double"
+        },
+        "disabledBy": {
+          "target": "smithy.api#String"
+        },
+        "disabledReason": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase0DisabledReason"
+        },
+        "schemas": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase0Schemas",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "delivery": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sampling": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase0SamplingList"
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filterV2": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase0FilterV2"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase1ProjectIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase1Status": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "errored"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase1DisabledReason": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT_PLAN_DOWNGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account-plan-downgrade"
+          }
+        },
+        "DISABLED_BY_ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-admin"
+          }
+        },
+        "DISABLED_BY_OWNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-owner"
+          }
+        },
+        "FEATURE_NOT_AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "feature-not-available"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase1Schemas": {
+      "type": "structure",
+      "members": {
+        "log": {
+          "target": "smithy.api#Document"
+        },
+        "trace": {
+          "target": "smithy.api#Document"
+        },
+        "analytics": {
+          "target": "smithy.api#Document"
+        },
+        "speed_insights": {
+          "target": "smithy.api#Document"
+        },
+        "ai_gateway": {
+          "target": "smithy.api#Document"
+        },
+        "audit_log": {
+          "target": "smithy.api#Document"
+        },
+        "connect": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase1SamplingList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase1FilterV2Version": {
+      "type": "enum",
+      "members": {
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v2"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase1FilterV2": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase1FilterV2Version",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectIds": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase1ProjectIdsList"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase1Status"
+        },
+        "firstErrorTimestamp": {
+          "target": "smithy.api#Double"
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double"
+        },
+        "disabledBy": {
+          "target": "smithy.api#String"
+        },
+        "disabledReason": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase1DisabledReason"
+        },
+        "schemas": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase1Schemas",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "delivery": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sampling": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase1SamplingList"
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filterV2": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase1FilterV2"
+        },
+        "integrationIcon": {
+          "target": "smithy.api#String"
+        },
+        "integrationConfigurationUri": {
+          "target": "smithy.api#String"
+        },
+        "integrationWebsite": {
+          "target": "smithy.api#String"
+        },
+        "projectAccess": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBodyCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#CreateANewDrainResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.drains#CreateANewDrainResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.drains#CreateANewDrain": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.drains#CreateANewDrainRequest"
+      },
+      "output": {
+        "target": "com.vercel.drains#CreateANewDrainResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.drains#BadRequest"
+        },
+        {
+          "target": "com.vercel.drains#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.drains#Forbidden"
+        },
+        {
+          "target": "com.vercel.drains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/drains",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a new Drain\n\nCreate a new Drain with the provided configuration."
+      }
+    },
+    "com.vercel.drains#FindADrainByIdRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase0ProjectIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase0Status": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "errored"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase0DisabledReason": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT_PLAN_DOWNGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account-plan-downgrade"
+          }
+        },
+        "DISABLED_BY_ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-admin"
+          }
+        },
+        "DISABLED_BY_OWNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-owner"
+          }
+        },
+        "FEATURE_NOT_AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "feature-not-available"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase0Schemas": {
+      "type": "structure",
+      "members": {
+        "log": {
+          "target": "smithy.api#Document"
+        },
+        "trace": {
+          "target": "smithy.api#Document"
+        },
+        "analytics": {
+          "target": "smithy.api#Document"
+        },
+        "speed_insights": {
+          "target": "smithy.api#Document"
+        },
+        "ai_gateway": {
+          "target": "smithy.api#Document"
+        },
+        "audit_log": {
+          "target": "smithy.api#Document"
+        },
+        "connect": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase0SamplingList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase0FilterV2Version": {
+      "type": "enum",
+      "members": {
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v2"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase0FilterV2": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase0FilterV2Version",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase0": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectIds": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase0ProjectIdsList"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase0Status"
+        },
+        "firstErrorTimestamp": {
+          "target": "smithy.api#Double"
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double"
+        },
+        "disabledBy": {
+          "target": "smithy.api#String"
+        },
+        "disabledReason": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase0DisabledReason"
+        },
+        "schemas": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase0Schemas",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "delivery": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sampling": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase0SamplingList"
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filterV2": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase0FilterV2"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase1ProjectIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase1Status": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "errored"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase1DisabledReason": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT_PLAN_DOWNGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account-plan-downgrade"
+          }
+        },
+        "DISABLED_BY_ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-admin"
+          }
+        },
+        "DISABLED_BY_OWNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-owner"
+          }
+        },
+        "FEATURE_NOT_AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "feature-not-available"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase1Schemas": {
+      "type": "structure",
+      "members": {
+        "log": {
+          "target": "smithy.api#Document"
+        },
+        "trace": {
+          "target": "smithy.api#Document"
+        },
+        "analytics": {
+          "target": "smithy.api#Document"
+        },
+        "speed_insights": {
+          "target": "smithy.api#Document"
+        },
+        "ai_gateway": {
+          "target": "smithy.api#Document"
+        },
+        "audit_log": {
+          "target": "smithy.api#Document"
+        },
+        "connect": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase1SamplingList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase1FilterV2Version": {
+      "type": "enum",
+      "members": {
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v2"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase1FilterV2": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase1FilterV2Version",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectIds": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase1ProjectIdsList"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase1Status"
+        },
+        "firstErrorTimestamp": {
+          "target": "smithy.api#Double"
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double"
+        },
+        "disabledBy": {
+          "target": "smithy.api#String"
+        },
+        "disabledReason": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase1DisabledReason"
+        },
+        "schemas": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase1Schemas",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "delivery": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sampling": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase1SamplingList"
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filterV2": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase1FilterV2"
+        },
+        "integrationIcon": {
+          "target": "smithy.api#String"
+        },
+        "integrationConfigurationUri": {
+          "target": "smithy.api#String"
+        },
+        "integrationWebsite": {
+          "target": "smithy.api#String"
+        },
+        "projectAccess": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBodyCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#FindADrainByIdResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.drains#FindADrainByIdResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.drains#FindADrainById": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.drains#FindADrainByIdRequest"
+      },
+      "output": {
+        "target": "com.vercel.drains#FindADrainByIdResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.drains#BadRequest"
+        },
+        {
+          "target": "com.vercel.drains#Forbidden"
+        },
+        {
+          "target": "com.vercel.drains#NotFound"
+        },
+        {
+          "target": "com.vercel.drains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/drains/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Find a Drain by id\n\nGet the information for a specific Drain by passing the drain id in the URL."
+      }
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestProjects": {
+      "type": "enum",
+      "members": {
+        "SOME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "some"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestProjectIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestFilterCase1": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestFilter": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestFilterCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestSchemasValue": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestSchemasMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.vercel.drains#UpdateAnExistingDrainRequestSchemasValue"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase0Compression": {
+      "type": "enum",
+      "members": {
+        "GZIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase0Encoding": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase0": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase0Compression"
+        },
+        "encoding": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase0Encoding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "headers": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "secret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase1Encoding": {
+      "type": "enum",
+      "members": {
+        "PROTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proto"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase1": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "encoding": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase1Encoding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "headers": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "secret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase2Encoding": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase2Compression": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase2FileStructure": {
+      "type": "enum",
+      "members": {
+        "HIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hive"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase2ServerSideEncryption": {
+      "type": "enum",
+      "members": {
+        "AES256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AES256"
+          }
+        },
+        "AWS_KMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws:kms"
+          }
+        },
+        "AWS_KMS_DSSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws:kms:dsse"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase2ObjectAcl": {
+      "type": "enum",
+      "members": {
+        "PRIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "private"
+          }
+        },
+        "BUCKET_OWNER_READ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bucket-owner-read"
+          }
+        },
+        "BUCKET_OWNER_FULL_CONTROL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bucket-owner-full-control"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase2": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "encoding": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase2Encoding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase2Compression",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "fileStructure": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase2FileStructure",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "roleArn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "serverSideEncryption": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase2ServerSideEncryption"
+        },
+        "objectAcl": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase2ObjectAcl"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestDelivery": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase1"
+        },
+        "Case2": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestDeliveryCase2"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestSamplingItemEnv": {
+      "type": "enum",
+      "members": {
+        "PRODUCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "production"
+          }
+        },
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "preview"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Environment to apply sampling to"
+      }
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestSamplingItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rate": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Sampling rate from 0 to 1 (e.g., 0.1 for 10%)",
+            "smithy.api#required": {}
+          }
+        },
+        "env": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestSamplingItemEnv",
+          "traits": {
+            "smithy.api#documentation": "Environment to apply sampling to"
+          }
+        },
+        "requestPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Request path prefix to apply the sampling rule to"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestSamplingList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.drains#UpdateAnExistingDrainRequestSamplingItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestTransformsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestTransformsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.drains#UpdateAnExistingDrainRequestTransformsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestStatus": {
+      "type": "enum",
+      "members": {
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestSourceCase1": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequestSource": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Document"
+        },
+        "Case1": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestSourceCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "projects": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestProjects"
+        },
+        "projectIds": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestProjectIdsList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "filter": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestFilter"
+        },
+        "schemas": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestSchemasMap"
+        },
+        "delivery": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestDelivery"
+        },
+        "sampling": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestSamplingList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "transforms": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestTransformsList",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestStatus"
+        },
+        "source": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainRequestSource"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0ProjectIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0Status": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "errored"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0DisabledReason": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT_PLAN_DOWNGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account-plan-downgrade"
+          }
+        },
+        "DISABLED_BY_ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-admin"
+          }
+        },
+        "DISABLED_BY_OWNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-owner"
+          }
+        },
+        "FEATURE_NOT_AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "feature-not-available"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0Schemas": {
+      "type": "structure",
+      "members": {
+        "log": {
+          "target": "smithy.api#Document"
+        },
+        "trace": {
+          "target": "smithy.api#Document"
+        },
+        "analytics": {
+          "target": "smithy.api#Document"
+        },
+        "speed_insights": {
+          "target": "smithy.api#Document"
+        },
+        "ai_gateway": {
+          "target": "smithy.api#Document"
+        },
+        "audit_log": {
+          "target": "smithy.api#Document"
+        },
+        "connect": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0SamplingList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0FilterV2Version": {
+      "type": "enum",
+      "members": {
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v2"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0FilterV2": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0FilterV2Version",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectIds": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0ProjectIdsList"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0Status"
+        },
+        "firstErrorTimestamp": {
+          "target": "smithy.api#Double"
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double"
+        },
+        "disabledBy": {
+          "target": "smithy.api#String"
+        },
+        "disabledReason": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0DisabledReason"
+        },
+        "schemas": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0Schemas",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "delivery": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sampling": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0SamplingList"
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filterV2": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0FilterV2"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1ProjectIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1Status": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        },
+        "ERRORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "errored"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1DisabledReason": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT_PLAN_DOWNGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account-plan-downgrade"
+          }
+        },
+        "DISABLED_BY_ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-admin"
+          }
+        },
+        "DISABLED_BY_OWNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-owner"
+          }
+        },
+        "FEATURE_NOT_AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "feature-not-available"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1Schemas": {
+      "type": "structure",
+      "members": {
+        "log": {
+          "target": "smithy.api#Document"
+        },
+        "trace": {
+          "target": "smithy.api#Document"
+        },
+        "analytics": {
+          "target": "smithy.api#Document"
+        },
+        "speed_insights": {
+          "target": "smithy.api#Document"
+        },
+        "ai_gateway": {
+          "target": "smithy.api#Document"
+        },
+        "audit_log": {
+          "target": "smithy.api#Document"
+        },
+        "connect": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1SamplingList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1FilterV2Version": {
+      "type": "enum",
+      "members": {
+        "V2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v2"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1FilterV2": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1FilterV2Version",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectIds": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1ProjectIdsList"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1Status"
+        },
+        "firstErrorTimestamp": {
+          "target": "smithy.api#Double"
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double"
+        },
+        "disabledBy": {
+          "target": "smithy.api#String"
+        },
+        "disabledReason": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1DisabledReason"
+        },
+        "schemas": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1Schemas",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "delivery": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "sampling": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1SamplingList"
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filterV2": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1FilterV2"
+        },
+        "integrationIcon": {
+          "target": "smithy.api#String"
+        },
+        "integrationConfigurationUri": {
+          "target": "smithy.api#String"
+        },
+        "integrationWebsite": {
+          "target": "smithy.api#String"
+        },
+        "projectAccess": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBodyCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#UpdateAnExistingDrainResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.drains#UpdateAnExistingDrainResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.drains#UpdateAnExistingDrain": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.drains#UpdateAnExistingDrainRequest"
+      },
+      "output": {
+        "target": "com.vercel.drains#UpdateAnExistingDrainResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.drains#BadRequest"
+        },
+        {
+          "target": "com.vercel.drains#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.drains#Forbidden"
+        },
+        {
+          "target": "com.vercel.drains#NotFound"
+        },
+        {
+          "target": "com.vercel.drains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/v1/drains/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update an existing Drain\n\nUpdate the configuration of an existing drain."
+      }
+    },
+    "com.vercel.drains#DeleteADrainRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.drains#DeleteADrain": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.drains#DeleteADrainRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.drains#BadRequest"
+        },
+        {
+          "target": "com.vercel.drains#Forbidden"
+        },
+        {
+          "target": "com.vercel.drains#NotFound"
+        },
+        {
+          "target": "com.vercel.drains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/drains/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a drain\n\nDelete a specific Drain by passing the drain id in the URL."
+      }
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestSchemasValue": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestSchemasMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestSchemasValue"
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase0Compression": {
+      "type": "enum",
+      "members": {
+        "GZIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase0Encoding": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase0": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase0Compression"
+        },
+        "encoding": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase0Encoding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "headers": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "secret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase1Encoding": {
+      "type": "enum",
+      "members": {
+        "PROTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "proto"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase1": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "encoding": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase1Encoding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "headers": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "secret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase2Encoding": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        },
+        "NDJSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ndjson"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase2Compression": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase2FileStructure": {
+      "type": "enum",
+      "members": {
+        "HIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hive"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase2ServerSideEncryption": {
+      "type": "enum",
+      "members": {
+        "AES256": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AES256"
+          }
+        },
+        "AWS_KMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws:kms"
+          }
+        },
+        "AWS_KMS_DSSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aws:kms:dsse"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase2ObjectAcl": {
+      "type": "enum",
+      "members": {
+        "PRIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "private"
+          }
+        },
+        "BUCKET_OWNER_READ": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bucket-owner-read"
+          }
+        },
+        "BUCKET_OWNER_FULL_CONTROL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bucket-owner-full-control"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase2": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "encoding": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase2Encoding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase2Compression",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "fileStructure": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase2FileStructure",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "roleArn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "serverSideEncryption": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase2ServerSideEncryption"
+        },
+        "objectAcl": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase2ObjectAcl"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDelivery": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase1"
+        },
+        "Case2": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDeliveryCase2"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "schemas": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestSchemasMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "delivery": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequestDelivery",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Document"
+        },
+        "Case1": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationResponseBodyCase1"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.drains#ValidateDrainDeliveryConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationRequest"
+      },
+      "output": {
+        "target": "com.vercel.drains#ValidateDrainDeliveryConfigurationResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.drains#BadRequest"
+        },
+        {
+          "target": "com.vercel.drains#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.drains#Forbidden"
+        },
+        {
+          "target": "com.vercel.drains#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/drains/test",
+          "code": 200
+        },
+        "smithy.api#documentation": "Validate Drain delivery configuration\n\nValidate the delivery configuration of a Drain using sample events."
+      }
+    },
+    "com.vercel.drains#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.drains#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.drains#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.drains#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.drains#PaymentRequired": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 402,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 402
+          }
+        ]
+      }
+    },
+    "com.vercel.drains#Drains": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.drains#RetrieveAListOfAllDrains"
+        },
+        {
+          "target": "com.vercel.drains#CreateANewDrain"
+        },
+        {
+          "target": "com.vercel.drains#FindADrainById"
+        },
+        {
+          "target": "com.vercel.drains#UpdateAnExistingDrain"
+        },
+        {
+          "target": "com.vercel.drains#DeleteADrain"
+        },
+        {
+          "target": "com.vercel.drains#ValidateDrainDeliveryConfiguration"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel drains",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/drains/."
+      }
+    }
+  }
+}

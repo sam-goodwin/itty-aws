@@ -1,0 +1,4435 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.vercel.integrations#ListGitNamespacesByProviderRequestProvider": {
+      "type": "enum",
+      "members": {
+        "GITHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "github"
+          }
+        },
+        "GITHUB_LIMITED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "github-limited"
+          }
+        },
+        "GITHUB_CUSTOM_HOST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "github-custom-host"
+          }
+        },
+        "GITLAB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gitlab"
+          }
+        },
+        "BITBUCKET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bitbucket"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitNamespacesByProviderRequest": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "host",
+            "smithy.api#documentation": "The custom Git host if using a custom Git provider, like GitHub Enterprise Server"
+          }
+        },
+        "provider": {
+          "target": "com.vercel.integrations#ListGitNamespacesByProviderRequestProvider",
+          "traits": {
+            "smithy.api#httpQuery": "provider"
+          }
+        },
+        "viewerMetadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "viewerMetadata",
+            "smithy.api#documentation": "When true, includes the viewer object for each namespace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.integrations#ListGitNamespacesByProviderResponseBodyItemId": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Double"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitNamespacesByProviderResponseBodyItemViewer": {
+      "type": "structure",
+      "members": {
+        "canCreateApp": {
+          "target": "smithy.api#Boolean"
+        },
+        "role": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitNamespacesByProviderResponseBodyItem": {
+      "type": "structure",
+      "members": {
+        "provider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "com.vercel.integrations#ListGitNamespacesByProviderResponseBodyItemId",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ownerType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "isAccessRestricted": {
+          "target": "smithy.api#Boolean"
+        },
+        "installationId": {
+          "target": "smithy.api#Double"
+        },
+        "requireReauth": {
+          "target": "smithy.api#Boolean"
+        },
+        "viewer": {
+          "target": "com.vercel.integrations#ListGitNamespacesByProviderResponseBodyItemViewer"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitNamespacesByProviderResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.integrations#ListGitNamespacesByProviderResponseBodyItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitNamespacesByProviderResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.integrations#ListGitNamespacesByProviderResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.integrations#ListGitNamespacesByProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.integrations#ListGitNamespacesByProviderRequest"
+      },
+      "output": {
+        "target": "com.vercel.integrations#ListGitNamespacesByProviderResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.integrations#BadRequest"
+        },
+        {
+          "target": "com.vercel.integrations#Forbidden"
+        },
+        {
+          "target": "com.vercel.integrations#NotFound"
+        },
+        {
+          "target": "com.vercel.integrations#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/integrations/git-namespaces",
+          "code": 200
+        },
+        "smithy.api#documentation": "List git namespaces by provider\n\nLists git namespaces for a supported provider. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider is not provided, it will try to obtain it from the user that authenticated the request."
+      }
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderRequestProvider": {
+      "type": "enum",
+      "members": {
+        "GITHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "github"
+          }
+        },
+        "GITHUB_LIMITED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "github-limited"
+          }
+        },
+        "GITHUB_CUSTOM_HOST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "github-custom-host"
+          }
+        },
+        "GITLAB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gitlab"
+          }
+        },
+        "BITBUCKET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bitbucket"
+          }
+        },
+        "CURSOR_ORIGIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cursor-origin"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderRequest": {
+      "type": "structure",
+      "members": {
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "query"
+          }
+        },
+        "namespaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "namespaceId"
+          }
+        },
+        "provider": {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderRequestProvider",
+          "traits": {
+            "smithy.api#httpQuery": "provider"
+          }
+        },
+        "installationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "installationId"
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "host",
+            "smithy.api#documentation": "The custom Git host if using a custom Git provider, like GitHub Enterprise Server"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase1ErrorCode": {
+      "type": "enum",
+      "members": {
+        "INSTALLATION_NOT_FOUND": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "installation_not_found"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase1Error": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase1ErrorCode",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase1Error",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase2GitAccount": {
+      "type": "structure",
+      "members": {
+        "provider": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "namespaceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase2ReposList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase2": {
+      "type": "structure",
+      "members": {
+        "gitAccount": {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase2GitAccount",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "repos": {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase2ReposList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase3GitAccountProvider": {
+      "type": "enum",
+      "members": {
+        "BITBUCKET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bitbucket"
+          }
+        },
+        "GITHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "github"
+          }
+        },
+        "GITHUB_CUSTOM_HOST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "github-custom-host"
+          }
+        },
+        "GITHUB_LIMITED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "github-limited"
+          }
+        },
+        "GITLAB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gitlab"
+          }
+        },
+        "VERCEL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "vercel"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase3GitAccount": {
+      "type": "structure",
+      "members": {
+        "provider": {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase3GitAccountProvider",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "namespaceId": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase3ReposList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase3": {
+      "type": "structure",
+      "members": {
+        "gitAccount": {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase3GitAccount",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "repos": {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase3ReposList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#Document"
+        },
+        "Case1": {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase1"
+        },
+        "Case2": {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase2"
+        },
+        "Case3": {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBodyCase3"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProvider": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderRequest"
+      },
+      "output": {
+        "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProviderResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.integrations#BadRequest"
+        },
+        {
+          "target": "com.vercel.integrations#Forbidden"
+        },
+        {
+          "target": "com.vercel.integrations#NotFound"
+        },
+        {
+          "target": "com.vercel.integrations#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/integrations/search-repo",
+          "code": 200
+        },
+        "smithy.api#documentation": "List git repositories linked to namespace by provider\n\nLists git repositories linked to a namespace `id` for a supported provider. A specific namespace `id` can be obtained via the `git-namespaces`  endpoint. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider or namespace is not provided, it will try to obtain it from the user that authenticated the request."
+      }
+    },
+    "com.vercel.integrations#ListIntegrationBillingPlansRequestSource": {
+      "type": "enum",
+      "members": {
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        },
+        "DEPLOY_BUTTON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deploy-button"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "V0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v0"
+          }
+        },
+        "RESOURCE_CLAIMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resource-claims"
+          }
+        },
+        "CLI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cli"
+          }
+        },
+        "OAUTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oauth"
+          }
+        },
+        "BACKOFFICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backoffice"
+          }
+        },
+        "IMPORT_RECOMMENDED_INTEGRATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "import-recommended-integrations"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListIntegrationBillingPlansRequest": {
+      "type": "structure",
+      "members": {
+        "integrationIdOrSlug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "productIdOrSlug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "integrationConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "integrationConfigurationId"
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "metadata"
+          }
+        },
+        "source": {
+          "target": "com.vercel.integrations#ListIntegrationBillingPlansRequestSource",
+          "traits": {
+            "smithy.api#httpQuery": "source"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansItemType": {
+      "type": "enum",
+      "members": {
+        "PREPAYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "prepayment"
+          }
+        },
+        "SUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "subscription"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansItemScope": {
+      "type": "enum",
+      "members": {
+        "INSTALLATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "installation"
+          }
+        },
+        "RESOURCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resource"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansItemDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansItemHighlightedDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansItemQuoteList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansItemScope",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "paymentMethodRequired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "preauthorizationAmount": {
+          "target": "smithy.api#Double"
+        },
+        "initialCharge": {
+          "target": "smithy.api#String"
+        },
+        "minimumAmount": {
+          "target": "smithy.api#String"
+        },
+        "maximumAmount": {
+          "target": "smithy.api#String"
+        },
+        "maximumAmountAutoPurchasePerPeriod": {
+          "target": "smithy.api#String"
+        },
+        "cost": {
+          "target": "smithy.api#String"
+        },
+        "details": {
+          "target": "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansItemDetailsList"
+        },
+        "highlightedDetails": {
+          "target": "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansItemHighlightedDetailsList"
+        },
+        "quote": {
+          "target": "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansItemQuoteList"
+        },
+        "effectiveDate": {
+          "target": "smithy.api#String"
+        },
+        "disabled": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListIntegrationBillingPlansResponse": {
+      "type": "structure",
+      "members": {
+        "plans": {
+          "target": "com.vercel.integrations#ListIntegrationBillingPlansResponsePlansList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.integrations#ListIntegrationBillingPlans": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.integrations#ListIntegrationBillingPlansRequest"
+      },
+      "output": {
+        "target": "com.vercel.integrations#ListIntegrationBillingPlansResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.integrations#BadRequest"
+        },
+        {
+          "target": "com.vercel.integrations#Forbidden"
+        },
+        {
+          "target": "com.vercel.integrations#NotFound"
+        },
+        {
+          "target": "com.vercel.integrations#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/integrations/integration/{integrationIdOrSlug}/products/{productIdOrSlug}/plans",
+          "code": 200
+        },
+        "smithy.api#documentation": "List integration billing plans\n\nGet a list of billing plans for an integration and product."
+      }
+    },
+    "com.vercel.integrations#ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem": {
+      "type": "enum",
+      "members": {
+        "PRODUCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "production"
+          }
+        },
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "preview"
+          }
+        },
+        "DEVELOPMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "development"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.integrations#ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ConnectIntegrationResourceToProjectRequest": {
+      "type": "structure",
+      "members": {
+        "integrationConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "resourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "envVarEnvironments": {
+          "target": "com.vercel.integrations#ConnectIntegrationResourceToProjectRequestEnvVarEnvironmentsList"
+        },
+        "makeEnvVarsSensitive": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.integrations#ConnectIntegrationResourceToProject": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.integrations#ConnectIntegrationResourceToProjectRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.integrations#BadRequest"
+        },
+        {
+          "target": "com.vercel.integrations#Forbidden"
+        },
+        {
+          "target": "com.vercel.integrations#NotFound"
+        },
+        {
+          "target": "com.vercel.integrations#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/integrations/installations/{integrationConfigurationId}/resources/{resourceId}/connections",
+          "code": 200
+        },
+        "smithy.api#documentation": "Connect integration resource to project\n\nConnects an integration resource to a Vercel project. This endpoint establishes a connection between a provisioned integration resource (from storage APIs like `POST /v1/storage/stores/integration/direct`) and a specific Vercel project."
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamRequestView": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account"
+          }
+        },
+        "PROJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "project"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamRequestInstallationType": {
+      "type": "enum",
+      "members": {
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "PROVISIONING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "provisioning"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamRequest": {
+      "type": "structure",
+      "members": {
+        "view": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamRequestView",
+          "traits": {
+            "smithy.api#httpQuery": "view",
+            "smithy.api#required": {}
+          }
+        },
+        "installationType": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamRequestInstallationType",
+          "traits": {
+            "smithy.api#httpQuery": "installationType"
+          }
+        },
+        "integrationIdOrSlug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "integrationIdOrSlug",
+            "smithy.api#documentation": "ID of the integration"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemStatus": {
+      "type": "enum",
+      "members": {
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "ONBOARDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "onboarding"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "RESUMED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resumed"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        },
+        "UNINSTALLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uninstalled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration status. Optional. If not defined, assume 'ready'."
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemProjectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access."
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemSource": {
+      "type": "enum",
+      "members": {
+        "BACKOFFICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backoffice"
+          }
+        },
+        "CLI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cli"
+          }
+        },
+        "DEPLOY_BUTTON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deploy-button"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "IMPORT_RECOMMENDED_INTEGRATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "import-recommended-integrations"
+          }
+        },
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        },
+        "OAUTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oauth"
+          }
+        },
+        "RESOURCE_CLAIMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resource-claims"
+          }
+        },
+        "V0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics."
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemType": {
+      "type": "enum",
+      "members": {
+        "INTEGRATION_CONFIGURATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integration-configuration"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resources that are allowed to be accessed by the configuration."
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemDisabledReason": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT_PLAN_DOWNGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account-plan-downgrade"
+          }
+        },
+        "DISABLED_BY_ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-admin"
+          }
+        },
+        "DISABLED_BY_OWNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-owner"
+          }
+        },
+        "FEATURE_NOT_AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "feature-not-available"
+          }
+        },
+        "ORIGINAL_OWNER_LEFT_THE_TEAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "original-owner-left-the-team"
+          }
+        },
+        "ORIGINAL_OWNER_ROLE_DOWNGRADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "original-owner-role-downgraded"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemInstallationType": {
+      "type": "enum",
+      "members": {
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0Item": {
+      "type": "structure",
+      "members": {
+        "completedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was installed successfully"
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was created"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the configuration"
+          }
+        },
+        "integrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the app the configuration was created for"
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user or team ID that owns the configuration"
+          }
+        },
+        "status": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemStatus",
+          "traits": {
+            "smithy.api#documentation": "The configuration status. Optional. If not defined, assume 'ready'."
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An external identifier defined by the integration vendor."
+          }
+        },
+        "projects": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemProjectsList",
+          "traits": {
+            "smithy.api#documentation": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access."
+          }
+        },
+        "source": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemSource",
+          "traits": {
+            "smithy.api#documentation": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The slug of the integration the configuration is created for."
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the configuration was created for a team, this will show the ID of the team.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "type": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemType"
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was updated."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user that created the configuration."
+          }
+        },
+        "scopes": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemScopesList",
+          "traits": {
+            "smithy.api#documentation": "The resources that are allowed to be accessed by the configuration."
+          }
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team."
+          }
+        },
+        "deletedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deleteRequestedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "customerDeleteRequestedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Record when the customer initited deletion, independent of whether `deleteRequestedAt` gets set.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "disabledReason": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemDisabledReason"
+        },
+        "installationType": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0ItemInstallationType",
+          "traits": {
+            "smithy.api#documentation": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of configurations for the authenticated user"
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0List": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0Item"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of configurations for the authenticated user"
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemStatus": {
+      "type": "enum",
+      "members": {
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "ONBOARDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "onboarding"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "RESUMED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resumed"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        },
+        "UNINSTALLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uninstalled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration status. Optional. If not defined, assume 'ready'."
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemProjectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access."
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemSource": {
+      "type": "enum",
+      "members": {
+        "BACKOFFICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backoffice"
+          }
+        },
+        "CLI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cli"
+          }
+        },
+        "DEPLOY_BUTTON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deploy-button"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "IMPORT_RECOMMENDED_INTEGRATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "import-recommended-integrations"
+          }
+        },
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        },
+        "OAUTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oauth"
+          }
+        },
+        "RESOURCE_CLAIMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resource-claims"
+          }
+        },
+        "V0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics."
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemType": {
+      "type": "enum",
+      "members": {
+        "INTEGRATION_CONFIGURATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integration-configuration"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resources that are allowed to be accessed by the configuration."
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemDisabledReason": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT_PLAN_DOWNGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account-plan-downgrade"
+          }
+        },
+        "DISABLED_BY_ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-admin"
+          }
+        },
+        "DISABLED_BY_OWNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-owner"
+          }
+        },
+        "FEATURE_NOT_AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "feature-not-available"
+          }
+        },
+        "ORIGINAL_OWNER_LEFT_THE_TEAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "original-owner-left-the-team"
+          }
+        },
+        "ORIGINAL_OWNER_ROLE_DOWNGRADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "original-owner-role-downgraded"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemInstallationType": {
+      "type": "enum",
+      "members": {
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1Item": {
+      "type": "structure",
+      "members": {
+        "integration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "completedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was installed successfully"
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was created",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the configuration",
+            "smithy.api#required": {}
+          }
+        },
+        "integrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the app the configuration was created for",
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user or team ID that owns the configuration",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemStatus",
+          "traits": {
+            "smithy.api#documentation": "The configuration status. Optional. If not defined, assume 'ready'."
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An external identifier defined by the integration vendor."
+          }
+        },
+        "projects": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemProjectsList",
+          "traits": {
+            "smithy.api#documentation": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access."
+          }
+        },
+        "source": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemSource",
+          "traits": {
+            "smithy.api#documentation": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The slug of the integration the configuration is created for.",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the configuration was created for a team, this will show the ID of the team.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "type": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user that created the configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "scopes": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemScopesList",
+          "traits": {
+            "smithy.api#documentation": "The resources that are allowed to be accessed by the configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team."
+          }
+        },
+        "deletedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deleteRequestedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "customerDeleteRequestedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Record when the customer initited deletion, independent of whether `deleteRequestedAt` gets set.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "disabledReason": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemDisabledReason"
+        },
+        "installationType": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1ItemInstallationType",
+          "traits": {
+            "smithy.api#documentation": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1List": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1Item"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase0List"
+        },
+        "Case1": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBodyCase1List"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeam": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamRequest"
+      },
+      "output": {
+        "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeamResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.integrations#BadRequest"
+        },
+        {
+          "target": "com.vercel.integrations#Forbidden"
+        },
+        {
+          "target": "com.vercel.integrations#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/integrations/configurations",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get configurations for the authenticated user or team\n\nAllows to retrieve all configurations for an authenticated integration. When the `project` view is used, configurations generated for the authorization flow will be filtered out of the results."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ID of the configuration to check"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0ProjectSelection": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        },
+        "SELECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "selected"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A string representing the permission for projects. Possible values are `all` or `selected`."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0NotificationLevel": {
+      "type": "enum",
+      "members": {
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "INFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "WARN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warn"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0Notification": {
+      "type": "structure",
+      "members": {
+        "level": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0NotificationLevel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String"
+        },
+        "href": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0ProjectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0Status": {
+      "type": "enum",
+      "members": {
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "ONBOARDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "onboarding"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "RESUMED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resumed"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        },
+        "UNINSTALLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uninstalled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration status. Optional. If not defined, assume 'ready'."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0Type": {
+      "type": "enum",
+      "members": {
+        "INTEGRATION_CONFIGURATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integration-configuration"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0Source": {
+      "type": "enum",
+      "members": {
+        "BACKOFFICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backoffice"
+          }
+        },
+        "CLI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cli"
+          }
+        },
+        "DEPLOY_BUTTON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deploy-button"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "IMPORT_RECOMMENDED_INTEGRATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "import-recommended-integrations"
+          }
+        },
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        },
+        "OAUTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oauth"
+          }
+        },
+        "RESOURCE_CLAIMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resource-claims"
+          }
+        },
+        "V0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0ScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resources that are allowed to be accessed by the configuration."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0DisabledReason": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT_PLAN_DOWNGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account-plan-downgrade"
+          }
+        },
+        "DISABLED_BY_ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-admin"
+          }
+        },
+        "DISABLED_BY_OWNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-owner"
+          }
+        },
+        "FEATURE_NOT_AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "feature-not-available"
+          }
+        },
+        "ORIGINAL_OWNER_LEFT_THE_TEAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "original-owner-left-the-team"
+          }
+        },
+        "ORIGINAL_OWNER_ROLE_DOWNGRADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "original-owner-role-downgraded"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0InstallationType": {
+      "type": "enum",
+      "members": {
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0": {
+      "type": "structure",
+      "members": {
+        "projectSelection": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0ProjectSelection",
+          "traits": {
+            "smithy.api#documentation": "A string representing the permission for projects. Possible values are `all` or `selected`.",
+            "smithy.api#required": {}
+          }
+        },
+        "notification": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0Notification",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "transferRequest": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projects": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0ProjectsList",
+          "traits": {
+            "smithy.api#documentation": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access."
+          }
+        },
+        "status": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0Status",
+          "traits": {
+            "smithy.api#documentation": "The configuration status. Optional. If not defined, assume 'ready'."
+          }
+        },
+        "type": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the configuration",
+            "smithy.api#required": {}
+          }
+        },
+        "integrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the app the configuration was created for",
+            "smithy.api#required": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user that created the configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user or team ID that owns the configuration",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was created",
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "deletedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "canConfigureOpenTelemetry": {
+          "target": "smithy.api#Boolean"
+        },
+        "completedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was installed successfully"
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An external identifier defined by the integration vendor."
+          }
+        },
+        "source": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0Source",
+          "traits": {
+            "smithy.api#documentation": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The slug of the integration the configuration is created for.",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the configuration was created for a team, this will show the ID of the team.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "scopes": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0ScopesList",
+          "traits": {
+            "smithy.api#documentation": "The resources that are allowed to be accessed by the configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team."
+          }
+        },
+        "deleteRequestedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "customerDeleteRequestedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Record when the customer initited deletion, independent of whether `deleteRequestedAt` gets set.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "disabledReason": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0DisabledReason"
+        },
+        "installationType": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0InstallationType",
+          "traits": {
+            "smithy.api#documentation": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1Status": {
+      "type": "enum",
+      "members": {
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "ONBOARDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "onboarding"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "RESUMED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resumed"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        },
+        "UNINSTALLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uninstalled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration status. Optional. If not defined, assume 'ready'."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1ProjectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1Source": {
+      "type": "enum",
+      "members": {
+        "BACKOFFICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backoffice"
+          }
+        },
+        "CLI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cli"
+          }
+        },
+        "DEPLOY_BUTTON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deploy-button"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "IMPORT_RECOMMENDED_INTEGRATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "import-recommended-integrations"
+          }
+        },
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        },
+        "OAUTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oauth"
+          }
+        },
+        "RESOURCE_CLAIMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resource-claims"
+          }
+        },
+        "V0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1Type": {
+      "type": "enum",
+      "members": {
+        "INTEGRATION_CONFIGURATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integration-configuration"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1ScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resources that are allowed to be accessed by the configuration."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1DisabledReason": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT_PLAN_DOWNGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account-plan-downgrade"
+          }
+        },
+        "DISABLED_BY_ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-admin"
+          }
+        },
+        "DISABLED_BY_OWNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-owner"
+          }
+        },
+        "FEATURE_NOT_AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "feature-not-available"
+          }
+        },
+        "ORIGINAL_OWNER_LEFT_THE_TEAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "original-owner-left-the-team"
+          }
+        },
+        "ORIGINAL_OWNER_ROLE_DOWNGRADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "original-owner-role-downgraded"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1InstallationType": {
+      "type": "enum",
+      "members": {
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1": {
+      "type": "structure",
+      "members": {
+        "completedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was installed successfully"
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was created",
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the configuration",
+            "smithy.api#required": {}
+          }
+        },
+        "integrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the app the configuration was created for",
+            "smithy.api#required": {}
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user or team ID that owns the configuration",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1Status",
+          "traits": {
+            "smithy.api#documentation": "The configuration status. Optional. If not defined, assume 'ready'."
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An external identifier defined by the integration vendor."
+          }
+        },
+        "projects": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1ProjectsList",
+          "traits": {
+            "smithy.api#documentation": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access."
+          }
+        },
+        "source": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1Source",
+          "traits": {
+            "smithy.api#documentation": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The slug of the integration the configuration is created for.",
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the configuration was created for a team, this will show the ID of the team.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "type": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1Type",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user that created the configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "scopes": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1ScopesList",
+          "traits": {
+            "smithy.api#documentation": "The resources that are allowed to be accessed by the configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team."
+          }
+        },
+        "deletedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deleteRequestedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "customerDeleteRequestedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Record when the customer initited deletion, independent of whether `deleteRequestedAt` gets set.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "disabledReason": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1DisabledReason"
+        },
+        "installationType": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1InstallationType",
+          "traits": {
+            "smithy.api#documentation": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration with the provided id"
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2Status": {
+      "type": "enum",
+      "members": {
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "ONBOARDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "onboarding"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "RESUMED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resumed"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        },
+        "UNINSTALLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uninstalled"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The configuration status. Optional. If not defined, assume 'ready'."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2ProjectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2Source": {
+      "type": "enum",
+      "members": {
+        "BACKOFFICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backoffice"
+          }
+        },
+        "CLI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cli"
+          }
+        },
+        "DEPLOY_BUTTON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deploy-button"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "IMPORT_RECOMMENDED_INTEGRATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "import-recommended-integrations"
+          }
+        },
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        },
+        "OAUTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oauth"
+          }
+        },
+        "RESOURCE_CLAIMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resource-claims"
+          }
+        },
+        "V0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v0"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2Type": {
+      "type": "enum",
+      "members": {
+        "INTEGRATION_CONFIGURATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "integration-configuration"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2ScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The resources that are allowed to be accessed by the configuration."
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2DisabledReason": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT_PLAN_DOWNGRADE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account-plan-downgrade"
+          }
+        },
+        "DISABLED_BY_ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-admin"
+          }
+        },
+        "DISABLED_BY_OWNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled-by-owner"
+          }
+        },
+        "FEATURE_NOT_AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "feature-not-available"
+          }
+        },
+        "ORIGINAL_OWNER_LEFT_THE_TEAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "original-owner-left-the-team"
+          }
+        },
+        "ORIGINAL_OWNER_ROLE_DOWNGRADED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "original-owner-role-downgraded"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2InstallationType": {
+      "type": "enum",
+      "members": {
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2": {
+      "type": "structure",
+      "members": {
+        "completedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was installed successfully"
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was created"
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the configuration"
+          }
+        },
+        "integrationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the app the configuration was created for"
+          }
+        },
+        "ownerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The user or team ID that owns the configuration"
+          }
+        },
+        "status": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2Status",
+          "traits": {
+            "smithy.api#documentation": "The configuration status. Optional. If not defined, assume 'ready'."
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An external identifier defined by the integration vendor."
+          }
+        },
+        "projects": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2ProjectsList",
+          "traits": {
+            "smithy.api#documentation": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access."
+          }
+        },
+        "source": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2Source",
+          "traits": {
+            "smithy.api#documentation": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The slug of the integration the configuration is created for."
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the configuration was created for a team, this will show the ID of the team.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "type": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2Type"
+        },
+        "updatedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was updated."
+          }
+        },
+        "userId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user that created the configuration."
+          }
+        },
+        "scopes": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2ScopesList",
+          "traits": {
+            "smithy.api#documentation": "The resources that are allowed to be accessed by the configuration."
+          }
+        },
+        "disabledAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team."
+          }
+        },
+        "deletedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration was deleted.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "deleteRequestedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "customerDeleteRequestedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Record when the customer initited deletion, independent of whether `deleteRequestedAt` gets set.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "disabledReason": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2DisabledReason"
+        },
+        "installationType": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2InstallationType",
+          "traits": {
+            "smithy.api#documentation": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A configuration represents information about a single installation of an integration within an individual or team account"
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase0"
+        },
+        "Case1": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase1"
+        },
+        "Case2": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBodyCase2"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponseBody",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.integrations#RetrieveAnIntegrationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationRequest"
+      },
+      "output": {
+        "target": "com.vercel.integrations#RetrieveAnIntegrationConfigurationResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.integrations#BadRequest"
+        },
+        {
+          "target": "com.vercel.integrations#Forbidden"
+        },
+        {
+          "target": "com.vercel.integrations#NotFound"
+        },
+        {
+          "target": "com.vercel.integrations#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/integrations/configuration/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve an integration configuration\n\nAllows to retrieve a the configuration with the provided id in case it exists. The authenticated user or team must be the owner of the config in order to access it."
+      }
+    },
+    "com.vercel.integrations#DeleteAnIntegrationConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.integrations#DeleteAnIntegrationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.integrations#DeleteAnIntegrationConfigurationRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.integrations#BadRequest"
+        },
+        {
+          "target": "com.vercel.integrations#Forbidden"
+        },
+        {
+          "target": "com.vercel.integrations#NotFound"
+        },
+        {
+          "target": "com.vercel.integrations#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/v1/integrations/configuration/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete an integration configuration\n\nAllows to remove the configuration with the `id` provided in the parameters. The configuration and all of its resources will be removed. This includes Webhooks, LogDrains and Project Env variables."
+      }
+    },
+    "com.vercel.integrations#ListProductsForIntegrationConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "ID of the integration configuration"
+          }
+        },
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.integrations#ListProductsForIntegrationConfigurationResponseProductsItemPrimaryProtocol": {
+      "type": "enum",
+      "members": {
+        "AI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai"
+          }
+        },
+        "AUTHENTICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "authentication"
+          }
+        },
+        "CHECKS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "checks"
+          }
+        },
+        "EXPERIMENTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "experimentation"
+          }
+        },
+        "LOGDRAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "logDrain"
+          }
+        },
+        "MESSAGING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "messaging"
+          }
+        },
+        "OBSERVABILITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "observability"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "other"
+          }
+        },
+        "STORAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "storage"
+          }
+        },
+        "TRACEDRAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "traceDrain"
+          }
+        },
+        "VIDEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "video"
+          }
+        },
+        "WORKFLOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workflow"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListProductsForIntegrationConfigurationResponseProductsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "protocols": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "primaryProtocol": {
+          "target": "com.vercel.integrations#ListProductsForIntegrationConfigurationResponseProductsItemPrimaryProtocol"
+        },
+        "metadataSchema": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListProductsForIntegrationConfigurationResponseProductsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.integrations#ListProductsForIntegrationConfigurationResponseProductsItem"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListProductsForIntegrationConfigurationResponseIntegration": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListProductsForIntegrationConfigurationResponseConfiguration": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#ListProductsForIntegrationConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "products": {
+          "target": "com.vercel.integrations#ListProductsForIntegrationConfigurationResponseProductsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "integration": {
+          "target": "com.vercel.integrations#ListProductsForIntegrationConfigurationResponseIntegration",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "com.vercel.integrations#ListProductsForIntegrationConfigurationResponseConfiguration",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.integrations#ListProductsForIntegrationConfiguration": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.integrations#ListProductsForIntegrationConfigurationRequest"
+      },
+      "output": {
+        "target": "com.vercel.integrations#ListProductsForIntegrationConfigurationResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.integrations#BadRequest"
+        },
+        {
+          "target": "com.vercel.integrations#Forbidden"
+        },
+        {
+          "target": "com.vercel.integrations#NotFound"
+        },
+        {
+          "target": "com.vercel.integrations#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/v1/integrations/configuration/{id}/products",
+          "code": 200
+        },
+        "smithy.api#documentation": "List products for integration configuration\n\nReturns products available for an integration configuration. Each product includes a `metadataSchema` field with the JSON Schema for required and optional metadata fields."
+      }
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequestMetadataValueCase3List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequestMetadataValueCase4List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequestMetadataValue": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "smithy.api#String"
+        },
+        "Case1": {
+          "target": "smithy.api#Double"
+        },
+        "Case2": {
+          "target": "smithy.api#Boolean"
+        },
+        "Case3": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequestMetadataValueCase3List"
+        },
+        "Case4": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequestMetadataValueCase4List"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequestMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequestMetadataValue"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional key-value pairs for resource metadata"
+      }
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequestProtocolSettingsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Protocol-specific configuration settings"
+      }
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequestSource": {
+      "type": "enum",
+      "members": {
+        "MARKETPLACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "marketplace"
+          }
+        },
+        "DEPLOY_BUTTON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deploy-button"
+          }
+        },
+        "EXTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external"
+          }
+        },
+        "V0": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "v0"
+          }
+        },
+        "RESOURCE_CLAIMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resource-claims"
+          }
+        },
+        "CLI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cli"
+          }
+        },
+        "OAUTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oauth"
+          }
+        },
+        "BACKOFFICE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "backoffice"
+          }
+        },
+        "IMPORT_RECOMMENDED_INTEGRATIONS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "import-recommended-integrations"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Source of the store creation request"
+      }
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequest": {
+      "type": "structure",
+      "members": {
+        "teamId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "teamId",
+            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "slug",
+            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name for the storage resource",
+            "smithy.api#required": {}
+          }
+        },
+        "integrationConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of your integration configuration. Get this from GET /v1/integrations/configurations",
+            "smithy.api#required": {}
+          }
+        },
+        "integrationProductIdOrSlug": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "ID or slug of the integration product. Get available products from GET /v1/integrations/configuration/{id}/products",
+            "smithy.api#required": {}
+          }
+        },
+        "metadata": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequestMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "Optional key-value pairs for resource metadata"
+          }
+        },
+        "externalId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional external identifier for tracking purposes"
+          }
+        },
+        "protocolSettings": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequestProtocolSettingsMap",
+          "traits": {
+            "smithy.api#documentation": "Protocol-specific configuration settings"
+          }
+        },
+        "source": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequestSource",
+          "traits": {
+            "smithy.api#documentation": "Source of the store creation request"
+          }
+        },
+        "billingPlanId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the billing plan for paid resources. Get available plans from GET /integrations/integration/{id}/products/{productId}/plans. If not provided, automatically discovers free billing plans."
+          }
+        },
+        "paymentMethodId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Payment method ID for paid resources. Optional - uses default payment method if not provided."
+          }
+        },
+        "prepaymentAmountCents": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Amount in cents for prepayment billing plans. Required only for prepayment plans with variable amounts."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProjectsMetadataList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProjectFilter": {
+      "type": "structure",
+      "members": {
+        "git": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreStatus": {
+      "type": "enum",
+      "members": {
+        "AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "available"
+          }
+        },
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "initializing"
+          }
+        },
+        "LIMITS_EXCEEDED_SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "limits-exceeded-suspended"
+          }
+        },
+        "LIMITS_EXCEEDED_SUSPENDED_STORE_COUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "limits-exceeded-suspended-store-count"
+          }
+        },
+        "ONBOARDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "onboarding"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        },
+        "UNINSTALLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uninstalled"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreOwnership": {
+      "type": "enum",
+      "members": {
+        "LINKED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "linked"
+          }
+        },
+        "OWNED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "owned"
+          }
+        },
+        "SANDBOX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sandbox"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreCapabilities": {
+      "type": "structure",
+      "members": {
+        "mcp": {
+          "target": "smithy.api#Boolean"
+        },
+        "mcpReadonly": {
+          "target": "smithy.api#Boolean"
+        },
+        "sso": {
+          "target": "smithy.api#Boolean"
+        },
+        "billable": {
+          "target": "smithy.api#Boolean"
+        },
+        "transferable": {
+          "target": "smithy.api#Boolean"
+        },
+        "secretsSync": {
+          "target": "smithy.api#Boolean"
+        },
+        "secretRotation": {
+          "target": "smithy.api#Document"
+        },
+        "projects": {
+          "target": "smithy.api#Boolean"
+        },
+        "v0": {
+          "target": "smithy.api#Boolean"
+        },
+        "autoSensitive": {
+          "target": "smithy.api#Boolean"
+        },
+        "agentTools": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreMetadataMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreExternalResourceStatus": {
+      "type": "enum",
+      "members": {
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "ONBOARDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "onboarding"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "READY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ready"
+          }
+        },
+        "RESUMED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resumed"
+          }
+        },
+        "SUSPENDED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "suspended"
+          }
+        },
+        "UNINSTALLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "uninstalled"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductResourceLinksList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductProjectConnectionScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductAgentSkillsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "URLs to skills/guides for how AI agents should use this product. Providers can specify these to help agents understand how to interact with their integration."
+      }
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductGuidesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductSupportedProtocolsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductPrimaryProtocol": {
+      "type": "enum",
+      "members": {
+        "AI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai"
+          }
+        },
+        "AUTHENTICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "authentication"
+          }
+        },
+        "CHECKS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "checks"
+          }
+        },
+        "EXPERIMENTATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "experimentation"
+          }
+        },
+        "LOGDRAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "logDrain"
+          }
+        },
+        "MESSAGING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "messaging"
+          }
+        },
+        "OBSERVABILITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "observability"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "other"
+          }
+        },
+        "STORAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "storage"
+          }
+        },
+        "TRACEDRAIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "traceDrain"
+          }
+        },
+        "VIDEO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "video"
+          }
+        },
+        "WORKFLOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "workflow"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductLogDrainStatus": {
+      "type": "enum",
+      "members": {
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        },
+        "ENABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enabled"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProduct": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "slug": {
+          "target": "smithy.api#String"
+        },
+        "iconUrl": {
+          "target": "smithy.api#String"
+        },
+        "capabilities": {
+          "target": "smithy.api#Document"
+        },
+        "shortDescription": {
+          "target": "smithy.api#String"
+        },
+        "metadataSchema": {
+          "target": "smithy.api#Document"
+        },
+        "resourceLinks": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductResourceLinksList"
+        },
+        "tags": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductTagsList"
+        },
+        "projectConnectionScopes": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductProjectConnectionScopesList"
+        },
+        "showSSOLinkOnProjectConnection": {
+          "target": "smithy.api#Boolean"
+        },
+        "disableResourceRenaming": {
+          "target": "smithy.api#Boolean"
+        },
+        "resourceTitle": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom resource title to display during installation and configuration. If not provided, defaults to protocol-based defaults."
+          }
+        },
+        "agentSkills": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductAgentSkillsList",
+          "traits": {
+            "smithy.api#documentation": "URLs to skills/guides for how AI agents should use this product. Providers can specify these to help agents understand how to interact with their integration."
+          }
+        },
+        "repl": {
+          "target": "smithy.api#Document"
+        },
+        "guides": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductGuidesList"
+        },
+        "integration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "integrationConfigurationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "supportedProtocols": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductSupportedProtocolsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "primaryProtocol": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductPrimaryProtocol"
+        },
+        "logDrainStatus": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProductLogDrainStatus"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProtocolSettings": {
+      "type": "structure",
+      "members": {
+        "experimentation": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreNotificationLevel": {
+      "type": "enum",
+      "members": {
+        "ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error"
+          }
+        },
+        "INFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "info"
+          }
+        },
+        "WARN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warn"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreNotification": {
+      "type": "structure",
+      "members": {
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "level": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreNotificationLevel",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message": {
+          "target": "smithy.api#String"
+        },
+        "href": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreSecretsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreBillingPlanType": {
+      "type": "enum",
+      "members": {
+        "PREPAYMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "prepayment"
+          }
+        },
+        "SUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "subscription"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreBillingPlanScope": {
+      "type": "enum",
+      "members": {
+        "INSTALLATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "installation"
+          }
+        },
+        "RESOURCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resource"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreBillingPlanDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreBillingPlanHighlightedDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreBillingPlanQuoteList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreBillingPlan": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreBillingPlanType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreBillingPlanScope",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "paymentMethodRequired": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "preauthorizationAmount": {
+          "target": "smithy.api#Double"
+        },
+        "initialCharge": {
+          "target": "smithy.api#String"
+        },
+        "minimumAmount": {
+          "target": "smithy.api#String"
+        },
+        "maximumAmount": {
+          "target": "smithy.api#String"
+        },
+        "maximumAmountAutoPurchasePerPeriod": {
+          "target": "smithy.api#String"
+        },
+        "cost": {
+          "target": "smithy.api#String"
+        },
+        "details": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreBillingPlanDetailsList"
+        },
+        "highlightedDetails": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreBillingPlanHighlightedDetailsList"
+        },
+        "quote": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreBillingPlanQuoteList"
+        },
+        "effectiveDate": {
+          "target": "smithy.api#String"
+        },
+        "disabled": {
+          "target": "smithy.api#Boolean"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreTargetsItem": {
+      "type": "enum",
+      "members": {
+        "DEVELOPMENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "development"
+          }
+        },
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "preview"
+          }
+        },
+        "PRODUCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "production"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The deployment targets that this resource is available for."
+      }
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreTargetsItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "The deployment targets that this resource is available for."
+      }
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStore": {
+      "type": "structure",
+      "members": {
+        "projectsMetadata": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProjectsMetadataList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectFilter": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProjectFilter"
+        },
+        "totalConnectedProjects": {
+          "target": "smithy.api#Double"
+        },
+        "usageQuotaExceeded": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreStatus",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "ownership": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreOwnership"
+        },
+        "capabilities": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreCapabilities"
+        },
+        "metadata": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreMetadataMap"
+        },
+        "externalResourceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "externalResourceStatus": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreExternalResourceStatus",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "directPartnerConsoleUrl": {
+          "target": "smithy.api#String"
+        },
+        "product": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProduct",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "protocolSettings": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreProtocolSettings"
+        },
+        "notification": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreNotification"
+        },
+        "secrets": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreSecretsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "billingPlan": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreBillingPlan"
+        },
+        "secretRotationRequestedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when secret rotation was requested."
+          }
+        },
+        "secretRotationRequestedReason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The reason for the secret rotation request."
+          }
+        },
+        "secretRotationRequestedBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the user/team who requested the secret rotation."
+          }
+        },
+        "secretRotationCompletedAt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timestamp when secret rotation was completed."
+          }
+        },
+        "parentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the parent resource. Used to establish a parent-child relationship between resources, such as sandbox resources linking to their owner account resource."
+          }
+        },
+        "targets": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStoreTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The deployment targets that this resource is available for."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponse": {
+      "type": "structure",
+      "members": {
+        "store": {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponseStore",
+          "traits": {
+            "smithy.api#required": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlans": {
+      "type": "operation",
+      "input": {
+        "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansRequest"
+      },
+      "output": {
+        "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlansResponse"
+      },
+      "errors": [
+        {
+          "target": "com.vercel.integrations#BadRequest"
+        },
+        {
+          "target": "com.vercel.integrations#PaymentRequired"
+        },
+        {
+          "target": "com.vercel.integrations#Forbidden"
+        },
+        {
+          "target": "com.vercel.integrations#NotFound"
+        },
+        {
+          "target": "com.vercel.integrations#Conflict"
+        },
+        {
+          "target": "com.vercel.integrations#Gone"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/v1/storage/stores/integration/direct",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create integration store (free and paid plans)\n\nCreates an integration store with automatic billing plan handling. For free resources, omit `billingPlanId` to auto-discover free plans. For paid resources, provide a `billingPlanId` from the billing plans endpoint."
+      }
+    },
+    "com.vercel.integrations#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.vercel.integrations#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.integrations#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.vercel.integrations#Gone": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 410
+          }
+        ]
+      }
+    },
+    "com.vercel.integrations#PaymentRequired": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 402,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 402
+          }
+        ]
+      }
+    },
+    "com.vercel.integrations#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
+    "com.vercel.integrations#Integrations": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.vercel.integrations#ListGitNamespacesByProvider"
+        },
+        {
+          "target": "com.vercel.integrations#ListGitRepositoriesLinkedToNamespaceByProvider"
+        },
+        {
+          "target": "com.vercel.integrations#ListIntegrationBillingPlans"
+        },
+        {
+          "target": "com.vercel.integrations#ConnectIntegrationResourceToProject"
+        },
+        {
+          "target": "com.vercel.integrations#GetConfigurationsForTheAuthenticatedUserOrTeam"
+        },
+        {
+          "target": "com.vercel.integrations#RetrieveAnIntegrationConfiguration"
+        },
+        {
+          "target": "com.vercel.integrations#DeleteAnIntegrationConfiguration"
+        },
+        {
+          "target": "com.vercel.integrations#ListProductsForIntegrationConfiguration"
+        },
+        {
+          "target": "com.vercel.integrations#CreateIntegrationStoreFreeAndPaidPlans"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Vercel integrations",
+        "smithy.api#documentation": "Generated by scripts/docs-to-openapi.ts from the Vercel REST API documentation mirrored in specs/. Do not edit — regenerate, or add an RFC-6902 patch under patches/integrations/."
+      }
+    }
+  }
+}
