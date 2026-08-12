@@ -157,9 +157,17 @@ export const presignS3Url: (
   Credentials.Credentials | Region.Region
 > = Effect.fnUntraced(function* (options: PresignS3UrlOptions) {
   const region = options.region ?? (yield* yield* Region.Region);
-  const customEndpoint = yield* yield* Effect.serviceOption(
+  const providedEndpoint = yield* yield* Effect.serviceOption(
     Endpoint.Endpoint,
   ).pipe(Effect.map(Option.getOrElse(() => Effect.undefined)));
+  // Same env-based override the request path honors (LocalStack-standard):
+  // presigned URLs minted inside an emulated runtime must target the
+  // emulator, not the real S3 endpoint.
+  const customEndpoint =
+    providedEndpoint ??
+    (typeof process === "undefined"
+      ? undefined
+      : (process.env.AWS_ENDPOINT_URL_S3 ?? process.env.AWS_ENDPOINT_URL));
 
   const encodedKey = options.key.split("/").map(encodeURIComponent).join("/");
   const url = new URL(

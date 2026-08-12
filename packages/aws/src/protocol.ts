@@ -170,9 +170,23 @@ const encode = ({
     let resolvedRequest = request;
     let signingRegion = region; // Default to context region
     let signingServiceName = serviceName; // Default to service name from sigv4 trait
-    const customEndpoint = yield* yield* Effect.serviceOption(
+    const providedEndpoint = yield* yield* Effect.serviceOption(
       Endpoint.Endpoint,
     ).pipe(Effect.map(Option.getOrElse(() => Effect.undefined)));
+
+    // The official SDKs' env-based endpoint override (LocalStack-standard):
+    // `AWS_ENDPOINT_URL_<SERVICE>` then `AWS_ENDPOINT_URL`. Applied only when
+    // no `Endpoint` service is provided — this is how code running INSIDE an
+    // emulated runtime (e.g. a dev-mode Lambda or ECS container, where the
+    // emulator injects AWS_ENDPOINT_URL) targets the emulator without any
+    // explicit wiring.
+    const envEndpoint =
+      typeof process === "undefined"
+        ? undefined
+        : (process.env[
+            `AWS_ENDPOINT_URL_${serviceName.toUpperCase().replace(/[^A-Z0-9]+/g, "_")}`
+          ] ?? process.env.AWS_ENDPOINT_URL);
+    const customEndpoint = providedEndpoint ?? envEndpoint;
 
     if (customEndpoint) {
       // User provided a custom endpoint - use it directly
