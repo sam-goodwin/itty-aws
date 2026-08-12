@@ -2,6 +2,7 @@
 import * as S from "@distilled.cloud/core/schema";
 import * as Redacted from "effect/Redacted";
 import * as API from "@distilled.cloud/core/api";
+import * as C from "@distilled.cloud/core/category";
 import * as T from "../traits.ts";
 import {
   MongodbAtlasProtocol,
@@ -18,7 +19,7 @@ export class BadRequest
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
 
@@ -27,7 +28,7 @@ export class Conflict
     /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withConflictError),
     [{ status: 409 }],
   ) {}
 
@@ -36,7 +37,7 @@ export class Forbidden
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
 
@@ -45,7 +46,7 @@ export class NotFound
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
 
@@ -54,7 +55,7 @@ export class PaymentRequired
     /*@__PURE__*/ S.TaggedError<PaymentRequired>()("PaymentRequired", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withQuotaError),
     [{ status: 402 }],
   ) {}
 
@@ -20344,30 +20345,22 @@ export const DataFederationAzureCloudProviderConfigInput =
   }) as any as S.Schema<DataFederationAzureCloudProviderConfigInput>;
 
 /** Configuration for running Data Federation in GCP. */
-export interface DataFederationGCPCloudProviderConfigInput {
-  /** Unique identifier of the role that Data Federation can use to access the data stores. Required if specifying `cloudProviderConfig`. */
-  roleId: string;
-}
+export type DataFederationGCPCloudProviderConfigInput =
+  DataFederationAzureCloudProviderConfigInput;
 export const DataFederationGCPCloudProviderConfigInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      roleId: S.String,
-    }),
-  ).annotate({
-    identifier: "DataFederationGCPCloudProviderConfigInput",
-  }) as any as S.Schema<DataFederationGCPCloudProviderConfigInput>;
+  DataFederationAzureCloudProviderConfigInput;
 
 /** Cloud provider where this Federated Database Instance is hosted. */
 export interface DataLakeCloudProviderConfigInput {
   aws?: DataLakeAWSCloudProviderConfigInput;
   azure?: DataFederationAzureCloudProviderConfigInput;
-  gcp?: DataFederationGCPCloudProviderConfigInput;
+  gcp?: DataFederationAzureCloudProviderConfigInput;
 }
 export const DataLakeCloudProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aws: S.optional(DataLakeAWSCloudProviderConfigInput),
     azure: S.optional(DataFederationAzureCloudProviderConfigInput),
-    gcp: S.optional(DataFederationGCPCloudProviderConfigInput),
+    gcp: S.optional(DataFederationAzureCloudProviderConfigInput),
   }),
 ).annotate({
   identifier: "DataLakeCloudProviderConfigInput",
@@ -39350,23 +39343,13 @@ export const GetGroupProcessRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetGroupProcessRequest",
 }) as any as S.Schema<GetGroupProcessRequest>;
 
-export interface LinkAtlas {
-  /** Uniform Resource Locator (URL) that points another API resource to which this response has some relationship. This URL often begins with `https://cloud.mongodb.com/api/atlas`. */
-  href?: string;
-  /** Uniform Resource Locator (URL) that defines the semantic relationship between this resource and another API resource. This URL often begins with `https://cloud.mongodb.com/api/atlas`. */
-  rel?: string;
-}
-export const LinkAtlas = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    href: S.optional(S.String),
-    rel: S.optional(S.String),
-  }),
-).annotate({ identifier: "LinkAtlas" }) as any as S.Schema<LinkAtlas>;
+export type LinkAtlas = Link;
+export const LinkAtlas = Link;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-export type ApiHostViewAtlasLinksList = Array<LinkAtlas>;
+export type ApiHostViewAtlasLinksList = Array<Link>;
 export const ApiHostViewAtlasLinksList = /*@__PURE__*/ S.Array(
-  LinkAtlas,
+  Link,
 ) as any as S.Schema<ApiHostViewAtlasLinksList>;
 
 /** Type of MongoDB process that MongoDB Cloud tracks. MongoDB Cloud returns new processes as `NO_DATA` until MongoDB Cloud completes deploying the process. */
@@ -39595,31 +39578,19 @@ export const ApiMeasurementsGeneralViewAtlasGranularity =
   /*@__PURE__*/ S.String;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-export type ApiMeasurementsGeneralViewAtlasLinksList = Array<LinkAtlas>;
+export type ApiMeasurementsGeneralViewAtlasLinksList = Array<Link>;
 export const ApiMeasurementsGeneralViewAtlasLinksList = /*@__PURE__*/ S.Array(
-  LinkAtlas,
+  Link,
 ) as any as S.Schema<ApiMeasurementsGeneralViewAtlasLinksList>;
 
 /** Value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`. */
-export interface MetricDataPointAtlas {
-  /** Date and time when this data point occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. */
-  timestamp?: string;
-  /** Value that comprises this data point. */
-  value?: number;
-}
-export const MetricDataPointAtlas = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: S.optional(S.String),
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MetricDataPointAtlas",
-}) as any as S.Schema<MetricDataPointAtlas>;
+export type MetricDataPointAtlas = MetricDataPoint;
+export const MetricDataPointAtlas = MetricDataPoint;
 
 /** List that contains the value of, and metadata provided for, one data point generated at a particular moment in time. If no data point exists for a particular moment in time, the `value` parameter returns `null`. */
-export type MetricsMeasurementAtlasDataPointsList = Array<MetricDataPointAtlas>;
+export type MetricsMeasurementAtlasDataPointsList = Array<MetricDataPoint>;
 export const MetricsMeasurementAtlasDataPointsList = /*@__PURE__*/ S.Array(
-  MetricDataPointAtlas,
+  MetricDataPoint,
 ) as any as S.Schema<MetricsMeasurementAtlasDataPointsList>;
 
 /** Element used to quantify the measurement. The resource returns units of throughput, storage, and time. */
@@ -48337,9 +48308,9 @@ export const ListGroupProcessesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGroupProcessesRequest>;
 
 /** List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. */
-export type PaginatedHostViewAtlasLinksList = Array<LinkAtlas>;
+export type PaginatedHostViewAtlasLinksList = Array<Link>;
 export const PaginatedHostViewAtlasLinksList = /*@__PURE__*/ S.Array(
-  LinkAtlas,
+  Link,
 ) as any as S.Schema<PaginatedHostViewAtlasLinksList>;
 
 /** List of returned documents that MongoDB Cloud provides when completing this request. */

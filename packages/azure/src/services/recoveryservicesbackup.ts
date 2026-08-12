@@ -2174,15 +2174,8 @@ export const BackupsTriggerRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BackupsTriggerRequestTagsMap>;
 
 /** Base class for backup request. Workload-specific backup requests are derived from this class. */
-export interface BackupRequest {
-  /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
-  objectType: string;
-}
-export const BackupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-  }),
-).annotate({ identifier: "BackupRequest" }) as any as S.Schema<BackupRequest>;
+export type BackupRequest = OperationStatusExtendedInfo;
+export const BackupRequest = OperationStatusExtendedInfo;
 
 export interface BackupsTriggerRequest {
   /** The ID of the target subscription. */
@@ -2204,7 +2197,7 @@ export interface BackupsTriggerRequest {
   /** Optional ETag. */
   eTag?: string;
   /** BackupRequestResource properties */
-  properties?: BackupRequest;
+  properties?: OperationStatusExtendedInfo;
 }
 export const BackupsTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2217,7 +2210,7 @@ export const BackupsTriggerRequest = /*@__PURE__*/ S.suspend(() =>
     location: S.optional(S.String),
     tags: S.optional(BackupsTriggerRequestTagsMap),
     eTag: S.optional(S.String),
-    properties: S.optional(BackupRequest),
+    properties: S.optional(OperationStatusExtendedInfo),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2780,17 +2773,8 @@ export const ExportJobsOperationResultsGetResponseHeadersMap =
   ) as any as S.Schema<ExportJobsOperationResultsGetResponseHeadersMap>;
 
 /** Base class for operation result info. */
-export interface OperationResultInfoBase {
-  /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
-  objectType: string;
-}
-export const OperationResultInfoBase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-  }),
-).annotate({
-  identifier: "OperationResultInfoBase",
-}) as any as S.Schema<OperationResultInfoBase>;
+export type OperationResultInfoBase = OperationStatusExtendedInfo;
+export const OperationResultInfoBase = OperationStatusExtendedInfo;
 
 export interface ExportJobsOperationResultsGetResponse {
   /** HTTP Status Code of the operation. */
@@ -2798,14 +2782,14 @@ export interface ExportJobsOperationResultsGetResponse {
   /** HTTP headers associated with this operation. */
   headers?: ExportJobsOperationResultsGetResponseHeadersMap;
   /** OperationResultInfoBaseResource operation */
-  operation?: OperationResultInfoBase;
+  operation?: OperationStatusExtendedInfo;
 }
 export const ExportJobsOperationResultsGetResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       statusCode: S.optional(HttpStatusCode),
       headers: S.optional(ExportJobsOperationResultsGetResponseHeadersMap),
-      operation: S.optional(OperationResultInfoBase),
+      operation: S.optional(OperationStatusExtendedInfo),
     }),
 ).annotate({
   identifier: "ExportJobsOperationResultsGetResponse",
@@ -2981,15 +2965,8 @@ export const ItemLevelRecoveryConnectionsProvisionRequestTagsMap =
   ) as any as S.Schema<ItemLevelRecoveryConnectionsProvisionRequestTagsMap>;
 
 /** Parameters to Provision ILR API. */
-export interface ILRRequest {
-  /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
-  objectType: string;
-}
-export const ILRRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-  }),
-).annotate({ identifier: "ILRRequest" }) as any as S.Schema<ILRRequest>;
+export type ILRRequest = OperationStatusExtendedInfo;
+export const ILRRequest = OperationStatusExtendedInfo;
 
 export interface ItemLevelRecoveryConnectionsProvisionRequest {
   /** The ID of the target subscription. */
@@ -3013,7 +2990,7 @@ export interface ItemLevelRecoveryConnectionsProvisionRequest {
   /** Optional ETag. */
   eTag?: string;
   /** ILRRequestResource properties */
-  properties?: ILRRequest;
+  properties?: OperationStatusExtendedInfo;
 }
 export const ItemLevelRecoveryConnectionsProvisionRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -3028,7 +3005,7 @@ export const ItemLevelRecoveryConnectionsProvisionRequest =
       location: S.optional(S.String),
       tags: S.optional(ItemLevelRecoveryConnectionsProvisionRequestTagsMap),
       eTag: S.optional(S.String),
-      properties: S.optional(ILRRequest),
+      properties: S.optional(OperationStatusExtendedInfo),
     }).pipe(
       T.Http({
         method: "POST",
@@ -3460,17 +3437,8 @@ export const ClientDiscoveryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClientDiscoveryResponse>;
 
 /** Base class for validate operation request. */
-export interface ValidateOperationRequest {
-  /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
-  objectType: string;
-}
-export const ValidateOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-  }),
-).annotate({
-  identifier: "ValidateOperationRequest",
-}) as any as S.Schema<ValidateOperationRequest>;
+export type ValidateOperationRequest = OperationStatusExtendedInfo;
+export const ValidateOperationRequest = OperationStatusExtendedInfo;
 
 export interface OperationValidateRequest {
   /** The ID of the target subscription. */
@@ -3482,7 +3450,7 @@ export interface OperationValidateRequest {
   /** Recovery point ID. */
   id: string;
   /** ValidateOperationRequestResource properties */
-  properties: ValidateOperationRequest;
+  properties: OperationStatusExtendedInfo;
 }
 export const OperationValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3490,7 +3458,7 @@ export const OperationValidateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
     id: S.String,
-    properties: ValidateOperationRequest,
+    properties: OperationStatusExtendedInfo,
   }).pipe(
     T.Http({
       method: "POST",
@@ -5431,15 +5399,8 @@ export const RecoveryPointsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecoveryPointsGetRequest>;
 
 /** Base class for backup copies. Workload-specific backup copies are derived from this class. */
-export interface RecoveryPoint {
-  /** This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types. */
-  objectType: string;
-}
-export const RecoveryPoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectType: S.String,
-  }),
-).annotate({ identifier: "RecoveryPoint" }) as any as S.Schema<RecoveryPoint>;
+export type RecoveryPoint = OperationStatusExtendedInfo;
+export const RecoveryPoint = OperationStatusExtendedInfo;
 
 /** Resource tags. */
 export type RecoveryPointsGetResponseTagsMap = {
@@ -5460,7 +5421,7 @@ export interface RecoveryPointsGetResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** RecoveryPointResource properties */
-  properties?: RecoveryPoint;
+  properties?: OperationStatusExtendedInfo;
   /** Resource tags. */
   tags?: RecoveryPointsGetResponseTagsMap;
   /** The geo-location where the resource lives */
@@ -5474,7 +5435,7 @@ export const RecoveryPointsGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryPoint),
+    properties: S.optional(OperationStatusExtendedInfo),
     tags: S.optional(RecoveryPointsGetResponseTagsMap),
     location: S.optional(S.String),
     eTag: S.optional(S.String),
@@ -5540,7 +5501,7 @@ export interface RecoveryPointResource {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** RecoveryPointResource properties */
-  properties?: RecoveryPoint;
+  properties?: OperationStatusExtendedInfo;
   /** Resource tags. */
   tags?: RecoveryPointResourceTagsMap;
   /** The geo-location where the resource lives */
@@ -5554,7 +5515,7 @@ export const RecoveryPointResource = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(RecoveryPoint),
+    properties: S.optional(OperationStatusExtendedInfo),
     tags: S.optional(RecoveryPointResourceTagsMap),
     location: S.optional(S.String),
     eTag: S.optional(S.String),
@@ -6273,7 +6234,7 @@ export interface ValidateOperationTriggerRequest {
   /** Recovery point ID. */
   id: string;
   /** ValidateOperationRequestResource properties */
-  properties: ValidateOperationRequest;
+  properties: OperationStatusExtendedInfo;
 }
 export const ValidateOperationTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6281,7 +6242,7 @@ export const ValidateOperationTriggerRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     vaultName: S.String.pipe(T.Label()),
     id: S.String,
-    properties: ValidateOperationRequest,
+    properties: OperationStatusExtendedInfo,
   }).pipe(
     T.Http({
       method: "POST",

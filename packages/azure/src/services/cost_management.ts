@@ -2697,22 +2697,8 @@ export const ExportsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportsGetRequest>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface ExportsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const ExportsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "ExportsGetResponseIdentity",
-}) as any as S.Schema<ExportsGetResponseIdentity>;
+export type ExportsGetResponseIdentity = ExportsCreateOrUpdateResponseIdentity;
+export const ExportsGetResponseIdentity = ExportsCreateOrUpdateResponseIdentity;
 
 export interface ExportsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2726,7 +2712,7 @@ export interface ExportsGetResponse {
   /** The properties of the export. */
   properties?: ExportProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: ExportsGetResponseIdentity;
+  identity?: ExportsCreateOrUpdateResponseIdentity;
   /** The location of the Export's managed identity. Only required when utilizing managed identity. */
   location?: string;
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
@@ -2739,7 +2725,7 @@ export const ExportsGetResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(ExportProperties),
-    identity: S.optional(ExportsGetResponseIdentity),
+    identity: S.optional(ExportsCreateOrUpdateResponseIdentity),
     location: S.optional(S.String),
     eTag: S.optional(S.String),
   }),
@@ -2792,20 +2778,8 @@ export const ExportsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportsListRequest>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface ExportIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const ExportIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({ identifier: "ExportIdentity" }) as any as S.Schema<ExportIdentity>;
+export type ExportIdentity = ExportsCreateOrUpdateResponseIdentity;
+export const ExportIdentity = ExportsCreateOrUpdateResponseIdentity;
 
 /** An export resource. */
 export interface Export {
@@ -2820,7 +2794,7 @@ export interface Export {
   /** The properties of the export. */
   properties?: ExportProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: ExportIdentity;
+  identity?: ExportsCreateOrUpdateResponseIdentity;
   /** The location of the Export's managed identity. Only required when utilizing managed identity. */
   location?: string;
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
@@ -2833,7 +2807,7 @@ export const Export = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(ExportProperties),
-    identity: S.optional(ExportIdentity),
+    identity: S.optional(ExportsCreateOrUpdateResponseIdentity),
     location: S.optional(S.String),
     eTag: S.optional(S.String),
   }),
@@ -3814,21 +3788,8 @@ export type GenerateDetailedCostReportMetricType =
 export const GenerateDetailedCostReportMetricType = /*@__PURE__*/ S.String;
 
 /** The start and end date for pulling data for the cost detailed report. */
-export interface GenerateDetailedCostReportTimePeriod {
-  /** The start date to pull data from. example format 2020-03-15 */
-  start: string;
-  /** The end date to pull data to. example format 2020-03-15 */
-  end: string;
-}
-export const GenerateDetailedCostReportTimePeriod = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      start: S.String,
-      end: S.String,
-    }),
-).annotate({
-  identifier: "GenerateDetailedCostReportTimePeriod",
-}) as any as S.Schema<GenerateDetailedCostReportTimePeriod>;
+export type GenerateDetailedCostReportTimePeriod = CostDetailsTimePeriod;
+export const GenerateDetailedCostReportTimePeriod = CostDetailsTimePeriod;
 
 export interface GenerateDetailedCostReportCreateOperationRequest {
   /** The ARM Resource ID for subscription, resource group, billing account, or other billing scopes. For details, see https://aka.ms/costmgmt/scopes. */
@@ -3836,7 +3797,7 @@ export interface GenerateDetailedCostReportCreateOperationRequest {
   /** The type of the detailed report. By default ActualCost is provided */
   metric?: GenerateDetailedCostReportMetricType | (string & {});
   /** Has time period for pulling data for the cost detailed report. Can only have one of either timePeriod or invoiceId or billingPeriod parameters. If none provided current month cost is provided. */
-  timePeriod?: GenerateDetailedCostReportTimePeriod;
+  timePeriod?: CostDetailsTimePeriod;
   /** Billing period in YearMonth(e.g. 202008) format. Only for legacy enterprise customers can use this. Can only have one of either timePeriod or invoiceId or billingPeriod parameters. If none provided current month cost is provided. */
   billingPeriod?: string;
   /** Invoice ID for Pay-as-you-go and Microsoft Customer Agreement scopes. Can only have one of either timePeriod or invoiceId or billingPeriod parameters. If none provided current month cost is provided. */
@@ -3849,7 +3810,7 @@ export const GenerateDetailedCostReportCreateOperationRequest =
     S.Struct({
       scope: S.String.pipe(T.Label()),
       metric: S.optional(GenerateDetailedCostReportMetricType),
-      timePeriod: S.optional(GenerateDetailedCostReportTimePeriod),
+      timePeriod: S.optional(CostDetailsTimePeriod),
       billingPeriod: S.optional(S.String),
       invoiceId: S.optional(S.String),
       customerId: S.optional(S.String),
@@ -4410,20 +4371,8 @@ export const PriceSheetDownloadByInvoiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PriceSheetDownloadByInvoiceRequest>;
 
 /** The start and end date for pulling data for the query. */
-export interface QueryTimePeriod {
-  /** The start date to pull data from. */
-  from: string;
-  /** The end date to pull data to. */
-  to: string;
-}
-export const QueryTimePeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.String,
-    to: S.String,
-  }),
-).annotate({
-  identifier: "QueryTimePeriod",
-}) as any as S.Schema<QueryTimePeriod>;
+export type QueryTimePeriod = ForecastTimePeriod;
+export const QueryTimePeriod = ForecastTimePeriod;
 
 /** Array of column names to be included in the query. Any valid query column name is allowed. If not provided, then query includes all columns. */
 export type QueryDatasetConfigurationColumnsList = Array<string>;
@@ -4585,7 +4534,7 @@ export interface QueryUsageRequest {
   /** The time frame for pulling data for the query. If custom, then a specific time period must be provided. */
   timeframe: TimeframeType | (string & {});
   /** Has time period for pulling data for the query. */
-  timePeriod?: QueryTimePeriod;
+  timePeriod?: ForecastTimePeriod;
   /** Has definition for data in this query. */
   dataset: QueryDataset;
 }
@@ -4594,7 +4543,7 @@ export const QueryUsageRequest = /*@__PURE__*/ S.suspend(() =>
     scope: S.String.pipe(T.Label()),
     type: ExportType,
     timeframe: TimeframeType,
-    timePeriod: S.optional(QueryTimePeriod),
+    timePeriod: S.optional(ForecastTimePeriod),
     dataset: QueryDataset,
   }).pipe(
     T.Http({
@@ -4616,23 +4565,13 @@ export const QueryUsageResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<QueryUsageResponseTagsMap>;
 
 /** QueryColumn properties */
-export interface QueryColumn {
-  /** The name of column. */
-  name?: string;
-  /** The type of column. */
-  type?: string;
-}
-export const QueryColumn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "QueryColumn" }) as any as S.Schema<QueryColumn>;
+export type QueryColumn = ForecastColumn;
+export const QueryColumn = ForecastColumn;
 
 /** Array of columns */
-export type QueryPropertiesColumnsList = Array<QueryColumn>;
+export type QueryPropertiesColumnsList = Array<ForecastColumn>;
 export const QueryPropertiesColumnsList = /*@__PURE__*/ S.Array(
-  QueryColumn,
+  ForecastColumn,
 ) as any as S.Schema<QueryPropertiesColumnsList>;
 
 export type QueryPropertiesRowsItemList = Array<unknown>;
@@ -4715,7 +4654,7 @@ export interface QueryUsageByExternalCloudProviderTypeRequest {
   /** The time frame for pulling data for the query. If custom, then a specific time period must be provided. */
   timeframe: TimeframeType | (string & {});
   /** Has time period for pulling data for the query. */
-  timePeriod?: QueryTimePeriod;
+  timePeriod?: ForecastTimePeriod;
   /** Has definition for data in this query. */
   dataset: QueryDataset;
 }
@@ -4729,7 +4668,7 @@ export const QueryUsageByExternalCloudProviderTypeRequest =
       externalCloudProviderId: S.String.pipe(T.Label()),
       type: ExportType,
       timeframe: TimeframeType,
-      timePeriod: S.optional(QueryTimePeriod),
+      timePeriod: S.optional(ForecastTimePeriod),
       dataset: QueryDataset,
     }).pipe(
       T.Http({
@@ -5694,20 +5633,8 @@ export type ReportTimeframeType =
 export const ReportTimeframeType = /*@__PURE__*/ S.String;
 
 /** The start and end date for pulling data for the report. */
-export interface ReportConfigTimePeriod {
-  /** The start date to pull data from. */
-  from: string;
-  /** The end date to pull data to. */
-  to: string;
-}
-export const ReportConfigTimePeriod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    from: S.String,
-    to: S.String,
-  }),
-).annotate({
-  identifier: "ReportConfigTimePeriod",
-}) as any as S.Schema<ReportConfigTimePeriod>;
+export type ReportConfigTimePeriod = ForecastTimePeriod;
+export const ReportConfigTimePeriod = ForecastTimePeriod;
 
 /** The granularity of rows in the report. */
 export type ReportGranularityType = "Daily" | "Monthly";
@@ -5734,28 +5661,16 @@ export const ReportConfigDatasetConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportConfigDatasetConfiguration>;
 
 /** The aggregation expression to be used in the report. */
-export interface ReportConfigAggregation {
-  /** The name of the column to aggregate. */
-  name: string;
-  /** The name of the aggregation function to use. */
-  function: FunctionType | (string & {});
-}
-export const ReportConfigAggregation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    function: FunctionType,
-  }),
-).annotate({
-  identifier: "ReportConfigAggregation",
-}) as any as S.Schema<ReportConfigAggregation>;
+export type ReportConfigAggregation = QueryAggregation;
+export const ReportConfigAggregation = QueryAggregation;
 
 /** Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses. */
 export type ReportConfigDatasetAggregationMap = {
-  [key: string]: ReportConfigAggregation | undefined;
+  [key: string]: QueryAggregation | undefined;
 };
 export const ReportConfigDatasetAggregationMap = /*@__PURE__*/ S.Record(
   S.String,
-  ReportConfigAggregation,
+  QueryAggregation,
 ) as any as S.Schema<ReportConfigDatasetAggregationMap>;
 
 /** The group by expression to be used in the report. */
@@ -5904,7 +5819,7 @@ export interface ReportConfigDefinition {
   /** The time frame for pulling data for the report. If custom, then a specific time period must be provided. */
   timeframe: ReportTimeframeType | (string & {});
   /** Has time period for pulling data for the report. */
-  timePeriod?: ReportConfigTimePeriod;
+  timePeriod?: ForecastTimePeriod;
   /** Has definition for data in this report config. */
   dataSet?: ReportConfigDataset;
   /** If true, report includes monetary commitment. */
@@ -5914,7 +5829,7 @@ export const ReportConfigDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ReportType,
     timeframe: ReportTimeframeType,
-    timePeriod: S.optional(ReportConfigTimePeriod),
+    timePeriod: S.optional(ForecastTimePeriod),
     dataSet: S.optional(ReportConfigDataset),
     includeMonetaryCommitment: S.optional(S.Boolean),
   }),

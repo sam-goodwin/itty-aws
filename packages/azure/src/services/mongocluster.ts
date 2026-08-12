@@ -689,20 +689,16 @@ export type ManagedServiceIdentityType =
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = BackupPropertiesInput;
+export const UserAssignedIdentityInput = BackupPropertiesInput;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: BackupPropertiesInput | undefined;
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentityInput,
+  BackupPropertiesInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -1165,24 +1161,10 @@ export const MongoClustersGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MongoClustersGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface MongoClustersGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const MongoClustersGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "MongoClustersGetResponseIdentity",
-}) as any as S.Schema<MongoClustersGetResponseIdentity>;
+export type MongoClustersGetResponseIdentity =
+  MongoClustersCreateOrUpdateResponseIdentity;
+export const MongoClustersGetResponseIdentity =
+  MongoClustersCreateOrUpdateResponseIdentity;
 
 export interface MongoClustersGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1200,7 +1182,7 @@ export interface MongoClustersGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: MongoClusterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MongoClustersGetResponseIdentity;
+  identity?: MongoClustersCreateOrUpdateResponseIdentity;
 }
 export const MongoClustersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1211,7 +1193,7 @@ export const MongoClustersGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(MongoClustersGetResponseTagsMap),
     location: S.String,
     properties: S.optional(MongoClusterProperties),
-    identity: S.optional(MongoClustersGetResponseIdentity),
+    identity: S.optional(MongoClustersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "MongoClustersGetResponse",
@@ -1244,24 +1226,8 @@ export const MongoClusterTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MongoClusterTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface MongoClusterIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const MongoClusterIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "MongoClusterIdentity",
-}) as any as S.Schema<MongoClusterIdentity>;
+export type MongoClusterIdentity = MongoClustersCreateOrUpdateResponseIdentity;
+export const MongoClusterIdentity = MongoClustersCreateOrUpdateResponseIdentity;
 
 /** Represents a mongo cluster resource. */
 export interface MongoCluster {
@@ -1280,7 +1246,7 @@ export interface MongoCluster {
   /** The resource-specific properties for this resource. */
   properties?: MongoClusterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MongoClusterIdentity;
+  identity?: MongoClustersCreateOrUpdateResponseIdentity;
 }
 export const MongoCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1291,7 +1257,7 @@ export const MongoCluster = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(MongoClusterTagsMap),
     location: S.String,
     properties: S.optional(MongoClusterProperties),
-    identity: S.optional(MongoClusterIdentity),
+    identity: S.optional(MongoClustersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "MongoCluster" }) as any as S.Schema<MongoCluster>;
 
@@ -1455,18 +1421,10 @@ export const MongoClustersPromoteResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MongoClustersPromoteResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface MongoClustersUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const MongoClustersUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "MongoClustersUpdateRequestIdentity",
-}) as any as S.Schema<MongoClustersUpdateRequestIdentity>;
+export type MongoClustersUpdateRequestIdentity =
+  MongoClustersCreateOrUpdateRequestIdentity;
+export const MongoClustersUpdateRequestIdentity =
+  MongoClustersCreateOrUpdateRequestIdentity;
 
 /** Resource tags. */
 export type MongoClustersUpdateRequestTagsMap = {
@@ -1545,7 +1503,7 @@ export interface MongoClustersUpdateRequest {
   /** The name of the mongo cluster. */
   mongoClusterName: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MongoClustersUpdateRequestIdentity;
+  identity?: MongoClustersCreateOrUpdateRequestIdentity;
   /** Resource tags. */
   tags?: MongoClustersUpdateRequestTagsMap;
   /** The resource-specific properties for this resource. */
@@ -1556,7 +1514,7 @@ export const MongoClustersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     mongoClusterName: S.String.pipe(T.Label()),
-    identity: S.optional(MongoClustersUpdateRequestIdentity),
+    identity: S.optional(MongoClustersCreateOrUpdateRequestIdentity),
     tags: S.optional(MongoClustersUpdateRequestTagsMap),
     properties: S.optional(MongoClusterUpdatePropertiesInput),
   }).pipe(
@@ -1581,24 +1539,10 @@ export const MongoClustersUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<MongoClustersUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface MongoClustersUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const MongoClustersUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "MongoClustersUpdateResponseIdentity",
-}) as any as S.Schema<MongoClustersUpdateResponseIdentity>;
+export type MongoClustersUpdateResponseIdentity =
+  MongoClustersCreateOrUpdateResponseIdentity;
+export const MongoClustersUpdateResponseIdentity =
+  MongoClustersCreateOrUpdateResponseIdentity;
 
 export interface MongoClustersUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1616,7 +1560,7 @@ export interface MongoClustersUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: MongoClusterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MongoClustersUpdateResponseIdentity;
+  identity?: MongoClustersCreateOrUpdateResponseIdentity;
 }
 export const MongoClustersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1627,7 +1571,7 @@ export const MongoClustersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(MongoClustersUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(MongoClusterProperties),
-    identity: S.optional(MongoClustersUpdateResponseIdentity),
+    identity: S.optional(MongoClustersCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "MongoClustersUpdateResponse",
@@ -1722,24 +1666,20 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResponse>;
 
 /** The private endpoint resource. */
-export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PrivateEndpointInput",
-}) as any as S.Schema<PrivateEndpointInput>;
+export type PrivateEndpointInput = BackupPropertiesInput;
+export const PrivateEndpointInput = BackupPropertiesInput;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionsCreateRequestProperties {
   /** The private endpoint resource. */
-  privateEndpoint?: PrivateEndpointInput;
+  privateEndpoint?: BackupPropertiesInput;
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
 export const PrivateEndpointConnectionsCreateRequestProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateEndpoint: S.optional(BackupPropertiesInput),
       privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
     }),
   ).annotate({

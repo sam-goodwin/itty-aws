@@ -142,12 +142,8 @@ export const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AccountsCreateOrUpdateRequestTagsMap>;
 
 /** External Cloud Service connectors */
-export interface CloudConnectorsInput {}
-export const CloudConnectorsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CloudConnectorsInput",
-}) as any as S.Schema<CloudConnectorsInput>;
+export type CloudConnectorsInput = UserAssignedIdentityInput;
+export const CloudConnectorsInput = UserAssignedIdentityInput;
 
 /** Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed. */
 export type AccountPropertiesInputManagedEventHubState =
@@ -175,7 +171,7 @@ export const AccountPropertiesInputPublicNetworkAccess = /*@__PURE__*/ S.String;
 /** The account properties */
 export interface AccountPropertiesInput {
   /** Cloud connectors. External cloud identifier used as part of scanning configuration. */
-  cloudConnectors?: CloudConnectorsInput;
+  cloudConnectors?: UserAssignedIdentityInput;
   /** Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed. */
   managedEventHubState?:
     | AccountPropertiesInputManagedEventHubState
@@ -193,7 +189,7 @@ export interface AccountPropertiesInput {
 }
 export const AccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    cloudConnectors: S.optional(CloudConnectorsInput),
+    cloudConnectors: S.optional(UserAssignedIdentityInput),
     managedEventHubState: S.optional(
       AccountPropertiesInputManagedEventHubState,
     ),

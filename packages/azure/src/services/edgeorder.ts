@@ -747,12 +747,8 @@ export type AutoProvisioningStatus = "Enabled" | "Disabled";
 export const AutoProvisioningStatus = /*@__PURE__*/ S.String;
 
 /** Proof of possession details. */
-export interface DevicePresenceVerificationDetailsInput {}
-export const DevicePresenceVerificationDetailsInput = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DevicePresenceVerificationDetailsInput",
-}) as any as S.Schema<DevicePresenceVerificationDetailsInput>;
+export type DevicePresenceVerificationDetailsInput = DisplayInfoInput;
+export const DevicePresenceVerificationDetailsInput = DisplayInfoInput;
 
 /** Details Related To Provision Resource. */
 export interface ProvisioningDetailsInput {
@@ -773,7 +769,7 @@ export interface ProvisioningDetailsInput {
   /** Auto Provisioning Details. */
   autoProvisioningStatus?: AutoProvisioningStatus | (string & {});
   /** Proof of possession details. */
-  devicePresenceVerification?: DevicePresenceVerificationDetailsInput;
+  devicePresenceVerification?: DisplayInfoInput;
 }
 export const ProvisioningDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -785,9 +781,7 @@ export const ProvisioningDetailsInput = /*@__PURE__*/ S.suspend(() =>
     readyToConnectArmId: S.optional(S.String),
     managementResourceArmId: S.optional(S.String),
     autoProvisioningStatus: S.optional(AutoProvisioningStatus),
-    devicePresenceVerification: S.optional(
-      DevicePresenceVerificationDetailsInput,
-    ),
+    devicePresenceVerification: S.optional(DisplayInfoInput),
   }),
 ).annotate({
   identifier: "ProvisioningDetailsInput",
@@ -998,12 +992,8 @@ export const OrderItemDetailsInputNotificationEmailListList =
   ) as any as S.Schema<OrderItemDetailsInputNotificationEmailListList>;
 
 /** The error detail. */
-export interface OrderItemDetailsInputError {}
-export const OrderItemDetailsInputError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OrderItemDetailsInputError",
-}) as any as S.Schema<OrderItemDetailsInputError>;
+export type OrderItemDetailsInputError = DisplayInfoInput;
+export const OrderItemDetailsInputError = DisplayInfoInput;
 
 /** Order item details. */
 export interface OrderItemDetailsInput {
@@ -1020,7 +1010,7 @@ export interface OrderItemDetailsInput {
   /** Additional notification email list. */
   notificationEmailList?: OrderItemDetailsInputNotificationEmailListList;
   /** The error detail. */
-  error?: OrderItemDetailsInputError;
+  error?: DisplayInfoInput;
 }
 export const OrderItemDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1032,7 +1022,7 @@ export const OrderItemDetailsInput = /*@__PURE__*/ S.suspend(() =>
     notificationEmailList: S.optional(
       OrderItemDetailsInputNotificationEmailListList,
     ),
-    error: S.optional(OrderItemDetailsInputError),
+    error: S.optional(DisplayInfoInput),
   }),
 ).annotate({
   identifier: "OrderItemDetailsInput",
@@ -1071,20 +1061,18 @@ export const OrderItemPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrderItemPropertiesInput>;
 
 /** User assigned identity properties */
-export interface ResourceIdentityInputUserAssignedIdentitiesValue {}
+export type ResourceIdentityInputUserAssignedIdentitiesValue = DisplayInfoInput;
 export const ResourceIdentityInputUserAssignedIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ResourceIdentityInputUserAssignedIdentitiesValue",
-  }) as any as S.Schema<ResourceIdentityInputUserAssignedIdentitiesValue>;
+  DisplayInfoInput;
 
 /** User Assigned Identities */
 export type ResourceIdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: ResourceIdentityInputUserAssignedIdentitiesValue | undefined;
+  [key: string]: DisplayInfoInput | undefined;
 };
 export const ResourceIdentityInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ResourceIdentityInputUserAssignedIdentitiesValue,
+    DisplayInfoInput,
   ) as any as S.Schema<ResourceIdentityInputUserAssignedIdentitiesMap>;
 
 /** Msi identity details of the resource */

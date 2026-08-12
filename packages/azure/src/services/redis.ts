@@ -2259,20 +2259,16 @@ export type ManagedServiceIdentityType =
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = PrivateEndpointInput;
+export const UserAssignedIdentityInput = PrivateEndpointInput;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: PrivateEndpointInput | undefined;
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentityInput,
+  PrivateEndpointInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2528,37 +2524,17 @@ export const RedisPropertiesInstancesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RedisPropertiesInstancesList>;
 
 /** The private endpoint connection resource. */
-export interface RedisPropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type RedisPropertiesPrivateEndpointConnectionsItem =
+  PrivateEndpointConnectionListResultValueItem;
 export const RedisPropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "RedisPropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<RedisPropertiesPrivateEndpointConnectionsItem>;
+  PrivateEndpointConnectionListResultValueItem;
 
 /** List of private endpoint connection associated with the specified redis cache */
 export type RedisPropertiesPrivateEndpointConnectionsList =
-  Array<RedisPropertiesPrivateEndpointConnectionsItem>;
+  Array<PrivateEndpointConnectionListResultValueItem>;
 export const RedisPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    RedisPropertiesPrivateEndpointConnectionsItem,
+    PrivateEndpointConnectionListResultValueItem,
   ) as any as S.Schema<RedisPropertiesPrivateEndpointConnectionsList>;
 
 /** Properties of the redis cache. */
@@ -2973,24 +2949,8 @@ export const RedisGetResponseZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RedisGetResponseZonesList>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface RedisGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const RedisGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "RedisGetResponseIdentity",
-}) as any as S.Schema<RedisGetResponseIdentity>;
+export type RedisGetResponseIdentity = RedisCreateResponseIdentity;
+export const RedisGetResponseIdentity = RedisCreateResponseIdentity;
 
 export interface RedisGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3010,7 +2970,7 @@ export interface RedisGetResponse {
   /** The availability zones. */
   zones?: RedisGetResponseZonesList;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: RedisGetResponseIdentity;
+  identity?: RedisCreateResponseIdentity;
 }
 export const RedisGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3022,7 +2982,7 @@ export const RedisGetResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: RedisProperties,
     zones: S.optional(RedisGetResponseZonesList),
-    identity: S.optional(RedisGetResponseIdentity),
+    identity: S.optional(RedisCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "RedisGetResponse",
@@ -3118,24 +3078,8 @@ export const RedisResourceZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RedisResourceZonesList>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface RedisResourceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const RedisResourceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "RedisResourceIdentity",
-}) as any as S.Schema<RedisResourceIdentity>;
+export type RedisResourceIdentity = RedisCreateResponseIdentity;
+export const RedisResourceIdentity = RedisCreateResponseIdentity;
 
 /** A single Redis item in List or Get Operation. */
 export interface RedisResource {
@@ -3156,7 +3100,7 @@ export interface RedisResource {
   /** The availability zones. */
   zones?: RedisResourceZonesList;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: RedisResourceIdentity;
+  identity?: RedisCreateResponseIdentity;
 }
 export const RedisResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3168,7 +3112,7 @@ export const RedisResource = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: RedisProperties,
     zones: S.optional(RedisResourceZonesList),
-    identity: S.optional(RedisResourceIdentity),
+    identity: S.optional(RedisCreateResponseIdentity),
   }),
 ).annotate({ identifier: "RedisResource" }) as any as S.Schema<RedisResource>;
 
@@ -3418,18 +3362,8 @@ export const RedisUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RedisUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface RedisUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const RedisUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "RedisUpdateRequestIdentity",
-}) as any as S.Schema<RedisUpdateRequestIdentity>;
+export type RedisUpdateRequestIdentity = RedisCreateRequestIdentity;
+export const RedisUpdateRequestIdentity = RedisCreateRequestIdentity;
 
 export interface RedisUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3443,7 +3377,7 @@ export interface RedisUpdateRequest {
   /** Resource tags. */
   tags?: RedisUpdateRequestTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: RedisUpdateRequestIdentity;
+  identity?: RedisCreateRequestIdentity;
 }
 export const RedisUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3452,7 +3386,7 @@ export const RedisUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     properties: S.optional(RedisUpdatePropertiesInput),
     tags: S.optional(RedisUpdateRequestTagsMap),
-    identity: S.optional(RedisUpdateRequestIdentity),
+    identity: S.optional(RedisCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3479,24 +3413,8 @@ export const RedisUpdateResponseZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RedisUpdateResponseZonesList>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface RedisUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const RedisUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "RedisUpdateResponseIdentity",
-}) as any as S.Schema<RedisUpdateResponseIdentity>;
+export type RedisUpdateResponseIdentity = RedisCreateResponseIdentity;
+export const RedisUpdateResponseIdentity = RedisCreateResponseIdentity;
 
 export interface RedisUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3516,7 +3434,7 @@ export interface RedisUpdateResponse {
   /** The availability zones. */
   zones?: RedisUpdateResponseZonesList;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: RedisUpdateResponseIdentity;
+  identity?: RedisCreateResponseIdentity;
 }
 export const RedisUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3528,7 +3446,7 @@ export const RedisUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: RedisProperties,
     zones: S.optional(RedisUpdateResponseZonesList),
-    identity: S.optional(RedisUpdateResponseIdentity),
+    identity: S.optional(RedisCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "RedisUpdateResponse",

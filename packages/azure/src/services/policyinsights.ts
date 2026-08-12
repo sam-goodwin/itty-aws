@@ -2398,42 +2398,15 @@ export const CheckRestrictionsResultFieldRestrictionsList =
   ) as any as S.Schema<CheckRestrictionsResultFieldRestrictionsList>;
 
 /** Evaluation details of policy language expressions. */
-export interface ExpressionEvaluationDetails {
-  /** Evaluation result. */
-  result?: string;
-  /** Expression evaluated. */
-  expression?: string;
-  /** The kind of expression that was evaluated. */
-  expressionKind?: string;
-  /** Property path if the expression is a field or an alias. */
-  path?: string;
-  /** Value of the expression. */
-  expressionValue?: unknown;
-  /** Target value to be compared with the expression value. */
-  targetValue?: unknown;
-  /** Operator to compare the expression value and the target value. */
-  operator?: string;
-}
-export const ExpressionEvaluationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String),
-    expression: S.optional(S.String),
-    expressionKind: S.optional(S.String),
-    path: S.optional(S.String),
-    expressionValue: S.optional(S.Unknown),
-    targetValue: S.optional(S.Unknown),
-    operator: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExpressionEvaluationDetails",
-}) as any as S.Schema<ExpressionEvaluationDetails>;
+export type ExpressionEvaluationDetails = ComponentExpressionEvaluationDetails;
+export const ExpressionEvaluationDetails = ComponentExpressionEvaluationDetails;
 
 /** Details of the evaluated expressions. */
 export type CheckRestrictionEvaluationDetailsEvaluatedExpressionsList =
-  Array<ExpressionEvaluationDetails>;
+  Array<ComponentExpressionEvaluationDetails>;
 export const CheckRestrictionEvaluationDetailsEvaluatedExpressionsList =
   /*@__PURE__*/ S.Array(
-    ExpressionEvaluationDetails,
+    ComponentExpressionEvaluationDetails,
   ) as any as S.Schema<CheckRestrictionEvaluationDetailsEvaluatedExpressionsList>;
 
 /** Evaluation details of IfNotExists effect. */
@@ -2703,10 +2676,10 @@ export const PolicyStatesListQueryResultsForManagementGroupRequest =
 
 /** Details of the evaluated expressions. */
 export type PolicyEvaluationDetailsEvaluatedExpressionsList =
-  Array<ExpressionEvaluationDetails>;
+  Array<ComponentExpressionEvaluationDetails>;
 export const PolicyEvaluationDetailsEvaluatedExpressionsList =
   /*@__PURE__*/ S.Array(
-    ExpressionEvaluationDetails,
+    ComponentExpressionEvaluationDetails,
   ) as any as S.Schema<PolicyEvaluationDetailsEvaluatedExpressionsList>;
 
 /** Policy evaluation details. */

@@ -1637,33 +1637,15 @@ export const AccessControlListMatchConfigurationPatchMatchConditionsList =
   ) as any as S.Schema<AccessControlListMatchConfigurationPatchMatchConditionsList>;
 
 /** Action that need to be performed */
-export interface AccessControlListActionPatch {
-  /** Type of actions that can be performed. */
-  type?: AclActionType | (string & {});
-  /** Name of the counter block to get match count information. */
-  counterName?: string;
-  /** Remark comment */
-  remarkComment?: string;
-  /** Police rate configuration */
-  policeRateConfiguration?: PoliceRateConfigurationProperties;
-}
-export const AccessControlListActionPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(AclActionType),
-    counterName: S.optional(S.String),
-    remarkComment: S.optional(S.String),
-    policeRateConfiguration: S.optional(PoliceRateConfigurationProperties),
-  }),
-).annotate({
-  identifier: "AccessControlListActionPatch",
-}) as any as S.Schema<AccessControlListActionPatch>;
+export type AccessControlListActionPatch = AccessControlListAction;
+export const AccessControlListActionPatch = AccessControlListAction;
 
 /** List of actions that need to be performed for the matched conditions. */
 export type AccessControlListMatchConfigurationPatchActionsList =
-  Array<AccessControlListActionPatch>;
+  Array<AccessControlListAction>;
 export const AccessControlListMatchConfigurationPatchActionsList =
   /*@__PURE__*/ S.Array(
-    AccessControlListActionPatch,
+    AccessControlListAction,
   ) as any as S.Schema<AccessControlListMatchConfigurationPatchActionsList>;
 
 /** Defines the match configuration that are supported to filter the traffic. */
@@ -1828,55 +1810,22 @@ export const AccessControlListPatchPropertiesDynamicMatchConfigurationsList =
   ) as any as S.Schema<AccessControlListPatchPropertiesDynamicMatchConfigurationsList>;
 
 /** Control Plane Access Control List (ACL) IP condition patch properties */
-export interface ControlPlaneAclIpMatchConditionPatch {
-  /** List of the source IP addresses that need to be matched. */
-  sourceIpPrefix?: string;
-  /** List of the destination IP addresses that need to be matched. */
-  destinationIpPrefix?: string;
-}
-export const ControlPlaneAclIpMatchConditionPatch = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sourceIpPrefix: S.optional(S.String),
-      destinationIpPrefix: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ControlPlaneAclIpMatchConditionPatch",
-}) as any as S.Schema<ControlPlaneAclIpMatchConditionPatch>;
+export type ControlPlaneAclIpMatchConditionPatch =
+  ControlPlanAclIpMatchCondition;
+export const ControlPlaneAclIpMatchConditionPatch =
+  ControlPlanAclIpMatchCondition;
 
 /** TTL [Time To Live] match conditions patch properties */
-export interface ControlPlaneAclTtlMatchConditionPatch {
-  /** TTL [Time To Live] values that need to be matched. */
-  ttlValue?: string;
-  /** TTL [Time To Live] match type. Example: eq | neq | gt | lt | range */
-  ttlMatchType?: ControlPlaneAclTtlMatchType | (string & {});
-}
-export const ControlPlaneAclTtlMatchConditionPatch = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ttlValue: S.optional(S.String),
-      ttlMatchType: S.optional(ControlPlaneAclTtlMatchType),
-    }),
-).annotate({
-  identifier: "ControlPlaneAclTtlMatchConditionPatch",
-}) as any as S.Schema<ControlPlaneAclTtlMatchConditionPatch>;
+export type ControlPlaneAclTtlMatchConditionPatch =
+  ControlPlaneAclTtlMatchCondition;
+export const ControlPlaneAclTtlMatchConditionPatch =
+  ControlPlaneAclTtlMatchCondition;
 
 /** Control Plane Access Control List (ACL) Port Match conditions properties */
-export interface ControlPlaneAclPortMatchConditionPatch {
-  /** List of the ports that need to be matched. */
-  sourcePorts?: ControlPlaneAclPortCondition;
-  /** List of the destination ports that need to be matched. */
-  destinationPorts?: ControlPlaneAclPortCondition;
-}
-export const ControlPlaneAclPortMatchConditionPatch = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      sourcePorts: S.optional(ControlPlaneAclPortCondition),
-      destinationPorts: S.optional(ControlPlaneAclPortCondition),
-    }),
-).annotate({
-  identifier: "ControlPlaneAclPortMatchConditionPatch",
-}) as any as S.Schema<ControlPlaneAclPortMatchConditionPatch>;
+export type ControlPlaneAclPortMatchConditionPatch =
+  ControlPlaneAclPortMatchCondition;
+export const ControlPlaneAclPortMatchConditionPatch =
+  ControlPlaneAclPortMatchCondition;
 
 /** Flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, cwr, ece, fin, psh, rst, syn, urg, established */
 export type ControlPlaneAclMatchConditionPatchFlagsList = Array<string>;
@@ -1890,11 +1839,11 @@ export interface ControlPlaneAclMatchConditionPatch {
   /** Protocols that need to be matched. */
   protocolTypes?: string;
   /** IP condition that needs to be matched. */
-  ipCondition?: ControlPlaneAclIpMatchConditionPatch;
+  ipCondition?: ControlPlanAclIpMatchCondition;
   /** TTL [Time To Live] values that need to be matched. */
-  ttlMatchCondition?: ControlPlaneAclTtlMatchConditionPatch;
+  ttlMatchCondition?: ControlPlaneAclTtlMatchCondition;
   /** Port condition that needs to be matched. */
-  portCondition?: ControlPlaneAclPortMatchConditionPatch;
+  portCondition?: ControlPlaneAclPortMatchCondition;
   /** Flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, cwr, ece, fin, psh, rst, syn, urg, established */
   flags?: ControlPlaneAclMatchConditionPatchFlagsList;
   /** Internet Control Message Protocol (ICMP) configuration */
@@ -1903,9 +1852,9 @@ export interface ControlPlaneAclMatchConditionPatch {
 export const ControlPlaneAclMatchConditionPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protocolTypes: S.optional(S.String),
-    ipCondition: S.optional(ControlPlaneAclIpMatchConditionPatch),
-    ttlMatchCondition: S.optional(ControlPlaneAclTtlMatchConditionPatch),
-    portCondition: S.optional(ControlPlaneAclPortMatchConditionPatch),
+    ipCondition: S.optional(ControlPlanAclIpMatchCondition),
+    ttlMatchCondition: S.optional(ControlPlaneAclTtlMatchCondition),
+    portCondition: S.optional(ControlPlaneAclPortMatchCondition),
     flags: S.optional(ControlPlaneAclMatchConditionPatchFlagsList),
     icmpConfiguration: S.optional(IcmpConfigurationPatchProperties),
   }),
@@ -1914,20 +1863,8 @@ export const ControlPlaneAclMatchConditionPatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControlPlaneAclMatchConditionPatch>;
 
 /** Control Plane Access Control List (ACL) Actions */
-export interface ControlPlaneAclActionPatch {
-  /** Type of actions that can be performed. */
-  type?: ControlPlaneAclActionType | (string & {});
-  /** Remark comment */
-  remarkComment?: string;
-}
-export const ControlPlaneAclActionPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ControlPlaneAclActionType),
-    remarkComment: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ControlPlaneAclActionPatch",
-}) as any as S.Schema<ControlPlaneAclActionPatch>;
+export type ControlPlaneAclActionPatch = ControlPlaneAclAction;
+export const ControlPlaneAclActionPatch = ControlPlaneAclAction;
 
 /** Control Plane Access Control List (ACL) match configurations properties */
 export interface ControlPlaneAclMatchConfigurationPatchProperties {
@@ -1938,7 +1875,7 @@ export interface ControlPlaneAclMatchConfigurationPatchProperties {
   /** Match conditions */
   matchCondition?: ControlPlaneAclMatchConditionPatch;
   /** Action that need to be performed for the matched conditions. */
-  action?: ControlPlaneAclActionPatch;
+  action?: ControlPlaneAclAction;
 }
 export const ControlPlaneAclMatchConfigurationPatchProperties =
   /*@__PURE__*/ S.suspend(() =>
@@ -1946,7 +1883,7 @@ export const ControlPlaneAclMatchConfigurationPatchProperties =
       matchConfigurationName: S.optional(S.String),
       sequenceNumber: S.optional(S.Number),
       matchCondition: S.optional(ControlPlaneAclMatchConditionPatch),
-      action: S.optional(ControlPlaneAclActionPatch),
+      action: S.optional(ControlPlaneAclAction),
     }),
   ).annotate({
     identifier: "ControlPlaneAclMatchConfigurationPatchProperties",
@@ -3248,36 +3185,12 @@ export const ExternalNetworksList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalNetworksList>;
 
 /** Import Route Policy either IPv4 or IPv6. */
-export interface ImportRoutePolicyPatch {
-  /** ARM resource ID of RoutePolicy. */
-  importIpv4RoutePolicyId?: string;
-  /** ARM resource ID of RoutePolicy. */
-  importIpv6RoutePolicyId?: string;
-}
-export const ImportRoutePolicyPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    importIpv4RoutePolicyId: S.optional(S.String),
-    importIpv6RoutePolicyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImportRoutePolicyPatch",
-}) as any as S.Schema<ImportRoutePolicyPatch>;
+export type ImportRoutePolicyPatch = ImportRoutePolicy;
+export const ImportRoutePolicyPatch = ImportRoutePolicy;
 
 /** Export Route Policy either IPv4 or IPv6. */
-export interface ExportRoutePolicyPatch {
-  /** ARM resource ID of RoutePolicy. */
-  exportIpv4RoutePolicyId?: string;
-  /** ARM resource ID of RoutePolicy. */
-  exportIpv6RoutePolicyId?: string;
-}
-export const ExportRoutePolicyPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportIpv4RoutePolicyId: S.optional(S.String),
-    exportIpv6RoutePolicyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExportRoutePolicyPatch",
-}) as any as S.Schema<ExportRoutePolicyPatch>;
+export type ExportRoutePolicyPatch = ExportRoutePolicy;
+export const ExportRoutePolicyPatch = ExportRoutePolicy;
 
 /** RouteTargets to be applied. This is used for the backward compatibility. */
 export type L3OptionBPatchPropertiesImportRouteTargetsList = Array<string>;
@@ -3379,20 +3292,8 @@ export const L3OptionBPatchProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<L3OptionBPatchProperties>;
 
 /** BFD configuration properties */
-export interface BfdPatchConfiguration {
-  /** Interval in milliseconds. Example: 300. */
-  intervalInMilliSeconds?: number;
-  /** Multiplier for the Bfd Configuration. Example: 5. */
-  multiplier?: number;
-}
-export const BfdPatchConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    intervalInMilliSeconds: S.optional(S.Number),
-    multiplier: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BfdPatchConfiguration",
-}) as any as S.Schema<BfdPatchConfiguration>;
+export type BfdPatchConfiguration = BfdConfigurationInput;
+export const BfdPatchConfiguration = BfdConfigurationInput;
 
 /** BGP Monitoring Protocol (BMP) configuration state. */
 export type BmpConfigurationState = "Enabled" | "Disabled";
@@ -3503,7 +3404,7 @@ export interface ExternalNetworkPatchPropertiesOptionAPropertiesInput {
   /** Peer ASN number.Example : 28 */
   peerASN?: number;
   /** BFD configuration properties */
-  bfdConfiguration?: BfdPatchConfiguration;
+  bfdConfiguration?: BfdConfigurationInput;
   /** Ingress Acl. ARM resource ID of Access Control Lists. */
   ingressAclId?: string;
   /** Egress Acl. ARM resource ID of Access Control Lists. */
@@ -3529,7 +3430,7 @@ export const ExternalNetworkPatchPropertiesOptionAPropertiesInput =
       mtu: S.optional(S.Number),
       vlanId: S.optional(S.Number),
       peerASN: S.optional(S.Number),
-      bfdConfiguration: S.optional(BfdPatchConfiguration),
+      bfdConfiguration: S.optional(BfdConfigurationInput),
       ingressAclId: S.optional(S.String),
       egressAclId: S.optional(S.String),
       bmpConfiguration: S.optional(ExternalNetworkBmpPatchProperties),
@@ -3583,7 +3484,7 @@ export const ExternalNetworkStaticRoutePatchConfigurationIpv6RoutesList =
 /** Static Route Configuration properties for External Network. */
 export interface ExternalNetworkStaticRoutePatchConfiguration {
   /** BFD configuration properties */
-  bfdConfiguration?: BfdPatchConfiguration;
+  bfdConfiguration?: BfdConfigurationInput;
   /** List of IPv4 Routes. */
   ipv4Routes?: ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList;
   /** List of IPv6 Routes. */
@@ -3592,7 +3493,7 @@ export interface ExternalNetworkStaticRoutePatchConfiguration {
 export const ExternalNetworkStaticRoutePatchConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      bfdConfiguration: S.optional(BfdPatchConfiguration),
+      bfdConfiguration: S.optional(BfdConfigurationInput),
       ipv4Routes: S.optional(
         ExternalNetworkStaticRoutePatchConfigurationIpv4RoutesList,
       ),
@@ -3611,9 +3512,9 @@ export interface ExternalNetworkPatchPropertiesInput {
   /** ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource. */
   networkToNetworkInterconnectId?: string;
   /** Import Route Policy either IPv4 or IPv6. */
-  importRoutePolicy?: ImportRoutePolicyPatch;
+  importRoutePolicy?: ImportRoutePolicy;
   /** Export Route Policy either IPv4 or IPv6. */
-  exportRoutePolicy?: ExportRoutePolicyPatch;
+  exportRoutePolicy?: ExportRoutePolicy;
   /** Peering option list. */
   peeringOption?: PeeringOption | (string & {});
   /** option B properties object */
@@ -3627,8 +3528,8 @@ export const ExternalNetworkPatchPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotation: S.optional(S.String),
     networkToNetworkInterconnectId: S.optional(S.String),
-    importRoutePolicy: S.optional(ImportRoutePolicyPatch),
-    exportRoutePolicy: S.optional(ExportRoutePolicyPatch),
+    importRoutePolicy: S.optional(ImportRoutePolicy),
+    exportRoutePolicy: S.optional(ExportRoutePolicy),
     peeringOption: S.optional(PeeringOption),
     optionBProperties: S.optional(L3OptionBPatchProperties),
     optionAProperties: S.optional(
@@ -4786,35 +4687,23 @@ export const InternalNetworksList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InternalNetworksList>;
 
 /** Connected Subnet properties. */
-export interface ConnectedSubnetPatch {
-  /** Switch configuration description. */
-  annotation?: string;
-  /** Prefix of the Connected Subnet. */
-  prefix: string;
-}
-export const ConnectedSubnetPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    annotation: S.optional(S.String),
-    prefix: S.String,
-  }),
-).annotate({
-  identifier: "ConnectedSubnetPatch",
-}) as any as S.Schema<ConnectedSubnetPatch>;
+export type ConnectedSubnetPatch = ConnectedSubnet;
+export const ConnectedSubnetPatch = ConnectedSubnet;
 
 /** List of Connected IPv4 Subnets. */
 export type InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList =
-  Array<ConnectedSubnetPatch>;
+  Array<ConnectedSubnet>;
 export const InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList =
   /*@__PURE__*/ S.Array(
-    ConnectedSubnetPatch,
+    ConnectedSubnet,
   ) as any as S.Schema<InternalNetworkPatchPropertiesInputConnectedIPv4SubnetsList>;
 
 /** List of connected IPv6 Subnets. */
 export type InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList =
-  Array<ConnectedSubnetPatch>;
+  Array<ConnectedSubnet>;
 export const InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList =
   /*@__PURE__*/ S.Array(
-    ConnectedSubnetPatch,
+    ConnectedSubnet,
   ) as any as S.Schema<InternalNetworkPatchPropertiesInputConnectedIPv6SubnetsList>;
 
 /** To check whether monitoring of internal network is enabled or not. */
@@ -4838,32 +4727,23 @@ export const BgpPatchConfigurationInputIpv6ListenRangePrefixesList =
   ) as any as S.Schema<BgpPatchConfigurationInputIpv6ListenRangePrefixesList>;
 
 /** Neighbor Address properties. */
-export interface NeighborAddressPatchInput {
-  /** IP Address. */
-  address?: string;
-}
-export const NeighborAddressPatchInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NeighborAddressPatchInput",
-}) as any as S.Schema<NeighborAddressPatchInput>;
+export type NeighborAddressPatchInput = NeighborAddressInput;
+export const NeighborAddressPatchInput = NeighborAddressInput;
 
 /** List with stringified IPv4 Neighbor Addresses. */
 export type BgpPatchConfigurationInputIpv4NeighborAddressList =
-  Array<NeighborAddressPatchInput>;
+  Array<NeighborAddressInput>;
 export const BgpPatchConfigurationInputIpv4NeighborAddressList =
   /*@__PURE__*/ S.Array(
-    NeighborAddressPatchInput,
+    NeighborAddressInput,
   ) as any as S.Schema<BgpPatchConfigurationInputIpv4NeighborAddressList>;
 
 /** List with stringified IPv6 Neighbor Address. */
 export type BgpPatchConfigurationInputIpv6NeighborAddressList =
-  Array<NeighborAddressPatchInput>;
+  Array<NeighborAddressInput>;
 export const BgpPatchConfigurationInputIpv6NeighborAddressList =
   /*@__PURE__*/ S.Array(
-    NeighborAddressPatchInput,
+    NeighborAddressInput,
   ) as any as S.Schema<BgpPatchConfigurationInputIpv6NeighborAddressList>;
 
 /** Neighbor IP Address exclusions for BMP. */
@@ -4897,7 +4777,7 @@ export interface BgpPatchConfigurationInput {
   /** Switch configuration description. */
   annotation?: string;
   /** BFD configuration properties */
-  bfdConfiguration?: BfdPatchConfiguration;
+  bfdConfiguration?: BfdConfigurationInput;
   /** Originate a defaultRoute. Ex: "True" | "False". */
   defaultRouteOriginate?: BooleanEnumProperty | (string & {});
   /** Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2. */
@@ -4924,7 +4804,7 @@ export interface BgpPatchConfigurationInput {
 export const BgpPatchConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotation: S.optional(S.String),
-    bfdConfiguration: S.optional(BfdPatchConfiguration),
+    bfdConfiguration: S.optional(BfdConfigurationInput),
     defaultRouteOriginate: S.optional(BooleanEnumProperty),
     allowAS: S.optional(S.Number),
     allowASOverride: S.optional(AllowASOverride),
@@ -4968,7 +4848,7 @@ export const StaticRoutePatchConfigurationIpv6RoutesList =
 /** Static Route Configuration properties. */
 export interface StaticRoutePatchConfiguration {
   /** BFD configuration properties */
-  bfdConfiguration?: BfdPatchConfiguration;
+  bfdConfiguration?: BfdConfigurationInput;
   /** List of IPv4 Routes. */
   ipv4Routes?: StaticRoutePatchConfigurationIpv4RoutesList;
   /** List of IPv6 Routes. */
@@ -4976,7 +4856,7 @@ export interface StaticRoutePatchConfiguration {
 }
 export const StaticRoutePatchConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    bfdConfiguration: S.optional(BfdPatchConfiguration),
+    bfdConfiguration: S.optional(BfdConfigurationInput),
     ipv4Routes: S.optional(StaticRoutePatchConfigurationIpv4RoutesList),
     ipv6Routes: S.optional(StaticRoutePatchConfigurationIpv6RoutesList),
   }),
@@ -8374,25 +8254,10 @@ export const L2IsolationDomainsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<L2IsolationDomainsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface L2IsolationDomainsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const L2IsolationDomainsGetResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "L2IsolationDomainsGetResponseIdentity",
-}) as any as S.Schema<L2IsolationDomainsGetResponseIdentity>;
+export type L2IsolationDomainsGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const L2IsolationDomainsGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface L2IsolationDomainsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8410,7 +8275,7 @@ export interface L2IsolationDomainsGetResponse {
   /** The L2IsolationDomain properties */
   properties: L2IsolationDomainProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: L2IsolationDomainsGetResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const L2IsolationDomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8421,7 +8286,7 @@ export const L2IsolationDomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(L2IsolationDomainsGetResponseTagsMap),
     location: S.String,
     properties: L2IsolationDomainProperties,
-    identity: S.optional(L2IsolationDomainsGetResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "L2IsolationDomainsGetResponse",
@@ -8458,24 +8323,10 @@ export const L2IsolationDomainTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<L2IsolationDomainTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface L2IsolationDomainIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const L2IsolationDomainIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "L2IsolationDomainIdentity",
-}) as any as S.Schema<L2IsolationDomainIdentity>;
+export type L2IsolationDomainIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const L2IsolationDomainIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 /** The L2 Isolation Domain resource definition. */
 export interface L2IsolationDomain {
@@ -8494,7 +8345,7 @@ export interface L2IsolationDomain {
   /** The L2IsolationDomain properties */
   properties: L2IsolationDomainProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: L2IsolationDomainIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const L2IsolationDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8505,7 +8356,7 @@ export const L2IsolationDomain = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(L2IsolationDomainTagsMap),
     location: S.String,
     properties: L2IsolationDomainProperties,
-    identity: S.optional(L2IsolationDomainIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "L2IsolationDomain",
@@ -8597,22 +8448,19 @@ export type ManagedServiceIdentityPatchInputType =
 export const ManagedServiceIdentityPatchInputType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue {}
+export type ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue =
+  UserAssignedIdentityInput;
 export const ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue",
-  }) as any as S.Schema<ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue>;
+  UserAssignedIdentityInput;
 
 /** The identities assigned to this resource by the user. */
 export type ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap = {
-  [key: string]:
-    | ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue
-    | undefined;
+  [key: string]: UserAssignedIdentityInput | undefined;
 };
 export const ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ManagedServiceIdentityPatchInputUserAssignedIdentitiesValue,
+    UserAssignedIdentityInput,
   ) as any as S.Schema<ManagedServiceIdentityPatchInputUserAssignedIdentitiesMap>;
 
 /** The managed service identities assigned to this resource. */
@@ -8677,25 +8525,10 @@ export const L2IsolationDomainsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<L2IsolationDomainsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface L2IsolationDomainsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const L2IsolationDomainsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "L2IsolationDomainsUpdateResponseIdentity",
-}) as any as S.Schema<L2IsolationDomainsUpdateResponseIdentity>;
+export type L2IsolationDomainsUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const L2IsolationDomainsUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface L2IsolationDomainsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8713,7 +8546,7 @@ export interface L2IsolationDomainsUpdateResponse {
   /** The L2IsolationDomain properties */
   properties: L2IsolationDomainProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: L2IsolationDomainsUpdateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const L2IsolationDomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8724,7 +8557,7 @@ export const L2IsolationDomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(L2IsolationDomainsUpdateResponseTagsMap),
     location: S.String,
     properties: L2IsolationDomainProperties,
-    identity: S.optional(L2IsolationDomainsUpdateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "L2IsolationDomainsUpdateResponse",
@@ -8951,24 +8784,14 @@ export const ConnectedSubnetRoutePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectedSubnetRoutePolicy>;
 
 /** Static Route - route policy properties. */
-export interface StaticRouteRoutePolicy {
-  /** Array of ARM Resource ID of the RoutePolicies. */
-  exportRoutePolicy?: L3ExportRoutePolicy;
-}
-export const StaticRouteRoutePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportRoutePolicy: S.optional(L3ExportRoutePolicy),
-  }),
-).annotate({
-  identifier: "StaticRouteRoutePolicy",
-}) as any as S.Schema<StaticRouteRoutePolicy>;
+export type StaticRouteRoutePolicy = ConnectedSubnetRoutePolicy;
+export const StaticRouteRoutePolicy = ConnectedSubnetRoutePolicy;
 
 /** Unique Route Distinguisher properties. */
-export interface L3UniqueRouteDistinguisherPropertiesInput {}
+export type L3UniqueRouteDistinguisherPropertiesInput =
+  UserAssignedIdentityInput;
 export const L3UniqueRouteDistinguisherPropertiesInput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "L3UniqueRouteDistinguisherPropertiesInput",
-  }) as any as S.Schema<L3UniqueRouteDistinguisherPropertiesInput>;
+  UserAssignedIdentityInput;
 
 /** Layer3 Route prefix limit configuration. */
 export interface RoutePrefixLimitProperties {
@@ -9005,9 +8828,9 @@ export interface L3IsolationDomainPropertiesInput {
   /** ARM Resource ID of the Network Fabric. */
   networkFabricId: string;
   /** Static Route - route policy. */
-  staticRouteRoutePolicy?: StaticRouteRoutePolicy;
+  staticRouteRoutePolicy?: ConnectedSubnetRoutePolicy;
   /** Unique Route Distinguisher configuration */
-  uniqueRdConfiguration?: L3UniqueRouteDistinguisherPropertiesInput;
+  uniqueRdConfiguration?: UserAssignedIdentityInput;
   /** IPv4 VRF Limit configuration. */
   v4routePrefixLimit?: RoutePrefixLimitProperties;
   /** IPv6 VRF Limit configuration. */
@@ -9027,10 +8850,8 @@ export const L3IsolationDomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     aggregateRouteConfiguration: S.optional(AggregateRouteConfiguration),
     connectedSubnetRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
     networkFabricId: S.String,
-    staticRouteRoutePolicy: S.optional(StaticRouteRoutePolicy),
-    uniqueRdConfiguration: S.optional(
-      L3UniqueRouteDistinguisherPropertiesInput,
-    ),
+    staticRouteRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
+    uniqueRdConfiguration: S.optional(UserAssignedIdentityInput),
     v4routePrefixLimit: S.optional(RoutePrefixLimitProperties),
     v6routePrefixLimit: S.optional(RoutePrefixLimitProperties),
     exportPolicyConfiguration: S.optional(BmpExportPolicyProperties),
@@ -9040,19 +8861,10 @@ export const L3IsolationDomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<L3IsolationDomainPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface L3IsolationDomainsCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const L3IsolationDomainsCreateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-).annotate({
-  identifier: "L3IsolationDomainsCreateRequestIdentity",
-}) as any as S.Schema<L3IsolationDomainsCreateRequestIdentity>;
+export type L3IsolationDomainsCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
+export const L3IsolationDomainsCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
 
 export interface L3IsolationDomainsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9068,7 +8880,7 @@ export interface L3IsolationDomainsCreateRequest {
   /** The L3 Isolation Domain Properties */
   properties: L3IsolationDomainPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: L3IsolationDomainsCreateRequestIdentity;
+  identity?: L2IsolationDomainsCreateRequestIdentity;
 }
 export const L3IsolationDomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9078,7 +8890,7 @@ export const L3IsolationDomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(L3IsolationDomainsCreateRequestTagsMap),
     location: S.String,
     properties: L3IsolationDomainPropertiesInput,
-    identity: S.optional(L3IsolationDomainsCreateRequestIdentity),
+    identity: S.optional(L2IsolationDomainsCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -9150,7 +8962,7 @@ export interface L3IsolationDomainProperties {
   /** ARM Resource ID of the Network Fabric. */
   networkFabricId: string;
   /** Static Route - route policy. */
-  staticRouteRoutePolicy?: StaticRouteRoutePolicy;
+  staticRouteRoutePolicy?: ConnectedSubnetRoutePolicy;
   /** Unique Route Distinguisher configuration */
   uniqueRdConfiguration?: L3UniqueRouteDistinguisherProperties;
   /** IPv4 VRF Limit configuration. */
@@ -9180,7 +8992,7 @@ export const L3IsolationDomainProperties = /*@__PURE__*/ S.suspend(() =>
     aggregateRouteConfiguration: S.optional(AggregateRouteConfiguration),
     connectedSubnetRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
     networkFabricId: S.String,
-    staticRouteRoutePolicy: S.optional(StaticRouteRoutePolicy),
+    staticRouteRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
     uniqueRdConfiguration: S.optional(L3UniqueRouteDistinguisherProperties),
     v4routePrefixLimit: S.optional(RoutePrefixLimitProperties),
     v6routePrefixLimit: S.optional(RoutePrefixLimitProperties),
@@ -9195,25 +9007,10 @@ export const L3IsolationDomainProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<L3IsolationDomainProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface L3IsolationDomainsCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const L3IsolationDomainsCreateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "L3IsolationDomainsCreateResponseIdentity",
-}) as any as S.Schema<L3IsolationDomainsCreateResponseIdentity>;
+export type L3IsolationDomainsCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const L3IsolationDomainsCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface L3IsolationDomainsCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9231,7 +9028,7 @@ export interface L3IsolationDomainsCreateResponse {
   /** The L3 Isolation Domain Properties */
   properties: L3IsolationDomainProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: L3IsolationDomainsCreateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const L3IsolationDomainsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9242,7 +9039,7 @@ export const L3IsolationDomainsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(L3IsolationDomainsCreateResponseTagsMap),
     location: S.String,
     properties: L3IsolationDomainProperties,
-    identity: S.optional(L3IsolationDomainsCreateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "L3IsolationDomainsCreateResponse",
@@ -9315,25 +9112,10 @@ export const L3IsolationDomainsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<L3IsolationDomainsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface L3IsolationDomainsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const L3IsolationDomainsGetResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "L3IsolationDomainsGetResponseIdentity",
-}) as any as S.Schema<L3IsolationDomainsGetResponseIdentity>;
+export type L3IsolationDomainsGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const L3IsolationDomainsGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface L3IsolationDomainsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9351,7 +9133,7 @@ export interface L3IsolationDomainsGetResponse {
   /** The L3 Isolation Domain Properties */
   properties: L3IsolationDomainProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: L3IsolationDomainsGetResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const L3IsolationDomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9362,7 +9144,7 @@ export const L3IsolationDomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(L3IsolationDomainsGetResponseTagsMap),
     location: S.String,
     properties: L3IsolationDomainProperties,
-    identity: S.optional(L3IsolationDomainsGetResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "L3IsolationDomainsGetResponse",
@@ -9399,24 +9181,10 @@ export const L3IsolationDomainTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<L3IsolationDomainTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface L3IsolationDomainIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const L3IsolationDomainIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "L3IsolationDomainIdentity",
-}) as any as S.Schema<L3IsolationDomainIdentity>;
+export type L3IsolationDomainIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const L3IsolationDomainIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 /** The L3 Isolation Domain resource definition. */
 export interface L3IsolationDomain {
@@ -9435,7 +9203,7 @@ export interface L3IsolationDomain {
   /** The L3 Isolation Domain Properties */
   properties: L3IsolationDomainProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: L3IsolationDomainIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const L3IsolationDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9446,7 +9214,7 @@ export const L3IsolationDomain = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(L3IsolationDomainTagsMap),
     location: S.String,
     properties: L3IsolationDomainProperties,
-    identity: S.optional(L3IsolationDomainIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "L3IsolationDomain",
@@ -9544,62 +9312,20 @@ export const AggregateRoutePatchConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AggregateRoutePatchConfiguration>;
 
 /** Array of ARM Resource ID of the RoutePolicies. */
-export interface L3ExportRoutePolicyPatch {
-  /** ARM Resource ID of the RoutePolicy. */
-  exportIpv4RoutePolicyId?: string;
-  /** ARM Resource ID of the RoutePolicy. */
-  exportIpv6RoutePolicyId?: string;
-}
-export const L3ExportRoutePolicyPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportIpv4RoutePolicyId: S.optional(S.String),
-    exportIpv6RoutePolicyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "L3ExportRoutePolicyPatch",
-}) as any as S.Schema<L3ExportRoutePolicyPatch>;
+export type L3ExportRoutePolicyPatch = L3ExportRoutePolicy;
+export const L3ExportRoutePolicyPatch = L3ExportRoutePolicy;
 
 /** Connected Subnet Route Policy properties. */
-export interface ConnectedSubnetRoutePolicyPatch {
-  /** Array of ARM Resource ID of the RoutePolicies. */
-  exportRoutePolicy?: L3ExportRoutePolicyPatch;
-}
-export const ConnectedSubnetRoutePolicyPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportRoutePolicy: S.optional(L3ExportRoutePolicyPatch),
-  }),
-).annotate({
-  identifier: "ConnectedSubnetRoutePolicyPatch",
-}) as any as S.Schema<ConnectedSubnetRoutePolicyPatch>;
+export type ConnectedSubnetRoutePolicyPatch = ConnectedSubnetRoutePolicy;
+export const ConnectedSubnetRoutePolicyPatch = ConnectedSubnetRoutePolicy;
 
 /** Static Route - route policy properties. */
-export interface StaticRouteRoutePolicyPatch {
-  /** Array of ARM Resource ID of the RoutePolicies. */
-  exportRoutePolicy?: L3ExportRoutePolicyPatch;
-}
-export const StaticRouteRoutePolicyPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportRoutePolicy: S.optional(L3ExportRoutePolicyPatch),
-  }),
-).annotate({
-  identifier: "StaticRouteRoutePolicyPatch",
-}) as any as S.Schema<StaticRouteRoutePolicyPatch>;
+export type StaticRouteRoutePolicyPatch = ConnectedSubnetRoutePolicy;
+export const StaticRouteRoutePolicyPatch = ConnectedSubnetRoutePolicy;
 
 /** VRP Limit patch configuration. */
-export interface RoutePrefixLimitPatchProperties {
-  /** Hard limit for the routes. */
-  hardLimit?: number;
-  /** Threshold for the routes. */
-  threshold?: number;
-}
-export const RoutePrefixLimitPatchProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hardLimit: S.optional(S.Number),
-    threshold: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RoutePrefixLimitPatchProperties",
-}) as any as S.Schema<RoutePrefixLimitPatchProperties>;
+export type RoutePrefixLimitPatchProperties = RoutePrefixLimitProperties;
+export const RoutePrefixLimitPatchProperties = RoutePrefixLimitProperties;
 
 /** Export Policy for the BGP Monitoring Protocol (BMP) Configuration. */
 export type BmpExportPolicyPatchPropertiesExportPoliciesList = Array<
@@ -9636,13 +9362,13 @@ export interface L3IsolationDomainPatchProperties {
   /** Aggregate route configurations. */
   aggregateRouteConfiguration?: AggregateRoutePatchConfiguration;
   /** Connected Subnet RoutePolicy */
-  connectedSubnetRoutePolicy?: ConnectedSubnetRoutePolicyPatch;
+  connectedSubnetRoutePolicy?: ConnectedSubnetRoutePolicy;
   /** Static Route - route policy. */
-  staticRouteRoutePolicy?: StaticRouteRoutePolicyPatch;
+  staticRouteRoutePolicy?: ConnectedSubnetRoutePolicy;
   /** IPv4 VRF Limit configuration. */
-  v4routePrefixLimit?: RoutePrefixLimitPatchProperties;
+  v4routePrefixLimit?: RoutePrefixLimitProperties;
   /** IPv6 VRF Limit configuration. */
-  v6routePrefixLimit?: RoutePrefixLimitPatchProperties;
+  v6routePrefixLimit?: RoutePrefixLimitProperties;
   /** BMP Export Policy configuration. */
   exportPolicyConfiguration?: BmpExportPolicyPatchProperties;
 }
@@ -9652,10 +9378,10 @@ export const L3IsolationDomainPatchProperties = /*@__PURE__*/ S.suspend(() =>
     redistributeConnectedSubnets: S.optional(RedistributeConnectedSubnets),
     redistributeStaticRoutes: S.optional(RedistributeStaticRoutes),
     aggregateRouteConfiguration: S.optional(AggregateRoutePatchConfiguration),
-    connectedSubnetRoutePolicy: S.optional(ConnectedSubnetRoutePolicyPatch),
-    staticRouteRoutePolicy: S.optional(StaticRouteRoutePolicyPatch),
-    v4routePrefixLimit: S.optional(RoutePrefixLimitPatchProperties),
-    v6routePrefixLimit: S.optional(RoutePrefixLimitPatchProperties),
+    connectedSubnetRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
+    staticRouteRoutePolicy: S.optional(ConnectedSubnetRoutePolicy),
+    v4routePrefixLimit: S.optional(RoutePrefixLimitProperties),
+    v6routePrefixLimit: S.optional(RoutePrefixLimitProperties),
     exportPolicyConfiguration: S.optional(BmpExportPolicyPatchProperties),
   }),
 ).annotate({
@@ -9706,25 +9432,10 @@ export const L3IsolationDomainsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<L3IsolationDomainsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface L3IsolationDomainsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const L3IsolationDomainsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "L3IsolationDomainsUpdateResponseIdentity",
-}) as any as S.Schema<L3IsolationDomainsUpdateResponseIdentity>;
+export type L3IsolationDomainsUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const L3IsolationDomainsUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface L3IsolationDomainsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9742,7 +9453,7 @@ export interface L3IsolationDomainsUpdateResponse {
   /** The L3 Isolation Domain Properties */
   properties: L3IsolationDomainProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: L3IsolationDomainsUpdateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const L3IsolationDomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9753,7 +9464,7 @@ export const L3IsolationDomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(L3IsolationDomainsUpdateResponseTagsMap),
     location: S.String,
     properties: L3IsolationDomainProperties,
-    identity: S.optional(L3IsolationDomainsUpdateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "L3IsolationDomainsUpdateResponse",
@@ -9900,18 +9611,10 @@ export const NeighborGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NeighborGroupPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NeighborGroupsCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const NeighborGroupsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "NeighborGroupsCreateRequestIdentity",
-}) as any as S.Schema<NeighborGroupsCreateRequestIdentity>;
+export type NeighborGroupsCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
+export const NeighborGroupsCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
 
 export interface NeighborGroupsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9927,7 +9630,7 @@ export interface NeighborGroupsCreateRequest {
   /** The NeighborGroup Properties */
   properties: NeighborGroupPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NeighborGroupsCreateRequestIdentity;
+  identity?: L2IsolationDomainsCreateRequestIdentity;
 }
 export const NeighborGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9937,7 +9640,7 @@ export const NeighborGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NeighborGroupsCreateRequestTagsMap),
     location: S.String,
     properties: NeighborGroupPropertiesInput,
-    identity: S.optional(NeighborGroupsCreateRequestIdentity),
+    identity: S.optional(L2IsolationDomainsCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -10014,25 +9717,10 @@ export const NeighborGroupProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NeighborGroupProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NeighborGroupsCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NeighborGroupsCreateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "NeighborGroupsCreateResponseIdentity",
-}) as any as S.Schema<NeighborGroupsCreateResponseIdentity>;
+export type NeighborGroupsCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NeighborGroupsCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NeighborGroupsCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10050,7 +9738,7 @@ export interface NeighborGroupsCreateResponse {
   /** The NeighborGroup Properties */
   properties: NeighborGroupProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NeighborGroupsCreateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NeighborGroupsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10061,7 +9749,7 @@ export const NeighborGroupsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NeighborGroupsCreateResponseTagsMap),
     location: S.String,
     properties: NeighborGroupProperties,
-    identity: S.optional(NeighborGroupsCreateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NeighborGroupsCreateResponse",
@@ -10134,24 +9822,10 @@ export const NeighborGroupsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NeighborGroupsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NeighborGroupsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NeighborGroupsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NeighborGroupsGetResponseIdentity",
-}) as any as S.Schema<NeighborGroupsGetResponseIdentity>;
+export type NeighborGroupsGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NeighborGroupsGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NeighborGroupsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10169,7 +9843,7 @@ export interface NeighborGroupsGetResponse {
   /** The NeighborGroup Properties */
   properties: NeighborGroupProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NeighborGroupsGetResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NeighborGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10180,7 +9854,7 @@ export const NeighborGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NeighborGroupsGetResponseTagsMap),
     location: S.String,
     properties: NeighborGroupProperties,
-    identity: S.optional(NeighborGroupsGetResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NeighborGroupsGetResponse",
@@ -10217,24 +9891,8 @@ export const NeighborGroupTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NeighborGroupTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NeighborGroupIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NeighborGroupIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NeighborGroupIdentity",
-}) as any as S.Schema<NeighborGroupIdentity>;
+export type NeighborGroupIdentity = L2IsolationDomainsCreateResponseIdentity;
+export const NeighborGroupIdentity = L2IsolationDomainsCreateResponseIdentity;
 
 /** Defines the Neighbor Group. */
 export interface NeighborGroup {
@@ -10253,7 +9911,7 @@ export interface NeighborGroup {
   /** The NeighborGroup Properties */
   properties: NeighborGroupProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NeighborGroupIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NeighborGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10264,7 +9922,7 @@ export const NeighborGroup = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NeighborGroupTagsMap),
     location: S.String,
     properties: NeighborGroupProperties,
-    identity: S.optional(NeighborGroupIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({ identifier: "NeighborGroup" }) as any as S.Schema<NeighborGroup>;
 
@@ -10568,25 +10226,10 @@ export const NeighborGroupsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NeighborGroupsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NeighborGroupsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NeighborGroupsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "NeighborGroupsUpdateResponseIdentity",
-}) as any as S.Schema<NeighborGroupsUpdateResponseIdentity>;
+export type NeighborGroupsUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NeighborGroupsUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NeighborGroupsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10604,7 +10247,7 @@ export interface NeighborGroupsUpdateResponse {
   /** The NeighborGroup Properties */
   properties: NeighborGroupProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NeighborGroupsUpdateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NeighborGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10615,7 +10258,7 @@ export const NeighborGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NeighborGroupsUpdateResponseTagsMap),
     location: S.String,
     properties: NeighborGroupProperties,
-    identity: S.optional(NeighborGroupsUpdateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NeighborGroupsUpdateResponse",
@@ -10655,19 +10298,10 @@ export const NetworkBootstrapDevicePropertiesInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkBootstrapDevicePropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkBootstrapDevicesCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
+export type NetworkBootstrapDevicesCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
 export const NetworkBootstrapDevicesCreateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-  ).annotate({
-    identifier: "NetworkBootstrapDevicesCreateRequestIdentity",
-  }) as any as S.Schema<NetworkBootstrapDevicesCreateRequestIdentity>;
+  L2IsolationDomainsCreateRequestIdentity;
 
 export interface NetworkBootstrapDevicesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10683,7 +10317,7 @@ export interface NetworkBootstrapDevicesCreateRequest {
   /** The NetworkBootstrapDevice properties */
   properties: NetworkBootstrapDevicePropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkBootstrapDevicesCreateRequestIdentity;
+  identity?: L2IsolationDomainsCreateRequestIdentity;
 }
 export const NetworkBootstrapDevicesCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -10694,7 +10328,7 @@ export const NetworkBootstrapDevicesCreateRequest = /*@__PURE__*/ S.suspend(
       tags: S.optional(NetworkBootstrapDevicesCreateRequestTagsMap),
       location: S.String,
       properties: NetworkBootstrapDevicePropertiesInput,
-      identity: S.optional(NetworkBootstrapDevicesCreateRequestIdentity),
+      identity: S.optional(L2IsolationDomainsCreateRequestIdentity),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -10770,25 +10404,10 @@ export const NetworkBootstrapDeviceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkBootstrapDeviceProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkBootstrapDevicesCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type NetworkBootstrapDevicesCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 export const NetworkBootstrapDevicesCreateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "NetworkBootstrapDevicesCreateResponseIdentity",
-  }) as any as S.Schema<NetworkBootstrapDevicesCreateResponseIdentity>;
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkBootstrapDevicesCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10806,7 +10425,7 @@ export interface NetworkBootstrapDevicesCreateResponse {
   /** The NetworkBootstrapDevice properties */
   properties: NetworkBootstrapDeviceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkBootstrapDevicesCreateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkBootstrapDevicesCreateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -10818,7 +10437,7 @@ export const NetworkBootstrapDevicesCreateResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(NetworkBootstrapDevicesCreateResponseTagsMap),
       location: S.String,
       properties: NetworkBootstrapDeviceProperties,
-      identity: S.optional(NetworkBootstrapDevicesCreateResponseIdentity),
+      identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
     }),
 ).annotate({
   identifier: "NetworkBootstrapDevicesCreateResponse",
@@ -10892,25 +10511,10 @@ export const NetworkBootstrapDevicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkBootstrapDevicesGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkBootstrapDevicesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type NetworkBootstrapDevicesGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 export const NetworkBootstrapDevicesGetResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "NetworkBootstrapDevicesGetResponseIdentity",
-  }) as any as S.Schema<NetworkBootstrapDevicesGetResponseIdentity>;
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkBootstrapDevicesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10928,7 +10532,7 @@ export interface NetworkBootstrapDevicesGetResponse {
   /** The NetworkBootstrapDevice properties */
   properties: NetworkBootstrapDeviceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkBootstrapDevicesGetResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkBootstrapDevicesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10939,7 +10543,7 @@ export const NetworkBootstrapDevicesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkBootstrapDevicesGetResponseTagsMap),
     location: S.String,
     properties: NetworkBootstrapDeviceProperties,
-    identity: S.optional(NetworkBootstrapDevicesGetResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkBootstrapDevicesGetResponse",
@@ -10978,24 +10582,10 @@ export const NetworkBootstrapDeviceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkBootstrapDeviceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkBootstrapDeviceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkBootstrapDeviceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkBootstrapDeviceIdentity",
-}) as any as S.Schema<NetworkBootstrapDeviceIdentity>;
+export type NetworkBootstrapDeviceIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkBootstrapDeviceIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 /** The Network Bootstrap Device resource definition. */
 export interface NetworkBootstrapDevice {
@@ -11014,7 +10604,7 @@ export interface NetworkBootstrapDevice {
   /** The NetworkBootstrapDevice properties */
   properties: NetworkBootstrapDeviceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkBootstrapDeviceIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkBootstrapDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11025,7 +10615,7 @@ export const NetworkBootstrapDevice = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkBootstrapDeviceTagsMap),
     location: S.String,
     properties: NetworkBootstrapDeviceProperties,
-    identity: S.optional(NetworkBootstrapDeviceIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkBootstrapDevice",
@@ -11655,25 +11245,10 @@ export const NetworkBootstrapDevicesUpdateResponseTagsMap =
   ) as any as S.Schema<NetworkBootstrapDevicesUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkBootstrapDevicesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type NetworkBootstrapDevicesUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 export const NetworkBootstrapDevicesUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "NetworkBootstrapDevicesUpdateResponseIdentity",
-  }) as any as S.Schema<NetworkBootstrapDevicesUpdateResponseIdentity>;
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkBootstrapDevicesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -11691,7 +11266,7 @@ export interface NetworkBootstrapDevicesUpdateResponse {
   /** The NetworkBootstrapDevice properties */
   properties: NetworkBootstrapDeviceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkBootstrapDevicesUpdateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkBootstrapDevicesUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -11703,7 +11278,7 @@ export const NetworkBootstrapDevicesUpdateResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(NetworkBootstrapDevicesUpdateResponseTagsMap),
       location: S.String,
       properties: NetworkBootstrapDeviceProperties,
-      identity: S.optional(NetworkBootstrapDevicesUpdateResponseIdentity),
+      identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
     }),
 ).annotate({
   identifier: "NetworkBootstrapDevicesUpdateResponse",
@@ -12567,18 +12142,10 @@ export const NetworkDevicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkDevicePropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkDevicesCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const NetworkDevicesCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "NetworkDevicesCreateRequestIdentity",
-}) as any as S.Schema<NetworkDevicesCreateRequestIdentity>;
+export type NetworkDevicesCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
+export const NetworkDevicesCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
 
 export interface NetworkDevicesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12594,7 +12161,7 @@ export interface NetworkDevicesCreateRequest {
   /** The NetworkDevice properties */
   properties: NetworkDevicePropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkDevicesCreateRequestIdentity;
+  identity?: L2IsolationDomainsCreateRequestIdentity;
 }
 export const NetworkDevicesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12604,7 +12171,7 @@ export const NetworkDevicesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkDevicesCreateRequestTagsMap),
     location: S.String,
     properties: NetworkDevicePropertiesInput,
-    identity: S.optional(NetworkDevicesCreateRequestIdentity),
+    identity: S.optional(L2IsolationDomainsCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -12810,25 +12377,10 @@ export const NetworkDeviceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkDeviceProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkDevicesCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkDevicesCreateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "NetworkDevicesCreateResponseIdentity",
-}) as any as S.Schema<NetworkDevicesCreateResponseIdentity>;
+export type NetworkDevicesCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkDevicesCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkDevicesCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12846,7 +12398,7 @@ export interface NetworkDevicesCreateResponse {
   /** The NetworkDevice properties */
   properties: NetworkDeviceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkDevicesCreateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkDevicesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12857,7 +12409,7 @@ export const NetworkDevicesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkDevicesCreateResponseTagsMap),
     location: S.String,
     properties: NetworkDeviceProperties,
-    identity: S.optional(NetworkDevicesCreateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkDevicesCreateResponse",
@@ -12930,24 +12482,10 @@ export const NetworkDevicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkDevicesGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkDevicesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkDevicesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkDevicesGetResponseIdentity",
-}) as any as S.Schema<NetworkDevicesGetResponseIdentity>;
+export type NetworkDevicesGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkDevicesGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkDevicesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12965,7 +12503,7 @@ export interface NetworkDevicesGetResponse {
   /** The NetworkDevice properties */
   properties: NetworkDeviceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkDevicesGetResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkDevicesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12976,7 +12514,7 @@ export const NetworkDevicesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkDevicesGetResponseTagsMap),
     location: S.String,
     properties: NetworkDeviceProperties,
-    identity: S.optional(NetworkDevicesGetResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkDevicesGetResponse",
@@ -13252,24 +12790,8 @@ export const NetworkDeviceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkDeviceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkDeviceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkDeviceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkDeviceIdentity",
-}) as any as S.Schema<NetworkDeviceIdentity>;
+export type NetworkDeviceIdentity = L2IsolationDomainsCreateResponseIdentity;
+export const NetworkDeviceIdentity = L2IsolationDomainsCreateResponseIdentity;
 
 /** The Network Device resource definition. */
 export interface NetworkDevice {
@@ -13288,7 +12810,7 @@ export interface NetworkDevice {
   /** The NetworkDevice properties */
   properties: NetworkDeviceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkDeviceIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13299,7 +12821,7 @@ export const NetworkDevice = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkDeviceTagsMap),
     location: S.String,
     properties: NetworkDeviceProperties,
-    identity: S.optional(NetworkDeviceIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({ identifier: "NetworkDevice" }) as any as S.Schema<NetworkDevice>;
 
@@ -14287,25 +13809,10 @@ export const NetworkDevicesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkDevicesUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkDevicesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkDevicesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "NetworkDevicesUpdateResponseIdentity",
-}) as any as S.Schema<NetworkDevicesUpdateResponseIdentity>;
+export type NetworkDevicesUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkDevicesUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkDevicesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -14323,7 +13830,7 @@ export interface NetworkDevicesUpdateResponse {
   /** The NetworkDevice properties */
   properties: NetworkDeviceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkDevicesUpdateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkDevicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14334,7 +13841,7 @@ export const NetworkDevicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkDevicesUpdateResponseTagsMap),
     location: S.String,
     properties: NetworkDeviceProperties,
-    identity: S.optional(NetworkDevicesUpdateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkDevicesUpdateResponse",
@@ -14807,19 +14314,10 @@ export const NetworkFabricControllerPropertiesInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkFabricControllerPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFabricControllersCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
+export type NetworkFabricControllersCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
 export const NetworkFabricControllersCreateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-  ).annotate({
-    identifier: "NetworkFabricControllersCreateRequestIdentity",
-  }) as any as S.Schema<NetworkFabricControllersCreateRequestIdentity>;
+  L2IsolationDomainsCreateRequestIdentity;
 
 export interface NetworkFabricControllersCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -14835,7 +14333,7 @@ export interface NetworkFabricControllersCreateRequest {
   /** The NetworkFabricController Properties */
   properties: NetworkFabricControllerPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFabricControllersCreateRequestIdentity;
+  identity?: L2IsolationDomainsCreateRequestIdentity;
 }
 export const NetworkFabricControllersCreateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -14846,7 +14344,7 @@ export const NetworkFabricControllersCreateRequest = /*@__PURE__*/ S.suspend(
       tags: S.optional(NetworkFabricControllersCreateRequestTagsMap),
       location: S.String,
       properties: NetworkFabricControllerPropertiesInput,
-      identity: S.optional(NetworkFabricControllersCreateRequestIdentity),
+      identity: S.optional(L2IsolationDomainsCreateRequestIdentity),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -15007,25 +14505,10 @@ export const NetworkFabricControllerProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkFabricControllerProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFabricControllersCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type NetworkFabricControllersCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 export const NetworkFabricControllersCreateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "NetworkFabricControllersCreateResponseIdentity",
-  }) as any as S.Schema<NetworkFabricControllersCreateResponseIdentity>;
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkFabricControllersCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -15043,7 +14526,7 @@ export interface NetworkFabricControllersCreateResponse {
   /** The NetworkFabricController Properties */
   properties: NetworkFabricControllerProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFabricControllersCreateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkFabricControllersCreateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -15055,7 +14538,7 @@ export const NetworkFabricControllersCreateResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(NetworkFabricControllersCreateResponseTagsMap),
       location: S.String,
       properties: NetworkFabricControllerProperties,
-      identity: S.optional(NetworkFabricControllersCreateResponseIdentity),
+      identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
     }),
 ).annotate({
   identifier: "NetworkFabricControllersCreateResponse",
@@ -15130,25 +14613,10 @@ export const NetworkFabricControllersGetResponseTagsMap =
   ) as any as S.Schema<NetworkFabricControllersGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFabricControllersGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type NetworkFabricControllersGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 export const NetworkFabricControllersGetResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "NetworkFabricControllersGetResponseIdentity",
-  }) as any as S.Schema<NetworkFabricControllersGetResponseIdentity>;
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkFabricControllersGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -15166,7 +14634,7 @@ export interface NetworkFabricControllersGetResponse {
   /** The NetworkFabricController Properties */
   properties: NetworkFabricControllerProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFabricControllersGetResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkFabricControllersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15177,7 +14645,7 @@ export const NetworkFabricControllersGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkFabricControllersGetResponseTagsMap),
     location: S.String,
     properties: NetworkFabricControllerProperties,
-    identity: S.optional(NetworkFabricControllersGetResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkFabricControllersGetResponse",
@@ -15216,24 +14684,10 @@ export const NetworkFabricControllerTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkFabricControllerTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFabricControllerIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkFabricControllerIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkFabricControllerIdentity",
-}) as any as S.Schema<NetworkFabricControllerIdentity>;
+export type NetworkFabricControllerIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkFabricControllerIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 /** The Network Fabric Controller resource definition. */
 export interface NetworkFabricController {
@@ -15252,7 +14706,7 @@ export interface NetworkFabricController {
   /** The NetworkFabricController Properties */
   properties: NetworkFabricControllerProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFabricControllerIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkFabricController = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15263,7 +14717,7 @@ export const NetworkFabricController = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkFabricControllerTagsMap),
     location: S.String,
     properties: NetworkFabricControllerProperties,
-    identity: S.optional(NetworkFabricControllerIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkFabricController",
@@ -15406,25 +14860,10 @@ export const NetworkFabricControllersUpdateResponseTagsMap =
   ) as any as S.Schema<NetworkFabricControllersUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFabricControllersUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type NetworkFabricControllersUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 export const NetworkFabricControllersUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "NetworkFabricControllersUpdateResponseIdentity",
-  }) as any as S.Schema<NetworkFabricControllersUpdateResponseIdentity>;
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkFabricControllersUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -15442,7 +14881,7 @@ export interface NetworkFabricControllersUpdateResponse {
   /** The NetworkFabricController Properties */
   properties: NetworkFabricControllerProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFabricControllersUpdateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkFabricControllersUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -15454,7 +14893,7 @@ export const NetworkFabricControllersUpdateResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(NetworkFabricControllersUpdateResponseTagsMap),
       location: S.String,
       properties: NetworkFabricControllerProperties,
-      identity: S.optional(NetworkFabricControllersUpdateResponseIdentity),
+      identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
     }),
 ).annotate({
   identifier: "NetworkFabricControllersUpdateResponse",
@@ -16383,18 +15822,10 @@ export const NetworkFabricPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkFabricPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFabricsCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const NetworkFabricsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "NetworkFabricsCreateRequestIdentity",
-}) as any as S.Schema<NetworkFabricsCreateRequestIdentity>;
+export type NetworkFabricsCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
+export const NetworkFabricsCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
 
 export interface NetworkFabricsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16410,7 +15841,7 @@ export interface NetworkFabricsCreateRequest {
   /** The NetworkFabric Properties */
   properties: NetworkFabricPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFabricsCreateRequestIdentity;
+  identity?: L2IsolationDomainsCreateRequestIdentity;
 }
 export const NetworkFabricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16420,7 +15851,7 @@ export const NetworkFabricsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkFabricsCreateRequestTagsMap),
     location: S.String,
     properties: NetworkFabricPropertiesInput,
-    identity: S.optional(NetworkFabricsCreateRequestIdentity),
+    identity: S.optional(L2IsolationDomainsCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -16816,25 +16247,10 @@ export const NetworkFabricProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkFabricProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFabricsCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkFabricsCreateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "NetworkFabricsCreateResponseIdentity",
-}) as any as S.Schema<NetworkFabricsCreateResponseIdentity>;
+export type NetworkFabricsCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkFabricsCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkFabricsCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -16852,7 +16268,7 @@ export interface NetworkFabricsCreateResponse {
   /** The NetworkFabric Properties */
   properties: NetworkFabricProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFabricsCreateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkFabricsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16863,7 +16279,7 @@ export const NetworkFabricsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkFabricsCreateResponseTagsMap),
     location: S.String,
     properties: NetworkFabricProperties,
-    identity: S.optional(NetworkFabricsCreateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkFabricsCreateResponse",
@@ -17188,24 +16604,10 @@ export const NetworkFabricsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkFabricsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFabricsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkFabricsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkFabricsGetResponseIdentity",
-}) as any as S.Schema<NetworkFabricsGetResponseIdentity>;
+export type NetworkFabricsGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkFabricsGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkFabricsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -17223,7 +16625,7 @@ export interface NetworkFabricsGetResponse {
   /** The NetworkFabric Properties */
   properties: NetworkFabricProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFabricsGetResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkFabricsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17234,7 +16636,7 @@ export const NetworkFabricsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkFabricsGetResponseTagsMap),
     location: S.String,
     properties: NetworkFabricProperties,
-    identity: S.optional(NetworkFabricsGetResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkFabricsGetResponse",
@@ -17593,24 +16995,8 @@ export const NetworkFabricTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkFabricTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFabricIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkFabricIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkFabricIdentity",
-}) as any as S.Schema<NetworkFabricIdentity>;
+export type NetworkFabricIdentity = L2IsolationDomainsCreateResponseIdentity;
+export const NetworkFabricIdentity = L2IsolationDomainsCreateResponseIdentity;
 
 /** The Network Fabric resource definition. */
 export interface NetworkFabric {
@@ -17629,7 +17015,7 @@ export interface NetworkFabric {
   /** The NetworkFabric Properties */
   properties: NetworkFabricProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFabricIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkFabric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17640,7 +17026,7 @@ export const NetworkFabric = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkFabricTagsMap),
     location: S.String,
     properties: NetworkFabricProperties,
-    identity: S.optional(NetworkFabricIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({ identifier: "NetworkFabric" }) as any as S.Schema<NetworkFabric>;
 
@@ -18527,7 +17913,7 @@ export interface VpnOptionAPatchProperties {
   /** Peer ASN number.Example : 28 */
   peerASN?: number;
   /** BFD Configuration properties. */
-  bfdConfiguration?: BfdPatchConfiguration;
+  bfdConfiguration?: BfdConfigurationInput;
 }
 export const VpnOptionAPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18538,7 +17924,7 @@ export const VpnOptionAPatchProperties = /*@__PURE__*/ S.suspend(() =>
     mtu: S.optional(S.Number),
     vlanId: S.optional(S.Number),
     peerASN: S.optional(S.Number),
-    bfdConfiguration: S.optional(BfdPatchConfiguration),
+    bfdConfiguration: S.optional(BfdConfigurationInput),
   }),
 ).annotate({
   identifier: "VpnOptionAPatchProperties",
@@ -18677,21 +18063,10 @@ export const NetworkFabricPatchPropertiesFeatureFlagsList =
   ) as any as S.Schema<NetworkFabricPatchPropertiesFeatureFlagsList>;
 
 /** Authorized Transceiver Patch Properties. */
-export interface AuthorizedTransceiverPatchProperties {
-  /** Vendor of the transceiver. */
-  vendor?: string;
-  /** Key that must be configured on the fabric. */
-  key?: string;
-}
-export const AuthorizedTransceiverPatchProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      vendor: S.optional(S.String),
-      key: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "AuthorizedTransceiverPatchProperties",
-}) as any as S.Schema<AuthorizedTransceiverPatchProperties>;
+export type AuthorizedTransceiverPatchProperties =
+  AuthorizedTransceiverProperties;
+export const AuthorizedTransceiverPatchProperties =
+  AuthorizedTransceiverProperties;
 
 /** Network Fabric Patch properties. */
 export interface NetworkFabricPatchProperties {
@@ -18726,7 +18101,7 @@ export interface NetworkFabricPatchProperties {
   /** NetworkFabric feature flag configuration information */
   featureFlags?: NetworkFabricPatchPropertiesFeatureFlagsList;
   /** Authorized transciever configuration for NetworkFabric. */
-  authorizedTransceiver?: AuthorizedTransceiverPatchProperties;
+  authorizedTransceiver?: AuthorizedTransceiverProperties;
 }
 export const NetworkFabricPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18751,7 +18126,7 @@ export const NetworkFabricPatchProperties = /*@__PURE__*/ S.suspend(() =>
     uniqueRdConfiguration: S.optional(UniqueRouteDistinguisherPatchProperties),
     qosConfiguration: S.optional(QosPatchProperties),
     featureFlags: S.optional(NetworkFabricPatchPropertiesFeatureFlagsList),
-    authorizedTransceiver: S.optional(AuthorizedTransceiverPatchProperties),
+    authorizedTransceiver: S.optional(AuthorizedTransceiverProperties),
   }),
 ).annotate({
   identifier: "NetworkFabricPatchProperties",
@@ -18801,25 +18176,10 @@ export const NetworkFabricsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkFabricsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkFabricsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkFabricsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "NetworkFabricsUpdateResponseIdentity",
-}) as any as S.Schema<NetworkFabricsUpdateResponseIdentity>;
+export type NetworkFabricsUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkFabricsUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkFabricsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -18837,7 +18197,7 @@ export interface NetworkFabricsUpdateResponse {
   /** The NetworkFabric Properties */
   properties: NetworkFabricProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkFabricsUpdateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkFabricsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18848,7 +18208,7 @@ export const NetworkFabricsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkFabricsUpdateResponseTagsMap),
     location: S.String,
     properties: NetworkFabricProperties,
-    identity: S.optional(NetworkFabricsUpdateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkFabricsUpdateResponse",
@@ -19271,19 +18631,10 @@ export const NetworkInterfacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterfacePropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkInterfacesCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const NetworkInterfacesCreateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-).annotate({
-  identifier: "NetworkInterfacesCreateRequestIdentity",
-}) as any as S.Schema<NetworkInterfacesCreateRequestIdentity>;
+export type NetworkInterfacesCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
+export const NetworkInterfacesCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
 
 export interface NetworkInterfacesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19297,7 +18648,7 @@ export interface NetworkInterfacesCreateRequest {
   /** The NetworkInterface properties */
   properties: NetworkInterfacePropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkInterfacesCreateRequestIdentity;
+  identity?: L2IsolationDomainsCreateRequestIdentity;
 }
 export const NetworkInterfacesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19306,7 +18657,7 @@ export const NetworkInterfacesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     networkDeviceName: S.String.pipe(T.Label()),
     networkInterfaceName: S.String.pipe(T.Label()),
     properties: NetworkInterfacePropertiesInput,
-    identity: S.optional(NetworkInterfacesCreateRequestIdentity),
+    identity: S.optional(L2IsolationDomainsCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -19369,25 +18720,10 @@ export const NetworkInterfaceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterfaceProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkInterfacesCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkInterfacesCreateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "NetworkInterfacesCreateResponseIdentity",
-}) as any as S.Schema<NetworkInterfacesCreateResponseIdentity>;
+export type NetworkInterfacesCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkInterfacesCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkInterfacesCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -19401,7 +18737,7 @@ export interface NetworkInterfacesCreateResponse {
   /** The NetworkInterface properties */
   properties: NetworkInterfaceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkInterfacesCreateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkInterfacesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19410,7 +18746,7 @@ export const NetworkInterfacesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: NetworkInterfaceProperties,
-    identity: S.optional(NetworkInterfacesCreateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkInterfacesCreateResponse",
@@ -19480,25 +18816,10 @@ export const NetworkInterfacesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterfacesGetRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkInterfacesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkInterfacesGetResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "NetworkInterfacesGetResponseIdentity",
-}) as any as S.Schema<NetworkInterfacesGetResponseIdentity>;
+export type NetworkInterfacesGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkInterfacesGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkInterfacesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -19512,7 +18833,7 @@ export interface NetworkInterfacesGetResponse {
   /** The NetworkInterface properties */
   properties: NetworkInterfaceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkInterfacesGetResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkInterfacesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19521,7 +18842,7 @@ export const NetworkInterfacesGetResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: NetworkInterfaceProperties,
-    identity: S.optional(NetworkInterfacesGetResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkInterfacesGetResponse",
@@ -19554,24 +18875,9 @@ export const NetworkInterfacesListByNetworkDeviceRequest =
   }) as any as S.Schema<NetworkInterfacesListByNetworkDeviceRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkInterfaceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkInterfaceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkInterfaceIdentity",
-}) as any as S.Schema<NetworkInterfaceIdentity>;
+export type NetworkInterfaceIdentity = L2IsolationDomainsCreateResponseIdentity;
+export const NetworkInterfaceIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 /** Defines the NetworkInterface resource. */
 export interface NetworkInterface {
@@ -19586,7 +18892,7 @@ export interface NetworkInterface {
   /** The NetworkInterface properties */
   properties: NetworkInterfaceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkInterfaceIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19595,7 +18901,7 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: NetworkInterfaceProperties,
-    identity: S.optional(NetworkInterfaceIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkInterface",
@@ -19624,20 +18930,8 @@ export const NetworkInterfacesList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterfacesList>;
 
 /** Network Interface Patch properties. */
-export interface NetworkInterfacePatchProperties {
-  /** Switch configuration description. */
-  annotation?: string;
-  /** Additional description of the interface. */
-  additionalDescription?: string;
-}
-export const NetworkInterfacePatchProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    annotation: S.optional(S.String),
-    additionalDescription: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkInterfacePatchProperties",
-}) as any as S.Schema<NetworkInterfacePatchProperties>;
+export type NetworkInterfacePatchProperties = NetworkInterfacePropertiesInput;
+export const NetworkInterfacePatchProperties = NetworkInterfacePropertiesInput;
 
 export interface NetworkInterfacesUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -19649,7 +18943,7 @@ export interface NetworkInterfacesUpdateRequest {
   /** Name of the Network Interface. */
   networkInterfaceName: string;
   /** Network Interface Patch properties. */
-  properties?: NetworkInterfacePatchProperties;
+  properties?: NetworkInterfacePropertiesInput;
   /** The managed service identities assigned to this resource. */
   identity?: ManagedServiceIdentityPatchInput;
 }
@@ -19659,7 +18953,7 @@ export const NetworkInterfacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     networkDeviceName: S.String.pipe(T.Label()),
     networkInterfaceName: S.String.pipe(T.Label()),
-    properties: S.optional(NetworkInterfacePatchProperties),
+    properties: S.optional(NetworkInterfacePropertiesInput),
     identity: S.optional(ManagedServiceIdentityPatchInput),
   }).pipe(
     T.Http({
@@ -19674,25 +18968,10 @@ export const NetworkInterfacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterfacesUpdateRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkInterfacesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkInterfacesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "NetworkInterfacesUpdateResponseIdentity",
-}) as any as S.Schema<NetworkInterfacesUpdateResponseIdentity>;
+export type NetworkInterfacesUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkInterfacesUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkInterfacesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -19706,7 +18985,7 @@ export interface NetworkInterfacesUpdateResponse {
   /** The NetworkInterface properties */
   properties: NetworkInterfaceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkInterfacesUpdateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkInterfacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19715,7 +18994,7 @@ export const NetworkInterfacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: NetworkInterfaceProperties,
-    identity: S.optional(NetworkInterfacesUpdateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkInterfacesUpdateResponse",
@@ -20209,23 +19488,8 @@ export const NetworkMonitorsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkMonitorsUpdateRequestTagsMap>;
 
 /** Station Connection PATCH Properties. */
-export interface StationConnectionPatchProperties {
-  /** Connection keepalive idle time in seconds */
-  keepaliveIdleTime?: number;
-  /** Probe interval in seconds, default value is 60 */
-  probeInterval?: number;
-  /** Probe count, default value is 10 */
-  probeCount?: number;
-}
-export const StationConnectionPatchProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keepaliveIdleTime: S.optional(S.Number),
-    probeInterval: S.optional(S.Number),
-    probeCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "StationConnectionPatchProperties",
-}) as any as S.Schema<StationConnectionPatchProperties>;
+export type StationConnectionPatchProperties = StationConnectionProperties;
+export const StationConnectionPatchProperties = StationConnectionProperties;
 
 /** The List of Network ID's that need to be monitored. */
 export type BmpConfigurationPatchPropertiesMonitoredNetworksList =
@@ -20259,7 +19523,7 @@ export interface BmpConfigurationPatchProperties {
   /** Station Connection Mode. */
   stationConnectionMode?: StationConnectionMode | (string & {});
   /** Station Connection Properties. */
-  stationConnectionProperties?: StationConnectionPatchProperties;
+  stationConnectionProperties?: StationConnectionProperties;
   /** Network of the station */
   stationNetwork?: string;
   /** The List of Network ID's that need to be monitored. */
@@ -20279,7 +19543,7 @@ export const BmpConfigurationPatchProperties = /*@__PURE__*/ S.suspend(() =>
     stationIp: S.optional(S.String),
     stationPort: S.optional(S.Number),
     stationConnectionMode: S.optional(StationConnectionMode),
-    stationConnectionProperties: S.optional(StationConnectionPatchProperties),
+    stationConnectionProperties: S.optional(StationConnectionProperties),
     stationNetwork: S.optional(S.String),
     monitoredNetworks: S.optional(
       BmpConfigurationPatchPropertiesMonitoredNetworksList,
@@ -20484,19 +19748,10 @@ export const NetworkPacketBrokerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkPacketBrokerPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkPacketBrokersCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
+export type NetworkPacketBrokersCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
 export const NetworkPacketBrokersCreateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-  ).annotate({
-    identifier: "NetworkPacketBrokersCreateRequestIdentity",
-  }) as any as S.Schema<NetworkPacketBrokersCreateRequestIdentity>;
+  L2IsolationDomainsCreateRequestIdentity;
 
 export interface NetworkPacketBrokersCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -20512,7 +19767,7 @@ export interface NetworkPacketBrokersCreateRequest {
   /** The NetworkPacketBroker properties */
   properties: NetworkPacketBrokerPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkPacketBrokersCreateRequestIdentity;
+  identity?: L2IsolationDomainsCreateRequestIdentity;
 }
 export const NetworkPacketBrokersCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20522,7 +19777,7 @@ export const NetworkPacketBrokersCreateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkPacketBrokersCreateRequestTagsMap),
     location: S.String,
     properties: NetworkPacketBrokerPropertiesInput,
-    identity: S.optional(NetworkPacketBrokersCreateRequestIdentity),
+    identity: S.optional(L2IsolationDomainsCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -20613,25 +19868,10 @@ export const NetworkPacketBrokerProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkPacketBrokerProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkPacketBrokersCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type NetworkPacketBrokersCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 export const NetworkPacketBrokersCreateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "NetworkPacketBrokersCreateResponseIdentity",
-  }) as any as S.Schema<NetworkPacketBrokersCreateResponseIdentity>;
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkPacketBrokersCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -20649,7 +19889,7 @@ export interface NetworkPacketBrokersCreateResponse {
   /** The NetworkPacketBroker properties */
   properties: NetworkPacketBrokerProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkPacketBrokersCreateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkPacketBrokersCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20660,7 +19900,7 @@ export const NetworkPacketBrokersCreateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkPacketBrokersCreateResponseTagsMap),
     location: S.String,
     properties: NetworkPacketBrokerProperties,
-    identity: S.optional(NetworkPacketBrokersCreateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkPacketBrokersCreateResponse",
@@ -20733,25 +19973,10 @@ export const NetworkPacketBrokersGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkPacketBrokersGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkPacketBrokersGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkPacketBrokersGetResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "NetworkPacketBrokersGetResponseIdentity",
-}) as any as S.Schema<NetworkPacketBrokersGetResponseIdentity>;
+export type NetworkPacketBrokersGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkPacketBrokersGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkPacketBrokersGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -20769,7 +19994,7 @@ export interface NetworkPacketBrokersGetResponse {
   /** The NetworkPacketBroker properties */
   properties: NetworkPacketBrokerProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkPacketBrokersGetResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkPacketBrokersGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20780,7 +20005,7 @@ export const NetworkPacketBrokersGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkPacketBrokersGetResponseTagsMap),
     location: S.String,
     properties: NetworkPacketBrokerProperties,
-    identity: S.optional(NetworkPacketBrokersGetResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkPacketBrokersGetResponse",
@@ -20817,24 +20042,10 @@ export const NetworkPacketBrokerTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkPacketBrokerTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkPacketBrokerIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkPacketBrokerIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkPacketBrokerIdentity",
-}) as any as S.Schema<NetworkPacketBrokerIdentity>;
+export type NetworkPacketBrokerIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkPacketBrokerIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 /** The NetworkPacketBroker resource definition. */
 export interface NetworkPacketBroker {
@@ -20853,7 +20064,7 @@ export interface NetworkPacketBroker {
   /** The NetworkPacketBroker properties */
   properties: NetworkPacketBrokerProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkPacketBrokerIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkPacketBroker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -20864,7 +20075,7 @@ export const NetworkPacketBroker = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkPacketBrokerTagsMap),
     location: S.String,
     properties: NetworkPacketBrokerProperties,
-    identity: S.optional(NetworkPacketBrokerIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkPacketBroker",
@@ -20963,25 +20174,10 @@ export const NetworkPacketBrokersUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkPacketBrokersUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkPacketBrokersUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type NetworkPacketBrokersUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 export const NetworkPacketBrokersUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "NetworkPacketBrokersUpdateResponseIdentity",
-  }) as any as S.Schema<NetworkPacketBrokersUpdateResponseIdentity>;
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkPacketBrokersUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -20999,7 +20195,7 @@ export interface NetworkPacketBrokersUpdateResponse {
   /** The NetworkPacketBroker properties */
   properties: NetworkPacketBrokerProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkPacketBrokersUpdateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkPacketBrokersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21010,7 +20206,7 @@ export const NetworkPacketBrokersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkPacketBrokersUpdateResponseTagsMap),
     location: S.String,
     properties: NetworkPacketBrokerProperties,
-    identity: S.optional(NetworkPacketBrokersUpdateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkPacketBrokersUpdateResponse",
@@ -21671,19 +20867,10 @@ export const NetworkTapRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkTapRulePropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkTapRulesCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const NetworkTapRulesCreateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-).annotate({
-  identifier: "NetworkTapRulesCreateRequestIdentity",
-}) as any as S.Schema<NetworkTapRulesCreateRequestIdentity>;
+export type NetworkTapRulesCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
+export const NetworkTapRulesCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
 
 export interface NetworkTapRulesCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -21699,7 +20886,7 @@ export interface NetworkTapRulesCreateRequest {
   /** The NetworkTapRule Properties */
   properties: NetworkTapRulePropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkTapRulesCreateRequestIdentity;
+  identity?: L2IsolationDomainsCreateRequestIdentity;
 }
 export const NetworkTapRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21709,7 +20896,7 @@ export const NetworkTapRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkTapRulesCreateRequestTagsMap),
     location: S.String,
     properties: NetworkTapRulePropertiesInput,
-    identity: S.optional(NetworkTapRulesCreateRequestIdentity),
+    identity: S.optional(L2IsolationDomainsCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -21825,25 +21012,10 @@ export const NetworkTapRuleProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkTapRuleProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkTapRulesCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkTapRulesCreateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "NetworkTapRulesCreateResponseIdentity",
-}) as any as S.Schema<NetworkTapRulesCreateResponseIdentity>;
+export type NetworkTapRulesCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkTapRulesCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkTapRulesCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -21861,7 +21033,7 @@ export interface NetworkTapRulesCreateResponse {
   /** The NetworkTapRule Properties */
   properties: NetworkTapRuleProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkTapRulesCreateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkTapRulesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21872,7 +21044,7 @@ export const NetworkTapRulesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkTapRulesCreateResponseTagsMap),
     location: S.String,
     properties: NetworkTapRuleProperties,
-    identity: S.optional(NetworkTapRulesCreateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkTapRulesCreateResponse",
@@ -21945,24 +21117,10 @@ export const NetworkTapRulesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkTapRulesGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkTapRulesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkTapRulesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkTapRulesGetResponseIdentity",
-}) as any as S.Schema<NetworkTapRulesGetResponseIdentity>;
+export type NetworkTapRulesGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkTapRulesGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkTapRulesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -21980,7 +21138,7 @@ export interface NetworkTapRulesGetResponse {
   /** The NetworkTapRule Properties */
   properties: NetworkTapRuleProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkTapRulesGetResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkTapRulesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -21991,7 +21149,7 @@ export const NetworkTapRulesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkTapRulesGetResponseTagsMap),
     location: S.String,
     properties: NetworkTapRuleProperties,
-    identity: S.optional(NetworkTapRulesGetResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkTapRulesGetResponse",
@@ -22028,24 +21186,8 @@ export const NetworkTapRuleTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkTapRuleTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkTapRuleIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkTapRuleIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkTapRuleIdentity",
-}) as any as S.Schema<NetworkTapRuleIdentity>;
+export type NetworkTapRuleIdentity = L2IsolationDomainsCreateResponseIdentity;
+export const NetworkTapRuleIdentity = L2IsolationDomainsCreateResponseIdentity;
 
 /** The NetworkTapRule resource definition. */
 export interface NetworkTapRule {
@@ -22064,7 +21206,7 @@ export interface NetworkTapRule {
   /** The NetworkTapRule Properties */
   properties: NetworkTapRuleProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkTapRuleIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkTapRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22075,7 +21217,7 @@ export const NetworkTapRule = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkTapRuleTagsMap),
     location: S.String,
     properties: NetworkTapRuleProperties,
-    identity: S.optional(NetworkTapRuleIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({ identifier: "NetworkTapRule" }) as any as S.Schema<NetworkTapRule>;
 
@@ -22370,36 +21512,15 @@ export const NetworkTapRuleMatchConfigurationPatchMatchConditionsList =
   ) as any as S.Schema<NetworkTapRuleMatchConfigurationPatchMatchConditionsList>;
 
 /** Action that need to performed. */
-export interface NetworkTapRuleActionPatch {
-  /** Type of actions that can be performed. */
-  type?: TapRuleActionType | (string & {});
-  /** Truncate. 0 indicates do not truncate. */
-  truncate?: string;
-  /** The parameter to enable or disable the timestamp. */
-  isTimestampEnabled?: BooleanEnumProperty | (string & {});
-  /** Destination Id. The ARM resource Id may be either Network To Network Interconnect or NeighborGroup. */
-  destinationId?: string;
-  /** The name of the match configuration. This is used when Goto type is provided. */
-  matchConfigurationName?: string;
-}
-export const NetworkTapRuleActionPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(TapRuleActionType),
-    truncate: S.optional(S.String),
-    isTimestampEnabled: S.optional(BooleanEnumProperty),
-    destinationId: S.optional(S.String),
-    matchConfigurationName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkTapRuleActionPatch",
-}) as any as S.Schema<NetworkTapRuleActionPatch>;
+export type NetworkTapRuleActionPatch = NetworkTapRuleAction;
+export const NetworkTapRuleActionPatch = NetworkTapRuleAction;
 
 /** List of actions that need to be performed for the matched conditions. */
 export type NetworkTapRuleMatchConfigurationPatchActionsList =
-  Array<NetworkTapRuleActionPatch>;
+  Array<NetworkTapRuleAction>;
 export const NetworkTapRuleMatchConfigurationPatchActionsList =
   /*@__PURE__*/ S.Array(
-    NetworkTapRuleActionPatch,
+    NetworkTapRuleAction,
   ) as any as S.Schema<NetworkTapRuleMatchConfigurationPatchActionsList>;
 
 /** Defines the match configuration that are supported to filter the traffic. */
@@ -22544,25 +21665,10 @@ export const NetworkTapRulesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkTapRulesUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkTapRulesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkTapRulesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "NetworkTapRulesUpdateResponseIdentity",
-}) as any as S.Schema<NetworkTapRulesUpdateResponseIdentity>;
+export type NetworkTapRulesUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkTapRulesUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkTapRulesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -22580,7 +21686,7 @@ export interface NetworkTapRulesUpdateResponse {
   /** The NetworkTapRule Properties */
   properties: NetworkTapRuleProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkTapRulesUpdateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkTapRulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22591,7 +21697,7 @@ export const NetworkTapRulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkTapRulesUpdateResponseTagsMap),
     location: S.String,
     properties: NetworkTapRuleProperties,
-    identity: S.optional(NetworkTapRulesUpdateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkTapRulesUpdateResponse",
@@ -22799,18 +21905,10 @@ export const NetworkTapPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkTapPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkTapsCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const NetworkTapsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "NetworkTapsCreateRequestIdentity",
-}) as any as S.Schema<NetworkTapsCreateRequestIdentity>;
+export type NetworkTapsCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
+export const NetworkTapsCreateRequestIdentity =
+  L2IsolationDomainsCreateRequestIdentity;
 
 export interface NetworkTapsCreateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -22826,7 +21924,7 @@ export interface NetworkTapsCreateRequest {
   /** The NetworkTap Properties */
   properties: NetworkTapPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkTapsCreateRequestIdentity;
+  identity?: L2IsolationDomainsCreateRequestIdentity;
 }
 export const NetworkTapsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22836,7 +21934,7 @@ export const NetworkTapsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkTapsCreateRequestTagsMap),
     location: S.String,
     properties: NetworkTapPropertiesInput,
-    identity: S.optional(NetworkTapsCreateRequestIdentity),
+    identity: S.optional(L2IsolationDomainsCreateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -22915,24 +22013,10 @@ export const NetworkTapProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkTapProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkTapsCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkTapsCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkTapsCreateResponseIdentity",
-}) as any as S.Schema<NetworkTapsCreateResponseIdentity>;
+export type NetworkTapsCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkTapsCreateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkTapsCreateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -22950,7 +22034,7 @@ export interface NetworkTapsCreateResponse {
   /** The NetworkTap Properties */
   properties: NetworkTapProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkTapsCreateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkTapsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -22961,7 +22045,7 @@ export const NetworkTapsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkTapsCreateResponseTagsMap),
     location: S.String,
     properties: NetworkTapProperties,
-    identity: S.optional(NetworkTapsCreateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkTapsCreateResponse",
@@ -23034,24 +22118,10 @@ export const NetworkTapsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkTapsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkTapsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkTapsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkTapsGetResponseIdentity",
-}) as any as S.Schema<NetworkTapsGetResponseIdentity>;
+export type NetworkTapsGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkTapsGetResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkTapsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -23069,7 +22139,7 @@ export interface NetworkTapsGetResponse {
   /** The NetworkTap Properties */
   properties: NetworkTapProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkTapsGetResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkTapsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23080,7 +22150,7 @@ export const NetworkTapsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkTapsGetResponseTagsMap),
     location: S.String,
     properties: NetworkTapProperties,
-    identity: S.optional(NetworkTapsGetResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkTapsGetResponse",
@@ -23117,24 +22187,8 @@ export const NetworkTapTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkTapTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkTapIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkTapIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkTapIdentity",
-}) as any as S.Schema<NetworkTapIdentity>;
+export type NetworkTapIdentity = L2IsolationDomainsCreateResponseIdentity;
+export const NetworkTapIdentity = L2IsolationDomainsCreateResponseIdentity;
 
 /** The Network Tap resource definition. */
 export interface NetworkTap {
@@ -23153,7 +22207,7 @@ export interface NetworkTap {
   /** The NetworkTap Properties */
   properties: NetworkTapProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkTapIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkTap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23164,7 +22218,7 @@ export const NetworkTap = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkTapTagsMap),
     location: S.String,
     properties: NetworkTapProperties,
-    identity: S.optional(NetworkTapIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({ identifier: "NetworkTap" }) as any as S.Schema<NetworkTap>;
 
@@ -23499,24 +22553,10 @@ export const NetworkTapsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<NetworkTapsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface NetworkTapsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const NetworkTapsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "NetworkTapsUpdateResponseIdentity",
-}) as any as S.Schema<NetworkTapsUpdateResponseIdentity>;
+export type NetworkTapsUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
+export const NetworkTapsUpdateResponseIdentity =
+  L2IsolationDomainsCreateResponseIdentity;
 
 export interface NetworkTapsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -23534,7 +22574,7 @@ export interface NetworkTapsUpdateResponse {
   /** The NetworkTap Properties */
   properties: NetworkTapProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: NetworkTapsUpdateResponseIdentity;
+  identity?: L2IsolationDomainsCreateResponseIdentity;
 }
 export const NetworkTapsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23545,7 +22585,7 @@ export const NetworkTapsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(NetworkTapsUpdateResponseTagsMap),
     location: S.String,
     properties: NetworkTapProperties,
-    identity: S.optional(NetworkTapsUpdateResponseIdentity),
+    identity: S.optional(L2IsolationDomainsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "NetworkTapsUpdateResponse",
@@ -24370,25 +23410,17 @@ export const NniBmpPatchProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NniBmpPatchProperties>;
 
 /** OptionB Layer3 prefix limit patch properties. */
-export interface OptionBLayer3PrefixLimitPatchProperties {
-  /** Maximum number of routes allowed. */
-  maximumRoutes?: number;
-}
-export const OptionBLayer3PrefixLimitPatchProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maximumRoutes: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "OptionBLayer3PrefixLimitPatchProperties",
-}) as any as S.Schema<OptionBLayer3PrefixLimitPatchProperties>;
+export type OptionBLayer3PrefixLimitPatchProperties =
+  OptionBLayer3PrefixLimitProperties;
+export const OptionBLayer3PrefixLimitPatchProperties =
+  OptionBLayer3PrefixLimitProperties;
 
 /** OptionB Layer3 prefix limit configuration. */
 export type OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList =
-  Array<OptionBLayer3PrefixLimitPatchProperties>;
+  Array<OptionBLayer3PrefixLimitProperties>;
 export const OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList =
   /*@__PURE__*/ S.Array(
-    OptionBLayer3PrefixLimitPatchProperties,
+    OptionBLayer3PrefixLimitProperties,
   ) as any as S.Schema<OptionBLayer3ConfigurationPatchPropertiesInputPrefixLimitsList>;
 
 /** Common properties for Layer3Configuration. */
@@ -24452,7 +23484,7 @@ export const NpbStaticRouteConfigurationPatchIpv6RoutesList =
 /** NPB Static Route Configuration properties. */
 export interface NpbStaticRouteConfigurationPatch {
   /** BFD Configuration properties. */
-  bfdConfiguration?: BfdPatchConfiguration;
+  bfdConfiguration?: BfdConfigurationInput;
   /** List of IPv4 Routes. */
   ipv4Routes?: NpbStaticRouteConfigurationPatchIpv4RoutesList;
   /** List of IPv6 Routes. */
@@ -24460,7 +23492,7 @@ export interface NpbStaticRouteConfigurationPatch {
 }
 export const NpbStaticRouteConfigurationPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    bfdConfiguration: S.optional(BfdPatchConfiguration),
+    bfdConfiguration: S.optional(BfdConfigurationInput),
     ipv4Routes: S.optional(NpbStaticRouteConfigurationPatchIpv4RoutesList),
     ipv6Routes: S.optional(NpbStaticRouteConfigurationPatchIpv6RoutesList),
   }),
@@ -24487,7 +23519,7 @@ export const NniStaticRoutePatchConfigurationIpv6RoutesList =
 /** Static Route Configuration properties for NNI. */
 export interface NniStaticRoutePatchConfiguration {
   /** Bidirectional Forwarding Detection (BFD) configuration properties */
-  bfdConfiguration?: BfdPatchConfiguration;
+  bfdConfiguration?: BfdConfigurationInput;
   /** List of IPv4 Routes. */
   ipv4Routes?: NniStaticRoutePatchConfigurationIpv4RoutesList;
   /** List of IPv6 Routes. */
@@ -24495,7 +23527,7 @@ export interface NniStaticRoutePatchConfiguration {
 }
 export const NniStaticRoutePatchConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    bfdConfiguration: S.optional(BfdPatchConfiguration),
+    bfdConfiguration: S.optional(BfdConfigurationInput),
     ipv4Routes: S.optional(NniStaticRoutePatchConfigurationIpv4RoutesList),
     ipv6Routes: S.optional(NniStaticRoutePatchConfigurationIpv6RoutesList),
   }),
@@ -24504,36 +23536,12 @@ export const NniStaticRoutePatchConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NniStaticRoutePatchConfiguration>;
 
 /** Import Route Policy Configuration. */
-export interface ImportRoutePolicyInformationPatch {
-  /** Import IPv4 Route Policy Id. */
-  importIpv4RoutePolicyId?: string;
-  /** Import IPv6 Route Policy Id. */
-  importIpv6RoutePolicyId?: string;
-}
-export const ImportRoutePolicyInformationPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    importIpv4RoutePolicyId: S.optional(S.String),
-    importIpv6RoutePolicyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ImportRoutePolicyInformationPatch",
-}) as any as S.Schema<ImportRoutePolicyInformationPatch>;
+export type ImportRoutePolicyInformationPatch = ImportRoutePolicyInformation;
+export const ImportRoutePolicyInformationPatch = ImportRoutePolicyInformation;
 
 /** Export Route Policy Configuration. */
-export interface ExportRoutePolicyInformationPatch {
-  /** Export IPv4 Route Policy Id. */
-  exportIpv4RoutePolicyId?: string;
-  /** Export IPv6 Route Policy Id. */
-  exportIpv6RoutePolicyId?: string;
-}
-export const ExportRoutePolicyInformationPatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exportIpv4RoutePolicyId: S.optional(S.String),
-    exportIpv6RoutePolicyId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExportRoutePolicyInformationPatch",
-}) as any as S.Schema<ExportRoutePolicyInformationPatch>;
+export type ExportRoutePolicyInformationPatch = ExportRoutePolicyInformation;
+export const ExportRoutePolicyInformationPatch = ExportRoutePolicyInformation;
 
 /** Network Tap Rule Patch properties. */
 export interface NetworkToNetworkInterconnectPatchPropertiesInput {
@@ -24546,9 +23554,9 @@ export interface NetworkToNetworkInterconnectPatchPropertiesInput {
   /** Static Route Configuration. */
   staticRouteConfiguration?: NniStaticRoutePatchConfiguration;
   /** Import Route Policy information. */
-  importRoutePolicy?: ImportRoutePolicyInformationPatch;
+  importRoutePolicy?: ImportRoutePolicyInformation;
   /** Export Route Policy information */
-  exportRoutePolicy?: ExportRoutePolicyInformationPatch;
+  exportRoutePolicy?: ExportRoutePolicyInformation;
   /** Egress Acl. ARM resource ID of Access Control Lists. */
   egressAclId?: string;
   /** Ingress Acl. ARM resource ID of Access Control Lists. */
@@ -24565,8 +23573,8 @@ export const NetworkToNetworkInterconnectPatchPropertiesInput =
       ),
       npbStaticRouteConfiguration: S.optional(NpbStaticRouteConfigurationPatch),
       staticRouteConfiguration: S.optional(NniStaticRoutePatchConfiguration),
-      importRoutePolicy: S.optional(ImportRoutePolicyInformationPatch),
-      exportRoutePolicy: S.optional(ExportRoutePolicyInformationPatch),
+      importRoutePolicy: S.optional(ImportRoutePolicyInformation),
+      exportRoutePolicy: S.optional(ExportRoutePolicyInformation),
       egressAclId: S.optional(S.String),
       ingressAclId: S.optional(S.String),
       microBfdState: S.optional(MicroBfdState),
@@ -25656,67 +24664,18 @@ export const StatementConditionPatchProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StatementConditionPatchProperties>;
 
 /** IP Community Properties. */
-export interface ActionIpCommunityPatchProperties {
-  /** List of IP Community IDs. */
-  add?: IpCommunityIdList;
-  /** List of IP Community IDs. */
-  delete?: IpCommunityIdList;
-  /** List of IP Community IDs. */
-  set?: IpCommunityIdList;
-}
-export const ActionIpCommunityPatchProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    add: S.optional(IpCommunityIdList),
-    delete: S.optional(IpCommunityIdList),
-    set: S.optional(IpCommunityIdList),
-  }),
-).annotate({
-  identifier: "ActionIpCommunityPatchProperties",
-}) as any as S.Schema<ActionIpCommunityPatchProperties>;
+export type ActionIpCommunityPatchProperties = ActionIpCommunityProperties;
+export const ActionIpCommunityPatchProperties = ActionIpCommunityProperties;
 
 /** IP Extended Community Properties. */
-export interface ActionIpExtendedCommunityPatchProperties {
-  /** List of IP Extended Community IDs. */
-  add?: IpExtendedCommunityIdList;
-  /** List of IP Extended Community IDs. */
-  delete?: IpExtendedCommunityIdList;
-  /** List of IP Extended Community IDs. */
-  set?: IpExtendedCommunityIdList;
-}
-export const ActionIpExtendedCommunityPatchProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      add: S.optional(IpExtendedCommunityIdList),
-      delete: S.optional(IpExtendedCommunityIdList),
-      set: S.optional(IpExtendedCommunityIdList),
-    }),
-).annotate({
-  identifier: "ActionIpExtendedCommunityPatchProperties",
-}) as any as S.Schema<ActionIpExtendedCommunityPatchProperties>;
+export type ActionIpExtendedCommunityPatchProperties =
+  ActionIpExtendedCommunityProperties;
+export const ActionIpExtendedCommunityPatchProperties =
+  ActionIpExtendedCommunityProperties;
 
 /** Route policy action properties */
-export interface StatementActionPatchProperties {
-  /** Local Preference of the route policy. */
-  localPreference?: number;
-  /** Action type. Example: Permit | Deny | Continue. */
-  actionType: RoutePolicyActionType | (string & {});
-  /** IP Community Properties. */
-  ipCommunityProperties?: ActionIpCommunityPatchProperties;
-  /** IP Extended Community Properties. */
-  ipExtendedCommunityProperties?: ActionIpExtendedCommunityPatchProperties;
-}
-export const StatementActionPatchProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localPreference: S.optional(S.Number),
-    actionType: RoutePolicyActionType,
-    ipCommunityProperties: S.optional(ActionIpCommunityPatchProperties),
-    ipExtendedCommunityProperties: S.optional(
-      ActionIpExtendedCommunityPatchProperties,
-    ),
-  }),
-).annotate({
-  identifier: "StatementActionPatchProperties",
-}) as any as S.Schema<StatementActionPatchProperties>;
+export type StatementActionPatchProperties = StatementActionProperties;
+export const StatementActionPatchProperties = StatementActionProperties;
 
 /** Route Policy Statement properties. */
 export interface RoutePolicyStatementPatchProperties {
@@ -25727,14 +24686,14 @@ export interface RoutePolicyStatementPatchProperties {
   /** Route policy condition properties. */
   condition: StatementConditionPatchProperties;
   /** Route policy action properties. */
-  action: StatementActionPatchProperties;
+  action: StatementActionProperties;
 }
 export const RoutePolicyStatementPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotation: S.optional(S.String),
     sequenceNumber: S.Number,
     condition: StatementConditionPatchProperties,
-    action: StatementActionPatchProperties,
+    action: StatementActionProperties,
   }),
 ).annotate({
   identifier: "RoutePolicyStatementPatchProperties",

@@ -1222,22 +1222,12 @@ export const CatalogRestrictionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CatalogRestrictionsList>;
 
 /** Capability of a sku. */
-export interface SkuCapability {
-  /** An invariant to describe the feature. */
-  name?: string;
-  /** An invariant if the feature is measured by quantity. */
-  value?: string;
-}
-export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "SkuCapability" }) as any as S.Schema<SkuCapability>;
+export type SkuCapability = SkuProperty;
+export const SkuCapability = SkuProperty;
 
-export type CatalogCapabilitiesList = Array<SkuCapability>;
+export type CatalogCapabilitiesList = Array<SkuProperty>;
 export const CatalogCapabilitiesList = /*@__PURE__*/ S.Array(
-  SkuCapability,
+  SkuProperty,
 ) as any as S.Schema<CatalogCapabilitiesList>;
 
 /** Product details of a type of resource. */
@@ -1670,55 +1660,27 @@ export const ReservationSwapProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationSwapProperties>;
 
 /** Amount that Microsoft uses for record. Used during refund for calculating refund limit. Tax is not included. This is locked price 30 days before expiry. */
-export interface RenewPropertiesResponsePricingCurrencyTotal {
-  /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
-  currencyCode?: string;
-  amount?: number;
-}
-export const RenewPropertiesResponsePricingCurrencyTotal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      currencyCode: S.optional(S.String),
-      amount: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RenewPropertiesResponsePricingCurrencyTotal",
-  }) as any as S.Schema<RenewPropertiesResponsePricingCurrencyTotal>;
+export type RenewPropertiesResponsePricingCurrencyTotal = Price;
+export const RenewPropertiesResponsePricingCurrencyTotal = Price;
 
 /** Currency and amount that customer will be charged in customer's local currency for renewal purchase. Tax is not included. */
-export interface RenewPropertiesResponseBillingCurrencyTotal {
-  /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
-  currencyCode?: string;
-  amount?: number;
-}
-export const RenewPropertiesResponseBillingCurrencyTotal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      currencyCode: S.optional(S.String),
-      amount: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RenewPropertiesResponseBillingCurrencyTotal",
-  }) as any as S.Schema<RenewPropertiesResponseBillingCurrencyTotal>;
+export type RenewPropertiesResponseBillingCurrencyTotal = Price;
+export const RenewPropertiesResponseBillingCurrencyTotal = Price;
 
 /** The renew properties for a reservation. */
 export interface RenewPropertiesResponse {
   /** The request for reservation purchase */
   purchaseProperties?: PurchaseRequest;
   /** Amount that Microsoft uses for record. Used during refund for calculating refund limit. Tax is not included. This is locked price 30 days before expiry. */
-  pricingCurrencyTotal?: RenewPropertiesResponsePricingCurrencyTotal;
+  pricingCurrencyTotal?: Price;
   /** Currency and amount that customer will be charged in customer's local currency for renewal purchase. Tax is not included. */
-  billingCurrencyTotal?: RenewPropertiesResponseBillingCurrencyTotal;
+  billingCurrencyTotal?: Price;
 }
 export const RenewPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purchaseProperties: S.optional(PurchaseRequest),
-    pricingCurrencyTotal: S.optional(
-      RenewPropertiesResponsePricingCurrencyTotal,
-    ),
-    billingCurrencyTotal: S.optional(
-      RenewPropertiesResponseBillingCurrencyTotal,
-    ),
+    pricingCurrencyTotal: S.optional(Price),
+    billingCurrencyTotal: S.optional(Price),
   }),
 ).annotate({
   identifier: "RenewPropertiesResponse",
@@ -2219,20 +2181,8 @@ export const CalculatePriceResponsePropertiesBillingCurrencyTotal =
   }) as any as S.Schema<CalculatePriceResponsePropertiesBillingCurrencyTotal>;
 
 /** Amount that Microsoft uses for record. Used during refund for calculating refund limit. Tax is not included. */
-export interface CalculatePriceResponsePropertiesPricingCurrencyTotal {
-  /** The ISO 4217 3-letter currency code for the currency used by this purchase record. */
-  currencyCode?: string;
-  amount?: number;
-}
-export const CalculatePriceResponsePropertiesPricingCurrencyTotal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      currencyCode: S.optional(S.String),
-      amount: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "CalculatePriceResponsePropertiesPricingCurrencyTotal",
-  }) as any as S.Schema<CalculatePriceResponsePropertiesPricingCurrencyTotal>;
+export type CalculatePriceResponsePropertiesPricingCurrencyTotal = Price;
+export const CalculatePriceResponsePropertiesPricingCurrencyTotal = Price;
 
 /** Describes whether the payment is completed, failed, cancelled or scheduled in the future. */
 export type PaymentStatus = "Succeeded" | "Failed" | "Scheduled" | "Cancelled";
@@ -2294,7 +2244,7 @@ export interface CalculatePriceResponseProperties {
   /** Description of sku that is being purchased. */
   skuDescription?: string;
   /** Amount that Microsoft uses for record. Used during refund for calculating refund limit. Tax is not included. */
-  pricingCurrencyTotal?: CalculatePriceResponsePropertiesPricingCurrencyTotal;
+  pricingCurrencyTotal?: Price;
   paymentSchedule?: CalculatePriceResponsePropertiesPaymentScheduleList;
 }
 export const CalculatePriceResponseProperties = /*@__PURE__*/ S.suspend(() =>
@@ -2310,9 +2260,7 @@ export const CalculatePriceResponseProperties = /*@__PURE__*/ S.suspend(() =>
     reservationOrderId: S.optional(S.String),
     skuTitle: S.optional(S.String),
     skuDescription: S.optional(S.String),
-    pricingCurrencyTotal: S.optional(
-      CalculatePriceResponsePropertiesPricingCurrencyTotal,
-    ),
+    pricingCurrencyTotal: S.optional(Price),
     paymentSchedule: S.optional(
       CalculatePriceResponsePropertiesPaymentScheduleList,
     ),

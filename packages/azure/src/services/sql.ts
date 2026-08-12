@@ -969,30 +969,10 @@ export const ServerVersionCapabilitySupportedEditionsList =
   ) as any as S.Schema<ServerVersionCapabilitySupportedEditionsList>;
 
 /** An ARM Resource SKU. */
-export interface ElasticPoolPerformanceLevelCapabilitySku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ElasticPoolPerformanceLevelCapabilitySku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(S.String),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "ElasticPoolPerformanceLevelCapabilitySku",
-}) as any as S.Schema<ElasticPoolPerformanceLevelCapabilitySku>;
+export type ElasticPoolPerformanceLevelCapabilitySku =
+  ServiceObjectiveCapabilitySku;
+export const ElasticPoolPerformanceLevelCapabilitySku =
+  ServiceObjectiveCapabilitySku;
 
 /** List of supported license types. */
 export type ElasticPoolPerformanceLevelCapabilitySupportedLicenseTypesList =
@@ -1191,7 +1171,7 @@ export interface ElasticPoolPerformanceLevelCapability {
   /** The performance level for the pool. */
   performanceLevel?: PerformanceLevelCapability;
   /** An ARM Resource SKU. */
-  sku?: ElasticPoolPerformanceLevelCapabilitySku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** List of supported license types. */
   supportedLicenseTypes?: ElasticPoolPerformanceLevelCapabilitySupportedLicenseTypesList;
   /** The maximum number of databases supported. */
@@ -1225,7 +1205,7 @@ export const ElasticPoolPerformanceLevelCapability = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       performanceLevel: S.optional(PerformanceLevelCapability),
-      sku: S.optional(ElasticPoolPerformanceLevelCapabilitySku),
+      sku: S.optional(ServiceObjectiveCapabilitySku),
       supportedLicenseTypes: S.optional(
         ElasticPoolPerformanceLevelCapabilitySupportedLicenseTypesList,
       ),
@@ -1824,30 +1804,10 @@ export const LocationCapabilitiesSupportedManagedInstanceVersionsList =
   ) as any as S.Schema<LocationCapabilitiesSupportedManagedInstanceVersionsList>;
 
 /** An ARM Resource SKU. */
-export interface JobAgentServiceLevelObjectiveCapabilitySku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
+export type JobAgentServiceLevelObjectiveCapabilitySku =
+  ServiceObjectiveCapabilitySku;
 export const JobAgentServiceLevelObjectiveCapabilitySku =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(S.String),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "JobAgentServiceLevelObjectiveCapabilitySku",
-  }) as any as S.Schema<JobAgentServiceLevelObjectiveCapabilitySku>;
+  ServiceObjectiveCapabilitySku;
 
 /** The status of the capability. */
 export type JobAgentServiceLevelObjectiveCapabilityStatus =
@@ -1863,7 +1823,7 @@ export interface JobAgentServiceLevelObjectiveCapability {
   /** The service objective name. */
   name?: string;
   /** An ARM Resource SKU. */
-  sku?: JobAgentServiceLevelObjectiveCapabilitySku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** The status of the capability. */
   status?: JobAgentServiceLevelObjectiveCapabilityStatus;
   /** The reason for the capability not being available. */
@@ -1873,7 +1833,7 @@ export const JobAgentServiceLevelObjectiveCapability = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.optional(S.String),
-      sku: S.optional(JobAgentServiceLevelObjectiveCapabilitySku),
+      sku: S.optional(ServiceObjectiveCapabilitySku),
       status: S.optional(JobAgentServiceLevelObjectiveCapabilityStatus),
       reason: S.optional(S.String),
     }),
@@ -2169,21 +2129,10 @@ export const DatabaseAdvancedThreatProtectionSettingsGetRequest =
   }) as any as S.Schema<DatabaseAdvancedThreatProtectionSettingsGetRequest>;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface DatabaseAdvancedThreatProtectionSettingsGetResponseProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState;
-  /** Specifies the UTC creation time of the policy. */
-  creationTime?: string;
-}
+export type DatabaseAdvancedThreatProtectionSettingsGetResponseProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 export const DatabaseAdvancedThreatProtectionSettingsGetResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-      creationTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DatabaseAdvancedThreatProtectionSettingsGetResponseProperties",
-  }) as any as S.Schema<DatabaseAdvancedThreatProtectionSettingsGetResponseProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 
 export interface DatabaseAdvancedThreatProtectionSettingsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2195,7 +2144,7 @@ export interface DatabaseAdvancedThreatProtectionSettingsGetResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Properties of an Advanced Threat Protection state. */
-  properties?: DatabaseAdvancedThreatProtectionSettingsGetResponseProperties;
+  properties?: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 }
 export const DatabaseAdvancedThreatProtectionSettingsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -2205,7 +2154,7 @@ export const DatabaseAdvancedThreatProtectionSettingsGetResponse =
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
       properties: S.optional(
-        DatabaseAdvancedThreatProtectionSettingsGetResponseProperties,
+        DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties,
       ),
     }),
   ).annotate({
@@ -2242,21 +2191,10 @@ export const DatabaseAdvancedThreatProtectionSettingsListByDatabaseRequest =
   }) as any as S.Schema<DatabaseAdvancedThreatProtectionSettingsListByDatabaseRequest>;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface DatabaseAdvancedThreatProtectionProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState;
-  /** Specifies the UTC creation time of the policy. */
-  creationTime?: string;
-}
+export type DatabaseAdvancedThreatProtectionProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 export const DatabaseAdvancedThreatProtectionProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-      creationTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DatabaseAdvancedThreatProtectionProperties",
-  }) as any as S.Schema<DatabaseAdvancedThreatProtectionProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 
 /** A database Advanced Threat Protection. */
 export interface DatabaseAdvancedThreatProtection {
@@ -2269,7 +2207,7 @@ export interface DatabaseAdvancedThreatProtection {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Properties of an Advanced Threat Protection state. */
-  properties?: DatabaseAdvancedThreatProtectionProperties;
+  properties?: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 }
 export const DatabaseAdvancedThreatProtection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2277,7 +2215,9 @@ export const DatabaseAdvancedThreatProtection = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseAdvancedThreatProtectionProperties),
+    properties: S.optional(
+      DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties,
+    ),
   }),
 ).annotate({
   identifier: "DatabaseAdvancedThreatProtection",
@@ -4468,43 +4408,16 @@ export const DatabaseRecommendedActionsListByDatabaseAdvisorRequest =
   }) as any as S.Schema<DatabaseRecommendedActionsListByDatabaseAdvisorRequest>;
 
 /** Database, Server or Elastic Pool Recommended Action. */
-export interface DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyItem {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: RecommendedActionProperties;
-  /** Resource kind. */
-  kind?: string;
-  /** Resource location. */
-  location?: string;
-}
+export type DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyItem =
+  RecommendedAction;
 export const DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(RecommendedActionProperties),
-      kind: S.optional(S.String),
-      location: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyItem",
-  }) as any as S.Schema<DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyItem>;
+  RecommendedAction;
 
 export type DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyList =
-  Array<DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyItem>;
+  Array<RecommendedAction>;
 export const DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyList =
   /*@__PURE__*/ S.Array(
-    DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyItem,
+    RecommendedAction,
   ) as any as S.Schema<DatabaseRecommendedActionsListByDatabaseAdvisorResponseBodyList>;
 
 export type DatabaseRecommendedActionsListByDatabaseAdvisorResponse =
@@ -4819,29 +4732,8 @@ export type DatabasePropertiesInputSecondaryType = "Geo" | "Named" | "Standby";
 export const DatabasePropertiesInputSecondaryType = /*@__PURE__*/ S.String;
 
 /** An ARM Resource SKU. */
-export interface DatabasePropertiesInputCurrentSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const DatabasePropertiesInputCurrentSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DatabasePropertiesInputCurrentSku",
-}) as any as S.Schema<DatabasePropertiesInputCurrentSku>;
+export type DatabasePropertiesInputCurrentSku = ServiceObjectiveCapabilitySku;
+export const DatabasePropertiesInputCurrentSku = ServiceObjectiveCapabilitySku;
 
 /** The storage account type used to store backups for this database. */
 export type DatabasePropertiesInputCurrentBackupStorageRedundancy =
@@ -4941,7 +4833,7 @@ export interface DatabasePropertiesInput {
   /** The secondary type of the database if it is a secondary. Valid values are Geo, Named and Standby. */
   secondaryType?: DatabasePropertiesInputSecondaryType | (string & {});
   /** An ARM Resource SKU. */
-  currentSku?: DatabasePropertiesInputCurrentSku;
+  currentSku?: ServiceObjectiveCapabilitySku;
   /** Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled */
   autoPauseDelay?: number;
   /** The storage account type used to store backups for this database. */
@@ -5007,7 +4899,7 @@ export const DatabasePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     readScale: S.optional(DatabasePropertiesInputReadScale),
     highAvailabilityReplicaCount: S.optional(S.Number),
     secondaryType: S.optional(DatabasePropertiesInputSecondaryType),
-    currentSku: S.optional(DatabasePropertiesInputCurrentSku),
+    currentSku: S.optional(ServiceObjectiveCapabilitySku),
     autoPauseDelay: S.optional(S.Number),
     currentBackupStorageRedundancy: S.optional(
       DatabasePropertiesInputCurrentBackupStorageRedundancy,
@@ -5039,29 +4931,8 @@ export const DatabasePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasePropertiesInput>;
 
 /** An ARM Resource SKU. */
-export interface DatabasesCreateOrUpdateRequestSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const DatabasesCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DatabasesCreateOrUpdateRequestSku",
-}) as any as S.Schema<DatabasesCreateOrUpdateRequestSku>;
+export type DatabasesCreateOrUpdateRequestSku = ServiceObjectiveCapabilitySku;
+export const DatabasesCreateOrUpdateRequestSku = ServiceObjectiveCapabilitySku;
 
 /** The identity type */
 export type DatabaseIdentityType = "None" | "UserAssigned";
@@ -5129,7 +5000,7 @@ export interface DatabasesCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: DatabasePropertiesInput;
   /** An ARM Resource SKU. */
-  sku?: DatabasesCreateOrUpdateRequestSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** The Azure Active Directory identity of the database. */
   identity?: DatabaseIdentity;
 }
@@ -5142,7 +5013,7 @@ export const DatabasesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DatabasesCreateOrUpdateRequestTagsMap),
     location: S.String,
     properties: S.optional(DatabasePropertiesInput),
-    sku: S.optional(DatabasesCreateOrUpdateRequestSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     identity: S.optional(DatabaseIdentity),
   }).pipe(
     T.Http({
@@ -5233,29 +5104,8 @@ export type DatabasePropertiesSecondaryType = "Geo" | "Named" | "Standby";
 export const DatabasePropertiesSecondaryType = /*@__PURE__*/ S.String;
 
 /** An ARM Resource SKU. */
-export interface DatabasePropertiesCurrentSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const DatabasePropertiesCurrentSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DatabasePropertiesCurrentSku",
-}) as any as S.Schema<DatabasePropertiesCurrentSku>;
+export type DatabasePropertiesCurrentSku = ServiceObjectiveCapabilitySku;
+export const DatabasePropertiesCurrentSku = ServiceObjectiveCapabilitySku;
 
 /** The storage account type used to store backups for this database. */
 export type DatabasePropertiesCurrentBackupStorageRedundancy =
@@ -5389,7 +5239,7 @@ export interface DatabaseProperties {
   /** The secondary type of the database if it is a secondary. Valid values are Geo, Named and Standby. */
   secondaryType?: DatabasePropertiesSecondaryType;
   /** An ARM Resource SKU. */
-  currentSku?: DatabasePropertiesCurrentSku;
+  currentSku?: ServiceObjectiveCapabilitySku;
   /** Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled */
   autoPauseDelay?: number;
   /** The storage account type used to store backups for this database. */
@@ -5460,7 +5310,7 @@ export const DatabaseProperties = /*@__PURE__*/ S.suspend(() =>
     readScale: S.optional(DatabasePropertiesReadScale),
     highAvailabilityReplicaCount: S.optional(S.Number),
     secondaryType: S.optional(DatabasePropertiesSecondaryType),
-    currentSku: S.optional(DatabasePropertiesCurrentSku),
+    currentSku: S.optional(ServiceObjectiveCapabilitySku),
     autoPauseDelay: S.optional(S.Number),
     currentBackupStorageRedundancy: S.optional(
       DatabasePropertiesCurrentBackupStorageRedundancy,
@@ -5493,29 +5343,8 @@ export const DatabaseProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseProperties>;
 
 /** An ARM Resource SKU. */
-export interface DatabasesCreateOrUpdateResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const DatabasesCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DatabasesCreateOrUpdateResponseSku",
-}) as any as S.Schema<DatabasesCreateOrUpdateResponseSku>;
+export type DatabasesCreateOrUpdateResponseSku = ServiceObjectiveCapabilitySku;
+export const DatabasesCreateOrUpdateResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface DatabasesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5533,7 +5362,7 @@ export interface DatabasesCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: DatabaseProperties;
   /** An ARM Resource SKU. */
-  sku?: DatabasesCreateOrUpdateResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Kind of database. This is metadata used for the Azure portal experience. */
   kind?: string;
   /** Resource that manages the database. */
@@ -5550,7 +5379,7 @@ export const DatabasesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DatabasesCreateOrUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(DatabaseProperties),
-    sku: S.optional(DatabasesCreateOrUpdateResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     kind: S.optional(S.String),
     managedBy: S.optional(S.String),
     identity: S.optional(DatabaseIdentity),
@@ -6043,21 +5872,10 @@ export type DatabasesExportRequestStorageKeyType =
 export const DatabasesExportRequestStorageKeyType = /*@__PURE__*/ S.String;
 
 /** Contains the ARM resources for which to create private endpoint connection. */
-export interface DatabasesExportRequestNetworkIsolation {
-  /** The resource id for the storage account used to store BACPAC file. If set, private endpoint connection will be created for the storage account. Must match storage account used for StorageUri parameter. */
-  storageAccountResourceId?: string;
-  /** The resource id for the SQL server which is the target of this request. If set, private endpoint connection will be created for the SQL server. Must match server which is target of the operation. */
-  sqlServerResourceId?: string;
-}
-export const DatabasesExportRequestNetworkIsolation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storageAccountResourceId: S.optional(S.String),
-      sqlServerResourceId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "DatabasesExportRequestNetworkIsolation",
-}) as any as S.Schema<DatabasesExportRequestNetworkIsolation>;
+export type DatabasesExportRequestNetworkIsolation =
+  DatabaseExtensionsPropertiesNetworkIsolation;
+export const DatabasesExportRequestNetworkIsolation =
+  DatabaseExtensionsPropertiesNetworkIsolation;
 
 export interface DatabasesExportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6081,7 +5899,7 @@ export interface DatabasesExportRequest {
   /** Type of credentials provided for access to the target SQL server: SQL, ADPassword or ManagedIdentity. */
   authenticationType?: string;
   /** Contains the ARM resources for which to create private endpoint connection. */
-  networkIsolation?: DatabasesExportRequestNetworkIsolation;
+  networkIsolation?: DatabaseExtensionsPropertiesNetworkIsolation;
 }
 export const DatabasesExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6095,7 +5913,7 @@ export const DatabasesExportRequest = /*@__PURE__*/ S.suspend(() =>
     administratorLogin: S.String,
     administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
     authenticationType: S.optional(S.String),
-    networkIsolation: S.optional(DatabasesExportRequestNetworkIsolation),
+    networkIsolation: S.optional(DatabaseExtensionsPropertiesNetworkIsolation),
   }).pipe(
     T.Http({
       method: "POST",
@@ -6109,31 +5927,17 @@ export const DatabasesExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasesExportRequest>;
 
 /** Contains the private endpoint connection requests status. */
-export interface PrivateEndpointConnectionRequestStatus {
-  /** Resource id for which the private endpoint is created. */
-  privateLinkServiceId?: string;
-  /** The connection name for the private endpoint. */
-  privateEndpointConnectionName?: string;
-  /** Status of this private endpoint connection. */
-  status?: string;
-}
-export const PrivateEndpointConnectionRequestStatus = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      privateLinkServiceId: S.optional(S.String),
-      privateEndpointConnectionName: S.optional(S.String),
-      status: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PrivateEndpointConnectionRequestStatus",
-}) as any as S.Schema<PrivateEndpointConnectionRequestStatus>;
+export type PrivateEndpointConnectionRequestStatus =
+  ImportExportExtensionsOperationResultPropertiesPrivateEndpointConnectionsItem;
+export const PrivateEndpointConnectionRequestStatus =
+  ImportExportExtensionsOperationResultPropertiesPrivateEndpointConnectionsItem;
 
 /** Gets the status of private endpoints associated with this request. */
 export type ImportExportOperationResultPropertiesPrivateEndpointConnectionsList =
-  Array<PrivateEndpointConnectionRequestStatus>;
+  Array<ImportExportExtensionsOperationResultPropertiesPrivateEndpointConnectionsItem>;
 export const ImportExportOperationResultPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    PrivateEndpointConnectionRequestStatus,
+    ImportExportExtensionsOperationResultPropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<ImportExportOperationResultPropertiesPrivateEndpointConnectionsList>;
 
 /** Contains the operation result properties for import/export operation. */
@@ -6290,29 +6094,8 @@ export const DatabasesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DatabasesGetResponseTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface DatabasesGetResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const DatabasesGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DatabasesGetResponseSku",
-}) as any as S.Schema<DatabasesGetResponseSku>;
+export type DatabasesGetResponseSku = ServiceObjectiveCapabilitySku;
+export const DatabasesGetResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface DatabasesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6330,7 +6113,7 @@ export interface DatabasesGetResponse {
   /** Resource properties. */
   properties?: DatabaseProperties;
   /** An ARM Resource SKU. */
-  sku?: DatabasesGetResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Kind of database. This is metadata used for the Azure portal experience. */
   kind?: string;
   /** Resource that manages the database. */
@@ -6347,7 +6130,7 @@ export const DatabasesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DatabasesGetResponseTagsMap),
     location: S.String,
     properties: S.optional(DatabaseProperties),
-    sku: S.optional(DatabasesGetResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     kind: S.optional(S.String),
     managedBy: S.optional(S.String),
     identity: S.optional(DatabaseIdentity),
@@ -6364,21 +6147,10 @@ export type DatabasesImportRequestStorageKeyType =
 export const DatabasesImportRequestStorageKeyType = /*@__PURE__*/ S.String;
 
 /** Contains the ARM resources for which to create private endpoint connection. */
-export interface DatabasesImportRequestNetworkIsolation {
-  /** The resource id for the storage account used to store BACPAC file. If set, private endpoint connection will be created for the storage account. Must match storage account used for StorageUri parameter. */
-  storageAccountResourceId?: string;
-  /** The resource id for the SQL server which is the target of this request. If set, private endpoint connection will be created for the SQL server. Must match server which is target of the operation. */
-  sqlServerResourceId?: string;
-}
-export const DatabasesImportRequestNetworkIsolation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      storageAccountResourceId: S.optional(S.String),
-      sqlServerResourceId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "DatabasesImportRequestNetworkIsolation",
-}) as any as S.Schema<DatabasesImportRequestNetworkIsolation>;
+export type DatabasesImportRequestNetworkIsolation =
+  DatabaseExtensionsPropertiesNetworkIsolation;
+export const DatabasesImportRequestNetworkIsolation =
+  DatabaseExtensionsPropertiesNetworkIsolation;
 
 export interface DatabasesImportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6402,7 +6174,7 @@ export interface DatabasesImportRequest {
   /** Type of credentials provided for access to the target SQL server: SQL, ADPassword or ManagedIdentity. */
   authenticationType?: string;
   /** Contains the ARM resources for which to create private endpoint connection. */
-  networkIsolation?: DatabasesImportRequestNetworkIsolation;
+  networkIsolation?: DatabaseExtensionsPropertiesNetworkIsolation;
 }
 export const DatabasesImportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6416,7 +6188,7 @@ export const DatabasesImportRequest = /*@__PURE__*/ S.suspend(() =>
     administratorLogin: S.String,
     administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
     authenticationType: S.optional(S.String),
-    networkIsolation: S.optional(DatabasesImportRequestNetworkIsolation),
+    networkIsolation: S.optional(DatabaseExtensionsPropertiesNetworkIsolation),
   }).pipe(
     T.Http({
       method: "POST",
@@ -6489,27 +6261,8 @@ export const DatabaseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DatabaseTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface DatabaseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const DatabaseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "DatabaseSku" }) as any as S.Schema<DatabaseSku>;
+export type DatabaseSku = ServiceObjectiveCapabilitySku;
+export const DatabaseSku = ServiceObjectiveCapabilitySku;
 
 /** A database resource. */
 export interface Database {
@@ -6528,7 +6281,7 @@ export interface Database {
   /** Resource properties. */
   properties?: DatabaseProperties;
   /** An ARM Resource SKU. */
-  sku?: DatabaseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Kind of database. This is metadata used for the Azure portal experience. */
   kind?: string;
   /** Resource that manages the database. */
@@ -6545,7 +6298,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DatabaseTagsMap),
     location: S.String,
     properties: S.optional(DatabaseProperties),
-    sku: S.optional(DatabaseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     kind: S.optional(S.String),
     managedBy: S.optional(S.String),
     identity: S.optional(DatabaseIdentity),
@@ -6665,29 +6418,8 @@ export const DatabasesPauseResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DatabasesPauseResponseTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface DatabasesPauseResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const DatabasesPauseResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DatabasesPauseResponseSku",
-}) as any as S.Schema<DatabasesPauseResponseSku>;
+export type DatabasesPauseResponseSku = ServiceObjectiveCapabilitySku;
+export const DatabasesPauseResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface DatabasesPauseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6705,7 +6437,7 @@ export interface DatabasesPauseResponse {
   /** Resource properties. */
   properties?: DatabaseProperties;
   /** An ARM Resource SKU. */
-  sku?: DatabasesPauseResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Kind of database. This is metadata used for the Azure portal experience. */
   kind?: string;
   /** Resource that manages the database. */
@@ -6722,7 +6454,7 @@ export const DatabasesPauseResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DatabasesPauseResponseTagsMap),
     location: S.String,
     properties: S.optional(DatabaseProperties),
-    sku: S.optional(DatabasesPauseResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     kind: S.optional(S.String),
     managedBy: S.optional(S.String),
     identity: S.optional(DatabaseIdentity),
@@ -8491,29 +8223,8 @@ export const DatabasesResumeResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DatabasesResumeResponseTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface DatabasesResumeResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const DatabasesResumeResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DatabasesResumeResponseSku",
-}) as any as S.Schema<DatabasesResumeResponseSku>;
+export type DatabasesResumeResponseSku = ServiceObjectiveCapabilitySku;
+export const DatabasesResumeResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface DatabasesResumeResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8531,7 +8242,7 @@ export interface DatabasesResumeResponse {
   /** Resource properties. */
   properties?: DatabaseProperties;
   /** An ARM Resource SKU. */
-  sku?: DatabasesResumeResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Kind of database. This is metadata used for the Azure portal experience. */
   kind?: string;
   /** Resource that manages the database. */
@@ -8548,7 +8259,7 @@ export const DatabasesResumeResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DatabasesResumeResponseTagsMap),
     location: S.String,
     properties: S.optional(DatabaseProperties),
-    sku: S.optional(DatabasesResumeResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     kind: S.optional(S.String),
     managedBy: S.optional(S.String),
     identity: S.optional(DatabaseIdentity),
@@ -8558,29 +8269,8 @@ export const DatabasesResumeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabasesResumeResponse>;
 
 /** An ARM Resource SKU. */
-export interface DatabasesUpdateRequestSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const DatabasesUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DatabasesUpdateRequestSku",
-}) as any as S.Schema<DatabasesUpdateRequestSku>;
+export type DatabasesUpdateRequestSku = ServiceObjectiveCapabilitySku;
+export const DatabasesUpdateRequestSku = ServiceObjectiveCapabilitySku;
 
 /** Specifies the mode of database creation. Default: regular database creation. Copy: creates a database as a copy of an existing database. sourceDatabaseId must be specified as the resource ID of the source database. Secondary: creates a database as a secondary replica of an existing database. sourceDatabaseId must be specified as the resource ID of the existing primary database. PointInTimeRestore: Creates a database by restoring a point in time backup of an existing database. sourceDatabaseId must be specified as the resource ID of the existing database, and restorePointInTime must be specified. Recovery: Creates a database by restoring a geo-replicated backup. sourceDatabaseId must be specified as the recoverable database resource ID to restore. Restore: Creates a database by restoring a backup of a deleted database. sourceDatabaseId must be specified. If sourceDatabaseId is the database's original resource ID, then sourceDatabaseDeletionDate must be specified. Otherwise sourceDatabaseId must be the restorable dropped database resource ID and sourceDatabaseDeletionDate is ignored. restorePointInTime may also be specified to restore from an earlier point in time. RestoreLongTermRetentionBackup: Creates a database by restoring from a long term retention vault. recoveryServicesRecoveryPointResourceId must be specified as the recovery point resource ID. Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for DataWarehouse edition. */
 export type DatabaseUpdatePropertiesInputCreateMode =
@@ -8657,30 +8347,10 @@ export const DatabaseUpdatePropertiesInputSecondaryType =
   /*@__PURE__*/ S.String;
 
 /** An ARM Resource SKU. */
-export interface DatabaseUpdatePropertiesInputCurrentSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const DatabaseUpdatePropertiesInputCurrentSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(S.String),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "DatabaseUpdatePropertiesInputCurrentSku",
-}) as any as S.Schema<DatabaseUpdatePropertiesInputCurrentSku>;
+export type DatabaseUpdatePropertiesInputCurrentSku =
+  ServiceObjectiveCapabilitySku;
+export const DatabaseUpdatePropertiesInputCurrentSku =
+  ServiceObjectiveCapabilitySku;
 
 /** The storage account type used to store backups for this database. */
 export type DatabaseUpdatePropertiesInputCurrentBackupStorageRedundancy =
@@ -8701,20 +8371,18 @@ export const DatabaseUpdatePropertiesInputRequestedBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
 /** Database level key used for encryption at rest. */
-export interface DatabaseUpdatePropertiesInputKeysValue {}
-export const DatabaseUpdatePropertiesInputKeysValue = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DatabaseUpdatePropertiesInputKeysValue",
-}) as any as S.Schema<DatabaseUpdatePropertiesInputKeysValue>;
+export type DatabaseUpdatePropertiesInputKeysValue =
+  DatabasePropertiesInputKeysValue;
+export const DatabaseUpdatePropertiesInputKeysValue =
+  DatabasePropertiesInputKeysValue;
 
 /** The resource ids of the user assigned identities to use */
 export type DatabaseUpdatePropertiesInputKeysMap = {
-  [key: string]: DatabaseUpdatePropertiesInputKeysValue | undefined;
+  [key: string]: DatabasePropertiesInputKeysValue | undefined;
 };
 export const DatabaseUpdatePropertiesInputKeysMap = /*@__PURE__*/ S.Record(
   S.String,
-  DatabaseUpdatePropertiesInputKeysValue,
+  DatabasePropertiesInputKeysValue,
 ) as any as S.Schema<DatabaseUpdatePropertiesInputKeysMap>;
 
 /** Type of enclave requested on the database i.e. Default or VBS enclaves. */
@@ -8776,7 +8444,7 @@ export interface DatabaseUpdatePropertiesInput {
   /** The secondary type of the database if it is a secondary. Valid values are Geo, Named and Standby. */
   secondaryType?: DatabaseUpdatePropertiesInputSecondaryType | (string & {});
   /** An ARM Resource SKU. */
-  currentSku?: DatabaseUpdatePropertiesInputCurrentSku;
+  currentSku?: ServiceObjectiveCapabilitySku;
   /** Time in minutes after which database is automatically paused. A value of -1 means that automatic pause is disabled */
   autoPauseDelay?: number;
   /** The storage account type used to store backups for this database. */
@@ -8838,7 +8506,7 @@ export const DatabaseUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
     readScale: S.optional(DatabaseUpdatePropertiesInputReadScale),
     highAvailabilityReplicaCount: S.optional(S.Number),
     secondaryType: S.optional(DatabaseUpdatePropertiesInputSecondaryType),
-    currentSku: S.optional(DatabaseUpdatePropertiesInputCurrentSku),
+    currentSku: S.optional(ServiceObjectiveCapabilitySku),
     autoPauseDelay: S.optional(S.Number),
     currentBackupStorageRedundancy: S.optional(
       DatabaseUpdatePropertiesInputCurrentBackupStorageRedundancy,
@@ -8886,7 +8554,7 @@ export interface DatabasesUpdateRequest {
   /** The name of the database. */
   databaseName: string;
   /** An ARM Resource SKU. */
-  sku?: DatabasesUpdateRequestSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Database identity */
   identity?: DatabaseIdentity;
   /** Resource properties. */
@@ -8900,7 +8568,7 @@ export const DatabasesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
-    sku: S.optional(DatabasesUpdateRequestSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     identity: S.optional(DatabaseIdentity),
     properties: S.optional(DatabaseUpdatePropertiesInput),
     tags: S.optional(DatabasesUpdateRequestTagsMap),
@@ -8926,29 +8594,8 @@ export const DatabasesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<DatabasesUpdateResponseTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface DatabasesUpdateResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const DatabasesUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DatabasesUpdateResponseSku",
-}) as any as S.Schema<DatabasesUpdateResponseSku>;
+export type DatabasesUpdateResponseSku = ServiceObjectiveCapabilitySku;
+export const DatabasesUpdateResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface DatabasesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8966,7 +8613,7 @@ export interface DatabasesUpdateResponse {
   /** Resource properties. */
   properties?: DatabaseProperties;
   /** An ARM Resource SKU. */
-  sku?: DatabasesUpdateResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Kind of database. This is metadata used for the Azure portal experience. */
   kind?: string;
   /** Resource that manages the database. */
@@ -8983,7 +8630,7 @@ export const DatabasesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(DatabasesUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(DatabaseProperties),
-    sku: S.optional(DatabasesUpdateResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     kind: S.optional(S.String),
     managedBy: S.optional(S.String),
     identity: S.optional(DatabaseIdentity),
@@ -9694,27 +9341,17 @@ export const DatabaseVulnerabilityAssessmentScansGetRequest =
   }) as any as S.Schema<DatabaseVulnerabilityAssessmentScansGetRequest>;
 
 /** Properties of a vulnerability assessment scan error. */
-export interface VulnerabilityAssessmentScanError {
-  /** The error code. */
-  code?: string;
-  /** The error message. */
-  message?: string;
-}
-export const VulnerabilityAssessmentScanError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VulnerabilityAssessmentScanError",
-}) as any as S.Schema<VulnerabilityAssessmentScanError>;
+export type VulnerabilityAssessmentScanError =
+  SqlVulnerabilityAssessmentScanError;
+export const VulnerabilityAssessmentScanError =
+  SqlVulnerabilityAssessmentScanError;
 
 /** The scan errors. */
 export type VulnerabilityAssessmentScanRecordPropertiesErrorsList =
-  Array<VulnerabilityAssessmentScanError>;
+  Array<SqlVulnerabilityAssessmentScanError>;
 export const VulnerabilityAssessmentScanRecordPropertiesErrorsList =
   /*@__PURE__*/ S.Array(
-    VulnerabilityAssessmentScanError,
+    SqlVulnerabilityAssessmentScanError,
   ) as any as S.Schema<VulnerabilityAssessmentScanRecordPropertiesErrorsList>;
 
 /** Properties of a vulnerability assessment scan record. */
@@ -12424,30 +12061,10 @@ export const ElasticPoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticPoolPropertiesInput>;
 
 /** An ARM Resource SKU. */
-export interface ElasticPoolsCreateOrUpdateRequestSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ElasticPoolsCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(S.String),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "ElasticPoolsCreateOrUpdateRequestSku",
-}) as any as S.Schema<ElasticPoolsCreateOrUpdateRequestSku>;
+export type ElasticPoolsCreateOrUpdateRequestSku =
+  ServiceObjectiveCapabilitySku;
+export const ElasticPoolsCreateOrUpdateRequestSku =
+  ServiceObjectiveCapabilitySku;
 
 export interface ElasticPoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12465,7 +12082,7 @@ export interface ElasticPoolsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: ElasticPoolPropertiesInput;
   /** An ARM Resource SKU. */
-  sku?: ElasticPoolsCreateOrUpdateRequestSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const ElasticPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12476,7 +12093,7 @@ export const ElasticPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ElasticPoolsCreateOrUpdateRequestTagsMap),
     location: S.String,
     properties: S.optional(ElasticPoolPropertiesInput),
-    sku: S.optional(ElasticPoolsCreateOrUpdateRequestSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -12565,30 +12182,10 @@ export const ElasticPoolProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticPoolProperties>;
 
 /** An ARM Resource SKU. */
-export interface ElasticPoolsCreateOrUpdateResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ElasticPoolsCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(S.String),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "ElasticPoolsCreateOrUpdateResponseSku",
-}) as any as S.Schema<ElasticPoolsCreateOrUpdateResponseSku>;
+export type ElasticPoolsCreateOrUpdateResponseSku =
+  ServiceObjectiveCapabilitySku;
+export const ElasticPoolsCreateOrUpdateResponseSku =
+  ServiceObjectiveCapabilitySku;
 
 export interface ElasticPoolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12606,7 +12203,7 @@ export interface ElasticPoolsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: ElasticPoolProperties;
   /** An ARM Resource SKU. */
-  sku?: ElasticPoolsCreateOrUpdateResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Kind of elastic pool. This is metadata used for the Azure portal experience. */
   kind?: string;
 }
@@ -12619,7 +12216,7 @@ export const ElasticPoolsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ElasticPoolsCreateOrUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(ElasticPoolProperties),
-    sku: S.optional(ElasticPoolsCreateOrUpdateResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     kind: S.optional(S.String),
   }),
 ).annotate({
@@ -12734,29 +12331,8 @@ export const ElasticPoolsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ElasticPoolsGetResponseTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface ElasticPoolsGetResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ElasticPoolsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ElasticPoolsGetResponseSku",
-}) as any as S.Schema<ElasticPoolsGetResponseSku>;
+export type ElasticPoolsGetResponseSku = ServiceObjectiveCapabilitySku;
+export const ElasticPoolsGetResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface ElasticPoolsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12774,7 +12350,7 @@ export interface ElasticPoolsGetResponse {
   /** Resource properties. */
   properties?: ElasticPoolProperties;
   /** An ARM Resource SKU. */
-  sku?: ElasticPoolsGetResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Kind of elastic pool. This is metadata used for the Azure portal experience. */
   kind?: string;
 }
@@ -12787,7 +12363,7 @@ export const ElasticPoolsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ElasticPoolsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(ElasticPoolProperties),
-    sku: S.optional(ElasticPoolsGetResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     kind: S.optional(S.String),
   }),
 ).annotate({
@@ -12830,27 +12406,8 @@ export const ElasticPoolTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ElasticPoolTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface ElasticPoolSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ElasticPoolSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ElasticPoolSku" }) as any as S.Schema<ElasticPoolSku>;
+export type ElasticPoolSku = ServiceObjectiveCapabilitySku;
+export const ElasticPoolSku = ServiceObjectiveCapabilitySku;
 
 /** An elastic pool. */
 export interface ElasticPool {
@@ -12869,7 +12426,7 @@ export interface ElasticPool {
   /** Resource properties. */
   properties?: ElasticPoolProperties;
   /** An ARM Resource SKU. */
-  sku?: ElasticPoolSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Kind of elastic pool. This is metadata used for the Azure portal experience. */
   kind?: string;
 }
@@ -12882,7 +12439,7 @@ export const ElasticPool = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ElasticPoolTagsMap),
     location: S.String,
     properties: S.optional(ElasticPoolProperties),
-    sku: S.optional(ElasticPoolSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     kind: S.optional(S.String),
   }),
 ).annotate({ identifier: "ElasticPool" }) as any as S.Schema<ElasticPool>;
@@ -12910,29 +12467,8 @@ export const ElasticPoolListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticPoolListResult>;
 
 /** An ARM Resource SKU. */
-export interface ElasticPoolsUpdateRequestSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ElasticPoolsUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ElasticPoolsUpdateRequestSku",
-}) as any as S.Schema<ElasticPoolsUpdateRequestSku>;
+export type ElasticPoolsUpdateRequestSku = ServiceObjectiveCapabilitySku;
+export const ElasticPoolsUpdateRequestSku = ServiceObjectiveCapabilitySku;
 
 /** The license type to apply for this elastic pool. */
 export type ElasticPoolUpdatePropertiesLicenseType =
@@ -13019,7 +12555,7 @@ export interface ElasticPoolsUpdateRequest {
   /** The name of the elastic pool. */
   elasticPoolName: string;
   /** An ARM Resource SKU. */
-  sku?: ElasticPoolsUpdateRequestSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Resource properties. */
   properties?: ElasticPoolUpdateProperties;
   /** Resource tags. */
@@ -13031,7 +12567,7 @@ export const ElasticPoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     serverName: S.String.pipe(T.Label()),
     elasticPoolName: S.String.pipe(T.Label()),
-    sku: S.optional(ElasticPoolsUpdateRequestSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     properties: S.optional(ElasticPoolUpdateProperties),
     tags: S.optional(ElasticPoolsUpdateRequestTagsMap),
   }).pipe(
@@ -13056,29 +12592,8 @@ export const ElasticPoolsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ElasticPoolsUpdateResponseTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface ElasticPoolsUpdateResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ElasticPoolsUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ElasticPoolsUpdateResponseSku",
-}) as any as S.Schema<ElasticPoolsUpdateResponseSku>;
+export type ElasticPoolsUpdateResponseSku = ServiceObjectiveCapabilitySku;
+export const ElasticPoolsUpdateResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface ElasticPoolsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13096,7 +12611,7 @@ export interface ElasticPoolsUpdateResponse {
   /** Resource properties. */
   properties?: ElasticPoolProperties;
   /** An ARM Resource SKU. */
-  sku?: ElasticPoolsUpdateResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Kind of elastic pool. This is metadata used for the Azure portal experience. */
   kind?: string;
 }
@@ -13109,7 +12624,7 @@ export const ElasticPoolsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ElasticPoolsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(ElasticPoolProperties),
-    sku: S.optional(ElasticPoolsUpdateResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     kind: S.optional(S.String),
   }),
 ).annotate({
@@ -16253,30 +15768,10 @@ export const InstancePoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancePoolPropertiesInput>;
 
 /** An ARM Resource SKU. */
-export interface InstancePoolsCreateOrUpdateRequestSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const InstancePoolsCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(S.String),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "InstancePoolsCreateOrUpdateRequestSku",
-}) as any as S.Schema<InstancePoolsCreateOrUpdateRequestSku>;
+export type InstancePoolsCreateOrUpdateRequestSku =
+  ServiceObjectiveCapabilitySku;
+export const InstancePoolsCreateOrUpdateRequestSku =
+  ServiceObjectiveCapabilitySku;
 
 export interface InstancePoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16292,7 +15787,7 @@ export interface InstancePoolsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: InstancePoolPropertiesInput;
   /** An ARM Resource SKU. */
-  sku?: InstancePoolsCreateOrUpdateRequestSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const InstancePoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16302,7 +15797,7 @@ export const InstancePoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(InstancePoolsCreateOrUpdateRequestTagsMap),
     location: S.String,
     properties: S.optional(InstancePoolPropertiesInput),
-    sku: S.optional(InstancePoolsCreateOrUpdateRequestSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -16355,30 +15850,10 @@ export const InstancePoolProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancePoolProperties>;
 
 /** An ARM Resource SKU. */
-export interface InstancePoolsCreateOrUpdateResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const InstancePoolsCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(S.String),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "InstancePoolsCreateOrUpdateResponseSku",
-}) as any as S.Schema<InstancePoolsCreateOrUpdateResponseSku>;
+export type InstancePoolsCreateOrUpdateResponseSku =
+  ServiceObjectiveCapabilitySku;
+export const InstancePoolsCreateOrUpdateResponseSku =
+  ServiceObjectiveCapabilitySku;
 
 export interface InstancePoolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -16396,7 +15871,7 @@ export interface InstancePoolsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: InstancePoolProperties;
   /** An ARM Resource SKU. */
-  sku?: InstancePoolsCreateOrUpdateResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const InstancePoolsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16407,7 +15882,7 @@ export const InstancePoolsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(InstancePoolsCreateOrUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(InstancePoolProperties),
-    sku: S.optional(InstancePoolsCreateOrUpdateResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({
   identifier: "InstancePoolsCreateOrUpdateResponse",
@@ -16480,29 +15955,8 @@ export const InstancePoolsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<InstancePoolsGetResponseTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface InstancePoolsGetResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const InstancePoolsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InstancePoolsGetResponseSku",
-}) as any as S.Schema<InstancePoolsGetResponseSku>;
+export type InstancePoolsGetResponseSku = ServiceObjectiveCapabilitySku;
+export const InstancePoolsGetResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface InstancePoolsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -16520,7 +15974,7 @@ export interface InstancePoolsGetResponse {
   /** Resource properties. */
   properties?: InstancePoolProperties;
   /** An ARM Resource SKU. */
-  sku?: InstancePoolsGetResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const InstancePoolsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16531,7 +15985,7 @@ export const InstancePoolsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(InstancePoolsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(InstancePoolProperties),
-    sku: S.optional(InstancePoolsGetResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({
   identifier: "InstancePoolsGetResponse",
@@ -16564,29 +16018,8 @@ export const InstancePoolTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<InstancePoolTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface InstancePoolSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const InstancePoolSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InstancePoolSku",
-}) as any as S.Schema<InstancePoolSku>;
+export type InstancePoolSku = ServiceObjectiveCapabilitySku;
+export const InstancePoolSku = ServiceObjectiveCapabilitySku;
 
 /** An Azure SQL instance pool. */
 export interface InstancePool {
@@ -16605,7 +16038,7 @@ export interface InstancePool {
   /** Resource properties. */
   properties?: InstancePoolProperties;
   /** An ARM Resource SKU. */
-  sku?: InstancePoolSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const InstancePool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16616,7 +16049,7 @@ export const InstancePool = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(InstancePoolTagsMap),
     location: S.String,
     properties: S.optional(InstancePoolProperties),
-    sku: S.optional(InstancePoolSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({ identifier: "InstancePool" }) as any as S.Schema<InstancePool>;
 
@@ -16666,29 +16099,8 @@ export const InstancePoolsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<InstancePoolsListByResourceGroupRequest>;
 
 /** An ARM Resource SKU. */
-export interface InstancePoolsUpdateRequestSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const InstancePoolsUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InstancePoolsUpdateRequestSku",
-}) as any as S.Schema<InstancePoolsUpdateRequestSku>;
+export type InstancePoolsUpdateRequestSku = ServiceObjectiveCapabilitySku;
+export const InstancePoolsUpdateRequestSku = ServiceObjectiveCapabilitySku;
 
 /** Resource tags. */
 export type InstancePoolsUpdateRequestTagsMap = {
@@ -16707,7 +16119,7 @@ export interface InstancePoolsUpdateRequest {
   /** The name of the instance pool to be retrieved. */
   instancePoolName: string;
   /** An ARM Resource SKU. */
-  sku?: InstancePoolsUpdateRequestSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Resource properties. */
   properties?: InstancePoolPropertiesInput;
   /** Resource tags. */
@@ -16718,7 +16130,7 @@ export const InstancePoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     instancePoolName: S.String.pipe(T.Label()),
-    sku: S.optional(InstancePoolsUpdateRequestSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     properties: S.optional(InstancePoolPropertiesInput),
     tags: S.optional(InstancePoolsUpdateRequestTagsMap),
   }).pipe(
@@ -16743,29 +16155,8 @@ export const InstancePoolsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<InstancePoolsUpdateResponseTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface InstancePoolsUpdateResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const InstancePoolsUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "InstancePoolsUpdateResponseSku",
-}) as any as S.Schema<InstancePoolsUpdateResponseSku>;
+export type InstancePoolsUpdateResponseSku = ServiceObjectiveCapabilitySku;
+export const InstancePoolsUpdateResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface InstancePoolsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -16783,7 +16174,7 @@ export interface InstancePoolsUpdateResponse {
   /** Resource properties. */
   properties?: InstancePoolProperties;
   /** An ARM Resource SKU. */
-  sku?: InstancePoolsUpdateResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const InstancePoolsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16794,7 +16185,7 @@ export const InstancePoolsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(InstancePoolsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(InstancePoolProperties),
-    sku: S.optional(InstancePoolsUpdateResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({
   identifier: "InstancePoolsUpdateResponse",
@@ -17062,29 +16453,8 @@ export const JobAgentProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobAgentProperties>;
 
 /** An ARM Resource SKU. */
-export interface JobAgentsCreateOrUpdateRequestSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const JobAgentsCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "JobAgentsCreateOrUpdateRequestSku",
-}) as any as S.Schema<JobAgentsCreateOrUpdateRequestSku>;
+export type JobAgentsCreateOrUpdateRequestSku = ServiceObjectiveCapabilitySku;
+export const JobAgentsCreateOrUpdateRequestSku = ServiceObjectiveCapabilitySku;
 
 /** The job agent identity type */
 export type JobAgentIdentityType =
@@ -17095,28 +16465,16 @@ export type JobAgentIdentityType =
 export const JobAgentIdentityType = /*@__PURE__*/ S.String;
 
 /** Azure Active Directory identity configuration for a resource. */
-export interface JobAgentUserAssignedIdentity {
-  /** Universally Unique Identifier */
-  principalId?: string;
-  /** Universally Unique Identifier */
-  clientId?: string;
-}
-export const JobAgentUserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    clientId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "JobAgentUserAssignedIdentity",
-}) as any as S.Schema<JobAgentUserAssignedIdentity>;
+export type JobAgentUserAssignedIdentity = DatabaseUserIdentity;
+export const JobAgentUserAssignedIdentity = DatabaseUserIdentity;
 
 /** The resource ids of the user assigned identities to use */
 export type JobAgentIdentityUserAssignedIdentitiesMap = {
-  [key: string]: JobAgentUserAssignedIdentity | undefined;
+  [key: string]: DatabaseUserIdentity | undefined;
 };
 export const JobAgentIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  JobAgentUserAssignedIdentity,
+  DatabaseUserIdentity,
 ) as any as S.Schema<JobAgentIdentityUserAssignedIdentitiesMap>;
 
 /** Azure Active Directory identity configuration for a resource. */
@@ -17156,7 +16514,7 @@ export interface JobAgentsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: JobAgentProperties;
   /** An ARM Resource SKU. */
-  sku?: JobAgentsCreateOrUpdateRequestSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** The identity of the job agent. */
   identity?: JobAgentIdentity;
 }
@@ -17169,7 +16527,7 @@ export const JobAgentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(JobAgentsCreateOrUpdateRequestTagsMap),
     location: S.String,
     properties: S.optional(JobAgentProperties),
-    sku: S.optional(JobAgentsCreateOrUpdateRequestSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     identity: S.optional(JobAgentIdentity),
   }).pipe(
     T.Http({
@@ -17193,29 +16551,8 @@ export const JobAgentsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<JobAgentsCreateOrUpdateResponseTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface JobAgentsCreateOrUpdateResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const JobAgentsCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "JobAgentsCreateOrUpdateResponseSku",
-}) as any as S.Schema<JobAgentsCreateOrUpdateResponseSku>;
+export type JobAgentsCreateOrUpdateResponseSku = ServiceObjectiveCapabilitySku;
+export const JobAgentsCreateOrUpdateResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface JobAgentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -17233,7 +16570,7 @@ export interface JobAgentsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: JobAgentProperties;
   /** An ARM Resource SKU. */
-  sku?: JobAgentsCreateOrUpdateResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** The identity of the job agent. */
   identity?: JobAgentIdentity;
 }
@@ -17246,7 +16583,7 @@ export const JobAgentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(JobAgentsCreateOrUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(JobAgentProperties),
-    sku: S.optional(JobAgentsCreateOrUpdateResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     identity: S.optional(JobAgentIdentity),
   }),
 ).annotate({
@@ -17324,29 +16661,8 @@ export const JobAgentsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<JobAgentsGetResponseTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface JobAgentsGetResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const JobAgentsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "JobAgentsGetResponseSku",
-}) as any as S.Schema<JobAgentsGetResponseSku>;
+export type JobAgentsGetResponseSku = ServiceObjectiveCapabilitySku;
+export const JobAgentsGetResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface JobAgentsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -17364,7 +16680,7 @@ export interface JobAgentsGetResponse {
   /** Resource properties. */
   properties?: JobAgentProperties;
   /** An ARM Resource SKU. */
-  sku?: JobAgentsGetResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** The identity of the job agent. */
   identity?: JobAgentIdentity;
 }
@@ -17377,7 +16693,7 @@ export const JobAgentsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(JobAgentsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(JobAgentProperties),
-    sku: S.optional(JobAgentsGetResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     identity: S.optional(JobAgentIdentity),
   }),
 ).annotate({
@@ -17417,27 +16733,8 @@ export const JobAgentTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<JobAgentTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface JobAgentSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const JobAgentSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "JobAgentSku" }) as any as S.Schema<JobAgentSku>;
+export type JobAgentSku = ServiceObjectiveCapabilitySku;
+export const JobAgentSku = ServiceObjectiveCapabilitySku;
 
 /** An Azure SQL job agent. */
 export interface JobAgent {
@@ -17456,7 +16753,7 @@ export interface JobAgent {
   /** Resource properties. */
   properties?: JobAgentProperties;
   /** An ARM Resource SKU. */
-  sku?: JobAgentSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** The identity of the job agent. */
   identity?: JobAgentIdentity;
 }
@@ -17469,7 +16766,7 @@ export const JobAgent = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(JobAgentTagsMap),
     location: S.String,
     properties: S.optional(JobAgentProperties),
-    sku: S.optional(JobAgentSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     identity: S.optional(JobAgentIdentity),
   }),
 ).annotate({ identifier: "JobAgent" }) as any as S.Schema<JobAgent>;
@@ -17497,29 +16794,8 @@ export const JobAgentListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobAgentListResult>;
 
 /** An ARM Resource SKU. */
-export interface JobAgentsUpdateRequestSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const JobAgentsUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "JobAgentsUpdateRequestSku",
-}) as any as S.Schema<JobAgentsUpdateRequestSku>;
+export type JobAgentsUpdateRequestSku = ServiceObjectiveCapabilitySku;
+export const JobAgentsUpdateRequestSku = ServiceObjectiveCapabilitySku;
 
 /** Resource tags. */
 export type JobAgentsUpdateRequestTagsMap = {
@@ -17542,7 +16818,7 @@ export interface JobAgentsUpdateRequest {
   /** Managed identity assigned to job agent */
   identity?: JobAgentIdentity;
   /** An ARM Resource SKU. */
-  sku?: JobAgentsUpdateRequestSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Resource tags. */
   tags?: JobAgentsUpdateRequestTagsMap;
 }
@@ -17553,7 +16829,7 @@ export const JobAgentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     serverName: S.String.pipe(T.Label()),
     jobAgentName: S.String.pipe(T.Label()),
     identity: S.optional(JobAgentIdentity),
-    sku: S.optional(JobAgentsUpdateRequestSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     tags: S.optional(JobAgentsUpdateRequestTagsMap),
   }).pipe(
     T.Http({
@@ -17577,29 +16853,8 @@ export const JobAgentsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<JobAgentsUpdateResponseTagsMap>;
 
 /** An ARM Resource SKU. */
-export interface JobAgentsUpdateResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const JobAgentsUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "JobAgentsUpdateResponseSku",
-}) as any as S.Schema<JobAgentsUpdateResponseSku>;
+export type JobAgentsUpdateResponseSku = ServiceObjectiveCapabilitySku;
+export const JobAgentsUpdateResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface JobAgentsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -17617,7 +16872,7 @@ export interface JobAgentsUpdateResponse {
   /** Resource properties. */
   properties?: JobAgentProperties;
   /** An ARM Resource SKU. */
-  sku?: JobAgentsUpdateResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** The identity of the job agent. */
   identity?: JobAgentIdentity;
 }
@@ -17630,7 +16885,7 @@ export const JobAgentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(JobAgentsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(JobAgentProperties),
-    sku: S.optional(JobAgentsUpdateResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     identity: S.optional(JobAgentIdentity),
   }),
 ).annotate({
@@ -23374,19 +22629,10 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateReques
   /*@__PURE__*/ S.String;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState | (string & {});
-}
+export type ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-    }),
-  ).annotate({
-    identifier:
-      "ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties",
-  }) as any as S.Schema<ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 
 export interface ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -23402,7 +22648,7 @@ export interface ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRe
     | ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName
     | (string & {});
   /** Properties of an Advanced Threat Protection state. */
-  properties?: ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
+  properties?: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 }
 export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -23416,7 +22662,7 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateReques
           T.Label(),
         ),
       properties: S.optional(
-        ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties,
+        DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties,
       ),
     }).pipe(
       T.Http({
@@ -23432,22 +22678,10 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateReques
   }) as any as S.Schema<ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequest>;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState;
-  /** Specifies the UTC creation time of the policy. */
-  creationTime?: string;
-}
+export type ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-      creationTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties",
-  }) as any as S.Schema<ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 
 export interface ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -23459,7 +22693,7 @@ export interface ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRe
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Properties of an Advanced Threat Protection state. */
-  properties?: ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
+  properties?: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 }
 export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -23469,7 +22703,7 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRespon
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
       properties: S.optional(
-        ManagedDatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties,
+        DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties,
       ),
     }),
   ).annotate({
@@ -23520,22 +22754,10 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsGetRequest =
   }) as any as S.Schema<ManagedDatabaseAdvancedThreatProtectionSettingsGetRequest>;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface ManagedDatabaseAdvancedThreatProtectionSettingsGetResponseProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState;
-  /** Specifies the UTC creation time of the policy. */
-  creationTime?: string;
-}
+export type ManagedDatabaseAdvancedThreatProtectionSettingsGetResponseProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 export const ManagedDatabaseAdvancedThreatProtectionSettingsGetResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-      creationTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ManagedDatabaseAdvancedThreatProtectionSettingsGetResponseProperties",
-  }) as any as S.Schema<ManagedDatabaseAdvancedThreatProtectionSettingsGetResponseProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 
 export interface ManagedDatabaseAdvancedThreatProtectionSettingsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -23547,7 +22769,7 @@ export interface ManagedDatabaseAdvancedThreatProtectionSettingsGetResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Properties of an Advanced Threat Protection state. */
-  properties?: ManagedDatabaseAdvancedThreatProtectionSettingsGetResponseProperties;
+  properties?: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 }
 export const ManagedDatabaseAdvancedThreatProtectionSettingsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -23557,7 +22779,7 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsGetResponse =
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
       properties: S.optional(
-        ManagedDatabaseAdvancedThreatProtectionSettingsGetResponseProperties,
+        DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties,
       ),
     }),
   ).annotate({
@@ -23595,54 +22817,23 @@ export const ManagedDatabaseAdvancedThreatProtectionSettingsListByDatabaseReques
   }) as any as S.Schema<ManagedDatabaseAdvancedThreatProtectionSettingsListByDatabaseRequest>;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface ManagedDatabaseAdvancedThreatProtectionProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState;
-  /** Specifies the UTC creation time of the policy. */
-  creationTime?: string;
-}
+export type ManagedDatabaseAdvancedThreatProtectionProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 export const ManagedDatabaseAdvancedThreatProtectionProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-      creationTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ManagedDatabaseAdvancedThreatProtectionProperties",
-  }) as any as S.Schema<ManagedDatabaseAdvancedThreatProtectionProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 
 /** A managed database Advanced Threat Protection. */
-export interface ManagedDatabaseAdvancedThreatProtection {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of an Advanced Threat Protection state. */
-  properties?: ManagedDatabaseAdvancedThreatProtectionProperties;
-}
-export const ManagedDatabaseAdvancedThreatProtection = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ManagedDatabaseAdvancedThreatProtectionProperties),
-    }),
-).annotate({
-  identifier: "ManagedDatabaseAdvancedThreatProtection",
-}) as any as S.Schema<ManagedDatabaseAdvancedThreatProtection>;
+export type ManagedDatabaseAdvancedThreatProtection =
+  DatabaseAdvancedThreatProtection;
+export const ManagedDatabaseAdvancedThreatProtection =
+  DatabaseAdvancedThreatProtection;
 
 /** The ManagedDatabaseAdvancedThreatProtection items on this page */
 export type ManagedDatabaseAdvancedThreatProtectionListResultValueList =
-  Array<ManagedDatabaseAdvancedThreatProtection>;
+  Array<DatabaseAdvancedThreatProtection>;
 export const ManagedDatabaseAdvancedThreatProtectionListResultValueList =
   /*@__PURE__*/ S.Array(
-    ManagedDatabaseAdvancedThreatProtection,
+    DatabaseAdvancedThreatProtection,
   ) as any as S.Schema<ManagedDatabaseAdvancedThreatProtectionListResultValueList>;
 
 /** The response of a ManagedDatabaseAdvancedThreatProtection list operation. */
@@ -28247,19 +27438,10 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateReques
   /*@__PURE__*/ S.String;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState | (string & {});
-}
+export type ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-    }),
-  ).annotate({
-    identifier:
-      "ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties",
-  }) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 
 export interface ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -28273,7 +27455,7 @@ export interface ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRe
     | ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName
     | (string & {});
   /** Properties of an Advanced Threat Protection state. */
-  properties?: ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
+  properties?: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 }
 export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -28286,7 +27468,7 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateReques
           T.Label(),
         ),
       properties: S.optional(
-        ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties,
+        DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties,
       ),
     }).pipe(
       T.Http({
@@ -28302,22 +27484,10 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateReques
   }) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRequest>;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState;
-  /** Specifies the UTC creation time of the policy. */
-  creationTime?: string;
-}
+export type ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-      creationTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties",
-  }) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 
 export interface ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -28329,7 +27499,7 @@ export interface ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRe
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Properties of an Advanced Threat Protection state. */
-  properties?: ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
+  properties?: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 }
 export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -28339,7 +27509,7 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateRespon
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
       properties: S.optional(
-        ManagedInstanceAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties,
+        DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties,
       ),
     }),
   ).annotate({
@@ -28387,22 +27557,10 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsGetRequest =
   }) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionSettingsGetRequest>;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface ManagedInstanceAdvancedThreatProtectionSettingsGetResponseProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState;
-  /** Specifies the UTC creation time of the policy. */
-  creationTime?: string;
-}
+export type ManagedInstanceAdvancedThreatProtectionSettingsGetResponseProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 export const ManagedInstanceAdvancedThreatProtectionSettingsGetResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-      creationTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ManagedInstanceAdvancedThreatProtectionSettingsGetResponseProperties",
-  }) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionSettingsGetResponseProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 
 export interface ManagedInstanceAdvancedThreatProtectionSettingsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -28414,7 +27572,7 @@ export interface ManagedInstanceAdvancedThreatProtectionSettingsGetResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Properties of an Advanced Threat Protection state. */
-  properties?: ManagedInstanceAdvancedThreatProtectionSettingsGetResponseProperties;
+  properties?: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 }
 export const ManagedInstanceAdvancedThreatProtectionSettingsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -28424,7 +27582,7 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsGetResponse =
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
       properties: S.optional(
-        ManagedInstanceAdvancedThreatProtectionSettingsGetResponseProperties,
+        DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties,
       ),
     }),
   ).annotate({
@@ -28459,54 +27617,23 @@ export const ManagedInstanceAdvancedThreatProtectionSettingsListByInstanceReques
   }) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionSettingsListByInstanceRequest>;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface ManagedInstanceAdvancedThreatProtectionProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState;
-  /** Specifies the UTC creation time of the policy. */
-  creationTime?: string;
-}
+export type ManagedInstanceAdvancedThreatProtectionProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 export const ManagedInstanceAdvancedThreatProtectionProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-      creationTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ManagedInstanceAdvancedThreatProtectionProperties",
-  }) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 
 /** A managed instance Advanced Threat Protection. */
-export interface ManagedInstanceAdvancedThreatProtection {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of an Advanced Threat Protection state. */
-  properties?: ManagedInstanceAdvancedThreatProtectionProperties;
-}
-export const ManagedInstanceAdvancedThreatProtection = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ManagedInstanceAdvancedThreatProtectionProperties),
-    }),
-).annotate({
-  identifier: "ManagedInstanceAdvancedThreatProtection",
-}) as any as S.Schema<ManagedInstanceAdvancedThreatProtection>;
+export type ManagedInstanceAdvancedThreatProtection =
+  DatabaseAdvancedThreatProtection;
+export const ManagedInstanceAdvancedThreatProtection =
+  DatabaseAdvancedThreatProtection;
 
 /** The ManagedInstanceAdvancedThreatProtection items on this page */
 export type ManagedInstanceAdvancedThreatProtectionListResultValueList =
-  Array<ManagedInstanceAdvancedThreatProtection>;
+  Array<DatabaseAdvancedThreatProtection>;
 export const ManagedInstanceAdvancedThreatProtectionListResultValueList =
   /*@__PURE__*/ S.Array(
-    ManagedInstanceAdvancedThreatProtection,
+    DatabaseAdvancedThreatProtection,
   ) as any as S.Schema<ManagedInstanceAdvancedThreatProtectionListResultValueList>;
 
 /** The response of a ManagedInstanceAdvancedThreatProtection list operation. */
@@ -30594,27 +29721,10 @@ export const ManagedInstancePrivateEndpointConnectionsGetRequest =
   }) as any as S.Schema<ManagedInstancePrivateEndpointConnectionsGetRequest>;
 
 /** Properties of a private endpoint connection. */
-export interface ManagedInstancePrivateEndpointConnectionsGetResponseProperties {
-  /** Private endpoint which the connection belongs to. */
-  privateEndpoint?: ManagedInstancePrivateEndpointProperty;
-  /** Connection State of the Private Endpoint Connection. */
-  privateLinkServiceConnectionState?: ManagedInstancePrivateLinkServiceConnectionStateProperty;
-  /** State of the Private Endpoint Connection. */
-  provisioningState?: string;
-}
+export type ManagedInstancePrivateEndpointConnectionsGetResponseProperties =
+  ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponseProperties;
 export const ManagedInstancePrivateEndpointConnectionsGetResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      privateEndpoint: S.optional(ManagedInstancePrivateEndpointProperty),
-      privateLinkServiceConnectionState: S.optional(
-        ManagedInstancePrivateLinkServiceConnectionStateProperty,
-      ),
-      provisioningState: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ManagedInstancePrivateEndpointConnectionsGetResponseProperties",
-  }) as any as S.Schema<ManagedInstancePrivateEndpointConnectionsGetResponseProperties>;
+  ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponseProperties;
 
 export interface ManagedInstancePrivateEndpointConnectionsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -30626,7 +29736,7 @@ export interface ManagedInstancePrivateEndpointConnectionsGetResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Properties of a private endpoint connection. */
-  properties?: ManagedInstancePrivateEndpointConnectionsGetResponseProperties;
+  properties?: ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponseProperties;
 }
 export const ManagedInstancePrivateEndpointConnectionsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -30636,7 +29746,7 @@ export const ManagedInstancePrivateEndpointConnectionsGetResponse =
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
       properties: S.optional(
-        ManagedInstancePrivateEndpointConnectionsGetResponseProperties,
+        ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponseProperties,
       ),
     }),
   ).annotate({
@@ -30671,26 +29781,10 @@ export const ManagedInstancePrivateEndpointConnectionsListByManagedInstanceReque
   }) as any as S.Schema<ManagedInstancePrivateEndpointConnectionsListByManagedInstanceRequest>;
 
 /** Properties of a private endpoint connection. */
-export interface ManagedInstancePrivateEndpointConnectionProperties {
-  /** Private endpoint which the connection belongs to. */
-  privateEndpoint?: ManagedInstancePrivateEndpointProperty;
-  /** Connection State of the Private Endpoint Connection. */
-  privateLinkServiceConnectionState?: ManagedInstancePrivateLinkServiceConnectionStateProperty;
-  /** State of the Private Endpoint Connection. */
-  provisioningState?: string;
-}
+export type ManagedInstancePrivateEndpointConnectionProperties =
+  ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponseProperties;
 export const ManagedInstancePrivateEndpointConnectionProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      privateEndpoint: S.optional(ManagedInstancePrivateEndpointProperty),
-      privateLinkServiceConnectionState: S.optional(
-        ManagedInstancePrivateLinkServiceConnectionStateProperty,
-      ),
-      provisioningState: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ManagedInstancePrivateEndpointConnectionProperties",
-  }) as any as S.Schema<ManagedInstancePrivateEndpointConnectionProperties>;
+  ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponseProperties;
 
 /** A private endpoint connection */
 export interface ManagedInstancePrivateEndpointConnection {
@@ -30703,7 +29797,7 @@ export interface ManagedInstancePrivateEndpointConnection {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Properties of a private endpoint connection. */
-  properties?: ManagedInstancePrivateEndpointConnectionProperties;
+  properties?: ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponseProperties;
 }
 export const ManagedInstancePrivateEndpointConnection = /*@__PURE__*/ S.suspend(
   () =>
@@ -30713,7 +29807,7 @@ export const ManagedInstancePrivateEndpointConnection = /*@__PURE__*/ S.suspend(
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
       properties: S.optional(
-        ManagedInstancePrivateEndpointConnectionProperties,
+        ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponseProperties,
       ),
     }),
 ).annotate({
@@ -31299,30 +30393,10 @@ export const ManagedInstancesCreateOrUpdateRequestIdentity =
   }) as any as S.Schema<ManagedInstancesCreateOrUpdateRequestIdentity>;
 
 /** An ARM Resource SKU. */
-export interface ManagedInstancesCreateOrUpdateRequestSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ManagedInstancesCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(S.String),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "ManagedInstancesCreateOrUpdateRequestSku",
-}) as any as S.Schema<ManagedInstancesCreateOrUpdateRequestSku>;
+export type ManagedInstancesCreateOrUpdateRequestSku =
+  ServiceObjectiveCapabilitySku;
+export const ManagedInstancesCreateOrUpdateRequestSku =
+  ServiceObjectiveCapabilitySku;
 
 export interface ManagedInstancesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -31340,7 +30414,7 @@ export interface ManagedInstancesCreateOrUpdateRequest {
   /** Azure Active Directory identity configuration for a resource. */
   identity?: ManagedInstancesCreateOrUpdateRequestIdentity;
   /** An ARM Resource SKU. */
-  sku?: ManagedInstancesCreateOrUpdateRequestSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const ManagedInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -31352,7 +30426,7 @@ export const ManagedInstancesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(ManagedInstancePropertiesInput),
       identity: S.optional(ManagedInstancesCreateOrUpdateRequestIdentity),
-      sku: S.optional(ManagedInstancesCreateOrUpdateRequestSku),
+      sku: S.optional(ServiceObjectiveCapabilitySku),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -31420,38 +30494,24 @@ export type ManagedInstancePropertiesProxyOverride =
 export const ManagedInstancePropertiesProxyOverride = /*@__PURE__*/ S.String;
 
 /** Properties of a private endpoint connection. */
-export interface ManagedInstancePecPropertyProperties {
-  /** Private endpoint which the connection belongs to. */
-  privateEndpoint?: ManagedInstancePrivateEndpointProperty;
-  /** Connection State of the Private Endpoint Connection. */
-  privateLinkServiceConnectionState?: ManagedInstancePrivateLinkServiceConnectionStateProperty;
-  /** State of the Private Endpoint Connection. */
-  provisioningState?: string;
-}
-export const ManagedInstancePecPropertyProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      privateEndpoint: S.optional(ManagedInstancePrivateEndpointProperty),
-      privateLinkServiceConnectionState: S.optional(
-        ManagedInstancePrivateLinkServiceConnectionStateProperty,
-      ),
-      provisioningState: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ManagedInstancePecPropertyProperties",
-}) as any as S.Schema<ManagedInstancePecPropertyProperties>;
+export type ManagedInstancePecPropertyProperties =
+  ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponseProperties;
+export const ManagedInstancePecPropertyProperties =
+  ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponseProperties;
 
 /** A private endpoint connection under a managed instance */
 export interface ManagedInstancePecProperty {
   /** Resource ID. */
   id?: string;
   /** Properties of a private endpoint connection. */
-  properties?: ManagedInstancePecPropertyProperties;
+  properties?: ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponseProperties;
 }
 export const ManagedInstancePecProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    properties: S.optional(ManagedInstancePecPropertyProperties),
+    properties: S.optional(
+      ManagedInstancePrivateEndpointConnectionsCreateOrUpdateResponseProperties,
+    ),
   }),
 ).annotate({
   identifier: "ManagedInstancePecProperty",
@@ -31733,30 +30793,10 @@ export const ManagedInstancesCreateOrUpdateResponseIdentity =
   }) as any as S.Schema<ManagedInstancesCreateOrUpdateResponseIdentity>;
 
 /** An ARM Resource SKU. */
-export interface ManagedInstancesCreateOrUpdateResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
+export type ManagedInstancesCreateOrUpdateResponseSku =
+  ServiceObjectiveCapabilitySku;
 export const ManagedInstancesCreateOrUpdateResponseSku =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(S.String),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ManagedInstancesCreateOrUpdateResponseSku",
-  }) as any as S.Schema<ManagedInstancesCreateOrUpdateResponseSku>;
+  ServiceObjectiveCapabilitySku;
 
 export interface ManagedInstancesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -31776,7 +30816,7 @@ export interface ManagedInstancesCreateOrUpdateResponse {
   /** Azure Active Directory identity configuration for a resource. */
   identity?: ManagedInstancesCreateOrUpdateResponseIdentity;
   /** An ARM Resource SKU. */
-  sku?: ManagedInstancesCreateOrUpdateResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const ManagedInstancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -31789,7 +30829,7 @@ export const ManagedInstancesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(ManagedInstanceProperties),
       identity: S.optional(ManagedInstancesCreateOrUpdateResponseIdentity),
-      sku: S.optional(ManagedInstancesCreateOrUpdateResponseSku),
+      sku: S.optional(ServiceObjectiveCapabilitySku),
     }),
 ).annotate({
   identifier: "ManagedInstancesCreateOrUpdateResponse",
@@ -31942,29 +30982,8 @@ export const ManagedInstancesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedInstancesGetResponseIdentity>;
 
 /** An ARM Resource SKU. */
-export interface ManagedInstancesGetResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ManagedInstancesGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ManagedInstancesGetResponseSku",
-}) as any as S.Schema<ManagedInstancesGetResponseSku>;
+export type ManagedInstancesGetResponseSku = ServiceObjectiveCapabilitySku;
+export const ManagedInstancesGetResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface ManagedInstancesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -31984,7 +31003,7 @@ export interface ManagedInstancesGetResponse {
   /** Azure Active Directory identity configuration for a resource. */
   identity?: ManagedInstancesGetResponseIdentity;
   /** An ARM Resource SKU. */
-  sku?: ManagedInstancesGetResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const ManagedInstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -31996,7 +31015,7 @@ export const ManagedInstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ManagedInstanceProperties),
     identity: S.optional(ManagedInstancesGetResponseIdentity),
-    sku: S.optional(ManagedInstancesGetResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({
   identifier: "ManagedInstancesGetResponse",
@@ -32066,29 +31085,8 @@ export const ManagedInstanceIdentity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedInstanceIdentity>;
 
 /** An ARM Resource SKU. */
-export interface ManagedInstanceSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ManagedInstanceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ManagedInstanceSku",
-}) as any as S.Schema<ManagedInstanceSku>;
+export type ManagedInstanceSku = ServiceObjectiveCapabilitySku;
+export const ManagedInstanceSku = ServiceObjectiveCapabilitySku;
 
 /** An Azure SQL managed instance. */
 export interface ManagedInstance {
@@ -32109,7 +31107,7 @@ export interface ManagedInstance {
   /** Azure Active Directory identity configuration for a resource. */
   identity?: ManagedInstanceIdentity;
   /** An ARM Resource SKU. */
-  sku?: ManagedInstanceSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const ManagedInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -32121,7 +31119,7 @@ export const ManagedInstance = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ManagedInstanceProperties),
     identity: S.optional(ManagedInstanceIdentity),
-    sku: S.optional(ManagedInstanceSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({
   identifier: "ManagedInstance",
@@ -32674,29 +31672,8 @@ export const ManagedInstancesStartResponseIdentity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedInstancesStartResponseIdentity>;
 
 /** An ARM Resource SKU. */
-export interface ManagedInstancesStartResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ManagedInstancesStartResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ManagedInstancesStartResponseSku",
-}) as any as S.Schema<ManagedInstancesStartResponseSku>;
+export type ManagedInstancesStartResponseSku = ServiceObjectiveCapabilitySku;
+export const ManagedInstancesStartResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface ManagedInstancesStartResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -32716,7 +31693,7 @@ export interface ManagedInstancesStartResponse {
   /** Azure Active Directory identity configuration for a resource. */
   identity?: ManagedInstancesStartResponseIdentity;
   /** An ARM Resource SKU. */
-  sku?: ManagedInstancesStartResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const ManagedInstancesStartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -32728,7 +31705,7 @@ export const ManagedInstancesStartResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ManagedInstanceProperties),
     identity: S.optional(ManagedInstancesStartResponseIdentity),
-    sku: S.optional(ManagedInstancesStartResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({
   identifier: "ManagedInstancesStartResponse",
@@ -32804,29 +31781,8 @@ export const ManagedInstancesStopResponseIdentity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedInstancesStopResponseIdentity>;
 
 /** An ARM Resource SKU. */
-export interface ManagedInstancesStopResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ManagedInstancesStopResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ManagedInstancesStopResponseSku",
-}) as any as S.Schema<ManagedInstancesStopResponseSku>;
+export type ManagedInstancesStopResponseSku = ServiceObjectiveCapabilitySku;
+export const ManagedInstancesStopResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface ManagedInstancesStopResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -32846,7 +31802,7 @@ export interface ManagedInstancesStopResponse {
   /** Azure Active Directory identity configuration for a resource. */
   identity?: ManagedInstancesStopResponseIdentity;
   /** An ARM Resource SKU. */
-  sku?: ManagedInstancesStopResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const ManagedInstancesStopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -32858,36 +31814,15 @@ export const ManagedInstancesStopResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ManagedInstanceProperties),
     identity: S.optional(ManagedInstancesStopResponseIdentity),
-    sku: S.optional(ManagedInstancesStopResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({
   identifier: "ManagedInstancesStopResponse",
 }) as any as S.Schema<ManagedInstancesStopResponse>;
 
 /** An ARM Resource SKU. */
-export interface ManagedInstancesUpdateRequestSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ManagedInstancesUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ManagedInstancesUpdateRequestSku",
-}) as any as S.Schema<ManagedInstancesUpdateRequestSku>;
+export type ManagedInstancesUpdateRequestSku = ServiceObjectiveCapabilitySku;
+export const ManagedInstancesUpdateRequestSku = ServiceObjectiveCapabilitySku;
 
 /** The resource ids of the user assigned identities to use */
 export type ManagedInstancesUpdateRequestIdentityUserAssignedIdentitiesMap = {
@@ -32935,7 +31870,7 @@ export interface ManagedInstancesUpdateRequest {
   /** The name of the managed instance. */
   managedInstanceName: string;
   /** An ARM Resource SKU. */
-  sku?: ManagedInstancesUpdateRequestSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Azure Active Directory identity configuration for a resource. */
   identity?: ManagedInstancesUpdateRequestIdentity;
   /** Resource properties. */
@@ -32948,7 +31883,7 @@ export const ManagedInstancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     managedInstanceName: S.String.pipe(T.Label()),
-    sku: S.optional(ManagedInstancesUpdateRequestSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     identity: S.optional(ManagedInstancesUpdateRequestIdentity),
     properties: S.optional(ManagedInstancePropertiesInput),
     tags: S.optional(ManagedInstancesUpdateRequestTagsMap),
@@ -33009,29 +31944,8 @@ export const ManagedInstancesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedInstancesUpdateResponseIdentity>;
 
 /** An ARM Resource SKU. */
-export interface ManagedInstancesUpdateResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const ManagedInstancesUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ManagedInstancesUpdateResponseSku",
-}) as any as S.Schema<ManagedInstancesUpdateResponseSku>;
+export type ManagedInstancesUpdateResponseSku = ServiceObjectiveCapabilitySku;
+export const ManagedInstancesUpdateResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface ManagedInstancesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -33051,7 +31965,7 @@ export interface ManagedInstancesUpdateResponse {
   /** Azure Active Directory identity configuration for a resource. */
   identity?: ManagedInstancesUpdateResponseIdentity;
   /** An ARM Resource SKU. */
-  sku?: ManagedInstancesUpdateResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const ManagedInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -33063,7 +31977,7 @@ export const ManagedInstancesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ManagedInstanceProperties),
     identity: S.optional(ManagedInstancesUpdateResponseIdentity),
-    sku: S.optional(ManagedInstancesUpdateResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({
   identifier: "ManagedInstancesUpdateResponse",
@@ -34822,27 +33736,14 @@ export const NSPConfigAccessRulePropertiesSubscriptionsList =
     S.String,
   ) as any as S.Schema<NSPConfigAccessRulePropertiesSubscriptionsList>;
 
-export interface NSPConfigNetworkSecurityPerimeterRule {
-  id?: string;
-  perimeterGuid?: string;
-  location?: string;
-}
-export const NSPConfigNetworkSecurityPerimeterRule = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      perimeterGuid: S.optional(S.String),
-      location: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "NSPConfigNetworkSecurityPerimeterRule",
-}) as any as S.Schema<NSPConfigNetworkSecurityPerimeterRule>;
+export type NSPConfigNetworkSecurityPerimeterRule = NSPConfigPerimeter;
+export const NSPConfigNetworkSecurityPerimeterRule = NSPConfigPerimeter;
 
 export type NSPConfigAccessRulePropertiesNetworkSecurityPerimetersList =
-  Array<NSPConfigNetworkSecurityPerimeterRule>;
+  Array<NSPConfigPerimeter>;
 export const NSPConfigAccessRulePropertiesNetworkSecurityPerimetersList =
   /*@__PURE__*/ S.Array(
-    NSPConfigNetworkSecurityPerimeterRule,
+    NSPConfigPerimeter,
   ) as any as S.Schema<NSPConfigAccessRulePropertiesNetworkSecurityPerimetersList>;
 
 export type NSPConfigAccessRulePropertiesServiceTagsList = Array<string>;
@@ -35460,17 +34361,8 @@ export const OutboundFirewallRuleListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OutboundFirewallRuleListResult",
 }) as any as S.Schema<OutboundFirewallRuleListResult>;
 
-export interface PrivateEndpointProperty {
-  /** Resource id of the private endpoint. */
-  id?: string;
-}
-export const PrivateEndpointProperty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpointProperty",
-}) as any as S.Schema<PrivateEndpointProperty>;
+export type PrivateEndpointProperty = ManagedInstancePrivateEndpointProperty;
+export const PrivateEndpointProperty = ManagedInstancePrivateEndpointProperty;
 
 /** The private link service connection status. */
 export type PrivateLinkServiceConnectionStateStatus =
@@ -35511,14 +34403,14 @@ export const PrivateLinkServiceConnectionStateProperty =
 /** Properties of a private endpoint connection. */
 export interface PrivateEndpointConnectionsCreateOrUpdateRequestProperties {
   /** Private endpoint which the connection belongs to. */
-  privateEndpoint?: PrivateEndpointProperty;
+  privateEndpoint?: ManagedInstancePrivateEndpointProperty;
   /** Connection state of the private endpoint connection. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateProperty;
 }
 export const PrivateEndpointConnectionsCreateOrUpdateRequestProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointProperty),
+      privateEndpoint: S.optional(ManagedInstancePrivateEndpointProperty),
       privateLinkServiceConnectionState: S.optional(
         PrivateLinkServiceConnectionStateProperty,
       ),
@@ -35581,7 +34473,7 @@ export const PrivateEndpointProvisioningState = /*@__PURE__*/ S.String;
 /** Properties of a private endpoint connection. */
 export interface PrivateEndpointConnectionsCreateOrUpdateResponseProperties {
   /** Private endpoint which the connection belongs to. */
-  privateEndpoint?: PrivateEndpointProperty;
+  privateEndpoint?: ManagedInstancePrivateEndpointProperty;
   /** Group IDs. */
   groupIds?: PrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList;
   /** Connection state of the private endpoint connection. */
@@ -35592,7 +34484,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponseProperties {
 export const PrivateEndpointConnectionsCreateOrUpdateResponseProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointProperty),
+      privateEndpoint: S.optional(ManagedInstancePrivateEndpointProperty),
       groupIds: S.optional(
         PrivateEndpointConnectionsCreateOrUpdateResponsePropertiesGroupIdsList,
       ),
@@ -35708,7 +34600,7 @@ export const PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList =
 /** Properties of a private endpoint connection. */
 export interface PrivateEndpointConnectionsGetResponseProperties {
   /** Private endpoint which the connection belongs to. */
-  privateEndpoint?: PrivateEndpointProperty;
+  privateEndpoint?: ManagedInstancePrivateEndpointProperty;
   /** Group IDs. */
   groupIds?: PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList;
   /** Connection state of the private endpoint connection. */
@@ -35719,7 +34611,7 @@ export interface PrivateEndpointConnectionsGetResponseProperties {
 export const PrivateEndpointConnectionsGetResponseProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointProperty),
+      privateEndpoint: S.optional(ManagedInstancePrivateEndpointProperty),
       groupIds: S.optional(
         PrivateEndpointConnectionsGetResponsePropertiesGroupIdsList,
       ),
@@ -35793,7 +34685,7 @@ export const PrivateEndpointConnectionPropertiesGroupIdsList =
 /** Properties of a private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** Private endpoint which the connection belongs to. */
-  privateEndpoint?: PrivateEndpointProperty;
+  privateEndpoint?: ManagedInstancePrivateEndpointProperty;
   /** Group IDs. */
   groupIds?: PrivateEndpointConnectionPropertiesGroupIdsList;
   /** Connection state of the private endpoint connection. */
@@ -35803,7 +34695,7 @@ export interface PrivateEndpointConnectionProperties {
 }
 export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    privateEndpoint: S.optional(PrivateEndpointProperty),
+    privateEndpoint: S.optional(ManagedInstancePrivateEndpointProperty),
     groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
     privateLinkServiceConnectionState: S.optional(
       PrivateLinkServiceConnectionStateProperty,
@@ -36981,39 +35873,19 @@ export const RestorableDroppedDatabasePropertiesBackupStorageRedundancy =
   /*@__PURE__*/ S.String;
 
 /** Database level key used for encryption at rest. */
-export interface RestorableDroppedDatabasePropertiesKeysValue {
-  /** The database key type. Only supported value is 'AzureKeyVault'. */
-  type?: DatabaseKeyType;
-  /** Thumbprint of the database key. */
-  thumbprint?: string;
-  /** The database key creation date. */
-  creationDate?: string;
-  /** Subregion of the server key. */
-  subregion?: string;
-  /** The database key's version. */
-  keyVersion?: string;
-}
+export type RestorableDroppedDatabasePropertiesKeysValue =
+  DatabasePropertiesKeysValue;
 export const RestorableDroppedDatabasePropertiesKeysValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(DatabaseKeyType),
-      thumbprint: S.optional(S.String),
-      creationDate: S.optional(S.String),
-      subregion: S.optional(S.String),
-      keyVersion: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RestorableDroppedDatabasePropertiesKeysValue",
-  }) as any as S.Schema<RestorableDroppedDatabasePropertiesKeysValue>;
+  DatabasePropertiesKeysValue;
 
 /** The resource ids of the user assigned identities to use */
 export type RestorableDroppedDatabasePropertiesKeysMap = {
-  [key: string]: RestorableDroppedDatabasePropertiesKeysValue | undefined;
+  [key: string]: DatabasePropertiesKeysValue | undefined;
 };
 export const RestorableDroppedDatabasePropertiesKeysMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    RestorableDroppedDatabasePropertiesKeysValue,
+    DatabasePropertiesKeysValue,
   ) as any as S.Schema<RestorableDroppedDatabasePropertiesKeysMap>;
 
 /** The restorable dropped database's properties. */
@@ -37050,30 +35922,10 @@ export const RestorableDroppedDatabaseProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestorableDroppedDatabaseProperties>;
 
 /** An ARM Resource SKU. */
-export interface RestorableDroppedDatabasesGetResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const RestorableDroppedDatabasesGetResponseSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(S.String),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RestorableDroppedDatabasesGetResponseSku",
-}) as any as S.Schema<RestorableDroppedDatabasesGetResponseSku>;
+export type RestorableDroppedDatabasesGetResponseSku =
+  ServiceObjectiveCapabilitySku;
+export const RestorableDroppedDatabasesGetResponseSku =
+  ServiceObjectiveCapabilitySku;
 
 /** Resource tags. */
 export type RestorableDroppedDatabasesGetResponseTagsMap = {
@@ -37097,7 +35949,7 @@ export interface RestorableDroppedDatabasesGetResponse {
   /** Resource properties. */
   properties?: RestorableDroppedDatabaseProperties;
   /** An ARM Resource SKU. */
-  sku?: RestorableDroppedDatabasesGetResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Resource location. */
   location?: string;
   /** Resource tags. */
@@ -37111,7 +35963,7 @@ export const RestorableDroppedDatabasesGetResponse = /*@__PURE__*/ S.suspend(
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
       properties: S.optional(RestorableDroppedDatabaseProperties),
-      sku: S.optional(RestorableDroppedDatabasesGetResponseSku),
+      sku: S.optional(ServiceObjectiveCapabilitySku),
       location: S.optional(S.String),
       tags: S.optional(RestorableDroppedDatabasesGetResponseTagsMap),
     }),
@@ -37146,29 +35998,8 @@ export const RestorableDroppedDatabasesListByServerRequest =
   }) as any as S.Schema<RestorableDroppedDatabasesListByServerRequest>;
 
 /** An ARM Resource SKU. */
-export interface RestorableDroppedDatabaseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const RestorableDroppedDatabaseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RestorableDroppedDatabaseSku",
-}) as any as S.Schema<RestorableDroppedDatabaseSku>;
+export type RestorableDroppedDatabaseSku = ServiceObjectiveCapabilitySku;
+export const RestorableDroppedDatabaseSku = ServiceObjectiveCapabilitySku;
 
 /** Resource tags. */
 export type RestorableDroppedDatabaseTagsMap = {
@@ -37192,7 +36023,7 @@ export interface RestorableDroppedDatabase {
   /** Resource properties. */
   properties?: RestorableDroppedDatabaseProperties;
   /** An ARM Resource SKU. */
-  sku?: RestorableDroppedDatabaseSku;
+  sku?: ServiceObjectiveCapabilitySku;
   /** Resource location. */
   location?: string;
   /** Resource tags. */
@@ -37205,7 +36036,7 @@ export const RestorableDroppedDatabase = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(RestorableDroppedDatabaseProperties),
-    sku: S.optional(RestorableDroppedDatabaseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
     location: S.optional(S.String),
     tags: S.optional(RestorableDroppedDatabaseTagsMap),
   }),
@@ -38229,19 +37060,10 @@ export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvanced
   /*@__PURE__*/ S.String;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState | (string & {});
-}
+export type ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-    }),
-  ).annotate({
-    identifier:
-      "ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties",
-  }) as any as S.Schema<ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 
 export interface ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -38255,7 +37077,7 @@ export interface ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequest {
     | ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestAdvancedThreatProtectionName
     | (string & {});
   /** Properties of an Advanced Threat Protection state. */
-  properties?: ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
+  properties?: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties;
 }
 export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -38268,7 +37090,7 @@ export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequest =
           T.Label(),
         ),
       properties: S.optional(
-        ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties,
+        DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateRequestProperties,
       ),
     }).pipe(
       T.Http({
@@ -38283,22 +37105,10 @@ export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequest =
   }) as any as S.Schema<ServerAdvancedThreatProtectionSettingsCreateOrUpdateRequest>;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState;
-  /** Specifies the UTC creation time of the policy. */
-  creationTime?: string;
-}
+export type ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-      creationTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties",
-  }) as any as S.Schema<ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 
 export interface ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -38310,7 +37120,7 @@ export interface ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Properties of an Advanced Threat Protection state. */
-  properties?: ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
+  properties?: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 }
 export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -38320,7 +37130,7 @@ export const ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponse =
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
       properties: S.optional(
-        ServerAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties,
+        DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties,
       ),
     }),
   ).annotate({
@@ -38367,21 +37177,10 @@ export const ServerAdvancedThreatProtectionSettingsGetRequest =
   }) as any as S.Schema<ServerAdvancedThreatProtectionSettingsGetRequest>;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface ServerAdvancedThreatProtectionSettingsGetResponseProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState;
-  /** Specifies the UTC creation time of the policy. */
-  creationTime?: string;
-}
+export type ServerAdvancedThreatProtectionSettingsGetResponseProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 export const ServerAdvancedThreatProtectionSettingsGetResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-      creationTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServerAdvancedThreatProtectionSettingsGetResponseProperties",
-  }) as any as S.Schema<ServerAdvancedThreatProtectionSettingsGetResponseProperties>;
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 
 export interface ServerAdvancedThreatProtectionSettingsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -38393,7 +37192,7 @@ export interface ServerAdvancedThreatProtectionSettingsGetResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Properties of an Advanced Threat Protection state. */
-  properties?: ServerAdvancedThreatProtectionSettingsGetResponseProperties;
+  properties?: DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 }
 export const ServerAdvancedThreatProtectionSettingsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -38403,7 +37202,7 @@ export const ServerAdvancedThreatProtectionSettingsGetResponse =
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
       properties: S.optional(
-        ServerAdvancedThreatProtectionSettingsGetResponseProperties,
+        DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties,
       ),
     }),
   ).annotate({
@@ -38437,53 +37236,21 @@ export const ServerAdvancedThreatProtectionSettingsListByServerRequest =
   }) as any as S.Schema<ServerAdvancedThreatProtectionSettingsListByServerRequest>;
 
 /** Properties of an Advanced Threat Protection state. */
-export interface ServerAdvancedThreatProtectionProperties {
-  /** Specifies the state of the Advanced Threat Protection, whether it is enabled or disabled or a state has not been applied yet on the specific database or server. */
-  state: AdvancedThreatProtectionState;
-  /** Specifies the UTC creation time of the policy. */
-  creationTime?: string;
-}
-export const ServerAdvancedThreatProtectionProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      state: AdvancedThreatProtectionState,
-      creationTime: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ServerAdvancedThreatProtectionProperties",
-}) as any as S.Schema<ServerAdvancedThreatProtectionProperties>;
+export type ServerAdvancedThreatProtectionProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
+export const ServerAdvancedThreatProtectionProperties =
+  DatabaseAdvancedThreatProtectionSettingsCreateOrUpdateResponseProperties;
 
 /** A server Advanced Threat Protection. */
-export interface ServerAdvancedThreatProtection {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of an Advanced Threat Protection state. */
-  properties?: ServerAdvancedThreatProtectionProperties;
-}
-export const ServerAdvancedThreatProtection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServerAdvancedThreatProtectionProperties),
-  }),
-).annotate({
-  identifier: "ServerAdvancedThreatProtection",
-}) as any as S.Schema<ServerAdvancedThreatProtection>;
+export type ServerAdvancedThreatProtection = DatabaseAdvancedThreatProtection;
+export const ServerAdvancedThreatProtection = DatabaseAdvancedThreatProtection;
 
 /** Array of results. */
 export type LogicalServerAdvancedThreatProtectionListResultValueList =
-  Array<ServerAdvancedThreatProtection>;
+  Array<DatabaseAdvancedThreatProtection>;
 export const LogicalServerAdvancedThreatProtectionListResultValueList =
   /*@__PURE__*/ S.Array(
-    ServerAdvancedThreatProtection,
+    DatabaseAdvancedThreatProtection,
   ) as any as S.Schema<LogicalServerAdvancedThreatProtectionListResultValueList>;
 
 /** A list of the server's Advanced Threat Protection configurations. */
@@ -38592,41 +37359,15 @@ export const ServerAdvisorsListByServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerAdvisorsListByServerRequest>;
 
 /** Database, Server or Elastic Pool Advisor. */
-export interface ServerAdvisorsListByServerResponseBodyItem {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: AdvisorProperties;
-  /** Resource kind. */
-  kind?: string;
-  /** Resource location. */
-  location?: string;
-}
+export type ServerAdvisorsListByServerResponseBodyItem =
+  DatabaseAdvisorsListByDatabaseResponseBodyItem;
 export const ServerAdvisorsListByServerResponseBodyItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(AdvisorProperties),
-      kind: S.optional(S.String),
-      location: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServerAdvisorsListByServerResponseBodyItem",
-  }) as any as S.Schema<ServerAdvisorsListByServerResponseBodyItem>;
+  DatabaseAdvisorsListByDatabaseResponseBodyItem;
 
 export type ServerAdvisorsListByServerResponseBodyList =
-  Array<ServerAdvisorsListByServerResponseBodyItem>;
+  Array<DatabaseAdvisorsListByDatabaseResponseBodyItem>;
 export const ServerAdvisorsListByServerResponseBodyList = /*@__PURE__*/ S.Array(
-  ServerAdvisorsListByServerResponseBodyItem,
+  DatabaseAdvisorsListByDatabaseResponseBodyItem,
 ) as any as S.Schema<ServerAdvisorsListByServerResponseBodyList>;
 
 export type ServerAdvisorsListByServerResponse =
@@ -39284,17 +38025,10 @@ export const ServerAzureADOnlyAuthenticationsCreateOrUpdateRequestAuthentication
   /*@__PURE__*/ S.String;
 
 /** Properties of a active directory only authentication. */
-export interface AzureADOnlyAuthProperties {
-  /** Azure Active Directory only Authentication enabled. */
-  azureADOnlyAuthentication: boolean;
-}
-export const AzureADOnlyAuthProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    azureADOnlyAuthentication: S.Boolean,
-  }),
-).annotate({
-  identifier: "AzureADOnlyAuthProperties",
-}) as any as S.Schema<AzureADOnlyAuthProperties>;
+export type AzureADOnlyAuthProperties =
+  ManagedInstanceAzureADOnlyAuthProperties;
+export const AzureADOnlyAuthProperties =
+  ManagedInstanceAzureADOnlyAuthProperties;
 
 export interface ServerAzureADOnlyAuthenticationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -39308,7 +38042,7 @@ export interface ServerAzureADOnlyAuthenticationsCreateOrUpdateRequest {
     | ServerAzureADOnlyAuthenticationsCreateOrUpdateRequestAuthenticationName
     | (string & {});
   /** Resource properties. */
-  properties?: AzureADOnlyAuthProperties;
+  properties?: ManagedInstanceAzureADOnlyAuthProperties;
 }
 export const ServerAzureADOnlyAuthenticationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -39320,7 +38054,7 @@ export const ServerAzureADOnlyAuthenticationsCreateOrUpdateRequest =
         ServerAzureADOnlyAuthenticationsCreateOrUpdateRequestAuthenticationName.pipe(
           T.Label(),
         ),
-      properties: S.optional(AzureADOnlyAuthProperties),
+      properties: S.optional(ManagedInstanceAzureADOnlyAuthProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -39343,7 +38077,7 @@ export interface ServerAzureADOnlyAuthenticationsCreateOrUpdateResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Resource properties. */
-  properties?: AzureADOnlyAuthProperties;
+  properties?: ManagedInstanceAzureADOnlyAuthProperties;
 }
 export const ServerAzureADOnlyAuthenticationsCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -39352,7 +38086,7 @@ export const ServerAzureADOnlyAuthenticationsCreateOrUpdateResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(AzureADOnlyAuthProperties),
+      properties: S.optional(ManagedInstanceAzureADOnlyAuthProperties),
     }),
   ).annotate({
     identifier: "ServerAzureADOnlyAuthenticationsCreateOrUpdateResponse",
@@ -39452,7 +38186,7 @@ export interface ServerAzureADOnlyAuthenticationsGetResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Resource properties. */
-  properties?: AzureADOnlyAuthProperties;
+  properties?: ManagedInstanceAzureADOnlyAuthProperties;
 }
 export const ServerAzureADOnlyAuthenticationsGetResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -39461,7 +38195,7 @@ export const ServerAzureADOnlyAuthenticationsGetResponse =
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(AzureADOnlyAuthProperties),
+      properties: S.optional(ManagedInstanceAzureADOnlyAuthProperties),
     }),
   ).annotate({
     identifier: "ServerAzureADOnlyAuthenticationsGetResponse",
@@ -39494,35 +38228,16 @@ export const ServerAzureADOnlyAuthenticationsListByServerRequest =
   }) as any as S.Schema<ServerAzureADOnlyAuthenticationsListByServerRequest>;
 
 /** Azure Active Directory only authentication. */
-export interface ServerAzureADOnlyAuthentication {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: AzureADOnlyAuthProperties;
-}
-export const ServerAzureADOnlyAuthentication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AzureADOnlyAuthProperties),
-  }),
-).annotate({
-  identifier: "ServerAzureADOnlyAuthentication",
-}) as any as S.Schema<ServerAzureADOnlyAuthentication>;
+export type ServerAzureADOnlyAuthentication =
+  ManagedInstanceAzureADOnlyAuthentication;
+export const ServerAzureADOnlyAuthentication =
+  ManagedInstanceAzureADOnlyAuthentication;
 
 /** Array of results. */
 export type AzureADOnlyAuthListResultValueList =
-  Array<ServerAzureADOnlyAuthentication>;
+  Array<ManagedInstanceAzureADOnlyAuthentication>;
 export const AzureADOnlyAuthListResultValueList = /*@__PURE__*/ S.Array(
-  ServerAzureADOnlyAuthentication,
+  ManagedInstanceAzureADOnlyAuthentication,
 ) as any as S.Schema<AzureADOnlyAuthListResultValueList>;
 
 /** A list of active directory only authentications. */
@@ -41517,7 +40232,7 @@ export const ServerPrivateEndpointConnectionPropertiesGroupIdsList =
 /** Properties of a private endpoint connection. */
 export interface ServerPrivateEndpointConnectionProperties {
   /** Private endpoint which the connection belongs to. */
-  privateEndpoint?: PrivateEndpointProperty;
+  privateEndpoint?: ManagedInstancePrivateEndpointProperty;
   /** Group IDs. */
   groupIds?: ServerPrivateEndpointConnectionPropertiesGroupIdsList;
   /** Connection state of the private endpoint connection. */
@@ -41528,7 +40243,7 @@ export interface ServerPrivateEndpointConnectionProperties {
 export const ServerPrivateEndpointConnectionProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointProperty),
+      privateEndpoint: S.optional(ManagedInstancePrivateEndpointProperty),
       groupIds: S.optional(
         ServerPrivateEndpointConnectionPropertiesGroupIdsList,
       ),
@@ -42322,21 +41037,10 @@ export const ServersImportDatabaseRequestStorageKeyType =
   /*@__PURE__*/ S.String;
 
 /** Contains the ARM resources for which to create private endpoint connection. */
-export interface ServersImportDatabaseRequestNetworkIsolation {
-  /** The resource id for the storage account used to store BACPAC file. If set, private endpoint connection will be created for the storage account. Must match storage account used for StorageUri parameter. */
-  storageAccountResourceId?: string;
-  /** The resource id for the SQL server which is the target of this request. If set, private endpoint connection will be created for the SQL server. Must match server which is target of the operation. */
-  sqlServerResourceId?: string;
-}
+export type ServersImportDatabaseRequestNetworkIsolation =
+  DatabaseExtensionsPropertiesNetworkIsolation;
 export const ServersImportDatabaseRequestNetworkIsolation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storageAccountResourceId: S.optional(S.String),
-      sqlServerResourceId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServersImportDatabaseRequestNetworkIsolation",
-  }) as any as S.Schema<ServersImportDatabaseRequestNetworkIsolation>;
+  DatabaseExtensionsPropertiesNetworkIsolation;
 
 export interface ServersImportDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42366,7 +41070,7 @@ export interface ServersImportDatabaseRequest {
   /** Type of credentials provided for access to the target SQL server: SQL, ADPassword or ManagedIdentity. */
   authenticationType?: string;
   /** Contains the ARM resources for which to create private endpoint connection. */
-  networkIsolation?: ServersImportDatabaseRequestNetworkIsolation;
+  networkIsolation?: DatabaseExtensionsPropertiesNetworkIsolation;
 }
 export const ServersImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -42383,7 +41087,7 @@ export const ServersImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
     administratorLogin: S.String,
     administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
     authenticationType: S.optional(S.String),
-    networkIsolation: S.optional(ServersImportDatabaseRequestNetworkIsolation),
+    networkIsolation: S.optional(DatabaseExtensionsPropertiesNetworkIsolation),
   }).pipe(
     T.Http({
       method: "POST",
@@ -42789,18 +41493,10 @@ export const ServersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServersUpdateResponse>;
 
 /** The properties of a server trust certificate. */
-export interface ServerTrustCertificatePropertiesInput {
-  /** The certificate public blob */
-  publicBlob?: string;
-}
-export const ServerTrustCertificatePropertiesInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      publicBlob: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ServerTrustCertificatePropertiesInput",
-}) as any as S.Schema<ServerTrustCertificatePropertiesInput>;
+export type ServerTrustCertificatePropertiesInput =
+  EndpointCertificateProperties;
+export const ServerTrustCertificatePropertiesInput =
+  EndpointCertificateProperties;
 
 export interface ServerTrustCertificatesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -42812,7 +41508,7 @@ export interface ServerTrustCertificatesCreateOrUpdateRequest {
   /** Name of of the certificate to get. */
   certificateName: string;
   /** Resource properties. */
-  properties?: ServerTrustCertificatePropertiesInput;
+  properties?: EndpointCertificateProperties;
 }
 export const ServerTrustCertificatesCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -42821,7 +41517,7 @@ export const ServerTrustCertificatesCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       managedInstanceName: S.String.pipe(T.Label()),
       certificateName: S.String.pipe(T.Label()),
-      properties: S.optional(ServerTrustCertificatePropertiesInput),
+      properties: S.optional(EndpointCertificateProperties),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -45437,26 +44133,8 @@ export const SubscriptionUsagesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionUsagesGetRequest>;
 
 /** Properties of a subscription usage. */
-export interface SubscriptionUsageProperties {
-  /** User-readable name of the metric. */
-  displayName?: string;
-  /** Current value of the metric. */
-  currentValue?: number;
-  /** Boundary value of the metric. */
-  limit?: number;
-  /** Unit of the metric. */
-  unit?: string;
-}
-export const SubscriptionUsageProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    currentValue: S.optional(S.Number),
-    limit: S.optional(S.Number),
-    unit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubscriptionUsageProperties",
-}) as any as S.Schema<SubscriptionUsageProperties>;
+export type SubscriptionUsageProperties = DatabaseUsageProperties;
+export const SubscriptionUsageProperties = DatabaseUsageProperties;
 
 export interface SubscriptionUsagesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -45468,7 +44146,7 @@ export interface SubscriptionUsagesGetResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Resource properties. */
-  properties?: SubscriptionUsageProperties;
+  properties?: DatabaseUsageProperties;
 }
 export const SubscriptionUsagesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -45476,7 +44154,7 @@ export const SubscriptionUsagesGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(SubscriptionUsageProperties),
+    properties: S.optional(DatabaseUsageProperties),
   }),
 ).annotate({
   identifier: "SubscriptionUsagesGetResponse",
@@ -45506,34 +44184,13 @@ export const SubscriptionUsagesListByLocationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SubscriptionUsagesListByLocationRequest>;
 
 /** Usage Metric of a Subscription in a Location. */
-export interface SubscriptionUsage {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: SubscriptionUsageProperties;
-}
-export const SubscriptionUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SubscriptionUsageProperties),
-  }),
-).annotate({
-  identifier: "SubscriptionUsage",
-}) as any as S.Schema<SubscriptionUsage>;
+export type SubscriptionUsage = DatabaseUsage;
+export const SubscriptionUsage = DatabaseUsage;
 
 /** The SubscriptionUsage items on this page */
-export type SubscriptionUsageListResultValueList = Array<SubscriptionUsage>;
+export type SubscriptionUsageListResultValueList = Array<DatabaseUsage>;
 export const SubscriptionUsageListResultValueList = /*@__PURE__*/ S.Array(
-  SubscriptionUsage,
+  DatabaseUsage,
 ) as any as S.Schema<SubscriptionUsageListResultValueList>;
 
 /** The response of a SubscriptionUsage list operation. */
@@ -46251,29 +44908,8 @@ export const SyncGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncGroupPropertiesInput>;
 
 /** An ARM Resource SKU. */
-export interface SyncGroupsCreateOrUpdateRequestSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const SyncGroupsCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SyncGroupsCreateOrUpdateRequestSku",
-}) as any as S.Schema<SyncGroupsCreateOrUpdateRequestSku>;
+export type SyncGroupsCreateOrUpdateRequestSku = ServiceObjectiveCapabilitySku;
+export const SyncGroupsCreateOrUpdateRequestSku = ServiceObjectiveCapabilitySku;
 
 export interface SyncGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -46289,7 +44925,7 @@ export interface SyncGroupsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: SyncGroupPropertiesInput;
   /** An ARM Resource SKU. */
-  sku?: SyncGroupsCreateOrUpdateRequestSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const SyncGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -46299,7 +44935,7 @@ export const SyncGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     databaseName: S.String.pipe(T.Label()),
     syncGroupName: S.String.pipe(T.Label()),
     properties: S.optional(SyncGroupPropertiesInput),
-    sku: S.optional(SyncGroupsCreateOrUpdateRequestSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -46377,29 +45013,9 @@ export const SyncGroupProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncGroupProperties>;
 
 /** An ARM Resource SKU. */
-export interface SyncGroupsCreateOrUpdateResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const SyncGroupsCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SyncGroupsCreateOrUpdateResponseSku",
-}) as any as S.Schema<SyncGroupsCreateOrUpdateResponseSku>;
+export type SyncGroupsCreateOrUpdateResponseSku = ServiceObjectiveCapabilitySku;
+export const SyncGroupsCreateOrUpdateResponseSku =
+  ServiceObjectiveCapabilitySku;
 
 export interface SyncGroupsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -46413,7 +45029,7 @@ export interface SyncGroupsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: SyncGroupProperties;
   /** An ARM Resource SKU. */
-  sku?: SyncGroupsCreateOrUpdateResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const SyncGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -46422,7 +45038,7 @@ export const SyncGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(SyncGroupProperties),
-    sku: S.optional(SyncGroupsCreateOrUpdateResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({
   identifier: "SyncGroupsCreateOrUpdateResponse",
@@ -46498,29 +45114,8 @@ export const SyncGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncGroupsGetRequest>;
 
 /** An ARM Resource SKU. */
-export interface SyncGroupsGetResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const SyncGroupsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SyncGroupsGetResponseSku",
-}) as any as S.Schema<SyncGroupsGetResponseSku>;
+export type SyncGroupsGetResponseSku = ServiceObjectiveCapabilitySku;
+export const SyncGroupsGetResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface SyncGroupsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -46534,7 +45129,7 @@ export interface SyncGroupsGetResponse {
   /** Resource properties. */
   properties?: SyncGroupProperties;
   /** An ARM Resource SKU. */
-  sku?: SyncGroupsGetResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const SyncGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -46543,7 +45138,7 @@ export const SyncGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(SyncGroupProperties),
-    sku: S.optional(SyncGroupsGetResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({
   identifier: "SyncGroupsGetResponse",
@@ -46578,27 +45173,8 @@ export const SyncGroupsListByDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncGroupsListByDatabaseRequest>;
 
 /** An ARM Resource SKU. */
-export interface SyncGroupSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const SyncGroupSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "SyncGroupSku" }) as any as S.Schema<SyncGroupSku>;
+export type SyncGroupSku = ServiceObjectiveCapabilitySku;
+export const SyncGroupSku = ServiceObjectiveCapabilitySku;
 
 /** An Azure SQL Database sync group. */
 export interface SyncGroup {
@@ -46613,7 +45189,7 @@ export interface SyncGroup {
   /** Resource properties. */
   properties?: SyncGroupProperties;
   /** An ARM Resource SKU. */
-  sku?: SyncGroupSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const SyncGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -46622,7 +45198,7 @@ export const SyncGroup = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(SyncGroupProperties),
-    sku: S.optional(SyncGroupSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({ identifier: "SyncGroup" }) as any as S.Schema<SyncGroup>;
 
@@ -47028,29 +45604,8 @@ export const SyncGroupsTriggerSyncResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncGroupsTriggerSyncResponse>;
 
 /** An ARM Resource SKU. */
-export interface SyncGroupsUpdateRequestSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const SyncGroupsUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SyncGroupsUpdateRequestSku",
-}) as any as S.Schema<SyncGroupsUpdateRequestSku>;
+export type SyncGroupsUpdateRequestSku = ServiceObjectiveCapabilitySku;
+export const SyncGroupsUpdateRequestSku = ServiceObjectiveCapabilitySku;
 
 export interface SyncGroupsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -47066,7 +45621,7 @@ export interface SyncGroupsUpdateRequest {
   /** Resource properties. */
   properties?: SyncGroupPropertiesInput;
   /** An ARM Resource SKU. */
-  sku?: SyncGroupsUpdateRequestSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const SyncGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -47076,7 +45631,7 @@ export const SyncGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     databaseName: S.String.pipe(T.Label()),
     syncGroupName: S.String.pipe(T.Label()),
     properties: S.optional(SyncGroupPropertiesInput),
-    sku: S.optional(SyncGroupsUpdateRequestSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -47090,29 +45645,8 @@ export const SyncGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncGroupsUpdateRequest>;
 
 /** An ARM Resource SKU. */
-export interface SyncGroupsUpdateResponseSku {
-  /** The name of the SKU, typically, a letter + Number code, e.g. P3. */
-  name: string;
-  /** The tier or edition of the particular SKU, e.g. Basic, Premium. */
-  tier?: string;
-  /** Size of the particular SKU */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** Capacity of the particular SKU. */
-  capacity?: number;
-}
-export const SyncGroupsUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SyncGroupsUpdateResponseSku",
-}) as any as S.Schema<SyncGroupsUpdateResponseSku>;
+export type SyncGroupsUpdateResponseSku = ServiceObjectiveCapabilitySku;
+export const SyncGroupsUpdateResponseSku = ServiceObjectiveCapabilitySku;
 
 export interface SyncGroupsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -47126,7 +45660,7 @@ export interface SyncGroupsUpdateResponse {
   /** Resource properties. */
   properties?: SyncGroupProperties;
   /** An ARM Resource SKU. */
-  sku?: SyncGroupsUpdateResponseSku;
+  sku?: ServiceObjectiveCapabilitySku;
 }
 export const SyncGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -47135,7 +45669,7 @@ export const SyncGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(SyncGroupProperties),
-    sku: S.optional(SyncGroupsUpdateResponseSku),
+    sku: S.optional(ServiceObjectiveCapabilitySku),
   }),
 ).annotate({
   identifier: "SyncGroupsUpdateResponse",

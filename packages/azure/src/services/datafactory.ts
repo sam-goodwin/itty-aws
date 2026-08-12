@@ -5648,12 +5648,8 @@ export const ManagedPrivateEndpointListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedPrivateEndpointListResponse>;
 
 /** A managed Virtual Network associated with the Azure Data Factory */
-export interface ManagedVirtualNetworkInput {}
-export const ManagedVirtualNetworkInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ManagedVirtualNetworkInput",
-}) as any as S.Schema<ManagedVirtualNetworkInput>;
+export type ManagedVirtualNetworkInput = ConnectionStatePropertiesInput;
+export const ManagedVirtualNetworkInput = ConnectionStatePropertiesInput;
 
 export interface ManagedVirtualNetworksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5665,7 +5661,7 @@ export interface ManagedVirtualNetworksCreateOrUpdateRequest {
   /** Managed virtual network name */
   managedVirtualNetworkName: string;
   /** Managed Virtual Network properties. */
-  properties: ManagedVirtualNetworkInput;
+  properties: ConnectionStatePropertiesInput;
 }
 export const ManagedVirtualNetworksCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5674,7 +5670,7 @@ export const ManagedVirtualNetworksCreateOrUpdateRequest =
       resourceGroupName: S.String.pipe(T.Label()),
       factoryName: S.String.pipe(T.Label()),
       managedVirtualNetworkName: S.String.pipe(T.Label()),
-      properties: ManagedVirtualNetworkInput,
+      properties: ConnectionStatePropertiesInput,
     }).pipe(
       T.Http({
         method: "PUT",

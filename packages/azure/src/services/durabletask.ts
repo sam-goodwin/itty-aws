@@ -1252,37 +1252,17 @@ export const SchedulersListPrivateEndpointConnectionsRequest =
   }) as any as S.Schema<SchedulersListPrivateEndpointConnectionsRequest>;
 
 /** The private endpoint connection resource. */
-export interface PrivateEndpointConnectionListResultValueItem {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type PrivateEndpointConnectionListResultValueItem =
+  SchedulerPropertiesPrivateEndpointConnectionsItem;
 export const PrivateEndpointConnectionListResultValueItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionListResultValueItem",
-  }) as any as S.Schema<PrivateEndpointConnectionListResultValueItem>;
+  SchedulerPropertiesPrivateEndpointConnectionsItem;
 
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList =
-  Array<PrivateEndpointConnectionListResultValueItem>;
+  Array<SchedulerPropertiesPrivateEndpointConnectionsItem>;
 export const PrivateEndpointConnectionListResultValueList =
   /*@__PURE__*/ S.Array(
-    PrivateEndpointConnectionListResultValueItem,
+    SchedulerPropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** The response of a PrivateEndpointConnection list operation. */
@@ -1499,49 +1479,30 @@ export const SchedulersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchedulersUpdateResponse>;
 
 /** The private endpoint resource. */
-export interface SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateEndpoint {}
+export type SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateEndpoint =
+  PrivateEndpointInput;
 export const SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateEndpoint =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier:
-      "SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateEndpoint",
-  }) as any as S.Schema<SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateEndpoint>;
+  PrivateEndpointInput;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
-export interface SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateLinkServiceConnectionState {
-  /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
-  status?: PrivateEndpointServiceConnectionStatus | (string & {});
-  /** The reason for approval/rejection of the connection. */
-  description?: string;
-  /** A message indicating if changes on the service provider require any updates on the consumer. */
-  actionsRequired?: string;
-}
+export type SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateLinkServiceConnectionState =
+  PrivateLinkServiceConnectionState;
 export const SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateLinkServiceConnectionState =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(PrivateEndpointServiceConnectionStatus),
-      description: S.optional(S.String),
-      actionsRequired: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateLinkServiceConnectionState",
-  }) as any as S.Schema<SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateLinkServiceConnectionState>;
+  PrivateLinkServiceConnectionState;
 
 /** The private endpoint connection properties */
 export interface SchedulersUpdatePrivateEndpointConnectionRequestProperties {
   /** The private endpoint resource. */
-  privateEndpoint?: SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateEndpoint;
+  privateEndpoint?: PrivateEndpointInput;
   /** A collection of information about the state of the connection between service consumer and provider. */
-  privateLinkServiceConnectionState?: SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateLinkServiceConnectionState;
+  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
 export const SchedulersUpdatePrivateEndpointConnectionRequestProperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      privateEndpoint: S.optional(
-        SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateEndpoint,
-      ),
+      privateEndpoint: S.optional(PrivateEndpointInput),
       privateLinkServiceConnectionState: S.optional(
-        SchedulersUpdatePrivateEndpointConnectionRequestPropertiesPrivateLinkServiceConnectionState,
+        PrivateLinkServiceConnectionState,
       ),
     }),
   ).annotate({
@@ -1608,12 +1569,8 @@ export const SchedulersUpdatePrivateEndpointConnectionResponse =
   }) as any as S.Schema<SchedulersUpdatePrivateEndpointConnectionResponse>;
 
 /** The properties of Task Hub */
-export interface TaskHubPropertiesInput {}
-export const TaskHubPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TaskHubPropertiesInput",
-}) as any as S.Schema<TaskHubPropertiesInput>;
+export type TaskHubPropertiesInput = PrivateEndpointInput;
+export const TaskHubPropertiesInput = PrivateEndpointInput;
 
 export interface TaskHubsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1625,7 +1582,7 @@ export interface TaskHubsCreateOrUpdateRequest {
   /** The name of the TaskHub */
   taskHubName: string;
   /** The resource-specific properties for this resource. */
-  properties?: TaskHubPropertiesInput;
+  properties?: PrivateEndpointInput;
 }
 export const TaskHubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1633,7 +1590,7 @@ export const TaskHubsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     schedulerName: S.String.pipe(T.Label()),
     taskHubName: S.String.pipe(T.Label()),
-    properties: S.optional(TaskHubPropertiesInput),
+    properties: S.optional(PrivateEndpointInput),
   }).pipe(
     T.Http({
       method: "PUT",

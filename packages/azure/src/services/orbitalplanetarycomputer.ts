@@ -374,24 +374,8 @@ export const GeoCatalogsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GeoCatalogsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface GeoCatalogsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const GeoCatalogsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "GeoCatalogsGetResponseIdentity",
-}) as any as S.Schema<GeoCatalogsGetResponseIdentity>;
+export type GeoCatalogsGetResponseIdentity = GeoCatalogsCreateResponseIdentity;
+export const GeoCatalogsGetResponseIdentity = GeoCatalogsCreateResponseIdentity;
 
 export interface GeoCatalogsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -409,7 +393,7 @@ export interface GeoCatalogsGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: GeoCatalogProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: GeoCatalogsGetResponseIdentity;
+  identity?: GeoCatalogsCreateResponseIdentity;
 }
 export const GeoCatalogsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -420,7 +404,7 @@ export const GeoCatalogsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(GeoCatalogsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(GeoCatalogProperties),
-    identity: S.optional(GeoCatalogsGetResponseIdentity),
+    identity: S.optional(GeoCatalogsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "GeoCatalogsGetResponse",
@@ -457,24 +441,8 @@ export const GeoCatalogTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GeoCatalogTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface GeoCatalogIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const GeoCatalogIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "GeoCatalogIdentity",
-}) as any as S.Schema<GeoCatalogIdentity>;
+export type GeoCatalogIdentity = GeoCatalogsCreateResponseIdentity;
+export const GeoCatalogIdentity = GeoCatalogsCreateResponseIdentity;
 
 /** A Microsoft Planetary Computer Pro GeoCatalog resource */
 export interface GeoCatalog {
@@ -493,7 +461,7 @@ export interface GeoCatalog {
   /** The resource-specific properties for this resource. */
   properties?: GeoCatalogProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: GeoCatalogIdentity;
+  identity?: GeoCatalogsCreateResponseIdentity;
 }
 export const GeoCatalog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -504,7 +472,7 @@ export const GeoCatalog = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(GeoCatalogTagsMap),
     location: S.String,
     properties: S.optional(GeoCatalogProperties),
-    identity: S.optional(GeoCatalogIdentity),
+    identity: S.optional(GeoCatalogsCreateResponseIdentity),
   }),
 ).annotate({ identifier: "GeoCatalog" }) as any as S.Schema<GeoCatalog>;
 
@@ -568,22 +536,19 @@ export type ManagedServiceIdentityUpdateInputType =
 export const ManagedServiceIdentityUpdateInputType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue {}
+export type ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
+  UserAssignedIdentityInput;
 export const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue",
-  }) as any as S.Schema<ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue>;
+  UserAssignedIdentityInput;
 
 /** The identities assigned to this resource by the user. */
 export type ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap = {
-  [key: string]:
-    | ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue
-    | undefined;
+  [key: string]: UserAssignedIdentityInput | undefined;
 };
 export const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue,
+    UserAssignedIdentityInput,
   ) as any as S.Schema<ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap>;
 
 /** The template for adding optional properties. */
@@ -645,24 +610,10 @@ export const GeoCatalogsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<GeoCatalogsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface GeoCatalogsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const GeoCatalogsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "GeoCatalogsUpdateResponseIdentity",
-}) as any as S.Schema<GeoCatalogsUpdateResponseIdentity>;
+export type GeoCatalogsUpdateResponseIdentity =
+  GeoCatalogsCreateResponseIdentity;
+export const GeoCatalogsUpdateResponseIdentity =
+  GeoCatalogsCreateResponseIdentity;
 
 export interface GeoCatalogsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -680,7 +631,7 @@ export interface GeoCatalogsUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: GeoCatalogProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: GeoCatalogsUpdateResponseIdentity;
+  identity?: GeoCatalogsCreateResponseIdentity;
 }
 export const GeoCatalogsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -691,7 +642,7 @@ export const GeoCatalogsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(GeoCatalogsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(GeoCatalogProperties),
-    identity: S.optional(GeoCatalogsUpdateResponseIdentity),
+    identity: S.optional(GeoCatalogsCreateResponseIdentity),
   }),
 ).annotate({
   identifier: "GeoCatalogsUpdateResponse",

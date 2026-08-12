@@ -616,29 +616,8 @@ export const ExtensionsCreateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionsCreateResponseSystemData>;
 
 /** Plan for the resource. */
-export interface ExtensionsCreateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const ExtensionsCreateResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExtensionsCreateResponsePlan",
-}) as any as S.Schema<ExtensionsCreateResponsePlan>;
+export type ExtensionsCreateResponsePlan = ExtensionsCreateRequestPlan;
+export const ExtensionsCreateResponsePlan = ExtensionsCreateRequestPlan;
 
 export interface ExtensionsCreateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -654,7 +633,7 @@ export interface ExtensionsCreateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ExtensionsCreateResponseSystemData;
   /** Plan for the resource. */
-  plan?: ExtensionsCreateResponsePlan;
+  plan?: ExtensionsCreateRequestPlan;
 }
 export const ExtensionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -664,7 +643,7 @@ export const ExtensionsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(ExtensionsCreateResponseProperties),
     identity: S.optional(ExtensionsCreateResponseIdentity),
     systemData: S.optional(ExtensionsCreateResponseSystemData),
-    plan: S.optional(ExtensionsCreateResponsePlan),
+    plan: S.optional(ExtensionsCreateRequestPlan),
   }),
 ).annotate({
   identifier: "ExtensionsCreateResponse",
@@ -1007,29 +986,8 @@ export const ExtensionsGetResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionsGetResponseSystemData>;
 
 /** Plan for the resource. */
-export interface ExtensionsGetResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const ExtensionsGetResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExtensionsGetResponsePlan",
-}) as any as S.Schema<ExtensionsGetResponsePlan>;
+export type ExtensionsGetResponsePlan = ExtensionsCreateRequestPlan;
+export const ExtensionsGetResponsePlan = ExtensionsCreateRequestPlan;
 
 export interface ExtensionsGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1045,7 +1003,7 @@ export interface ExtensionsGetResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ExtensionsGetResponseSystemData;
   /** Plan for the resource. */
-  plan?: ExtensionsGetResponsePlan;
+  plan?: ExtensionsCreateRequestPlan;
 }
 export const ExtensionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1055,7 +1013,7 @@ export const ExtensionsGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(ExtensionsGetResponseProperties),
     identity: S.optional(ExtensionsGetResponseIdentity),
     systemData: S.optional(ExtensionsGetResponseSystemData),
-    plan: S.optional(ExtensionsGetResponsePlan),
+    plan: S.optional(ExtensionsCreateRequestPlan),
   }),
 ).annotate({
   identifier: "ExtensionsGetResponse",
@@ -1335,27 +1293,8 @@ export const ExtensionSystemData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionSystemData>;
 
 /** Plan for the resource. */
-export interface ExtensionPlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const ExtensionPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExtensionPlan" }) as any as S.Schema<ExtensionPlan>;
+export type ExtensionPlan = ExtensionsCreateRequestPlan;
+export const ExtensionPlan = ExtensionsCreateRequestPlan;
 
 /** The Extension object. */
 export interface Extension {
@@ -1372,7 +1311,7 @@ export interface Extension {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ExtensionSystemData;
   /** Plan for the resource. */
-  plan?: ExtensionPlan;
+  plan?: ExtensionsCreateRequestPlan;
 }
 export const Extension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1382,7 +1321,7 @@ export const Extension = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(ExtensionProperties),
     identity: S.optional(ExtensionIdentity),
     systemData: S.optional(ExtensionSystemData),
-    plan: S.optional(ExtensionPlan),
+    plan: S.optional(ExtensionsCreateRequestPlan),
   }),
 ).annotate({ identifier: "Extension" }) as any as S.Schema<Extension>;
 
@@ -1757,29 +1696,8 @@ export const ExtensionsUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExtensionsUpdateResponseSystemData>;
 
 /** Plan for the resource. */
-export interface ExtensionsUpdateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const ExtensionsUpdateResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExtensionsUpdateResponsePlan",
-}) as any as S.Schema<ExtensionsUpdateResponsePlan>;
+export type ExtensionsUpdateResponsePlan = ExtensionsCreateRequestPlan;
+export const ExtensionsUpdateResponsePlan = ExtensionsCreateRequestPlan;
 
 export interface ExtensionsUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1795,7 +1713,7 @@ export interface ExtensionsUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ExtensionsUpdateResponseSystemData;
   /** Plan for the resource. */
-  plan?: ExtensionsUpdateResponsePlan;
+  plan?: ExtensionsCreateRequestPlan;
 }
 export const ExtensionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1805,7 +1723,7 @@ export const ExtensionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(ExtensionsUpdateResponseProperties),
     identity: S.optional(ExtensionsUpdateResponseIdentity),
     systemData: S.optional(ExtensionsUpdateResponseSystemData),
-    plan: S.optional(ExtensionsUpdateResponsePlan),
+    plan: S.optional(ExtensionsCreateRequestPlan),
   }),
 ).annotate({
   identifier: "ExtensionsUpdateResponse",
@@ -3164,38 +3082,8 @@ export const FluxConfigurationsList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FluxConfigurationsList>;
 
 /** Parameters to reconcile to the GitRepository source kind type. */
-export interface GitRepositoryPatchDefinition {
-  /** The URL to sync for the flux configuration git repository. */
-  url?: string | null;
-  /** The maximum time to attempt to reconcile the cluster git repository source with the remote. */
-  timeoutInSeconds?: number | null;
-  /** The interval at which to re-reconcile the cluster git repository source with the remote. */
-  syncIntervalInSeconds?: number | null;
-  /** The source reference for the GitRepository object. */
-  repositoryRef?: RepositoryRefDefinition | null;
-  /** Base64-encoded known_hosts value containing public SSH keys required to access private git repositories over SSH */
-  sshKnownHosts?: string | null;
-  /** Plaintext HTTPS username used to access private git repositories over HTTPS */
-  httpsUser?: string | null;
-  /** Base64-encoded HTTPS certificate authority contents used to access git private git repositories over HTTPS */
-  httpsCACert?: string | null;
-  /** Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets. */
-  localAuthRef?: string | null;
-}
-export const GitRepositoryPatchDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.NullOr(S.String)),
-    timeoutInSeconds: S.optional(S.NullOr(S.Number)),
-    syncIntervalInSeconds: S.optional(S.NullOr(S.Number)),
-    repositoryRef: S.optional(S.NullOr(RepositoryRefDefinition)),
-    sshKnownHosts: S.optional(S.NullOr(S.String)),
-    httpsUser: S.optional(S.NullOr(S.String)),
-    httpsCACert: S.optional(S.NullOr(S.String)),
-    localAuthRef: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "GitRepositoryPatchDefinition",
-}) as any as S.Schema<GitRepositoryPatchDefinition>;
+export type GitRepositoryPatchDefinition = GitRepositoryDefinition;
+export const GitRepositoryPatchDefinition = GitRepositoryDefinition;
 
 /** Parameters to reconcile to the Bucket source kind type. */
 export interface BucketPatchDefinition {
@@ -3229,84 +3117,16 @@ export const BucketPatchDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BucketPatchDefinition>;
 
 /** Parameters to authenticate using Service Principal. */
-export interface ServicePrincipalPatchDefinition {
-  /** The client Id for authenticating a Service Principal. */
-  clientId?: string | null;
-  /** The tenant Id for authenticating a Service Principal */
-  tenantId?: string | null;
-  /** The client secret for authenticating a Service Principal */
-  clientSecret?: string | Redacted.Redacted<string> | null;
-  /** Base64-encoded certificate used to authenticate a Service Principal */
-  clientCertificate?: string | null;
-  /** The password for the certificate used to authenticate a Service Principal */
-  clientCertificatePassword?: string | Redacted.Redacted<string> | null;
-  /** Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the Client Certificate */
-  clientCertificateSendChain?: boolean;
-}
-export const ServicePrincipalPatchDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.optional(S.NullOr(S.String)),
-    tenantId: S.optional(S.NullOr(S.String)),
-    clientSecret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-    clientCertificate: S.optional(S.NullOr(S.String)),
-    clientCertificatePassword: S.optional(
-      S.NullOr(S.String).pipe(T.SensitiveValue({})),
-    ),
-    clientCertificateSendChain: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ServicePrincipalPatchDefinition",
-}) as any as S.Schema<ServicePrincipalPatchDefinition>;
+export type ServicePrincipalPatchDefinition = ServicePrincipalDefinition;
+export const ServicePrincipalPatchDefinition = ServicePrincipalDefinition;
 
 /** Parameters to authenticate using a Managed Identity. */
-export interface ManagedIdentityPatchDefinition {
-  /** The client Id for authenticating a Managed Identity. */
-  clientId?: string | null;
-}
-export const ManagedIdentityPatchDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ManagedIdentityPatchDefinition",
-}) as any as S.Schema<ManagedIdentityPatchDefinition>;
+export type ManagedIdentityPatchDefinition = ManagedIdentityDefinition;
+export const ManagedIdentityPatchDefinition = ManagedIdentityDefinition;
 
 /** Parameters to reconcile to the AzureBlob source kind type. */
-export interface AzureBlobPatchDefinition {
-  /** The URL to sync for the flux configuration Azure Blob storage account. */
-  url?: string | null;
-  /** The Azure Blob container name to sync from the url endpoint for the flux configuration. */
-  containerName?: string | null;
-  /** The maximum time to attempt to reconcile the cluster Azure Blob source with the remote. */
-  timeoutInSeconds?: number | null;
-  /** The interval at which to re-reconcile the cluster Azure Blob source with the remote. */
-  syncIntervalInSeconds?: number | null;
-  /** Parameters to authenticate using Service Principal. */
-  servicePrincipal?: ServicePrincipalPatchDefinition | null;
-  /** The account key (shared key) to access the storage account */
-  accountKey?: string | null;
-  /** The Shared Access token to access the storage container */
-  sasToken?: string | null;
-  /** Parameters to authenticate using a Managed Identity. */
-  managedIdentity?: ManagedIdentityPatchDefinition | null;
-  /** Name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets. */
-  localAuthRef?: string | null;
-}
-export const AzureBlobPatchDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.NullOr(S.String)),
-    containerName: S.optional(S.NullOr(S.String)),
-    timeoutInSeconds: S.optional(S.NullOr(S.Number)),
-    syncIntervalInSeconds: S.optional(S.NullOr(S.Number)),
-    servicePrincipal: S.optional(S.NullOr(ServicePrincipalPatchDefinition)),
-    accountKey: S.optional(S.NullOr(S.String)),
-    sasToken: S.optional(S.NullOr(S.String)),
-    managedIdentity: S.optional(S.NullOr(ManagedIdentityPatchDefinition)),
-    localAuthRef: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AzureBlobPatchDefinition",
-}) as any as S.Schema<AzureBlobPatchDefinition>;
+export type AzureBlobPatchDefinition = AzureBlobDefinition;
+export const AzureBlobPatchDefinition = AzureBlobDefinition;
 
 /** Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation. */
 export type KustomizationPatchDefinitionDependsOnList = Array<string>;
@@ -3377,11 +3197,11 @@ export interface FluxConfigurationsUpdateRequestProperties {
   /** Whether this configuration should suspend its reconciliation of its kustomizations and sources. */
   suspend?: boolean | null;
   /** Parameters to reconcile to the GitRepository source kind type. */
-  gitRepository?: GitRepositoryPatchDefinition | null;
+  gitRepository?: GitRepositoryDefinition | null;
   /** Parameters to reconcile to the Bucket source kind type. */
   bucket?: BucketPatchDefinition | null;
   /** Parameters to reconcile to the AzureBlob source kind type. */
-  azureBlob?: AzureBlobPatchDefinition | null;
+  azureBlob?: AzureBlobDefinition | null;
   /** Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster. */
   kustomizations?: FluxConfigurationsUpdateRequestPropertiesKustomizationsMap | null;
   /** Key-value pairs of protected configuration settings for the configuration */
@@ -3392,9 +3212,9 @@ export const FluxConfigurationsUpdateRequestProperties =
     S.Struct({
       sourceKind: S.optional(S.NullOr(SourceKindDefinition)),
       suspend: S.optional(S.NullOr(S.Boolean)),
-      gitRepository: S.optional(S.NullOr(GitRepositoryPatchDefinition)),
+      gitRepository: S.optional(S.NullOr(GitRepositoryDefinition)),
       bucket: S.optional(S.NullOr(BucketPatchDefinition)),
-      azureBlob: S.optional(S.NullOr(AzureBlobPatchDefinition)),
+      azureBlob: S.optional(S.NullOr(AzureBlobDefinition)),
       kustomizations: S.optional(
         S.NullOr(FluxConfigurationsUpdateRequestPropertiesKustomizationsMap),
       ),

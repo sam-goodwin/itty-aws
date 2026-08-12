@@ -581,48 +581,16 @@ export const BatchDeploymentsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BatchDeploymentsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface BatchDeploymentsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const BatchDeploymentsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "BatchDeploymentsGetResponseIdentity",
-}) as any as S.Schema<BatchDeploymentsGetResponseIdentity>;
+export type BatchDeploymentsGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const BatchDeploymentsGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface BatchDeploymentsGetResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const BatchDeploymentsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BatchDeploymentsGetResponseSku",
-}) as any as S.Schema<BatchDeploymentsGetResponseSku>;
+export type BatchDeploymentsGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const BatchDeploymentsGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface BatchDeploymentsGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -640,11 +608,11 @@ export interface BatchDeploymentsGetResponse {
   /** [Required] Additional attributes of the entity. */
   properties: BatchDeploymentProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: BatchDeploymentsGetResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: BatchDeploymentsGetResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const BatchDeploymentsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -655,9 +623,9 @@ export const BatchDeploymentsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(BatchDeploymentsGetResponseTagsMap),
     location: S.String,
     properties: BatchDeploymentProperties,
-    identity: S.optional(BatchDeploymentsGetResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(BatchDeploymentsGetResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "BatchDeploymentsGetResponse",
@@ -708,48 +676,14 @@ export const BatchDeploymentTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BatchDeploymentTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface BatchDeploymentIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const BatchDeploymentIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "BatchDeploymentIdentity",
-}) as any as S.Schema<BatchDeploymentIdentity>;
+export type BatchDeploymentIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const BatchDeploymentIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface BatchDeploymentSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const BatchDeploymentSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BatchDeploymentSku",
-}) as any as S.Schema<BatchDeploymentSku>;
+export type BatchDeploymentSku = BatchDeploymentsCreateOrUpdateResponseSku;
+export const BatchDeploymentSku = BatchDeploymentsCreateOrUpdateResponseSku;
 
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface BatchDeployment {
@@ -768,11 +702,11 @@ export interface BatchDeployment {
   /** [Required] Additional attributes of the entity. */
   properties: BatchDeploymentProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: BatchDeploymentIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: BatchDeploymentSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const BatchDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -783,9 +717,9 @@ export const BatchDeployment = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(BatchDeploymentTagsMap),
     location: S.String,
     properties: BatchDeploymentProperties,
-    identity: S.optional(BatchDeploymentIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(BatchDeploymentSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "BatchDeployment",
@@ -885,49 +819,16 @@ export const BatchDeploymentsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BatchDeploymentsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface BatchDeploymentsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const BatchDeploymentsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-).annotate({
-  identifier: "BatchDeploymentsUpdateResponseIdentity",
-}) as any as S.Schema<BatchDeploymentsUpdateResponseIdentity>;
+export type BatchDeploymentsUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const BatchDeploymentsUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface BatchDeploymentsUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const BatchDeploymentsUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BatchDeploymentsUpdateResponseSku",
-}) as any as S.Schema<BatchDeploymentsUpdateResponseSku>;
+export type BatchDeploymentsUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const BatchDeploymentsUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface BatchDeploymentsUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -945,11 +846,11 @@ export interface BatchDeploymentsUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: BatchDeploymentProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: BatchDeploymentsUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: BatchDeploymentsUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const BatchDeploymentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -960,9 +861,9 @@ export const BatchDeploymentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(BatchDeploymentsUpdateResponseTagsMap),
     location: S.String,
     properties: BatchDeploymentProperties,
-    identity: S.optional(BatchDeploymentsUpdateResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(BatchDeploymentsUpdateResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "BatchDeploymentsUpdateResponse",
@@ -1046,44 +947,16 @@ export const BatchEndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchEndpointPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface BatchEndpointsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
+export type BatchEndpointsCreateOrUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 export const BatchEndpointsCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-    }),
-  ).annotate({
-    identifier: "BatchEndpointsCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<BatchEndpointsCreateOrUpdateRequestIdentity>;
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 
 /** The resource model definition representing SKU */
-export interface BatchEndpointsCreateOrUpdateRequestSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const BatchEndpointsCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "BatchEndpointsCreateOrUpdateRequestSku",
-}) as any as S.Schema<BatchEndpointsCreateOrUpdateRequestSku>;
+export type BatchEndpointsCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
+export const BatchEndpointsCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
 
 export interface BatchEndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -1101,11 +974,11 @@ export interface BatchEndpointsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: BatchEndpointPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: BatchEndpointsCreateOrUpdateRequestIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateRequestIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: BatchEndpointsCreateOrUpdateRequestSku;
+  sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
 export const BatchEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1116,9 +989,9 @@ export const BatchEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(BatchEndpointsCreateOrUpdateRequestTagsMap),
     location: S.String,
     properties: BatchEndpointPropertiesInput,
-    identity: S.optional(BatchEndpointsCreateOrUpdateRequestIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(BatchEndpointsCreateOrUpdateRequestSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -1195,50 +1068,16 @@ export const BatchEndpointProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchEndpointProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface BatchEndpointsCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
+export type BatchEndpointsCreateOrUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 export const BatchEndpointsCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-  ).annotate({
-    identifier: "BatchEndpointsCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<BatchEndpointsCreateOrUpdateResponseIdentity>;
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface BatchEndpointsCreateOrUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const BatchEndpointsCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "BatchEndpointsCreateOrUpdateResponseSku",
-}) as any as S.Schema<BatchEndpointsCreateOrUpdateResponseSku>;
+export type BatchEndpointsCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const BatchEndpointsCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface BatchEndpointsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1256,11 +1095,11 @@ export interface BatchEndpointsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: BatchEndpointProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: BatchEndpointsCreateOrUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: BatchEndpointsCreateOrUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const BatchEndpointsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -1272,9 +1111,9 @@ export const BatchEndpointsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(BatchEndpointsCreateOrUpdateResponseTagsMap),
       location: S.String,
       properties: BatchEndpointProperties,
-      identity: S.optional(BatchEndpointsCreateOrUpdateResponseIdentity),
+      identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
       kind: S.optional(S.String),
-      sku: S.optional(BatchEndpointsCreateOrUpdateResponseSku),
+      sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
     }),
 ).annotate({
   identifier: "BatchEndpointsCreateOrUpdateResponse",
@@ -1353,48 +1192,16 @@ export const BatchEndpointsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BatchEndpointsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface BatchEndpointsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const BatchEndpointsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "BatchEndpointsGetResponseIdentity",
-}) as any as S.Schema<BatchEndpointsGetResponseIdentity>;
+export type BatchEndpointsGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const BatchEndpointsGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface BatchEndpointsGetResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const BatchEndpointsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BatchEndpointsGetResponseSku",
-}) as any as S.Schema<BatchEndpointsGetResponseSku>;
+export type BatchEndpointsGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const BatchEndpointsGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface BatchEndpointsGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1412,11 +1219,11 @@ export interface BatchEndpointsGetResponse {
   /** [Required] Additional attributes of the entity. */
   properties: BatchEndpointProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: BatchEndpointsGetResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: BatchEndpointsGetResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const BatchEndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1427,9 +1234,9 @@ export const BatchEndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(BatchEndpointsGetResponseTagsMap),
     location: S.String,
     properties: BatchEndpointProperties,
-    identity: S.optional(BatchEndpointsGetResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(BatchEndpointsGetResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "BatchEndpointsGetResponse",
@@ -1474,48 +1281,14 @@ export const BatchEndpointTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BatchEndpointTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface BatchEndpointIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const BatchEndpointIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "BatchEndpointIdentity",
-}) as any as S.Schema<BatchEndpointIdentity>;
+export type BatchEndpointIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const BatchEndpointIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface BatchEndpointSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const BatchEndpointSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BatchEndpointSku",
-}) as any as S.Schema<BatchEndpointSku>;
+export type BatchEndpointSku = BatchDeploymentsCreateOrUpdateResponseSku;
+export const BatchEndpointSku = BatchDeploymentsCreateOrUpdateResponseSku;
 
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface BatchEndpoint {
@@ -1534,11 +1307,11 @@ export interface BatchEndpoint {
   /** [Required] Additional attributes of the entity. */
   properties: BatchEndpointProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: BatchEndpointIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: BatchEndpointSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const BatchEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1549,9 +1322,9 @@ export const BatchEndpoint = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(BatchEndpointTagsMap),
     location: S.String,
     properties: BatchEndpointProperties,
-    identity: S.optional(BatchEndpointIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(BatchEndpointSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({ identifier: "BatchEndpoint" }) as any as S.Schema<BatchEndpoint>;
 
@@ -1697,49 +1470,16 @@ export const BatchEndpointsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<BatchEndpointsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface BatchEndpointsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const BatchEndpointsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-).annotate({
-  identifier: "BatchEndpointsUpdateResponseIdentity",
-}) as any as S.Schema<BatchEndpointsUpdateResponseIdentity>;
+export type BatchEndpointsUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const BatchEndpointsUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface BatchEndpointsUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const BatchEndpointsUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BatchEndpointsUpdateResponseSku",
-}) as any as S.Schema<BatchEndpointsUpdateResponseSku>;
+export type BatchEndpointsUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const BatchEndpointsUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface BatchEndpointsUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1757,11 +1497,11 @@ export interface BatchEndpointsUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: BatchEndpointProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: BatchEndpointsUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: BatchEndpointsUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const BatchEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1772,9 +1512,9 @@ export const BatchEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(BatchEndpointsUpdateResponseTagsMap),
     location: S.String,
     properties: BatchEndpointProperties,
-    identity: S.optional(BatchEndpointsUpdateResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(BatchEndpointsUpdateResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "BatchEndpointsUpdateResponse",
@@ -3657,43 +3397,16 @@ export const ComputeCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ComputeCreateOrUpdateRequestTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface ComputeCreateOrUpdateRequestSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ComputeCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ComputeCreateOrUpdateRequestSku",
-}) as any as S.Schema<ComputeCreateOrUpdateRequestSku>;
+export type ComputeCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
+export const ComputeCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ComputeCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
-export const ComputeCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-    }),
-).annotate({
-  identifier: "ComputeCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<ComputeCreateOrUpdateRequestIdentity>;
+export type ComputeCreateOrUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
+export const ComputeCreateOrUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 
 export interface ComputeCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -3711,9 +3424,9 @@ export interface ComputeCreateOrUpdateRequest {
   /** Contains resource tags defined as key/value pairs. */
   tags?: ComputeCreateOrUpdateRequestTagsMap | null;
   /** The resource model definition representing SKU */
-  sku?: ComputeCreateOrUpdateRequestSku;
+  sku?: BatchDeploymentsCreateOrUpdateRequestSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ComputeCreateOrUpdateRequestIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateRequestIdentity;
 }
 export const ComputeCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3724,8 +3437,8 @@ export const ComputeCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(ComputeInput),
     location: S.optional(S.String),
     tags: S.optional(S.NullOr(ComputeCreateOrUpdateRequestTagsMap)),
-    sku: S.optional(ComputeCreateOrUpdateRequestSku),
-    identity: S.optional(ComputeCreateOrUpdateRequestIdentity),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -3868,49 +3581,16 @@ export const ComputeCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ComputeCreateOrUpdateResponseTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface ComputeCreateOrUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ComputeCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ComputeCreateOrUpdateResponseSku",
-}) as any as S.Schema<ComputeCreateOrUpdateResponseSku>;
+export type ComputeCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const ComputeCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ComputeCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const ComputeCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-).annotate({
-  identifier: "ComputeCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<ComputeCreateOrUpdateResponseIdentity>;
+export type ComputeCreateOrUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const ComputeCreateOrUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 export interface ComputeCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3928,9 +3608,9 @@ export interface ComputeCreateOrUpdateResponse {
   /** Contains resource tags defined as key/value pairs. */
   tags?: ComputeCreateOrUpdateResponseTagsMap | null;
   /** The resource model definition representing SKU */
-  sku?: ComputeCreateOrUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ComputeCreateOrUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
 }
 export const ComputeCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3941,8 +3621,8 @@ export const ComputeCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(Compute),
     location: S.optional(S.String),
     tags: S.optional(S.NullOr(ComputeCreateOrUpdateResponseTagsMap)),
-    sku: S.optional(ComputeCreateOrUpdateResponseSku),
-    identity: S.optional(ComputeCreateOrUpdateResponseIdentity),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ComputeCreateOrUpdateResponse",
@@ -4030,48 +3710,14 @@ export const ComputeGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ComputeGetResponseTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface ComputeGetResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ComputeGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ComputeGetResponseSku",
-}) as any as S.Schema<ComputeGetResponseSku>;
+export type ComputeGetResponseSku = BatchDeploymentsCreateOrUpdateResponseSku;
+export const ComputeGetResponseSku = BatchDeploymentsCreateOrUpdateResponseSku;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ComputeGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const ComputeGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "ComputeGetResponseIdentity",
-}) as any as S.Schema<ComputeGetResponseIdentity>;
+export type ComputeGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const ComputeGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 export interface ComputeGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4089,9 +3735,9 @@ export interface ComputeGetResponse {
   /** Contains resource tags defined as key/value pairs. */
   tags?: ComputeGetResponseTagsMap | null;
   /** The resource model definition representing SKU */
-  sku?: ComputeGetResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ComputeGetResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
 }
 export const ComputeGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4102,8 +3748,8 @@ export const ComputeGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(Compute),
     location: S.optional(S.String),
     tags: S.optional(S.NullOr(ComputeGetResponseTagsMap)),
-    sku: S.optional(ComputeGetResponseSku),
-    identity: S.optional(ComputeGetResponseIdentity),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ComputeGetResponse",
@@ -4145,48 +3791,14 @@ export const ComputeResourceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ComputeResourceTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface ComputeResourceSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ComputeResourceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ComputeResourceSku",
-}) as any as S.Schema<ComputeResourceSku>;
+export type ComputeResourceSku = BatchDeploymentsCreateOrUpdateResponseSku;
+export const ComputeResourceSku = BatchDeploymentsCreateOrUpdateResponseSku;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ComputeResourceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const ComputeResourceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "ComputeResourceIdentity",
-}) as any as S.Schema<ComputeResourceIdentity>;
+export type ComputeResourceIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const ComputeResourceIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** Machine Learning compute object wrapped into ARM resource envelope. */
 export interface ComputeResource {
@@ -4205,9 +3817,9 @@ export interface ComputeResource {
   /** Contains resource tags defined as key/value pairs. */
   tags?: ComputeResourceTagsMap | null;
   /** The resource model definition representing SKU */
-  sku?: ComputeResourceSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ComputeResourceIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
 }
 export const ComputeResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4218,8 +3830,8 @@ export const ComputeResource = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(Compute),
     location: S.optional(S.String),
     tags: S.optional(S.NullOr(ComputeResourceTagsMap)),
-    sku: S.optional(ComputeResourceSku),
-    identity: S.optional(ComputeResourceIdentity),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ComputeResource",
@@ -4563,48 +4175,16 @@ export const ComputeUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ComputeUpdateResponseTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface ComputeUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ComputeUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ComputeUpdateResponseSku",
-}) as any as S.Schema<ComputeUpdateResponseSku>;
+export type ComputeUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const ComputeUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ComputeUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const ComputeUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "ComputeUpdateResponseIdentity",
-}) as any as S.Schema<ComputeUpdateResponseIdentity>;
+export type ComputeUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const ComputeUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 export interface ComputeUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4622,9 +4202,9 @@ export interface ComputeUpdateResponse {
   /** Contains resource tags defined as key/value pairs. */
   tags?: ComputeUpdateResponseTagsMap | null;
   /** The resource model definition representing SKU */
-  sku?: ComputeUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ComputeUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
 }
 export const ComputeUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4635,8 +4215,8 @@ export const ComputeUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(Compute),
     location: S.optional(S.String),
     tags: S.optional(S.NullOr(ComputeUpdateResponseTagsMap)),
-    sku: S.optional(ComputeUpdateResponseSku),
-    identity: S.optional(ComputeUpdateResponseIdentity),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ComputeUpdateResponse",
@@ -10617,44 +10197,16 @@ export const OnlineDeploymentProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OnlineDeploymentProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface OnlineDeploymentsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
+export type OnlineDeploymentsCreateOrUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 export const OnlineDeploymentsCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-    }),
-  ).annotate({
-    identifier: "OnlineDeploymentsCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<OnlineDeploymentsCreateOrUpdateRequestIdentity>;
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 
 /** The resource model definition representing SKU */
-export interface OnlineDeploymentsCreateOrUpdateRequestSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
+export type OnlineDeploymentsCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
 export const OnlineDeploymentsCreateOrUpdateRequestSku =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "OnlineDeploymentsCreateOrUpdateRequestSku",
-  }) as any as S.Schema<OnlineDeploymentsCreateOrUpdateRequestSku>;
+  BatchDeploymentsCreateOrUpdateRequestSku;
 
 export interface OnlineDeploymentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -10674,11 +10226,11 @@ export interface OnlineDeploymentsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: OnlineDeploymentProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: OnlineDeploymentsCreateOrUpdateRequestIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateRequestIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: OnlineDeploymentsCreateOrUpdateRequestSku;
+  sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
 export const OnlineDeploymentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -10691,9 +10243,9 @@ export const OnlineDeploymentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       tags: S.optional(OnlineDeploymentsCreateOrUpdateRequestTagsMap),
       location: S.String,
       properties: OnlineDeploymentProperties,
-      identity: S.optional(OnlineDeploymentsCreateOrUpdateRequestIdentity),
+      identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
       kind: S.optional(S.String),
-      sku: S.optional(OnlineDeploymentsCreateOrUpdateRequestSku),
+      sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -10717,50 +10269,16 @@ export const OnlineDeploymentsCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<OnlineDeploymentsCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface OnlineDeploymentsCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
+export type OnlineDeploymentsCreateOrUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 export const OnlineDeploymentsCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-  ).annotate({
-    identifier: "OnlineDeploymentsCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<OnlineDeploymentsCreateOrUpdateResponseIdentity>;
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface OnlineDeploymentsCreateOrUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
+export type OnlineDeploymentsCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 export const OnlineDeploymentsCreateOrUpdateResponseSku =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "OnlineDeploymentsCreateOrUpdateResponseSku",
-  }) as any as S.Schema<OnlineDeploymentsCreateOrUpdateResponseSku>;
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface OnlineDeploymentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10778,11 +10296,11 @@ export interface OnlineDeploymentsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: OnlineDeploymentProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: OnlineDeploymentsCreateOrUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: OnlineDeploymentsCreateOrUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const OnlineDeploymentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -10794,9 +10312,9 @@ export const OnlineDeploymentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(OnlineDeploymentsCreateOrUpdateResponseTagsMap),
       location: S.String,
       properties: OnlineDeploymentProperties,
-      identity: S.optional(OnlineDeploymentsCreateOrUpdateResponseIdentity),
+      identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
       kind: S.optional(S.String),
-      sku: S.optional(OnlineDeploymentsCreateOrUpdateResponseSku),
+      sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
     }),
 ).annotate({
   identifier: "OnlineDeploymentsCreateOrUpdateResponse",
@@ -10881,49 +10399,16 @@ export const OnlineDeploymentsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnlineDeploymentsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface OnlineDeploymentsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const OnlineDeploymentsGetResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-).annotate({
-  identifier: "OnlineDeploymentsGetResponseIdentity",
-}) as any as S.Schema<OnlineDeploymentsGetResponseIdentity>;
+export type OnlineDeploymentsGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const OnlineDeploymentsGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface OnlineDeploymentsGetResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const OnlineDeploymentsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "OnlineDeploymentsGetResponseSku",
-}) as any as S.Schema<OnlineDeploymentsGetResponseSku>;
+export type OnlineDeploymentsGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const OnlineDeploymentsGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface OnlineDeploymentsGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -10941,11 +10426,11 @@ export interface OnlineDeploymentsGetResponse {
   /** [Required] Additional attributes of the entity. */
   properties: OnlineDeploymentProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: OnlineDeploymentsGetResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: OnlineDeploymentsGetResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const OnlineDeploymentsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10956,9 +10441,9 @@ export const OnlineDeploymentsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(OnlineDeploymentsGetResponseTagsMap),
     location: S.String,
     properties: OnlineDeploymentProperties,
-    identity: S.optional(OnlineDeploymentsGetResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(OnlineDeploymentsGetResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "OnlineDeploymentsGetResponse",
@@ -11063,48 +10548,14 @@ export const OnlineDeploymentTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnlineDeploymentTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface OnlineDeploymentIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const OnlineDeploymentIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "OnlineDeploymentIdentity",
-}) as any as S.Schema<OnlineDeploymentIdentity>;
+export type OnlineDeploymentIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const OnlineDeploymentIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface OnlineDeploymentSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const OnlineDeploymentSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "OnlineDeploymentSku",
-}) as any as S.Schema<OnlineDeploymentSku>;
+export type OnlineDeploymentSku = BatchDeploymentsCreateOrUpdateResponseSku;
+export const OnlineDeploymentSku = BatchDeploymentsCreateOrUpdateResponseSku;
 
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface OnlineDeployment {
@@ -11123,11 +10574,11 @@ export interface OnlineDeployment {
   /** [Required] Additional attributes of the entity. */
   properties: OnlineDeploymentProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: OnlineDeploymentIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: OnlineDeploymentSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const OnlineDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11138,9 +10589,9 @@ export const OnlineDeployment = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(OnlineDeploymentTagsMap),
     location: S.String,
     properties: OnlineDeploymentProperties,
-    identity: S.optional(OnlineDeploymentIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(OnlineDeploymentSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "OnlineDeployment",
@@ -11372,49 +10823,16 @@ export const OnlineDeploymentsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnlineDeploymentsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface OnlineDeploymentsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const OnlineDeploymentsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-).annotate({
-  identifier: "OnlineDeploymentsUpdateResponseIdentity",
-}) as any as S.Schema<OnlineDeploymentsUpdateResponseIdentity>;
+export type OnlineDeploymentsUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const OnlineDeploymentsUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface OnlineDeploymentsUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const OnlineDeploymentsUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "OnlineDeploymentsUpdateResponseSku",
-}) as any as S.Schema<OnlineDeploymentsUpdateResponseSku>;
+export type OnlineDeploymentsUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const OnlineDeploymentsUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface OnlineDeploymentsUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11432,11 +10850,11 @@ export interface OnlineDeploymentsUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: OnlineDeploymentProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: OnlineDeploymentsUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: OnlineDeploymentsUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const OnlineDeploymentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11447,9 +10865,9 @@ export const OnlineDeploymentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(OnlineDeploymentsUpdateResponseTagsMap),
     location: S.String,
     properties: OnlineDeploymentProperties,
-    identity: S.optional(OnlineDeploymentsUpdateResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(OnlineDeploymentsUpdateResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "OnlineDeploymentsUpdateResponse",
@@ -11544,44 +10962,16 @@ export const OnlineEndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OnlineEndpointPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface OnlineEndpointsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
+export type OnlineEndpointsCreateOrUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 export const OnlineEndpointsCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-    }),
-  ).annotate({
-    identifier: "OnlineEndpointsCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<OnlineEndpointsCreateOrUpdateRequestIdentity>;
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 
 /** The resource model definition representing SKU */
-export interface OnlineEndpointsCreateOrUpdateRequestSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const OnlineEndpointsCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "OnlineEndpointsCreateOrUpdateRequestSku",
-}) as any as S.Schema<OnlineEndpointsCreateOrUpdateRequestSku>;
+export type OnlineEndpointsCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
+export const OnlineEndpointsCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
 
 export interface OnlineEndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -11599,11 +10989,11 @@ export interface OnlineEndpointsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: OnlineEndpointPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: OnlineEndpointsCreateOrUpdateRequestIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateRequestIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: OnlineEndpointsCreateOrUpdateRequestSku;
+  sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
 export const OnlineEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -11615,9 +11005,9 @@ export const OnlineEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       tags: S.optional(OnlineEndpointsCreateOrUpdateRequestTagsMap),
       location: S.String,
       properties: OnlineEndpointPropertiesInput,
-      identity: S.optional(OnlineEndpointsCreateOrUpdateRequestIdentity),
+      identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
       kind: S.optional(S.String),
-      sku: S.optional(OnlineEndpointsCreateOrUpdateRequestSku),
+      sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -11722,50 +11112,16 @@ export const OnlineEndpointProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OnlineEndpointProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface OnlineEndpointsCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
+export type OnlineEndpointsCreateOrUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 export const OnlineEndpointsCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-  ).annotate({
-    identifier: "OnlineEndpointsCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<OnlineEndpointsCreateOrUpdateResponseIdentity>;
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface OnlineEndpointsCreateOrUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const OnlineEndpointsCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "OnlineEndpointsCreateOrUpdateResponseSku",
-}) as any as S.Schema<OnlineEndpointsCreateOrUpdateResponseSku>;
+export type OnlineEndpointsCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const OnlineEndpointsCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface OnlineEndpointsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11783,11 +11139,11 @@ export interface OnlineEndpointsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: OnlineEndpointProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: OnlineEndpointsCreateOrUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: OnlineEndpointsCreateOrUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const OnlineEndpointsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -11799,9 +11155,9 @@ export const OnlineEndpointsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(OnlineEndpointsCreateOrUpdateResponseTagsMap),
       location: S.String,
       properties: OnlineEndpointProperties,
-      identity: S.optional(OnlineEndpointsCreateOrUpdateResponseIdentity),
+      identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
       kind: S.optional(S.String),
-      sku: S.optional(OnlineEndpointsCreateOrUpdateResponseSku),
+      sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
     }),
 ).annotate({
   identifier: "OnlineEndpointsCreateOrUpdateResponse",
@@ -11880,48 +11236,16 @@ export const OnlineEndpointsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnlineEndpointsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface OnlineEndpointsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const OnlineEndpointsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "OnlineEndpointsGetResponseIdentity",
-}) as any as S.Schema<OnlineEndpointsGetResponseIdentity>;
+export type OnlineEndpointsGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const OnlineEndpointsGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface OnlineEndpointsGetResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const OnlineEndpointsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "OnlineEndpointsGetResponseSku",
-}) as any as S.Schema<OnlineEndpointsGetResponseSku>;
+export type OnlineEndpointsGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const OnlineEndpointsGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface OnlineEndpointsGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -11939,11 +11263,11 @@ export interface OnlineEndpointsGetResponse {
   /** [Required] Additional attributes of the entity. */
   properties: OnlineEndpointProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: OnlineEndpointsGetResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: OnlineEndpointsGetResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const OnlineEndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11954,9 +11278,9 @@ export const OnlineEndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(OnlineEndpointsGetResponseTagsMap),
     location: S.String,
     properties: OnlineEndpointProperties,
-    identity: S.optional(OnlineEndpointsGetResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(OnlineEndpointsGetResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "OnlineEndpointsGetResponse",
@@ -12081,48 +11405,14 @@ export const OnlineEndpointTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnlineEndpointTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface OnlineEndpointIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const OnlineEndpointIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "OnlineEndpointIdentity",
-}) as any as S.Schema<OnlineEndpointIdentity>;
+export type OnlineEndpointIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const OnlineEndpointIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface OnlineEndpointSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const OnlineEndpointSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "OnlineEndpointSku",
-}) as any as S.Schema<OnlineEndpointSku>;
+export type OnlineEndpointSku = BatchDeploymentsCreateOrUpdateResponseSku;
+export const OnlineEndpointSku = BatchDeploymentsCreateOrUpdateResponseSku;
 
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface OnlineEndpoint {
@@ -12141,11 +11431,11 @@ export interface OnlineEndpoint {
   /** [Required] Additional attributes of the entity. */
   properties: OnlineEndpointProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: OnlineEndpointIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: OnlineEndpointSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const OnlineEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12156,9 +11446,9 @@ export const OnlineEndpoint = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(OnlineEndpointTagsMap),
     location: S.String,
     properties: OnlineEndpointProperties,
-    identity: S.optional(OnlineEndpointIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(OnlineEndpointSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({ identifier: "OnlineEndpoint" }) as any as S.Schema<OnlineEndpoint>;
 
@@ -12313,49 +11603,16 @@ export const OnlineEndpointsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<OnlineEndpointsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface OnlineEndpointsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const OnlineEndpointsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-).annotate({
-  identifier: "OnlineEndpointsUpdateResponseIdentity",
-}) as any as S.Schema<OnlineEndpointsUpdateResponseIdentity>;
+export type OnlineEndpointsUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const OnlineEndpointsUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface OnlineEndpointsUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const OnlineEndpointsUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "OnlineEndpointsUpdateResponseSku",
-}) as any as S.Schema<OnlineEndpointsUpdateResponseSku>;
+export type OnlineEndpointsUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const OnlineEndpointsUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface OnlineEndpointsUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -12373,11 +11630,11 @@ export interface OnlineEndpointsUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: OnlineEndpointProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: OnlineEndpointsUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: OnlineEndpointsUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const OnlineEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12388,9 +11645,9 @@ export const OnlineEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(OnlineEndpointsUpdateResponseTagsMap),
     location: S.String,
     properties: OnlineEndpointProperties,
-    identity: S.optional(OnlineEndpointsUpdateResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(OnlineEndpointsUpdateResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "OnlineEndpointsUpdateResponse",
@@ -12485,12 +11742,8 @@ export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OperationsListResponse>;
 
 /** The Private Endpoint resource. */
-export interface WorkspacePrivateEndpointResourceInput {}
-export const WorkspacePrivateEndpointResourceInput = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "WorkspacePrivateEndpointResourceInput",
-}) as any as S.Schema<WorkspacePrivateEndpointResourceInput>;
+export type WorkspacePrivateEndpointResourceInput = UserAssignedIdentityInput;
+export const WorkspacePrivateEndpointResourceInput = UserAssignedIdentityInput;
 
 /** Connection status of the service consumer with the service provider */
 export type EndpointServiceConnectionStatus =
@@ -12522,14 +11775,14 @@ export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
 
 /** Private endpoint connection properties. */
 export interface PrivateEndpointConnectionPropertiesInput {
-  privateEndpoint?: WorkspacePrivateEndpointResourceInput;
+  privateEndpoint?: UserAssignedIdentityInput;
   /** The connection state. */
   privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
 }
 export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      privateEndpoint: S.optional(WorkspacePrivateEndpointResourceInput),
+      privateEndpoint: S.optional(UserAssignedIdentityInput),
       privateLinkServiceConnectionState: S.optional(
         PrivateLinkServiceConnectionState,
       ),
@@ -12539,44 +11792,16 @@ export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PrivateEndpointConnectionsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
+export type PrivateEndpointConnectionsCreateOrUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 export const PrivateEndpointConnectionsCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequestIdentity>;
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 
 /** The resource model definition representing SKU */
-export interface PrivateEndpointConnectionsCreateOrUpdateRequestSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
+export type PrivateEndpointConnectionsCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
 export const PrivateEndpointConnectionsCreateOrUpdateRequestSku =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsCreateOrUpdateRequestSku",
-  }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequestSku>;
+  BatchDeploymentsCreateOrUpdateRequestSku;
 
 export type PrivateEndpointConnectionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
@@ -12599,9 +11824,9 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** Private endpoint connection properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PrivateEndpointConnectionsCreateOrUpdateRequestIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateRequestIdentity;
   /** The resource model definition representing SKU */
-  sku?: PrivateEndpointConnectionsCreateOrUpdateRequestSku;
+  sku?: BatchDeploymentsCreateOrUpdateRequestSku;
   /** *Same as workspace location. */
   location?: string;
   tags?: PrivateEndpointConnectionsCreateOrUpdateRequestTagsMap;
@@ -12614,10 +11839,8 @@ export const PrivateEndpointConnectionsCreateOrUpdateRequest =
       workspaceName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
       properties: S.optional(PrivateEndpointConnectionPropertiesInput),
-      identity: S.optional(
-        PrivateEndpointConnectionsCreateOrUpdateRequestIdentity,
-      ),
-      sku: S.optional(PrivateEndpointConnectionsCreateOrUpdateRequestSku),
+      identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
+      sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
       location: S.optional(S.String),
       tags: S.optional(PrivateEndpointConnectionsCreateOrUpdateRequestTagsMap),
     }).pipe(
@@ -12678,50 +11901,16 @@ export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpointConnectionProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PrivateEndpointConnectionsCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
+export type PrivateEndpointConnectionsCreateOrUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 export const PrivateEndpointConnectionsCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponseIdentity>;
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface PrivateEndpointConnectionsCreateOrUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
+export type PrivateEndpointConnectionsCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 export const PrivateEndpointConnectionsCreateOrUpdateResponseSku =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsCreateOrUpdateResponseSku",
-  }) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponseSku>;
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export type PrivateEndpointConnectionsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -12744,9 +11933,9 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Private endpoint connection properties. */
   properties?: PrivateEndpointConnectionProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PrivateEndpointConnectionsCreateOrUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: PrivateEndpointConnectionsCreateOrUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   /** *Same as workspace location. */
   location?: string;
   tags?: PrivateEndpointConnectionsCreateOrUpdateResponseTagsMap;
@@ -12759,10 +11948,8 @@ export const PrivateEndpointConnectionsCreateOrUpdateResponse =
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
       properties: S.optional(PrivateEndpointConnectionProperties),
-      identity: S.optional(
-        PrivateEndpointConnectionsCreateOrUpdateResponseIdentity,
-      ),
-      sku: S.optional(PrivateEndpointConnectionsCreateOrUpdateResponseSku),
+      identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+      sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
       location: S.optional(S.String),
       tags: S.optional(PrivateEndpointConnectionsCreateOrUpdateResponseTagsMap),
     }),
@@ -12836,50 +12023,16 @@ export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateEndpointConnectionsGetRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PrivateEndpointConnectionsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
+export type PrivateEndpointConnectionsGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 export const PrivateEndpointConnectionsGetResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsGetResponseIdentity",
-  }) as any as S.Schema<PrivateEndpointConnectionsGetResponseIdentity>;
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface PrivateEndpointConnectionsGetResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const PrivateEndpointConnectionsGetResponseSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsGetResponseSku",
-}) as any as S.Schema<PrivateEndpointConnectionsGetResponseSku>;
+export type PrivateEndpointConnectionsGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const PrivateEndpointConnectionsGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export type PrivateEndpointConnectionsGetResponseTagsMap = {
   [key: string]: string | undefined;
@@ -12902,9 +12055,9 @@ export interface PrivateEndpointConnectionsGetResponse {
   /** Private endpoint connection properties. */
   properties?: PrivateEndpointConnectionProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PrivateEndpointConnectionsGetResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: PrivateEndpointConnectionsGetResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   /** *Same as workspace location. */
   location?: string;
   tags?: PrivateEndpointConnectionsGetResponseTagsMap;
@@ -12917,8 +12070,8 @@ export const PrivateEndpointConnectionsGetResponse = /*@__PURE__*/ S.suspend(
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
       properties: S.optional(PrivateEndpointConnectionProperties),
-      identity: S.optional(PrivateEndpointConnectionsGetResponseIdentity),
-      sku: S.optional(PrivateEndpointConnectionsGetResponseSku),
+      identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+      sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
       location: S.optional(S.String),
       tags: S.optional(PrivateEndpointConnectionsGetResponseTagsMap),
     }),
@@ -12953,48 +12106,16 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateEndpointConnectionsListRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PrivateEndpointConnectionIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const PrivateEndpointConnectionIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionIdentity",
-}) as any as S.Schema<PrivateEndpointConnectionIdentity>;
+export type PrivateEndpointConnectionIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const PrivateEndpointConnectionIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface PrivateEndpointConnectionSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const PrivateEndpointConnectionSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionSku",
-}) as any as S.Schema<PrivateEndpointConnectionSku>;
+export type PrivateEndpointConnectionSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const PrivateEndpointConnectionSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export type PrivateEndpointConnectionTagsMap = {
   [key: string]: string | undefined;
@@ -13017,9 +12138,9 @@ export interface PrivateEndpointConnection {
   /** Private endpoint connection properties. */
   properties?: PrivateEndpointConnectionProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PrivateEndpointConnectionIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: PrivateEndpointConnectionSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   /** *Same as workspace location. */
   location?: string;
   tags?: PrivateEndpointConnectionTagsMap;
@@ -13031,8 +12152,8 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: S.optional(PrivateEndpointConnectionProperties),
-    identity: S.optional(PrivateEndpointConnectionIdentity),
-    sku: S.optional(PrivateEndpointConnectionSku),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
     location: S.optional(S.String),
     tags: S.optional(PrivateEndpointConnectionTagsMap),
   }),
@@ -13089,24 +12210,10 @@ export const PrivateLinkResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourcesListRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface PrivateLinkResourceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const PrivateLinkResourceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceIdentity",
-}) as any as S.Schema<PrivateLinkResourceIdentity>;
+export type PrivateLinkResourceIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const PrivateLinkResourceIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
@@ -13146,28 +12253,8 @@ export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourceProperties>;
 
 /** The resource model definition representing SKU */
-export interface PrivateLinkResourceSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const PrivateLinkResourceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PrivateLinkResourceSku",
-}) as any as S.Schema<PrivateLinkResourceSku>;
+export type PrivateLinkResourceSku = BatchDeploymentsCreateOrUpdateResponseSku;
+export const PrivateLinkResourceSku = BatchDeploymentsCreateOrUpdateResponseSku;
 
 export type PrivateLinkResourceTagsMap = { [key: string]: string | undefined };
 export const PrivateLinkResourceTagsMap = /*@__PURE__*/ S.Record(
@@ -13186,13 +12273,13 @@ export interface PrivateLinkResource {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: PrivateLinkResourceIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Same as workspace location. */
   location?: string;
   /** Properties of a private link resource. */
   properties?: PrivateLinkResourceProperties;
   /** The resource model definition representing SKU */
-  sku?: PrivateLinkResourceSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   tags?: PrivateLinkResourceTagsMap;
 }
 export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
@@ -13201,10 +12288,10 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    identity: S.optional(PrivateLinkResourceIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     location: S.optional(S.String),
     properties: S.optional(PrivateLinkResourceProperties),
-    sku: S.optional(PrivateLinkResourceSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
     tags: S.optional(PrivateLinkResourceTagsMap),
   }),
 ).annotate({
@@ -13738,43 +12825,16 @@ export const RegistryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistryPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface RegistriesCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
-export const RegistriesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-    }),
-).annotate({
-  identifier: "RegistriesCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<RegistriesCreateOrUpdateRequestIdentity>;
+export type RegistriesCreateOrUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
+export const RegistriesCreateOrUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 
 /** The resource model definition representing SKU */
-export interface RegistriesCreateOrUpdateRequestSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const RegistriesCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RegistriesCreateOrUpdateRequestSku",
-}) as any as S.Schema<RegistriesCreateOrUpdateRequestSku>;
+export type RegistriesCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
+export const RegistriesCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
 
 export interface RegistriesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -13790,11 +12850,11 @@ export interface RegistriesCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: RegistryPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: RegistriesCreateOrUpdateRequestIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateRequestIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: RegistriesCreateOrUpdateRequestSku;
+  sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
 export const RegistriesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13804,9 +12864,9 @@ export const RegistriesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(RegistriesCreateOrUpdateRequestTagsMap),
     location: S.String,
     properties: RegistryPropertiesInput,
-    identity: S.optional(RegistriesCreateOrUpdateRequestIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(RegistriesCreateOrUpdateRequestSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -13954,49 +13014,16 @@ export const RegistryProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegistryProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface RegistriesCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const RegistriesCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-).annotate({
-  identifier: "RegistriesCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<RegistriesCreateOrUpdateResponseIdentity>;
+export type RegistriesCreateOrUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const RegistriesCreateOrUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface RegistriesCreateOrUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const RegistriesCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RegistriesCreateOrUpdateResponseSku",
-}) as any as S.Schema<RegistriesCreateOrUpdateResponseSku>;
+export type RegistriesCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const RegistriesCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface RegistriesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -14014,11 +13041,11 @@ export interface RegistriesCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: RegistryProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: RegistriesCreateOrUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: RegistriesCreateOrUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const RegistriesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14029,9 +13056,9 @@ export const RegistriesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(RegistriesCreateOrUpdateResponseTagsMap),
     location: S.String,
     properties: RegistryProperties,
-    identity: S.optional(RegistriesCreateOrUpdateResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(RegistriesCreateOrUpdateResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "RegistriesCreateOrUpdateResponse",
@@ -14104,48 +13131,16 @@ export const RegistriesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RegistriesGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface RegistriesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const RegistriesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "RegistriesGetResponseIdentity",
-}) as any as S.Schema<RegistriesGetResponseIdentity>;
+export type RegistriesGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const RegistriesGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface RegistriesGetResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const RegistriesGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RegistriesGetResponseSku",
-}) as any as S.Schema<RegistriesGetResponseSku>;
+export type RegistriesGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const RegistriesGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface RegistriesGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -14163,11 +13158,11 @@ export interface RegistriesGetResponse {
   /** [Required] Additional attributes of the entity. */
   properties: RegistryProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: RegistriesGetResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: RegistriesGetResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const RegistriesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14178,9 +13173,9 @@ export const RegistriesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(RegistriesGetResponseTagsMap),
     location: S.String,
     properties: RegistryProperties,
-    identity: S.optional(RegistriesGetResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(RegistriesGetResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "RegistriesGetResponse",
@@ -14216,46 +13211,12 @@ export const RegistryTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RegistryTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface RegistryIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const RegistryIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "RegistryIdentity",
-}) as any as S.Schema<RegistryIdentity>;
+export type RegistryIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const RegistryIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface RegistrySku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const RegistrySku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RegistrySku" }) as any as S.Schema<RegistrySku>;
+export type RegistrySku = BatchDeploymentsCreateOrUpdateResponseSku;
+export const RegistrySku = BatchDeploymentsCreateOrUpdateResponseSku;
 
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface Registry {
@@ -14274,11 +13235,11 @@ export interface Registry {
   /** [Required] Additional attributes of the entity. */
   properties: RegistryProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: RegistryIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: RegistrySku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const Registry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14289,9 +13250,9 @@ export const Registry = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(RegistryTagsMap),
     location: S.String,
     properties: RegistryProperties,
-    identity: S.optional(RegistryIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(RegistrySku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({ identifier: "Registry" }) as any as S.Schema<Registry>;
 
@@ -14349,43 +13310,16 @@ export const RegistriesRemoveRegionsRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RegistriesRemoveRegionsRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface RegistriesRemoveRegionsRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
-export const RegistriesRemoveRegionsRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-    }),
-).annotate({
-  identifier: "RegistriesRemoveRegionsRequestIdentity",
-}) as any as S.Schema<RegistriesRemoveRegionsRequestIdentity>;
+export type RegistriesRemoveRegionsRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
+export const RegistriesRemoveRegionsRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 
 /** The resource model definition representing SKU */
-export interface RegistriesRemoveRegionsRequestSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const RegistriesRemoveRegionsRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RegistriesRemoveRegionsRequestSku",
-}) as any as S.Schema<RegistriesRemoveRegionsRequestSku>;
+export type RegistriesRemoveRegionsRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
+export const RegistriesRemoveRegionsRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
 
 export interface RegistriesRemoveRegionsRequest {
   /** The ID of the target subscription. */
@@ -14401,11 +13335,11 @@ export interface RegistriesRemoveRegionsRequest {
   /** [Required] Additional attributes of the entity. */
   properties: RegistryPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: RegistriesRemoveRegionsRequestIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateRequestIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: RegistriesRemoveRegionsRequestSku;
+  sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
 export const RegistriesRemoveRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14415,9 +13349,9 @@ export const RegistriesRemoveRegionsRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(RegistriesRemoveRegionsRequestTagsMap),
     location: S.String,
     properties: RegistryPropertiesInput,
-    identity: S.optional(RegistriesRemoveRegionsRequestIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(RegistriesRemoveRegionsRequestSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
   }).pipe(
     T.Http({
       method: "POST",
@@ -14440,49 +13374,16 @@ export const RegistriesRemoveRegionsResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RegistriesRemoveRegionsResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface RegistriesRemoveRegionsResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const RegistriesRemoveRegionsResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-).annotate({
-  identifier: "RegistriesRemoveRegionsResponseIdentity",
-}) as any as S.Schema<RegistriesRemoveRegionsResponseIdentity>;
+export type RegistriesRemoveRegionsResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const RegistriesRemoveRegionsResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface RegistriesRemoveRegionsResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const RegistriesRemoveRegionsResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RegistriesRemoveRegionsResponseSku",
-}) as any as S.Schema<RegistriesRemoveRegionsResponseSku>;
+export type RegistriesRemoveRegionsResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const RegistriesRemoveRegionsResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface RegistriesRemoveRegionsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -14500,11 +13401,11 @@ export interface RegistriesRemoveRegionsResponse {
   /** [Required] Additional attributes of the entity. */
   properties: RegistryProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: RegistriesRemoveRegionsResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: RegistriesRemoveRegionsResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const RegistriesRemoveRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14515,28 +13416,19 @@ export const RegistriesRemoveRegionsResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(RegistriesRemoveRegionsResponseTagsMap),
     location: S.String,
     properties: RegistryProperties,
-    identity: S.optional(RegistriesRemoveRegionsResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(RegistriesRemoveRegionsResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "RegistriesRemoveRegionsResponse",
 }) as any as S.Schema<RegistriesRemoveRegionsResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface RegistryPartialManagedServiceIdentityInput {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
+export type RegistryPartialManagedServiceIdentityInput =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 export const RegistryPartialManagedServiceIdentityInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-    }),
-  ).annotate({
-    identifier: "RegistryPartialManagedServiceIdentityInput",
-  }) as any as S.Schema<RegistryPartialManagedServiceIdentityInput>;
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 
 /** Resource tags. */
 export type RegistriesUpdateRequestTagsMap = {
@@ -14555,7 +13447,7 @@ export interface RegistriesUpdateRequest {
   /** Name of Azure Machine Learning registry. This is case-insensitive */
   registryName: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: RegistryPartialManagedServiceIdentityInput;
+  identity?: BatchDeploymentsCreateOrUpdateRequestIdentity;
   /** Sku details required for ARM contract for Autoscaling. */
   sku?: PartialSku;
   /** Resource tags. */
@@ -14566,7 +13458,7 @@ export const RegistriesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     registryName: S.String.pipe(T.Label()),
-    identity: S.optional(RegistryPartialManagedServiceIdentityInput),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
     sku: S.optional(PartialSku),
     tags: S.optional(RegistriesUpdateRequestTagsMap),
   }).pipe(
@@ -14591,48 +13483,16 @@ export const RegistriesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<RegistriesUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface RegistriesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const RegistriesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "RegistriesUpdateResponseIdentity",
-}) as any as S.Schema<RegistriesUpdateResponseIdentity>;
+export type RegistriesUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const RegistriesUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface RegistriesUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const RegistriesUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RegistriesUpdateResponseSku",
-}) as any as S.Schema<RegistriesUpdateResponseSku>;
+export type RegistriesUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const RegistriesUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface RegistriesUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -14650,11 +13510,11 @@ export interface RegistriesUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: RegistryProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: RegistriesUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: RegistriesUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const RegistriesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14665,9 +13525,9 @@ export const RegistriesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(RegistriesUpdateResponseTagsMap),
     location: S.String,
     properties: RegistryProperties,
-    identity: S.optional(RegistriesUpdateResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(RegistriesUpdateResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "RegistriesUpdateResponse",
@@ -17200,44 +16060,16 @@ export const ServerlessEndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerlessEndpointPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ServerlessEndpointsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
+export type ServerlessEndpointsCreateOrUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 export const ServerlessEndpointsCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-    }),
-  ).annotate({
-    identifier: "ServerlessEndpointsCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<ServerlessEndpointsCreateOrUpdateRequestIdentity>;
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 
 /** The resource model definition representing SKU */
-export interface ServerlessEndpointsCreateOrUpdateRequestSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
+export type ServerlessEndpointsCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
 export const ServerlessEndpointsCreateOrUpdateRequestSku =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ServerlessEndpointsCreateOrUpdateRequestSku",
-  }) as any as S.Schema<ServerlessEndpointsCreateOrUpdateRequestSku>;
+  BatchDeploymentsCreateOrUpdateRequestSku;
 
 export interface ServerlessEndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -17255,11 +16087,11 @@ export interface ServerlessEndpointsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: ServerlessEndpointPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ServerlessEndpointsCreateOrUpdateRequestIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateRequestIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: ServerlessEndpointsCreateOrUpdateRequestSku;
+  sku?: BatchDeploymentsCreateOrUpdateRequestSku;
 }
 export const ServerlessEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -17271,9 +16103,9 @@ export const ServerlessEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       tags: S.optional(ServerlessEndpointsCreateOrUpdateRequestTagsMap),
       location: S.String,
       properties: ServerlessEndpointPropertiesInput,
-      identity: S.optional(ServerlessEndpointsCreateOrUpdateRequestIdentity),
+      identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
       kind: S.optional(S.String),
-      sku: S.optional(ServerlessEndpointsCreateOrUpdateRequestSku),
+      sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -17364,50 +16196,16 @@ export const ServerlessEndpointProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerlessEndpointProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ServerlessEndpointsCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
+export type ServerlessEndpointsCreateOrUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 export const ServerlessEndpointsCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-  ).annotate({
-    identifier: "ServerlessEndpointsCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<ServerlessEndpointsCreateOrUpdateResponseIdentity>;
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ServerlessEndpointsCreateOrUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
+export type ServerlessEndpointsCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 export const ServerlessEndpointsCreateOrUpdateResponseSku =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "ServerlessEndpointsCreateOrUpdateResponseSku",
-  }) as any as S.Schema<ServerlessEndpointsCreateOrUpdateResponseSku>;
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface ServerlessEndpointsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -17425,11 +16223,11 @@ export interface ServerlessEndpointsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ServerlessEndpointProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ServerlessEndpointsCreateOrUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: ServerlessEndpointsCreateOrUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const ServerlessEndpointsCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -17441,9 +16239,9 @@ export const ServerlessEndpointsCreateOrUpdateResponse =
       tags: S.optional(ServerlessEndpointsCreateOrUpdateResponseTagsMap),
       location: S.String,
       properties: ServerlessEndpointProperties,
-      identity: S.optional(ServerlessEndpointsCreateOrUpdateResponseIdentity),
+      identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
       kind: S.optional(S.String),
-      sku: S.optional(ServerlessEndpointsCreateOrUpdateResponseSku),
+      sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
     }),
   ).annotate({
     identifier: "ServerlessEndpointsCreateOrUpdateResponse",
@@ -17522,49 +16320,16 @@ export const ServerlessEndpointsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServerlessEndpointsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ServerlessEndpointsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const ServerlessEndpointsGetResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-).annotate({
-  identifier: "ServerlessEndpointsGetResponseIdentity",
-}) as any as S.Schema<ServerlessEndpointsGetResponseIdentity>;
+export type ServerlessEndpointsGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const ServerlessEndpointsGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ServerlessEndpointsGetResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ServerlessEndpointsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ServerlessEndpointsGetResponseSku",
-}) as any as S.Schema<ServerlessEndpointsGetResponseSku>;
+export type ServerlessEndpointsGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const ServerlessEndpointsGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface ServerlessEndpointsGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -17582,11 +16347,11 @@ export interface ServerlessEndpointsGetResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ServerlessEndpointProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ServerlessEndpointsGetResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: ServerlessEndpointsGetResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const ServerlessEndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17597,9 +16362,9 @@ export const ServerlessEndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ServerlessEndpointsGetResponseTagsMap),
     location: S.String,
     properties: ServerlessEndpointProperties,
-    identity: S.optional(ServerlessEndpointsGetResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(ServerlessEndpointsGetResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "ServerlessEndpointsGetResponse",
@@ -17641,48 +16406,14 @@ export const ServerlessEndpointTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServerlessEndpointTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ServerlessEndpointIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const ServerlessEndpointIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "ServerlessEndpointIdentity",
-}) as any as S.Schema<ServerlessEndpointIdentity>;
+export type ServerlessEndpointIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const ServerlessEndpointIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ServerlessEndpointSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ServerlessEndpointSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ServerlessEndpointSku",
-}) as any as S.Schema<ServerlessEndpointSku>;
+export type ServerlessEndpointSku = BatchDeploymentsCreateOrUpdateResponseSku;
+export const ServerlessEndpointSku = BatchDeploymentsCreateOrUpdateResponseSku;
 
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface ServerlessEndpoint {
@@ -17701,11 +16432,11 @@ export interface ServerlessEndpoint {
   /** [Required] Additional attributes of the entity. */
   properties: ServerlessEndpointProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ServerlessEndpointIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: ServerlessEndpointSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const ServerlessEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17716,9 +16447,9 @@ export const ServerlessEndpoint = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ServerlessEndpointTagsMap),
     location: S.String,
     properties: ServerlessEndpointProperties,
-    identity: S.optional(ServerlessEndpointIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(ServerlessEndpointSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "ServerlessEndpoint",
@@ -17868,50 +16599,16 @@ export const ServerlessEndpointsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServerlessEndpointsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ServerlessEndpointsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
+export type ServerlessEndpointsUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 export const ServerlessEndpointsUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-  ).annotate({
-    identifier: "ServerlessEndpointsUpdateResponseIdentity",
-  }) as any as S.Schema<ServerlessEndpointsUpdateResponseIdentity>;
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ServerlessEndpointsUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ServerlessEndpointsUpdateResponseSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      tier: S.optional(SkuTier),
-      size: S.optional(S.String),
-      family: S.optional(S.String),
-      capacity: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "ServerlessEndpointsUpdateResponseSku",
-}) as any as S.Schema<ServerlessEndpointsUpdateResponseSku>;
+export type ServerlessEndpointsUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const ServerlessEndpointsUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export interface ServerlessEndpointsUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -17929,11 +16626,11 @@ export interface ServerlessEndpointsUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ServerlessEndpointProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ServerlessEndpointsUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: string;
   /** The resource model definition representing SKU */
-  sku?: ServerlessEndpointsUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
 }
 export const ServerlessEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17944,9 +16641,9 @@ export const ServerlessEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ServerlessEndpointsUpdateResponseTagsMap),
     location: S.String,
     properties: ServerlessEndpointProperties,
-    identity: S.optional(ServerlessEndpointsUpdateResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
-    sku: S.optional(ServerlessEndpointsUpdateResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
   }),
 ).annotate({
   identifier: "ServerlessEndpointsUpdateResponse",
@@ -17979,18 +16676,8 @@ export type UsageUnit = "Count";
 export const UsageUnit = /*@__PURE__*/ S.String;
 
 /** The Usage Names. */
-export interface UsageName {
-  /** The name of the resource. */
-  value?: string;
-  /** The localized name of the resource. */
-  localizedValue?: string;
-}
-export const UsageName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    localizedValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "UsageName" }) as any as S.Schema<UsageName>;
+export type UsageName = ResourceName;
+export const UsageName = ResourceName;
 
 /** Describes AML Resource Usage. */
 export interface Usage {
@@ -18007,7 +16694,7 @@ export interface Usage {
   /** The maximum permitted usage of the resource. */
   limit?: number;
   /** The name of the type of usage. */
-  name?: UsageName;
+  name?: ResourceName;
 }
 export const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -18017,7 +16704,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
     unit: S.optional(UsageUnit),
     currentValue: S.optional(S.Number),
     limit: S.optional(S.Number),
-    name: S.optional(UsageName),
+    name: S.optional(ResourceName),
   }),
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 
@@ -19221,43 +17908,16 @@ export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacePropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface WorkspacesCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
-export const WorkspacesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-    }),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<WorkspacesCreateOrUpdateRequestIdentity>;
+export type WorkspacesCreateOrUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
+export const WorkspacesCreateOrUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 
 /** The resource model definition representing SKU */
-export interface WorkspacesCreateOrUpdateRequestSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspacesCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateRequestSku",
-}) as any as S.Schema<WorkspacesCreateOrUpdateRequestSku>;
+export type WorkspacesCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
+export const WorkspacesCreateOrUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
 
 export type WorkspacesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
@@ -19277,11 +17937,11 @@ export interface WorkspacesCreateOrUpdateRequest {
   /** Additional attributes of the entity. */
   properties: WorkspacePropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: WorkspacesCreateOrUpdateRequestIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateRequestIdentity;
   kind?: string;
   location?: string;
   /** The resource model definition representing SKU */
-  sku?: WorkspacesCreateOrUpdateRequestSku;
+  sku?: BatchDeploymentsCreateOrUpdateRequestSku;
   tags?: WorkspacesCreateOrUpdateRequestTagsMap;
 }
 export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -19290,10 +17950,10 @@ export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
     properties: WorkspacePropertiesInput,
-    identity: S.optional(WorkspacesCreateOrUpdateRequestIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
     kind: S.optional(S.String),
     location: S.optional(S.String),
-    sku: S.optional(WorkspacesCreateOrUpdateRequestSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
     tags: S.optional(WorkspacesCreateOrUpdateRequestTagsMap),
   }).pipe(
     T.Http({
@@ -19521,49 +18181,16 @@ export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface WorkspacesCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const WorkspacesCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-    }),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<WorkspacesCreateOrUpdateResponseIdentity>;
+export type WorkspacesCreateOrUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const WorkspacesCreateOrUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface WorkspacesCreateOrUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspacesCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateResponseSku",
-}) as any as S.Schema<WorkspacesCreateOrUpdateResponseSku>;
+export type WorkspacesCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const WorkspacesCreateOrUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export type WorkspacesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -19585,11 +18212,11 @@ export interface WorkspacesCreateOrUpdateResponse {
   /** Additional attributes of the entity. */
   properties: WorkspaceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: WorkspacesCreateOrUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   kind?: string;
   location?: string;
   /** The resource model definition representing SKU */
-  sku?: WorkspacesCreateOrUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   tags?: WorkspacesCreateOrUpdateResponseTagsMap;
 }
 export const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -19599,10 +18226,10 @@ export const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: WorkspaceProperties,
-    identity: S.optional(WorkspacesCreateOrUpdateResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
     location: S.optional(S.String),
-    sku: S.optional(WorkspacesCreateOrUpdateResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
     tags: S.optional(WorkspacesCreateOrUpdateResponseTagsMap),
   }),
 ).annotate({
@@ -19971,48 +18598,16 @@ export const WorkspacesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacesGetRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface WorkspacesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const WorkspacesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "WorkspacesGetResponseIdentity",
-}) as any as S.Schema<WorkspacesGetResponseIdentity>;
+export type WorkspacesGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const WorkspacesGetResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface WorkspacesGetResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspacesGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WorkspacesGetResponseSku",
-}) as any as S.Schema<WorkspacesGetResponseSku>;
+export type WorkspacesGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const WorkspacesGetResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export type WorkspacesGetResponseTagsMap = {
   [key: string]: string | undefined;
@@ -20034,11 +18629,11 @@ export interface WorkspacesGetResponse {
   /** Additional attributes of the entity. */
   properties: WorkspaceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: WorkspacesGetResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   kind?: string;
   location?: string;
   /** The resource model definition representing SKU */
-  sku?: WorkspacesGetResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   tags?: WorkspacesGetResponseTagsMap;
 }
 export const WorkspacesGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -20048,10 +18643,10 @@ export const WorkspacesGetResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: WorkspaceProperties,
-    identity: S.optional(WorkspacesGetResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
     location: S.optional(S.String),
-    sku: S.optional(WorkspacesGetResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
     tags: S.optional(WorkspacesGetResponseTagsMap),
   }),
 ).annotate({
@@ -20090,46 +18685,12 @@ export const WorkspacesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkspacesListByResourceGroupRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface WorkspaceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const WorkspaceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "WorkspaceIdentity",
-}) as any as S.Schema<WorkspaceIdentity>;
+export type WorkspaceIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const WorkspaceIdentity = BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface WorkspaceSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspaceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "WorkspaceSku" }) as any as S.Schema<WorkspaceSku>;
+export type WorkspaceSku = BatchDeploymentsCreateOrUpdateResponseSku;
+export const WorkspaceSku = BatchDeploymentsCreateOrUpdateResponseSku;
 
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
 export const WorkspaceTagsMap = /*@__PURE__*/ S.Record(
@@ -20150,11 +18711,11 @@ export interface Workspace {
   /** Additional attributes of the entity. */
   properties: WorkspaceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: WorkspaceIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   kind?: string;
   location?: string;
   /** The resource model definition representing SKU */
-  sku?: WorkspaceSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   tags?: WorkspaceTagsMap;
 }
 export const Workspace = /*@__PURE__*/ S.suspend(() =>
@@ -20164,10 +18725,10 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: WorkspaceProperties,
-    identity: S.optional(WorkspaceIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
     location: S.optional(S.String),
-    sku: S.optional(WorkspaceSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
     tags: S.optional(WorkspaceTagsMap),
   }),
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
@@ -20585,18 +19146,10 @@ export const WorkspacesResyncKeysResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacesResyncKeysResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface WorkspacesUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput | null;
-}
-export const WorkspacesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
-  }),
-).annotate({
-  identifier: "WorkspacesUpdateRequestIdentity",
-}) as any as S.Schema<WorkspacesUpdateRequestIdentity>;
+export type WorkspacesUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
+export const WorkspacesUpdateRequestIdentity =
+  BatchDeploymentsCreateOrUpdateRequestIdentity;
 
 export interface EncryptionKeyVaultUpdateProperties {
   keyIdentifier: string;
@@ -20676,28 +19229,10 @@ export const WorkspacePropertiesUpdateParametersInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<WorkspacePropertiesUpdateParametersInput>;
 
 /** The resource model definition representing SKU */
-export interface WorkspacesUpdateRequestSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspacesUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WorkspacesUpdateRequestSku",
-}) as any as S.Schema<WorkspacesUpdateRequestSku>;
+export type WorkspacesUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
+export const WorkspacesUpdateRequestSku =
+  BatchDeploymentsCreateOrUpdateRequestSku;
 
 /** The resource tags for the machine learning workspace. */
 export type WorkspacesUpdateRequestTagsMap = {
@@ -20716,11 +19251,11 @@ export interface WorkspacesUpdateRequest {
   /** Azure Machine Learning Workspace Name */
   workspaceName: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: WorkspacesUpdateRequestIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateRequestIdentity;
   /** The properties that the machine learning workspace will be updated with. */
   properties?: WorkspacePropertiesUpdateParametersInput;
   /** The resource model definition representing SKU */
-  sku?: WorkspacesUpdateRequestSku;
+  sku?: BatchDeploymentsCreateOrUpdateRequestSku;
   /** The resource tags for the machine learning workspace. */
   tags?: WorkspacesUpdateRequestTagsMap;
 }
@@ -20729,9 +19264,9 @@ export const WorkspacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     workspaceName: S.String.pipe(T.Label()),
-    identity: S.optional(WorkspacesUpdateRequestIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateRequestIdentity),
     properties: S.optional(WorkspacePropertiesUpdateParametersInput),
-    sku: S.optional(WorkspacesUpdateRequestSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateRequestSku),
     tags: S.optional(WorkspacesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
@@ -20746,48 +19281,16 @@ export const WorkspacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacesUpdateRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface WorkspacesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities | null;
-}
-export const WorkspacesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
-  }),
-).annotate({
-  identifier: "WorkspacesUpdateResponseIdentity",
-}) as any as S.Schema<WorkspacesUpdateResponseIdentity>;
+export type WorkspacesUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
+export const WorkspacesUpdateResponseIdentity =
+  BatchDeploymentsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface WorkspacesUpdateResponseSku {
-  /** The name of the SKU. Ex - P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspacesUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WorkspacesUpdateResponseSku",
-}) as any as S.Schema<WorkspacesUpdateResponseSku>;
+export type WorkspacesUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
+export const WorkspacesUpdateResponseSku =
+  BatchDeploymentsCreateOrUpdateResponseSku;
 
 export type WorkspacesUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -20809,11 +19312,11 @@ export interface WorkspacesUpdateResponse {
   /** Additional attributes of the entity. */
   properties: WorkspaceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: WorkspacesUpdateResponseIdentity;
+  identity?: BatchDeploymentsCreateOrUpdateResponseIdentity;
   kind?: string;
   location?: string;
   /** The resource model definition representing SKU */
-  sku?: WorkspacesUpdateResponseSku;
+  sku?: BatchDeploymentsCreateOrUpdateResponseSku;
   tags?: WorkspacesUpdateResponseTagsMap;
 }
 export const WorkspacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -20823,10 +19326,10 @@ export const WorkspacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
     properties: WorkspaceProperties,
-    identity: S.optional(WorkspacesUpdateResponseIdentity),
+    identity: S.optional(BatchDeploymentsCreateOrUpdateResponseIdentity),
     kind: S.optional(S.String),
     location: S.optional(S.String),
-    sku: S.optional(WorkspacesUpdateResponseSku),
+    sku: S.optional(BatchDeploymentsCreateOrUpdateResponseSku),
     tags: S.optional(WorkspacesUpdateResponseTagsMap),
   }),
 ).annotate({

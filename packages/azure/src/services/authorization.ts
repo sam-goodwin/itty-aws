@@ -124,34 +124,17 @@ export const DenyAssignmentPropertiesPrincipalsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DenyAssignmentPropertiesPrincipalsList>;
 
 /** The name of the entity last modified it */
-export interface DenyAssignmentPropertiesExcludePrincipalsItem {
-  /** The id of the principal made changes */
-  id?: string;
-  /** The name of the principal made changes */
-  displayName?: string;
-  /** Type of principal such as user , group etc */
-  type?: string;
-  /** Email of principal */
-  email?: string;
-}
+export type DenyAssignmentPropertiesExcludePrincipalsItem =
+  DenyAssignmentPropertiesPrincipalsItem;
 export const DenyAssignmentPropertiesExcludePrincipalsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      displayName: S.optional(S.String),
-      type: S.optional(S.String),
-      email: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DenyAssignmentPropertiesExcludePrincipalsItem",
-  }) as any as S.Schema<DenyAssignmentPropertiesExcludePrincipalsItem>;
+  DenyAssignmentPropertiesPrincipalsItem;
 
 /** Array of principals to which the deny assignment does not apply. */
 export type DenyAssignmentPropertiesExcludePrincipalsList =
-  Array<DenyAssignmentPropertiesExcludePrincipalsItem>;
+  Array<DenyAssignmentPropertiesPrincipalsItem>;
 export const DenyAssignmentPropertiesExcludePrincipalsList =
   /*@__PURE__*/ S.Array(
-    DenyAssignmentPropertiesExcludePrincipalsItem,
+    DenyAssignmentPropertiesPrincipalsItem,
   ) as any as S.Schema<DenyAssignmentPropertiesExcludePrincipalsList>;
 
 /** Deny assignment properties. */

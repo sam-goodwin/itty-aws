@@ -945,30 +945,10 @@ export const ApplicationGroupsCreateOrUpdateResponseSku =
   }) as any as S.Schema<ApplicationGroupsCreateOrUpdateResponseSku>;
 
 /** Plan for the resource. */
-export interface ApplicationGroupsCreateOrUpdateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
+export type ApplicationGroupsCreateOrUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 export const ApplicationGroupsCreateOrUpdateResponsePlan =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      publisher: S.String,
-      product: S.String,
-      promotionCode: S.optional(S.String),
-      version: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ApplicationGroupsCreateOrUpdateResponsePlan",
-  }) as any as S.Schema<ApplicationGroupsCreateOrUpdateResponsePlan>;
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 /** Resource Type of ApplicationGroup. */
 export type ApplicationGroupPropertiesApplicationGroupType =
@@ -1035,7 +1015,7 @@ export interface ApplicationGroupsCreateOrUpdateResponse {
   /** The resource model definition representing SKU */
   sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: ApplicationGroupsCreateOrUpdateResponsePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for ApplicationGroup */
   properties: ApplicationGroupProperties;
 }
@@ -1053,7 +1033,7 @@ export const ApplicationGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
       etag: S.optional(S.String),
       identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
       sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
-      plan: S.optional(ApplicationGroupsCreateOrUpdateResponsePlan),
+      plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
       properties: ApplicationGroupProperties,
     }),
 ).annotate({
@@ -1127,72 +1107,22 @@ export const ApplicationGroupsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ApplicationGroupsGetResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface ApplicationGroupsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const ApplicationGroupsGetResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: SystemAssignedServiceIdentityType,
-    }),
-).annotate({
-  identifier: "ApplicationGroupsGetResponseIdentity",
-}) as any as S.Schema<ApplicationGroupsGetResponseIdentity>;
+export type ApplicationGroupsGetResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const ApplicationGroupsGetResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ApplicationGroupsGetResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ApplicationGroupsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ApplicationGroupsGetResponseSku",
-}) as any as S.Schema<ApplicationGroupsGetResponseSku>;
+export type ApplicationGroupsGetResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
+export const ApplicationGroupsGetResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface ApplicationGroupsGetResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const ApplicationGroupsGetResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationGroupsGetResponsePlan",
-}) as any as S.Schema<ApplicationGroupsGetResponsePlan>;
+export type ApplicationGroupsGetResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const ApplicationGroupsGetResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 export interface ApplicationGroupsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1214,11 +1144,11 @@ export interface ApplicationGroupsGetResponse {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: ApplicationGroupsGetResponseIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: ApplicationGroupsGetResponseSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: ApplicationGroupsGetResponsePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for ApplicationGroup */
   properties: ApplicationGroupProperties;
 }
@@ -1233,9 +1163,9 @@ export const ApplicationGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(ApplicationGroupsGetResponseIdentity),
-    sku: S.optional(ApplicationGroupsGetResponseSku),
-    plan: S.optional(ApplicationGroupsGetResponsePlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: ApplicationGroupProperties,
   }),
 ).annotate({
@@ -1285,71 +1215,18 @@ export const ApplicationGroupTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ApplicationGroupTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface ApplicationGroupIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const ApplicationGroupIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "ApplicationGroupIdentity",
-}) as any as S.Schema<ApplicationGroupIdentity>;
+export type ApplicationGroupIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const ApplicationGroupIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ApplicationGroupSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ApplicationGroupSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ApplicationGroupSku",
-}) as any as S.Schema<ApplicationGroupSku>;
+export type ApplicationGroupSku = ApplicationGroupsCreateOrUpdateResponseSku;
+export const ApplicationGroupSku = ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface ApplicationGroupPlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const ApplicationGroupPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationGroupPlan",
-}) as any as S.Schema<ApplicationGroupPlan>;
+export type ApplicationGroupPlan = ApplicationGroupsCreateOrUpdateRequestPlan;
+export const ApplicationGroupPlan = ApplicationGroupsCreateOrUpdateRequestPlan;
 
 /** Represents a ApplicationGroup definition. */
 export interface ApplicationGroup {
@@ -1372,11 +1249,11 @@ export interface ApplicationGroup {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: ApplicationGroupIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: ApplicationGroupSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: ApplicationGroupPlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for ApplicationGroup */
   properties: ApplicationGroupProperties;
 }
@@ -1391,9 +1268,9 @@ export const ApplicationGroup = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(ApplicationGroupIdentity),
-    sku: S.optional(ApplicationGroupSku),
-    plan: S.optional(ApplicationGroupPlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: ApplicationGroupProperties,
   }),
 ).annotate({
@@ -1514,72 +1391,22 @@ export const ApplicationGroupsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ApplicationGroupsUpdateResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface ApplicationGroupsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const ApplicationGroupsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: SystemAssignedServiceIdentityType,
-    }),
-).annotate({
-  identifier: "ApplicationGroupsUpdateResponseIdentity",
-}) as any as S.Schema<ApplicationGroupsUpdateResponseIdentity>;
+export type ApplicationGroupsUpdateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const ApplicationGroupsUpdateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ApplicationGroupsUpdateResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ApplicationGroupsUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ApplicationGroupsUpdateResponseSku",
-}) as any as S.Schema<ApplicationGroupsUpdateResponseSku>;
+export type ApplicationGroupsUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
+export const ApplicationGroupsUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface ApplicationGroupsUpdateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const ApplicationGroupsUpdateResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApplicationGroupsUpdateResponsePlan",
-}) as any as S.Schema<ApplicationGroupsUpdateResponsePlan>;
+export type ApplicationGroupsUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const ApplicationGroupsUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 export interface ApplicationGroupsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1601,11 +1428,11 @@ export interface ApplicationGroupsUpdateResponse {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: ApplicationGroupsUpdateResponseIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: ApplicationGroupsUpdateResponseSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: ApplicationGroupsUpdateResponsePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for ApplicationGroup */
   properties: ApplicationGroupProperties;
 }
@@ -1620,9 +1447,9 @@ export const ApplicationGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(ApplicationGroupsUpdateResponseIdentity),
-    sku: S.optional(ApplicationGroupsUpdateResponseSku),
-    plan: S.optional(ApplicationGroupsUpdateResponsePlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: ApplicationGroupProperties,
   }),
 ).annotate({
@@ -2325,66 +2152,22 @@ export const HostPoolsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HostPoolsCreateOrUpdateRequestTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface HostPoolsCreateOrUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType | (string & {});
-}
-export const HostPoolsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: SystemAssignedServiceIdentityType,
-    }),
-).annotate({
-  identifier: "HostPoolsCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<HostPoolsCreateOrUpdateRequestIdentity>;
+export type HostPoolsCreateOrUpdateRequestIdentity =
+  ApplicationGroupsCreateOrUpdateRequestIdentity;
+export const HostPoolsCreateOrUpdateRequestIdentity =
+  ApplicationGroupsCreateOrUpdateRequestIdentity;
 
 /** The resource model definition representing SKU */
-export interface HostPoolsCreateOrUpdateRequestSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const HostPoolsCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "HostPoolsCreateOrUpdateRequestSku",
-}) as any as S.Schema<HostPoolsCreateOrUpdateRequestSku>;
+export type HostPoolsCreateOrUpdateRequestSku =
+  ApplicationGroupsCreateOrUpdateRequestSku;
+export const HostPoolsCreateOrUpdateRequestSku =
+  ApplicationGroupsCreateOrUpdateRequestSku;
 
 /** Plan for the resource. */
-export interface HostPoolsCreateOrUpdateRequestPlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const HostPoolsCreateOrUpdateRequestPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HostPoolsCreateOrUpdateRequestPlan",
-}) as any as S.Schema<HostPoolsCreateOrUpdateRequestPlan>;
+export type HostPoolsCreateOrUpdateRequestPlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const HostPoolsCreateOrUpdateRequestPlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 /** HostPool type for desktop. */
 export type HostPoolPropertiesInputHostPoolType =
@@ -2624,11 +2407,11 @@ export interface HostPoolsCreateOrUpdateRequest {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: HostPoolsCreateOrUpdateRequestIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateRequestIdentity;
   /** The resource model definition representing SKU */
-  sku?: HostPoolsCreateOrUpdateRequestSku;
+  sku?: ApplicationGroupsCreateOrUpdateRequestSku;
   /** Plan for the resource. */
-  plan?: HostPoolsCreateOrUpdateRequestPlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for HostPool */
   properties: HostPoolPropertiesInput;
 }
@@ -2641,9 +2424,9 @@ export const HostPoolsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
-    identity: S.optional(HostPoolsCreateOrUpdateRequestIdentity),
-    sku: S.optional(HostPoolsCreateOrUpdateRequestSku),
-    plan: S.optional(HostPoolsCreateOrUpdateRequestPlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateRequestIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateRequestSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: HostPoolPropertiesInput,
   }).pipe(
     T.Http({
@@ -2667,72 +2450,22 @@ export const HostPoolsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HostPoolsCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface HostPoolsCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const HostPoolsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: SystemAssignedServiceIdentityType,
-    }),
-).annotate({
-  identifier: "HostPoolsCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<HostPoolsCreateOrUpdateResponseIdentity>;
+export type HostPoolsCreateOrUpdateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const HostPoolsCreateOrUpdateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface HostPoolsCreateOrUpdateResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const HostPoolsCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "HostPoolsCreateOrUpdateResponseSku",
-}) as any as S.Schema<HostPoolsCreateOrUpdateResponseSku>;
+export type HostPoolsCreateOrUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
+export const HostPoolsCreateOrUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface HostPoolsCreateOrUpdateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const HostPoolsCreateOrUpdateResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HostPoolsCreateOrUpdateResponsePlan",
-}) as any as S.Schema<HostPoolsCreateOrUpdateResponsePlan>;
+export type HostPoolsCreateOrUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const HostPoolsCreateOrUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 /** HostPool type for desktop. */
 export type HostPoolPropertiesHostPoolType =
@@ -3018,11 +2751,11 @@ export interface HostPoolsCreateOrUpdateResponse {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: HostPoolsCreateOrUpdateResponseIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: HostPoolsCreateOrUpdateResponseSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: HostPoolsCreateOrUpdateResponsePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for HostPool */
   properties: HostPoolProperties;
 }
@@ -3037,9 +2770,9 @@ export const HostPoolsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(HostPoolsCreateOrUpdateResponseIdentity),
-    sku: S.optional(HostPoolsCreateOrUpdateResponseSku),
-    plan: S.optional(HostPoolsCreateOrUpdateResponsePlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: HostPoolProperties,
   }),
 ).annotate({
@@ -3114,71 +2847,22 @@ export const HostPoolsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HostPoolsGetResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface HostPoolsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const HostPoolsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "HostPoolsGetResponseIdentity",
-}) as any as S.Schema<HostPoolsGetResponseIdentity>;
+export type HostPoolsGetResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const HostPoolsGetResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface HostPoolsGetResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const HostPoolsGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "HostPoolsGetResponseSku",
-}) as any as S.Schema<HostPoolsGetResponseSku>;
+export type HostPoolsGetResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
+export const HostPoolsGetResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface HostPoolsGetResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const HostPoolsGetResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HostPoolsGetResponsePlan",
-}) as any as S.Schema<HostPoolsGetResponsePlan>;
+export type HostPoolsGetResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const HostPoolsGetResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 export interface HostPoolsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3200,11 +2884,11 @@ export interface HostPoolsGetResponse {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: HostPoolsGetResponseIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: HostPoolsGetResponseSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: HostPoolsGetResponsePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for HostPool */
   properties: HostPoolProperties;
 }
@@ -3219,9 +2903,9 @@ export const HostPoolsGetResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(HostPoolsGetResponseIdentity),
-    sku: S.optional(HostPoolsGetResponseSku),
-    plan: S.optional(HostPoolsGetResponsePlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: HostPoolProperties,
   }),
 ).annotate({
@@ -3264,67 +2948,16 @@ export const HostPoolTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HostPoolTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface HostPoolIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const HostPoolIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "HostPoolIdentity",
-}) as any as S.Schema<HostPoolIdentity>;
+export type HostPoolIdentity = ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const HostPoolIdentity = ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface HostPoolSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const HostPoolSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "HostPoolSku" }) as any as S.Schema<HostPoolSku>;
+export type HostPoolSku = ApplicationGroupsCreateOrUpdateResponseSku;
+export const HostPoolSku = ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface HostPoolPlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const HostPoolPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({ identifier: "HostPoolPlan" }) as any as S.Schema<HostPoolPlan>;
+export type HostPoolPlan = ApplicationGroupsCreateOrUpdateRequestPlan;
+export const HostPoolPlan = ApplicationGroupsCreateOrUpdateRequestPlan;
 
 /** Represents a HostPool definition. */
 export interface HostPool {
@@ -3347,11 +2980,11 @@ export interface HostPool {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: HostPoolIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: HostPoolSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: HostPoolPlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for HostPool */
   properties: HostPoolProperties;
 }
@@ -3366,9 +2999,9 @@ export const HostPool = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(HostPoolIdentity),
-    sku: S.optional(HostPoolSku),
-    plan: S.optional(HostPoolPlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: HostPoolProperties,
   }),
 ).annotate({ identifier: "HostPool" }) as any as S.Schema<HostPool>;
@@ -3735,16 +3368,10 @@ export const HostPoolPatchProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostPoolPatchProperties>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface HostPoolsUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType | (string & {});
-}
-export const HostPoolsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "HostPoolsUpdateRequestIdentity",
-}) as any as S.Schema<HostPoolsUpdateRequestIdentity>;
+export type HostPoolsUpdateRequestIdentity =
+  ApplicationGroupsCreateOrUpdateRequestIdentity;
+export const HostPoolsUpdateRequestIdentity =
+  ApplicationGroupsCreateOrUpdateRequestIdentity;
 
 export interface HostPoolsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3758,7 +3385,7 @@ export interface HostPoolsUpdateRequest {
   /** HostPool properties that can be patched. */
   properties?: HostPoolPatchProperties;
   /** Managed service identity (either system assigned, or none) */
-  identity?: HostPoolsUpdateRequestIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateRequestIdentity;
 }
 export const HostPoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3767,7 +3394,7 @@ export const HostPoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     hostPoolName: S.String.pipe(T.Label()),
     tags: S.optional(S.NullOr(HostPoolsUpdateRequestTagsMap)),
     properties: S.optional(HostPoolPatchProperties),
-    identity: S.optional(HostPoolsUpdateRequestIdentity),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3790,71 +3417,22 @@ export const HostPoolsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<HostPoolsUpdateResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface HostPoolsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const HostPoolsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "HostPoolsUpdateResponseIdentity",
-}) as any as S.Schema<HostPoolsUpdateResponseIdentity>;
+export type HostPoolsUpdateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const HostPoolsUpdateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface HostPoolsUpdateResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const HostPoolsUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "HostPoolsUpdateResponseSku",
-}) as any as S.Schema<HostPoolsUpdateResponseSku>;
+export type HostPoolsUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
+export const HostPoolsUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface HostPoolsUpdateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const HostPoolsUpdateResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HostPoolsUpdateResponsePlan",
-}) as any as S.Schema<HostPoolsUpdateResponsePlan>;
+export type HostPoolsUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const HostPoolsUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 export interface HostPoolsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3876,11 +3454,11 @@ export interface HostPoolsUpdateResponse {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: HostPoolsUpdateResponseIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: HostPoolsUpdateResponseSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: HostPoolsUpdateResponsePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for HostPool */
   properties: HostPoolProperties;
 }
@@ -3895,9 +3473,9 @@ export const HostPoolsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(HostPoolsUpdateResponseIdentity),
-    sku: S.optional(HostPoolsUpdateResponseSku),
-    plan: S.optional(HostPoolsUpdateResponsePlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: HostPoolProperties,
   }),
 ).annotate({
@@ -5058,21 +4636,10 @@ export const PrivateEndpointConnectionsUpdateByHostPoolResponse =
   }) as any as S.Schema<PrivateEndpointConnectionsUpdateByHostPoolResponse>;
 
 /** Properties of the private endpoint connection. */
-export interface PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties {
-  /** The private endpoint resource. */
-  privateEndpoint?: PrivateEndpointInput;
-  /** A collection of information about the state of the connection between service consumer and provider. */
-  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
-}
+export type PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties =
+  PrivateEndpointConnectionsUpdateByHostPoolRequestProperties;
 export const PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointInput),
-      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties",
-  }) as any as S.Schema<PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties>;
+  PrivateEndpointConnectionsUpdateByHostPoolRequestProperties;
 
 export interface PrivateEndpointConnectionsUpdateByWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5084,7 +4651,7 @@ export interface PrivateEndpointConnectionsUpdateByWorkspaceRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
   /** Properties of the private endpoint connection. */
-  properties?: PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties;
+  properties?: PrivateEndpointConnectionsUpdateByHostPoolRequestProperties;
 }
 export const PrivateEndpointConnectionsUpdateByWorkspaceRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -5094,7 +4661,7 @@ export const PrivateEndpointConnectionsUpdateByWorkspaceRequest =
       workspaceName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
       properties: S.optional(
-        PrivateEndpointConnectionsUpdateByWorkspaceRequestProperties,
+        PrivateEndpointConnectionsUpdateByHostPoolRequestProperties,
       ),
     }).pipe(
       T.Http({
@@ -6313,65 +5880,22 @@ export const ScalingPlansCreateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ScalingPlansCreateRequestTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface ScalingPlansCreateRequestIdentity {
-  type: SystemAssignedServiceIdentityType | (string & {});
-}
-export const ScalingPlansCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "ScalingPlansCreateRequestIdentity",
-}) as any as S.Schema<ScalingPlansCreateRequestIdentity>;
+export type ScalingPlansCreateRequestIdentity =
+  ApplicationGroupsCreateOrUpdateRequestIdentity;
+export const ScalingPlansCreateRequestIdentity =
+  ApplicationGroupsCreateOrUpdateRequestIdentity;
 
 /** The resource model definition representing SKU */
-export interface ScalingPlansCreateRequestSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ScalingPlansCreateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ScalingPlansCreateRequestSku",
-}) as any as S.Schema<ScalingPlansCreateRequestSku>;
+export type ScalingPlansCreateRequestSku =
+  ApplicationGroupsCreateOrUpdateRequestSku;
+export const ScalingPlansCreateRequestSku =
+  ApplicationGroupsCreateOrUpdateRequestSku;
 
 /** Plan for the resource. */
-export interface ScalingPlansCreateRequestPlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const ScalingPlansCreateRequestPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScalingPlansCreateRequestPlan",
-}) as any as S.Schema<ScalingPlansCreateRequestPlan>;
+export type ScalingPlansCreateRequestPlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const ScalingPlansCreateRequestPlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 /** HostPool type for desktop. */
 export type ScalingPlanPropertiesInputHostPoolType = "Pooled";
@@ -6587,11 +6111,11 @@ export interface ScalingPlansCreateRequest {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: ScalingPlansCreateRequestIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateRequestIdentity;
   /** The resource model definition representing SKU */
-  sku?: ScalingPlansCreateRequestSku;
+  sku?: ApplicationGroupsCreateOrUpdateRequestSku;
   /** Plan for the resource. */
-  plan?: ScalingPlansCreateRequestPlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for scaling plan. */
   properties: ScalingPlanPropertiesInput;
 }
@@ -6604,9 +6128,9 @@ export const ScalingPlansCreateRequest = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
-    identity: S.optional(ScalingPlansCreateRequestIdentity),
-    sku: S.optional(ScalingPlansCreateRequestSku),
-    plan: S.optional(ScalingPlansCreateRequestPlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateRequestIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateRequestSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: ScalingPlanPropertiesInput,
   }).pipe(
     T.Http({
@@ -6630,71 +6154,22 @@ export const ScalingPlansCreateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ScalingPlansCreateResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface ScalingPlansCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const ScalingPlansCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "ScalingPlansCreateResponseIdentity",
-}) as any as S.Schema<ScalingPlansCreateResponseIdentity>;
+export type ScalingPlansCreateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const ScalingPlansCreateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ScalingPlansCreateResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ScalingPlansCreateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ScalingPlansCreateResponseSku",
-}) as any as S.Schema<ScalingPlansCreateResponseSku>;
+export type ScalingPlansCreateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
+export const ScalingPlansCreateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface ScalingPlansCreateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const ScalingPlansCreateResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScalingPlansCreateResponsePlan",
-}) as any as S.Schema<ScalingPlansCreateResponsePlan>;
+export type ScalingPlansCreateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const ScalingPlansCreateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 /** HostPool type for desktop. */
 export type ScalingPlanPropertiesHostPoolType = "Pooled";
@@ -6768,11 +6243,11 @@ export interface ScalingPlansCreateResponse {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: ScalingPlansCreateResponseIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: ScalingPlansCreateResponseSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: ScalingPlansCreateResponsePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for scaling plan. */
   properties: ScalingPlanProperties;
 }
@@ -6787,9 +6262,9 @@ export const ScalingPlansCreateResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(ScalingPlansCreateResponseIdentity),
-    sku: S.optional(ScalingPlansCreateResponseSku),
-    plan: S.optional(ScalingPlansCreateResponsePlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: ScalingPlanProperties,
   }),
 ).annotate({
@@ -6863,71 +6338,22 @@ export const ScalingPlansGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ScalingPlansGetResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface ScalingPlansGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const ScalingPlansGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "ScalingPlansGetResponseIdentity",
-}) as any as S.Schema<ScalingPlansGetResponseIdentity>;
+export type ScalingPlansGetResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const ScalingPlansGetResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ScalingPlansGetResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ScalingPlansGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ScalingPlansGetResponseSku",
-}) as any as S.Schema<ScalingPlansGetResponseSku>;
+export type ScalingPlansGetResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
+export const ScalingPlansGetResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface ScalingPlansGetResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const ScalingPlansGetResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScalingPlansGetResponsePlan",
-}) as any as S.Schema<ScalingPlansGetResponsePlan>;
+export type ScalingPlansGetResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const ScalingPlansGetResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 export interface ScalingPlansGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6949,11 +6375,11 @@ export interface ScalingPlansGetResponse {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: ScalingPlansGetResponseIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: ScalingPlansGetResponseSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: ScalingPlansGetResponsePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for scaling plan. */
   properties: ScalingPlanProperties;
 }
@@ -6968,9 +6394,9 @@ export const ScalingPlansGetResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(ScalingPlansGetResponseIdentity),
-    sku: S.optional(ScalingPlansGetResponseSku),
-    plan: S.optional(ScalingPlansGetResponsePlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: ScalingPlanProperties,
   }),
 ).annotate({
@@ -7019,69 +6445,18 @@ export const ScalingPlanTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ScalingPlanTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface ScalingPlanIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const ScalingPlanIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "ScalingPlanIdentity",
-}) as any as S.Schema<ScalingPlanIdentity>;
+export type ScalingPlanIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const ScalingPlanIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ScalingPlanSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ScalingPlanSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ScalingPlanSku" }) as any as S.Schema<ScalingPlanSku>;
+export type ScalingPlanSku = ApplicationGroupsCreateOrUpdateResponseSku;
+export const ScalingPlanSku = ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface ScalingPlanPlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const ScalingPlanPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScalingPlanPlan",
-}) as any as S.Schema<ScalingPlanPlan>;
+export type ScalingPlanPlan = ApplicationGroupsCreateOrUpdateRequestPlan;
+export const ScalingPlanPlan = ApplicationGroupsCreateOrUpdateRequestPlan;
 
 /** Represents a scaling plan definition. */
 export interface ScalingPlan {
@@ -7104,11 +6479,11 @@ export interface ScalingPlan {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: ScalingPlanIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: ScalingPlanSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: ScalingPlanPlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for scaling plan. */
   properties: ScalingPlanProperties;
 }
@@ -7123,9 +6498,9 @@ export const ScalingPlan = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(ScalingPlanIdentity),
-    sku: S.optional(ScalingPlanSku),
-    plan: S.optional(ScalingPlanPlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: ScalingPlanProperties,
   }),
 ).annotate({ identifier: "ScalingPlan" }) as any as S.Schema<ScalingPlan>;
@@ -7307,71 +6682,22 @@ export const ScalingPlansUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ScalingPlansUpdateResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface ScalingPlansUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const ScalingPlansUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "ScalingPlansUpdateResponseIdentity",
-}) as any as S.Schema<ScalingPlansUpdateResponseIdentity>;
+export type ScalingPlansUpdateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const ScalingPlansUpdateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface ScalingPlansUpdateResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const ScalingPlansUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ScalingPlansUpdateResponseSku",
-}) as any as S.Schema<ScalingPlansUpdateResponseSku>;
+export type ScalingPlansUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
+export const ScalingPlansUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface ScalingPlansUpdateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const ScalingPlansUpdateResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScalingPlansUpdateResponsePlan",
-}) as any as S.Schema<ScalingPlansUpdateResponsePlan>;
+export type ScalingPlansUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const ScalingPlansUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 export interface ScalingPlansUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7393,11 +6719,11 @@ export interface ScalingPlansUpdateResponse {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: ScalingPlansUpdateResponseIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: ScalingPlansUpdateResponseSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: ScalingPlansUpdateResponsePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for scaling plan. */
   properties: ScalingPlanProperties;
 }
@@ -7412,9 +6738,9 @@ export const ScalingPlansUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(ScalingPlansUpdateResponseIdentity),
-    sku: S.optional(ScalingPlansUpdateResponseSku),
-    plan: S.optional(ScalingPlansUpdateResponsePlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: ScalingPlanProperties,
   }),
 ).annotate({
@@ -8282,66 +7608,22 @@ export const WorkspacesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface WorkspacesCreateOrUpdateRequestIdentity {
-  type: SystemAssignedServiceIdentityType | (string & {});
-}
-export const WorkspacesCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: SystemAssignedServiceIdentityType,
-    }),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<WorkspacesCreateOrUpdateRequestIdentity>;
+export type WorkspacesCreateOrUpdateRequestIdentity =
+  ApplicationGroupsCreateOrUpdateRequestIdentity;
+export const WorkspacesCreateOrUpdateRequestIdentity =
+  ApplicationGroupsCreateOrUpdateRequestIdentity;
 
 /** The resource model definition representing SKU */
-export interface WorkspacesCreateOrUpdateRequestSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier | (string & {});
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspacesCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateRequestSku",
-}) as any as S.Schema<WorkspacesCreateOrUpdateRequestSku>;
+export type WorkspacesCreateOrUpdateRequestSku =
+  ApplicationGroupsCreateOrUpdateRequestSku;
+export const WorkspacesCreateOrUpdateRequestSku =
+  ApplicationGroupsCreateOrUpdateRequestSku;
 
 /** Plan for the resource. */
-export interface WorkspacesCreateOrUpdateRequestPlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const WorkspacesCreateOrUpdateRequestPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateRequestPlan",
-}) as any as S.Schema<WorkspacesCreateOrUpdateRequestPlan>;
+export type WorkspacesCreateOrUpdateRequestPlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const WorkspacesCreateOrUpdateRequestPlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 /** List of applicationGroup resource Ids. */
 export type WorkspacePropertiesInputApplicationGroupReferencesList =
@@ -8403,11 +7685,11 @@ export interface WorkspacesCreateOrUpdateRequest {
   /** Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type. If supported, the resource provider must validate and persist this value. */
   kind?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: WorkspacesCreateOrUpdateRequestIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateRequestIdentity;
   /** The resource model definition representing SKU */
-  sku?: WorkspacesCreateOrUpdateRequestSku;
+  sku?: ApplicationGroupsCreateOrUpdateRequestSku;
   /** Plan for the resource. */
-  plan?: WorkspacesCreateOrUpdateRequestPlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for Workspace */
   properties?: WorkspacePropertiesInput;
 }
@@ -8420,9 +7702,9 @@ export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
-    identity: S.optional(WorkspacesCreateOrUpdateRequestIdentity),
-    sku: S.optional(WorkspacesCreateOrUpdateRequestSku),
-    plan: S.optional(WorkspacesCreateOrUpdateRequestPlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateRequestIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateRequestSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: S.optional(WorkspacePropertiesInput),
   }).pipe(
     T.Http({
@@ -8446,73 +7728,22 @@ export const WorkspacesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface WorkspacesCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const WorkspacesCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: SystemAssignedServiceIdentityType,
-    }),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<WorkspacesCreateOrUpdateResponseIdentity>;
+export type WorkspacesCreateOrUpdateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const WorkspacesCreateOrUpdateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface WorkspacesCreateOrUpdateResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspacesCreateOrUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateResponseSku",
-}) as any as S.Schema<WorkspacesCreateOrUpdateResponseSku>;
+export type WorkspacesCreateOrUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
+export const WorkspacesCreateOrUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface WorkspacesCreateOrUpdateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const WorkspacesCreateOrUpdateResponsePlan = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      publisher: S.String,
-      product: S.String,
-      promotionCode: S.optional(S.String),
-      version: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "WorkspacesCreateOrUpdateResponsePlan",
-}) as any as S.Schema<WorkspacesCreateOrUpdateResponsePlan>;
+export type WorkspacesCreateOrUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const WorkspacesCreateOrUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 /** List of applicationGroup resource Ids. */
 export type WorkspacePropertiesApplicationGroupReferencesList = Array<string>;
@@ -8526,37 +7757,17 @@ export type WorkspacePropertiesPublicNetworkAccess = "Enabled" | "Disabled";
 export const WorkspacePropertiesPublicNetworkAccess = /*@__PURE__*/ S.String;
 
 /** The private endpoint connection resource. */
-export interface WorkspacePropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type WorkspacePropertiesPrivateEndpointConnectionsItem =
+  HostPoolPropertiesPrivateEndpointConnectionsItem;
 export const WorkspacePropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "WorkspacePropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsItem>;
+  HostPoolPropertiesPrivateEndpointConnectionsItem;
 
 /** List of private endpoint connection associated with the specified resource */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  Array<WorkspacePropertiesPrivateEndpointConnectionsItem>;
+  Array<HostPoolPropertiesPrivateEndpointConnectionsItem>;
 export const WorkspacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    WorkspacePropertiesPrivateEndpointConnectionsItem,
+    HostPoolPropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
 
 /** Schema for Workspace properties. */
@@ -8616,11 +7827,11 @@ export interface WorkspacesCreateOrUpdateResponse {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: WorkspacesCreateOrUpdateResponseIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: WorkspacesCreateOrUpdateResponseSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: WorkspacesCreateOrUpdateResponsePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for Workspace */
   properties?: WorkspaceProperties;
 }
@@ -8635,9 +7846,9 @@ export const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(WorkspacesCreateOrUpdateResponseIdentity),
-    sku: S.optional(WorkspacesCreateOrUpdateResponseSku),
-    plan: S.optional(WorkspacesCreateOrUpdateResponsePlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: S.optional(WorkspaceProperties),
   }),
 ).annotate({
@@ -8711,71 +7922,22 @@ export const WorkspacesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesGetResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface WorkspacesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const WorkspacesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "WorkspacesGetResponseIdentity",
-}) as any as S.Schema<WorkspacesGetResponseIdentity>;
+export type WorkspacesGetResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const WorkspacesGetResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface WorkspacesGetResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspacesGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WorkspacesGetResponseSku",
-}) as any as S.Schema<WorkspacesGetResponseSku>;
+export type WorkspacesGetResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
+export const WorkspacesGetResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface WorkspacesGetResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const WorkspacesGetResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkspacesGetResponsePlan",
-}) as any as S.Schema<WorkspacesGetResponsePlan>;
+export type WorkspacesGetResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const WorkspacesGetResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 export interface WorkspacesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8797,11 +7959,11 @@ export interface WorkspacesGetResponse {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: WorkspacesGetResponseIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: WorkspacesGetResponseSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: WorkspacesGetResponsePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for Workspace */
   properties?: WorkspaceProperties;
 }
@@ -8816,9 +7978,9 @@ export const WorkspacesGetResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(WorkspacesGetResponseIdentity),
-    sku: S.optional(WorkspacesGetResponseSku),
-    plan: S.optional(WorkspacesGetResponsePlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: S.optional(WorkspaceProperties),
   }),
 ).annotate({
@@ -8865,67 +8027,17 @@ export const WorkspaceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspaceTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface WorkspaceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const WorkspaceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "WorkspaceIdentity",
-}) as any as S.Schema<WorkspaceIdentity>;
+export type WorkspaceIdentity = ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const WorkspaceIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface WorkspaceSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspaceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "WorkspaceSku" }) as any as S.Schema<WorkspaceSku>;
+export type WorkspaceSku = ApplicationGroupsCreateOrUpdateResponseSku;
+export const WorkspaceSku = ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface WorkspacePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const WorkspacePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({ identifier: "WorkspacePlan" }) as any as S.Schema<WorkspacePlan>;
+export type WorkspacePlan = ApplicationGroupsCreateOrUpdateRequestPlan;
+export const WorkspacePlan = ApplicationGroupsCreateOrUpdateRequestPlan;
 
 /** Represents a Workspace definition. */
 export interface Workspace {
@@ -8948,11 +8060,11 @@ export interface Workspace {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: WorkspaceIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: WorkspaceSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: WorkspacePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for Workspace */
   properties?: WorkspaceProperties;
 }
@@ -8967,9 +8079,9 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(WorkspaceIdentity),
-    sku: S.optional(WorkspaceSku),
-    plan: S.optional(WorkspacePlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: S.optional(WorkspaceProperties),
   }),
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
@@ -9107,71 +8219,22 @@ export const WorkspacesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesUpdateResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
-export interface WorkspacesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: SystemAssignedServiceIdentityType;
-}
-export const WorkspacesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: SystemAssignedServiceIdentityType,
-  }),
-).annotate({
-  identifier: "WorkspacesUpdateResponseIdentity",
-}) as any as S.Schema<WorkspacesUpdateResponseIdentity>;
+export type WorkspacesUpdateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
+export const WorkspacesUpdateResponseIdentity =
+  ApplicationGroupsCreateOrUpdateResponseIdentity;
 
 /** The resource model definition representing SKU */
-export interface WorkspacesUpdateResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspacesUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WorkspacesUpdateResponseSku",
-}) as any as S.Schema<WorkspacesUpdateResponseSku>;
+export type WorkspacesUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
+export const WorkspacesUpdateResponseSku =
+  ApplicationGroupsCreateOrUpdateResponseSku;
 
 /** Plan for the resource. */
-export interface WorkspacesUpdateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const WorkspacesUpdateResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WorkspacesUpdateResponsePlan",
-}) as any as S.Schema<WorkspacesUpdateResponsePlan>;
+export type WorkspacesUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
+export const WorkspacesUpdateResponsePlan =
+  ApplicationGroupsCreateOrUpdateRequestPlan;
 
 export interface WorkspacesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9193,11 +8256,11 @@ export interface WorkspacesUpdateResponse {
   /** The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   etag?: string;
   /** Managed service identity (either system assigned, or none) */
-  identity?: WorkspacesUpdateResponseIdentity;
+  identity?: ApplicationGroupsCreateOrUpdateResponseIdentity;
   /** The resource model definition representing SKU */
-  sku?: WorkspacesUpdateResponseSku;
+  sku?: ApplicationGroupsCreateOrUpdateResponseSku;
   /** Plan for the resource. */
-  plan?: WorkspacesUpdateResponsePlan;
+  plan?: ApplicationGroupsCreateOrUpdateRequestPlan;
   /** Detailed properties for Workspace */
   properties?: WorkspaceProperties;
 }
@@ -9212,9 +8275,9 @@ export const WorkspacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     managedBy: S.optional(S.String),
     kind: S.optional(S.String),
     etag: S.optional(S.String),
-    identity: S.optional(WorkspacesUpdateResponseIdentity),
-    sku: S.optional(WorkspacesUpdateResponseSku),
-    plan: S.optional(WorkspacesUpdateResponsePlan),
+    identity: S.optional(ApplicationGroupsCreateOrUpdateResponseIdentity),
+    sku: S.optional(ApplicationGroupsCreateOrUpdateResponseSku),
+    plan: S.optional(ApplicationGroupsCreateOrUpdateRequestPlan),
     properties: S.optional(WorkspaceProperties),
   }),
 ).annotate({

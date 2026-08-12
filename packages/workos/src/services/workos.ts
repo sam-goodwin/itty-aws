@@ -2,6 +2,7 @@
 import * as S from "@distilled.cloud/core/schema";
 import * as Redacted from "effect/Redacted";
 import * as API from "@distilled.cloud/core/api";
+import * as C from "@distilled.cloud/core/category";
 import * as T from "../traits.ts";
 import {
   WorkosProtocol,
@@ -18,7 +19,7 @@ export class BadRequest
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
 
@@ -27,7 +28,7 @@ export class Conflict
     /*@__PURE__*/ S.TaggedError<Conflict>()("Conflict", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withConflictError),
     [{ status: 409 }],
   ) {}
 
@@ -36,7 +37,7 @@ export class Forbidden
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
 
@@ -45,7 +46,7 @@ export class NotFound
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
 
@@ -54,7 +55,7 @@ export class UnprocessableEntity
     /*@__PURE__*/ S.TaggedError<UnprocessableEntity>()("UnprocessableEntity", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 422 }],
   ) {}
 
@@ -572,28 +573,17 @@ export const ApplicationsControllerFindResponseScopesList =
     S.String,
   ) as any as S.Schema<ApplicationsControllerFindResponseScopesList>;
 
-export interface ApplicationsControllerFindResponseRedirectUrisItem {
-  /** The redirect URI for the application. */
-  uri: string;
-  /** Whether this is the default redirect URI. */
-  default: boolean;
-}
+export type ApplicationsControllerFindResponseRedirectUrisItem =
+  ApplicationsControllerCreateResponseRedirectUrisItem;
 export const ApplicationsControllerFindResponseRedirectUrisItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.String,
-      default: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "ApplicationsControllerFindResponseRedirectUrisItem",
-  }) as any as S.Schema<ApplicationsControllerFindResponseRedirectUrisItem>;
+  ApplicationsControllerCreateResponseRedirectUrisItem;
 
 /** The redirect URIs configured for this application. */
 export type ApplicationsControllerFindResponseRedirectUrisList =
-  Array<ApplicationsControllerFindResponseRedirectUrisItem>;
+  Array<ApplicationsControllerCreateResponseRedirectUrisItem>;
 export const ApplicationsControllerFindResponseRedirectUrisList =
   /*@__PURE__*/ S.Array(
-    ApplicationsControllerFindResponseRedirectUrisItem,
+    ApplicationsControllerCreateResponseRedirectUrisItem,
   ) as any as S.Schema<ApplicationsControllerFindResponseRedirectUrisList>;
 
 export interface ApplicationsControllerFindResponse {
@@ -682,26 +672,16 @@ export const ConnectApplicationScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectApplicationScopesList>;
 
-export interface ConnectApplicationRedirectUrisItem {
-  /** The redirect URI for the application. */
-  uri: string;
-  /** Whether this is the default redirect URI. */
-  default: boolean;
-}
-export const ConnectApplicationRedirectUrisItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.String,
-    default: S.Boolean,
-  }),
-).annotate({
-  identifier: "ConnectApplicationRedirectUrisItem",
-}) as any as S.Schema<ConnectApplicationRedirectUrisItem>;
+export type ConnectApplicationRedirectUrisItem =
+  ApplicationsControllerCreateResponseRedirectUrisItem;
+export const ConnectApplicationRedirectUrisItem =
+  ApplicationsControllerCreateResponseRedirectUrisItem;
 
 /** The redirect URIs configured for this application. */
 export type ConnectApplicationRedirectUrisList =
-  Array<ConnectApplicationRedirectUrisItem>;
+  Array<ApplicationsControllerCreateResponseRedirectUrisItem>;
 export const ConnectApplicationRedirectUrisList = /*@__PURE__*/ S.Array(
-  ConnectApplicationRedirectUrisItem,
+  ApplicationsControllerCreateResponseRedirectUrisItem,
 ) as any as S.Schema<ConnectApplicationRedirectUrisList>;
 
 export interface ConnectApplication {
@@ -845,28 +825,17 @@ export const ApplicationsControllerUpdateResponseScopesList =
     S.String,
   ) as any as S.Schema<ApplicationsControllerUpdateResponseScopesList>;
 
-export interface ApplicationsControllerUpdateResponseRedirectUrisItem {
-  /** The redirect URI for the application. */
-  uri: string;
-  /** Whether this is the default redirect URI. */
-  default: boolean;
-}
+export type ApplicationsControllerUpdateResponseRedirectUrisItem =
+  ApplicationsControllerCreateResponseRedirectUrisItem;
 export const ApplicationsControllerUpdateResponseRedirectUrisItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uri: S.String,
-      default: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "ApplicationsControllerUpdateResponseRedirectUrisItem",
-  }) as any as S.Schema<ApplicationsControllerUpdateResponseRedirectUrisItem>;
+  ApplicationsControllerCreateResponseRedirectUrisItem;
 
 /** The redirect URIs configured for this application. */
 export type ApplicationsControllerUpdateResponseRedirectUrisList =
-  Array<ApplicationsControllerUpdateResponseRedirectUrisItem>;
+  Array<ApplicationsControllerCreateResponseRedirectUrisItem>;
 export const ApplicationsControllerUpdateResponseRedirectUrisList =
   /*@__PURE__*/ S.Array(
-    ApplicationsControllerUpdateResponseRedirectUrisItem,
+    ApplicationsControllerCreateResponseRedirectUrisItem,
   ) as any as S.Schema<ApplicationsControllerUpdateResponseRedirectUrisList>;
 
 export interface ApplicationsControllerUpdateResponse {
@@ -1244,21 +1213,10 @@ export const AuditLogValidatorsControllerListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AuditLogValidatorsControllerListRequest>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface AuditLogValidatorsControllerListResponseListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
+export type AuditLogValidatorsControllerListResponseListMetadata =
+  ConnectApplicationListListMetadata;
 export const AuditLogValidatorsControllerListResponseListMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "AuditLogValidatorsControllerListResponseListMetadata",
-  }) as any as S.Schema<AuditLogValidatorsControllerListResponseListMetadata>;
+  ConnectApplicationListListMetadata;
 
 /** The JSON Schema definition for actor metadata. */
 export type AuditLogSchemaJsonActorMetadataMap = {
@@ -1385,7 +1343,7 @@ export interface AuditLogValidatorsControllerListResponse {
   /** Indicates this is a list response. */
   object?: string;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: AuditLogValidatorsControllerListResponseListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
   /** The list of records for the current page. */
   data?: AuditLogValidatorsControllerListResponseDataList;
 }
@@ -1393,9 +1351,7 @@ export const AuditLogValidatorsControllerListResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       object: S.optional(S.String),
-      list_metadata: S.optional(
-        AuditLogValidatorsControllerListResponseListMetadata,
-      ),
+      list_metadata: S.optional(ConnectApplicationListListMetadata),
       data: S.optional(AuditLogValidatorsControllerListResponseDataList),
     }),
 ).annotate({
@@ -1499,22 +1455,10 @@ export const AuditLogValidatorVersionsControllerSchemasRequest =
   }) as any as S.Schema<AuditLogValidatorVersionsControllerSchemasRequest>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface AuditLogValidatorVersionsControllerSchemasResponseListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
+export type AuditLogValidatorVersionsControllerSchemasResponseListMetadata =
+  ConnectApplicationListListMetadata;
 export const AuditLogValidatorVersionsControllerSchemasResponseListMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "AuditLogValidatorVersionsControllerSchemasResponseListMetadata",
-  }) as any as S.Schema<AuditLogValidatorVersionsControllerSchemasResponseListMetadata>;
+  ConnectApplicationListListMetadata;
 
 /** The list of records for the current page. */
 export type AuditLogValidatorVersionsControllerSchemasResponseDataList =
@@ -1528,7 +1472,7 @@ export interface AuditLogValidatorVersionsControllerSchemasResponse {
   /** Indicates this is a list response. */
   object?: string;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
   /** The list of records for the current page. */
   data?: AuditLogValidatorVersionsControllerSchemasResponseDataList;
 }
@@ -1536,9 +1480,7 @@ export const AuditLogValidatorVersionsControllerSchemasResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       object: S.optional(S.String),
-      list_metadata: S.optional(
-        AuditLogValidatorVersionsControllerSchemasResponseListMetadata,
-      ),
+      list_metadata: S.optional(ConnectApplicationListListMetadata),
       data: S.optional(
         AuditLogValidatorVersionsControllerSchemasResponseDataList,
       ),
@@ -1790,17 +1732,8 @@ export type AuthenticationFactorType =
 export const AuthenticationFactorType = /*@__PURE__*/ S.String;
 
 /** SMS-based authentication factor details. */
-export interface AuthenticationFactorSms {
-  /** The user's phone number for SMS-based authentication. */
-  phone_number: string;
-}
-export const AuthenticationFactorSms = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    phone_number: S.String,
-  }),
-).annotate({
-  identifier: "AuthenticationFactorSms",
-}) as any as S.Schema<AuthenticationFactorSms>;
+export type AuthenticationFactorSms = AuthenticationFactorEnrolledSms;
+export const AuthenticationFactorSms = AuthenticationFactorEnrolledSms;
 
 /** TOTP-based authentication factor details. */
 export interface AuthenticationFactorTotp {
@@ -1828,7 +1761,7 @@ export interface AuthenticationFactor {
   /** The ID of the [user](/reference/authkit/user). */
   user_id?: string;
   /** SMS-based authentication factor details. */
-  sms?: AuthenticationFactorSms;
+  sms?: AuthenticationFactorEnrolledSms;
   /** TOTP-based authentication factor details. */
   totp?: AuthenticationFactorTotp;
   /** An ISO 8601 timestamp. */
@@ -1842,7 +1775,7 @@ export const AuthenticationFactor = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
     type: S.optional(AuthenticationFactorType),
     user_id: S.optional(S.String),
-    sms: S.optional(AuthenticationFactorSms),
+    sms: S.optional(AuthenticationFactorEnrolledSms),
     totp: S.optional(AuthenticationFactorTotp),
     created_at: S.optional(S.String),
     updated_at: S.optional(S.String),
@@ -1971,21 +1904,10 @@ export const AuthorizationPermissionListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AuthorizationPermissionListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface AuthorizationPermissionListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const AuthorizationPermissionListListMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-).annotate({
-  identifier: "AuthorizationPermissionListListMetadata",
-}) as any as S.Schema<AuthorizationPermissionListListMetadata>;
+export type AuthorizationPermissionListListMetadata =
+  ConnectApplicationListListMetadata;
+export const AuthorizationPermissionListListMetadata =
+  ConnectApplicationListListMetadata;
 
 export interface AuthorizationPermissionList {
   /** Indicates this is a list response. */
@@ -1993,13 +1915,13 @@ export interface AuthorizationPermissionList {
   /** The list of records for the current page. */
   data?: AuthorizationPermissionListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: AuthorizationPermissionListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const AuthorizationPermissionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(AuthorizationPermissionListDataList),
-    list_metadata: S.optional(AuthorizationPermissionListListMetadata),
+    list_metadata: S.optional(ConnectApplicationListListMetadata),
   }),
 ).annotate({
   identifier: "AuthorizationPermissionList",
@@ -2132,21 +2054,10 @@ export const AuthorizationResourceListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AuthorizationResourceListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface AuthorizationResourceListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const AuthorizationResourceListListMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-).annotate({
-  identifier: "AuthorizationResourceListListMetadata",
-}) as any as S.Schema<AuthorizationResourceListListMetadata>;
+export type AuthorizationResourceListListMetadata =
+  ConnectApplicationListListMetadata;
+export const AuthorizationResourceListListMetadata =
+  ConnectApplicationListListMetadata;
 
 export interface AuthorizationResourceList {
   /** Indicates this is a list response. */
@@ -2154,13 +2065,13 @@ export interface AuthorizationResourceList {
   /** The list of records for the current page. */
   data?: AuthorizationResourceListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: AuthorizationResourceListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const AuthorizationResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(AuthorizationResourceListDataList),
-    list_metadata: S.optional(AuthorizationResourceListListMetadata),
+    list_metadata: S.optional(ConnectApplicationListListMetadata),
   }),
 ).annotate({
   identifier: "AuthorizationResourceList",
@@ -2317,20 +2228,10 @@ export const GroupRoleAssignmentListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GroupRoleAssignmentListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface GroupRoleAssignmentListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const GroupRoleAssignmentListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "GroupRoleAssignmentListListMetadata",
-}) as any as S.Schema<GroupRoleAssignmentListListMetadata>;
+export type GroupRoleAssignmentListListMetadata =
+  ConnectApplicationListListMetadata;
+export const GroupRoleAssignmentListListMetadata =
+  ConnectApplicationListListMetadata;
 
 export interface GroupRoleAssignmentList {
   /** Indicates this is a list response. */
@@ -2338,13 +2239,13 @@ export interface GroupRoleAssignmentList {
   /** The list of records for the current page. */
   data: GroupRoleAssignmentListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata: GroupRoleAssignmentListListMetadata;
+  list_metadata: ConnectApplicationListListMetadata;
 }
 export const GroupRoleAssignmentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: GroupRoleAssignmentListDataList,
-    list_metadata: GroupRoleAssignmentListListMetadata,
+    list_metadata: ConnectApplicationListListMetadata,
   }),
 ).annotate({
   identifier: "GroupRoleAssignmentList",
@@ -3429,22 +3330,10 @@ export const UserlandUserOrganizationMembershipBaseWithUserListDataList =
   ) as any as S.Schema<UserlandUserOrganizationMembershipBaseWithUserListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface UserlandUserOrganizationMembershipBaseWithUserListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
+export type UserlandUserOrganizationMembershipBaseWithUserListListMetadata =
+  ConnectApplicationListListMetadata;
 export const UserlandUserOrganizationMembershipBaseWithUserListListMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "UserlandUserOrganizationMembershipBaseWithUserListListMetadata",
-  }) as any as S.Schema<UserlandUserOrganizationMembershipBaseWithUserListListMetadata>;
+  ConnectApplicationListListMetadata;
 
 export interface UserlandUserOrganizationMembershipBaseWithUserList {
   /** Indicates this is a list response. */
@@ -3452,15 +3341,14 @@ export interface UserlandUserOrganizationMembershipBaseWithUserList {
   /** The list of records for the current page. */
   data: UserlandUserOrganizationMembershipBaseWithUserListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata: UserlandUserOrganizationMembershipBaseWithUserListListMetadata;
+  list_metadata: ConnectApplicationListListMetadata;
 }
 export const UserlandUserOrganizationMembershipBaseWithUserList =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       object: S.String,
       data: UserlandUserOrganizationMembershipBaseWithUserListDataList,
-      list_metadata:
-        UserlandUserOrganizationMembershipBaseWithUserListListMetadata,
+      list_metadata: ConnectApplicationListListMetadata,
     }),
   ).annotate({
     identifier: "UserlandUserOrganizationMembershipBaseWithUserList",
@@ -3868,23 +3756,8 @@ export const AuthorizationRoleAssignmentsControllerAssignRoleRequest =
   }) as any as S.Schema<AuthorizationRoleAssignmentsControllerAssignRoleRequest>;
 
 /** The resource the role is assigned on. */
-export interface UserRoleAssignmentResource {
-  /** The unique ID of the Resource. */
-  id: string;
-  /** An identifier you provide to reference the resource in your system. */
-  external_id: string;
-  /** The slug of the resource type this resource belongs to. */
-  resource_type_slug: string;
-}
-export const UserRoleAssignmentResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    external_id: S.String,
-    resource_type_slug: S.String,
-  }),
-).annotate({
-  identifier: "UserRoleAssignmentResource",
-}) as any as S.Schema<UserRoleAssignmentResource>;
+export type UserRoleAssignmentResource = GroupRoleAssignmentResource;
+export const UserRoleAssignmentResource = GroupRoleAssignmentResource;
 
 export interface UserRoleAssignment {
   /** Distinguishes the role assignment object. */
@@ -3896,7 +3769,7 @@ export interface UserRoleAssignment {
   /** The role included in the assignment. */
   role: SlimRole;
   /** The resource the role is assigned on. */
-  resource: UserRoleAssignmentResource;
+  resource: GroupRoleAssignmentResource;
   /** An ISO 8601 timestamp. */
   created_at: string;
   /** An ISO 8601 timestamp. */
@@ -3908,7 +3781,7 @@ export const UserRoleAssignment = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
     organization_membership_id: S.String,
     role: SlimRole,
-    resource: UserRoleAssignmentResource,
+    resource: GroupRoleAssignmentResource,
     created_at: S.String,
     updated_at: S.String,
   }),
@@ -3964,20 +3837,10 @@ export const UserRoleAssignmentListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserRoleAssignmentListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface UserRoleAssignmentListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const UserRoleAssignmentListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "UserRoleAssignmentListListMetadata",
-}) as any as S.Schema<UserRoleAssignmentListListMetadata>;
+export type UserRoleAssignmentListListMetadata =
+  ConnectApplicationListListMetadata;
+export const UserRoleAssignmentListListMetadata =
+  ConnectApplicationListListMetadata;
 
 export interface UserRoleAssignmentList {
   /** Indicates this is a list response. */
@@ -3985,13 +3848,13 @@ export interface UserRoleAssignmentList {
   /** The list of records for the current page. */
   data: UserRoleAssignmentListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata: UserRoleAssignmentListListMetadata;
+  list_metadata: ConnectApplicationListListMetadata;
 }
 export const UserRoleAssignmentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: UserRoleAssignmentListDataList,
-    list_metadata: UserRoleAssignmentListListMetadata,
+    list_metadata: ConnectApplicationListListMetadata,
   }),
 ).annotate({
   identifier: "UserRoleAssignmentList",
@@ -4584,21 +4447,10 @@ export const AuthorizedConnectApplicationListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AuthorizedConnectApplicationListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface AuthorizedConnectApplicationListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
+export type AuthorizedConnectApplicationListListMetadata =
+  ConnectApplicationListListMetadata;
 export const AuthorizedConnectApplicationListListMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizedConnectApplicationListListMetadata",
-  }) as any as S.Schema<AuthorizedConnectApplicationListListMetadata>;
+  ConnectApplicationListListMetadata;
 
 export interface AuthorizedConnectApplicationList {
   /** Indicates this is a list response. */
@@ -4606,13 +4458,13 @@ export interface AuthorizedConnectApplicationList {
   /** The list of records for the current page. */
   data?: AuthorizedConnectApplicationListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: AuthorizedConnectApplicationListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const AuthorizedConnectApplicationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(AuthorizedConnectApplicationListDataList),
-    list_metadata: S.optional(AuthorizedConnectApplicationListListMetadata),
+    list_metadata: S.optional(ConnectApplicationListListMetadata),
   }),
 ).annotate({
   identifier: "AuthorizedConnectApplicationList",
@@ -4919,20 +4771,8 @@ export const ConnectionListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConnectionListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface ConnectionListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const ConnectionListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ConnectionListListMetadata",
-}) as any as S.Schema<ConnectionListListMetadata>;
+export type ConnectionListListMetadata = ConnectApplicationListListMetadata;
+export const ConnectionListListMetadata = ConnectApplicationListListMetadata;
 
 export interface ConnectionList {
   /** Indicates this is a list response. */
@@ -4940,13 +4780,13 @@ export interface ConnectionList {
   /** The list of records for the current page. */
   data?: ConnectionListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: ConnectionListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const ConnectionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(ConnectionListDataList),
-    list_metadata: S.optional(ConnectionListListMetadata),
+    list_metadata: S.optional(ConnectApplicationListListMetadata),
   }),
 ).annotate({ identifier: "ConnectionList" }) as any as S.Schema<ConnectionList>;
 
@@ -5659,20 +5499,8 @@ export const DirectoryListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DirectoryListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface DirectoryListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const DirectoryListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "DirectoryListListMetadata",
-}) as any as S.Schema<DirectoryListListMetadata>;
+export type DirectoryListListMetadata = ConnectApplicationListListMetadata;
+export const DirectoryListListMetadata = ConnectApplicationListListMetadata;
 
 export interface DirectoryList {
   /** Indicates this is a list response. */
@@ -5680,13 +5508,13 @@ export interface DirectoryList {
   /** The list of records for the current page. */
   data?: DirectoryListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: DirectoryListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const DirectoryList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(DirectoryListDataList),
-    list_metadata: S.optional(DirectoryListListMetadata),
+    list_metadata: S.optional(ConnectApplicationListListMetadata),
   }),
 ).annotate({ identifier: "DirectoryList" }) as any as S.Schema<DirectoryList>;
 
@@ -5783,20 +5611,9 @@ export const DirectoryGroupListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DirectoryGroupListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface DirectoryGroupListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const DirectoryGroupListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "DirectoryGroupListListMetadata",
-}) as any as S.Schema<DirectoryGroupListListMetadata>;
+export type DirectoryGroupListListMetadata = ConnectApplicationListListMetadata;
+export const DirectoryGroupListListMetadata =
+  ConnectApplicationListListMetadata;
 
 export interface DirectoryGroupList {
   /** Indicates this is a list response. */
@@ -5804,13 +5621,13 @@ export interface DirectoryGroupList {
   /** The list of records for the current page. */
   data?: DirectoryGroupListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: DirectoryGroupListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const DirectoryGroupList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(DirectoryGroupListDataList),
-    list_metadata: S.optional(DirectoryGroupListListMetadata),
+    list_metadata: S.optional(ConnectApplicationListListMetadata),
   }),
 ).annotate({
   identifier: "DirectoryGroupList",
@@ -5996,20 +5813,8 @@ export const DirectoryUserListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DirectoryUserListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface DirectoryUserListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const DirectoryUserListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "DirectoryUserListListMetadata",
-}) as any as S.Schema<DirectoryUserListListMetadata>;
+export type DirectoryUserListListMetadata = ConnectApplicationListListMetadata;
+export const DirectoryUserListListMetadata = ConnectApplicationListListMetadata;
 
 export interface DirectoryUserList {
   /** Indicates this is a list response. */
@@ -6017,13 +5822,13 @@ export interface DirectoryUserList {
   /** The list of records for the current page. */
   data?: DirectoryUserListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: DirectoryUserListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const DirectoryUserList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(DirectoryUserListDataList),
-    list_metadata: S.optional(DirectoryUserListListMetadata),
+    list_metadata: S.optional(ConnectApplicationListListMetadata),
   }),
 ).annotate({
   identifier: "DirectoryUserList",
@@ -6362,24 +6167,10 @@ export const FeatureFlagsControllerEnableFlagRequest = /*@__PURE__*/ S.suspend(
   identifier: "FeatureFlagsControllerEnableFlagRequest",
 }) as any as S.Schema<FeatureFlagsControllerEnableFlagRequest>;
 
-export interface FeatureFlagsControllerEnableFlagResponseOwner {
-  /** The email address of the flag owner. */
-  email: string;
-  /** The first name of the flag owner. */
-  first_name: string | null;
-  /** The last name of the flag owner. */
-  last_name: string | null;
-}
+export type FeatureFlagsControllerEnableFlagResponseOwner =
+  FeatureFlagsControllerDisableFlagResponseOwner;
 export const FeatureFlagsControllerEnableFlagResponseOwner =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      email: S.String,
-      first_name: S.NullOr(S.String),
-      last_name: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "FeatureFlagsControllerEnableFlagResponseOwner",
-  }) as any as S.Schema<FeatureFlagsControllerEnableFlagResponseOwner>;
+  FeatureFlagsControllerDisableFlagResponseOwner;
 
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
 export type FeatureFlagsControllerEnableFlagResponseTagsList = Array<string>;
@@ -6400,7 +6191,7 @@ export interface FeatureFlagsControllerEnableFlagResponse {
   /** A description for the Feature Flag. */
   description: string | null;
   /** The owner of the Feature Flag. */
-  owner: FeatureFlagsControllerEnableFlagResponseOwner | null;
+  owner: FeatureFlagsControllerDisableFlagResponseOwner | null;
   /** Labels assigned to the Feature Flag for categorizing and filtering. */
   tags: FeatureFlagsControllerEnableFlagResponseTagsList;
   /** Specifies whether the Feature Flag is active for the current environment. */
@@ -6420,7 +6211,7 @@ export const FeatureFlagsControllerEnableFlagResponse = /*@__PURE__*/ S.suspend(
       slug: S.String,
       name: S.String,
       description: S.NullOr(S.String),
-      owner: S.NullOr(FeatureFlagsControllerEnableFlagResponseOwner),
+      owner: S.NullOr(FeatureFlagsControllerDisableFlagResponseOwner),
       tags: FeatureFlagsControllerEnableFlagResponseTagsList,
       enabled: S.Boolean,
       default_value: S.Boolean,
@@ -6444,21 +6235,8 @@ export const FeatureFlagsControllerFindBySlugRequest = /*@__PURE__*/ S.suspend(
   identifier: "FeatureFlagsControllerFindBySlugRequest",
 }) as any as S.Schema<FeatureFlagsControllerFindBySlugRequest>;
 
-export interface FlagOwner {
-  /** The email address of the flag owner. */
-  email: string;
-  /** The first name of the flag owner. */
-  first_name: string | null;
-  /** The last name of the flag owner. */
-  last_name: string | null;
-}
-export const FlagOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.String,
-    first_name: S.NullOr(S.String),
-    last_name: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "FlagOwner" }) as any as S.Schema<FlagOwner>;
+export type FlagOwner = FeatureFlagsControllerDisableFlagResponseOwner;
+export const FlagOwner = FeatureFlagsControllerDisableFlagResponseOwner;
 
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
 export type FlagTagsList = Array<string>;
@@ -6478,7 +6256,7 @@ export interface Flag {
   /** A description for the Feature Flag. */
   description?: string | null;
   /** The owner of the Feature Flag. */
-  owner?: FlagOwner | null;
+  owner?: FeatureFlagsControllerDisableFlagResponseOwner | null;
   /** Labels assigned to the Feature Flag for categorizing and filtering. */
   tags?: FlagTagsList;
   /** Specifies whether the Feature Flag is active for the current environment. */
@@ -6497,7 +6275,7 @@ export const Flag = /*@__PURE__*/ S.suspend(() =>
     slug: S.optional(S.String),
     name: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
-    owner: S.optional(S.NullOr(FlagOwner)),
+    owner: S.optional(S.NullOr(FeatureFlagsControllerDisableFlagResponseOwner)),
     tags: S.optional(FlagTagsList),
     enabled: S.optional(S.Boolean),
     default_value: S.optional(S.Boolean),
@@ -6534,20 +6312,8 @@ export const FlagListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FlagListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface FlagListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const FlagListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "FlagListListMetadata",
-}) as any as S.Schema<FlagListListMetadata>;
+export type FlagListListMetadata = ConnectApplicationListListMetadata;
+export const FlagListListMetadata = ConnectApplicationListListMetadata;
 
 export interface FlagList {
   /** Indicates this is a list response. */
@@ -6555,13 +6321,13 @@ export interface FlagList {
   /** The list of records for the current page. */
   data?: FlagListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: FlagListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const FlagList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(FlagListDataList),
-    list_metadata: S.optional(FlagListListMetadata),
+    list_metadata: S.optional(ConnectApplicationListListMetadata),
   }),
 ).annotate({ identifier: "FlagList" }) as any as S.Schema<FlagList>;
 
@@ -6776,21 +6542,10 @@ export const UserlandUserOrganizationMembershipBaseListDataList =
   ) as any as S.Schema<UserlandUserOrganizationMembershipBaseListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface UserlandUserOrganizationMembershipBaseListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
+export type UserlandUserOrganizationMembershipBaseListListMetadata =
+  ConnectApplicationListListMetadata;
 export const UserlandUserOrganizationMembershipBaseListListMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "UserlandUserOrganizationMembershipBaseListListMetadata",
-  }) as any as S.Schema<UserlandUserOrganizationMembershipBaseListListMetadata>;
+  ConnectApplicationListListMetadata;
 
 export interface UserlandUserOrganizationMembershipBaseList {
   /** Indicates this is a list response. */
@@ -6798,16 +6553,14 @@ export interface UserlandUserOrganizationMembershipBaseList {
   /** The list of records for the current page. */
   data?: UserlandUserOrganizationMembershipBaseListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: UserlandUserOrganizationMembershipBaseListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const UserlandUserOrganizationMembershipBaseList =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       object: S.optional(S.String),
       data: S.optional(UserlandUserOrganizationMembershipBaseListDataList),
-      list_metadata: S.optional(
-        UserlandUserOrganizationMembershipBaseListListMetadata,
-      ),
+      list_metadata: S.optional(ConnectApplicationListListMetadata),
     }),
   ).annotate({
     identifier: "UserlandUserOrganizationMembershipBaseList",
@@ -6954,20 +6707,8 @@ export const GroupListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GroupListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface GroupListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const GroupListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "GroupListListMetadata",
-}) as any as S.Schema<GroupListListMetadata>;
+export type GroupListListMetadata = ConnectApplicationListListMetadata;
+export const GroupListListMetadata = ConnectApplicationListListMetadata;
 
 export interface GroupList {
   /** Indicates this is a list response. */
@@ -6975,13 +6716,13 @@ export interface GroupList {
   /** The list of records for the current page. */
   data?: GroupListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: GroupListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const GroupList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(GroupListDataList),
-    list_metadata: S.optional(GroupListListMetadata),
+    list_metadata: S.optional(ConnectApplicationListListMetadata),
   }),
 ).annotate({ identifier: "GroupList" }) as any as S.Schema<GroupList>;
 
@@ -7565,20 +7306,8 @@ export const OrganizationApiKeysControllerCreateRequest =
   }) as any as S.Schema<OrganizationApiKeysControllerCreateRequest>;
 
 /** The entity that owns the API Key. */
-export interface OrganizationApiKeyWithValueOwner {
-  /** The type of the API Key owner. */
-  type: string;
-  /** Unique identifier of the API Key owner. */
-  id: string;
-}
-export const OrganizationApiKeyWithValueOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    id: S.String,
-  }),
-).annotate({
-  identifier: "OrganizationApiKeyWithValueOwner",
-}) as any as S.Schema<OrganizationApiKeyWithValueOwner>;
+export type OrganizationApiKeyWithValueOwner = ApiKeyOwnerCase0;
+export const OrganizationApiKeyWithValueOwner = ApiKeyOwnerCase0;
 
 /** The permission slugs assigned to the API Key. */
 export type OrganizationApiKeyWithValuePermissionsList = Array<string>;
@@ -7592,7 +7321,7 @@ export interface OrganizationApiKeyWithValue {
   /** Unique identifier of the API Key. */
   id: string;
   /** The entity that owns the API Key. */
-  owner: OrganizationApiKeyWithValueOwner;
+  owner: ApiKeyOwnerCase0;
   /** A descriptive name for the API Key. */
   name: string;
   /** An obfuscated representation of the API Key value. */
@@ -7614,7 +7343,7 @@ export const OrganizationApiKeyWithValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
-    owner: OrganizationApiKeyWithValueOwner,
+    owner: ApiKeyOwnerCase0,
     name: S.String,
     obfuscated_value: S.String,
     last_used_at: S.NullOr(S.String),
@@ -7660,20 +7389,8 @@ export const OrganizationApiKeysControllerListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<OrganizationApiKeysControllerListRequest>;
 
 /** The entity that owns the API Key. */
-export interface OrganizationApiKeyOwner {
-  /** The type of the API Key owner. */
-  type: string;
-  /** Unique identifier of the API Key owner. */
-  id: string;
-}
-export const OrganizationApiKeyOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    id: S.String,
-  }),
-).annotate({
-  identifier: "OrganizationApiKeyOwner",
-}) as any as S.Schema<OrganizationApiKeyOwner>;
+export type OrganizationApiKeyOwner = ApiKeyOwnerCase0;
+export const OrganizationApiKeyOwner = ApiKeyOwnerCase0;
 
 /** The permission slugs assigned to the API Key. */
 export type OrganizationApiKeyPermissionsList = Array<string>;
@@ -7687,7 +7404,7 @@ export interface OrganizationApiKey {
   /** Unique identifier of the API Key. */
   id: string;
   /** The entity that owns the API Key. */
-  owner: OrganizationApiKeyOwner;
+  owner: ApiKeyOwnerCase0;
   /** A descriptive name for the API Key. */
   name: string;
   /** An obfuscated representation of the API Key value. */
@@ -7707,7 +7424,7 @@ export const OrganizationApiKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
-    owner: OrganizationApiKeyOwner,
+    owner: ApiKeyOwnerCase0,
     name: S.String,
     obfuscated_value: S.String,
     last_used_at: S.NullOr(S.String),
@@ -7727,20 +7444,10 @@ export const OrganizationApiKeyListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OrganizationApiKeyListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface OrganizationApiKeyListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const OrganizationApiKeyListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "OrganizationApiKeyListListMetadata",
-}) as any as S.Schema<OrganizationApiKeyListListMetadata>;
+export type OrganizationApiKeyListListMetadata =
+  ConnectApplicationListListMetadata;
+export const OrganizationApiKeyListListMetadata =
+  ConnectApplicationListListMetadata;
 
 export interface OrganizationApiKeyList {
   /** Indicates this is a list response. */
@@ -7748,13 +7455,13 @@ export interface OrganizationApiKeyList {
   /** The list of records for the current page. */
   data: OrganizationApiKeyListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata: OrganizationApiKeyListListMetadata;
+  list_metadata: ConnectApplicationListListMetadata;
 }
 export const OrganizationApiKeyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: OrganizationApiKeyListDataList,
-    list_metadata: OrganizationApiKeyListListMetadata,
+    list_metadata: ConnectApplicationListListMetadata,
   }),
 ).annotate({
   identifier: "OrganizationApiKeyList",
@@ -8376,20 +8083,8 @@ export const OrganizationListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OrganizationListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface OrganizationListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const OrganizationListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "OrganizationListListMetadata",
-}) as any as S.Schema<OrganizationListListMetadata>;
+export type OrganizationListListMetadata = ConnectApplicationListListMetadata;
+export const OrganizationListListMetadata = ConnectApplicationListListMetadata;
 
 export interface OrganizationList {
   /** Indicates this is a list response. */
@@ -8397,13 +8092,13 @@ export interface OrganizationList {
   /** The list of records for the current page. */
   data?: OrganizationListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: OrganizationListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const OrganizationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(OrganizationListDataList),
-    list_metadata: S.optional(OrganizationListListMetadata),
+    list_metadata: S.optional(ConnectApplicationListListMetadata),
   }),
 ).annotate({
   identifier: "OrganizationList",
@@ -9475,23 +9170,8 @@ export const UserApiKeysControllerCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserApiKeysControllerCreateRequest>;
 
 /** The entity that owns the API Key. */
-export interface UserApiKeyWithValueOwner {
-  /** The type of the API Key owner. */
-  type: string;
-  /** Unique identifier of the API Key owner. */
-  id: string;
-  /** Unique identifier of the organization the API Key can access. */
-  organization_id: string;
-}
-export const UserApiKeyWithValueOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    id: S.String,
-    organization_id: S.String,
-  }),
-).annotate({
-  identifier: "UserApiKeyWithValueOwner",
-}) as any as S.Schema<UserApiKeyWithValueOwner>;
+export type UserApiKeyWithValueOwner = ApiKeyOwnerCase1;
+export const UserApiKeyWithValueOwner = ApiKeyOwnerCase1;
 
 /** The permission slugs assigned to the API Key. */
 export type UserApiKeyWithValuePermissionsList = Array<string>;
@@ -9505,7 +9185,7 @@ export interface UserApiKeyWithValue {
   /** Unique identifier of the API Key. */
   id: string;
   /** The entity that owns the API Key. */
-  owner: UserApiKeyWithValueOwner;
+  owner: ApiKeyOwnerCase1;
   /** A descriptive name for the API Key. */
   name: string;
   /** An obfuscated representation of the API Key value. */
@@ -9527,7 +9207,7 @@ export const UserApiKeyWithValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
-    owner: UserApiKeyWithValueOwner,
+    owner: ApiKeyOwnerCase1,
     name: S.String,
     obfuscated_value: S.String,
     last_used_at: S.NullOr(S.String),
@@ -9575,23 +9255,8 @@ export const UserApiKeysControllerListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserApiKeysControllerListRequest>;
 
 /** The entity that owns the API Key. */
-export interface UserApiKeyOwner {
-  /** The type of the API Key owner. */
-  type: string;
-  /** Unique identifier of the API Key owner. */
-  id: string;
-  /** Unique identifier of the organization the API Key can access. */
-  organization_id: string;
-}
-export const UserApiKeyOwner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    id: S.String,
-    organization_id: S.String,
-  }),
-).annotate({
-  identifier: "UserApiKeyOwner",
-}) as any as S.Schema<UserApiKeyOwner>;
+export type UserApiKeyOwner = ApiKeyOwnerCase1;
+export const UserApiKeyOwner = ApiKeyOwnerCase1;
 
 /** The permission slugs assigned to the API Key. */
 export type UserApiKeyPermissionsList = Array<string>;
@@ -9605,7 +9270,7 @@ export interface UserApiKey {
   /** Unique identifier of the API Key. */
   id: string;
   /** The entity that owns the API Key. */
-  owner: UserApiKeyOwner;
+  owner: ApiKeyOwnerCase1;
   /** A descriptive name for the API Key. */
   name: string;
   /** An obfuscated representation of the API Key value. */
@@ -9625,7 +9290,7 @@ export const UserApiKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
-    owner: UserApiKeyOwner,
+    owner: ApiKeyOwnerCase1,
     name: S.String,
     obfuscated_value: S.String,
     last_used_at: S.NullOr(S.String),
@@ -9643,20 +9308,8 @@ export const UserApiKeyListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserApiKeyListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface UserApiKeyListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const UserApiKeyListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "UserApiKeyListListMetadata",
-}) as any as S.Schema<UserApiKeyListListMetadata>;
+export type UserApiKeyListListMetadata = ConnectApplicationListListMetadata;
+export const UserApiKeyListListMetadata = ConnectApplicationListListMetadata;
 
 export interface UserApiKeyList {
   /** Indicates this is a list response. */
@@ -9664,13 +9317,13 @@ export interface UserApiKeyList {
   /** The list of records for the current page. */
   data: UserApiKeyListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata: UserApiKeyListListMetadata;
+  list_metadata: ConnectApplicationListListMetadata;
 }
 export const UserApiKeyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: UserApiKeyListDataList,
-    list_metadata: UserApiKeyListListMetadata,
+    list_metadata: ConnectApplicationListListMetadata,
   }),
 ).annotate({ identifier: "UserApiKeyList" }) as any as S.Schema<UserApiKeyList>;
 
@@ -10460,21 +10113,10 @@ export const UserlandUserAuthenticationFactorListDataList =
   ) as any as S.Schema<UserlandUserAuthenticationFactorListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface UserlandUserAuthenticationFactorListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
+export type UserlandUserAuthenticationFactorListListMetadata =
+  ConnectApplicationListListMetadata;
 export const UserlandUserAuthenticationFactorListListMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "UserlandUserAuthenticationFactorListListMetadata",
-  }) as any as S.Schema<UserlandUserAuthenticationFactorListListMetadata>;
+  ConnectApplicationListListMetadata;
 
 export interface UserlandUserAuthenticationFactorList {
   /** Indicates this is a list response. */
@@ -10482,16 +10124,14 @@ export interface UserlandUserAuthenticationFactorList {
   /** The list of records for the current page. */
   data?: UserlandUserAuthenticationFactorListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: UserlandUserAuthenticationFactorListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const UserlandUserAuthenticationFactorList = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       object: S.optional(S.String),
       data: S.optional(UserlandUserAuthenticationFactorListDataList),
-      list_metadata: S.optional(
-        UserlandUserAuthenticationFactorListListMetadata,
-      ),
+      list_metadata: S.optional(ConnectApplicationListListMetadata),
     }),
 ).annotate({
   identifier: "UserlandUserAuthenticationFactorList",
@@ -10952,20 +10592,10 @@ export const UserlandUserInviteListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserlandUserInviteListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface UserlandUserInviteListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const UserlandUserInviteListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "UserlandUserInviteListListMetadata",
-}) as any as S.Schema<UserlandUserInviteListListMetadata>;
+export type UserlandUserInviteListListMetadata =
+  ConnectApplicationListListMetadata;
+export const UserlandUserInviteListListMetadata =
+  ConnectApplicationListListMetadata;
 
 export interface UserlandUserInviteList {
   /** Indicates this is a list response. */
@@ -10973,13 +10603,13 @@ export interface UserlandUserInviteList {
   /** The list of records for the current page. */
   data: UserlandUserInviteListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata: UserlandUserInviteListListMetadata;
+  list_metadata: ConnectApplicationListListMetadata;
 }
 export const UserlandUserInviteList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     data: UserlandUserInviteListDataList,
-    list_metadata: UserlandUserInviteListListMetadata,
+    list_metadata: ConnectApplicationListListMetadata,
   }),
 ).annotate({
   identifier: "UserlandUserInviteList",
@@ -11580,21 +11210,10 @@ export const UserlandUserOrganizationMembershipListDataList =
   ) as any as S.Schema<UserlandUserOrganizationMembershipListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface UserlandUserOrganizationMembershipListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
+export type UserlandUserOrganizationMembershipListListMetadata =
+  ConnectApplicationListListMetadata;
 export const UserlandUserOrganizationMembershipListListMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "UserlandUserOrganizationMembershipListListMetadata",
-  }) as any as S.Schema<UserlandUserOrganizationMembershipListListMetadata>;
+  ConnectApplicationListListMetadata;
 
 export interface UserlandUserOrganizationMembershipList {
   /** Indicates this is a list response. */
@@ -11602,14 +11221,14 @@ export interface UserlandUserOrganizationMembershipList {
   /** The list of records for the current page. */
   data: UserlandUserOrganizationMembershipListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata: UserlandUserOrganizationMembershipListListMetadata;
+  list_metadata: ConnectApplicationListListMetadata;
 }
 export const UserlandUserOrganizationMembershipList = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       object: S.String,
       data: UserlandUserOrganizationMembershipListDataList,
-      list_metadata: UserlandUserOrganizationMembershipListListMetadata,
+      list_metadata: ConnectApplicationListListMetadata,
     }),
 ).annotate({
   identifier: "UserlandUserOrganizationMembershipList",
@@ -12120,20 +11739,8 @@ export const UserlandUserListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserlandUserListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface UserlandUserListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const UserlandUserListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "UserlandUserListListMetadata",
-}) as any as S.Schema<UserlandUserListListMetadata>;
+export type UserlandUserListListMetadata = ConnectApplicationListListMetadata;
+export const UserlandUserListListMetadata = ConnectApplicationListListMetadata;
 
 export interface UserlandUserList {
   /** Indicates this is a list response. */
@@ -12141,13 +11748,13 @@ export interface UserlandUserList {
   /** The list of records for the current page. */
   data?: UserlandUserListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: UserlandUserListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const UserlandUserList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(UserlandUserListDataList),
-    list_metadata: S.optional(UserlandUserListListMetadata),
+    list_metadata: S.optional(ConnectApplicationListListMetadata),
   }),
 ).annotate({
   identifier: "UserlandUserList",
@@ -12368,39 +11975,16 @@ export const UserlandUserSessionsControllerListRequest =
   }) as any as S.Schema<UserlandUserSessionsControllerListRequest>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface UserlandUserSessionsControllerListResponseListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
+export type UserlandUserSessionsControllerListResponseListMetadata =
+  ConnectApplicationListListMetadata;
 export const UserlandUserSessionsControllerListResponseListMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      before: S.NullOr(S.String),
-      after: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "UserlandUserSessionsControllerListResponseListMetadata",
-  }) as any as S.Schema<UserlandUserSessionsControllerListResponseListMetadata>;
+  ConnectApplicationListListMetadata;
 
 /** Information about the impersonator if this session was created via impersonation. */
-export interface UserlandUserSessionsControllerListResponseDataItemImpersonator {
-  /** The email address of the WorkOS Dashboard user who is impersonating the user. */
-  email: string;
-  /** The justification the impersonator gave for impersonating the user. */
-  reason: string | null;
-}
+export type UserlandUserSessionsControllerListResponseDataItemImpersonator =
+  UserlandAuthenticateResponseImpersonator;
 export const UserlandUserSessionsControllerListResponseDataItemImpersonator =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      email: S.String,
-      reason: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "UserlandUserSessionsControllerListResponseDataItemImpersonator",
-  }) as any as S.Schema<UserlandUserSessionsControllerListResponseDataItemImpersonator>;
+  UserlandAuthenticateResponseImpersonator;
 
 /** The authentication method used to create this session. */
 export type UserlandUserSessionsControllerListResponseDataItemAuthMethod =
@@ -12431,7 +12015,7 @@ export interface UserlandUserSessionsControllerListResponseDataItem {
   /** The unique ID of the session. */
   id: string;
   /** Information about the impersonator if this session was created via impersonation. */
-  impersonator?: UserlandUserSessionsControllerListResponseDataItemImpersonator;
+  impersonator?: UserlandAuthenticateResponseImpersonator;
   /** The IP address from which the session was created. */
   ip_address: string | null;
   /** The ID of the organization this session is associated with. */
@@ -12458,9 +12042,7 @@ export const UserlandUserSessionsControllerListResponseDataItem =
     S.Struct({
       object: S.String,
       id: S.String,
-      impersonator: S.optional(
-        UserlandUserSessionsControllerListResponseDataItemImpersonator,
-      ),
+      impersonator: S.optional(UserlandAuthenticateResponseImpersonator),
       ip_address: S.NullOr(S.String),
       organization_id: S.optional(S.String),
       user_agent: S.NullOr(S.String),
@@ -12488,7 +12070,7 @@ export interface UserlandUserSessionsControllerListResponse {
   /** Indicates this is a list response. */
   object?: string;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: UserlandUserSessionsControllerListResponseListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
   /** The list of records for the current page. */
   data?: UserlandUserSessionsControllerListResponseDataList;
 }
@@ -12496,9 +12078,7 @@ export const UserlandUserSessionsControllerListResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       object: S.optional(S.String),
-      list_metadata: S.optional(
-        UserlandUserSessionsControllerListResponseListMetadata,
-      ),
+      list_metadata: S.optional(ConnectApplicationListListMetadata),
       data: S.optional(UserlandUserSessionsControllerListResponseDataList),
     }),
   ).annotate({
@@ -12711,20 +12291,10 @@ export const WebhookEndpointListDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<WebhookEndpointListDataList>;
 
 /** Pagination cursors for navigating between pages of results. */
-export interface WebhookEndpointListListMetadata {
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
-  before: string | null;
-  /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
-  after: string | null;
-}
-export const WebhookEndpointListListMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.NullOr(S.String),
-    after: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "WebhookEndpointListListMetadata",
-}) as any as S.Schema<WebhookEndpointListListMetadata>;
+export type WebhookEndpointListListMetadata =
+  ConnectApplicationListListMetadata;
+export const WebhookEndpointListListMetadata =
+  ConnectApplicationListListMetadata;
 
 export interface WebhookEndpointList {
   /** Indicates this is a list response. */
@@ -12732,13 +12302,13 @@ export interface WebhookEndpointList {
   /** The list of records for the current page. */
   data?: WebhookEndpointListDataList;
   /** Pagination cursors for navigating between pages of results. */
-  list_metadata?: WebhookEndpointListListMetadata;
+  list_metadata?: ConnectApplicationListListMetadata;
 }
 export const WebhookEndpointList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     data: S.optional(WebhookEndpointListDataList),
-    list_metadata: S.optional(WebhookEndpointListListMetadata),
+    list_metadata: S.optional(ConnectApplicationListListMetadata),
   }),
 ).annotate({
   identifier: "WebhookEndpointList",

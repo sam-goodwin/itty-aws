@@ -2,6 +2,7 @@
 import * as S from "@distilled.cloud/core/schema";
 import * as Redacted from "effect/Redacted";
 import * as API from "@distilled.cloud/core/api";
+import * as C from "@distilled.cloud/core/category";
 import * as T from "../traits.ts";
 import {
   PlanetScaleProtocol,
@@ -19,7 +20,7 @@ export class BadRequest
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
 
@@ -28,7 +29,7 @@ export class Forbidden
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
 
@@ -37,7 +38,7 @@ export class NotFound
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
 
@@ -46,7 +47,7 @@ export class UnprocessableEntity
     /*@__PURE__*/ S.TaggedError<UnprocessableEntity>()("UnprocessableEntity", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 422 }],
   ) {}
 
@@ -196,24 +197,10 @@ export const OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList =
     S.String,
   ) as any as S.Schema<OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList>;
 
-export interface OrganizationTeamMembershipPasswordsItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type OrganizationTeamMembershipPasswordsItemActor =
+  OrganizationTeamMembershipActor;
 export const OrganizationTeamMembershipPasswordsItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "OrganizationTeamMembershipPasswordsItemActor",
-  }) as any as S.Schema<OrganizationTeamMembershipPasswordsItemActor>;
+  OrganizationTeamMembershipActor;
 
 /** Public IP addresses for the region */
 export type OrganizationTeamMembershipPasswordsItemRegionPublicIpAddressesList =
@@ -314,7 +301,7 @@ export interface OrganizationTeamMembershipPasswordsItem {
   access_host_regional_url: string;
   /** The read-only replica host URLs */
   access_host_regional_urls: OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList;
-  actor: OrganizationTeamMembershipPasswordsItemActor;
+  actor: OrganizationTeamMembershipActor;
   region: OrganizationTeamMembershipPasswordsItemRegion;
   /** The username for the password */
   username: string;
@@ -346,7 +333,7 @@ export const OrganizationTeamMembershipPasswordsItem = /*@__PURE__*/ S.suspend(
       access_host_regional_url: S.String,
       access_host_regional_urls:
         OrganizationTeamMembershipPasswordsItemAccessHostRegionalUrlsList,
-      actor: OrganizationTeamMembershipPasswordsItemActor,
+      actor: OrganizationTeamMembershipActor,
       region: OrganizationTeamMembershipPasswordsItemRegion,
       username: S.String,
       plain_text: S.String.pipe(T.SensitiveValue({})),
@@ -477,60 +464,16 @@ export const CancelDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CancelDeployRequestRequest",
 }) as any as S.Schema<CancelDeployRequestRequest>;
 
-export interface DatabaseDeployRequestActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const DatabaseDeployRequestActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "DatabaseDeployRequestActor",
-}) as any as S.Schema<DatabaseDeployRequestActor>;
+export type DatabaseDeployRequestActor = OrganizationTeamMembershipActor;
+export const DatabaseDeployRequestActor = OrganizationTeamMembershipActor;
 
-export interface DatabaseDeployRequestClosedBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const DatabaseDeployRequestClosedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "DatabaseDeployRequestClosedBy",
-}) as any as S.Schema<DatabaseDeployRequestClosedBy>;
+export type DatabaseDeployRequestClosedBy = OrganizationTeamMembershipActor;
+export const DatabaseDeployRequestClosedBy = OrganizationTeamMembershipActor;
 
-export interface DatabaseDeployRequestBranchDeletedBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const DatabaseDeployRequestBranchDeletedBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-).annotate({
-  identifier: "DatabaseDeployRequestBranchDeletedBy",
-}) as any as S.Schema<DatabaseDeployRequestBranchDeletedBy>;
+export type DatabaseDeployRequestBranchDeletedBy =
+  OrganizationTeamMembershipActor;
+export const DatabaseDeployRequestBranchDeletedBy =
+  OrganizationTeamMembershipActor;
 
 /** Whether the deploy request is open or closed */
 export type DatabaseDeployRequestState = "open" | "closed";
@@ -918,62 +861,20 @@ export const DatabaseDeployRequestDeploymentDeploymentRevertRequestMap =
     S.Unknown,
   ) as any as S.Schema<DatabaseDeployRequestDeploymentDeploymentRevertRequestMap>;
 
-export interface DatabaseDeployRequestDeploymentActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const DatabaseDeployRequestDeploymentActor = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-).annotate({
-  identifier: "DatabaseDeployRequestDeploymentActor",
-}) as any as S.Schema<DatabaseDeployRequestDeploymentActor>;
+export type DatabaseDeployRequestDeploymentActor =
+  OrganizationTeamMembershipActor;
+export const DatabaseDeployRequestDeploymentActor =
+  OrganizationTeamMembershipActor;
 
-export interface DatabaseDeployRequestDeploymentCutoverActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type DatabaseDeployRequestDeploymentCutoverActor =
+  OrganizationTeamMembershipActor;
 export const DatabaseDeployRequestDeploymentCutoverActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "DatabaseDeployRequestDeploymentCutoverActor",
-  }) as any as S.Schema<DatabaseDeployRequestDeploymentCutoverActor>;
+  OrganizationTeamMembershipActor;
 
-export interface DatabaseDeployRequestDeploymentCancelledActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type DatabaseDeployRequestDeploymentCancelledActor =
+  OrganizationTeamMembershipActor;
 export const DatabaseDeployRequestDeploymentCancelledActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "DatabaseDeployRequestDeploymentCancelledActor",
-  }) as any as S.Schema<DatabaseDeployRequestDeploymentCancelledActor>;
+  OrganizationTeamMembershipActor;
 
 export interface DatabaseDeployRequestDeployment {
   /** The ID of the deployment */
@@ -1024,9 +925,9 @@ export interface DatabaseDeployRequestDeployment {
   throttler_configurations: DatabaseDeployRequestDeploymentThrottlerConfigurationsList;
   /** The request to revert the schema operations in this deployment */
   deployment_revert_request: DatabaseDeployRequestDeploymentDeploymentRevertRequestMap;
-  actor: DatabaseDeployRequestDeploymentActor;
-  cutover_actor: DatabaseDeployRequestDeploymentCutoverActor;
-  cancelled_actor: DatabaseDeployRequestDeploymentCancelledActor;
+  actor: OrganizationTeamMembershipActor;
+  cutover_actor: OrganizationTeamMembershipActor;
+  cancelled_actor: OrganizationTeamMembershipActor;
   /** When the schema was last updated for the deployment */
   schema_last_updated_at: string;
   /** Whether or not the deployment has a table locked */
@@ -1071,9 +972,9 @@ export const DatabaseDeployRequestDeployment = /*@__PURE__*/ S.suspend(() =>
       DatabaseDeployRequestDeploymentThrottlerConfigurationsList,
     deployment_revert_request:
       DatabaseDeployRequestDeploymentDeploymentRevertRequestMap,
-    actor: DatabaseDeployRequestDeploymentActor,
-    cutover_actor: DatabaseDeployRequestDeploymentCutoverActor,
-    cancelled_actor: DatabaseDeployRequestDeploymentCancelledActor,
+    actor: OrganizationTeamMembershipActor,
+    cutover_actor: OrganizationTeamMembershipActor,
+    cancelled_actor: OrganizationTeamMembershipActor,
     schema_last_updated_at: S.String,
     table_locked: S.Boolean,
     locked_table_name: S.String,
@@ -1089,15 +990,15 @@ export interface DatabaseDeployRequest {
   id: string;
   /** The number of the deploy request */
   number: number;
-  actor: DatabaseDeployRequestActor;
-  closed_by: DatabaseDeployRequestClosedBy;
+  actor: OrganizationTeamMembershipActor;
+  closed_by: OrganizationTeamMembershipActor;
   /** The name of the branch the deploy request was created from */
   branch: string;
   /** The ID of the branch the deploy request was created from */
   branch_id: string;
   /** Whether or not the deploy request branch was deleted */
   branch_deleted: boolean;
-  branch_deleted_by: DatabaseDeployRequestBranchDeletedBy;
+  branch_deleted_by: OrganizationTeamMembershipActor;
   /** When the deploy request branch was deleted */
   branch_deleted_at: string;
   /** The name of the branch the deploy request will be merged into */
@@ -1134,12 +1035,12 @@ export const DatabaseDeployRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     number: S.Number,
-    actor: DatabaseDeployRequestActor,
-    closed_by: DatabaseDeployRequestClosedBy,
+    actor: OrganizationTeamMembershipActor,
+    closed_by: OrganizationTeamMembershipActor,
     branch: S.String,
     branch_id: S.String,
     branch_deleted: S.Boolean,
-    branch_deleted_by: DatabaseDeployRequestBranchDeletedBy,
+    branch_deleted_by: OrganizationTeamMembershipActor,
     branch_deleted_at: S.String,
     into_branch: S.String,
     into_branch_sharded: S.Boolean,
@@ -1479,21 +1380,8 @@ export const BackupRestoredBranchesList = /*@__PURE__*/ S.Array(
   BackupRestoredBranchesItem,
 ) as any as S.Schema<BackupRestoredBranchesList>;
 
-export interface BackupActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const BackupActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({ identifier: "BackupActor" }) as any as S.Schema<BackupActor>;
+export type BackupActor = OrganizationTeamMembershipActor;
+export const BackupActor = OrganizationTeamMembershipActor;
 
 /** Whether the policy is for production or development branches */
 export type BackupBackupPolicyTarget = "production" | "development";
@@ -1583,29 +1471,8 @@ export const BackupSchemaSnapshot = /*@__PURE__*/ S.suspend(() =>
   identifier: "BackupSchemaSnapshot",
 }) as any as S.Schema<BackupSchemaSnapshot>;
 
-export interface BackupDatabaseBranch {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
-}
-export const BackupDatabaseBranch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "BackupDatabaseBranch",
-}) as any as S.Schema<BackupDatabaseBranch>;
+export type BackupDatabaseBranch = BackupRestoredBranchesItem;
+export const BackupDatabaseBranch = BackupRestoredBranchesItem;
 
 export interface Backup {
   /** The ID of the backup */
@@ -1637,10 +1504,10 @@ export interface Backup {
   /** Whether or not the backup policy is required */
   required: boolean;
   restored_branches: BackupRestoredBranchesList;
-  actor: BackupActor;
+  actor: OrganizationTeamMembershipActor;
   backup_policy: BackupBackupPolicy | null;
   schema_snapshot: BackupSchemaSnapshot;
-  database_branch: BackupDatabaseBranch;
+  database_branch: BackupRestoredBranchesItem;
 }
 export const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1659,10 +1526,10 @@ export const Backup = /*@__PURE__*/ S.suspend(() =>
     protected: S.Boolean,
     required: S.Boolean,
     restored_branches: BackupRestoredBranchesList,
-    actor: BackupActor,
+    actor: OrganizationTeamMembershipActor,
     backup_policy: S.NullOr(BackupBackupPolicy),
     schema_snapshot: BackupSchemaSnapshot,
-    database_branch: BackupDatabaseBranch,
+    database_branch: BackupRestoredBranchesItem,
   }),
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
@@ -1861,47 +1728,13 @@ export type PostgresBouncerTarget =
   | "replica_az_affinity";
 export const PostgresBouncerTarget = /*@__PURE__*/ S.String;
 
-export interface PostgresBouncerActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PostgresBouncerActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PostgresBouncerActor",
-}) as any as S.Schema<PostgresBouncerActor>;
+export type PostgresBouncerActor = OrganizationTeamMembershipActor;
+export const PostgresBouncerActor = OrganizationTeamMembershipActor;
 
-export interface PostgresBouncerBranch {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const PostgresBouncerBranch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.String,
-  }),
-).annotate({
-  identifier: "PostgresBouncerBranch",
-}) as any as S.Schema<PostgresBouncerBranch>;
+export type PostgresBouncerBranch =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const PostgresBouncerBranch =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
 /** The namespace of the parameter */
 export type PostgresBouncerParametersItemNamespace = "pgbouncer";
@@ -1923,23 +1756,10 @@ export const PostgresBouncerParametersItemOptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostgresBouncerParametersItemOptionsList>;
 
-export interface PostgresBouncerParametersItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PostgresBouncerParametersItemActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PostgresBouncerParametersItemActor",
-}) as any as S.Schema<PostgresBouncerParametersItemActor>;
+export type PostgresBouncerParametersItemActor =
+  OrganizationTeamMembershipActor;
+export const PostgresBouncerParametersItemActor =
+  OrganizationTeamMembershipActor;
 
 export interface PostgresBouncerParametersItem {
   /** The ID of the parameter */
@@ -1980,7 +1800,7 @@ export interface PostgresBouncerParametersItem {
   url: string;
   /** Valid options for the parameter value */
   options: PostgresBouncerParametersItemOptionsList;
-  actor: PostgresBouncerParametersItemActor;
+  actor: OrganizationTeamMembershipActor;
 }
 export const PostgresBouncerParametersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2003,7 +1823,7 @@ export const PostgresBouncerParametersItem = /*@__PURE__*/ S.suspend(() =>
     step: S.Number,
     url: S.String,
     options: PostgresBouncerParametersItemOptionsList,
-    actor: PostgresBouncerParametersItemActor,
+    actor: OrganizationTeamMembershipActor,
   }),
 ).annotate({
   identifier: "PostgresBouncerParametersItem",
@@ -2031,8 +1851,8 @@ export interface PostgresBouncer {
   updated_at: string;
   /** When the bouncer was deleted */
   deleted_at: string;
-  actor: PostgresBouncerActor;
-  branch: PostgresBouncerBranch;
+  actor: OrganizationTeamMembershipActor;
+  branch: OrganizationTeamMembershipUserDefaultOrganization;
   parameters: PostgresBouncerParametersList;
 }
 export const PostgresBouncer = /*@__PURE__*/ S.suspend(() =>
@@ -2045,8 +1865,8 @@ export const PostgresBouncer = /*@__PURE__*/ S.suspend(() =>
     created_at: S.String,
     updated_at: S.String,
     deleted_at: S.String,
-    actor: PostgresBouncerActor,
-    branch: PostgresBouncerBranch,
+    actor: OrganizationTeamMembershipActor,
+    branch: OrganizationTeamMembershipUserDefaultOrganization,
     parameters: PostgresBouncerParametersList,
   }),
 ).annotate({
@@ -2132,47 +1952,11 @@ export type DatabaseBranchState =
   | "ready";
 export const DatabaseBranchState = /*@__PURE__*/ S.String;
 
-export interface DatabaseBranchActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const DatabaseBranchActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "DatabaseBranchActor",
-}) as any as S.Schema<DatabaseBranchActor>;
+export type DatabaseBranchActor = OrganizationTeamMembershipActor;
+export const DatabaseBranchActor = OrganizationTeamMembershipActor;
 
-export interface DatabaseBranchRestoredFromBranch {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
-}
-export const DatabaseBranchRestoredFromBranch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "DatabaseBranchRestoredFromBranch",
-}) as any as S.Schema<DatabaseBranchRestoredFromBranch>;
+export type DatabaseBranchRestoredFromBranch = BackupRestoredBranchesItem;
+export const DatabaseBranchRestoredFromBranch = BackupRestoredBranchesItem;
 
 /** Public IP addresses for the region */
 export type DatabaseBranchRegionPublicIpAddressesList = Array<string>;
@@ -2271,8 +2055,8 @@ export interface DatabaseBranch {
   shard_count?: number;
   /** Whether or not the branch has a stale schema */
   stale_schema: boolean;
-  actor: DatabaseBranchActor;
-  restored_from_branch: DatabaseBranchRestoredFromBranch | null;
+  actor: OrganizationTeamMembershipActor;
+  restored_from_branch: BackupRestoredBranchesItem | null;
   /** True if private connections are enabled */
   private_edge_connectivity: boolean;
   /** True if the branch has replica servers */
@@ -2316,8 +2100,8 @@ export const DatabaseBranch = /*@__PURE__*/ S.suspend(() =>
     sharded: S.optional(S.Boolean),
     shard_count: S.optional(S.Number),
     stale_schema: S.Boolean,
-    actor: DatabaseBranchActor,
-    restored_from_branch: S.NullOr(DatabaseBranchRestoredFromBranch),
+    actor: OrganizationTeamMembershipActor,
+    restored_from_branch: S.NullOr(BackupRestoredBranchesItem),
     private_edge_connectivity: S.Boolean,
     has_replicas: S.Boolean,
     has_read_only_replicas: S.Boolean,
@@ -2650,23 +2434,8 @@ export const PostgresClusterCidrCidrsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostgresClusterCidrCidrsList>;
 
-export interface PostgresClusterCidrActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PostgresClusterCidrActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PostgresClusterCidrActor",
-}) as any as S.Schema<PostgresClusterCidrActor>;
+export type PostgresClusterCidrActor = OrganizationTeamMembershipActor;
+export const PostgresClusterCidrActor = OrganizationTeamMembershipActor;
 
 export interface PostgresClusterCidr {
   /** The ID of the IP allowlist entry */
@@ -2683,7 +2452,7 @@ export interface PostgresClusterCidr {
   updated_at: string;
   /** When the entry was deleted */
   deleted_at: string;
-  actor: PostgresClusterCidrActor;
+  actor: OrganizationTeamMembershipActor;
 }
 export const PostgresClusterCidr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2694,7 +2463,7 @@ export const PostgresClusterCidr = /*@__PURE__*/ S.suspend(() =>
     created_at: S.String,
     updated_at: S.String,
     deleted_at: S.String,
-    actor: PostgresClusterCidrActor,
+    actor: OrganizationTeamMembershipActor,
   }),
 ).annotate({
   identifier: "PostgresClusterCidr",
@@ -2949,23 +2718,8 @@ export const CreateKeyspaceResizeRequestRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateKeyspaceResizeRequestRequest",
 }) as any as S.Schema<CreateKeyspaceResizeRequestRequest>;
 
-export interface KeyspaceResizeRequestActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const KeyspaceResizeRequestActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "KeyspaceResizeRequestActor",
-}) as any as S.Schema<KeyspaceResizeRequestActor>;
+export type KeyspaceResizeRequestActor = OrganizationTeamMembershipActor;
+export const KeyspaceResizeRequestActor = OrganizationTeamMembershipActor;
 
 export interface KeyspaceResizeRequest {
   /** The ID of the keyspace resize request */
@@ -3002,7 +2756,7 @@ export interface KeyspaceResizeRequest {
   vector_pool_allocation?: number | null;
   /** The vector pool allocation before the resize */
   previous_vector_pool_allocation?: number | null;
-  actor?: KeyspaceResizeRequestActor;
+  actor?: OrganizationTeamMembershipActor;
 }
 export const KeyspaceResizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3023,7 +2777,7 @@ export const KeyspaceResizeRequest = /*@__PURE__*/ S.suspend(() =>
     previous_rdonly_replicas: S.optional(S.NullOr(S.Number)),
     vector_pool_allocation: S.optional(S.NullOr(S.Number)),
     previous_vector_pool_allocation: S.optional(S.NullOr(S.Number)),
-    actor: S.optional(KeyspaceResizeRequestActor),
+    actor: S.optional(OrganizationTeamMembershipActor),
   }),
 ).annotate({
   identifier: "KeyspaceResizeRequest",
@@ -3074,30 +2828,10 @@ export const CreateOauthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOauthTokenRequest",
 }) as any as S.Schema<CreateOauthTokenRequest>;
 
-export interface ServiceTokenServiceTokenAccessesItemResource {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
+export type ServiceTokenServiceTokenAccessesItemResource =
+  OrganizationTeamMembershipUserDefaultOrganization;
 export const ServiceTokenServiceTokenAccessesItemResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.String,
-    }),
-  ).annotate({
-    identifier: "ServiceTokenServiceTokenAccessesItemResource",
-  }) as any as S.Schema<ServiceTokenServiceTokenAccessesItemResource>;
+  OrganizationTeamMembershipUserDefaultOrganization;
 
 export interface ServiceTokenServiceTokenAccessesItem {
   /** The ID of the service token access */
@@ -3112,7 +2846,7 @@ export interface ServiceTokenServiceTokenAccessesItem {
   resource_id: string;
   /** The type of the resource the service token access gives access to */
   resource_type: string;
-  resource: ServiceTokenServiceTokenAccessesItemResource;
+  resource: OrganizationTeamMembershipUserDefaultOrganization;
 }
 export const ServiceTokenServiceTokenAccessesItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -3123,7 +2857,7 @@ export const ServiceTokenServiceTokenAccessesItem = /*@__PURE__*/ S.suspend(
       resource_name: S.String,
       resource_id: S.String,
       resource_type: S.String,
-      resource: ServiceTokenServiceTokenAccessesItemResource,
+      resource: OrganizationTeamMembershipUserDefaultOrganization,
     }),
 ).annotate({
   identifier: "ServiceTokenServiceTokenAccessesItem",
@@ -3228,27 +2962,16 @@ export const ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList =
     ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem,
   ) as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganizationOrganizationsList>;
 
-export interface ServiceTokenOauthAccessesByResourceOrganizationAccessesItem {
-  /** The name of the access scope */
-  name: string;
-  /** The scope description */
-  description: string;
-}
+export type ServiceTokenOauthAccessesByResourceOrganizationAccessesItem =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export const ServiceTokenOauthAccessesByResourceOrganizationAccessesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      description: S.String,
-    }),
-  ).annotate({
-    identifier: "ServiceTokenOauthAccessesByResourceOrganizationAccessesItem",
-  }) as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganizationAccessesItem>;
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 
 export type ServiceTokenOauthAccessesByResourceOrganizationAccessesList =
-  Array<ServiceTokenOauthAccessesByResourceOrganizationAccessesItem>;
+  Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 export const ServiceTokenOauthAccessesByResourceOrganizationAccessesList =
   /*@__PURE__*/ S.Array(
-    ServiceTokenOauthAccessesByResourceOrganizationAccessesItem,
+    ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
   ) as any as S.Schema<ServiceTokenOauthAccessesByResourceOrganizationAccessesList>;
 
 export interface ServiceTokenOauthAccessesByResourceOrganization {
@@ -3298,27 +3021,16 @@ export const ServiceTokenOauthAccessesByResourceBranchBranchesList =
     ServiceTokenOauthAccessesByResourceBranchBranchesItem,
   ) as any as S.Schema<ServiceTokenOauthAccessesByResourceBranchBranchesList>;
 
-export interface ServiceTokenOauthAccessesByResourceBranchAccessesItem {
-  /** The name of the access scope */
-  name: string;
-  /** The scope description */
-  description: string;
-}
+export type ServiceTokenOauthAccessesByResourceBranchAccessesItem =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export const ServiceTokenOauthAccessesByResourceBranchAccessesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      description: S.String,
-    }),
-  ).annotate({
-    identifier: "ServiceTokenOauthAccessesByResourceBranchAccessesItem",
-  }) as any as S.Schema<ServiceTokenOauthAccessesByResourceBranchAccessesItem>;
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 
 export type ServiceTokenOauthAccessesByResourceBranchAccessesList =
-  Array<ServiceTokenOauthAccessesByResourceBranchAccessesItem>;
+  Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 export const ServiceTokenOauthAccessesByResourceBranchAccessesList =
   /*@__PURE__*/ S.Array(
-    ServiceTokenOauthAccessesByResourceBranchAccessesItem,
+    ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
   ) as any as S.Schema<ServiceTokenOauthAccessesByResourceBranchAccessesList>;
 
 export interface ServiceTokenOauthAccessesByResourceBranch {
@@ -3358,27 +3070,16 @@ export const ServiceTokenOauthAccessesByResourceUserUsersList =
     ServiceTokenOauthAccessesByResourceUserUsersItem,
   ) as any as S.Schema<ServiceTokenOauthAccessesByResourceUserUsersList>;
 
-export interface ServiceTokenOauthAccessesByResourceUserAccessesItem {
-  /** The name of the access scope */
-  name: string;
-  /** The scope description */
-  description: string;
-}
+export type ServiceTokenOauthAccessesByResourceUserAccessesItem =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export const ServiceTokenOauthAccessesByResourceUserAccessesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      description: S.String,
-    }),
-  ).annotate({
-    identifier: "ServiceTokenOauthAccessesByResourceUserAccessesItem",
-  }) as any as S.Schema<ServiceTokenOauthAccessesByResourceUserAccessesItem>;
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 
 export type ServiceTokenOauthAccessesByResourceUserAccessesList =
-  Array<ServiceTokenOauthAccessesByResourceUserAccessesItem>;
+  Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 export const ServiceTokenOauthAccessesByResourceUserAccessesList =
   /*@__PURE__*/ S.Array(
-    ServiceTokenOauthAccessesByResourceUserAccessesItem,
+    ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
   ) as any as S.Schema<ServiceTokenOauthAccessesByResourceUserAccessesList>;
 
 export interface ServiceTokenOauthAccessesByResourceUser {
@@ -3488,99 +3189,20 @@ export const CreateOrganizationTeamRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOrganizationTeamRequest",
 }) as any as S.Schema<CreateOrganizationTeamRequest>;
 
-export interface OrganizationTeamCreator {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const OrganizationTeamCreator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "OrganizationTeamCreator",
-}) as any as S.Schema<OrganizationTeamCreator>;
+export type OrganizationTeamCreator = OrganizationTeamMembershipActor;
+export const OrganizationTeamCreator = OrganizationTeamMembershipActor;
 
-export interface OrganizationTeamMembersItemDefaultOrganization {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
+export type OrganizationTeamMembersItemDefaultOrganization =
+  OrganizationTeamMembershipUserDefaultOrganization;
 export const OrganizationTeamMembersItemDefaultOrganization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.String,
-    }),
-  ).annotate({
-    identifier: "OrganizationTeamMembersItemDefaultOrganization",
-  }) as any as S.Schema<OrganizationTeamMembersItemDefaultOrganization>;
+  OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface OrganizationTeamMembersItem {
-  /** The ID of the user */
-  id: string;
-  /** The display name of the user */
-  display_name: string;
-  /** The name of the user */
-  name: string;
-  /** The email of the user */
-  email: string;
-  /** The URL source of the user's avatar */
-  avatar_url: string;
-  /** When the user was created */
-  created_at: string;
-  /** When the user was last updated */
-  updated_at: string;
-  /** Whether or not the user has configured two factor authentication */
-  two_factor_auth_configured: boolean;
-  default_organization: OrganizationTeamMembersItemDefaultOrganization;
-  /** Whether or not the user is managed by SSO */
-  sso: boolean;
-  /** Whether or not the user is managed by an authentication provider */
-  managed: boolean;
-  /** Whether or not the user is managed by a SSO directory */
-  directory_managed: boolean;
-  /** Whether or not the user is verified by email */
-  email_verified: boolean;
-}
-export const OrganizationTeamMembersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    name: S.String,
-    email: S.String,
-    avatar_url: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    two_factor_auth_configured: S.Boolean,
-    default_organization: OrganizationTeamMembersItemDefaultOrganization,
-    sso: S.Boolean,
-    managed: S.Boolean,
-    directory_managed: S.Boolean,
-    email_verified: S.Boolean,
-  }),
-).annotate({
-  identifier: "OrganizationTeamMembersItem",
-}) as any as S.Schema<OrganizationTeamMembersItem>;
+export type OrganizationTeamMembersItem = OrganizationTeamMembershipUser;
+export const OrganizationTeamMembersItem = OrganizationTeamMembershipUser;
 
-export type OrganizationTeamMembersList = Array<OrganizationTeamMembersItem>;
+export type OrganizationTeamMembersList = Array<OrganizationTeamMembershipUser>;
 export const OrganizationTeamMembersList = /*@__PURE__*/ S.Array(
-  OrganizationTeamMembersItem,
+  OrganizationTeamMembershipUser,
 ) as any as S.Schema<OrganizationTeamMembersList>;
 
 export interface OrganizationTeamDatabasesItem {
@@ -3615,7 +3237,7 @@ export interface OrganizationTeam {
   id: string;
   /** The display name of the team */
   display_name: string;
-  creator: OrganizationTeamCreator;
+  creator: OrganizationTeamMembershipActor;
   members: OrganizationTeamMembersList;
   databases: OrganizationTeamDatabasesList;
   /** The name of the team */
@@ -3635,7 +3257,7 @@ export const OrganizationTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     display_name: S.String,
-    creator: OrganizationTeamCreator,
+    creator: OrganizationTeamMembershipActor,
     members: OrganizationTeamMembersList,
     databases: OrganizationTeamDatabasesList,
     name: S.String,
@@ -3735,24 +3357,10 @@ export const DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList =
     S.String,
   ) as any as S.Schema<DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList>;
 
-export interface DatabaseBranchPasswordWithSecretActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const DatabaseBranchPasswordWithSecretActor = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-).annotate({
-  identifier: "DatabaseBranchPasswordWithSecretActor",
-}) as any as S.Schema<DatabaseBranchPasswordWithSecretActor>;
+export type DatabaseBranchPasswordWithSecretActor =
+  OrganizationTeamMembershipActor;
+export const DatabaseBranchPasswordWithSecretActor =
+  OrganizationTeamMembershipActor;
 
 /** Public IP addresses for the region */
 export type DatabaseBranchPasswordWithSecretRegionPublicIpAddressesList =
@@ -3797,30 +3405,10 @@ export const DatabaseBranchPasswordWithSecretRegion = /*@__PURE__*/ S.suspend(
   identifier: "DatabaseBranchPasswordWithSecretRegion",
 }) as any as S.Schema<DatabaseBranchPasswordWithSecretRegion>;
 
-export interface DatabaseBranchPasswordWithSecretDatabaseBranch {
-  /** The name for the branch */
-  name: string;
-  /** The ID for the branch */
-  id: string;
-  /** Whether or not the branch is a production branch */
-  production: boolean;
-  /** The address of the MySQL provider for the branch */
-  mysql_edge_address: string;
-  /** True if private connectivity is enabled */
-  private_edge_connectivity: boolean;
-}
+export type DatabaseBranchPasswordWithSecretDatabaseBranch =
+  OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 export const DatabaseBranchPasswordWithSecretDatabaseBranch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      id: S.String,
-      production: S.Boolean,
-      mysql_edge_address: S.String,
-      private_edge_connectivity: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "DatabaseBranchPasswordWithSecretDatabaseBranch",
-  }) as any as S.Schema<DatabaseBranchPasswordWithSecretDatabaseBranch>;
+  OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 
 export interface DatabaseBranchPasswordWithSecret {
   /** The ID for the password */
@@ -3853,7 +3441,7 @@ export interface DatabaseBranchPasswordWithSecret {
   access_host_regional_url: string;
   /** The read-only replica host URLs */
   access_host_regional_urls: DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList;
-  actor: DatabaseBranchPasswordWithSecretActor;
+  actor: OrganizationTeamMembershipActor;
   region: DatabaseBranchPasswordWithSecretRegion;
   /** The username for the password */
   username: string;
@@ -3863,7 +3451,7 @@ export interface DatabaseBranchPasswordWithSecret {
   replica: boolean;
   /** Whether or not the password can be renewed */
   renewable: boolean;
-  database_branch: DatabaseBranchPasswordWithSecretDatabaseBranch;
+  database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 }
 export const DatabaseBranchPasswordWithSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3884,13 +3472,13 @@ export const DatabaseBranchPasswordWithSecret = /*@__PURE__*/ S.suspend(() =>
     access_host_regional_url: S.String,
     access_host_regional_urls:
       DatabaseBranchPasswordWithSecretAccessHostRegionalUrlsList,
-    actor: DatabaseBranchPasswordWithSecretActor,
+    actor: OrganizationTeamMembershipActor,
     region: DatabaseBranchPasswordWithSecretRegion,
     username: S.String,
     plain_text: S.String.pipe(T.SensitiveValue({})),
     replica: S.Boolean,
     renewable: S.Boolean,
-    database_branch: DatabaseBranchPasswordWithSecretDatabaseBranch,
+    database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch,
   }),
 ).annotate({
   identifier: "DatabaseBranchPasswordWithSecret",
@@ -3924,23 +3512,8 @@ export const CreateQueryPatternsReportRequest = /*@__PURE__*/ S.suspend(() =>
 export type QueryPatternsDownloadState = "pending" | "completed" | "failed";
 export const QueryPatternsDownloadState = /*@__PURE__*/ S.String;
 
-export interface QueryPatternsDownloadActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const QueryPatternsDownloadActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "QueryPatternsDownloadActor",
-}) as any as S.Schema<QueryPatternsDownloadActor>;
+export type QueryPatternsDownloadActor = OrganizationTeamMembershipActor;
+export const QueryPatternsDownloadActor = OrganizationTeamMembershipActor;
 
 export interface QueryPatternsDownload {
   /** The ID of the query patterns download */
@@ -3955,7 +3528,7 @@ export interface QueryPatternsDownload {
   url: string;
   /** The URL to download the query patterns file */
   download_url: string;
-  actor: QueryPatternsDownloadActor;
+  actor: OrganizationTeamMembershipActor;
 }
 export const QueryPatternsDownload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3965,7 +3538,7 @@ export const QueryPatternsDownload = /*@__PURE__*/ S.suspend(() =>
     finished_at: S.String,
     url: S.String,
     download_url: S.String,
-    actor: QueryPatternsDownloadActor,
+    actor: OrganizationTeamMembershipActor,
   }),
 ).annotate({
   identifier: "QueryPatternsDownload",
@@ -4057,47 +3630,11 @@ export const PostgresRoleInheritedRolesList = /*@__PURE__*/ S.Array(
   PostgresRoleInheritedRolesItem,
 ) as any as S.Schema<PostgresRoleInheritedRolesList>;
 
-export interface PostgresRoleBranch {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
-}
-export const PostgresRoleBranch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "PostgresRoleBranch",
-}) as any as S.Schema<PostgresRoleBranch>;
+export type PostgresRoleBranch = BackupRestoredBranchesItem;
+export const PostgresRoleBranch = BackupRestoredBranchesItem;
 
-export interface PostgresRoleActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PostgresRoleActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PostgresRoleActor",
-}) as any as S.Schema<PostgresRoleActor>;
+export type PostgresRoleActor = OrganizationTeamMembershipActor;
+export const PostgresRoleActor = OrganizationTeamMembershipActor;
 
 /** Require WHERE clause on DELETE statements */
 export type PostgresRoleQuerySafetySettingsRequireWhereOnDelete =
@@ -4171,8 +3708,8 @@ export interface PostgresRole {
   ttl: number | null;
   /** Database roles these credentials inherit */
   inherited_roles: PostgresRoleInheritedRolesList;
-  branch: PostgresRoleBranch;
-  actor: PostgresRoleActor;
+  branch: BackupRestoredBranchesItem;
+  actor: OrganizationTeamMembershipActor;
   query_safety_settings: PostgresRoleQuerySafetySettings;
 }
 export const PostgresRole = /*@__PURE__*/ S.suspend(() =>
@@ -4196,8 +3733,8 @@ export const PostgresRole = /*@__PURE__*/ S.suspend(() =>
     default: S.Boolean,
     ttl: S.NullOr(S.Number),
     inherited_roles: PostgresRoleInheritedRolesList,
-    branch: PostgresRoleBranch,
-    actor: PostgresRoleActor,
+    branch: BackupRestoredBranchesItem,
+    actor: OrganizationTeamMembershipActor,
     query_safety_settings: PostgresRoleQuerySafetySettings,
   }),
 ).annotate({ identifier: "PostgresRole" }) as any as S.Schema<PostgresRole>;
@@ -4288,23 +3825,8 @@ export const CreateTrafficBudgetRequest = /*@__PURE__*/ S.suspend(() =>
 export type TrafficBudgetMode = "enforce" | "warn" | "off";
 export const TrafficBudgetMode = /*@__PURE__*/ S.String;
 
-export interface TrafficBudgetActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const TrafficBudgetActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "TrafficBudgetActor",
-}) as any as S.Schema<TrafficBudgetActor>;
+export type TrafficBudgetActor = OrganizationTeamMembershipActor;
+export const TrafficBudgetActor = OrganizationTeamMembershipActor;
 
 /** The kind of rule */
 export type TrafficBudgetRulesItemKind = "match";
@@ -4341,23 +3863,8 @@ export const TrafficBudgetRulesItemTagsList = /*@__PURE__*/ S.Array(
   TrafficBudgetRulesItemTagsItem,
 ) as any as S.Schema<TrafficBudgetRulesItemTagsList>;
 
-export interface TrafficBudgetRulesItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const TrafficBudgetRulesItemActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "TrafficBudgetRulesItemActor",
-}) as any as S.Schema<TrafficBudgetRulesItemActor>;
+export type TrafficBudgetRulesItemActor = OrganizationTeamMembershipActor;
+export const TrafficBudgetRulesItemActor = OrganizationTeamMembershipActor;
 
 export interface TrafficBudgetRulesItem {
   /** The ID of the traffic rule */
@@ -4369,7 +3876,7 @@ export interface TrafficBudgetRulesItem {
   fingerprint?: string;
   /** The keyspace of the fingerprint */
   keyspace?: string;
-  actor: TrafficBudgetRulesItemActor;
+  actor: OrganizationTeamMembershipActor;
   /** Syntax highlighted SQL for rules with SQL keys */
   syntax_highlighted_sql: string;
   /** When the rule was created */
@@ -4384,7 +3891,7 @@ export const TrafficBudgetRulesItem = /*@__PURE__*/ S.suspend(() =>
     tags: TrafficBudgetRulesItemTagsList,
     fingerprint: S.optional(S.String),
     keyspace: S.optional(S.String),
-    actor: TrafficBudgetRulesItemActor,
+    actor: OrganizationTeamMembershipActor,
     syntax_highlighted_sql: S.String,
     created_at: S.String,
     updated_at: S.String,
@@ -4415,7 +3922,7 @@ export interface TrafficBudget {
   concurrency?: number;
   /** A percentage of capacity, burst, or concurrency thresholds to emit warnings for enforced budgets (0-100). */
   warning_threshold?: number;
-  actor: TrafficBudgetActor;
+  actor: OrganizationTeamMembershipActor;
   rules: TrafficBudgetRulesList;
   /** When the budget was created */
   created_at: string;
@@ -4432,7 +3939,7 @@ export const TrafficBudget = /*@__PURE__*/ S.suspend(() =>
     burst: S.optional(S.Number),
     concurrency: S.optional(S.Number),
     warning_threshold: S.optional(S.Number),
-    actor: TrafficBudgetActor,
+    actor: OrganizationTeamMembershipActor,
     rules: TrafficBudgetRulesList,
     created_at: S.String,
     updated_at: S.String,
@@ -4522,23 +4029,8 @@ export const TrafficRuleTagsList = /*@__PURE__*/ S.Array(
   TrafficRuleTagsItem,
 ) as any as S.Schema<TrafficRuleTagsList>;
 
-export interface TrafficRuleActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const TrafficRuleActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "TrafficRuleActor",
-}) as any as S.Schema<TrafficRuleActor>;
+export type TrafficRuleActor = OrganizationTeamMembershipActor;
+export const TrafficRuleActor = OrganizationTeamMembershipActor;
 
 export interface TrafficRule {
   /** The ID of the traffic rule */
@@ -4550,7 +4042,7 @@ export interface TrafficRule {
   fingerprint?: string;
   /** The keyspace of the fingerprint */
   keyspace?: string;
-  actor: TrafficRuleActor;
+  actor: OrganizationTeamMembershipActor;
   /** Syntax highlighted SQL for rules with SQL keys */
   syntax_highlighted_sql: string;
   /** When the rule was created */
@@ -4565,7 +4057,7 @@ export const TrafficRule = /*@__PURE__*/ S.suspend(() =>
     tags: TrafficRuleTagsList,
     fingerprint: S.optional(S.String),
     keyspace: S.optional(S.String),
-    actor: TrafficRuleActor,
+    actor: OrganizationTeamMembershipActor,
     syntax_highlighted_sql: S.String,
     created_at: S.String,
     updated_at: S.String,
@@ -4762,277 +4254,53 @@ export const WorkflowWorkflowType = /*@__PURE__*/ S.String;
 export type WorkflowOnDdl = "IGNORE" | "STOP" | "EXEC" | "EXEC_IGNORE";
 export const WorkflowOnDdl = /*@__PURE__*/ S.String;
 
-export interface WorkflowActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const WorkflowActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({ identifier: "WorkflowActor" }) as any as S.Schema<WorkflowActor>;
+export type WorkflowActor = OrganizationTeamMembershipActor;
+export const WorkflowActor = OrganizationTeamMembershipActor;
 
-export interface WorkflowVerifyDataBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const WorkflowVerifyDataBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowVerifyDataBy",
-}) as any as S.Schema<WorkflowVerifyDataBy>;
+export type WorkflowVerifyDataBy = OrganizationTeamMembershipActor;
+export const WorkflowVerifyDataBy = OrganizationTeamMembershipActor;
 
-export interface WorkflowReversedBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const WorkflowReversedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowReversedBy",
-}) as any as S.Schema<WorkflowReversedBy>;
+export type WorkflowReversedBy = OrganizationTeamMembershipActor;
+export const WorkflowReversedBy = OrganizationTeamMembershipActor;
 
-export interface WorkflowSwitchReplicasBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const WorkflowSwitchReplicasBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowSwitchReplicasBy",
-}) as any as S.Schema<WorkflowSwitchReplicasBy>;
+export type WorkflowSwitchReplicasBy = OrganizationTeamMembershipActor;
+export const WorkflowSwitchReplicasBy = OrganizationTeamMembershipActor;
 
-export interface WorkflowSwitchPrimariesBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const WorkflowSwitchPrimariesBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowSwitchPrimariesBy",
-}) as any as S.Schema<WorkflowSwitchPrimariesBy>;
+export type WorkflowSwitchPrimariesBy = OrganizationTeamMembershipActor;
+export const WorkflowSwitchPrimariesBy = OrganizationTeamMembershipActor;
 
-export interface WorkflowCancelledBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const WorkflowCancelledBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowCancelledBy",
-}) as any as S.Schema<WorkflowCancelledBy>;
+export type WorkflowCancelledBy = OrganizationTeamMembershipActor;
+export const WorkflowCancelledBy = OrganizationTeamMembershipActor;
 
-export interface WorkflowCompletedBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const WorkflowCompletedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowCompletedBy",
-}) as any as S.Schema<WorkflowCompletedBy>;
+export type WorkflowCompletedBy = OrganizationTeamMembershipActor;
+export const WorkflowCompletedBy = OrganizationTeamMembershipActor;
 
-export interface WorkflowRetriedBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const WorkflowRetriedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowRetriedBy",
-}) as any as S.Schema<WorkflowRetriedBy>;
+export type WorkflowRetriedBy = OrganizationTeamMembershipActor;
+export const WorkflowRetriedBy = OrganizationTeamMembershipActor;
 
-export interface WorkflowCutoverBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const WorkflowCutoverBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowCutoverBy",
-}) as any as S.Schema<WorkflowCutoverBy>;
+export type WorkflowCutoverBy = OrganizationTeamMembershipActor;
+export const WorkflowCutoverBy = OrganizationTeamMembershipActor;
 
-export interface WorkflowReversedCutoverBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const WorkflowReversedCutoverBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowReversedCutoverBy",
-}) as any as S.Schema<WorkflowReversedCutoverBy>;
+export type WorkflowReversedCutoverBy = OrganizationTeamMembershipActor;
+export const WorkflowReversedCutoverBy = OrganizationTeamMembershipActor;
 
-export interface WorkflowBranch {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const WorkflowBranch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.String,
-  }),
-).annotate({ identifier: "WorkflowBranch" }) as any as S.Schema<WorkflowBranch>;
+export type WorkflowBranch = OrganizationTeamMembershipUserDefaultOrganization;
+export const WorkflowBranch = OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface WorkflowSourceKeyspace {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const WorkflowSourceKeyspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowSourceKeyspace",
-}) as any as S.Schema<WorkflowSourceKeyspace>;
+export type WorkflowSourceKeyspace =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const WorkflowSourceKeyspace =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface WorkflowTargetKeyspace {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const WorkflowTargetKeyspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowTargetKeyspace",
-}) as any as S.Schema<WorkflowTargetKeyspace>;
+export type WorkflowTargetKeyspace =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const WorkflowTargetKeyspace =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface WorkflowGlobalKeyspace {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const WorkflowGlobalKeyspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.String,
-  }),
-).annotate({
-  identifier: "WorkflowGlobalKeyspace",
-}) as any as S.Schema<WorkflowGlobalKeyspace>;
+export type WorkflowGlobalKeyspace =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const WorkflowGlobalKeyspace =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
 export interface Workflow {
   /** The ID of the workflow */
@@ -5089,20 +4357,20 @@ export interface Workflow {
   verified_data_stale: boolean;
   /** Whether or not sequence tables have been created */
   sequence_tables_applied: boolean;
-  actor: WorkflowActor;
-  verify_data_by: WorkflowVerifyDataBy;
-  reversed_by: WorkflowReversedBy;
-  switch_replicas_by: WorkflowSwitchReplicasBy;
-  switch_primaries_by: WorkflowSwitchPrimariesBy;
-  cancelled_by: WorkflowCancelledBy;
-  completed_by: WorkflowCompletedBy;
-  retried_by: WorkflowRetriedBy;
-  cutover_by: WorkflowCutoverBy;
-  reversed_cutover_by: WorkflowReversedCutoverBy;
-  branch: WorkflowBranch;
-  source_keyspace: WorkflowSourceKeyspace;
-  target_keyspace: WorkflowTargetKeyspace;
-  global_keyspace: WorkflowGlobalKeyspace;
+  actor: OrganizationTeamMembershipActor;
+  verify_data_by: OrganizationTeamMembershipActor;
+  reversed_by: OrganizationTeamMembershipActor;
+  switch_replicas_by: OrganizationTeamMembershipActor;
+  switch_primaries_by: OrganizationTeamMembershipActor;
+  cancelled_by: OrganizationTeamMembershipActor;
+  completed_by: OrganizationTeamMembershipActor;
+  retried_by: OrganizationTeamMembershipActor;
+  cutover_by: OrganizationTeamMembershipActor;
+  reversed_cutover_by: OrganizationTeamMembershipActor;
+  branch: OrganizationTeamMembershipUserDefaultOrganization;
+  source_keyspace: OrganizationTeamMembershipUserDefaultOrganization;
+  target_keyspace: OrganizationTeamMembershipUserDefaultOrganization;
+  global_keyspace: OrganizationTeamMembershipUserDefaultOrganization;
 }
 export const Workflow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5133,20 +4401,20 @@ export const Workflow = /*@__PURE__*/ S.suspend(() =>
     may_restart: S.Boolean,
     verified_data_stale: S.Boolean,
     sequence_tables_applied: S.Boolean,
-    actor: WorkflowActor,
-    verify_data_by: WorkflowVerifyDataBy,
-    reversed_by: WorkflowReversedBy,
-    switch_replicas_by: WorkflowSwitchReplicasBy,
-    switch_primaries_by: WorkflowSwitchPrimariesBy,
-    cancelled_by: WorkflowCancelledBy,
-    completed_by: WorkflowCompletedBy,
-    retried_by: WorkflowRetriedBy,
-    cutover_by: WorkflowCutoverBy,
-    reversed_cutover_by: WorkflowReversedCutoverBy,
-    branch: WorkflowBranch,
-    source_keyspace: WorkflowSourceKeyspace,
-    target_keyspace: WorkflowTargetKeyspace,
-    global_keyspace: WorkflowGlobalKeyspace,
+    actor: OrganizationTeamMembershipActor,
+    verify_data_by: OrganizationTeamMembershipActor,
+    reversed_by: OrganizationTeamMembershipActor,
+    switch_replicas_by: OrganizationTeamMembershipActor,
+    switch_primaries_by: OrganizationTeamMembershipActor,
+    cancelled_by: OrganizationTeamMembershipActor,
+    completed_by: OrganizationTeamMembershipActor,
+    retried_by: OrganizationTeamMembershipActor,
+    cutover_by: OrganizationTeamMembershipActor,
+    reversed_cutover_by: OrganizationTeamMembershipActor,
+    branch: OrganizationTeamMembershipUserDefaultOrganization,
+    source_keyspace: OrganizationTeamMembershipUserDefaultOrganization,
+    target_keyspace: OrganizationTeamMembershipUserDefaultOrganization,
+    global_keyspace: OrganizationTeamMembershipUserDefaultOrganization,
   }),
 ).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
 
@@ -5785,23 +5053,8 @@ export const SchemaRecommendationClosedByDeployRequest =
     identifier: "SchemaRecommendationClosedByDeployRequest",
   }) as any as S.Schema<SchemaRecommendationClosedByDeployRequest>;
 
-export interface SchemaRecommendationDismissedBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const SchemaRecommendationDismissedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "SchemaRecommendationDismissedBy",
-}) as any as S.Schema<SchemaRecommendationDismissedBy>;
+export type SchemaRecommendationDismissedBy = OrganizationTeamMembershipActor;
+export const SchemaRecommendationDismissedBy = OrganizationTeamMembershipActor;
 
 export interface SchemaRecommendation {
   /** The ID of the schema recommendation */
@@ -5831,7 +5084,7 @@ export interface SchemaRecommendation {
   /** When the recommendation was dismissed */
   dismissed_at: string;
   closed_by_deploy_request: SchemaRecommendationClosedByDeployRequest;
-  dismissed_by: SchemaRecommendationDismissedBy;
+  dismissed_by: OrganizationTeamMembershipActor;
 }
 export const SchemaRecommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5849,7 +5102,7 @@ export const SchemaRecommendation = /*@__PURE__*/ S.suspend(() =>
     applied_at: S.String,
     dismissed_at: S.String,
     closed_by_deploy_request: SchemaRecommendationClosedByDeployRequest,
-    dismissed_by: SchemaRecommendationDismissedBy,
+    dismissed_by: OrganizationTeamMembershipActor,
   }),
 ).annotate({
   identifier: "SchemaRecommendation",
@@ -6023,23 +5276,9 @@ export type PostgresClusterResizeRequestState =
   | "completed";
 export const PostgresClusterResizeRequestState = /*@__PURE__*/ S.String;
 
-export interface PostgresClusterResizeRequestActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PostgresClusterResizeRequestActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PostgresClusterResizeRequestActor",
-}) as any as S.Schema<PostgresClusterResizeRequestActor>;
+export type PostgresClusterResizeRequestActor = OrganizationTeamMembershipActor;
+export const PostgresClusterResizeRequestActor =
+  OrganizationTeamMembershipActor;
 
 /** The branch parameters */
 export type PostgresClusterResizeRequestParametersMap = {
@@ -6079,7 +5318,7 @@ export interface PostgresClusterResizeRequest {
   created_at: string;
   /** The time the branch change request was last updated */
   updated_at: string;
-  actor: PostgresClusterResizeRequestActor;
+  actor: OrganizationTeamMembershipActor;
   /** The SKU representing the branch cluster */
   cluster_name: string;
   /** The SKU representing the branch cluster for display */
@@ -6138,7 +5377,7 @@ export const PostgresClusterResizeRequest = /*@__PURE__*/ S.suspend(() =>
     completed_at: S.optional(S.NullOr(S.String)),
     created_at: S.String,
     updated_at: S.String,
-    actor: PostgresClusterResizeRequestActor,
+    actor: OrganizationTeamMembershipActor,
     cluster_name: S.String,
     cluster_display_name: S.String,
     cluster_metal: S.Boolean,
@@ -6240,29 +5479,10 @@ export const GetCurrentUserRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetCurrentUserRequest",
 }) as any as S.Schema<GetCurrentUserRequest>;
 
-export interface UserDefaultOrganization {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const UserDefaultOrganization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.String,
-  }),
-).annotate({
-  identifier: "UserDefaultOrganization",
-}) as any as S.Schema<UserDefaultOrganization>;
+export type UserDefaultOrganization =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const UserDefaultOrganization =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
 export interface User {
   /** The ID of the user */
@@ -6281,7 +5501,7 @@ export interface User {
   updated_at: string;
   /** Whether or not the user has configured two factor authentication */
   two_factor_auth_configured: boolean;
-  default_organization?: UserDefaultOrganization;
+  default_organization?: OrganizationTeamMembershipUserDefaultOrganization;
   /** Whether or not the user is managed by SSO */
   sso?: boolean;
   /** Whether or not the user is managed by an authentication provider */
@@ -6301,7 +5521,9 @@ export const User = /*@__PURE__*/ S.suspend(() =>
     created_at: S.String,
     updated_at: S.String,
     two_factor_auth_configured: S.Boolean,
-    default_organization: S.optional(UserDefaultOrganization),
+    default_organization: S.optional(
+      OrganizationTeamMembershipUserDefaultOrganization,
+    ),
     sso: S.optional(S.Boolean),
     managed: S.optional(S.Boolean),
     directory_managed: S.optional(S.Boolean),
@@ -6381,29 +5603,10 @@ export const ThrottlerConfigurationsKeyspacesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThrottlerConfigurationsKeyspacesList>;
 
-export interface ThrottlerConfigurationsConfigurable {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const ThrottlerConfigurationsConfigurable = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.String,
-  }),
-).annotate({
-  identifier: "ThrottlerConfigurationsConfigurable",
-}) as any as S.Schema<ThrottlerConfigurationsConfigurable>;
+export type ThrottlerConfigurationsConfigurable =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const ThrottlerConfigurationsConfigurable =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
 export interface ThrottlerConfigurationsConfigurationsItem {
   /** Name of keyspace this throttler ratio applies to */
@@ -6430,13 +5633,13 @@ export const ThrottlerConfigurationsConfigurationsList = /*@__PURE__*/ S.Array(
 export interface ThrottlerConfigurations {
   /** Keyspaces that are eligible for throttler configuration in the configurable resource (database or deploy request) */
   keyspaces: ThrottlerConfigurationsKeyspacesList;
-  configurable: ThrottlerConfigurationsConfigurable;
+  configurable: OrganizationTeamMembershipUserDefaultOrganization;
   configurations: ThrottlerConfigurationsConfigurationsList;
 }
 export const ThrottlerConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyspaces: ThrottlerConfigurationsKeyspacesList,
-    configurable: ThrottlerConfigurationsConfigurable,
+    configurable: OrganizationTeamMembershipUserDefaultOrganization,
     configurations: ThrottlerConfigurationsConfigurationsList,
   }),
 ).annotate({
@@ -6835,59 +6038,14 @@ export const DeploymentDeploymentRevertRequestMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<DeploymentDeploymentRevertRequestMap>;
 
-export interface DeploymentActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const DeploymentActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "DeploymentActor",
-}) as any as S.Schema<DeploymentActor>;
+export type DeploymentActor = OrganizationTeamMembershipActor;
+export const DeploymentActor = OrganizationTeamMembershipActor;
 
-export interface DeploymentCutoverActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const DeploymentCutoverActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "DeploymentCutoverActor",
-}) as any as S.Schema<DeploymentCutoverActor>;
+export type DeploymentCutoverActor = OrganizationTeamMembershipActor;
+export const DeploymentCutoverActor = OrganizationTeamMembershipActor;
 
-export interface DeploymentCancelledActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const DeploymentCancelledActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "DeploymentCancelledActor",
-}) as any as S.Schema<DeploymentCancelledActor>;
+export type DeploymentCancelledActor = OrganizationTeamMembershipActor;
+export const DeploymentCancelledActor = OrganizationTeamMembershipActor;
 
 export interface Deployment {
   /** The ID of the deployment */
@@ -6938,9 +6096,9 @@ export interface Deployment {
   throttler_configurations: DeploymentThrottlerConfigurationsList;
   /** The request to revert the schema operations in this deployment */
   deployment_revert_request: DeploymentDeploymentRevertRequestMap;
-  actor: DeploymentActor;
-  cutover_actor: DeploymentCutoverActor;
-  cancelled_actor: DeploymentCancelledActor;
+  actor: OrganizationTeamMembershipActor;
+  cutover_actor: OrganizationTeamMembershipActor;
+  cancelled_actor: OrganizationTeamMembershipActor;
   /** When the schema was last updated for the deployment */
   schema_last_updated_at: string;
   /** Whether or not the deployment has a table locked */
@@ -6979,9 +6137,9 @@ export const Deployment = /*@__PURE__*/ S.suspend(() =>
     lookup_vindex_operations: DeploymentLookupVindexOperationsList,
     throttler_configurations: DeploymentThrottlerConfigurationsList,
     deployment_revert_request: DeploymentDeploymentRevertRequestMap,
-    actor: DeploymentActor,
-    cutover_actor: DeploymentCutoverActor,
-    cancelled_actor: DeploymentCancelledActor,
+    actor: OrganizationTeamMembershipActor,
+    cutover_actor: OrganizationTeamMembershipActor,
+    cancelled_actor: OrganizationTeamMembershipActor,
     schema_last_updated_at: S.String,
     table_locked: S.Boolean,
     locked_table_name: S.String,
@@ -7374,61 +6532,18 @@ export const PaginatedDeploymentDataItemDeploymentRevertRequestMap =
     S.Unknown,
   ) as any as S.Schema<PaginatedDeploymentDataItemDeploymentRevertRequestMap>;
 
-export interface PaginatedDeploymentDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedDeploymentDataItemActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PaginatedDeploymentDataItemActor",
-}) as any as S.Schema<PaginatedDeploymentDataItemActor>;
+export type PaginatedDeploymentDataItemActor = OrganizationTeamMembershipActor;
+export const PaginatedDeploymentDataItemActor = OrganizationTeamMembershipActor;
 
-export interface PaginatedDeploymentDataItemCutoverActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedDeploymentDataItemCutoverActor = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-).annotate({
-  identifier: "PaginatedDeploymentDataItemCutoverActor",
-}) as any as S.Schema<PaginatedDeploymentDataItemCutoverActor>;
+export type PaginatedDeploymentDataItemCutoverActor =
+  OrganizationTeamMembershipActor;
+export const PaginatedDeploymentDataItemCutoverActor =
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedDeploymentDataItemCancelledActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedDeploymentDataItemCancelledActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedDeploymentDataItemCancelledActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedDeploymentDataItemCancelledActor",
-  }) as any as S.Schema<PaginatedDeploymentDataItemCancelledActor>;
+  OrganizationTeamMembershipActor;
 
 export interface PaginatedDeploymentDataItem {
   /** The ID of the deployment */
@@ -7479,9 +6594,9 @@ export interface PaginatedDeploymentDataItem {
   throttler_configurations: PaginatedDeploymentDataItemThrottlerConfigurationsList;
   /** The request to revert the schema operations in this deployment */
   deployment_revert_request: PaginatedDeploymentDataItemDeploymentRevertRequestMap;
-  actor: PaginatedDeploymentDataItemActor;
-  cutover_actor: PaginatedDeploymentDataItemCutoverActor;
-  cancelled_actor: PaginatedDeploymentDataItemCancelledActor;
+  actor: OrganizationTeamMembershipActor;
+  cutover_actor: OrganizationTeamMembershipActor;
+  cancelled_actor: OrganizationTeamMembershipActor;
   /** When the schema was last updated for the deployment */
   schema_last_updated_at: string;
   /** Whether or not the deployment has a table locked */
@@ -7525,9 +6640,9 @@ export const PaginatedDeploymentDataItem = /*@__PURE__*/ S.suspend(() =>
       PaginatedDeploymentDataItemThrottlerConfigurationsList,
     deployment_revert_request:
       PaginatedDeploymentDataItemDeploymentRevertRequestMap,
-    actor: PaginatedDeploymentDataItemActor,
-    cutover_actor: PaginatedDeploymentDataItemCutoverActor,
-    cancelled_actor: PaginatedDeploymentDataItemCancelledActor,
+    actor: OrganizationTeamMembershipActor,
+    cutover_actor: OrganizationTeamMembershipActor,
+    cancelled_actor: OrganizationTeamMembershipActor,
     schema_last_updated_at: S.String,
     table_locked: S.Boolean,
     locked_table_name: S.String,
@@ -7690,29 +6805,10 @@ export const GetInvoiceLineItemsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetInvoiceLineItemsRequest",
 }) as any as S.Schema<GetInvoiceLineItemsRequest>;
 
-export interface PaginatedLineItemDataItemResource {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const PaginatedLineItemDataItemResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.String,
-  }),
-).annotate({
-  identifier: "PaginatedLineItemDataItemResource",
-}) as any as S.Schema<PaginatedLineItemDataItemResource>;
+export type PaginatedLineItemDataItemResource =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const PaginatedLineItemDataItemResource =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
 export interface PaginatedLineItemDataItem {
   /** The ID for the line item */
@@ -7727,7 +6823,7 @@ export interface PaginatedLineItemDataItem {
   database_id: string;
   /** The name for the billed database */
   database_name: string;
-  resource: PaginatedLineItemDataItemResource;
+  resource: OrganizationTeamMembershipUserDefaultOrganization;
 }
 export const PaginatedLineItemDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7737,7 +6833,7 @@ export const PaginatedLineItemDataItem = /*@__PURE__*/ S.suspend(() =>
     metric_name: S.String,
     database_id: S.String,
     database_name: S.String,
-    resource: PaginatedLineItemDataItemResource,
+    resource: OrganizationTeamMembershipUserDefaultOrganization,
   }),
 ).annotate({
   identifier: "PaginatedLineItemDataItem",
@@ -8236,30 +7332,10 @@ export const GetOrganizationMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetOrganizationMembershipRequest",
 }) as any as S.Schema<GetOrganizationMembershipRequest>;
 
-export interface OrganizationMembershipUserDefaultOrganization {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
+export type OrganizationMembershipUserDefaultOrganization =
+  OrganizationTeamMembershipUserDefaultOrganization;
 export const OrganizationMembershipUserDefaultOrganization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.String,
-    }),
-  ).annotate({
-    identifier: "OrganizationMembershipUserDefaultOrganization",
-  }) as any as S.Schema<OrganizationMembershipUserDefaultOrganization>;
+  OrganizationTeamMembershipUserDefaultOrganization;
 
 export interface OrganizationMembershipUser {
   /** The ID of the user */
@@ -8278,7 +7354,7 @@ export interface OrganizationMembershipUser {
   updated_at: string;
   /** Whether or not the user has configured two factor authentication */
   two_factor_auth_configured: boolean;
-  default_organization?: OrganizationMembershipUserDefaultOrganization;
+  default_organization?: OrganizationTeamMembershipUserDefaultOrganization;
   /** Whether or not the user is managed by SSO */
   sso?: boolean;
   /** Whether or not the user is managed by an authentication provider */
@@ -8299,7 +7375,7 @@ export const OrganizationMembershipUser = /*@__PURE__*/ S.suspend(() =>
     updated_at: S.String,
     two_factor_auth_configured: S.Boolean,
     default_organization: S.optional(
-      OrganizationMembershipUserDefaultOrganization,
+      OrganizationTeamMembershipUserDefaultOrganization,
     ),
     sso: S.optional(S.Boolean),
     managed: S.optional(S.Boolean),
@@ -8437,23 +7513,8 @@ export const DatabaseBranchPasswordAccessHostRegionalUrlsList =
     S.String,
   ) as any as S.Schema<DatabaseBranchPasswordAccessHostRegionalUrlsList>;
 
-export interface DatabaseBranchPasswordActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const DatabaseBranchPasswordActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "DatabaseBranchPasswordActor",
-}) as any as S.Schema<DatabaseBranchPasswordActor>;
+export type DatabaseBranchPasswordActor = OrganizationTeamMembershipActor;
+export const DatabaseBranchPasswordActor = OrganizationTeamMembershipActor;
 
 /** Public IP addresses for the region */
 export type DatabaseBranchPasswordRegionPublicIpAddressesList = Array<string>;
@@ -8495,30 +7556,10 @@ export const DatabaseBranchPasswordRegion = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseBranchPasswordRegion",
 }) as any as S.Schema<DatabaseBranchPasswordRegion>;
 
-export interface DatabaseBranchPasswordDatabaseBranch {
-  /** The name for the branch */
-  name: string;
-  /** The ID for the branch */
-  id: string;
-  /** Whether or not the branch is a production branch */
-  production: boolean;
-  /** The address of the MySQL provider for the branch */
-  mysql_edge_address: string;
-  /** True if private connectivity is enabled */
-  private_edge_connectivity: boolean;
-}
-export const DatabaseBranchPasswordDatabaseBranch = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      id: S.String,
-      production: S.Boolean,
-      mysql_edge_address: S.String,
-      private_edge_connectivity: S.Boolean,
-    }),
-).annotate({
-  identifier: "DatabaseBranchPasswordDatabaseBranch",
-}) as any as S.Schema<DatabaseBranchPasswordDatabaseBranch>;
+export type DatabaseBranchPasswordDatabaseBranch =
+  OrganizationTeamMembershipPasswordsItemDatabaseBranch;
+export const DatabaseBranchPasswordDatabaseBranch =
+  OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 
 export interface DatabaseBranchPassword {
   /** The ID for the password */
@@ -8551,7 +7592,7 @@ export interface DatabaseBranchPassword {
   access_host_regional_url: string;
   /** The read-only replica host URLs */
   access_host_regional_urls: DatabaseBranchPasswordAccessHostRegionalUrlsList;
-  actor: DatabaseBranchPasswordActor;
+  actor: OrganizationTeamMembershipActor;
   region: DatabaseBranchPasswordRegion;
   /** The username for the password */
   username: string;
@@ -8561,7 +7602,7 @@ export interface DatabaseBranchPassword {
   replica: boolean;
   /** Whether or not the password can be renewed */
   renewable: boolean;
-  database_branch: DatabaseBranchPasswordDatabaseBranch;
+  database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 }
 export const DatabaseBranchPassword = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8580,13 +7621,13 @@ export const DatabaseBranchPassword = /*@__PURE__*/ S.suspend(() =>
     access_host_url: S.String,
     access_host_regional_url: S.String,
     access_host_regional_urls: DatabaseBranchPasswordAccessHostRegionalUrlsList,
-    actor: DatabaseBranchPasswordActor,
+    actor: OrganizationTeamMembershipActor,
     region: DatabaseBranchPasswordRegion,
     username: S.String,
     plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
     replica: S.Boolean,
     renewable: S.Boolean,
-    database_branch: DatabaseBranchPasswordDatabaseBranch,
+    database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch,
   }),
 ).annotate({
   identifier: "DatabaseBranchPassword",
@@ -9261,55 +8302,20 @@ export type PaginatedBackupDataItemState =
   | "ignored";
 export const PaginatedBackupDataItemState = /*@__PURE__*/ S.String;
 
-export interface PaginatedBackupDataItemRestoredBranchesItem {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
-}
+export type PaginatedBackupDataItemRestoredBranchesItem =
+  BackupRestoredBranchesItem;
 export const PaginatedBackupDataItemRestoredBranchesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "PaginatedBackupDataItemRestoredBranchesItem",
-  }) as any as S.Schema<PaginatedBackupDataItemRestoredBranchesItem>;
+  BackupRestoredBranchesItem;
 
 export type PaginatedBackupDataItemRestoredBranchesList =
-  Array<PaginatedBackupDataItemRestoredBranchesItem>;
+  Array<BackupRestoredBranchesItem>;
 export const PaginatedBackupDataItemRestoredBranchesList =
   /*@__PURE__*/ S.Array(
-    PaginatedBackupDataItemRestoredBranchesItem,
+    BackupRestoredBranchesItem,
   ) as any as S.Schema<PaginatedBackupDataItemRestoredBranchesList>;
 
-export interface PaginatedBackupDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedBackupDataItemActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PaginatedBackupDataItemActor",
-}) as any as S.Schema<PaginatedBackupDataItemActor>;
+export type PaginatedBackupDataItemActor = OrganizationTeamMembershipActor;
+export const PaginatedBackupDataItemActor = OrganizationTeamMembershipActor;
 
 /** Whether the policy is for production or development branches */
 export type PaginatedBackupDataItemBackupPolicyTarget =
@@ -9374,58 +8380,11 @@ export const PaginatedBackupDataItemBackupPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedBackupDataItemBackupPolicy",
 }) as any as S.Schema<PaginatedBackupDataItemBackupPolicy>;
 
-export interface PaginatedBackupDataItemSchemaSnapshot {
-  /** The ID of the schema snapshot */
-  id: string;
-  /** The name of the schema snapshot */
-  name: string;
-  /** When the schema snapshot was created */
-  created_at: string;
-  /** When the schema snapshot was last updated */
-  updated_at: string;
-  /** When the schema snapshot was last linted */
-  linted_at: string | null;
-  /** The URL to the schema snapshot in the PlanetScale app */
-  url: string;
-}
-export const PaginatedBackupDataItemSchemaSnapshot = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      linted_at: S.NullOr(S.String),
-      url: S.String,
-    }),
-).annotate({
-  identifier: "PaginatedBackupDataItemSchemaSnapshot",
-}) as any as S.Schema<PaginatedBackupDataItemSchemaSnapshot>;
+export type PaginatedBackupDataItemSchemaSnapshot = BackupSchemaSnapshot;
+export const PaginatedBackupDataItemSchemaSnapshot = BackupSchemaSnapshot;
 
-export interface PaginatedBackupDataItemDatabaseBranch {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
-}
-export const PaginatedBackupDataItemDatabaseBranch = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
-    }),
-).annotate({
-  identifier: "PaginatedBackupDataItemDatabaseBranch",
-}) as any as S.Schema<PaginatedBackupDataItemDatabaseBranch>;
+export type PaginatedBackupDataItemDatabaseBranch = BackupRestoredBranchesItem;
+export const PaginatedBackupDataItemDatabaseBranch = BackupRestoredBranchesItem;
 
 export interface PaginatedBackupDataItem {
   /** The ID of the backup */
@@ -9457,10 +8416,10 @@ export interface PaginatedBackupDataItem {
   /** Whether or not the backup policy is required */
   required: boolean;
   restored_branches: PaginatedBackupDataItemRestoredBranchesList;
-  actor: PaginatedBackupDataItemActor;
+  actor: OrganizationTeamMembershipActor;
   backup_policy: PaginatedBackupDataItemBackupPolicy | null;
-  schema_snapshot: PaginatedBackupDataItemSchemaSnapshot;
-  database_branch: PaginatedBackupDataItemDatabaseBranch;
+  schema_snapshot: BackupSchemaSnapshot;
+  database_branch: BackupRestoredBranchesItem;
 }
 export const PaginatedBackupDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9479,10 +8438,10 @@ export const PaginatedBackupDataItem = /*@__PURE__*/ S.suspend(() =>
     protected: S.Boolean,
     required: S.Boolean,
     restored_branches: PaginatedBackupDataItemRestoredBranchesList,
-    actor: PaginatedBackupDataItemActor,
+    actor: OrganizationTeamMembershipActor,
     backup_policy: S.NullOr(PaginatedBackupDataItemBackupPolicy),
-    schema_snapshot: PaginatedBackupDataItemSchemaSnapshot,
-    database_branch: PaginatedBackupDataItemDatabaseBranch,
+    schema_snapshot: BackupSchemaSnapshot,
+    database_branch: BackupRestoredBranchesItem,
   }),
 ).annotate({
   identifier: "PaginatedBackupDataItem",
@@ -9580,99 +8539,25 @@ export const PaginatedPostgresBouncerResizeRequestDataItemPreviousParametersMap 
     S.Unknown,
   ) as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItemPreviousParametersMap>;
 
-export interface PaginatedPostgresBouncerResizeRequestDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedPostgresBouncerResizeRequestDataItemActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedPostgresBouncerResizeRequestDataItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedPostgresBouncerResizeRequestDataItemActor",
-  }) as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItemActor>;
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedPostgresBouncerResizeRequestDataItemBouncer {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
+export type PaginatedPostgresBouncerResizeRequestDataItemBouncer =
+  OrganizationTeamMembershipUserDefaultOrganization;
 export const PaginatedPostgresBouncerResizeRequestDataItemBouncer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedPostgresBouncerResizeRequestDataItemBouncer",
-  }) as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItemBouncer>;
+  OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface PaginatedPostgresBouncerResizeRequestDataItemSku {
-  /** The name of the Postgres bouncer SKU */
-  name: string;
-  /** The display name */
-  display_name: string;
-  /** The CPU allocation */
-  cpu: string;
-  /** The amount of memory in bytes */
-  ram: number;
-  /** The sort order of the Postgres bouncer SKU */
-  sort_order: number;
-}
+export type PaginatedPostgresBouncerResizeRequestDataItemSku =
+  PostgresBouncerSku;
 export const PaginatedPostgresBouncerResizeRequestDataItemSku =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      display_name: S.String,
-      cpu: S.String,
-      ram: S.Number,
-      sort_order: S.Number,
-    }),
-  ).annotate({
-    identifier: "PaginatedPostgresBouncerResizeRequestDataItemSku",
-  }) as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItemSku>;
+  PostgresBouncerSku;
 
-export interface PaginatedPostgresBouncerResizeRequestDataItemPreviousSku {
-  /** The name of the Postgres bouncer SKU */
-  name: string;
-  /** The display name */
-  display_name: string;
-  /** The CPU allocation */
-  cpu: string;
-  /** The amount of memory in bytes */
-  ram: number;
-  /** The sort order of the Postgres bouncer SKU */
-  sort_order: number;
-}
+export type PaginatedPostgresBouncerResizeRequestDataItemPreviousSku =
+  PostgresBouncerSku;
 export const PaginatedPostgresBouncerResizeRequestDataItemPreviousSku =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      display_name: S.String,
-      cpu: S.String,
-      ram: S.Number,
-      sort_order: S.Number,
-    }),
-  ).annotate({
-    identifier: "PaginatedPostgresBouncerResizeRequestDataItemPreviousSku",
-  }) as any as S.Schema<PaginatedPostgresBouncerResizeRequestDataItemPreviousSku>;
+  PostgresBouncerSku;
 
 export interface PaginatedPostgresBouncerResizeRequestDataItem {
   /** The ID of the bouncer resize */
@@ -9695,10 +8580,10 @@ export interface PaginatedPostgresBouncerResizeRequestDataItem {
   created_at: string;
   /** The time the bouncer resize was last updated */
   updated_at: string;
-  actor: PaginatedPostgresBouncerResizeRequestDataItemActor;
-  bouncer: PaginatedPostgresBouncerResizeRequestDataItemBouncer;
-  sku: PaginatedPostgresBouncerResizeRequestDataItemSku;
-  previous_sku: PaginatedPostgresBouncerResizeRequestDataItemPreviousSku;
+  actor: OrganizationTeamMembershipActor;
+  bouncer: OrganizationTeamMembershipUserDefaultOrganization;
+  sku: PostgresBouncerSku;
+  previous_sku: PostgresBouncerSku;
 }
 export const PaginatedPostgresBouncerResizeRequestDataItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -9714,10 +8599,10 @@ export const PaginatedPostgresBouncerResizeRequestDataItem =
       completed_at: S.String,
       created_at: S.String,
       updated_at: S.String,
-      actor: PaginatedPostgresBouncerResizeRequestDataItemActor,
-      bouncer: PaginatedPostgresBouncerResizeRequestDataItemBouncer,
-      sku: PaginatedPostgresBouncerResizeRequestDataItemSku,
-      previous_sku: PaginatedPostgresBouncerResizeRequestDataItemPreviousSku,
+      actor: OrganizationTeamMembershipActor,
+      bouncer: OrganizationTeamMembershipUserDefaultOrganization,
+      sku: PostgresBouncerSku,
+      previous_sku: PostgresBouncerSku,
     }),
   ).annotate({
     identifier: "PaginatedPostgresBouncerResizeRequestDataItem",
@@ -9787,29 +8672,8 @@ export const ListBouncersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListBouncersRequest",
 }) as any as S.Schema<ListBouncersRequest>;
 
-export interface PaginatedPostgresBouncerDataItemSku {
-  /** The name of the Postgres bouncer SKU */
-  name: string;
-  /** The display name */
-  display_name: string;
-  /** The CPU allocation */
-  cpu: string;
-  /** The amount of memory in bytes */
-  ram: number;
-  /** The sort order of the Postgres bouncer SKU */
-  sort_order: number;
-}
-export const PaginatedPostgresBouncerDataItemSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    display_name: S.String,
-    cpu: S.String,
-    ram: S.Number,
-    sort_order: S.Number,
-  }),
-).annotate({
-  identifier: "PaginatedPostgresBouncerDataItemSku",
-}) as any as S.Schema<PaginatedPostgresBouncerDataItemSku>;
+export type PaginatedPostgresBouncerDataItemSku = PostgresBouncerSku;
+export const PaginatedPostgresBouncerDataItemSku = PostgresBouncerSku;
 
 /** The instance type the bouncer targets */
 export type PaginatedPostgresBouncerDataItemTarget =
@@ -9818,49 +8682,15 @@ export type PaginatedPostgresBouncerDataItemTarget =
   | "replica_az_affinity";
 export const PaginatedPostgresBouncerDataItemTarget = /*@__PURE__*/ S.String;
 
-export interface PaginatedPostgresBouncerDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedPostgresBouncerDataItemActor = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-).annotate({
-  identifier: "PaginatedPostgresBouncerDataItemActor",
-}) as any as S.Schema<PaginatedPostgresBouncerDataItemActor>;
+export type PaginatedPostgresBouncerDataItemActor =
+  OrganizationTeamMembershipActor;
+export const PaginatedPostgresBouncerDataItemActor =
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedPostgresBouncerDataItemBranch {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const PaginatedPostgresBouncerDataItemBranch = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.String,
-    }),
-).annotate({
-  identifier: "PaginatedPostgresBouncerDataItemBranch",
-}) as any as S.Schema<PaginatedPostgresBouncerDataItemBranch>;
+export type PaginatedPostgresBouncerDataItemBranch =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const PaginatedPostgresBouncerDataItemBranch =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
 /** The namespace of the parameter */
 export type PaginatedPostgresBouncerDataItemParametersItemNamespace =
@@ -9886,24 +8716,10 @@ export const PaginatedPostgresBouncerDataItemParametersItemOptionsList =
     S.String,
   ) as any as S.Schema<PaginatedPostgresBouncerDataItemParametersItemOptionsList>;
 
-export interface PaginatedPostgresBouncerDataItemParametersItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedPostgresBouncerDataItemParametersItemActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedPostgresBouncerDataItemParametersItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedPostgresBouncerDataItemParametersItemActor",
-  }) as any as S.Schema<PaginatedPostgresBouncerDataItemParametersItemActor>;
+  OrganizationTeamMembershipActor;
 
 export interface PaginatedPostgresBouncerDataItemParametersItem {
   /** The ID of the parameter */
@@ -9944,7 +8760,7 @@ export interface PaginatedPostgresBouncerDataItemParametersItem {
   url: string;
   /** Valid options for the parameter value */
   options: PaginatedPostgresBouncerDataItemParametersItemOptionsList;
-  actor: PaginatedPostgresBouncerDataItemParametersItemActor;
+  actor: OrganizationTeamMembershipActor;
 }
 export const PaginatedPostgresBouncerDataItemParametersItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -9969,7 +8785,7 @@ export const PaginatedPostgresBouncerDataItemParametersItem =
       step: S.Number,
       url: S.String,
       options: PaginatedPostgresBouncerDataItemParametersItemOptionsList,
-      actor: PaginatedPostgresBouncerDataItemParametersItemActor,
+      actor: OrganizationTeamMembershipActor,
     }),
   ).annotate({
     identifier: "PaginatedPostgresBouncerDataItemParametersItem",
@@ -9987,7 +8803,7 @@ export interface PaginatedPostgresBouncerDataItem {
   id: string;
   /** The name of the bouncer */
   name: string;
-  sku: PaginatedPostgresBouncerDataItemSku;
+  sku: PostgresBouncerSku;
   /** The instance type the bouncer targets */
   target: PaginatedPostgresBouncerDataItemTarget;
   /** The count of replicas in each cell */
@@ -9998,22 +8814,22 @@ export interface PaginatedPostgresBouncerDataItem {
   updated_at: string;
   /** When the bouncer was deleted */
   deleted_at: string;
-  actor: PaginatedPostgresBouncerDataItemActor;
-  branch: PaginatedPostgresBouncerDataItemBranch;
+  actor: OrganizationTeamMembershipActor;
+  branch: OrganizationTeamMembershipUserDefaultOrganization;
   parameters: PaginatedPostgresBouncerDataItemParametersList;
 }
 export const PaginatedPostgresBouncerDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
-    sku: PaginatedPostgresBouncerDataItemSku,
+    sku: PostgresBouncerSku,
     target: PaginatedPostgresBouncerDataItemTarget,
     replicas_per_cell: S.Number,
     created_at: S.String,
     updated_at: S.String,
     deleted_at: S.String,
-    actor: PaginatedPostgresBouncerDataItemActor,
-    branch: PaginatedPostgresBouncerDataItemBranch,
+    actor: OrganizationTeamMembershipActor,
+    branch: OrganizationTeamMembershipUserDefaultOrganization,
     parameters: PaginatedPostgresBouncerDataItemParametersList,
   }),
 ).annotate({
@@ -10131,24 +8947,10 @@ export type PaginatedPostgresClusterResizeRequestDataItemState =
 export const PaginatedPostgresClusterResizeRequestDataItemState =
   /*@__PURE__*/ S.String;
 
-export interface PaginatedPostgresClusterResizeRequestDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedPostgresClusterResizeRequestDataItemActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedPostgresClusterResizeRequestDataItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedPostgresClusterResizeRequestDataItemActor",
-  }) as any as S.Schema<PaginatedPostgresClusterResizeRequestDataItemActor>;
+  OrganizationTeamMembershipActor;
 
 /** The branch parameters */
 export type PaginatedPostgresClusterResizeRequestDataItemParametersMap = {
@@ -10192,7 +8994,7 @@ export interface PaginatedPostgresClusterResizeRequestDataItem {
   created_at: string;
   /** The time the branch change request was last updated */
   updated_at: string;
-  actor: PaginatedPostgresClusterResizeRequestDataItemActor;
+  actor: OrganizationTeamMembershipActor;
   /** The SKU representing the branch cluster */
   cluster_name: string;
   /** The SKU representing the branch cluster for display */
@@ -10254,7 +9056,7 @@ export const PaginatedPostgresClusterResizeRequestDataItem =
       completed_at: S.optional(S.NullOr(S.String)),
       created_at: S.String,
       updated_at: S.String,
-      actor: PaginatedPostgresClusterResizeRequestDataItemActor,
+      actor: OrganizationTeamMembershipActor,
       cluster_name: S.String,
       cluster_display_name: S.String,
       cluster_metal: S.Boolean,
@@ -10374,49 +9176,15 @@ export type PaginatedDatabaseBranchDataItemState =
   | "ready";
 export const PaginatedDatabaseBranchDataItemState = /*@__PURE__*/ S.String;
 
-export interface PaginatedDatabaseBranchDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedDatabaseBranchDataItemActor = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-).annotate({
-  identifier: "PaginatedDatabaseBranchDataItemActor",
-}) as any as S.Schema<PaginatedDatabaseBranchDataItemActor>;
+export type PaginatedDatabaseBranchDataItemActor =
+  OrganizationTeamMembershipActor;
+export const PaginatedDatabaseBranchDataItemActor =
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedDatabaseBranchDataItemRestoredFromBranch {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
-}
+export type PaginatedDatabaseBranchDataItemRestoredFromBranch =
+  BackupRestoredBranchesItem;
 export const PaginatedDatabaseBranchDataItemRestoredFromBranch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "PaginatedDatabaseBranchDataItemRestoredFromBranch",
-  }) as any as S.Schema<PaginatedDatabaseBranchDataItemRestoredFromBranch>;
+  BackupRestoredBranchesItem;
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchDataItemRegionPublicIpAddressesList =
@@ -10520,8 +9288,8 @@ export interface PaginatedDatabaseBranchDataItem {
   shard_count?: number;
   /** Whether or not the branch has a stale schema */
   stale_schema: boolean;
-  actor: PaginatedDatabaseBranchDataItemActor;
-  restored_from_branch: PaginatedDatabaseBranchDataItemRestoredFromBranch | null;
+  actor: OrganizationTeamMembershipActor;
+  restored_from_branch: BackupRestoredBranchesItem | null;
   /** True if private connections are enabled */
   private_edge_connectivity: boolean;
   /** True if the branch has replica servers */
@@ -10565,10 +9333,8 @@ export const PaginatedDatabaseBranchDataItem = /*@__PURE__*/ S.suspend(() =>
     sharded: S.optional(S.Boolean),
     shard_count: S.optional(S.Number),
     stale_schema: S.Boolean,
-    actor: PaginatedDatabaseBranchDataItemActor,
-    restored_from_branch: S.NullOr(
-      PaginatedDatabaseBranchDataItemRestoredFromBranch,
-    ),
+    actor: OrganizationTeamMembershipActor,
+    restored_from_branch: S.NullOr(BackupRestoredBranchesItem),
     private_edge_connectivity: S.Boolean,
     has_replicas: S.Boolean,
     has_read_only_replicas: S.Boolean,
@@ -10749,24 +9515,10 @@ export const PaginatedPostgresClusterCidrDataItemCidrsList =
     S.String,
   ) as any as S.Schema<PaginatedPostgresClusterCidrDataItemCidrsList>;
 
-export interface PaginatedPostgresClusterCidrDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedPostgresClusterCidrDataItemActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedPostgresClusterCidrDataItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedPostgresClusterCidrDataItemActor",
-  }) as any as S.Schema<PaginatedPostgresClusterCidrDataItemActor>;
+  OrganizationTeamMembershipActor;
 
 export interface PaginatedPostgresClusterCidrDataItem {
   /** The ID of the IP allowlist entry */
@@ -10783,7 +9535,7 @@ export interface PaginatedPostgresClusterCidrDataItem {
   updated_at: string;
   /** When the entry was deleted */
   deleted_at: string;
-  actor: PaginatedPostgresClusterCidrDataItemActor;
+  actor: OrganizationTeamMembershipActor;
 }
 export const PaginatedPostgresClusterCidrDataItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -10795,7 +9547,7 @@ export const PaginatedPostgresClusterCidrDataItem = /*@__PURE__*/ S.suspend(
       created_at: S.String,
       updated_at: S.String,
       deleted_at: S.String,
-      actor: PaginatedPostgresClusterCidrDataItemActor,
+      actor: OrganizationTeamMembershipActor,
     }),
 ).annotate({
   identifier: "PaginatedPostgresClusterCidrDataItem",
@@ -10961,47 +9713,13 @@ export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDatabasesRequest",
 }) as any as S.Schema<ListDatabasesRequest>;
 
-export interface PaginatedDatabaseDataItemDataImportDataSource {
-  /** Hostname of the data source */
-  hostname: string;
-  /** Port of the data source */
-  port: number;
-  /** Database name of the data source */
-  database: string;
-}
+export type PaginatedDatabaseDataItemDataImportDataSource =
+  DatabaseDataImportDataSource;
 export const PaginatedDatabaseDataItemDataImportDataSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hostname: S.String,
-      port: S.Number,
-      database: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedDatabaseDataItemDataImportDataSource",
-  }) as any as S.Schema<PaginatedDatabaseDataItemDataImportDataSource>;
+  DatabaseDataImportDataSource;
 
-export interface PaginatedDatabaseDataItemDataImport {
-  /** State of the data import */
-  state: string;
-  /** Errors encountered during the import check */
-  import_check_errors: string;
-  /** When the import started */
-  started_at: string;
-  /** When the import finished */
-  finished_at: string;
-  data_source: PaginatedDatabaseDataItemDataImportDataSource;
-}
-export const PaginatedDatabaseDataItemDataImport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.String,
-    import_check_errors: S.String,
-    started_at: S.String,
-    finished_at: S.String,
-    data_source: PaginatedDatabaseDataItemDataImportDataSource,
-  }),
-).annotate({
-  identifier: "PaginatedDatabaseDataItemDataImport",
-}) as any as S.Schema<PaginatedDatabaseDataItemDataImport>;
+export type PaginatedDatabaseDataItemDataImport = DatabaseDataImport;
+export const PaginatedDatabaseDataItemDataImport = DatabaseDataImport;
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseDataItemRegionPublicIpAddressesList =
@@ -11084,7 +9802,7 @@ export interface PaginatedDatabaseDataItem {
   at_backup_restore_branches_limit?: boolean;
   /** If the database has reached its development branch limit */
   at_development_branch_usage_limit?: boolean;
-  data_import?: PaginatedDatabaseDataItemDataImport | null;
+  data_import?: DatabaseDataImport | null;
   region: PaginatedDatabaseDataItemRegion;
   /** The URL to see this database's branches in the web UI */
   html_url: string;
@@ -11155,7 +9873,7 @@ export const PaginatedDatabaseDataItem = /*@__PURE__*/ S.suspend(() =>
     ready: S.Boolean,
     at_backup_restore_branches_limit: S.optional(S.Boolean),
     at_development_branch_usage_limit: S.optional(S.Boolean),
-    data_import: S.optional(S.NullOr(PaginatedDatabaseDataItemDataImport)),
+    data_import: S.optional(S.NullOr(DatabaseDataImport)),
     region: PaginatedDatabaseDataItemRegion,
     html_url: S.String,
     name: S.String,
@@ -11403,24 +10121,10 @@ export type PaginatedDeployRequestReviewDataItemState =
   | "approved";
 export const PaginatedDeployRequestReviewDataItemState = /*@__PURE__*/ S.String;
 
-export interface PaginatedDeployRequestReviewDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedDeployRequestReviewDataItemActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedDeployRequestReviewDataItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedDeployRequestReviewDataItemActor",
-  }) as any as S.Schema<PaginatedDeployRequestReviewDataItemActor>;
+  OrganizationTeamMembershipActor;
 
 export interface PaginatedDeployRequestReviewDataItem {
   /** The ID of the review */
@@ -11435,7 +10139,7 @@ export interface PaginatedDeployRequestReviewDataItem {
   created_at: string;
   /** When the review was last updated */
   updated_at: string;
-  actor: PaginatedDeployRequestReviewDataItemActor;
+  actor: OrganizationTeamMembershipActor;
 }
 export const PaginatedDeployRequestReviewDataItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -11446,7 +10150,7 @@ export const PaginatedDeployRequestReviewDataItem = /*@__PURE__*/ S.suspend(
       state: PaginatedDeployRequestReviewDataItemState,
       created_at: S.String,
       updated_at: S.String,
-      actor: PaginatedDeployRequestReviewDataItemActor,
+      actor: OrganizationTeamMembershipActor,
     }),
 ).annotate({
   identifier: "PaginatedDeployRequestReviewDataItem",
@@ -11526,62 +10230,20 @@ export const ListDeployRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDeployRequestsRequest",
 }) as any as S.Schema<ListDeployRequestsRequest>;
 
-export interface PaginatedDatabaseDeployRequestDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedDatabaseDeployRequestDataItemActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedDatabaseDeployRequestDataItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedDatabaseDeployRequestDataItemActor",
-  }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemActor>;
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedDatabaseDeployRequestDataItemClosedBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedDatabaseDeployRequestDataItemClosedBy =
+  OrganizationTeamMembershipActor;
 export const PaginatedDatabaseDeployRequestDataItemClosedBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedDatabaseDeployRequestDataItemClosedBy",
-  }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemClosedBy>;
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedDatabaseDeployRequestDataItemBranchDeletedBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedDatabaseDeployRequestDataItemBranchDeletedBy =
+  OrganizationTeamMembershipActor;
 export const PaginatedDatabaseDeployRequestDataItemBranchDeletedBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedDatabaseDeployRequestDataItemBranchDeletedBy",
-  }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemBranchDeletedBy>;
+  OrganizationTeamMembershipActor;
 
 /** Whether the deploy request is open or closed */
 export type PaginatedDatabaseDeployRequestDataItemState = "open" | "closed";
@@ -11961,63 +10623,20 @@ export const PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertReq
     S.Unknown,
   ) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap>;
 
-export interface PaginatedDatabaseDeployRequestDataItemDeploymentActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedDatabaseDeployRequestDataItemDeploymentActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedDatabaseDeployRequestDataItemDeploymentActor",
-  }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentActor>;
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedDatabaseDeployRequestDataItemDeploymentCutoverActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedDatabaseDeployRequestDataItemDeploymentCutoverActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentCutoverActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedDatabaseDeployRequestDataItemDeploymentCutoverActor",
-  }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentCutoverActor>;
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedDatabaseDeployRequestDataItemDeploymentCancelledActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedDatabaseDeployRequestDataItemDeploymentCancelledActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedDatabaseDeployRequestDataItemDeploymentCancelledActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedDatabaseDeployRequestDataItemDeploymentCancelledActor",
-  }) as any as S.Schema<PaginatedDatabaseDeployRequestDataItemDeploymentCancelledActor>;
+  OrganizationTeamMembershipActor;
 
 export interface PaginatedDatabaseDeployRequestDataItemDeployment {
   /** The ID of the deployment */
@@ -12068,9 +10687,9 @@ export interface PaginatedDatabaseDeployRequestDataItemDeployment {
   throttler_configurations: PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsList;
   /** The request to revert the schema operations in this deployment */
   deployment_revert_request: PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap;
-  actor: PaginatedDatabaseDeployRequestDataItemDeploymentActor;
-  cutover_actor: PaginatedDatabaseDeployRequestDataItemDeploymentCutoverActor;
-  cancelled_actor: PaginatedDatabaseDeployRequestDataItemDeploymentCancelledActor;
+  actor: OrganizationTeamMembershipActor;
+  cutover_actor: OrganizationTeamMembershipActor;
+  cancelled_actor: OrganizationTeamMembershipActor;
   /** When the schema was last updated for the deployment */
   schema_last_updated_at: string;
   /** Whether or not the deployment has a table locked */
@@ -12118,11 +10737,9 @@ export const PaginatedDatabaseDeployRequestDataItemDeployment =
         PaginatedDatabaseDeployRequestDataItemDeploymentThrottlerConfigurationsList,
       deployment_revert_request:
         PaginatedDatabaseDeployRequestDataItemDeploymentDeploymentRevertRequestMap,
-      actor: PaginatedDatabaseDeployRequestDataItemDeploymentActor,
-      cutover_actor:
-        PaginatedDatabaseDeployRequestDataItemDeploymentCutoverActor,
-      cancelled_actor:
-        PaginatedDatabaseDeployRequestDataItemDeploymentCancelledActor,
+      actor: OrganizationTeamMembershipActor,
+      cutover_actor: OrganizationTeamMembershipActor,
+      cancelled_actor: OrganizationTeamMembershipActor,
       schema_last_updated_at: S.String,
       table_locked: S.Boolean,
       locked_table_name: S.String,
@@ -12138,15 +10755,15 @@ export interface PaginatedDatabaseDeployRequestDataItem {
   id: string;
   /** The number of the deploy request */
   number: number;
-  actor: PaginatedDatabaseDeployRequestDataItemActor;
-  closed_by: PaginatedDatabaseDeployRequestDataItemClosedBy;
+  actor: OrganizationTeamMembershipActor;
+  closed_by: OrganizationTeamMembershipActor;
   /** The name of the branch the deploy request was created from */
   branch: string;
   /** The ID of the branch the deploy request was created from */
   branch_id: string;
   /** Whether or not the deploy request branch was deleted */
   branch_deleted: boolean;
-  branch_deleted_by: PaginatedDatabaseDeployRequestDataItemBranchDeletedBy;
+  branch_deleted_by: OrganizationTeamMembershipActor;
   /** When the deploy request branch was deleted */
   branch_deleted_at: string;
   /** The name of the branch the deploy request will be merged into */
@@ -12184,12 +10801,12 @@ export const PaginatedDatabaseDeployRequestDataItem = /*@__PURE__*/ S.suspend(
     S.Struct({
       id: S.String,
       number: S.Number,
-      actor: PaginatedDatabaseDeployRequestDataItemActor,
-      closed_by: PaginatedDatabaseDeployRequestDataItemClosedBy,
+      actor: OrganizationTeamMembershipActor,
+      closed_by: OrganizationTeamMembershipActor,
       branch: S.String,
       branch_id: S.String,
       branch_deleted: S.Boolean,
-      branch_deleted_by: PaginatedDatabaseDeployRequestDataItemBranchDeletedBy,
+      branch_deleted_by: OrganizationTeamMembershipActor,
       branch_deleted_at: S.String,
       into_branch: S.String,
       into_branch_sharded: S.Boolean,
@@ -12296,24 +10913,10 @@ export const PostgresClusterExtensionParametersItemOptionsList =
     S.String,
   ) as any as S.Schema<PostgresClusterExtensionParametersItemOptionsList>;
 
-export interface PostgresClusterExtensionParametersItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PostgresClusterExtensionParametersItemActor =
+  OrganizationTeamMembershipActor;
 export const PostgresClusterExtensionParametersItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PostgresClusterExtensionParametersItemActor",
-  }) as any as S.Schema<PostgresClusterExtensionParametersItemActor>;
+  OrganizationTeamMembershipActor;
 
 export interface PostgresClusterExtensionParametersItem {
   /** The ID of the parameter */
@@ -12356,7 +10959,7 @@ export interface PostgresClusterExtensionParametersItem {
   url: string;
   /** Valid options for the parameter value */
   options: PostgresClusterExtensionParametersItemOptionsList;
-  actor: PostgresClusterExtensionParametersItemActor;
+  actor: OrganizationTeamMembershipActor;
 }
 export const PostgresClusterExtensionParametersItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -12381,7 +10984,7 @@ export const PostgresClusterExtensionParametersItem = /*@__PURE__*/ S.suspend(
       step: S.Number,
       url: S.String,
       options: PostgresClusterExtensionParametersItemOptionsList,
-      actor: PostgresClusterExtensionParametersItemActor,
+      actor: OrganizationTeamMembershipActor,
     }),
 ).annotate({
   identifier: "PostgresClusterExtensionParametersItem",
@@ -12482,24 +11085,10 @@ export type PaginatedQueryPatternsDownloadDataItemState =
 export const PaginatedQueryPatternsDownloadDataItemState =
   /*@__PURE__*/ S.String;
 
-export interface PaginatedQueryPatternsDownloadDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedQueryPatternsDownloadDataItemActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedQueryPatternsDownloadDataItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedQueryPatternsDownloadDataItemActor",
-  }) as any as S.Schema<PaginatedQueryPatternsDownloadDataItemActor>;
+  OrganizationTeamMembershipActor;
 
 export interface PaginatedQueryPatternsDownloadDataItem {
   /** The ID of the query patterns download */
@@ -12514,7 +11103,7 @@ export interface PaginatedQueryPatternsDownloadDataItem {
   url: string;
   /** The URL to download the query patterns file */
   download_url: string;
-  actor: PaginatedQueryPatternsDownloadDataItemActor;
+  actor: OrganizationTeamMembershipActor;
 }
 export const PaginatedQueryPatternsDownloadDataItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -12525,7 +11114,7 @@ export const PaginatedQueryPatternsDownloadDataItem = /*@__PURE__*/ S.suspend(
       finished_at: S.String,
       url: S.String,
       download_url: S.String,
-      actor: PaginatedQueryPatternsDownloadDataItemActor,
+      actor: OrganizationTeamMembershipActor,
     }),
 ).annotate({
   identifier: "PaginatedQueryPatternsDownloadDataItem",
@@ -12770,24 +11359,10 @@ export const PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstra
       "PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraints",
   }) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraints>;
 
-export interface PaginatedDatabaseBranchKeyspaceDataItemVreplicationFlags {
-  /** Enable optimized inserts */
-  optimize_inserts: boolean;
-  /** Allow no blob binlog row image */
-  allow_no_blob_binlog_row_image: boolean;
-  /** Enable VPlayer batching */
-  vplayer_batching: boolean;
-}
+export type PaginatedDatabaseBranchKeyspaceDataItemVreplicationFlags =
+  DatabaseBranchKeyspaceVreplicationFlags;
 export const PaginatedDatabaseBranchKeyspaceDataItemVreplicationFlags =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      optimize_inserts: S.Boolean,
-      allow_no_blob_binlog_row_image: S.Boolean,
-      vplayer_batching: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "PaginatedDatabaseBranchKeyspaceDataItemVreplicationFlags",
-  }) as any as S.Schema<PaginatedDatabaseBranchKeyspaceDataItemVreplicationFlags>;
+  DatabaseBranchKeyspaceVreplicationFlags;
 
 /** MySQL daemon configuration options */
 export type PaginatedDatabaseBranchKeyspaceDataItemMysqldOptionsMap = {
@@ -12849,7 +11424,7 @@ export interface PaginatedDatabaseBranchKeyspaceDataItem {
   /** Controls when node TTL drains are allowed */
   node_ttl_strategy: PaginatedDatabaseBranchKeyspaceDataItemNodeTtlStrategy;
   replication_durability_constraints: PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraints;
-  vreplication_flags: PaginatedDatabaseBranchKeyspaceDataItemVreplicationFlags;
+  vreplication_flags: DatabaseBranchKeyspaceVreplicationFlags;
   /** MySQL daemon configuration options */
   mysqld_options: PaginatedDatabaseBranchKeyspaceDataItemMysqldOptionsMap;
   /** VTTablet configuration options */
@@ -12879,8 +11454,7 @@ export const PaginatedDatabaseBranchKeyspaceDataItem = /*@__PURE__*/ S.suspend(
       node_ttl_strategy: PaginatedDatabaseBranchKeyspaceDataItemNodeTtlStrategy,
       replication_durability_constraints:
         PaginatedDatabaseBranchKeyspaceDataItemReplicationDurabilityConstraints,
-      vreplication_flags:
-        PaginatedDatabaseBranchKeyspaceDataItemVreplicationFlags,
+      vreplication_flags: DatabaseBranchKeyspaceVreplicationFlags,
       mysqld_options: PaginatedDatabaseBranchKeyspaceDataItemMysqldOptionsMap,
       vttablet_options:
         PaginatedDatabaseBranchKeyspaceDataItemVttabletOptionsMap,
@@ -13302,120 +11876,45 @@ export const ListOauthTokensRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOauthTokensRequest",
 }) as any as S.Schema<ListOauthTokensRequest>;
 
-export interface PaginatedServiceTokenDataItemServiceTokenAccessesItemResource {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
+export type PaginatedServiceTokenDataItemServiceTokenAccessesItemResource =
+  OrganizationTeamMembershipUserDefaultOrganization;
 export const PaginatedServiceTokenDataItemServiceTokenAccessesItemResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedServiceTokenDataItemServiceTokenAccessesItemResource",
-  }) as any as S.Schema<PaginatedServiceTokenDataItemServiceTokenAccessesItemResource>;
+  OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface PaginatedServiceTokenDataItemServiceTokenAccessesItem {
-  /** The ID of the service token access */
-  id: string;
-  /** The name of the service token access */
-  access: string;
-  /** The description of the service token access */
-  description: string;
-  /** The name of the resource the service token access gives access to */
-  resource_name: string;
-  /** The ID of the resource the service token access gives access to */
-  resource_id: string;
-  /** The type of the resource the service token access gives access to */
-  resource_type: string;
-  resource: PaginatedServiceTokenDataItemServiceTokenAccessesItemResource;
-}
+export type PaginatedServiceTokenDataItemServiceTokenAccessesItem =
+  ServiceTokenServiceTokenAccessesItem;
 export const PaginatedServiceTokenDataItemServiceTokenAccessesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      access: S.String,
-      description: S.String,
-      resource_name: S.String,
-      resource_id: S.String,
-      resource_type: S.String,
-      resource: PaginatedServiceTokenDataItemServiceTokenAccessesItemResource,
-    }),
-  ).annotate({
-    identifier: "PaginatedServiceTokenDataItemServiceTokenAccessesItem",
-  }) as any as S.Schema<PaginatedServiceTokenDataItemServiceTokenAccessesItem>;
+  ServiceTokenServiceTokenAccessesItem;
 
 export type PaginatedServiceTokenDataItemServiceTokenAccessesList =
-  Array<PaginatedServiceTokenDataItemServiceTokenAccessesItem>;
+  Array<ServiceTokenServiceTokenAccessesItem>;
 export const PaginatedServiceTokenDataItemServiceTokenAccessesList =
   /*@__PURE__*/ S.Array(
-    PaginatedServiceTokenDataItemServiceTokenAccessesItem,
+    ServiceTokenServiceTokenAccessesItem,
   ) as any as S.Schema<PaginatedServiceTokenDataItemServiceTokenAccessesList>;
 
-export interface PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem {
-  /** the name of the database the token has access to */
-  name: string;
-  /** the id of the database the token has access to */
-  id: string;
-  /** the name of the database's organization */
-  organization: string;
-  /** the planetscale app url for the database */
-  url: string;
-}
+export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem =
+  ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      id: S.String,
-      organization: S.String,
-      url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem",
-  }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem>;
+  ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesList =
-  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem>;
+  Array<ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesList =
   /*@__PURE__*/ S.Array(
-    PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesItem,
+    ServiceTokenOauthAccessesByResourceDatabaseDatabasesItem,
   ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseDatabasesList>;
 
-export interface PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem {
-  /** The name of the access scope */
-  name: string;
-  /** The scope description */
-  description: string;
-}
+export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      description: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem",
-  }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem>;
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList =
-  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem>;
+  Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList =
   /*@__PURE__*/ S.Array(
-    PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesItem,
+    ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
   ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabaseAccessesList>;
 
 export interface PaginatedServiceTokenDataItemOauthAccessesByResourceDatabase {
@@ -13434,55 +11933,28 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceDatabase =
     identifier: "PaginatedServiceTokenDataItemOauthAccessesByResourceDatabase",
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceDatabase>;
 
-export interface PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem {
-  /** the name of the organization */
-  name: string;
-  /** the id of the organization */
-  id: string;
-  /** the planetscale app url for the organization */
-  url: string;
-}
+export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem =
+  ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      id: S.String,
-      url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem",
-  }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem>;
+  ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList =
-  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem>;
+  Array<ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList =
   /*@__PURE__*/ S.Array(
-    PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsItem,
+    ServiceTokenOauthAccessesByResourceOrganizationOrganizationsItem,
   ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationOrganizationsList>;
 
-export interface PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem {
-  /** The name of the access scope */
-  name: string;
-  /** The scope description */
-  description: string;
-}
+export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      description: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem",
-  }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem>;
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList =
-  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem>;
+  Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList =
   /*@__PURE__*/ S.Array(
-    PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesItem,
+    ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
   ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganizationAccessesList>;
 
 export interface PaginatedServiceTokenDataItemOauthAccessesByResourceOrganization {
@@ -13502,61 +11974,28 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceOrganization =
       "PaginatedServiceTokenDataItemOauthAccessesByResourceOrganization",
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceOrganization>;
 
-export interface PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem {
-  /** the name of the branch */
-  name: string;
-  /** the id of the branch */
-  id: string;
-  /** the name of the database the branch belongs to */
-  database: string;
-  /** the name of the organization the branch belongs to */
-  organization: string;
-  /** the planetscale app url for the branch */
-  url: string;
-}
+export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem =
+  ServiceTokenOauthAccessesByResourceBranchBranchesItem;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      id: S.String,
-      database: S.String,
-      organization: S.String,
-      url: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem",
-  }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem>;
+  ServiceTokenOauthAccessesByResourceBranchBranchesItem;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList =
-  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem>;
+  Array<ServiceTokenOauthAccessesByResourceBranchBranchesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList =
   /*@__PURE__*/ S.Array(
-    PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesItem,
+    ServiceTokenOauthAccessesByResourceBranchBranchesItem,
   ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchBranchesList>;
 
-export interface PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem {
-  /** The name of the access scope */
-  name: string;
-  /** The scope description */
-  description: string;
-}
+export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      description: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem",
-  }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem>;
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList =
-  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem>;
+  Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList =
   /*@__PURE__*/ S.Array(
-    PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesItem,
+    ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
   ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranchAccessesList>;
 
 export interface PaginatedServiceTokenDataItemOauthAccessesByResourceBranch {
@@ -13575,52 +12014,28 @@ export const PaginatedServiceTokenDataItemOauthAccessesByResourceBranch =
     identifier: "PaginatedServiceTokenDataItemOauthAccessesByResourceBranch",
   }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceBranch>;
 
-export interface PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem {
-  /** the name of the user */
-  name: string;
-  /** the id of the user */
-  id: string;
-}
+export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem =
+  ServiceTokenOauthAccessesByResourceUserUsersItem;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem",
-  }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem>;
+  ServiceTokenOauthAccessesByResourceUserUsersItem;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList =
-  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem>;
+  Array<ServiceTokenOauthAccessesByResourceUserUsersItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList =
   /*@__PURE__*/ S.Array(
-    PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersItem,
+    ServiceTokenOauthAccessesByResourceUserUsersItem,
   ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUserUsersList>;
 
-export interface PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem {
-  /** The name of the access scope */
-  name: string;
-  /** The scope description */
-  description: string;
-}
+export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem =
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      description: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem",
-  }) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem>;
+  ServiceTokenOauthAccessesByResourceDatabaseAccessesItem;
 
 export type PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList =
-  Array<PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem>;
+  Array<ServiceTokenOauthAccessesByResourceDatabaseAccessesItem>;
 export const PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList =
   /*@__PURE__*/ S.Array(
-    PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesItem,
+    ServiceTokenOauthAccessesByResourceDatabaseAccessesItem,
   ) as any as S.Schema<PaginatedServiceTokenDataItemOauthAccessesByResourceUserAccessesList>;
 
 export interface PaginatedServiceTokenDataItemOauthAccessesByResourceUser {
@@ -13774,81 +12189,15 @@ export const ListOrganizationMembersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationMembersRequest",
 }) as any as S.Schema<ListOrganizationMembersRequest>;
 
-export interface PaginatedOrganizationMembershipDataItemUserDefaultOrganization {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
+export type PaginatedOrganizationMembershipDataItemUserDefaultOrganization =
+  OrganizationTeamMembershipUserDefaultOrganization;
 export const PaginatedOrganizationMembershipDataItemUserDefaultOrganization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedOrganizationMembershipDataItemUserDefaultOrganization",
-  }) as any as S.Schema<PaginatedOrganizationMembershipDataItemUserDefaultOrganization>;
+  OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface PaginatedOrganizationMembershipDataItemUser {
-  /** The ID of the user */
-  id: string;
-  /** The display name of the user */
-  display_name: string;
-  /** The name of the user */
-  name?: string | null;
-  /** The email of the user */
-  email: string;
-  /** The URL source of the user's avatar */
-  avatar_url: string;
-  /** When the user was created */
-  created_at: string;
-  /** When the user was last updated */
-  updated_at: string;
-  /** Whether or not the user has configured two factor authentication */
-  two_factor_auth_configured: boolean;
-  default_organization?: PaginatedOrganizationMembershipDataItemUserDefaultOrganization;
-  /** Whether or not the user is managed by SSO */
-  sso?: boolean;
-  /** Whether or not the user is managed by an authentication provider */
-  managed?: boolean;
-  /** Whether or not the user is managed by a SSO directory */
-  directory_managed?: boolean;
-  /** Whether or not the user is verified by email */
-  email_verified?: boolean;
-}
+export type PaginatedOrganizationMembershipDataItemUser =
+  OrganizationMembershipUser;
 export const PaginatedOrganizationMembershipDataItemUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      name: S.optional(S.NullOr(S.String)),
-      email: S.String,
-      avatar_url: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      two_factor_auth_configured: S.Boolean,
-      default_organization: S.optional(
-        PaginatedOrganizationMembershipDataItemUserDefaultOrganization,
-      ),
-      sso: S.optional(S.Boolean),
-      managed: S.optional(S.Boolean),
-      directory_managed: S.optional(S.Boolean),
-      email_verified: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PaginatedOrganizationMembershipDataItemUser",
-  }) as any as S.Schema<PaginatedOrganizationMembershipDataItemUser>;
+  OrganizationMembershipUser;
 
 /** The role of the user in the organization */
 export type PaginatedOrganizationMembershipDataItemRole = "member" | "admin";
@@ -13858,7 +12207,7 @@ export const PaginatedOrganizationMembershipDataItemRole =
 export interface PaginatedOrganizationMembershipDataItem {
   /** The ID of the membership */
   id: string;
-  user: PaginatedOrganizationMembershipDataItemUser;
+  user: OrganizationMembershipUser;
   /** The role of the user in the organization */
   role: PaginatedOrganizationMembershipDataItemRole;
   /** When the membership was created */
@@ -13870,7 +12219,7 @@ export const PaginatedOrganizationMembershipDataItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      user: PaginatedOrganizationMembershipDataItemUser,
+      user: OrganizationMembershipUser,
       role: PaginatedOrganizationMembershipDataItemRole,
       created_at: S.String,
       updated_at: S.String,
@@ -14063,99 +12412,20 @@ export const ListOrganizationTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationTeamMembersRequest",
 }) as any as S.Schema<ListOrganizationTeamMembersRequest>;
 
-export interface PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
+export type PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization =
+  OrganizationTeamMembershipUserDefaultOrganization;
 export const PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization",
-  }) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization>;
+  OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface PaginatedOrganizationTeamMembershipDataItemUser {
-  /** The ID of the user */
-  id: string;
-  /** The display name of the user */
-  display_name: string;
-  /** The name of the user */
-  name: string;
-  /** The email of the user */
-  email: string;
-  /** The URL source of the user's avatar */
-  avatar_url: string;
-  /** When the user was created */
-  created_at: string;
-  /** When the user was last updated */
-  updated_at: string;
-  /** Whether or not the user has configured two factor authentication */
-  two_factor_auth_configured: boolean;
-  default_organization: PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization;
-  /** Whether or not the user is managed by SSO */
-  sso: boolean;
-  /** Whether or not the user is managed by an authentication provider */
-  managed: boolean;
-  /** Whether or not the user is managed by a SSO directory */
-  directory_managed: boolean;
-  /** Whether or not the user is verified by email */
-  email_verified: boolean;
-}
+export type PaginatedOrganizationTeamMembershipDataItemUser =
+  OrganizationTeamMembershipUser;
 export const PaginatedOrganizationTeamMembershipDataItemUser =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      name: S.String,
-      email: S.String,
-      avatar_url: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      two_factor_auth_configured: S.Boolean,
-      default_organization:
-        PaginatedOrganizationTeamMembershipDataItemUserDefaultOrganization,
-      sso: S.Boolean,
-      managed: S.Boolean,
-      directory_managed: S.Boolean,
-      email_verified: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "PaginatedOrganizationTeamMembershipDataItemUser",
-  }) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemUser>;
+  OrganizationTeamMembershipUser;
 
-export interface PaginatedOrganizationTeamMembershipDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedOrganizationTeamMembershipDataItemActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedOrganizationTeamMembershipDataItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedOrganizationTeamMembershipDataItemActor",
-  }) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemActor>;
+  OrganizationTeamMembershipActor;
 
 /** The role for the password */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemRole =
@@ -14190,24 +12460,10 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostR
     S.String,
   ) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList>;
 
-export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor",
-  }) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor>;
+  OrganizationTeamMembershipActor;
 
 /** Public IP addresses for the region */
 export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegionPublicIpAddressesList =
@@ -14253,31 +12509,10 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion =
       "PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion",
   }) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion>;
 
-export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItemDatabaseBranch {
-  /** The name for the branch */
-  name: string;
-  /** The ID for the branch */
-  id: string;
-  /** Whether or not the branch is a production branch */
-  production: boolean;
-  /** The address of the MySQL provider for the branch */
-  mysql_edge_address: string;
-  /** True if private connectivity is enabled */
-  private_edge_connectivity: boolean;
-}
+export type PaginatedOrganizationTeamMembershipDataItemPasswordsItemDatabaseBranch =
+  OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItemDatabaseBranch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      id: S.String,
-      production: S.Boolean,
-      mysql_edge_address: S.String,
-      private_edge_connectivity: S.Boolean,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedOrganizationTeamMembershipDataItemPasswordsItemDatabaseBranch",
-  }) as any as S.Schema<PaginatedOrganizationTeamMembershipDataItemPasswordsItemDatabaseBranch>;
+  OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 
 export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItem {
   /** The ID for the password */
@@ -14310,7 +12545,7 @@ export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItem {
   access_host_regional_url: string;
   /** The read-only replica host URLs */
   access_host_regional_urls: PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList;
-  actor: PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor;
+  actor: OrganizationTeamMembershipActor;
   region: PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion;
   /** The username for the password */
   username: string;
@@ -14320,7 +12555,7 @@ export interface PaginatedOrganizationTeamMembershipDataItemPasswordsItem {
   replica: boolean;
   /** Whether or not the password can be renewed */
   renewable: boolean;
-  database_branch: PaginatedOrganizationTeamMembershipDataItemPasswordsItemDatabaseBranch;
+  database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 }
 export const PaginatedOrganizationTeamMembershipDataItemPasswordsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -14342,14 +12577,13 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsItem =
       access_host_regional_url: S.String,
       access_host_regional_urls:
         PaginatedOrganizationTeamMembershipDataItemPasswordsItemAccessHostRegionalUrlsList,
-      actor: PaginatedOrganizationTeamMembershipDataItemPasswordsItemActor,
+      actor: OrganizationTeamMembershipActor,
       region: PaginatedOrganizationTeamMembershipDataItemPasswordsItemRegion,
       username: S.String,
       plain_text: S.String.pipe(T.SensitiveValue({})),
       replica: S.Boolean,
       renewable: S.Boolean,
-      database_branch:
-        PaginatedOrganizationTeamMembershipDataItemPasswordsItemDatabaseBranch,
+      database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch,
     }),
   ).annotate({
     identifier: "PaginatedOrganizationTeamMembershipDataItemPasswordsItem",
@@ -14365,8 +12599,8 @@ export const PaginatedOrganizationTeamMembershipDataItemPasswordsList =
 export interface PaginatedOrganizationTeamMembershipDataItem {
   /** The ID of the team membership */
   id: string;
-  user: PaginatedOrganizationTeamMembershipDataItemUser;
-  actor: PaginatedOrganizationTeamMembershipDataItemActor;
+  user: OrganizationTeamMembershipUser;
+  actor: OrganizationTeamMembershipActor;
   /** When the membership was created */
   created_at: string;
   /** When the membership was last updated */
@@ -14377,8 +12611,8 @@ export const PaginatedOrganizationTeamMembershipDataItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      user: PaginatedOrganizationTeamMembershipDataItemUser,
-      actor: PaginatedOrganizationTeamMembershipDataItemActor,
+      user: OrganizationTeamMembershipUser,
+      actor: OrganizationTeamMembershipActor,
       created_at: S.String,
       updated_at: S.String,
       passwords: PaginatedOrganizationTeamMembershipDataItemPasswordsList,
@@ -14447,134 +12681,38 @@ export const ListOrganizationTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListOrganizationTeamsRequest",
 }) as any as S.Schema<ListOrganizationTeamsRequest>;
 
-export interface PaginatedOrganizationTeamDataItemCreator {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedOrganizationTeamDataItemCreator = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-).annotate({
-  identifier: "PaginatedOrganizationTeamDataItemCreator",
-}) as any as S.Schema<PaginatedOrganizationTeamDataItemCreator>;
+export type PaginatedOrganizationTeamDataItemCreator =
+  OrganizationTeamMembershipActor;
+export const PaginatedOrganizationTeamDataItemCreator =
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
+export type PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization =
+  OrganizationTeamMembershipUserDefaultOrganization;
 export const PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization",
-  }) as any as S.Schema<PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization>;
+  OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface PaginatedOrganizationTeamDataItemMembersItem {
-  /** The ID of the user */
-  id: string;
-  /** The display name of the user */
-  display_name: string;
-  /** The name of the user */
-  name: string;
-  /** The email of the user */
-  email: string;
-  /** The URL source of the user's avatar */
-  avatar_url: string;
-  /** When the user was created */
-  created_at: string;
-  /** When the user was last updated */
-  updated_at: string;
-  /** Whether or not the user has configured two factor authentication */
-  two_factor_auth_configured: boolean;
-  default_organization: PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization;
-  /** Whether or not the user is managed by SSO */
-  sso: boolean;
-  /** Whether or not the user is managed by an authentication provider */
-  managed: boolean;
-  /** Whether or not the user is managed by a SSO directory */
-  directory_managed: boolean;
-  /** Whether or not the user is verified by email */
-  email_verified: boolean;
-}
+export type PaginatedOrganizationTeamDataItemMembersItem =
+  OrganizationTeamMembershipUser;
 export const PaginatedOrganizationTeamDataItemMembersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      name: S.String,
-      email: S.String,
-      avatar_url: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      two_factor_auth_configured: S.Boolean,
-      default_organization:
-        PaginatedOrganizationTeamDataItemMembersItemDefaultOrganization,
-      sso: S.Boolean,
-      managed: S.Boolean,
-      directory_managed: S.Boolean,
-      email_verified: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "PaginatedOrganizationTeamDataItemMembersItem",
-  }) as any as S.Schema<PaginatedOrganizationTeamDataItemMembersItem>;
+  OrganizationTeamMembershipUser;
 
 export type PaginatedOrganizationTeamDataItemMembersList =
-  Array<PaginatedOrganizationTeamDataItemMembersItem>;
+  Array<OrganizationTeamMembershipUser>;
 export const PaginatedOrganizationTeamDataItemMembersList =
   /*@__PURE__*/ S.Array(
-    PaginatedOrganizationTeamDataItemMembersItem,
+    OrganizationTeamMembershipUser,
   ) as any as S.Schema<PaginatedOrganizationTeamDataItemMembersList>;
 
-export interface PaginatedOrganizationTeamDataItemDatabasesItem {
-  /** The ID of the database */
-  id: string;
-  /** The name of the database */
-  name: string;
-  /** The URL to the database API endpoint */
-  url: string;
-  /** The URL to retrieve this database's branches via the API */
-  branches_url: string;
-}
+export type PaginatedOrganizationTeamDataItemDatabasesItem =
+  OrganizationTeamDatabasesItem;
 export const PaginatedOrganizationTeamDataItemDatabasesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      url: S.String,
-      branches_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedOrganizationTeamDataItemDatabasesItem",
-  }) as any as S.Schema<PaginatedOrganizationTeamDataItemDatabasesItem>;
+  OrganizationTeamDatabasesItem;
 
 export type PaginatedOrganizationTeamDataItemDatabasesList =
-  Array<PaginatedOrganizationTeamDataItemDatabasesItem>;
+  Array<OrganizationTeamDatabasesItem>;
 export const PaginatedOrganizationTeamDataItemDatabasesList =
   /*@__PURE__*/ S.Array(
-    PaginatedOrganizationTeamDataItemDatabasesItem,
+    OrganizationTeamDatabasesItem,
   ) as any as S.Schema<PaginatedOrganizationTeamDataItemDatabasesList>;
 
 export interface PaginatedOrganizationTeamDataItem {
@@ -14582,7 +12720,7 @@ export interface PaginatedOrganizationTeamDataItem {
   id: string;
   /** The display name of the team */
   display_name: string;
-  creator: PaginatedOrganizationTeamDataItemCreator;
+  creator: OrganizationTeamMembershipActor;
   members: PaginatedOrganizationTeamDataItemMembersList;
   databases: PaginatedOrganizationTeamDataItemDatabasesList;
   /** The name of the team */
@@ -14602,7 +12740,7 @@ export const PaginatedOrganizationTeamDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     display_name: S.String,
-    creator: PaginatedOrganizationTeamDataItemCreator,
+    creator: OrganizationTeamMembershipActor,
     members: PaginatedOrganizationTeamDataItemMembersList,
     databases: PaginatedOrganizationTeamDataItemDatabasesList,
     name: S.String,
@@ -14698,23 +12836,8 @@ export const PostgresClusterParameterOptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PostgresClusterParameterOptionsList>;
 
-export interface PostgresClusterParameterActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PostgresClusterParameterActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PostgresClusterParameterActor",
-}) as any as S.Schema<PostgresClusterParameterActor>;
+export type PostgresClusterParameterActor = OrganizationTeamMembershipActor;
+export const PostgresClusterParameterActor = OrganizationTeamMembershipActor;
 
 export interface PostgresClusterParameter {
   /** The ID of the parameter */
@@ -14757,7 +12880,7 @@ export interface PostgresClusterParameter {
   url: string;
   /** Valid options for the parameter value */
   options: PostgresClusterParameterOptionsList;
-  actor: PostgresClusterParameterActor;
+  actor: OrganizationTeamMembershipActor;
 }
 export const PostgresClusterParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14781,7 +12904,7 @@ export const PostgresClusterParameter = /*@__PURE__*/ S.suspend(() =>
     step: S.Number,
     url: S.String,
     options: PostgresClusterParameterOptionsList,
-    actor: PostgresClusterParameterActor,
+    actor: OrganizationTeamMembershipActor,
   }),
 ).annotate({
   identifier: "PostgresClusterParameter",
@@ -14864,24 +12987,10 @@ export const PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList =
     S.String,
   ) as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList>;
 
-export interface PaginatedDatabaseBranchPasswordDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedDatabaseBranchPasswordDataItemActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedDatabaseBranchPasswordDataItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedDatabaseBranchPasswordDataItemActor",
-  }) as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemActor>;
+  OrganizationTeamMembershipActor;
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchPasswordDataItemRegionPublicIpAddressesList =
@@ -14926,30 +13035,10 @@ export const PaginatedDatabaseBranchPasswordDataItemRegion =
     identifier: "PaginatedDatabaseBranchPasswordDataItemRegion",
   }) as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemRegion>;
 
-export interface PaginatedDatabaseBranchPasswordDataItemDatabaseBranch {
-  /** The name for the branch */
-  name: string;
-  /** The ID for the branch */
-  id: string;
-  /** Whether or not the branch is a production branch */
-  production: boolean;
-  /** The address of the MySQL provider for the branch */
-  mysql_edge_address: string;
-  /** True if private connectivity is enabled */
-  private_edge_connectivity: boolean;
-}
+export type PaginatedDatabaseBranchPasswordDataItemDatabaseBranch =
+  OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 export const PaginatedDatabaseBranchPasswordDataItemDatabaseBranch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      id: S.String,
-      production: S.Boolean,
-      mysql_edge_address: S.String,
-      private_edge_connectivity: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "PaginatedDatabaseBranchPasswordDataItemDatabaseBranch",
-  }) as any as S.Schema<PaginatedDatabaseBranchPasswordDataItemDatabaseBranch>;
+  OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 
 export interface PaginatedDatabaseBranchPasswordDataItem {
   /** The ID for the password */
@@ -14982,7 +13071,7 @@ export interface PaginatedDatabaseBranchPasswordDataItem {
   access_host_regional_url: string;
   /** The read-only replica host URLs */
   access_host_regional_urls: PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList;
-  actor: PaginatedDatabaseBranchPasswordDataItemActor;
+  actor: OrganizationTeamMembershipActor;
   region: PaginatedDatabaseBranchPasswordDataItemRegion;
   /** The username for the password */
   username: string;
@@ -14992,7 +13081,7 @@ export interface PaginatedDatabaseBranchPasswordDataItem {
   replica: boolean;
   /** Whether or not the password can be renewed */
   renewable: boolean;
-  database_branch: PaginatedDatabaseBranchPasswordDataItemDatabaseBranch;
+  database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch;
 }
 export const PaginatedDatabaseBranchPasswordDataItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -15014,13 +13103,13 @@ export const PaginatedDatabaseBranchPasswordDataItem = /*@__PURE__*/ S.suspend(
       access_host_regional_url: S.String,
       access_host_regional_urls:
         PaginatedDatabaseBranchPasswordDataItemAccessHostRegionalUrlsList,
-      actor: PaginatedDatabaseBranchPasswordDataItemActor,
+      actor: OrganizationTeamMembershipActor,
       region: PaginatedDatabaseBranchPasswordDataItemRegion,
       username: S.String,
       plain_text: S.NullOr(S.String).pipe(T.SensitiveValue({})),
       replica: S.Boolean,
       renewable: S.Boolean,
-      database_branch: PaginatedDatabaseBranchPasswordDataItemDatabaseBranch,
+      database_branch: OrganizationTeamMembershipPasswordsItemDatabaseBranch,
     }),
 ).annotate({
   identifier: "PaginatedDatabaseBranchPasswordDataItem",
@@ -15174,24 +13263,10 @@ export const ListReadOnlyRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListReadOnlyRegionsRequest",
 }) as any as S.Schema<ListReadOnlyRegionsRequest>;
 
-export interface PaginatedDatabaseBranchReadOnlyRegionDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedDatabaseBranchReadOnlyRegionDataItemActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedDatabaseBranchReadOnlyRegionDataItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedDatabaseBranchReadOnlyRegionDataItemActor",
-  }) as any as S.Schema<PaginatedDatabaseBranchReadOnlyRegionDataItemActor>;
+  OrganizationTeamMembershipActor;
 
 /** Public IP addresses for the region */
 export type PaginatedDatabaseBranchReadOnlyRegionDataItemRegionPublicIpAddressesList =
@@ -15249,7 +13324,7 @@ export interface PaginatedDatabaseBranchReadOnlyRegionDataItem {
   ready_at: string;
   /** Whether or not the read-only region is ready to serve queries */
   ready: boolean;
-  actor: PaginatedDatabaseBranchReadOnlyRegionDataItemActor;
+  actor: OrganizationTeamMembershipActor;
   region: PaginatedDatabaseBranchReadOnlyRegionDataItemRegion;
 }
 export const PaginatedDatabaseBranchReadOnlyRegionDataItem =
@@ -15261,7 +13336,7 @@ export const PaginatedDatabaseBranchReadOnlyRegionDataItem =
       updated_at: S.String,
       ready_at: S.String,
       ready: S.Boolean,
-      actor: PaginatedDatabaseBranchReadOnlyRegionDataItemActor,
+      actor: OrganizationTeamMembershipActor,
       region: PaginatedDatabaseBranchReadOnlyRegionDataItemRegion,
     }),
   ).annotate({
@@ -15381,47 +13456,13 @@ export const PaginatedPostgresRoleDataItemInheritedRolesList =
     PaginatedPostgresRoleDataItemInheritedRolesItem,
   ) as any as S.Schema<PaginatedPostgresRoleDataItemInheritedRolesList>;
 
-export interface PaginatedPostgresRoleDataItemBranch {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string | null;
-}
-export const PaginatedPostgresRoleDataItemBranch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "PaginatedPostgresRoleDataItemBranch",
-}) as any as S.Schema<PaginatedPostgresRoleDataItemBranch>;
+export type PaginatedPostgresRoleDataItemBranch = BackupRestoredBranchesItem;
+export const PaginatedPostgresRoleDataItemBranch = BackupRestoredBranchesItem;
 
-export interface PaginatedPostgresRoleDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedPostgresRoleDataItemActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PaginatedPostgresRoleDataItemActor",
-}) as any as S.Schema<PaginatedPostgresRoleDataItemActor>;
+export type PaginatedPostgresRoleDataItemActor =
+  OrganizationTeamMembershipActor;
+export const PaginatedPostgresRoleDataItemActor =
+  OrganizationTeamMembershipActor;
 
 /** Require WHERE clause on DELETE statements */
 export type PaginatedPostgresRoleDataItemQuerySafetySettingsRequireWhereOnDelete =
@@ -15492,8 +13533,8 @@ export interface PaginatedPostgresRoleDataItem {
   ttl: number | null;
   /** Database roles these credentials inherit */
   inherited_roles: PaginatedPostgresRoleDataItemInheritedRolesList;
-  branch: PaginatedPostgresRoleDataItemBranch;
-  actor: PaginatedPostgresRoleDataItemActor;
+  branch: BackupRestoredBranchesItem;
+  actor: OrganizationTeamMembershipActor;
   query_safety_settings: PaginatedPostgresRoleDataItemQuerySafetySettings;
 }
 export const PaginatedPostgresRoleDataItem = /*@__PURE__*/ S.suspend(() =>
@@ -15517,8 +13558,8 @@ export const PaginatedPostgresRoleDataItem = /*@__PURE__*/ S.suspend(() =>
     default: S.Boolean,
     ttl: S.NullOr(S.Number),
     inherited_roles: PaginatedPostgresRoleDataItemInheritedRolesList,
-    branch: PaginatedPostgresRoleDataItemBranch,
-    actor: PaginatedPostgresRoleDataItemActor,
+    branch: BackupRestoredBranchesItem,
+    actor: OrganizationTeamMembershipActor,
     query_safety_settings: PaginatedPostgresRoleDataItemQuerySafetySettings,
   }),
 ).annotate({
@@ -15613,43 +13654,15 @@ export type PaginatedSchemaRecommendationDataItemRecommendationType =
 export const PaginatedSchemaRecommendationDataItemRecommendationType =
   /*@__PURE__*/ S.String;
 
-export interface PaginatedSchemaRecommendationDataItemClosedByDeployRequest {
-  /** The ID of the deploy request */
-  id: string;
-  /** The ID of the branch */
-  branch_id: string;
-  /** The number of the deploy request */
-  number: number;
-}
+export type PaginatedSchemaRecommendationDataItemClosedByDeployRequest =
+  SchemaRecommendationClosedByDeployRequest;
 export const PaginatedSchemaRecommendationDataItemClosedByDeployRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      branch_id: S.String,
-      number: S.Number,
-    }),
-  ).annotate({
-    identifier: "PaginatedSchemaRecommendationDataItemClosedByDeployRequest",
-  }) as any as S.Schema<PaginatedSchemaRecommendationDataItemClosedByDeployRequest>;
+  SchemaRecommendationClosedByDeployRequest;
 
-export interface PaginatedSchemaRecommendationDataItemDismissedBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedSchemaRecommendationDataItemDismissedBy =
+  OrganizationTeamMembershipActor;
 export const PaginatedSchemaRecommendationDataItemDismissedBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedSchemaRecommendationDataItemDismissedBy",
-  }) as any as S.Schema<PaginatedSchemaRecommendationDataItemDismissedBy>;
+  OrganizationTeamMembershipActor;
 
 export interface PaginatedSchemaRecommendationDataItem {
   /** The ID of the schema recommendation */
@@ -15678,8 +13691,8 @@ export interface PaginatedSchemaRecommendationDataItem {
   applied_at: string;
   /** When the recommendation was dismissed */
   dismissed_at: string;
-  closed_by_deploy_request: PaginatedSchemaRecommendationDataItemClosedByDeployRequest;
-  dismissed_by: PaginatedSchemaRecommendationDataItemDismissedBy;
+  closed_by_deploy_request: SchemaRecommendationClosedByDeployRequest;
+  dismissed_by: OrganizationTeamMembershipActor;
 }
 export const PaginatedSchemaRecommendationDataItem = /*@__PURE__*/ S.suspend(
   () =>
@@ -15698,9 +13711,8 @@ export const PaginatedSchemaRecommendationDataItem = /*@__PURE__*/ S.suspend(
       updated_at: S.String,
       applied_at: S.String,
       dismissed_at: S.String,
-      closed_by_deploy_request:
-        PaginatedSchemaRecommendationDataItemClosedByDeployRequest,
-      dismissed_by: PaginatedSchemaRecommendationDataItemDismissedBy,
+      closed_by_deploy_request: SchemaRecommendationClosedByDeployRequest,
+      dismissed_by: OrganizationTeamMembershipActor,
     }),
 ).annotate({
   identifier: "PaginatedSchemaRecommendationDataItem",
@@ -15805,23 +13817,10 @@ export const ListTrafficBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
 export type PaginatedTrafficBudgetDataItemMode = "enforce" | "warn" | "off";
 export const PaginatedTrafficBudgetDataItemMode = /*@__PURE__*/ S.String;
 
-export interface PaginatedTrafficBudgetDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedTrafficBudgetDataItemActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PaginatedTrafficBudgetDataItemActor",
-}) as any as S.Schema<PaginatedTrafficBudgetDataItemActor>;
+export type PaginatedTrafficBudgetDataItemActor =
+  OrganizationTeamMembershipActor;
+export const PaginatedTrafficBudgetDataItemActor =
+  OrganizationTeamMembershipActor;
 
 /** The kind of rule */
 export type PaginatedTrafficBudgetDataItemRulesItemKind = "match";
@@ -15864,24 +13863,10 @@ export const PaginatedTrafficBudgetDataItemRulesItemTagsList =
     PaginatedTrafficBudgetDataItemRulesItemTagsItem,
   ) as any as S.Schema<PaginatedTrafficBudgetDataItemRulesItemTagsList>;
 
-export interface PaginatedTrafficBudgetDataItemRulesItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedTrafficBudgetDataItemRulesItemActor =
+  OrganizationTeamMembershipActor;
 export const PaginatedTrafficBudgetDataItemRulesItemActor =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedTrafficBudgetDataItemRulesItemActor",
-  }) as any as S.Schema<PaginatedTrafficBudgetDataItemRulesItemActor>;
+  OrganizationTeamMembershipActor;
 
 export interface PaginatedTrafficBudgetDataItemRulesItem {
   /** The ID of the traffic rule */
@@ -15893,7 +13878,7 @@ export interface PaginatedTrafficBudgetDataItemRulesItem {
   fingerprint?: string;
   /** The keyspace of the fingerprint */
   keyspace?: string;
-  actor: PaginatedTrafficBudgetDataItemRulesItemActor;
+  actor: OrganizationTeamMembershipActor;
   /** Syntax highlighted SQL for rules with SQL keys */
   syntax_highlighted_sql: string;
   /** When the rule was created */
@@ -15909,7 +13894,7 @@ export const PaginatedTrafficBudgetDataItemRulesItem = /*@__PURE__*/ S.suspend(
       tags: PaginatedTrafficBudgetDataItemRulesItemTagsList,
       fingerprint: S.optional(S.String),
       keyspace: S.optional(S.String),
-      actor: PaginatedTrafficBudgetDataItemRulesItemActor,
+      actor: OrganizationTeamMembershipActor,
       syntax_highlighted_sql: S.String,
       created_at: S.String,
       updated_at: S.String,
@@ -15941,7 +13926,7 @@ export interface PaginatedTrafficBudgetDataItem {
   concurrency?: number;
   /** A percentage of capacity, burst, or concurrency thresholds to emit warnings for enforced budgets (0-100). */
   warning_threshold?: number;
-  actor: PaginatedTrafficBudgetDataItemActor;
+  actor: OrganizationTeamMembershipActor;
   rules: PaginatedTrafficBudgetDataItemRulesList;
   /** When the budget was created */
   created_at: string;
@@ -15958,7 +13943,7 @@ export const PaginatedTrafficBudgetDataItem = /*@__PURE__*/ S.suspend(() =>
     burst: S.optional(S.Number),
     concurrency: S.optional(S.Number),
     warning_threshold: S.optional(S.Number),
-    actor: PaginatedTrafficBudgetDataItemActor,
+    actor: OrganizationTeamMembershipActor,
     rules: PaginatedTrafficBudgetDataItemRulesList,
     created_at: S.String,
     updated_at: S.String,
@@ -16192,290 +14177,73 @@ export type PaginatedWorkflowDataItemOnDdl =
   | "EXEC_IGNORE";
 export const PaginatedWorkflowDataItemOnDdl = /*@__PURE__*/ S.String;
 
-export interface PaginatedWorkflowDataItemActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedWorkflowDataItemActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PaginatedWorkflowDataItemActor",
-}) as any as S.Schema<PaginatedWorkflowDataItemActor>;
+export type PaginatedWorkflowDataItemActor = OrganizationTeamMembershipActor;
+export const PaginatedWorkflowDataItemActor = OrganizationTeamMembershipActor;
 
-export interface PaginatedWorkflowDataItemVerifyDataBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedWorkflowDataItemVerifyDataBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-).annotate({
-  identifier: "PaginatedWorkflowDataItemVerifyDataBy",
-}) as any as S.Schema<PaginatedWorkflowDataItemVerifyDataBy>;
+export type PaginatedWorkflowDataItemVerifyDataBy =
+  OrganizationTeamMembershipActor;
+export const PaginatedWorkflowDataItemVerifyDataBy =
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedWorkflowDataItemReversedBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedWorkflowDataItemReversedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PaginatedWorkflowDataItemReversedBy",
-}) as any as S.Schema<PaginatedWorkflowDataItemReversedBy>;
+export type PaginatedWorkflowDataItemReversedBy =
+  OrganizationTeamMembershipActor;
+export const PaginatedWorkflowDataItemReversedBy =
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedWorkflowDataItemSwitchReplicasBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedWorkflowDataItemSwitchReplicasBy =
+  OrganizationTeamMembershipActor;
 export const PaginatedWorkflowDataItemSwitchReplicasBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedWorkflowDataItemSwitchReplicasBy",
-  }) as any as S.Schema<PaginatedWorkflowDataItemSwitchReplicasBy>;
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedWorkflowDataItemSwitchPrimariesBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedWorkflowDataItemSwitchPrimariesBy =
+  OrganizationTeamMembershipActor;
 export const PaginatedWorkflowDataItemSwitchPrimariesBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedWorkflowDataItemSwitchPrimariesBy",
-  }) as any as S.Schema<PaginatedWorkflowDataItemSwitchPrimariesBy>;
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedWorkflowDataItemCancelledBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedWorkflowDataItemCancelledBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-).annotate({
-  identifier: "PaginatedWorkflowDataItemCancelledBy",
-}) as any as S.Schema<PaginatedWorkflowDataItemCancelledBy>;
+export type PaginatedWorkflowDataItemCancelledBy =
+  OrganizationTeamMembershipActor;
+export const PaginatedWorkflowDataItemCancelledBy =
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedWorkflowDataItemCompletedBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedWorkflowDataItemCompletedBy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-).annotate({
-  identifier: "PaginatedWorkflowDataItemCompletedBy",
-}) as any as S.Schema<PaginatedWorkflowDataItemCompletedBy>;
+export type PaginatedWorkflowDataItemCompletedBy =
+  OrganizationTeamMembershipActor;
+export const PaginatedWorkflowDataItemCompletedBy =
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedWorkflowDataItemRetriedBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedWorkflowDataItemRetriedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PaginatedWorkflowDataItemRetriedBy",
-}) as any as S.Schema<PaginatedWorkflowDataItemRetriedBy>;
+export type PaginatedWorkflowDataItemRetriedBy =
+  OrganizationTeamMembershipActor;
+export const PaginatedWorkflowDataItemRetriedBy =
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedWorkflowDataItemCutoverBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PaginatedWorkflowDataItemCutoverBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PaginatedWorkflowDataItemCutoverBy",
-}) as any as S.Schema<PaginatedWorkflowDataItemCutoverBy>;
+export type PaginatedWorkflowDataItemCutoverBy =
+  OrganizationTeamMembershipActor;
+export const PaginatedWorkflowDataItemCutoverBy =
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedWorkflowDataItemReversedCutoverBy {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
+export type PaginatedWorkflowDataItemReversedCutoverBy =
+  OrganizationTeamMembershipActor;
 export const PaginatedWorkflowDataItemReversedCutoverBy =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      display_name: S.String,
-      avatar_url: S.String,
-    }),
-  ).annotate({
-    identifier: "PaginatedWorkflowDataItemReversedCutoverBy",
-  }) as any as S.Schema<PaginatedWorkflowDataItemReversedCutoverBy>;
+  OrganizationTeamMembershipActor;
 
-export interface PaginatedWorkflowDataItemBranch {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const PaginatedWorkflowDataItemBranch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.String,
-  }),
-).annotate({
-  identifier: "PaginatedWorkflowDataItemBranch",
-}) as any as S.Schema<PaginatedWorkflowDataItemBranch>;
+export type PaginatedWorkflowDataItemBranch =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const PaginatedWorkflowDataItemBranch =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface PaginatedWorkflowDataItemSourceKeyspace {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const PaginatedWorkflowDataItemSourceKeyspace = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.String,
-    }),
-).annotate({
-  identifier: "PaginatedWorkflowDataItemSourceKeyspace",
-}) as any as S.Schema<PaginatedWorkflowDataItemSourceKeyspace>;
+export type PaginatedWorkflowDataItemSourceKeyspace =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const PaginatedWorkflowDataItemSourceKeyspace =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface PaginatedWorkflowDataItemTargetKeyspace {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const PaginatedWorkflowDataItemTargetKeyspace = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.String,
-    }),
-).annotate({
-  identifier: "PaginatedWorkflowDataItemTargetKeyspace",
-}) as any as S.Schema<PaginatedWorkflowDataItemTargetKeyspace>;
+export type PaginatedWorkflowDataItemTargetKeyspace =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const PaginatedWorkflowDataItemTargetKeyspace =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface PaginatedWorkflowDataItemGlobalKeyspace {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const PaginatedWorkflowDataItemGlobalKeyspace = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      created_at: S.String,
-      updated_at: S.String,
-      deleted_at: S.String,
-    }),
-).annotate({
-  identifier: "PaginatedWorkflowDataItemGlobalKeyspace",
-}) as any as S.Schema<PaginatedWorkflowDataItemGlobalKeyspace>;
+export type PaginatedWorkflowDataItemGlobalKeyspace =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const PaginatedWorkflowDataItemGlobalKeyspace =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
 export interface PaginatedWorkflowDataItem {
   /** The ID of the workflow */
@@ -16532,20 +14300,20 @@ export interface PaginatedWorkflowDataItem {
   verified_data_stale: boolean;
   /** Whether or not sequence tables have been created */
   sequence_tables_applied: boolean;
-  actor: PaginatedWorkflowDataItemActor;
-  verify_data_by: PaginatedWorkflowDataItemVerifyDataBy;
-  reversed_by: PaginatedWorkflowDataItemReversedBy;
-  switch_replicas_by: PaginatedWorkflowDataItemSwitchReplicasBy;
-  switch_primaries_by: PaginatedWorkflowDataItemSwitchPrimariesBy;
-  cancelled_by: PaginatedWorkflowDataItemCancelledBy;
-  completed_by: PaginatedWorkflowDataItemCompletedBy;
-  retried_by: PaginatedWorkflowDataItemRetriedBy;
-  cutover_by: PaginatedWorkflowDataItemCutoverBy;
-  reversed_cutover_by: PaginatedWorkflowDataItemReversedCutoverBy;
-  branch: PaginatedWorkflowDataItemBranch;
-  source_keyspace: PaginatedWorkflowDataItemSourceKeyspace;
-  target_keyspace: PaginatedWorkflowDataItemTargetKeyspace;
-  global_keyspace: PaginatedWorkflowDataItemGlobalKeyspace;
+  actor: OrganizationTeamMembershipActor;
+  verify_data_by: OrganizationTeamMembershipActor;
+  reversed_by: OrganizationTeamMembershipActor;
+  switch_replicas_by: OrganizationTeamMembershipActor;
+  switch_primaries_by: OrganizationTeamMembershipActor;
+  cancelled_by: OrganizationTeamMembershipActor;
+  completed_by: OrganizationTeamMembershipActor;
+  retried_by: OrganizationTeamMembershipActor;
+  cutover_by: OrganizationTeamMembershipActor;
+  reversed_cutover_by: OrganizationTeamMembershipActor;
+  branch: OrganizationTeamMembershipUserDefaultOrganization;
+  source_keyspace: OrganizationTeamMembershipUserDefaultOrganization;
+  target_keyspace: OrganizationTeamMembershipUserDefaultOrganization;
+  global_keyspace: OrganizationTeamMembershipUserDefaultOrganization;
 }
 export const PaginatedWorkflowDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16576,20 +14344,20 @@ export const PaginatedWorkflowDataItem = /*@__PURE__*/ S.suspend(() =>
     may_restart: S.Boolean,
     verified_data_stale: S.Boolean,
     sequence_tables_applied: S.Boolean,
-    actor: PaginatedWorkflowDataItemActor,
-    verify_data_by: PaginatedWorkflowDataItemVerifyDataBy,
-    reversed_by: PaginatedWorkflowDataItemReversedBy,
-    switch_replicas_by: PaginatedWorkflowDataItemSwitchReplicasBy,
-    switch_primaries_by: PaginatedWorkflowDataItemSwitchPrimariesBy,
-    cancelled_by: PaginatedWorkflowDataItemCancelledBy,
-    completed_by: PaginatedWorkflowDataItemCompletedBy,
-    retried_by: PaginatedWorkflowDataItemRetriedBy,
-    cutover_by: PaginatedWorkflowDataItemCutoverBy,
-    reversed_cutover_by: PaginatedWorkflowDataItemReversedCutoverBy,
-    branch: PaginatedWorkflowDataItemBranch,
-    source_keyspace: PaginatedWorkflowDataItemSourceKeyspace,
-    target_keyspace: PaginatedWorkflowDataItemTargetKeyspace,
-    global_keyspace: PaginatedWorkflowDataItemGlobalKeyspace,
+    actor: OrganizationTeamMembershipActor,
+    verify_data_by: OrganizationTeamMembershipActor,
+    reversed_by: OrganizationTeamMembershipActor,
+    switch_replicas_by: OrganizationTeamMembershipActor,
+    switch_primaries_by: OrganizationTeamMembershipActor,
+    cancelled_by: OrganizationTeamMembershipActor,
+    completed_by: OrganizationTeamMembershipActor,
+    retried_by: OrganizationTeamMembershipActor,
+    cutover_by: OrganizationTeamMembershipActor,
+    reversed_cutover_by: OrganizationTeamMembershipActor,
+    branch: OrganizationTeamMembershipUserDefaultOrganization,
+    source_keyspace: OrganizationTeamMembershipUserDefaultOrganization,
+    target_keyspace: OrganizationTeamMembershipUserDefaultOrganization,
+    global_keyspace: OrganizationTeamMembershipUserDefaultOrganization,
   }),
 ).annotate({
   identifier: "PaginatedWorkflowDataItem",
@@ -16925,23 +14693,8 @@ export const ReviewDeployRequestRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeployRequestReviewState = "commented" | "approved";
 export const DeployRequestReviewState = /*@__PURE__*/ S.String;
 
-export interface DeployRequestReviewActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const DeployRequestReviewActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "DeployRequestReviewActor",
-}) as any as S.Schema<DeployRequestReviewActor>;
+export type DeployRequestReviewActor = OrganizationTeamMembershipActor;
+export const DeployRequestReviewActor = OrganizationTeamMembershipActor;
 
 export interface DeployRequestReview {
   /** The ID of the review */
@@ -16956,7 +14709,7 @@ export interface DeployRequestReview {
   created_at: string;
   /** When the review was last updated */
   updated_at: string;
-  actor: DeployRequestReviewActor;
+  actor: OrganizationTeamMembershipActor;
 }
 export const DeployRequestReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16966,7 +14719,7 @@ export const DeployRequestReview = /*@__PURE__*/ S.suspend(() =>
     state: DeployRequestReviewState,
     created_at: S.String,
     updated_at: S.String,
-    actor: DeployRequestReviewActor,
+    actor: OrganizationTeamMembershipActor,
   }),
 ).annotate({
   identifier: "DeployRequestReview",
@@ -17256,96 +15009,20 @@ export const PostgresBouncerResizeRequestPreviousParametersMap =
     S.Unknown,
   ) as any as S.Schema<PostgresBouncerResizeRequestPreviousParametersMap>;
 
-export interface PostgresBouncerResizeRequestActor {
-  /** The ID of the actor */
-  id: string;
-  /** The name of the actor */
-  display_name: string;
-  /** The URL of the actor's avatar */
-  avatar_url: string;
-}
-export const PostgresBouncerResizeRequestActor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    display_name: S.String,
-    avatar_url: S.String,
-  }),
-).annotate({
-  identifier: "PostgresBouncerResizeRequestActor",
-}) as any as S.Schema<PostgresBouncerResizeRequestActor>;
+export type PostgresBouncerResizeRequestActor = OrganizationTeamMembershipActor;
+export const PostgresBouncerResizeRequestActor =
+  OrganizationTeamMembershipActor;
 
-export interface PostgresBouncerResizeRequestBouncer {
-  /** The ID for the resource */
-  id: string;
-  /** The name for the resource */
-  name: string;
-  /** When the resource was created */
-  created_at: string;
-  /** When the resource was last updated */
-  updated_at: string;
-  /** When the resource was deleted, if deleted */
-  deleted_at: string;
-}
-export const PostgresBouncerResizeRequestBouncer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    deleted_at: S.String,
-  }),
-).annotate({
-  identifier: "PostgresBouncerResizeRequestBouncer",
-}) as any as S.Schema<PostgresBouncerResizeRequestBouncer>;
+export type PostgresBouncerResizeRequestBouncer =
+  OrganizationTeamMembershipUserDefaultOrganization;
+export const PostgresBouncerResizeRequestBouncer =
+  OrganizationTeamMembershipUserDefaultOrganization;
 
-export interface PostgresBouncerResizeRequestSku {
-  /** The name of the Postgres bouncer SKU */
-  name: string;
-  /** The display name */
-  display_name: string;
-  /** The CPU allocation */
-  cpu: string;
-  /** The amount of memory in bytes */
-  ram: number;
-  /** The sort order of the Postgres bouncer SKU */
-  sort_order: number;
-}
-export const PostgresBouncerResizeRequestSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    display_name: S.String,
-    cpu: S.String,
-    ram: S.Number,
-    sort_order: S.Number,
-  }),
-).annotate({
-  identifier: "PostgresBouncerResizeRequestSku",
-}) as any as S.Schema<PostgresBouncerResizeRequestSku>;
+export type PostgresBouncerResizeRequestSku = PostgresBouncerSku;
+export const PostgresBouncerResizeRequestSku = PostgresBouncerSku;
 
-export interface PostgresBouncerResizeRequestPreviousSku {
-  /** The name of the Postgres bouncer SKU */
-  name: string;
-  /** The display name */
-  display_name: string;
-  /** The CPU allocation */
-  cpu: string;
-  /** The amount of memory in bytes */
-  ram: number;
-  /** The sort order of the Postgres bouncer SKU */
-  sort_order: number;
-}
-export const PostgresBouncerResizeRequestPreviousSku = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      display_name: S.String,
-      cpu: S.String,
-      ram: S.Number,
-      sort_order: S.Number,
-    }),
-).annotate({
-  identifier: "PostgresBouncerResizeRequestPreviousSku",
-}) as any as S.Schema<PostgresBouncerResizeRequestPreviousSku>;
+export type PostgresBouncerResizeRequestPreviousSku = PostgresBouncerSku;
+export const PostgresBouncerResizeRequestPreviousSku = PostgresBouncerSku;
 
 export interface PostgresBouncerResizeRequest {
   /** The ID of the bouncer resize */
@@ -17368,10 +15045,10 @@ export interface PostgresBouncerResizeRequest {
   created_at: string;
   /** The time the bouncer resize was last updated */
   updated_at: string;
-  actor: PostgresBouncerResizeRequestActor;
-  bouncer: PostgresBouncerResizeRequestBouncer;
-  sku: PostgresBouncerResizeRequestSku;
-  previous_sku: PostgresBouncerResizeRequestPreviousSku;
+  actor: OrganizationTeamMembershipActor;
+  bouncer: OrganizationTeamMembershipUserDefaultOrganization;
+  sku: PostgresBouncerSku;
+  previous_sku: PostgresBouncerSku;
 }
 export const PostgresBouncerResizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -17385,10 +15062,10 @@ export const PostgresBouncerResizeRequest = /*@__PURE__*/ S.suspend(() =>
     completed_at: S.String,
     created_at: S.String,
     updated_at: S.String,
-    actor: PostgresBouncerResizeRequestActor,
-    bouncer: PostgresBouncerResizeRequestBouncer,
-    sku: PostgresBouncerResizeRequestSku,
-    previous_sku: PostgresBouncerResizeRequestPreviousSku,
+    actor: OrganizationTeamMembershipActor,
+    bouncer: OrganizationTeamMembershipUserDefaultOrganization,
+    sku: PostgresBouncerSku,
+    previous_sku: PostgresBouncerSku,
   }),
 ).annotate({
   identifier: "PostgresBouncerResizeRequest",

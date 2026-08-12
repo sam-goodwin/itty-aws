@@ -1348,56 +1348,16 @@ export const LabPlansUpdateRequestTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LabPlansUpdateRequestTagsList>;
 
 /** Connection profile for how users connect to lab virtual machines. */
-export interface LabPlanUpdatePropertiesDefaultConnectionProfile {
-  /** The enabled access level for Web Access over SSH. */
-  webSshAccess?: ConnectionType | (string & {});
-  /** The enabled access level for Web Access over RDP. */
-  webRdpAccess?: ConnectionType | (string & {});
-  /** The enabled access level for Client Access over SSH. */
-  clientSshAccess?: ConnectionType | (string & {});
-  /** The enabled access level for Client Access over RDP. */
-  clientRdpAccess?: ConnectionType | (string & {});
-}
+export type LabPlanUpdatePropertiesDefaultConnectionProfile =
+  LabPlanPropertiesDefaultConnectionProfile;
 export const LabPlanUpdatePropertiesDefaultConnectionProfile =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      webSshAccess: S.optional(ConnectionType),
-      webRdpAccess: S.optional(ConnectionType),
-      clientSshAccess: S.optional(ConnectionType),
-      clientRdpAccess: S.optional(ConnectionType),
-    }),
-  ).annotate({
-    identifier: "LabPlanUpdatePropertiesDefaultConnectionProfile",
-  }) as any as S.Schema<LabPlanUpdatePropertiesDefaultConnectionProfile>;
+  LabPlanPropertiesDefaultConnectionProfile;
 
 /** Profile for how to handle shutting down virtual machines. */
-export interface LabPlanUpdatePropertiesDefaultAutoShutdownProfile {
-  /** Whether shutdown on disconnect is enabled */
-  shutdownOnDisconnect?: EnableState | (string & {});
-  /** Whether a VM will get shutdown when it hasn't been connected to after a period of time. */
-  shutdownWhenNotConnected?: EnableState | (string & {});
-  /** Whether a VM will get shutdown when it has idled for a period of time. */
-  shutdownOnIdle?: ShutdownOnIdleMode | (string & {});
-  /** The amount of time a VM will stay running after a user disconnects if this behavior is enabled. */
-  disconnectDelay?: string;
-  /** The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled. */
-  noConnectDelay?: string;
-  /** The amount of time a VM will idle before it is shutdown if this behavior is enabled. */
-  idleDelay?: string;
-}
+export type LabPlanUpdatePropertiesDefaultAutoShutdownProfile =
+  LabPlanPropertiesDefaultAutoShutdownProfile;
 export const LabPlanUpdatePropertiesDefaultAutoShutdownProfile =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      shutdownOnDisconnect: S.optional(EnableState),
-      shutdownWhenNotConnected: S.optional(EnableState),
-      shutdownOnIdle: S.optional(ShutdownOnIdleMode),
-      disconnectDelay: S.optional(S.String),
-      noConnectDelay: S.optional(S.String),
-      idleDelay: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LabPlanUpdatePropertiesDefaultAutoShutdownProfile",
-  }) as any as S.Schema<LabPlanUpdatePropertiesDefaultAutoShutdownProfile>;
+  LabPlanPropertiesDefaultAutoShutdownProfile;
 
 /** The allowed regions for the lab creator to use when creating labs using this lab plan. */
 export type LabPlanUpdatePropertiesAllowedRegionsList = Array<string>;
@@ -1408,9 +1368,9 @@ export const LabPlanUpdatePropertiesAllowedRegionsList = /*@__PURE__*/ S.Array(
 /** Lab plan resource properties for updates */
 export interface LabPlanUpdateProperties {
   /** Connection profile for how users connect to lab virtual machines. */
-  defaultConnectionProfile?: LabPlanUpdatePropertiesDefaultConnectionProfile;
+  defaultConnectionProfile?: LabPlanPropertiesDefaultConnectionProfile;
   /** Profile for how to handle shutting down virtual machines. */
-  defaultAutoShutdownProfile?: LabPlanUpdatePropertiesDefaultAutoShutdownProfile;
+  defaultAutoShutdownProfile?: LabPlanPropertiesDefaultAutoShutdownProfile;
   /** The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan. */
   defaultNetworkProfile?: LabPlanNetworkProfile;
   /** The allowed regions for the lab creator to use when creating labs using this lab plan. */
@@ -1425,10 +1385,10 @@ export interface LabPlanUpdateProperties {
 export const LabPlanUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultConnectionProfile: S.optional(
-      LabPlanUpdatePropertiesDefaultConnectionProfile,
+      LabPlanPropertiesDefaultConnectionProfile,
     ),
     defaultAutoShutdownProfile: S.optional(
-      LabPlanUpdatePropertiesDefaultAutoShutdownProfile,
+      LabPlanPropertiesDefaultAutoShutdownProfile,
     ),
     defaultNetworkProfile: S.optional(LabPlanNetworkProfile),
     allowedRegions: S.optional(LabPlanUpdatePropertiesAllowedRegionsList),
@@ -1614,55 +1574,16 @@ export const LabsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<LabsCreateOrUpdateRequestTagsMap>;
 
 /** Profile for how to handle shutting down virtual machines. */
-export interface LabPropertiesInputAutoShutdownProfile {
-  /** Whether shutdown on disconnect is enabled */
-  shutdownOnDisconnect?: EnableState | (string & {});
-  /** Whether a VM will get shutdown when it hasn't been connected to after a period of time. */
-  shutdownWhenNotConnected?: EnableState | (string & {});
-  /** Whether a VM will get shutdown when it has idled for a period of time. */
-  shutdownOnIdle?: ShutdownOnIdleMode | (string & {});
-  /** The amount of time a VM will stay running after a user disconnects if this behavior is enabled. */
-  disconnectDelay?: string;
-  /** The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled. */
-  noConnectDelay?: string;
-  /** The amount of time a VM will idle before it is shutdown if this behavior is enabled. */
-  idleDelay?: string;
-}
-export const LabPropertiesInputAutoShutdownProfile = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      shutdownOnDisconnect: S.optional(EnableState),
-      shutdownWhenNotConnected: S.optional(EnableState),
-      shutdownOnIdle: S.optional(ShutdownOnIdleMode),
-      disconnectDelay: S.optional(S.String),
-      noConnectDelay: S.optional(S.String),
-      idleDelay: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "LabPropertiesInputAutoShutdownProfile",
-}) as any as S.Schema<LabPropertiesInputAutoShutdownProfile>;
+export type LabPropertiesInputAutoShutdownProfile =
+  LabPlanPropertiesDefaultAutoShutdownProfile;
+export const LabPropertiesInputAutoShutdownProfile =
+  LabPlanPropertiesDefaultAutoShutdownProfile;
 
 /** Connection profile for how users connect to lab virtual machines. */
-export interface LabPropertiesInputConnectionProfile {
-  /** The enabled access level for Web Access over SSH. */
-  webSshAccess?: ConnectionType | (string & {});
-  /** The enabled access level for Web Access over RDP. */
-  webRdpAccess?: ConnectionType | (string & {});
-  /** The enabled access level for Client Access over SSH. */
-  clientSshAccess?: ConnectionType | (string & {});
-  /** The enabled access level for Client Access over RDP. */
-  clientRdpAccess?: ConnectionType | (string & {});
-}
-export const LabPropertiesInputConnectionProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    webSshAccess: S.optional(ConnectionType),
-    webRdpAccess: S.optional(ConnectionType),
-    clientSshAccess: S.optional(ConnectionType),
-    clientRdpAccess: S.optional(ConnectionType),
-  }),
-).annotate({
-  identifier: "LabPropertiesInputConnectionProfile",
-}) as any as S.Schema<LabPropertiesInputConnectionProfile>;
+export type LabPropertiesInputConnectionProfile =
+  LabPlanPropertiesDefaultConnectionProfile;
+export const LabPropertiesInputConnectionProfile =
+  LabPlanPropertiesDefaultConnectionProfile;
 
 /** Indicates what lab virtual machines are created from. */
 export type VirtualMachineProfileInputCreateOption = "Image" | "TemplateVM";
@@ -1885,34 +1806,17 @@ export const LabNetworkProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LabNetworkProfile>;
 
 /** Error details of the latest operation failure on this resource */
-export interface LabPropertiesInputResourceOperationError {
-  /** The datetime of when the error occured */
-  timestamp?: string;
-  /** The code that corresponds to the type of operation failure */
-  code?: string;
-  /** The operation failure message */
-  message?: string;
-  /** The operation action that failed */
-  action?: string;
-}
-export const LabPropertiesInputResourceOperationError = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      timestamp: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String),
-      action: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "LabPropertiesInputResourceOperationError",
-}) as any as S.Schema<LabPropertiesInputResourceOperationError>;
+export type LabPropertiesInputResourceOperationError =
+  LabPlanPropertiesResourceOperationError;
+export const LabPropertiesInputResourceOperationError =
+  LabPlanPropertiesResourceOperationError;
 
 /** Properties of a lab resource. */
 export interface LabPropertiesInput {
   /** Profile for how to handle shutting down virtual machines. */
-  autoShutdownProfile: LabPropertiesInputAutoShutdownProfile;
+  autoShutdownProfile: LabPlanPropertiesDefaultAutoShutdownProfile;
   /** Connection profile for how users connect to lab virtual machines. */
-  connectionProfile: LabPropertiesInputConnectionProfile;
+  connectionProfile: LabPlanPropertiesDefaultConnectionProfile;
   /** The profile used for creating lab virtual machines. */
   virtualMachineProfile: VirtualMachineProfileInput;
   /** The lab security profile. */
@@ -1930,12 +1834,12 @@ export interface LabPropertiesInput {
   /** The network profile for the lab, typically applied via a lab plan. This profile cannot be modified once a lab has been created. */
   networkProfile?: LabNetworkProfile;
   /** Error details of the latest operation failure on this resource */
-  resourceOperationError?: LabPropertiesInputResourceOperationError;
+  resourceOperationError?: LabPlanPropertiesResourceOperationError;
 }
 export const LabPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    autoShutdownProfile: LabPropertiesInputAutoShutdownProfile,
-    connectionProfile: LabPropertiesInputConnectionProfile,
+    autoShutdownProfile: LabPlanPropertiesDefaultAutoShutdownProfile,
+    connectionProfile: LabPlanPropertiesDefaultConnectionProfile,
     virtualMachineProfile: VirtualMachineProfileInput,
     securityProfile: SecurityProfileInput,
     rosterProfile: S.optional(RosterProfile),
@@ -1944,9 +1848,7 @@ export const LabPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
     provisioningState: S.optional(LabPropertiesInputProvisioningState),
     networkProfile: S.optional(LabNetworkProfile),
-    resourceOperationError: S.optional(
-      LabPropertiesInputResourceOperationError,
-    ),
+    resourceOperationError: S.optional(LabPlanPropertiesResourceOperationError),
   }),
 ).annotate({
   identifier: "LabPropertiesInput",
@@ -2244,26 +2146,10 @@ export type LabState =
 export const LabState = /*@__PURE__*/ S.String;
 
 /** Error details of the latest operation failure on this resource */
-export interface LabPropertiesResourceOperationError {
-  /** The datetime of when the error occured */
-  timestamp?: string;
-  /** The code that corresponds to the type of operation failure */
-  code?: string;
-  /** The operation failure message */
-  message?: string;
-  /** The operation action that failed */
-  action?: string;
-}
-export const LabPropertiesResourceOperationError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timestamp: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    action: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LabPropertiesResourceOperationError",
-}) as any as S.Schema<LabPropertiesResourceOperationError>;
+export type LabPropertiesResourceOperationError =
+  LabPlanPropertiesResourceOperationError;
+export const LabPropertiesResourceOperationError =
+  LabPlanPropertiesResourceOperationError;
 
 /** Properties of a lab resource. */
 export interface LabProperties {
@@ -2290,7 +2176,7 @@ export interface LabProperties {
   /** The lab state. */
   state?: LabState;
   /** Error details of the latest operation failure on this resource */
-  resourceOperationError?: LabPropertiesResourceOperationError;
+  resourceOperationError?: LabPlanPropertiesResourceOperationError;
 }
 export const LabProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2305,7 +2191,7 @@ export const LabProperties = /*@__PURE__*/ S.suspend(() =>
     provisioningState: S.optional(LabPropertiesProvisioningState),
     networkProfile: S.optional(LabNetworkProfile),
     state: S.optional(LabState),
-    resourceOperationError: S.optional(LabPropertiesResourceOperationError),
+    resourceOperationError: S.optional(LabPlanPropertiesResourceOperationError),
   }),
 ).annotate({ identifier: "LabProperties" }) as any as S.Schema<LabProperties>;
 
@@ -2689,63 +2575,23 @@ export const LabsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<LabsUpdateRequestTagsList>;
 
 /** Profile for how to handle shutting down virtual machines. */
-export interface LabUpdatePropertiesInputAutoShutdownProfile {
-  /** Whether shutdown on disconnect is enabled */
-  shutdownOnDisconnect?: EnableState | (string & {});
-  /** Whether a VM will get shutdown when it hasn't been connected to after a period of time. */
-  shutdownWhenNotConnected?: EnableState | (string & {});
-  /** Whether a VM will get shutdown when it has idled for a period of time. */
-  shutdownOnIdle?: ShutdownOnIdleMode | (string & {});
-  /** The amount of time a VM will stay running after a user disconnects if this behavior is enabled. */
-  disconnectDelay?: string;
-  /** The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled. */
-  noConnectDelay?: string;
-  /** The amount of time a VM will idle before it is shutdown if this behavior is enabled. */
-  idleDelay?: string;
-}
+export type LabUpdatePropertiesInputAutoShutdownProfile =
+  LabPlanPropertiesDefaultAutoShutdownProfile;
 export const LabUpdatePropertiesInputAutoShutdownProfile =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      shutdownOnDisconnect: S.optional(EnableState),
-      shutdownWhenNotConnected: S.optional(EnableState),
-      shutdownOnIdle: S.optional(ShutdownOnIdleMode),
-      disconnectDelay: S.optional(S.String),
-      noConnectDelay: S.optional(S.String),
-      idleDelay: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LabUpdatePropertiesInputAutoShutdownProfile",
-  }) as any as S.Schema<LabUpdatePropertiesInputAutoShutdownProfile>;
+  LabPlanPropertiesDefaultAutoShutdownProfile;
 
 /** Connection profile for how users connect to lab virtual machines. */
-export interface LabUpdatePropertiesInputConnectionProfile {
-  /** The enabled access level for Web Access over SSH. */
-  webSshAccess?: ConnectionType | (string & {});
-  /** The enabled access level for Web Access over RDP. */
-  webRdpAccess?: ConnectionType | (string & {});
-  /** The enabled access level for Client Access over SSH. */
-  clientSshAccess?: ConnectionType | (string & {});
-  /** The enabled access level for Client Access over RDP. */
-  clientRdpAccess?: ConnectionType | (string & {});
-}
+export type LabUpdatePropertiesInputConnectionProfile =
+  LabPlanPropertiesDefaultConnectionProfile;
 export const LabUpdatePropertiesInputConnectionProfile =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      webSshAccess: S.optional(ConnectionType),
-      webRdpAccess: S.optional(ConnectionType),
-      clientSshAccess: S.optional(ConnectionType),
-      clientRdpAccess: S.optional(ConnectionType),
-    }),
-  ).annotate({
-    identifier: "LabUpdatePropertiesInputConnectionProfile",
-  }) as any as S.Schema<LabUpdatePropertiesInputConnectionProfile>;
+  LabPlanPropertiesDefaultConnectionProfile;
 
 /** Properties of a lab resource used for updates. */
 export interface LabUpdatePropertiesInput {
   /** Profile for how to handle shutting down virtual machines. */
-  autoShutdownProfile?: LabUpdatePropertiesInputAutoShutdownProfile;
+  autoShutdownProfile?: LabPlanPropertiesDefaultAutoShutdownProfile;
   /** Connection profile for how users connect to lab virtual machines. */
-  connectionProfile?: LabUpdatePropertiesInputConnectionProfile;
+  connectionProfile?: LabPlanPropertiesDefaultConnectionProfile;
   /** The profile used for creating lab virtual machines. */
   virtualMachineProfile?: VirtualMachineProfileInput;
   /** The lab security profile. */
@@ -2762,9 +2608,9 @@ export interface LabUpdatePropertiesInput {
 export const LabUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoShutdownProfile: S.optional(
-      LabUpdatePropertiesInputAutoShutdownProfile,
+      LabPlanPropertiesDefaultAutoShutdownProfile,
     ),
-    connectionProfile: S.optional(LabUpdatePropertiesInputConnectionProfile),
+    connectionProfile: S.optional(LabPlanPropertiesDefaultConnectionProfile),
     virtualMachineProfile: S.optional(VirtualMachineProfileInput),
     securityProfile: S.optional(SecurityProfileInput),
     rosterProfile: S.optional(RosterProfile),
@@ -3183,27 +3029,10 @@ export type SchedulePropertiesProvisioningState =
 export const SchedulePropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Error details of the latest operation failure on this resource */
-export interface SchedulePropertiesResourceOperationError {
-  /** The datetime of when the error occured */
-  timestamp?: string;
-  /** The code that corresponds to the type of operation failure */
-  code?: string;
-  /** The operation failure message */
-  message?: string;
-  /** The operation action that failed */
-  action?: string;
-}
-export const SchedulePropertiesResourceOperationError = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      timestamp: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String),
-      action: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SchedulePropertiesResourceOperationError",
-}) as any as S.Schema<SchedulePropertiesResourceOperationError>;
+export type SchedulePropertiesResourceOperationError =
+  LabPlanPropertiesResourceOperationError;
+export const SchedulePropertiesResourceOperationError =
+  LabPlanPropertiesResourceOperationError;
 
 /** Schedule resource properties */
 export interface ScheduleProperties {
@@ -3220,7 +3049,7 @@ export interface ScheduleProperties {
   /** Resource provisioning state. */
   provisioningState?: SchedulePropertiesProvisioningState | (string & {});
   /** Error details of the latest operation failure on this resource */
-  resourceOperationError?: SchedulePropertiesResourceOperationError;
+  resourceOperationError?: LabPlanPropertiesResourceOperationError;
 }
 export const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3230,9 +3059,7 @@ export const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
     timeZoneId: S.String,
     notes: S.optional(S.String),
     provisioningState: S.optional(SchedulePropertiesProvisioningState),
-    resourceOperationError: S.optional(
-      SchedulePropertiesResourceOperationError,
-    ),
+    resourceOperationError: S.optional(LabPlanPropertiesResourceOperationError),
   }),
 ).annotate({
   identifier: "ScheduleProperties",
@@ -4035,27 +3862,10 @@ export type UserPropertiesInputProvisioningState =
 export const UserPropertiesInputProvisioningState = /*@__PURE__*/ S.String;
 
 /** Error details of the latest operation failure on this resource */
-export interface UserPropertiesInputResourceOperationError {
-  /** The datetime of when the error occured */
-  timestamp?: string;
-  /** The code that corresponds to the type of operation failure */
-  code?: string;
-  /** The operation failure message */
-  message?: string;
-  /** The operation action that failed */
-  action?: string;
-}
+export type UserPropertiesInputResourceOperationError =
+  LabPlanPropertiesResourceOperationError;
 export const UserPropertiesInputResourceOperationError =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      timestamp: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String),
-      action: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UserPropertiesInputResourceOperationError",
-  }) as any as S.Schema<UserPropertiesInputResourceOperationError>;
+  LabPlanPropertiesResourceOperationError;
 
 /** User resource properties */
 export interface UserPropertiesInput {
@@ -4064,7 +3874,7 @@ export interface UserPropertiesInput {
   /** Resource provisioning state. */
   provisioningState?: UserPropertiesInputProvisioningState | (string & {});
   /** Error details of the latest operation failure on this resource */
-  resourceOperationError?: UserPropertiesInputResourceOperationError;
+  resourceOperationError?: LabPlanPropertiesResourceOperationError;
   /** An email address. */
   email: string;
 }
@@ -4072,9 +3882,7 @@ export const UserPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalUsageQuota: S.optional(S.String),
     provisioningState: S.optional(UserPropertiesInputProvisioningState),
-    resourceOperationError: S.optional(
-      UserPropertiesInputResourceOperationError,
-    ),
+    resourceOperationError: S.optional(LabPlanPropertiesResourceOperationError),
     email: S.String,
   }),
 ).annotate({
@@ -4174,27 +3982,10 @@ export type UserPropertiesProvisioningState =
 export const UserPropertiesProvisioningState = /*@__PURE__*/ S.String;
 
 /** Error details of the latest operation failure on this resource */
-export interface UserPropertiesResourceOperationError {
-  /** The datetime of when the error occured */
-  timestamp?: string;
-  /** The code that corresponds to the type of operation failure */
-  code?: string;
-  /** The operation failure message */
-  message?: string;
-  /** The operation action that failed */
-  action?: string;
-}
-export const UserPropertiesResourceOperationError = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      timestamp: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String),
-      action: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "UserPropertiesResourceOperationError",
-}) as any as S.Schema<UserPropertiesResourceOperationError>;
+export type UserPropertiesResourceOperationError =
+  LabPlanPropertiesResourceOperationError;
+export const UserPropertiesResourceOperationError =
+  LabPlanPropertiesResourceOperationError;
 
 /** The user lab registration state. */
 export type RegistrationState = "NotRegistered" | "Registered";
@@ -4211,7 +4002,7 @@ export interface UserProperties {
   /** Resource provisioning state. */
   provisioningState?: UserPropertiesProvisioningState;
   /** Error details of the latest operation failure on this resource */
-  resourceOperationError?: UserPropertiesResourceOperationError;
+  resourceOperationError?: LabPlanPropertiesResourceOperationError;
   /** Display name of the user, for example user's full name. */
   displayName?: string;
   /** An email address. */
@@ -4229,7 +4020,7 @@ export const UserProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalUsageQuota: S.optional(S.String),
     provisioningState: S.optional(UserPropertiesProvisioningState),
-    resourceOperationError: S.optional(UserPropertiesResourceOperationError),
+    resourceOperationError: S.optional(LabPlanPropertiesResourceOperationError),
     displayName: S.optional(S.String),
     email: S.String,
     registrationState: S.optional(RegistrationState),
@@ -4765,27 +4556,10 @@ export type VirtualMachineState =
 export const VirtualMachineState = /*@__PURE__*/ S.String;
 
 /** Error details of the latest operation failure on this resource */
-export interface VirtualMachinePropertiesResourceOperationError {
-  /** The datetime of when the error occured */
-  timestamp?: string;
-  /** The code that corresponds to the type of operation failure */
-  code?: string;
-  /** The operation failure message */
-  message?: string;
-  /** The operation action that failed */
-  action?: string;
-}
+export type VirtualMachinePropertiesResourceOperationError =
+  LabPlanPropertiesResourceOperationError;
 export const VirtualMachinePropertiesResourceOperationError =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      timestamp: S.optional(S.String),
-      code: S.optional(S.String),
-      message: S.optional(S.String),
-      action: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "VirtualMachinePropertiesResourceOperationError",
-  }) as any as S.Schema<VirtualMachinePropertiesResourceOperationError>;
+  LabPlanPropertiesResourceOperationError;
 
 /** The connection information for the virtual machine */
 export interface VirtualMachineConnectionProfile {
@@ -4829,7 +4603,7 @@ export interface VirtualMachineProperties {
   /** The current state of the virtual machine */
   state?: VirtualMachineState;
   /** Error details of the latest operation failure on this resource */
-  resourceOperationError?: VirtualMachinePropertiesResourceOperationError;
+  resourceOperationError?: LabPlanPropertiesResourceOperationError;
   /** Profile for information about connecting to the virtual machine. */
   connectionProfile?: VirtualMachineConnectionProfile;
   /** The lab user ID (not the PUID!) of who claimed the virtual machine. */
@@ -4841,9 +4615,7 @@ export const VirtualMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(VirtualMachinePropertiesProvisioningState),
     state: S.optional(VirtualMachineState),
-    resourceOperationError: S.optional(
-      VirtualMachinePropertiesResourceOperationError,
-    ),
+    resourceOperationError: S.optional(LabPlanPropertiesResourceOperationError),
     connectionProfile: S.optional(VirtualMachineConnectionProfile),
     claimedByUserId: S.optional(S.String),
     vmType: S.optional(VirtualMachineType),

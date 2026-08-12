@@ -3714,35 +3714,10 @@ export const LibrariesListByWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LibrariesListByWorkspaceRequest>;
 
 /** Library/package information of a Big Data pool powered by Apache Spark */
-export interface LibraryResourceProperties {
-  /** Name of the library. */
-  name?: string;
-  /** Storage blob path of library. */
-  path?: string;
-  /** Storage blob container name. */
-  containerName?: string;
-  /** The last update time of the library. */
-  uploadedTimestamp?: string;
-  /** Type of the library. */
-  type?: string;
-  /** Provisioning status of the library/package. */
-  provisioningStatus?: string;
-  /** Creator Id of the library/package. */
-  creatorId?: string;
-}
-export const LibraryResourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    path: S.optional(S.String),
-    containerName: S.optional(S.String),
-    uploadedTimestamp: S.optional(S.String),
-    type: S.optional(S.String),
-    provisioningStatus: S.optional(S.String),
-    creatorId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LibraryResourceProperties",
-}) as any as S.Schema<LibraryResourceProperties>;
+export type LibraryResourceProperties =
+  BigDataPoolResourcePropertiesCustomLibrariesItem;
+export const LibraryResourceProperties =
+  BigDataPoolResourcePropertiesCustomLibrariesItem;
 
 /** Library response details */
 export interface LibraryResource {
@@ -3755,7 +3730,7 @@ export interface LibraryResource {
   /** Resource Etag. */
   etag?: string;
   /** Library/package information of a Big Data pool powered by Apache Spark */
-  properties: LibraryResourceProperties;
+  properties: BigDataPoolResourcePropertiesCustomLibrariesItem;
 }
 export const LibraryResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3763,7 +3738,7 @@ export const LibraryResource = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     etag: S.optional(S.String),
-    properties: LibraryResourceProperties,
+    properties: BigDataPoolResourcePropertiesCustomLibrariesItem,
   }),
 ).annotate({
   identifier: "LibraryResource",
@@ -3820,35 +3795,10 @@ export const LibraryGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LibraryGetRequest>;
 
 /** Library/package information of a Big Data pool powered by Apache Spark */
-export interface LibraryGetResponseProperties {
-  /** Name of the library. */
-  name?: string;
-  /** Storage blob path of library. */
-  path?: string;
-  /** Storage blob container name. */
-  containerName?: string;
-  /** The last update time of the library. */
-  uploadedTimestamp?: string;
-  /** Type of the library. */
-  type?: string;
-  /** Provisioning status of the library/package. */
-  provisioningStatus?: string;
-  /** Creator Id of the library/package. */
-  creatorId?: string;
-}
-export const LibraryGetResponseProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    path: S.optional(S.String),
-    containerName: S.optional(S.String),
-    uploadedTimestamp: S.optional(S.String),
-    type: S.optional(S.String),
-    provisioningStatus: S.optional(S.String),
-    creatorId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LibraryGetResponseProperties",
-}) as any as S.Schema<LibraryGetResponseProperties>;
+export type LibraryGetResponseProperties =
+  BigDataPoolResourcePropertiesCustomLibrariesItem;
+export const LibraryGetResponseProperties =
+  BigDataPoolResourcePropertiesCustomLibrariesItem;
 
 export interface LibraryGetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3860,7 +3810,7 @@ export interface LibraryGetResponse {
   /** Resource Etag. */
   etag?: string;
   /** Library/package information of a Big Data pool powered by Apache Spark */
-  properties: LibraryGetResponseProperties;
+  properties: BigDataPoolResourcePropertiesCustomLibrariesItem;
 }
 export const LibraryGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3868,7 +3818,7 @@ export const LibraryGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     etag: S.optional(S.String),
-    properties: LibraryGetResponseProperties,
+    properties: BigDataPoolResourcePropertiesCustomLibrariesItem,
   }),
 ).annotate({
   identifier: "LibraryGetResponse",
@@ -4678,32 +4628,16 @@ export const PrivateEndpointConnectionsPrivateLinkHubGetRequest =
   }) as any as S.Schema<PrivateEndpointConnectionsPrivateLinkHubGetRequest>;
 
 /** Properties of a private endpoint connection. */
-export interface PrivateEndpointConnectionsPrivateLinkHubGetResponseProperties {
-  /** The private endpoint which the connection belongs to. */
-  privateEndpoint?: PrivateEndpoint;
-  /** Connection state of the private endpoint connection. */
-  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
-  /** Provisioning state of the private endpoint connection. */
-  provisioningState?: string;
-}
+export type PrivateEndpointConnectionsPrivateLinkHubGetResponseProperties =
+  PrivateEndpointConnectionProperties;
 export const PrivateEndpointConnectionsPrivateLinkHubGetResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      privateEndpoint: S.optional(PrivateEndpoint),
-      privateLinkServiceConnectionState: S.optional(
-        PrivateLinkServiceConnectionState,
-      ),
-      provisioningState: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionsPrivateLinkHubGetResponseProperties",
-  }) as any as S.Schema<PrivateEndpointConnectionsPrivateLinkHubGetResponseProperties>;
+  PrivateEndpointConnectionProperties;
 
 export interface PrivateEndpointConnectionsPrivateLinkHubGetResponse {
   /** identifier */
   id?: string;
   /** Properties of a private endpoint connection. */
-  properties?: PrivateEndpointConnectionsPrivateLinkHubGetResponseProperties;
+  properties?: PrivateEndpointConnectionProperties;
   name?: string;
   type?: string;
 }
@@ -4711,9 +4645,7 @@ export const PrivateEndpointConnectionsPrivateLinkHubGetResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
-      properties: S.optional(
-        PrivateEndpointConnectionsPrivateLinkHubGetResponseProperties,
-      ),
+      properties: S.optional(PrivateEndpointConnectionProperties),
       name: S.optional(S.String),
       type: S.optional(S.String),
     }),
@@ -4748,32 +4680,16 @@ export const PrivateEndpointConnectionsPrivateLinkHubListRequest =
   }) as any as S.Schema<PrivateEndpointConnectionsPrivateLinkHubListRequest>;
 
 /** Properties of a private endpoint connection. */
-export interface PrivateEndpointConnectionForPrivateLinkHubProperties {
-  /** The private endpoint which the connection belongs to. */
-  privateEndpoint?: PrivateEndpoint;
-  /** Connection state of the private endpoint connection. */
-  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
-  /** Provisioning state of the private endpoint connection. */
-  provisioningState?: string;
-}
+export type PrivateEndpointConnectionForPrivateLinkHubProperties =
+  PrivateEndpointConnectionProperties;
 export const PrivateEndpointConnectionForPrivateLinkHubProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      privateEndpoint: S.optional(PrivateEndpoint),
-      privateLinkServiceConnectionState: S.optional(
-        PrivateLinkServiceConnectionState,
-      ),
-      provisioningState: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionForPrivateLinkHubProperties",
-  }) as any as S.Schema<PrivateEndpointConnectionForPrivateLinkHubProperties>;
+  PrivateEndpointConnectionProperties;
 
 export interface PrivateEndpointConnectionForPrivateLinkHub {
   /** identifier */
   id?: string;
   /** Properties of a private endpoint connection. */
-  properties?: PrivateEndpointConnectionForPrivateLinkHubProperties;
+  properties?: PrivateEndpointConnectionProperties;
   name?: string;
   type?: string;
 }
@@ -4781,9 +4697,7 @@ export const PrivateEndpointConnectionForPrivateLinkHub =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
-      properties: S.optional(
-        PrivateEndpointConnectionForPrivateLinkHubProperties,
-      ),
+      properties: S.optional(PrivateEndpointConnectionProperties),
       name: S.optional(S.String),
       type: S.optional(S.String),
     }),
@@ -5041,41 +4955,23 @@ export const PrivateLinkHubsCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<PrivateLinkHubsCreateOrUpdateResponseTagsMap>;
 
 /** Properties of a private endpoint connection. */
-export interface PrivateEndpointConnectionForPrivateLinkHubBasicProperties {
-  /** The private endpoint which the connection belongs to. */
-  privateEndpoint?: PrivateEndpoint;
-  /** Connection state of the private endpoint connection. */
-  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
-  /** Provisioning state of the private endpoint connection. */
-  provisioningState?: string;
-}
+export type PrivateEndpointConnectionForPrivateLinkHubBasicProperties =
+  PrivateEndpointConnectionProperties;
 export const PrivateEndpointConnectionForPrivateLinkHubBasicProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      privateEndpoint: S.optional(PrivateEndpoint),
-      privateLinkServiceConnectionState: S.optional(
-        PrivateLinkServiceConnectionState,
-      ),
-      provisioningState: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PrivateEndpointConnectionForPrivateLinkHubBasicProperties",
-  }) as any as S.Schema<PrivateEndpointConnectionForPrivateLinkHubBasicProperties>;
+  PrivateEndpointConnectionProperties;
 
 /** Private Endpoint Connection For Private Link Hub - Basic */
 export interface PrivateEndpointConnectionForPrivateLinkHubBasic {
   /** identifier */
   id?: string;
   /** Properties of a private endpoint connection. */
-  properties?: PrivateEndpointConnectionForPrivateLinkHubBasicProperties;
+  properties?: PrivateEndpointConnectionProperties;
 }
 export const PrivateEndpointConnectionForPrivateLinkHubBasic =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
-      properties: S.optional(
-        PrivateEndpointConnectionForPrivateLinkHubBasicProperties,
-      ),
+      properties: S.optional(PrivateEndpointConnectionProperties),
     }),
   ).annotate({
     identifier: "PrivateEndpointConnectionForPrivateLinkHubBasic",
@@ -13551,20 +13447,16 @@ export type ManagedIdentityInputType =
 export const ManagedIdentityInputType = /*@__PURE__*/ S.String;
 
 /** User Assigned Managed Identity */
-export interface UserAssignedManagedIdentityInput {}
-export const UserAssignedManagedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedManagedIdentityInput",
-}) as any as S.Schema<UserAssignedManagedIdentityInput>;
+export type UserAssignedManagedIdentityInput = PrivateEndpointInput;
+export const UserAssignedManagedIdentityInput = PrivateEndpointInput;
 
 /** The User Assigned Managed Identities. */
 export type UserAssignedManagedIdentitiesInput = {
-  [key: string]: UserAssignedManagedIdentityInput | undefined;
+  [key: string]: PrivateEndpointInput | undefined;
 };
 export const UserAssignedManagedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedManagedIdentityInput,
+  PrivateEndpointInput,
 ) as any as S.Schema<UserAssignedManagedIdentitiesInput>;
 
 /** The workspace managed identity */
@@ -13640,34 +13532,17 @@ export const WorkspacePropertiesConnectivityEndpointsMap =
   ) as any as S.Schema<WorkspacePropertiesConnectivityEndpointsMap>;
 
 /** A private endpoint connection */
-export interface WorkspacePropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Private endpoint connection properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type WorkspacePropertiesPrivateEndpointConnectionsItem =
+  PrivateEndpointConnection;
 export const WorkspacePropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "WorkspacePropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsItem>;
+  PrivateEndpointConnection;
 
 /** Private endpoint connections to the workspace */
 export type WorkspacePropertiesPrivateEndpointConnectionsList =
-  Array<WorkspacePropertiesPrivateEndpointConnectionsItem>;
+  Array<PrivateEndpointConnection>;
 export const WorkspacePropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    WorkspacePropertiesPrivateEndpointConnectionsItem,
+    PrivateEndpointConnection,
   ) as any as S.Schema<WorkspacePropertiesPrivateEndpointConnectionsList>;
 
 /** Details of the customer managed key associated with the workspace */

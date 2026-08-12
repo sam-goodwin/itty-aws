@@ -219,29 +219,15 @@ export type StatusReasonEnum =
   | "hog_error";
 export const StatusReasonEnum = /*@__PURE__*/ S.String;
 
-export interface EvaluationEvaluationConfigCase0 {
-  /** Evaluation criteria for the LLM judge. Describe what makes a good vs bad response. */
-  prompt: string;
-}
-export const EvaluationEvaluationConfigCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prompt: S.String,
-  }),
-).annotate({
-  identifier: "EvaluationEvaluationConfigCase0",
-}) as any as S.Schema<EvaluationEvaluationConfigCase0>;
+export type EvaluationEvaluationConfigCase0 =
+  EvaluationsCreateRequestEvaluationConfigCase0;
+export const EvaluationEvaluationConfigCase0 =
+  EvaluationsCreateRequestEvaluationConfigCase0;
 
-export interface EvaluationEvaluationConfigCase1 {
-  /** Hog source code. Must return true (pass), false (fail), or null for N/A. */
-  source: string;
-}
-export const EvaluationEvaluationConfigCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.String,
-  }),
-).annotate({
-  identifier: "EvaluationEvaluationConfigCase1",
-}) as any as S.Schema<EvaluationEvaluationConfigCase1>;
+export type EvaluationEvaluationConfigCase1 =
+  EvaluationsCreateRequestEvaluationConfigCase1;
+export const EvaluationEvaluationConfigCase1 =
+  EvaluationsCreateRequestEvaluationConfigCase1;
 
 /** Classify sentiment from user messages in the generation input. */
 export type EvaluationEvaluationConfigCase2Source = "user_messages";
@@ -261,24 +247,15 @@ export const EvaluationEvaluationConfigCase2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
 export type EvaluationEvaluationConfig =
-  | EvaluationEvaluationConfigCase0
-  | EvaluationEvaluationConfigCase1
+  | EvaluationsCreateRequestEvaluationConfigCase0
+  | EvaluationsCreateRequestEvaluationConfigCase1
   | EvaluationEvaluationConfigCase2;
 export const EvaluationEvaluationConfig =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationEvaluationConfig>;
 
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
-export interface EvaluationOutputConfig {
-  /** Whether the evaluation can return N/A for non-applicable generations. */
-  allows_na?: boolean;
-}
-export const EvaluationOutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allows_na: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EvaluationOutputConfig",
-}) as any as S.Schema<EvaluationOutputConfig>;
+export type EvaluationOutputConfig = EvaluationsCreateRequestOutputConfig;
+export const EvaluationOutputConfig = EvaluationsCreateRequestOutputConfig;
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type EvaluationConditionsList = Array<EvaluationCondition>;
@@ -374,7 +351,7 @@ export interface Evaluation {
   /** Output format. Use 'boolean' for pass/fail evaluations and 'sentiment' for sentiment analysis. * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
   output_type?: OutputTypeEnum;
   /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
-  output_config?: EvaluationOutputConfig;
+  output_config?: EvaluationsCreateRequestOutputConfig;
   /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: EvaluationConditionsList;
   model_configuration?: ModelConfiguration | null;
@@ -396,7 +373,7 @@ export const Evaluation = /*@__PURE__*/ S.suspend(() =>
     evaluation_type: S.optional(EvaluationTypeEnum),
     evaluation_config: S.optional(EvaluationEvaluationConfig),
     output_type: S.optional(OutputTypeEnum),
-    output_config: S.optional(EvaluationOutputConfig),
+    output_config: S.optional(EvaluationsCreateRequestOutputConfig),
     conditions: S.optional(EvaluationConditionsList),
     model_configuration: S.optional(S.NullOr(ModelConfiguration)),
     created_at: S.optional(S.String),
@@ -524,31 +501,15 @@ export const PaginatedEvaluationList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedEvaluationList",
 }) as any as S.Schema<PaginatedEvaluationList>;
 
-export interface EvaluationsPartialUpdateRequestEvaluationConfigCase0 {
-  /** Evaluation criteria for the LLM judge. Describe what makes a good vs bad response. */
-  prompt: string;
-}
+export type EvaluationsPartialUpdateRequestEvaluationConfigCase0 =
+  EvaluationsCreateRequestEvaluationConfigCase0;
 export const EvaluationsPartialUpdateRequestEvaluationConfigCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      prompt: S.String,
-    }),
-  ).annotate({
-    identifier: "EvaluationsPartialUpdateRequestEvaluationConfigCase0",
-  }) as any as S.Schema<EvaluationsPartialUpdateRequestEvaluationConfigCase0>;
+  EvaluationsCreateRequestEvaluationConfigCase0;
 
-export interface EvaluationsPartialUpdateRequestEvaluationConfigCase1 {
-  /** Hog source code. Must return true (pass), false (fail), or null for N/A. */
-  source: string;
-}
+export type EvaluationsPartialUpdateRequestEvaluationConfigCase1 =
+  EvaluationsCreateRequestEvaluationConfigCase1;
 export const EvaluationsPartialUpdateRequestEvaluationConfigCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      source: S.String,
-    }),
-  ).annotate({
-    identifier: "EvaluationsPartialUpdateRequestEvaluationConfigCase1",
-  }) as any as S.Schema<EvaluationsPartialUpdateRequestEvaluationConfigCase1>;
+  EvaluationsCreateRequestEvaluationConfigCase1;
 
 /** Classify sentiment from user messages in the generation input. */
 export type EvaluationsPartialUpdateRequestEvaluationConfigCase2Source =
@@ -575,25 +536,17 @@ export const EvaluationsPartialUpdateRequestEvaluationConfigCase2 =
 
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
 export type EvaluationsPartialUpdateRequestEvaluationConfig =
-  | EvaluationsPartialUpdateRequestEvaluationConfigCase0
-  | EvaluationsPartialUpdateRequestEvaluationConfigCase1
+  | EvaluationsCreateRequestEvaluationConfigCase0
+  | EvaluationsCreateRequestEvaluationConfigCase1
   | EvaluationsPartialUpdateRequestEvaluationConfigCase2;
 export const EvaluationsPartialUpdateRequestEvaluationConfig =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationsPartialUpdateRequestEvaluationConfig>;
 
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
-export interface EvaluationsPartialUpdateRequestOutputConfig {
-  /** Whether the evaluation can return N/A for non-applicable generations. */
-  allows_na?: boolean;
-}
+export type EvaluationsPartialUpdateRequestOutputConfig =
+  EvaluationsCreateRequestOutputConfig;
 export const EvaluationsPartialUpdateRequestOutputConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allows_na: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "EvaluationsPartialUpdateRequestOutputConfig",
-  }) as any as S.Schema<EvaluationsPartialUpdateRequestOutputConfig>;
+  EvaluationsCreateRequestOutputConfig;
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type EvaluationsPartialUpdateRequestConditionsList =
@@ -621,7 +574,7 @@ export interface EvaluationsPartialUpdateRequest {
   /** Output format. Use 'boolean' for pass/fail evaluations and 'sentiment' for sentiment analysis. * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
   output_type?: OutputTypeEnum | (string & {});
   /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
-  output_config?: EvaluationsPartialUpdateRequestOutputConfig;
+  output_config?: EvaluationsCreateRequestOutputConfig;
   /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: EvaluationsPartialUpdateRequestConditionsList;
   model_configuration?: ModelConfigurationInput | null;
@@ -640,7 +593,7 @@ export const EvaluationsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       EvaluationsPartialUpdateRequestEvaluationConfig,
     ),
     output_type: S.optional(OutputTypeEnum),
-    output_config: S.optional(EvaluationsPartialUpdateRequestOutputConfig),
+    output_config: S.optional(EvaluationsCreateRequestOutputConfig),
     conditions: S.optional(EvaluationsPartialUpdateRequestConditionsList),
     model_configuration: S.optional(S.NullOr(ModelConfigurationInput)),
     deleted: S.optional(S.Boolean),
@@ -772,31 +725,15 @@ export const TestHogResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TestHogResponse",
 }) as any as S.Schema<TestHogResponse>;
 
-export interface EvaluationsUpdateRequestEvaluationConfigCase0 {
-  /** Evaluation criteria for the LLM judge. Describe what makes a good vs bad response. */
-  prompt: string;
-}
+export type EvaluationsUpdateRequestEvaluationConfigCase0 =
+  EvaluationsCreateRequestEvaluationConfigCase0;
 export const EvaluationsUpdateRequestEvaluationConfigCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      prompt: S.String,
-    }),
-  ).annotate({
-    identifier: "EvaluationsUpdateRequestEvaluationConfigCase0",
-  }) as any as S.Schema<EvaluationsUpdateRequestEvaluationConfigCase0>;
+  EvaluationsCreateRequestEvaluationConfigCase0;
 
-export interface EvaluationsUpdateRequestEvaluationConfigCase1 {
-  /** Hog source code. Must return true (pass), false (fail), or null for N/A. */
-  source: string;
-}
+export type EvaluationsUpdateRequestEvaluationConfigCase1 =
+  EvaluationsCreateRequestEvaluationConfigCase1;
 export const EvaluationsUpdateRequestEvaluationConfigCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      source: S.String,
-    }),
-  ).annotate({
-    identifier: "EvaluationsUpdateRequestEvaluationConfigCase1",
-  }) as any as S.Schema<EvaluationsUpdateRequestEvaluationConfigCase1>;
+  EvaluationsCreateRequestEvaluationConfigCase1;
 
 /** Classify sentiment from user messages in the generation input. */
 export type EvaluationsUpdateRequestEvaluationConfigCase2Source =
@@ -819,25 +756,17 @@ export const EvaluationsUpdateRequestEvaluationConfigCase2 =
 
 /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
 export type EvaluationsUpdateRequestEvaluationConfig =
-  | EvaluationsUpdateRequestEvaluationConfigCase0
-  | EvaluationsUpdateRequestEvaluationConfigCase1
+  | EvaluationsCreateRequestEvaluationConfigCase0
+  | EvaluationsCreateRequestEvaluationConfigCase1
   | EvaluationsUpdateRequestEvaluationConfigCase2;
 export const EvaluationsUpdateRequestEvaluationConfig =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationsUpdateRequestEvaluationConfig>;
 
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
-export interface EvaluationsUpdateRequestOutputConfig {
-  /** Whether the evaluation can return N/A for non-applicable generations. */
-  allows_na?: boolean;
-}
-export const EvaluationsUpdateRequestOutputConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allows_na: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "EvaluationsUpdateRequestOutputConfig",
-}) as any as S.Schema<EvaluationsUpdateRequestOutputConfig>;
+export type EvaluationsUpdateRequestOutputConfig =
+  EvaluationsCreateRequestOutputConfig;
+export const EvaluationsUpdateRequestOutputConfig =
+  EvaluationsCreateRequestOutputConfig;
 
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type EvaluationsUpdateRequestConditionsList = Array<EvaluationCondition>;
@@ -863,7 +792,7 @@ export interface EvaluationsUpdateRequest {
   /** Output format. Use 'boolean' for pass/fail evaluations and 'sentiment' for sentiment analysis. * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
   output_type?: OutputTypeEnum | (string & {});
   /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
-  output_config?: EvaluationsUpdateRequestOutputConfig;
+  output_config?: EvaluationsCreateRequestOutputConfig;
   /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
   conditions?: EvaluationsUpdateRequestConditionsList;
   model_configuration?: ModelConfigurationInput | null;
@@ -880,7 +809,7 @@ export const EvaluationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     evaluation_type: S.optional(EvaluationTypeEnum),
     evaluation_config: S.optional(EvaluationsUpdateRequestEvaluationConfig),
     output_type: S.optional(OutputTypeEnum),
-    output_config: S.optional(EvaluationsUpdateRequestOutputConfig),
+    output_config: S.optional(EvaluationsCreateRequestOutputConfig),
     conditions: S.optional(EvaluationsUpdateRequestConditionsList),
     model_configuration: S.optional(S.NullOr(ModelConfigurationInput)),
     deleted: S.optional(S.Boolean),

@@ -1896,20 +1896,19 @@ export const AutoUpgradeNodeImageSelection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoUpgradeNodeImageSelection>;
 
 /** The error detail. */
-export interface AutoUpgradeProfileStatusInputLastTriggerError {}
+export type AutoUpgradeProfileStatusInputLastTriggerError =
+  AgentPoolStatusInputProvisioningError;
 export const AutoUpgradeProfileStatusInputLastTriggerError =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AutoUpgradeProfileStatusInputLastTriggerError",
-  }) as any as S.Schema<AutoUpgradeProfileStatusInputLastTriggerError>;
+  AgentPoolStatusInputProvisioningError;
 
 /** AutoUpgradeProfileStatus is the status of an auto upgrade profile. */
 export interface AutoUpgradeProfileStatusInput {
   /** The error detail. */
-  lastTriggerError?: AutoUpgradeProfileStatusInputLastTriggerError;
+  lastTriggerError?: AgentPoolStatusInputProvisioningError;
 }
 export const AutoUpgradeProfileStatusInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lastTriggerError: S.optional(AutoUpgradeProfileStatusInputLastTriggerError),
+    lastTriggerError: S.optional(AgentPoolStatusInputProvisioningError),
   }),
 ).annotate({
   identifier: "AutoUpgradeProfileStatusInput",
@@ -3061,20 +3060,16 @@ export type ManagedServiceIdentityType =
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = AgentPoolStatusInputProvisioningError;
+export const UserAssignedIdentityInput = AgentPoolStatusInputProvisioningError;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: AgentPoolStatusInputProvisioningError | undefined;
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentityInput,
+  AgentPoolStatusInputProvisioningError,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -3394,24 +3389,8 @@ export const FleetsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FleetsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FleetsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FleetsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "FleetsGetResponseIdentity",
-}) as any as S.Schema<FleetsGetResponseIdentity>;
+export type FleetsGetResponseIdentity = FleetsCreateOrUpdateResponseIdentity;
+export const FleetsGetResponseIdentity = FleetsCreateOrUpdateResponseIdentity;
 
 export interface FleetsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3431,7 +3410,7 @@ export interface FleetsGetResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FleetsGetResponseIdentity;
+  identity?: FleetsCreateOrUpdateResponseIdentity;
 }
 export const FleetsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3443,7 +3422,7 @@ export const FleetsGetResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(FleetProperties),
     eTag: S.optional(S.String),
-    identity: S.optional(FleetsGetResponseIdentity),
+    identity: S.optional(FleetsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "FleetsGetResponse",
@@ -3479,22 +3458,8 @@ export const FleetTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FleetTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FleetIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FleetIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({ identifier: "FleetIdentity" }) as any as S.Schema<FleetIdentity>;
+export type FleetIdentity = FleetsCreateOrUpdateResponseIdentity;
+export const FleetIdentity = FleetsCreateOrUpdateResponseIdentity;
 
 /** The Fleet resource. */
 export interface Fleet {
@@ -3515,7 +3480,7 @@ export interface Fleet {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FleetIdentity;
+  identity?: FleetsCreateOrUpdateResponseIdentity;
 }
 export const Fleet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3527,7 +3492,7 @@ export const Fleet = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(FleetProperties),
     eTag: S.optional(S.String),
-    identity: S.optional(FleetIdentity),
+    identity: S.optional(FleetsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "Fleet" }) as any as S.Schema<Fleet>;
 
@@ -3647,18 +3612,8 @@ export const FleetsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FleetsUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FleetsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const FleetsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "FleetsUpdateRequestIdentity",
-}) as any as S.Schema<FleetsUpdateRequestIdentity>;
+export type FleetsUpdateRequestIdentity = FleetsCreateOrUpdateRequestIdentity;
+export const FleetsUpdateRequestIdentity = FleetsCreateOrUpdateRequestIdentity;
 
 export interface FleetsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3670,7 +3625,7 @@ export interface FleetsUpdateRequest {
   /** Resource tags. */
   tags?: FleetsUpdateRequestTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FleetsUpdateRequestIdentity;
+  identity?: FleetsCreateOrUpdateRequestIdentity;
 }
 export const FleetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3678,7 +3633,7 @@ export const FleetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     fleetName: S.String.pipe(T.Label()),
     tags: S.optional(FleetsUpdateRequestTagsMap),
-    identity: S.optional(FleetsUpdateRequestIdentity),
+    identity: S.optional(FleetsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -3699,24 +3654,9 @@ export const FleetsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<FleetsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FleetsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FleetsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "FleetsUpdateResponseIdentity",
-}) as any as S.Schema<FleetsUpdateResponseIdentity>;
+export type FleetsUpdateResponseIdentity = FleetsCreateOrUpdateResponseIdentity;
+export const FleetsUpdateResponseIdentity =
+  FleetsCreateOrUpdateResponseIdentity;
 
 export interface FleetsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3736,7 +3676,7 @@ export interface FleetsUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FleetsUpdateResponseIdentity;
+  identity?: FleetsCreateOrUpdateResponseIdentity;
 }
 export const FleetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3748,7 +3688,7 @@ export const FleetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(FleetProperties),
     eTag: S.optional(S.String),
-    identity: S.optional(FleetsUpdateResponseIdentity),
+    identity: S.optional(FleetsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "FleetsUpdateResponse",
@@ -7106,24 +7046,14 @@ export const ManagedClusterHostedSystemProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterHostedSystemProfile>;
 
 /** The error detail. */
-export interface ManagedClusterStatusInputProvisioningError {}
+export type ManagedClusterStatusInputProvisioningError =
+  AgentPoolStatusInputProvisioningError;
 export const ManagedClusterStatusInputProvisioningError =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ManagedClusterStatusInputProvisioningError",
-  }) as any as S.Schema<ManagedClusterStatusInputProvisioningError>;
+  AgentPoolStatusInputProvisioningError;
 
 /** Contains read-only information about the Managed Cluster. */
-export interface ManagedClusterStatusInput {
-  /** The error detail. */
-  provisioningError?: ManagedClusterStatusInputProvisioningError;
-}
-export const ManagedClusterStatusInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningError: S.optional(ManagedClusterStatusInputProvisioningError),
-  }),
-).annotate({
-  identifier: "ManagedClusterStatusInput",
-}) as any as S.Schema<ManagedClusterStatusInput>;
+export type ManagedClusterStatusInput = AgentPoolStatusInput;
+export const ManagedClusterStatusInput = AgentPoolStatusInput;
 
 /** Properties of the managed cluster. */
 export interface ManagedClusterPropertiesInput {
@@ -7202,7 +7132,7 @@ export interface ManagedClusterPropertiesInput {
   /** Settings for hosted system addons. For more information, see https://aka.ms/aks/automatic/systemcomponents. */
   hostedSystemProfile?: ManagedClusterHostedSystemProfile;
   /** Contains read-only information about the Managed Cluster. */
-  status?: ManagedClusterStatusInput;
+  status?: AgentPoolStatusInput;
 }
 export const ManagedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7255,7 +7185,7 @@ export const ManagedClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
       ManagedClusterAIToolchainOperatorProfile,
     ),
     hostedSystemProfile: S.optional(ManagedClusterHostedSystemProfile),
-    status: S.optional(ManagedClusterStatusInput),
+    status: S.optional(AgentPoolStatusInput),
   }),
 ).annotate({
   identifier: "ManagedClusterPropertiesInput",
@@ -7343,22 +7273,19 @@ export const ManagedClusterIdentityInputDelegatedResourcesMap =
   ) as any as S.Schema<ManagedClusterIdentityInputDelegatedResourcesMap>;
 
 /** User assigned identity properties. */
-export interface ManagedServiceIdentityUserAssignedIdentitiesValueInput {}
+export type ManagedServiceIdentityUserAssignedIdentitiesValueInput =
+  AgentPoolStatusInputProvisioningError;
 export const ManagedServiceIdentityUserAssignedIdentitiesValueInput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ManagedServiceIdentityUserAssignedIdentitiesValueInput",
-  }) as any as S.Schema<ManagedServiceIdentityUserAssignedIdentitiesValueInput>;
+  AgentPoolStatusInputProvisioningError;
 
 /** The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type ManagedClusterIdentityInputUserAssignedIdentitiesMap = {
-  [key: string]:
-    | ManagedServiceIdentityUserAssignedIdentitiesValueInput
-    | undefined;
+  [key: string]: AgentPoolStatusInputProvisioningError | undefined;
 };
 export const ManagedClusterIdentityInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ManagedServiceIdentityUserAssignedIdentitiesValueInput,
+    AgentPoolStatusInputProvisioningError,
   ) as any as S.Schema<ManagedClusterIdentityInputUserAssignedIdentitiesMap>;
 
 /** Identity for the managed cluster. */
@@ -8308,36 +8235,19 @@ export const ManagedClusterProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedClusterProperties>;
 
 /** Delegated resource properties - internal use only. */
-export interface ManagedClusterIdentityDelegatedResourcesValue {
-  /** The ARM resource id of the delegated resource - internal use only. */
-  resourceId?: string;
-  /** The tenant id of the delegated resource - internal use only. */
-  tenantId?: string;
-  /** The delegation id of the referral delegation (optional) - internal use only. */
-  referralResource?: string;
-  /** The source resource location - internal use only. */
-  location?: string;
-}
+export type ManagedClusterIdentityDelegatedResourcesValue =
+  ManagedClusterIdentityInputDelegatedResourcesValue;
 export const ManagedClusterIdentityDelegatedResourcesValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      referralResource: S.optional(S.String),
-      location: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ManagedClusterIdentityDelegatedResourcesValue",
-  }) as any as S.Schema<ManagedClusterIdentityDelegatedResourcesValue>;
+  ManagedClusterIdentityInputDelegatedResourcesValue;
 
 /** The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only. */
 export type ManagedClusterIdentityDelegatedResourcesMap = {
-  [key: string]: ManagedClusterIdentityDelegatedResourcesValue | undefined;
+  [key: string]: ManagedClusterIdentityInputDelegatedResourcesValue | undefined;
 };
 export const ManagedClusterIdentityDelegatedResourcesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ManagedClusterIdentityDelegatedResourcesValue,
+    ManagedClusterIdentityInputDelegatedResourcesValue,
   ) as any as S.Schema<ManagedClusterIdentityDelegatedResourcesMap>;
 
 /** User assigned identity properties. */
@@ -8832,28 +8742,17 @@ export type ManagedClusterPoolUpgradeProfileOsType = "Linux" | "Windows";
 export const ManagedClusterPoolUpgradeProfileOsType = /*@__PURE__*/ S.String;
 
 /** Available upgrades for an AgentPool. */
-export interface ManagedClusterPoolUpgradeProfileUpgradesItem {
-  /** The Kubernetes version (major.minor.patch). */
-  kubernetesVersion?: string;
-  /** Whether the Kubernetes version is currently in preview. */
-  isPreview?: boolean;
-}
+export type ManagedClusterPoolUpgradeProfileUpgradesItem =
+  AgentPoolUpgradeProfilePropertiesUpgradesItem;
 export const ManagedClusterPoolUpgradeProfileUpgradesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kubernetesVersion: S.optional(S.String),
-      isPreview: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ManagedClusterPoolUpgradeProfileUpgradesItem",
-  }) as any as S.Schema<ManagedClusterPoolUpgradeProfileUpgradesItem>;
+  AgentPoolUpgradeProfilePropertiesUpgradesItem;
 
 /** List of orchestrator types and versions available for upgrade. */
 export type ManagedClusterPoolUpgradeProfileUpgradesList =
-  Array<ManagedClusterPoolUpgradeProfileUpgradesItem>;
+  Array<AgentPoolUpgradeProfilePropertiesUpgradesItem>;
 export const ManagedClusterPoolUpgradeProfileUpgradesList =
   /*@__PURE__*/ S.Array(
-    ManagedClusterPoolUpgradeProfileUpgradesItem,
+    AgentPoolUpgradeProfilePropertiesUpgradesItem,
   ) as any as S.Schema<ManagedClusterPoolUpgradeProfileUpgradesList>;
 
 /** The list of available upgrade versions. */
@@ -9074,25 +8973,13 @@ export const ManagedClustersListClusterAdminCredentialsRequest =
   }) as any as S.Schema<ManagedClustersListClusterAdminCredentialsRequest>;
 
 /** The credential result response. */
-export interface CredentialResult {
-  /** The name of the credential. */
-  name?: string;
-  /** Base64-encoded Kubernetes configuration file. */
-  value?: string;
-}
-export const CredentialResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CredentialResult",
-}) as any as S.Schema<CredentialResult>;
+export type CredentialResult = FleetCredentialResult;
+export const CredentialResult = FleetCredentialResult;
 
 /** Base64-encoded Kubernetes configuration file. */
-export type CredentialResultsKubeconfigsList = Array<CredentialResult>;
+export type CredentialResultsKubeconfigsList = Array<FleetCredentialResult>;
 export const CredentialResultsKubeconfigsList = /*@__PURE__*/ S.Array(
-  CredentialResult,
+  FleetCredentialResult,
 ) as any as S.Schema<CredentialResultsKubeconfigsList>;
 
 /** The list credential result response. */
@@ -11727,19 +11614,15 @@ export type NodeImageSelectionType = "Latest" | "Consistent" | "Custom";
 export const NodeImageSelectionType = /*@__PURE__*/ S.String;
 
 /** The node upgrade image version. */
-export interface NodeImageVersionInput {}
-export const NodeImageVersionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NodeImageVersionInput",
-}) as any as S.Schema<NodeImageVersionInput>;
+export type NodeImageVersionInput = AgentPoolStatusInputProvisioningError;
+export const NodeImageVersionInput = AgentPoolStatusInputProvisioningError;
 
 /** Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded. */
 export type NodeImageSelectionInputCustomNodeImageVersionsList =
-  Array<NodeImageVersionInput>;
+  Array<AgentPoolStatusInputProvisioningError>;
 export const NodeImageSelectionInputCustomNodeImageVersionsList =
   /*@__PURE__*/ S.Array(
-    NodeImageVersionInput,
+    AgentPoolStatusInputProvisioningError,
   ) as any as S.Schema<NodeImageSelectionInputCustomNodeImageVersionsList>;
 
 /** The node image upgrade to be applied to the target nodes in update run. */

@@ -2,6 +2,7 @@
 import * as S from "@distilled.cloud/core/schema";
 import * as Redacted from "effect/Redacted";
 import * as API from "@distilled.cloud/core/api";
+import * as C from "@distilled.cloud/core/category";
 import * as T from "../traits.ts";
 import {
   PosthogProtocol,
@@ -17,7 +18,7 @@ export class BadRequest
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 400 }],
   ) {}
 
@@ -26,7 +27,7 @@ export class Forbidden
     /*@__PURE__*/ S.TaggedError<Forbidden>()("Forbidden", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withAuthError),
     [{ status: 403 }],
   ) {}
 
@@ -35,7 +36,7 @@ export class NotFound
     /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
       code: S.Number,
       message: S.String,
-    }),
+    }).pipe(C.withBadRequestError),
     [{ status: 404 }],
   ) {}
 
@@ -2809,27 +2810,15 @@ export const TrendsFilterResultCustomizationsCase0Map = /*@__PURE__*/ S.Record(
   ResultCustomizationByValue,
 ) as any as S.Schema<TrendsFilterResultCustomizationsCase0Map>;
 
-export interface ResultCustomizationByPosition {
-  assignmentBy?: string;
-  color?: DataColorToken | (string & {}) | null;
-  hidden?: boolean | null;
-}
-export const ResultCustomizationByPosition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    assignmentBy: S.optional(S.String),
-    color: S.optional(S.NullOr(DataColorToken)),
-    hidden: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "ResultCustomizationByPosition",
-}) as any as S.Schema<ResultCustomizationByPosition>;
+export type ResultCustomizationByPosition = ResultCustomizationByValue;
+export const ResultCustomizationByPosition = ResultCustomizationByValue;
 
 export type TrendsFilterResultCustomizationsCase1Map = {
-  [key: string]: ResultCustomizationByPosition | undefined;
+  [key: string]: ResultCustomizationByValue | undefined;
 };
 export const TrendsFilterResultCustomizationsCase1Map = /*@__PURE__*/ S.Record(
   S.String,
-  ResultCustomizationByPosition,
+  ResultCustomizationByValue,
 ) as any as S.Schema<TrendsFilterResultCustomizationsCase1Map>;
 
 /** Customizations for the appearance of result datasets. */
@@ -4457,12 +4446,12 @@ export const StickinessFilterResultCustomizationsCase0Map =
   ) as any as S.Schema<StickinessFilterResultCustomizationsCase0Map>;
 
 export type StickinessFilterResultCustomizationsCase1Map = {
-  [key: string]: ResultCustomizationByPosition | undefined;
+  [key: string]: ResultCustomizationByValue | undefined;
 };
 export const StickinessFilterResultCustomizationsCase1Map =
   /*@__PURE__*/ S.Record(
     S.String,
-    ResultCustomizationByPosition,
+    ResultCustomizationByValue,
   ) as any as S.Schema<StickinessFilterResultCustomizationsCase1Map>;
 
 /** Customizations for the appearance of result datasets. */
@@ -7170,20 +7159,8 @@ export const FirstEvent = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FirstEvent" }) as any as S.Schema<FirstEvent>;
 
-export interface LastEvent {
-  distinct_id?: string;
-  properties?: string;
-  timestamp?: string;
-  uuid?: string;
-}
-export const LastEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    distinct_id: S.optional(S.String),
-    properties: S.optional(S.String),
-    timestamp: S.optional(S.String),
-    uuid: S.optional(S.String),
-  }),
-).annotate({ identifier: "LastEvent" }) as any as S.Schema<LastEvent>;
+export type LastEvent = FirstEvent;
+export const LastEvent = FirstEvent;
 
 export type ErrorTrackingIssueStatus =
   | "archived"
@@ -7203,7 +7180,7 @@ export interface ErrorTrackingIssue {
   first_seen?: string;
   function?: string | null;
   id?: string;
-  last_event?: LastEvent | null;
+  last_event?: FirstEvent | null;
   last_seen?: string;
   library?: string | null;
   name?: string | null;
@@ -7221,7 +7198,7 @@ export const ErrorTrackingIssue = /*@__PURE__*/ S.suspend(() =>
     first_seen: S.optional(S.String),
     function: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
-    last_event: S.optional(S.NullOr(LastEvent)),
+    last_event: S.optional(S.NullOr(FirstEvent)),
     last_seen: S.optional(S.String),
     library: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -15297,18 +15274,8 @@ export const InsightOutputTypesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<InsightOutputTypesList>;
 
-export interface InsightOutputResolvedDateRange {
-  date_from?: string;
-  date_to?: string;
-}
-export const InsightOutputResolvedDateRange = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    date_from: S.optional(S.String),
-    date_to: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InsightOutputResolvedDateRange",
-}) as any as S.Schema<InsightOutputResolvedDateRange>;
+export type InsightOutputResolvedDateRange = ResolvedDateRangeResponse;
+export const InsightOutputResolvedDateRange = ResolvedDateRangeResponse;
 
 export type InsightOutputAlertsList = Array<unknown>;
 export const InsightOutputAlertsList = /*@__PURE__*/ S.Array(
@@ -15359,7 +15326,7 @@ export interface InsightOutput {
   query_status?: unknown;
   hogql?: string | null;
   types?: InsightOutputTypesList | null;
-  resolved_date_range?: InsightOutputResolvedDateRange | null;
+  resolved_date_range?: ResolvedDateRangeResponse | null;
   alerts?: InsightOutputAlertsList;
   last_viewed_at?: string | null;
   /** How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match only). Results are ordered exact-first. Null when the list is not filtered by `search`. */
@@ -15399,7 +15366,7 @@ export const InsightOutput = /*@__PURE__*/ S.suspend(() =>
     query_status: S.optional(S.Unknown),
     hogql: S.optional(S.NullOr(S.String)),
     types: S.optional(S.NullOr(InsightOutputTypesList)),
-    resolved_date_range: S.optional(S.NullOr(InsightOutputResolvedDateRange)),
+    resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
     alerts: S.optional(InsightOutputAlertsList),
     last_viewed_at: S.optional(S.NullOr(S.String)),
     search_match_type: S.optional(S.NullOr(SearchMatchTypeEnum)),
@@ -16381,25 +16348,8 @@ export const ECODDetectorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ECODDetectorConfig",
 }) as any as S.Schema<ECODDetectorConfig>;
 
-export interface COPODDetectorConfig {
-  /** Preprocessing transforms applied before detection */
-  preprocessing?: PreprocessingConfig | null;
-  /** Anomaly probability threshold (default: 0.9) */
-  threshold?: number | null;
-  type?: string;
-  /** Rolling window size — how many historical data points to train on (default: based on calculation interval) */
-  window?: number | null;
-}
-export const COPODDetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
-    threshold: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    window: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "COPODDetectorConfig",
-}) as any as S.Schema<COPODDetectorConfig>;
+export type COPODDetectorConfig = ECODDetectorConfig;
+export const COPODDetectorConfig = ECODDetectorConfig;
 
 export interface IsolationForestDetectorConfig {
   /** Number of trees in the forest (default: 100) */
@@ -16525,25 +16475,8 @@ export const OCSVMDetectorConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "OCSVMDetectorConfig",
 }) as any as S.Schema<OCSVMDetectorConfig>;
 
-export interface PCADetectorConfig {
-  /** Preprocessing transforms applied before detection */
-  preprocessing?: PreprocessingConfig | null;
-  /** Anomaly probability threshold (default: 0.9) */
-  threshold?: number | null;
-  type?: string;
-  /** Rolling window size — how many historical data points to train on (default: based on calculation interval) */
-  window?: number | null;
-}
-export const PCADetectorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    preprocessing: S.optional(S.NullOr(PreprocessingConfig)),
-    threshold: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.String),
-    window: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "PCADetectorConfig",
-}) as any as S.Schema<PCADetectorConfig>;
+export type PCADetectorConfig = ECODDetectorConfig;
+export const PCADetectorConfig = ECODDetectorConfig;
 
 export type EnsembleDetectorConfigDetectorsItem =
   | ZScoreDetectorConfig
@@ -16551,13 +16484,13 @@ export type EnsembleDetectorConfigDetectorsItem =
   | IQRDetectorConfig
   | ThresholdDetectorConfig
   | ECODDetectorConfig
-  | COPODDetectorConfig
+  | ECODDetectorConfig
   | IsolationForestDetectorConfig
   | KNNDetectorConfig
   | HBOSDetectorConfig
   | LOFDetectorConfig
   | OCSVMDetectorConfig
-  | PCADetectorConfig;
+  | ECODDetectorConfig;
 export const EnsembleDetectorConfigDetectorsItem =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EnsembleDetectorConfigDetectorsItem>;
 
@@ -16596,13 +16529,13 @@ export type DetectorConfig =
   | IQRDetectorConfig
   | ThresholdDetectorConfig
   | ECODDetectorConfig
-  | COPODDetectorConfig
+  | ECODDetectorConfig
   | IsolationForestDetectorConfig
   | KNNDetectorConfig
   | HBOSDetectorConfig
   | LOFDetectorConfig
   | OCSVMDetectorConfig
-  | PCADetectorConfig;
+  | ECODDetectorConfig;
 export const DetectorConfig =
   /*@__PURE__*/ S.Unknown as any as S.Schema<DetectorConfig>;
 

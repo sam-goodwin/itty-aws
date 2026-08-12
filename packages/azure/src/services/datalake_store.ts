@@ -1083,33 +1083,21 @@ export const UpdateEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEncryptionConfig>;
 
 /** The firewall rule properties to use when updating a firewall rule. */
-export interface UpdateFirewallRuleProperties {
-  /** The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol. */
-  startIpAddress?: string;
-  /** The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol. */
-  endIpAddress?: string;
-}
-export const UpdateFirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startIpAddress: S.optional(S.String),
-    endIpAddress: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateFirewallRuleProperties",
-}) as any as S.Schema<UpdateFirewallRuleProperties>;
+export type UpdateFirewallRuleProperties = FirewallRuleProperties;
+export const UpdateFirewallRuleProperties = FirewallRuleProperties;
 
 /** The parameters used to update a firewall rule while updating a Data Lake Store account. */
 export interface UpdateFirewallRuleWithAccountParameters {
   /** The unique name of the firewall rule to update. */
   name: string;
   /** The firewall rule properties to use when updating a firewall rule. */
-  properties?: UpdateFirewallRuleProperties;
+  properties?: FirewallRuleProperties;
 }
 export const UpdateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String,
-      properties: S.optional(UpdateFirewallRuleProperties),
+      properties: S.optional(FirewallRuleProperties),
     }),
 ).annotate({
   identifier: "UpdateFirewallRuleWithAccountParameters",
@@ -1124,30 +1112,21 @@ export const UpdateDataLakeStoreAccountPropertiesFirewallRulesList =
   ) as any as S.Schema<UpdateDataLakeStoreAccountPropertiesFirewallRulesList>;
 
 /** The virtual network rule properties to use when updating a virtual network rule. */
-export interface UpdateVirtualNetworkRuleProperties {
-  /** The resource identifier for the subnet. */
-  subnetId?: string;
-}
-export const UpdateVirtualNetworkRuleProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subnetId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateVirtualNetworkRuleProperties",
-}) as any as S.Schema<UpdateVirtualNetworkRuleProperties>;
+export type UpdateVirtualNetworkRuleProperties = VirtualNetworkRuleProperties;
+export const UpdateVirtualNetworkRuleProperties = VirtualNetworkRuleProperties;
 
 /** The parameters used to update a virtual network rule while updating a Data Lake Store account. */
 export interface UpdateVirtualNetworkRuleWithAccountParameters {
   /** The unique name of the virtual network rule to update. */
   name: string;
   /** The virtual network rule properties to use when updating a virtual network rule. */
-  properties?: UpdateVirtualNetworkRuleProperties;
+  properties?: VirtualNetworkRuleProperties;
 }
 export const UpdateVirtualNetworkRuleWithAccountParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      properties: S.optional(UpdateVirtualNetworkRuleProperties),
+      properties: S.optional(VirtualNetworkRuleProperties),
     }),
   ).annotate({
     identifier: "UpdateVirtualNetworkRuleWithAccountParameters",
@@ -1176,30 +1155,21 @@ export const UpdateDataLakeStoreAccountPropertiesFirewallAllowAzureIps =
   /*@__PURE__*/ S.String;
 
 /** The trusted identity provider properties to use when updating a trusted identity provider. */
-export interface UpdateTrustedIdProviderProperties {
-  /** The URL of this trusted identity provider. */
-  idProvider?: string;
-}
-export const UpdateTrustedIdProviderProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    idProvider: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateTrustedIdProviderProperties",
-}) as any as S.Schema<UpdateTrustedIdProviderProperties>;
+export type UpdateTrustedIdProviderProperties = TrustedIdProviderProperties;
+export const UpdateTrustedIdProviderProperties = TrustedIdProviderProperties;
 
 /** The parameters used to update a trusted identity provider while updating a Data Lake Store account. */
 export interface UpdateTrustedIdProviderWithAccountParameters {
   /** The unique name of the trusted identity provider to update. */
   name: string;
   /** The trusted identity provider properties to use when updating a trusted identity provider. */
-  properties?: UpdateTrustedIdProviderProperties;
+  properties?: TrustedIdProviderProperties;
 }
 export const UpdateTrustedIdProviderWithAccountParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String,
-      properties: S.optional(UpdateTrustedIdProviderProperties),
+      properties: S.optional(TrustedIdProviderProperties),
     }),
   ).annotate({
     identifier: "UpdateTrustedIdProviderWithAccountParameters",
@@ -1551,7 +1521,7 @@ export interface FirewallRulesUpdateRequest {
   /** The name of the firewall rule to update. */
   firewallRuleName: string;
   /** The firewall rule properties to use when updating a firewall rule. */
-  properties?: UpdateFirewallRuleProperties;
+  properties?: FirewallRuleProperties;
 }
 export const FirewallRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1559,7 +1529,7 @@ export const FirewallRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     firewallRuleName: S.String.pipe(T.Label()),
-    properties: S.optional(UpdateFirewallRuleProperties),
+    properties: S.optional(FirewallRuleProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2012,7 +1982,7 @@ export interface TrustedIdProvidersUpdateRequest {
   /** The name of the trusted identity provider. This is used for differentiation of providers in the account. */
   trustedIdProviderName: string;
   /** The trusted identity provider properties to use when updating a trusted identity provider. */
-  properties?: UpdateTrustedIdProviderProperties;
+  properties?: TrustedIdProviderProperties;
 }
 export const TrustedIdProvidersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2020,7 +1990,7 @@ export const TrustedIdProvidersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     trustedIdProviderName: S.String.pipe(T.Label()),
-    properties: S.optional(UpdateTrustedIdProviderProperties),
+    properties: S.optional(TrustedIdProviderProperties),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -2250,7 +2220,7 @@ export interface VirtualNetworkRulesUpdateRequest {
   /** The name of the virtual network rule to update. */
   virtualNetworkRuleName: string;
   /** The virtual network rule properties to use when updating a virtual network rule. */
-  properties?: UpdateVirtualNetworkRuleProperties;
+  properties?: VirtualNetworkRuleProperties;
 }
 export const VirtualNetworkRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2258,7 +2228,7 @@ export const VirtualNetworkRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     accountName: S.String.pipe(T.Label()),
     virtualNetworkRuleName: S.String.pipe(T.Label()),
-    properties: S.optional(UpdateVirtualNetworkRuleProperties),
+    properties: S.optional(VirtualNetworkRuleProperties),
   }).pipe(
     T.Http({
       method: "PATCH",

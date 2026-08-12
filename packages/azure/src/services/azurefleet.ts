@@ -783,17 +783,8 @@ export type StorageAccountTypes =
 export const StorageAccountTypes = /*@__PURE__*/ S.String;
 
 /** Describes the parameter of customer managed disk encryption set resource id that can be specified for disk. **Note:** The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview for more details. */
-export interface DiskEncryptionSetParameters {
-  /** Resource Id */
-  id?: string;
-}
-export const DiskEncryptionSetParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DiskEncryptionSetParameters",
-}) as any as S.Schema<DiskEncryptionSetParameters>;
+export type DiskEncryptionSetParameters = SubResource;
+export const DiskEncryptionSetParameters = SubResource;
 
 /** Specifies the EncryptionType of the managed disk. **Note:** It can be set for only Confidential VMs. */
 export type SecurityEncryptionTypes =
@@ -807,12 +798,12 @@ export interface VMDiskSecurityProfile {
   /** Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob.. **Note:** It can be set for only Confidential VMs. */
   securityEncryptionType?: SecurityEncryptionTypes | (string & {});
   /** Specifies the customer managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob. */
-  diskEncryptionSet?: DiskEncryptionSetParameters;
+  diskEncryptionSet?: SubResource;
 }
 export const VMDiskSecurityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securityEncryptionType: S.optional(SecurityEncryptionTypes),
-    diskEncryptionSet: S.optional(DiskEncryptionSetParameters),
+    diskEncryptionSet: S.optional(SubResource),
   }),
 ).annotate({
   identifier: "VMDiskSecurityProfile",
@@ -823,7 +814,7 @@ export interface VirtualMachineScaleSetManagedDiskParameters {
   /** Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk. */
   storageAccountType?: StorageAccountTypes | (string & {});
   /** Specifies the customer managed disk encryption set resource id for the managed disk. */
-  diskEncryptionSet?: DiskEncryptionSetParameters;
+  diskEncryptionSet?: SubResource;
   /** Specifies the security profile for the managed disk. */
   securityProfile?: VMDiskSecurityProfile;
 }
@@ -831,7 +822,7 @@ export const VirtualMachineScaleSetManagedDiskParameters =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       storageAccountType: S.optional(StorageAccountTypes),
-      diskEncryptionSet: S.optional(DiskEncryptionSetParameters),
+      diskEncryptionSet: S.optional(SubResource),
       securityProfile: S.optional(VMDiskSecurityProfile),
     }),
   ).annotate({
@@ -2504,29 +2495,8 @@ export const FleetsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<FleetsCreateOrUpdateResponseIdentity>;
 
 /** Plan for the resource. */
-export interface FleetsCreateOrUpdateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FleetsCreateOrUpdateResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FleetsCreateOrUpdateResponsePlan",
-}) as any as S.Schema<FleetsCreateOrUpdateResponsePlan>;
+export type FleetsCreateOrUpdateResponsePlan = FleetsCreateOrUpdateRequestPlan;
+export const FleetsCreateOrUpdateResponsePlan = FleetsCreateOrUpdateRequestPlan;
 
 export interface FleetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2548,7 +2518,7 @@ export interface FleetsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: FleetsCreateOrUpdateResponseIdentity;
   /** Plan for the resource. */
-  plan?: FleetsCreateOrUpdateResponsePlan;
+  plan?: FleetsCreateOrUpdateRequestPlan;
 }
 export const FleetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2561,7 +2531,7 @@ export const FleetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(FleetProperties),
     zones: S.optional(FleetsCreateOrUpdateResponseZonesList),
     identity: S.optional(FleetsCreateOrUpdateResponseIdentity),
-    plan: S.optional(FleetsCreateOrUpdateResponsePlan),
+    plan: S.optional(FleetsCreateOrUpdateRequestPlan),
   }),
 ).annotate({
   identifier: "FleetsCreateOrUpdateResponse",
@@ -2638,49 +2608,12 @@ export const FleetsGetResponseZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FleetsGetResponseZonesList>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FleetsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FleetsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "FleetsGetResponseIdentity",
-}) as any as S.Schema<FleetsGetResponseIdentity>;
+export type FleetsGetResponseIdentity = FleetsCreateOrUpdateResponseIdentity;
+export const FleetsGetResponseIdentity = FleetsCreateOrUpdateResponseIdentity;
 
 /** Plan for the resource. */
-export interface FleetsGetResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FleetsGetResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FleetsGetResponsePlan",
-}) as any as S.Schema<FleetsGetResponsePlan>;
+export type FleetsGetResponsePlan = FleetsCreateOrUpdateRequestPlan;
+export const FleetsGetResponsePlan = FleetsCreateOrUpdateRequestPlan;
 
 export interface FleetsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2700,9 +2633,9 @@ export interface FleetsGetResponse {
   /** Zones in which the Compute Fleet is available */
   zones?: FleetsGetResponseZonesList;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FleetsGetResponseIdentity;
+  identity?: FleetsCreateOrUpdateResponseIdentity;
   /** Plan for the resource. */
-  plan?: FleetsGetResponsePlan;
+  plan?: FleetsCreateOrUpdateRequestPlan;
 }
 export const FleetsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2714,8 +2647,8 @@ export const FleetsGetResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(FleetProperties),
     zones: S.optional(FleetsGetResponseZonesList),
-    identity: S.optional(FleetsGetResponseIdentity),
-    plan: S.optional(FleetsGetResponsePlan),
+    identity: S.optional(FleetsCreateOrUpdateResponseIdentity),
+    plan: S.optional(FleetsCreateOrUpdateRequestPlan),
   }),
 ).annotate({
   identifier: "FleetsGetResponse",
@@ -2757,45 +2690,12 @@ export const FleetZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FleetZonesList>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FleetIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FleetIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({ identifier: "FleetIdentity" }) as any as S.Schema<FleetIdentity>;
+export type FleetIdentity = FleetsCreateOrUpdateResponseIdentity;
+export const FleetIdentity = FleetsCreateOrUpdateResponseIdentity;
 
 /** Plan for the resource. */
-export interface FleetPlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FleetPlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({ identifier: "FleetPlan" }) as any as S.Schema<FleetPlan>;
+export type FleetPlan = FleetsCreateOrUpdateRequestPlan;
+export const FleetPlan = FleetsCreateOrUpdateRequestPlan;
 
 /** An Compute Fleet resource */
 export interface Fleet {
@@ -2816,9 +2716,9 @@ export interface Fleet {
   /** Zones in which the Compute Fleet is available */
   zones?: FleetZonesList;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FleetIdentity;
+  identity?: FleetsCreateOrUpdateResponseIdentity;
   /** Plan for the resource. */
-  plan?: FleetPlan;
+  plan?: FleetsCreateOrUpdateRequestPlan;
 }
 export const Fleet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2830,8 +2730,8 @@ export const Fleet = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(FleetProperties),
     zones: S.optional(FleetZonesList),
-    identity: S.optional(FleetIdentity),
-    plan: S.optional(FleetPlan),
+    identity: S.optional(FleetsCreateOrUpdateResponseIdentity),
+    plan: S.optional(FleetsCreateOrUpdateRequestPlan),
   }),
 ).annotate({ identifier: "Fleet" }) as any as S.Schema<Fleet>;
 
@@ -3026,22 +2926,19 @@ export type ManagedServiceIdentityUpdateInputType =
 export const ManagedServiceIdentityUpdateInputType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue {}
+export type ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
+  UserAssignedIdentityInput;
 export const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue",
-  }) as any as S.Schema<ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue>;
+  UserAssignedIdentityInput;
 
 /** The identities assigned to this resource by the user. */
 export type ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap = {
-  [key: string]:
-    | ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue
-    | undefined;
+  [key: string]: UserAssignedIdentityInput | undefined;
 };
 export const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue,
+    UserAssignedIdentityInput,
   ) as any as S.Schema<ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap>;
 
 /** The template for adding optional properties. */
@@ -3138,49 +3035,13 @@ export const FleetsUpdateResponseZonesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<FleetsUpdateResponseZonesList>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface FleetsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const FleetsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "FleetsUpdateResponseIdentity",
-}) as any as S.Schema<FleetsUpdateResponseIdentity>;
+export type FleetsUpdateResponseIdentity = FleetsCreateOrUpdateResponseIdentity;
+export const FleetsUpdateResponseIdentity =
+  FleetsCreateOrUpdateResponseIdentity;
 
 /** Plan for the resource. */
-export interface FleetsUpdateResponsePlan {
-  /** A user defined name of the 3rd Party Artifact that is being procured. */
-  name: string;
-  /** The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic */
-  publisher: string;
-  /** The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding. */
-  product: string;
-  /** A publisher provided promotion code as provisioned in Data Market for the said product/artifact. */
-  promotionCode?: string;
-  /** The version of the desired product/artifact. */
-  version?: string;
-}
-export const FleetsUpdateResponsePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publisher: S.String,
-    product: S.String,
-    promotionCode: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FleetsUpdateResponsePlan",
-}) as any as S.Schema<FleetsUpdateResponsePlan>;
+export type FleetsUpdateResponsePlan = FleetsCreateOrUpdateRequestPlan;
+export const FleetsUpdateResponsePlan = FleetsCreateOrUpdateRequestPlan;
 
 export interface FleetsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3200,9 +3061,9 @@ export interface FleetsUpdateResponse {
   /** Zones in which the Compute Fleet is available */
   zones?: FleetsUpdateResponseZonesList;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: FleetsUpdateResponseIdentity;
+  identity?: FleetsCreateOrUpdateResponseIdentity;
   /** Plan for the resource. */
-  plan?: FleetsUpdateResponsePlan;
+  plan?: FleetsCreateOrUpdateRequestPlan;
 }
 export const FleetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3214,8 +3075,8 @@ export const FleetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(FleetProperties),
     zones: S.optional(FleetsUpdateResponseZonesList),
-    identity: S.optional(FleetsUpdateResponseIdentity),
-    plan: S.optional(FleetsUpdateResponsePlan),
+    identity: S.optional(FleetsCreateOrUpdateResponseIdentity),
+    plan: S.optional(FleetsCreateOrUpdateRequestPlan),
   }),
 ).annotate({
   identifier: "FleetsUpdateResponse",

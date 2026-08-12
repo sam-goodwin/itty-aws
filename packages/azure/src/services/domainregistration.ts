@@ -1421,47 +1421,8 @@ export const DomainsTransferOutResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainsTransferOutResponse>;
 
 /** DomainPatchResource resource specific properties */
-export interface DomainPatchResourcePropertiesInput {
-  /** Administrative contact. */
-  contactAdmin: Contact;
-  /** Billing contact. */
-  contactBilling: Contact;
-  /** Registrant contact. */
-  contactRegistrant: Contact;
-  /** Technical contact. */
-  contactTech: Contact;
-  /** <code>true</code> if domain privacy is enabled for this domain; otherwise, <code>false</code>. */
-  privacy?: boolean;
-  /** <code>true</code> if the domain should be automatically renewed; otherwise, <code>false</code>. */
-  autoRenew?: boolean;
-  /** Legal agreement consent. */
-  consent: DomainPurchaseConsent;
-  /** Current DNS type */
-  dnsType?: DnsType | (string & {});
-  /** Azure DNS Zone to use */
-  dnsZoneId?: string;
-  /** Target DNS type (would be used for migration) */
-  targetDnsType?: DnsType | (string & {});
-  /** Authorization code for the domain. */
-  authCode?: string;
-}
-export const DomainPatchResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contactAdmin: Contact,
-    contactBilling: Contact,
-    contactRegistrant: Contact,
-    contactTech: Contact,
-    privacy: S.optional(S.Boolean),
-    autoRenew: S.optional(S.Boolean),
-    consent: DomainPurchaseConsent,
-    dnsType: S.optional(DnsType),
-    dnsZoneId: S.optional(S.String),
-    targetDnsType: S.optional(DnsType),
-    authCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DomainPatchResourcePropertiesInput",
-}) as any as S.Schema<DomainPatchResourcePropertiesInput>;
+export type DomainPatchResourcePropertiesInput = DomainPropertiesInput;
+export const DomainPatchResourcePropertiesInput = DomainPropertiesInput;
 
 export interface DomainsUpdateRequest {
   /** The ID of the target subscription. */
@@ -1473,7 +1434,7 @@ export interface DomainsUpdateRequest {
   /** Kind of resource. */
   kind?: string;
   /** DomainPatchResource resource specific properties */
-  properties?: DomainPatchResourcePropertiesInput;
+  properties?: DomainPropertiesInput;
 }
 export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1481,7 +1442,7 @@ export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     domainName: S.String.pipe(T.Label()),
     kind: S.optional(S.String),
-    properties: S.optional(DomainPatchResourcePropertiesInput),
+    properties: S.optional(DomainPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",

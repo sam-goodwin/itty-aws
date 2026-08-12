@@ -2104,24 +2104,20 @@ export const VirtualMachinePropertiesInputNicsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VirtualMachinePropertiesInputNicsList>;
 
 /** Properties of resource pool */
-export interface ResourcePoolPropertiesInput {}
-export const ResourcePoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResourcePoolPropertiesInput",
-}) as any as S.Schema<ResourcePoolPropertiesInput>;
+export type ResourcePoolPropertiesInput = VirtualNetworkPropertiesInput;
+export const ResourcePoolPropertiesInput = VirtualNetworkPropertiesInput;
 
 /** Resource pool model */
 export interface ResourcePoolInput {
   /** resource pool id (privateCloudId:vsphereId) */
   id: string;
   /** Resource pool properties */
-  properties?: ResourcePoolPropertiesInput;
+  properties?: VirtualNetworkPropertiesInput;
 }
 export const ResourcePoolInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    properties: S.optional(ResourcePoolPropertiesInput),
+    properties: S.optional(VirtualNetworkPropertiesInput),
   }),
 ).annotate({
   identifier: "ResourcePoolInput",

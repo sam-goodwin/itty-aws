@@ -323,20 +323,10 @@ export type ApiSpecImportSourceFormat = "inline" | "link";
 export const ApiSpecImportSourceFormat = /*@__PURE__*/ S.String;
 
 /** API specification details. */
-export interface ApiSpecImportRequestSpecification {
-  /** Specification name. */
-  name?: string;
-  /** Specification version. */
-  version?: string;
-}
-export const ApiSpecImportRequestSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ApiSpecImportRequestSpecification",
-}) as any as S.Schema<ApiSpecImportRequestSpecification>;
+export type ApiSpecImportRequestSpecification =
+  ApiDefinitionPropertiesSpecification;
+export const ApiSpecImportRequestSpecification =
+  ApiDefinitionPropertiesSpecification;
 
 export interface ApiDefinitionsImportSpecificationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -358,7 +348,7 @@ export interface ApiDefinitionsImportSpecificationRequest {
   /** Format of the API specification source. */
   format?: ApiSpecImportSourceFormat | (string & {});
   /** API specification details. */
-  specification?: ApiSpecImportRequestSpecification;
+  specification?: ApiDefinitionPropertiesSpecification;
 }
 export const ApiDefinitionsImportSpecificationRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -372,7 +362,7 @@ export const ApiDefinitionsImportSpecificationRequest = /*@__PURE__*/ S.suspend(
       definitionName: S.String.pipe(T.Label()),
       value: S.optional(S.String),
       format: S.optional(ApiSpecImportSourceFormat),
-      specification: S.optional(ApiSpecImportRequestSpecification),
+      specification: S.optional(ApiDefinitionPropertiesSpecification),
     }).pipe(
       T.Http({
         method: "POST",
@@ -2072,20 +2062,16 @@ export type ManagedServiceIdentityType =
 export const ManagedServiceIdentityType = /*@__PURE__*/ S.String;
 
 /** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = ServicePropertiesInput;
+export const UserAssignedIdentityInput = ServicePropertiesInput;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: ServicePropertiesInput | undefined;
 };
 export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentityInput,
+  ServicePropertiesInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -2358,24 +2344,10 @@ export const ServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServicesGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ServicesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ServicesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ServicesGetResponseIdentity",
-}) as any as S.Schema<ServicesGetResponseIdentity>;
+export type ServicesGetResponseIdentity =
+  ServicesCreateOrUpdateResponseIdentity;
+export const ServicesGetResponseIdentity =
+  ServicesCreateOrUpdateResponseIdentity;
 
 export interface ServicesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2393,7 +2365,7 @@ export interface ServicesGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: ServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ServicesGetResponseIdentity;
+  identity?: ServicesCreateOrUpdateResponseIdentity;
 }
 export const ServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2404,7 +2376,7 @@ export const ServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ServicesGetResponseTagsMap),
     location: S.String,
     properties: S.optional(ServiceProperties),
-    identity: S.optional(ServicesGetResponseIdentity),
+    identity: S.optional(ServicesCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ServicesGetResponse",
@@ -2440,24 +2412,8 @@ export const ServiceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServiceTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ServiceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ServiceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ServiceIdentity",
-}) as any as S.Schema<ServiceIdentity>;
+export type ServiceIdentity = ServicesCreateOrUpdateResponseIdentity;
+export const ServiceIdentity = ServicesCreateOrUpdateResponseIdentity;
 
 /** The service entity. */
 export interface Service {
@@ -2476,7 +2432,7 @@ export interface Service {
   /** The resource-specific properties for this resource. */
   properties?: ServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ServiceIdentity;
+  identity?: ServicesCreateOrUpdateResponseIdentity;
 }
 export const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2487,7 +2443,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ServiceTagsMap),
     location: S.String,
     properties: S.optional(ServiceProperties),
-    identity: S.optional(ServiceIdentity),
+    identity: S.optional(ServicesCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
@@ -2533,18 +2489,10 @@ export const ServicesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServicesListBySubscriptionRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ServicesUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const ServicesUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "ServicesUpdateRequestIdentity",
-}) as any as S.Schema<ServicesUpdateRequestIdentity>;
+export type ServicesUpdateRequestIdentity =
+  ServicesCreateOrUpdateRequestIdentity;
+export const ServicesUpdateRequestIdentity =
+  ServicesCreateOrUpdateRequestIdentity;
 
 /** Resource tags. */
 export type ServicesUpdateRequestTagsMap = {
@@ -2563,7 +2511,7 @@ export interface ServicesUpdateRequest {
   /** The name of Azure API Center service. */
   serviceName: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ServicesUpdateRequestIdentity;
+  identity?: ServicesCreateOrUpdateRequestIdentity;
   /** Resource tags. */
   tags?: ServicesUpdateRequestTagsMap;
 }
@@ -2572,7 +2520,7 @@ export const ServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
-    identity: S.optional(ServicesUpdateRequestIdentity),
+    identity: S.optional(ServicesCreateOrUpdateRequestIdentity),
     tags: S.optional(ServicesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
@@ -2596,24 +2544,10 @@ export const ServicesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ServicesUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ServicesUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ServicesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ServicesUpdateResponseIdentity",
-}) as any as S.Schema<ServicesUpdateResponseIdentity>;
+export type ServicesUpdateResponseIdentity =
+  ServicesCreateOrUpdateResponseIdentity;
+export const ServicesUpdateResponseIdentity =
+  ServicesCreateOrUpdateResponseIdentity;
 
 export interface ServicesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2631,7 +2565,7 @@ export interface ServicesUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ServiceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ServicesUpdateResponseIdentity;
+  identity?: ServicesCreateOrUpdateResponseIdentity;
 }
 export const ServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2642,7 +2576,7 @@ export const ServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(ServicesUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(ServiceProperties),
-    identity: S.optional(ServicesUpdateResponseIdentity),
+    identity: S.optional(ServicesCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ServicesUpdateResponse",

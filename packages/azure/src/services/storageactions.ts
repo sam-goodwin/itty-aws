@@ -607,24 +607,10 @@ export const StorageTasksGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageTasksGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface StorageTasksGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const StorageTasksGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "StorageTasksGetResponseIdentity",
-}) as any as S.Schema<StorageTasksGetResponseIdentity>;
+export type StorageTasksGetResponseIdentity =
+  StorageTasksCreateResponseIdentity;
+export const StorageTasksGetResponseIdentity =
+  StorageTasksCreateResponseIdentity;
 
 export interface StorageTasksGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -642,7 +628,7 @@ export interface StorageTasksGetResponse {
   /** Properties of the storage task. */
   properties: StorageTaskProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity: StorageTasksGetResponseIdentity;
+  identity: StorageTasksCreateResponseIdentity;
 }
 export const StorageTasksGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -653,7 +639,7 @@ export const StorageTasksGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(StorageTasksGetResponseTagsMap),
     location: S.String,
     properties: StorageTaskProperties,
-    identity: StorageTasksGetResponseIdentity,
+    identity: StorageTasksCreateResponseIdentity,
   }),
 ).annotate({
   identifier: "StorageTasksGetResponse",
@@ -690,24 +676,8 @@ export const StorageTaskTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageTaskTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface StorageTaskIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const StorageTaskIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "StorageTaskIdentity",
-}) as any as S.Schema<StorageTaskIdentity>;
+export type StorageTaskIdentity = StorageTasksCreateResponseIdentity;
+export const StorageTaskIdentity = StorageTasksCreateResponseIdentity;
 
 /** Represents Storage Task. */
 export interface StorageTask {
@@ -726,7 +696,7 @@ export interface StorageTask {
   /** Properties of the storage task. */
   properties: StorageTaskProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity: StorageTaskIdentity;
+  identity: StorageTasksCreateResponseIdentity;
 }
 export const StorageTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -737,7 +707,7 @@ export const StorageTask = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(StorageTaskTagsMap),
     location: S.String,
     properties: StorageTaskProperties,
-    identity: StorageTaskIdentity,
+    identity: StorageTasksCreateResponseIdentity,
   }),
 ).annotate({ identifier: "StorageTask" }) as any as S.Schema<StorageTask>;
 
@@ -1137,18 +1107,10 @@ export const StorageTasksStopAllAssignmentsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StorageTasksStopAllAssignmentsResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface StorageTasksUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const StorageTasksUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "StorageTasksUpdateRequestIdentity",
-}) as any as S.Schema<StorageTasksUpdateRequestIdentity>;
+export type StorageTasksUpdateRequestIdentity =
+  StorageTasksCreateRequestIdentity;
+export const StorageTasksUpdateRequestIdentity =
+  StorageTasksCreateRequestIdentity;
 
 /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters. */
 export type StorageTasksUpdateRequestTagsMap = {
@@ -1186,7 +1148,7 @@ export interface StorageTasksUpdateRequest {
   /** The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only. */
   storageTaskName: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: StorageTasksUpdateRequestIdentity;
+  identity?: StorageTasksCreateRequestIdentity;
   /** Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters. */
   tags?: StorageTasksUpdateRequestTagsMap;
   /** Properties of the storage task. */
@@ -1197,7 +1159,7 @@ export const StorageTasksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     storageTaskName: S.String.pipe(T.Label()),
-    identity: S.optional(StorageTasksUpdateRequestIdentity),
+    identity: S.optional(StorageTasksCreateRequestIdentity),
     tags: S.optional(StorageTasksUpdateRequestTagsMap),
     properties: S.optional(StorageTaskUpdatePropertiesInput),
   }).pipe(
@@ -1222,24 +1184,10 @@ export const StorageTasksUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<StorageTasksUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface StorageTasksUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const StorageTasksUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "StorageTasksUpdateResponseIdentity",
-}) as any as S.Schema<StorageTasksUpdateResponseIdentity>;
+export type StorageTasksUpdateResponseIdentity =
+  StorageTasksCreateResponseIdentity;
+export const StorageTasksUpdateResponseIdentity =
+  StorageTasksCreateResponseIdentity;
 
 export interface StorageTasksUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1257,7 +1205,7 @@ export interface StorageTasksUpdateResponse {
   /** Properties of the storage task. */
   properties: StorageTaskProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity: StorageTasksUpdateResponseIdentity;
+  identity: StorageTasksCreateResponseIdentity;
 }
 export const StorageTasksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1268,7 +1216,7 @@ export const StorageTasksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(StorageTasksUpdateResponseTagsMap),
     location: S.String,
     properties: StorageTaskProperties,
-    identity: StorageTasksUpdateResponseIdentity,
+    identity: StorageTasksCreateResponseIdentity,
   }),
 ).annotate({
   identifier: "StorageTasksUpdateResponse",

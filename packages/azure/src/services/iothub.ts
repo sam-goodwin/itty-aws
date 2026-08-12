@@ -1446,19 +1446,15 @@ export type ArmIdentityInputType =
   | "None";
 export const ArmIdentityInputType = /*@__PURE__*/ S.String;
 
-export interface ArmUserIdentityInput {}
-export const ArmUserIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ArmUserIdentityInput",
-}) as any as S.Schema<ArmUserIdentityInput>;
+export type ArmUserIdentityInput = PrivateEndpointInput;
+export const ArmUserIdentityInput = PrivateEndpointInput;
 
 export type ArmIdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: ArmUserIdentityInput | undefined;
+  [key: string]: PrivateEndpointInput | undefined;
 };
 export const ArmIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  ArmUserIdentityInput,
+  PrivateEndpointInput,
 ) as any as S.Schema<ArmIdentityInputUserAssignedIdentitiesMap>;
 
 export interface ArmIdentityInput {

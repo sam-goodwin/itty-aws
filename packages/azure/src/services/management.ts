@@ -540,26 +540,17 @@ export const HierarchySettingsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HierarchySettingsUpdateResponse>;
 
 /** (Optional) The ID of the parent management group used during creation. */
-export interface CreateParentGroupInfoInput {
-  /** The fully qualified ID for the parent management group. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000 */
-  id?: string;
-}
-export const CreateParentGroupInfoInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateParentGroupInfoInput",
-}) as any as S.Schema<CreateParentGroupInfoInput>;
+export type CreateParentGroupInfoInput = EntityParentGroupInfo;
+export const CreateParentGroupInfoInput = EntityParentGroupInfo;
 
 /** The details of a management group used during creation. */
 export interface CreateManagementGroupDetailsInput {
   /** (Optional) The ID of the parent management group used during creation. */
-  parent?: CreateParentGroupInfoInput;
+  parent?: EntityParentGroupInfo;
 }
 export const CreateManagementGroupDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    parent: S.optional(CreateParentGroupInfoInput),
+    parent: S.optional(EntityParentGroupInfo),
   }),
 ).annotate({
   identifier: "CreateManagementGroupDetailsInput",
@@ -904,29 +895,20 @@ export const ManagementGroupsGetDescendantsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagementGroupsGetDescendantsRequest>;
 
 /** The ID of the parent management group. */
-export interface DescendantParentGroupInfo {
-  /** The fully qualified ID for the parent management group. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000 */
-  id?: string;
-}
-export const DescendantParentGroupInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DescendantParentGroupInfo",
-}) as any as S.Schema<DescendantParentGroupInfo>;
+export type DescendantParentGroupInfo = EntityParentGroupInfo;
+export const DescendantParentGroupInfo = EntityParentGroupInfo;
 
 /** The generic properties of an descendant. */
 export interface DescendantInfoProperties {
   /** The friendly name of the management group. */
   displayName?: string | null;
   /** The ID of the parent management group. */
-  parent?: DescendantParentGroupInfo | null;
+  parent?: EntityParentGroupInfo | null;
 }
 export const DescendantInfoProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
-    parent: S.optional(S.NullOr(DescendantParentGroupInfo)),
+    parent: S.optional(S.NullOr(EntityParentGroupInfo)),
   }),
 ).annotate({
   identifier: "DescendantInfoProperties",
@@ -1083,7 +1065,7 @@ export interface SubscriptionUnderManagementGroupProperties {
   /** The friendly name of the subscription. */
   displayName?: string;
   /** The ID of the parent management group. */
-  parent?: DescendantParentGroupInfo | null;
+  parent?: EntityParentGroupInfo | null;
   /** The state of the subscription. */
   state?: string;
 }
@@ -1092,7 +1074,7 @@ export const SubscriptionUnderManagementGroupProperties =
     S.Struct({
       tenant: S.optional(S.String),
       displayName: S.optional(S.String),
-      parent: S.optional(S.NullOr(DescendantParentGroupInfo)),
+      parent: S.optional(S.NullOr(EntityParentGroupInfo)),
       state: S.optional(S.String),
     }),
   ).annotate({

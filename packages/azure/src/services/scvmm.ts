@@ -2646,41 +2646,14 @@ export const HardwareProfileUpdate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HardwareProfileUpdate>;
 
 /** Network Interface Update model */
-export interface NetworkInterfaceUpdate {
-  /** Gets or sets the name of the network interface. */
-  name?: string;
-  /** Gets or sets the nic MAC address. */
-  macAddress?: string;
-  /** Gets or sets the ARM Id of the Microsoft.ScVmm/virtualNetwork resource to connect the nic. */
-  virtualNetworkId?: string;
-  /** Gets or sets the ipv4 address type. */
-  ipv4AddressType?: AllocationMethod | (string & {});
-  /** Gets or sets the ipv6 address type. */
-  ipv6AddressType?: AllocationMethod | (string & {});
-  /** Gets or sets the mac address type. */
-  macAddressType?: AllocationMethod | (string & {});
-  /** Gets or sets the nic id. */
-  nicId?: string;
-}
-export const NetworkInterfaceUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    macAddress: S.optional(S.String),
-    virtualNetworkId: S.optional(S.String),
-    ipv4AddressType: S.optional(AllocationMethod),
-    ipv6AddressType: S.optional(AllocationMethod),
-    macAddressType: S.optional(AllocationMethod),
-    nicId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NetworkInterfaceUpdate",
-}) as any as S.Schema<NetworkInterfaceUpdate>;
+export type NetworkInterfaceUpdate = NetworkInterfaceInput;
+export const NetworkInterfaceUpdate = NetworkInterfaceInput;
 
 /** Gets or sets the list of network interfaces associated with the virtual machine. */
 export type NetworkProfileUpdateNetworkInterfacesList =
-  Array<NetworkInterfaceUpdate>;
+  Array<NetworkInterfaceInput>;
 export const NetworkProfileUpdateNetworkInterfacesList = /*@__PURE__*/ S.Array(
-  NetworkInterfaceUpdate,
+  NetworkInterfaceInput,
 ) as any as S.Schema<NetworkProfileUpdateNetworkInterfacesList>;
 
 /** Defines the resource update properties. */

@@ -2564,27 +2564,16 @@ export const VirtualNetworkPropertiesInputVipPoolList = /*@__PURE__*/ S.Array(
   VirtualNetworkPropertiesInputVipPoolItem,
 ) as any as S.Schema<VirtualNetworkPropertiesInputVipPoolList>;
 
-export interface VirtualNetworkPropertiesInputVmipPoolItem {
-  /** Ending IP address for the IP Pool */
-  endIP?: string;
-  /** Starting IP address for the IP Pool */
-  startIP?: string;
-}
+export type VirtualNetworkPropertiesInputVmipPoolItem =
+  VirtualNetworkPropertiesInputVipPoolItem;
 export const VirtualNetworkPropertiesInputVmipPoolItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endIP: S.optional(S.String),
-      startIP: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "VirtualNetworkPropertiesInputVmipPoolItem",
-  }) as any as S.Schema<VirtualNetworkPropertiesInputVmipPoolItem>;
+  VirtualNetworkPropertiesInputVipPoolItem;
 
 /** Range of IP Addresses for Kubernetes node VMs */
 export type VirtualNetworkPropertiesInputVmipPoolList =
-  Array<VirtualNetworkPropertiesInputVmipPoolItem>;
+  Array<VirtualNetworkPropertiesInputVipPoolItem>;
 export const VirtualNetworkPropertiesInputVmipPoolList = /*@__PURE__*/ S.Array(
-  VirtualNetworkPropertiesInputVmipPoolItem,
+  VirtualNetworkPropertiesInputVipPoolItem,
 ) as any as S.Schema<VirtualNetworkPropertiesInputVmipPoolList>;
 
 /** List of DNS server IP Addresses associated with the network */
@@ -2701,81 +2690,38 @@ export const VirtualNetworksCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<VirtualNetworksCreateOrUpdateResponseTagsMap>;
 
 /** Infrastructure network profile for HCI platform */
-export interface VirtualNetworkPropertiesInfraVnetProfileHci {
-  /** Group in MOC(Microsoft On-premises Cloud) */
-  mocGroup?: string;
-  /** Location in MOC(Microsoft On-premises Cloud) */
-  mocLocation?: string;
-  /** Virtual Network name in MOC(Microsoft On-premises Cloud) */
-  mocVnetName?: string;
-}
+export type VirtualNetworkPropertiesInfraVnetProfileHci =
+  VirtualNetworkPropertiesInputInfraVnetProfileHci;
 export const VirtualNetworkPropertiesInfraVnetProfileHci =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mocGroup: S.optional(S.String),
-      mocLocation: S.optional(S.String),
-      mocVnetName: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "VirtualNetworkPropertiesInfraVnetProfileHci",
-  }) as any as S.Schema<VirtualNetworkPropertiesInfraVnetProfileHci>;
+  VirtualNetworkPropertiesInputInfraVnetProfileHci;
 
-export interface VirtualNetworkPropertiesInfraVnetProfile {
-  /** Infrastructure network profile for HCI platform */
-  hci?: VirtualNetworkPropertiesInfraVnetProfileHci;
-}
-export const VirtualNetworkPropertiesInfraVnetProfile = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hci: S.optional(VirtualNetworkPropertiesInfraVnetProfileHci),
-    }),
-).annotate({
-  identifier: "VirtualNetworkPropertiesInfraVnetProfile",
-}) as any as S.Schema<VirtualNetworkPropertiesInfraVnetProfile>;
+export type VirtualNetworkPropertiesInfraVnetProfile =
+  VirtualNetworkPropertiesInputInfraVnetProfile;
+export const VirtualNetworkPropertiesInfraVnetProfile =
+  VirtualNetworkPropertiesInputInfraVnetProfile;
 
-export interface VirtualNetworkPropertiesVipPoolItem {
-  /** Ending IP address for the IP Pool */
-  endIP?: string;
-  /** Starting IP address for the IP Pool */
-  startIP?: string;
-}
-export const VirtualNetworkPropertiesVipPoolItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endIP: S.optional(S.String),
-    startIP: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VirtualNetworkPropertiesVipPoolItem",
-}) as any as S.Schema<VirtualNetworkPropertiesVipPoolItem>;
+export type VirtualNetworkPropertiesVipPoolItem =
+  VirtualNetworkPropertiesInputVipPoolItem;
+export const VirtualNetworkPropertiesVipPoolItem =
+  VirtualNetworkPropertiesInputVipPoolItem;
 
 /** Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer */
 export type VirtualNetworkPropertiesVipPoolList =
-  Array<VirtualNetworkPropertiesVipPoolItem>;
+  Array<VirtualNetworkPropertiesInputVipPoolItem>;
 export const VirtualNetworkPropertiesVipPoolList = /*@__PURE__*/ S.Array(
-  VirtualNetworkPropertiesVipPoolItem,
+  VirtualNetworkPropertiesInputVipPoolItem,
 ) as any as S.Schema<VirtualNetworkPropertiesVipPoolList>;
 
-export interface VirtualNetworkPropertiesVmipPoolItem {
-  /** Ending IP address for the IP Pool */
-  endIP?: string;
-  /** Starting IP address for the IP Pool */
-  startIP?: string;
-}
-export const VirtualNetworkPropertiesVmipPoolItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endIP: S.optional(S.String),
-      startIP: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "VirtualNetworkPropertiesVmipPoolItem",
-}) as any as S.Schema<VirtualNetworkPropertiesVmipPoolItem>;
+export type VirtualNetworkPropertiesVmipPoolItem =
+  VirtualNetworkPropertiesInputVipPoolItem;
+export const VirtualNetworkPropertiesVmipPoolItem =
+  VirtualNetworkPropertiesInputVipPoolItem;
 
 /** Range of IP Addresses for Kubernetes node VMs */
 export type VirtualNetworkPropertiesVmipPoolList =
-  Array<VirtualNetworkPropertiesVmipPoolItem>;
+  Array<VirtualNetworkPropertiesInputVipPoolItem>;
 export const VirtualNetworkPropertiesVmipPoolList = /*@__PURE__*/ S.Array(
-  VirtualNetworkPropertiesVmipPoolItem,
+  VirtualNetworkPropertiesInputVipPoolItem,
 ) as any as S.Schema<VirtualNetworkPropertiesVmipPoolList>;
 
 /** List of DNS server IP Addresses associated with the network */
@@ -2847,7 +2793,7 @@ export const VirtualNetworkPropertiesStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties of the virtual network resource */
 export interface VirtualNetworkProperties {
-  infraVnetProfile?: VirtualNetworkPropertiesInfraVnetProfile;
+  infraVnetProfile?: VirtualNetworkPropertiesInputInfraVnetProfile;
   /** Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer */
   vipPool?: VirtualNetworkPropertiesVipPoolList;
   /** Range of IP Addresses for Kubernetes node VMs */
@@ -2866,7 +2812,7 @@ export interface VirtualNetworkProperties {
 }
 export const VirtualNetworkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    infraVnetProfile: S.optional(VirtualNetworkPropertiesInfraVnetProfile),
+    infraVnetProfile: S.optional(VirtualNetworkPropertiesInputInfraVnetProfile),
     vipPool: S.optional(VirtualNetworkPropertiesVipPoolList),
     vmipPool: S.optional(VirtualNetworkPropertiesVmipPoolList),
     dnsServers: S.optional(VirtualNetworkPropertiesDnsServersList),

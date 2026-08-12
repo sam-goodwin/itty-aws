@@ -2981,33 +2981,17 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateEndpointConnectionsListRequest>;
 
 /** The Private Endpoint Connection resource. */
-export interface PrivateEndpointConnection {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnection",
-}) as any as S.Schema<PrivateEndpointConnection>;
+export type PrivateEndpointConnection =
+  BotPropertiesPrivateEndpointConnectionsItem;
+export const PrivateEndpointConnection =
+  BotPropertiesPrivateEndpointConnectionsItem;
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionsListResponseValueList =
-  Array<PrivateEndpointConnection>;
+  Array<BotPropertiesPrivateEndpointConnectionsItem>;
 export const PrivateEndpointConnectionsListResponseValueList =
   /*@__PURE__*/ S.Array(
-    PrivateEndpointConnection,
+    BotPropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<PrivateEndpointConnectionsListResponseValueList>;
 
 export interface PrivateEndpointConnectionsListResponse {

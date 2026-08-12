@@ -3762,47 +3762,17 @@ export const PredictionInvolvedRelationshipsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<PredictionInvolvedRelationshipsList>;
 
 /** Definition of the link mapping of prediction. */
-export interface PredictionMappings {
-  /** The score of the link mapping. */
-  score: string;
-  /** The grade of the link mapping. */
-  grade: string;
-  /** The reason of the link mapping. */
-  reason: string;
-}
-export const PredictionMappings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    score: S.String,
-    grade: S.String,
-    reason: S.String,
-  }),
-).annotate({
-  identifier: "PredictionMappings",
-}) as any as S.Schema<PredictionMappings>;
+export type PredictionMappings = PredictionInputMappings;
+export const PredictionMappings = PredictionInputMappings;
 
 /** The definition of a prediction grade. */
-export interface PredictionGradesItem {
-  /** Name of the grade. */
-  gradeName?: string;
-  /** Minimum score threshold. */
-  minScoreThreshold?: number;
-  /** Maximum score threshold. */
-  maxScoreThreshold?: number;
-}
-export const PredictionGradesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gradeName: S.optional(S.String),
-    minScoreThreshold: S.optional(S.Number),
-    maxScoreThreshold: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PredictionGradesItem",
-}) as any as S.Schema<PredictionGradesItem>;
+export type PredictionGradesItem = PredictionInputGradesItem;
+export const PredictionGradesItem = PredictionInputGradesItem;
 
 /** The prediction grades. */
-export type PredictionGradesList = Array<PredictionGradesItem>;
+export type PredictionGradesList = Array<PredictionInputGradesItem>;
 export const PredictionGradesList = /*@__PURE__*/ S.Array(
-  PredictionGradesItem,
+  PredictionInputGradesItem,
 ) as any as S.Schema<PredictionGradesList>;
 
 /** Generated interaction types. */
@@ -3884,7 +3854,7 @@ export interface Prediction {
   /** Whether do auto analyze. */
   autoAnalyze: boolean;
   /** Definition of the link mapping of prediction. */
-  mappings: PredictionMappings;
+  mappings: PredictionInputMappings;
   /** Score label. */
   scoreLabel: string;
   /** The prediction grades. */
@@ -3909,7 +3879,7 @@ export const Prediction = /*@__PURE__*/ S.suspend(() =>
     scopeExpression: S.String,
     tenantId: S.optional(S.String),
     autoAnalyze: S.Boolean,
-    mappings: PredictionMappings,
+    mappings: PredictionInputMappings,
     scoreLabel: S.String,
     grades: S.optional(PredictionGradesList),
     systemGeneratedEntities: S.optional(PredictionSystemGeneratedEntities),

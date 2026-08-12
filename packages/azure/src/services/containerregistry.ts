@@ -1205,21 +1205,17 @@ export type ResourceIdentityType =
   | "None";
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
-export interface UserIdentityPropertiesInput {}
-export const UserIdentityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserIdentityPropertiesInput",
-}) as any as S.Schema<UserIdentityPropertiesInput>;
+export type UserIdentityPropertiesInput = LoginServerPropertiesInput;
+export const UserIdentityPropertiesInput = LoginServerPropertiesInput;
 
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityPropertiesInputUserAssignedIdentitiesMap = {
-  [key: string]: UserIdentityPropertiesInput | undefined;
+  [key: string]: LoginServerPropertiesInput | undefined;
 };
 export const IdentityPropertiesInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserIdentityPropertiesInput,
+    LoginServerPropertiesInput,
   ) as any as S.Schema<IdentityPropertiesInputUserAssignedIdentitiesMap>;
 
 /** Managed identity for the resource. */

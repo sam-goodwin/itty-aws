@@ -672,37 +672,17 @@ export type CommonProvisioningState =
 export const CommonProvisioningState = /*@__PURE__*/ S.String;
 
 /** The private endpoint connection resource. */
-export interface PrivateLinkPropertiesPrivateEndpointConnectionsItem {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
+export type PrivateLinkPropertiesPrivateEndpointConnectionsItem =
+  PrivateEndpointConnectionListResultValueItem;
 export const PrivateLinkPropertiesPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-  ).annotate({
-    identifier: "PrivateLinkPropertiesPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<PrivateLinkPropertiesPrivateEndpointConnectionsItem>;
+  PrivateEndpointConnectionListResultValueItem;
 
 /** List of private endpoint connections associated with this private link. Each connection represents a private endpoint from a customer's virtual network. */
 export type PrivateLinkPropertiesPrivateEndpointConnectionsList =
-  Array<PrivateLinkPropertiesPrivateEndpointConnectionsItem>;
+  Array<PrivateEndpointConnectionListResultValueItem>;
 export const PrivateLinkPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    PrivateLinkPropertiesPrivateEndpointConnectionsItem,
+    PrivateEndpointConnectionListResultValueItem,
   ) as any as S.Schema<PrivateLinkPropertiesPrivateEndpointConnectionsList>;
 
 /** List of private link resources available for connection. For Defender services, this typically includes the 'containers' group with 'api' and regional data endpoints. */

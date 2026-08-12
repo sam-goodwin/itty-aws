@@ -669,26 +669,8 @@ export const ManagedHsmKeysCreateIfNotExistRequestTagsMap =
   ) as any as S.Schema<ManagedHsmKeysCreateIfNotExistRequestTagsMap>;
 
 /** The object attributes managed by the Azure Key Vault service. */
-export interface ManagedHsmKeyAttributesInput {
-  /** Determines whether or not the object is enabled. */
-  enabled?: boolean;
-  /** Not before date in seconds since 1970-01-01T00:00:00Z. */
-  nbf?: number;
-  /** Expiry date in seconds since 1970-01-01T00:00:00Z. */
-  exp?: number;
-  /** Indicates if the private key can be exported. */
-  exportable?: boolean;
-}
-export const ManagedHsmKeyAttributesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    nbf: S.optional(S.Number),
-    exp: S.optional(S.Number),
-    exportable: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ManagedHsmKeyAttributesInput",
-}) as any as S.Schema<ManagedHsmKeyAttributesInput>;
+export type ManagedHsmKeyAttributesInput = KeyAttributesInput;
+export const ManagedHsmKeyAttributesInput = KeyAttributesInput;
 
 export type ManagedHsmKeyPropertiesInputKeyOpsList = Array<
   JsonWebKeyOperation | (string & {})
@@ -697,78 +679,37 @@ export const ManagedHsmKeyPropertiesInputKeyOpsList = /*@__PURE__*/ S.Array(
   JsonWebKeyOperation,
 ) as any as S.Schema<ManagedHsmKeyPropertiesInputKeyOpsList>;
 
-export interface ManagedHsmKeyRotationPolicyAttributesInput {
-  /** The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'. */
-  expiryTime?: string;
-}
+export type ManagedHsmKeyRotationPolicyAttributesInput =
+  KeyRotationPolicyAttributesInput;
 export const ManagedHsmKeyRotationPolicyAttributesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expiryTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ManagedHsmKeyRotationPolicyAttributesInput",
-  }) as any as S.Schema<ManagedHsmKeyRotationPolicyAttributesInput>;
+  KeyRotationPolicyAttributesInput;
 
-export interface ManagedHsmTrigger {
-  /** The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'. */
-  timeAfterCreate?: string;
-  /** The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'. */
-  timeBeforeExpiry?: string;
-}
-export const ManagedHsmTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeAfterCreate: S.optional(S.String),
-    timeBeforeExpiry: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedHsmTrigger",
-}) as any as S.Schema<ManagedHsmTrigger>;
+export type ManagedHsmTrigger = Trigger;
+export const ManagedHsmTrigger = Trigger;
 
-export interface ManagedHsmAction {
-  /** The type of action. */
-  type?: KeyRotationPolicyActionType | (string & {});
-}
-export const ManagedHsmAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(KeyRotationPolicyActionType),
-  }),
-).annotate({
-  identifier: "ManagedHsmAction",
-}) as any as S.Schema<ManagedHsmAction>;
+export type ManagedHsmAction = Action;
+export const ManagedHsmAction = Action;
 
-export interface ManagedHsmLifetimeAction {
-  /** The trigger of key rotation policy lifetimeAction. */
-  trigger?: ManagedHsmTrigger;
-  /** The action of key rotation policy lifetimeAction. */
-  action?: ManagedHsmAction;
-}
-export const ManagedHsmLifetimeAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trigger: S.optional(ManagedHsmTrigger),
-    action: S.optional(ManagedHsmAction),
-  }),
-).annotate({
-  identifier: "ManagedHsmLifetimeAction",
-}) as any as S.Schema<ManagedHsmLifetimeAction>;
+export type ManagedHsmLifetimeAction = LifetimeAction;
+export const ManagedHsmLifetimeAction = LifetimeAction;
 
 /** The lifetimeActions for key rotation action. */
 export type ManagedHsmRotationPolicyInputLifetimeActionsList =
-  Array<ManagedHsmLifetimeAction>;
+  Array<LifetimeAction>;
 export const ManagedHsmRotationPolicyInputLifetimeActionsList =
   /*@__PURE__*/ S.Array(
-    ManagedHsmLifetimeAction,
+    LifetimeAction,
   ) as any as S.Schema<ManagedHsmRotationPolicyInputLifetimeActionsList>;
 
 export interface ManagedHsmRotationPolicyInput {
   /** The attributes of key rotation policy. */
-  attributes?: ManagedHsmKeyRotationPolicyAttributesInput;
+  attributes?: KeyRotationPolicyAttributesInput;
   /** The lifetimeActions for key rotation action. */
   lifetimeActions?: ManagedHsmRotationPolicyInputLifetimeActionsList;
 }
 export const ManagedHsmRotationPolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    attributes: S.optional(ManagedHsmKeyRotationPolicyAttributesInput),
+    attributes: S.optional(KeyRotationPolicyAttributesInput),
     lifetimeActions: S.optional(
       ManagedHsmRotationPolicyInputLifetimeActionsList,
     ),
@@ -777,25 +718,13 @@ export const ManagedHsmRotationPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedHsmRotationPolicyInput",
 }) as any as S.Schema<ManagedHsmRotationPolicyInput>;
 
-export interface ManagedHsmKeyReleasePolicy {
-  /** Content type and version of key release policy */
-  contentType?: string;
-  /** Blob encoding the policy rules under which the key can be released. */
-  data?: string;
-}
-export const ManagedHsmKeyReleasePolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String),
-    data: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedHsmKeyReleasePolicy",
-}) as any as S.Schema<ManagedHsmKeyReleasePolicy>;
+export type ManagedHsmKeyReleasePolicy = KeyReleasePolicy;
+export const ManagedHsmKeyReleasePolicy = KeyReleasePolicy;
 
 /** The properties of the key. */
 export interface ManagedHsmKeyPropertiesInput {
   /** The attributes of the key. */
-  attributes?: ManagedHsmKeyAttributesInput;
+  attributes?: KeyAttributesInput;
   /** The type of the key. For valid values, see JsonWebKeyType. */
   kty?: JsonWebKeyType | (string & {});
   keyOps?: ManagedHsmKeyPropertiesInputKeyOpsList;
@@ -806,17 +735,17 @@ export interface ManagedHsmKeyPropertiesInput {
   /** Key rotation policy in response. It will be used for both output and input. Omitted if empty */
   rotationPolicy?: ManagedHsmRotationPolicyInput;
   /** Key release policy in response. It will be used for both output and input. Omitted if empty */
-  release_policy?: ManagedHsmKeyReleasePolicy;
+  release_policy?: KeyReleasePolicy;
 }
 export const ManagedHsmKeyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    attributes: S.optional(ManagedHsmKeyAttributesInput),
+    attributes: S.optional(KeyAttributesInput),
     kty: S.optional(JsonWebKeyType),
     keyOps: S.optional(ManagedHsmKeyPropertiesInputKeyOpsList),
     keySize: S.optional(S.Number),
     curveName: S.optional(JsonWebKeyCurveName),
     rotationPolicy: S.optional(ManagedHsmRotationPolicyInput),
-    release_policy: S.optional(ManagedHsmKeyReleasePolicy),
+    release_policy: S.optional(KeyReleasePolicy),
   }),
 ).annotate({
   identifier: "ManagedHsmKeyPropertiesInput",
@@ -858,77 +787,34 @@ export const ManagedHsmKeysCreateIfNotExistRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedHsmKeysCreateIfNotExistRequest>;
 
 /** The object attributes managed by the Azure Key Vault service. */
-export interface ManagedHsmKeyAttributes {
-  /** Determines whether or not the object is enabled. */
-  enabled?: boolean;
-  /** Not before date in seconds since 1970-01-01T00:00:00Z. */
-  nbf?: number;
-  /** Expiry date in seconds since 1970-01-01T00:00:00Z. */
-  exp?: number;
-  /** Creation time in seconds since 1970-01-01T00:00:00Z. */
-  created?: number;
-  /** Last updated time in seconds since 1970-01-01T00:00:00Z. */
-  updated?: number;
-  /** The deletion recovery level currently in effect for the object. If it contains 'Purgeable', then the object can be permanently deleted by a privileged user; otherwise, only the system can purge the object at the end of the retention interval. */
-  recoveryLevel?: DeletionRecoveryLevel;
-  /** Indicates if the private key can be exported. */
-  exportable?: boolean;
-}
-export const ManagedHsmKeyAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    nbf: S.optional(S.Number),
-    exp: S.optional(S.Number),
-    created: S.optional(S.Number),
-    updated: S.optional(S.Number),
-    recoveryLevel: S.optional(DeletionRecoveryLevel),
-    exportable: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ManagedHsmKeyAttributes",
-}) as any as S.Schema<ManagedHsmKeyAttributes>;
+export type ManagedHsmKeyAttributes = KeyAttributes;
+export const ManagedHsmKeyAttributes = KeyAttributes;
 
 export type ManagedHsmKeyPropertiesKeyOpsList = Array<JsonWebKeyOperation>;
 export const ManagedHsmKeyPropertiesKeyOpsList = /*@__PURE__*/ S.Array(
   JsonWebKeyOperation,
 ) as any as S.Schema<ManagedHsmKeyPropertiesKeyOpsList>;
 
-export interface ManagedHsmKeyRotationPolicyAttributes {
-  /** Creation time in seconds since 1970-01-01T00:00:00Z. */
-  created?: number;
-  /** Last updated time in seconds since 1970-01-01T00:00:00Z. */
-  updated?: number;
-  /** The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'. */
-  expiryTime?: string;
-}
-export const ManagedHsmKeyRotationPolicyAttributes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      created: S.optional(S.Number),
-      updated: S.optional(S.Number),
-      expiryTime: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ManagedHsmKeyRotationPolicyAttributes",
-}) as any as S.Schema<ManagedHsmKeyRotationPolicyAttributes>;
+export type ManagedHsmKeyRotationPolicyAttributes = KeyRotationPolicyAttributes;
+export const ManagedHsmKeyRotationPolicyAttributes =
+  KeyRotationPolicyAttributes;
 
 /** The lifetimeActions for key rotation action. */
-export type ManagedHsmRotationPolicyLifetimeActionsList =
-  Array<ManagedHsmLifetimeAction>;
+export type ManagedHsmRotationPolicyLifetimeActionsList = Array<LifetimeAction>;
 export const ManagedHsmRotationPolicyLifetimeActionsList =
   /*@__PURE__*/ S.Array(
-    ManagedHsmLifetimeAction,
+    LifetimeAction,
   ) as any as S.Schema<ManagedHsmRotationPolicyLifetimeActionsList>;
 
 export interface ManagedHsmRotationPolicy {
   /** The attributes of key rotation policy. */
-  attributes?: ManagedHsmKeyRotationPolicyAttributes;
+  attributes?: KeyRotationPolicyAttributes;
   /** The lifetimeActions for key rotation action. */
   lifetimeActions?: ManagedHsmRotationPolicyLifetimeActionsList;
 }
 export const ManagedHsmRotationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    attributes: S.optional(ManagedHsmKeyRotationPolicyAttributes),
+    attributes: S.optional(KeyRotationPolicyAttributes),
     lifetimeActions: S.optional(ManagedHsmRotationPolicyLifetimeActionsList),
   }),
 ).annotate({
@@ -938,7 +824,7 @@ export const ManagedHsmRotationPolicy = /*@__PURE__*/ S.suspend(() =>
 /** The properties of the key. */
 export interface ManagedHsmKeyProperties {
   /** The attributes of the key. */
-  attributes?: ManagedHsmKeyAttributes;
+  attributes?: KeyAttributes;
   /** The type of the key. For valid values, see JsonWebKeyType. */
   kty?: JsonWebKeyType;
   keyOps?: ManagedHsmKeyPropertiesKeyOpsList;
@@ -953,11 +839,11 @@ export interface ManagedHsmKeyProperties {
   /** Key rotation policy in response. It will be used for both output and input. Omitted if empty */
   rotationPolicy?: ManagedHsmRotationPolicy;
   /** Key release policy in response. It will be used for both output and input. Omitted if empty */
-  release_policy?: ManagedHsmKeyReleasePolicy;
+  release_policy?: KeyReleasePolicy;
 }
 export const ManagedHsmKeyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    attributes: S.optional(ManagedHsmKeyAttributes),
+    attributes: S.optional(KeyAttributes),
     kty: S.optional(JsonWebKeyType),
     keyOps: S.optional(ManagedHsmKeyPropertiesKeyOpsList),
     keySize: S.optional(S.Number),
@@ -965,7 +851,7 @@ export const ManagedHsmKeyProperties = /*@__PURE__*/ S.suspend(() =>
     keyUri: S.optional(S.String),
     keyUriWithVersion: S.optional(S.String),
     rotationPolicy: S.optional(ManagedHsmRotationPolicy),
-    release_policy: S.optional(ManagedHsmKeyReleasePolicy),
+    release_policy: S.optional(KeyReleasePolicy),
   }),
 ).annotate({
   identifier: "ManagedHsmKeyProperties",
@@ -1974,24 +1860,10 @@ export const ManagedHsmsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedHsmsGetRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedHsmsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ManagedHsmsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ManagedHsmsGetResponseIdentity",
-}) as any as S.Schema<ManagedHsmsGetResponseIdentity>;
+export type ManagedHsmsGetResponseIdentity =
+  ManagedHsmsCreateOrUpdateResponseIdentity;
+export const ManagedHsmsGetResponseIdentity =
+  ManagedHsmsCreateOrUpdateResponseIdentity;
 
 /** Resource tags. */
 export type ManagedHsmsGetResponseTagsMap = {
@@ -2016,7 +1888,7 @@ export interface ManagedHsmsGetResponse {
   /** SKU details */
   sku?: ManagedHsmSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedHsmsGetResponseIdentity;
+  identity?: ManagedHsmsCreateOrUpdateResponseIdentity;
   /** The geo-location where the resource lives */
   location?: string;
   /** Resource tags. */
@@ -2030,7 +1902,7 @@ export const ManagedHsmsGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     properties: S.optional(ManagedHsmProperties),
     sku: S.optional(ManagedHsmSku),
-    identity: S.optional(ManagedHsmsGetResponseIdentity),
+    identity: S.optional(ManagedHsmsCreateOrUpdateResponseIdentity),
     location: S.optional(S.String),
     tags: S.optional(ManagedHsmsGetResponseTagsMap),
   }),
@@ -2151,24 +2023,8 @@ export const ManagedHsmsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ManagedHsmsListByResourceGroupRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedHsmIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ManagedHsmIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ManagedHsmIdentity",
-}) as any as S.Schema<ManagedHsmIdentity>;
+export type ManagedHsmIdentity = ManagedHsmsCreateOrUpdateResponseIdentity;
+export const ManagedHsmIdentity = ManagedHsmsCreateOrUpdateResponseIdentity;
 
 /** Resource tags. */
 export type ManagedHsmTagsMap = { [key: string]: string | undefined };
@@ -2192,7 +2048,7 @@ export interface ManagedHsm {
   /** SKU details */
   sku?: ManagedHsmSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedHsmIdentity;
+  identity?: ManagedHsmsCreateOrUpdateResponseIdentity;
   /** The geo-location where the resource lives */
   location?: string;
   /** Resource tags. */
@@ -2206,7 +2062,7 @@ export const ManagedHsm = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     properties: S.optional(ManagedHsmProperties),
     sku: S.optional(ManagedHsmSku),
-    identity: S.optional(ManagedHsmIdentity),
+    identity: S.optional(ManagedHsmsCreateOrUpdateResponseIdentity),
     location: S.optional(S.String),
     tags: S.optional(ManagedHsmTagsMap),
   }),
@@ -2356,18 +2212,10 @@ export const ManagedHsmsPurgeDeletedResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedHsmsPurgeDeletedResponse>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedHsmsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const ManagedHsmsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "ManagedHsmsUpdateRequestIdentity",
-}) as any as S.Schema<ManagedHsmsUpdateRequestIdentity>;
+export type ManagedHsmsUpdateRequestIdentity =
+  ManagedHsmsCreateOrUpdateRequestIdentity;
+export const ManagedHsmsUpdateRequestIdentity =
+  ManagedHsmsCreateOrUpdateRequestIdentity;
 
 /** Resource tags. */
 export type ManagedHsmsUpdateRequestTagsMap = {
@@ -2390,7 +2238,7 @@ export interface ManagedHsmsUpdateRequest {
   /** SKU details */
   sku?: ManagedHsmSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedHsmsUpdateRequestIdentity;
+  identity?: ManagedHsmsCreateOrUpdateRequestIdentity;
   /** The geo-location where the resource lives */
   location?: string;
   /** Resource tags. */
@@ -2403,7 +2251,7 @@ export const ManagedHsmsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     name: S.String.pipe(T.Label()),
     properties: S.optional(ManagedHsmPropertiesInput),
     sku: S.optional(ManagedHsmSku),
-    identity: S.optional(ManagedHsmsUpdateRequestIdentity),
+    identity: S.optional(ManagedHsmsCreateOrUpdateRequestIdentity),
     location: S.optional(S.String),
     tags: S.optional(ManagedHsmsUpdateRequestTagsMap),
   }).pipe(
@@ -2419,24 +2267,10 @@ export const ManagedHsmsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedHsmsUpdateRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedHsmsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ManagedHsmsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ManagedHsmsUpdateResponseIdentity",
-}) as any as S.Schema<ManagedHsmsUpdateResponseIdentity>;
+export type ManagedHsmsUpdateResponseIdentity =
+  ManagedHsmsCreateOrUpdateResponseIdentity;
+export const ManagedHsmsUpdateResponseIdentity =
+  ManagedHsmsCreateOrUpdateResponseIdentity;
 
 /** Resource tags. */
 export type ManagedHsmsUpdateResponseTagsMap = {
@@ -2461,7 +2295,7 @@ export interface ManagedHsmsUpdateResponse {
   /** SKU details */
   sku?: ManagedHsmSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedHsmsUpdateResponseIdentity;
+  identity?: ManagedHsmsCreateOrUpdateResponseIdentity;
   /** The geo-location where the resource lives */
   location?: string;
   /** Resource tags. */
@@ -2475,7 +2309,7 @@ export const ManagedHsmsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     properties: S.optional(ManagedHsmProperties),
     sku: S.optional(ManagedHsmSku),
-    identity: S.optional(ManagedHsmsUpdateResponseIdentity),
+    identity: S.optional(ManagedHsmsCreateOrUpdateResponseIdentity),
     location: S.optional(S.String),
     tags: S.optional(ManagedHsmsUpdateResponseTagsMap),
   }),
@@ -2513,25 +2347,10 @@ export const MHSMPrivateEndpointConnectionsDeleteRequest =
   }) as any as S.Schema<MHSMPrivateEndpointConnectionsDeleteRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface MHSMPrivateEndpointConnectionsDeleteResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type MHSMPrivateEndpointConnectionsDeleteResponseIdentity =
+  ManagedHsmsCreateOrUpdateResponseIdentity;
 export const MHSMPrivateEndpointConnectionsDeleteResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "MHSMPrivateEndpointConnectionsDeleteResponseIdentity",
-  }) as any as S.Schema<MHSMPrivateEndpointConnectionsDeleteResponseIdentity>;
+  ManagedHsmsCreateOrUpdateResponseIdentity;
 
 /** Resource tags. */
 export type MHSMPrivateEndpointConnectionsDeleteResponseTagsMap = {
@@ -2557,7 +2376,7 @@ export interface MHSMPrivateEndpointConnectionsDeleteResponse {
   /** SKU details */
   sku?: ManagedHsmSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MHSMPrivateEndpointConnectionsDeleteResponseIdentity;
+  identity?: ManagedHsmsCreateOrUpdateResponseIdentity;
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
   /** The geo-location where the resource lives */
@@ -2574,9 +2393,7 @@ export const MHSMPrivateEndpointConnectionsDeleteResponse =
       systemData: S.optional(SystemData),
       properties: S.optional(MHSMPrivateEndpointConnectionProperties),
       sku: S.optional(ManagedHsmSku),
-      identity: S.optional(
-        MHSMPrivateEndpointConnectionsDeleteResponseIdentity,
-      ),
+      identity: S.optional(ManagedHsmsCreateOrUpdateResponseIdentity),
       etag: S.optional(S.String),
       location: S.optional(S.String),
       tags: S.optional(MHSMPrivateEndpointConnectionsDeleteResponseTagsMap),
@@ -2615,25 +2432,10 @@ export const MHSMPrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MHSMPrivateEndpointConnectionsGetRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface MHSMPrivateEndpointConnectionsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type MHSMPrivateEndpointConnectionsGetResponseIdentity =
+  ManagedHsmsCreateOrUpdateResponseIdentity;
 export const MHSMPrivateEndpointConnectionsGetResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "MHSMPrivateEndpointConnectionsGetResponseIdentity",
-  }) as any as S.Schema<MHSMPrivateEndpointConnectionsGetResponseIdentity>;
+  ManagedHsmsCreateOrUpdateResponseIdentity;
 
 /** Resource tags. */
 export type MHSMPrivateEndpointConnectionsGetResponseTagsMap = {
@@ -2659,7 +2461,7 @@ export interface MHSMPrivateEndpointConnectionsGetResponse {
   /** SKU details */
   sku?: ManagedHsmSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MHSMPrivateEndpointConnectionsGetResponseIdentity;
+  identity?: ManagedHsmsCreateOrUpdateResponseIdentity;
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
   /** The geo-location where the resource lives */
@@ -2676,7 +2478,7 @@ export const MHSMPrivateEndpointConnectionsGetResponse =
       systemData: S.optional(SystemData),
       properties: S.optional(MHSMPrivateEndpointConnectionProperties),
       sku: S.optional(ManagedHsmSku),
-      identity: S.optional(MHSMPrivateEndpointConnectionsGetResponseIdentity),
+      identity: S.optional(ManagedHsmsCreateOrUpdateResponseIdentity),
       etag: S.optional(S.String),
       location: S.optional(S.String),
       tags: S.optional(MHSMPrivateEndpointConnectionsGetResponseTagsMap),
@@ -2712,25 +2514,10 @@ export const MHSMPrivateEndpointConnectionsListByResourceRequest =
   }) as any as S.Schema<MHSMPrivateEndpointConnectionsListByResourceRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface MHSMPrivateEndpointConnectionIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const MHSMPrivateEndpointConnectionIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "MHSMPrivateEndpointConnectionIdentity",
-}) as any as S.Schema<MHSMPrivateEndpointConnectionIdentity>;
+export type MHSMPrivateEndpointConnectionIdentity =
+  ManagedHsmsCreateOrUpdateResponseIdentity;
+export const MHSMPrivateEndpointConnectionIdentity =
+  ManagedHsmsCreateOrUpdateResponseIdentity;
 
 /** Resource tags. */
 export type MHSMPrivateEndpointConnectionTagsMap = {
@@ -2756,7 +2543,7 @@ export interface MHSMPrivateEndpointConnection {
   /** SKU details */
   sku?: ManagedHsmSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MHSMPrivateEndpointConnectionIdentity;
+  identity?: ManagedHsmsCreateOrUpdateResponseIdentity;
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
   /** The geo-location where the resource lives */
@@ -2772,7 +2559,7 @@ export const MHSMPrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     properties: S.optional(MHSMPrivateEndpointConnectionProperties),
     sku: S.optional(ManagedHsmSku),
-    identity: S.optional(MHSMPrivateEndpointConnectionIdentity),
+    identity: S.optional(ManagedHsmsCreateOrUpdateResponseIdentity),
     etag: S.optional(S.String),
     location: S.optional(S.String),
     tags: S.optional(MHSMPrivateEndpointConnectionTagsMap),
@@ -2807,24 +2594,20 @@ export const MHSMPrivateEndpointConnectionsListResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MHSMPrivateEndpointConnectionsListResult>;
 
 /** Private endpoint object properties. */
-export interface MHSMPrivateEndpointInput {}
-export const MHSMPrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MHSMPrivateEndpointInput",
-}) as any as S.Schema<MHSMPrivateEndpointInput>;
+export type MHSMPrivateEndpointInput = UserAssignedIdentityInput;
+export const MHSMPrivateEndpointInput = UserAssignedIdentityInput;
 
 /** Properties of the private endpoint connection resource. */
 export interface MHSMPrivateEndpointConnectionPropertiesInput {
   /** Properties of the private endpoint object. */
-  privateEndpoint?: MHSMPrivateEndpointInput;
+  privateEndpoint?: UserAssignedIdentityInput;
   /** Approval state of the private link connection. */
   privateLinkServiceConnectionState?: MHSMPrivateLinkServiceConnectionState;
 }
 export const MHSMPrivateEndpointConnectionPropertiesInput =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      privateEndpoint: S.optional(MHSMPrivateEndpointInput),
+      privateEndpoint: S.optional(UserAssignedIdentityInput),
       privateLinkServiceConnectionState: S.optional(
         MHSMPrivateLinkServiceConnectionState,
       ),
@@ -2834,19 +2617,10 @@ export const MHSMPrivateEndpointConnectionPropertiesInput =
   }) as any as S.Schema<MHSMPrivateEndpointConnectionPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface MHSMPrivateEndpointConnectionsPutRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
+export type MHSMPrivateEndpointConnectionsPutRequestIdentity =
+  ManagedHsmsCreateOrUpdateRequestIdentity;
 export const MHSMPrivateEndpointConnectionsPutRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-  ).annotate({
-    identifier: "MHSMPrivateEndpointConnectionsPutRequestIdentity",
-  }) as any as S.Schema<MHSMPrivateEndpointConnectionsPutRequestIdentity>;
+  ManagedHsmsCreateOrUpdateRequestIdentity;
 
 /** Resource tags. */
 export type MHSMPrivateEndpointConnectionsPutRequestTagsMap = {
@@ -2872,7 +2646,7 @@ export interface MHSMPrivateEndpointConnectionsPutRequest {
   /** SKU details */
   sku?: ManagedHsmSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MHSMPrivateEndpointConnectionsPutRequestIdentity;
+  identity?: ManagedHsmsCreateOrUpdateRequestIdentity;
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
   /** The geo-location where the resource lives */
@@ -2889,7 +2663,7 @@ export const MHSMPrivateEndpointConnectionsPutRequest = /*@__PURE__*/ S.suspend(
       privateEndpointConnectionName: S.String.pipe(T.Label()),
       properties: S.optional(MHSMPrivateEndpointConnectionPropertiesInput),
       sku: S.optional(ManagedHsmSku),
-      identity: S.optional(MHSMPrivateEndpointConnectionsPutRequestIdentity),
+      identity: S.optional(ManagedHsmsCreateOrUpdateRequestIdentity),
       etag: S.optional(S.String),
       location: S.optional(S.String),
       tags: S.optional(MHSMPrivateEndpointConnectionsPutRequestTagsMap),
@@ -2906,25 +2680,10 @@ export const MHSMPrivateEndpointConnectionsPutRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<MHSMPrivateEndpointConnectionsPutRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface MHSMPrivateEndpointConnectionsPutResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type MHSMPrivateEndpointConnectionsPutResponseIdentity =
+  ManagedHsmsCreateOrUpdateResponseIdentity;
 export const MHSMPrivateEndpointConnectionsPutResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "MHSMPrivateEndpointConnectionsPutResponseIdentity",
-  }) as any as S.Schema<MHSMPrivateEndpointConnectionsPutResponseIdentity>;
+  ManagedHsmsCreateOrUpdateResponseIdentity;
 
 /** Resource tags. */
 export type MHSMPrivateEndpointConnectionsPutResponseTagsMap = {
@@ -2950,7 +2709,7 @@ export interface MHSMPrivateEndpointConnectionsPutResponse {
   /** SKU details */
   sku?: ManagedHsmSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MHSMPrivateEndpointConnectionsPutResponseIdentity;
+  identity?: ManagedHsmsCreateOrUpdateResponseIdentity;
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
   /** The geo-location where the resource lives */
@@ -2967,7 +2726,7 @@ export const MHSMPrivateEndpointConnectionsPutResponse =
       systemData: S.optional(SystemData),
       properties: S.optional(MHSMPrivateEndpointConnectionProperties),
       sku: S.optional(ManagedHsmSku),
-      identity: S.optional(MHSMPrivateEndpointConnectionsPutResponseIdentity),
+      identity: S.optional(ManagedHsmsCreateOrUpdateResponseIdentity),
       etag: S.optional(S.String),
       location: S.optional(S.String),
       tags: S.optional(MHSMPrivateEndpointConnectionsPutResponseTagsMap),
@@ -3051,24 +2810,10 @@ export const MHSMPrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MHSMPrivateLinkResourceProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface MHSMPrivateLinkResourceIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const MHSMPrivateLinkResourceIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "MHSMPrivateLinkResourceIdentity",
-}) as any as S.Schema<MHSMPrivateLinkResourceIdentity>;
+export type MHSMPrivateLinkResourceIdentity =
+  ManagedHsmsCreateOrUpdateResponseIdentity;
+export const MHSMPrivateLinkResourceIdentity =
+  ManagedHsmsCreateOrUpdateResponseIdentity;
 
 /** A private link resource */
 export interface MHSMPrivateLinkResource {
@@ -3089,7 +2834,7 @@ export interface MHSMPrivateLinkResource {
   /** SKU details */
   sku?: ManagedHsmSku;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: MHSMPrivateLinkResourceIdentity;
+  identity?: ManagedHsmsCreateOrUpdateResponseIdentity;
 }
 export const MHSMPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3101,7 +2846,7 @@ export const MHSMPrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(MHSMPrivateLinkResourceProperties),
     sku: S.optional(ManagedHsmSku),
-    identity: S.optional(MHSMPrivateLinkResourceIdentity),
+    identity: S.optional(ManagedHsmsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "MHSMPrivateLinkResource",
@@ -3435,57 +3180,20 @@ export const PrivateEndpointConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PrivateEndpointConnectionsDeleteRequest>;
 
 /** Private endpoint object properties. */
-export interface PrivateEndpoint {
-  /** Full identifier of the private endpoint resource. */
-  id?: string;
-}
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PrivateEndpoint",
-}) as any as S.Schema<PrivateEndpoint>;
+export type PrivateEndpoint = MHSMPrivateEndpoint;
+export const PrivateEndpoint = MHSMPrivateEndpoint;
 
 /** An object that represents the approval state of the private link connection. */
-export interface PrivateLinkServiceConnectionState {
-  /** Indicates whether the connection has been approved, rejected or removed by the key vault owner. */
-  status?: PrivateEndpointServiceConnectionStatus | (string & {});
-  /** The reason for approval or rejection. */
-  description?: string;
-  /** A message indicating if changes on the service provider require any updates on the consumer. */
-  actionsRequired?: ActionsRequired | (string & {});
-}
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(PrivateEndpointServiceConnectionStatus),
-    description: S.optional(S.String),
-    actionsRequired: S.optional(ActionsRequired),
-  }),
-).annotate({
-  identifier: "PrivateLinkServiceConnectionState",
-}) as any as S.Schema<PrivateLinkServiceConnectionState>;
+export type PrivateLinkServiceConnectionState =
+  MHSMPrivateLinkServiceConnectionState;
+export const PrivateLinkServiceConnectionState =
+  MHSMPrivateLinkServiceConnectionState;
 
 /** Properties of the private endpoint connection resource. */
-export interface PrivateEndpointConnectionProperties {
-  /** Properties of the private endpoint object. */
-  privateEndpoint?: PrivateEndpoint;
-  /** Approval state of the private link connection. */
-  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
-  /** Provisioning state of the private endpoint connection. */
-  provisioningState?: PrivateEndpointConnectionProvisioningState;
-}
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateEndpoint: S.optional(PrivateEndpoint),
-    privateLinkServiceConnectionState: S.optional(
-      PrivateLinkServiceConnectionState,
-    ),
-    provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionProperties",
-}) as any as S.Schema<PrivateEndpointConnectionProperties>;
+export type PrivateEndpointConnectionProperties =
+  MHSMPrivateEndpointConnectionProperties;
+export const PrivateEndpointConnectionProperties =
+  MHSMPrivateEndpointConnectionProperties;
 
 /** Tags assigned to the key vault resource. */
 export type PrivateEndpointConnectionsDeleteResponseTagsMap = {
@@ -3507,7 +3215,7 @@ export interface PrivateEndpointConnectionsDeleteResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
+  properties?: MHSMPrivateEndpointConnectionProperties;
   /** Azure location of the key vault resource. */
   location?: string;
   /** Tags assigned to the key vault resource. */
@@ -3522,7 +3230,7 @@ export const PrivateEndpointConnectionsDeleteResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
+      properties: S.optional(MHSMPrivateEndpointConnectionProperties),
       location: S.optional(S.String),
       tags: S.optional(PrivateEndpointConnectionsDeleteResponseTagsMap),
       etag: S.optional(S.String),
@@ -3580,7 +3288,7 @@ export interface PrivateEndpointConnectionsGetResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
+  properties?: MHSMPrivateEndpointConnectionProperties;
   /** Azure location of the key vault resource. */
   location?: string;
   /** Tags assigned to the key vault resource. */
@@ -3595,7 +3303,7 @@ export const PrivateEndpointConnectionsGetResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
+      properties: S.optional(MHSMPrivateEndpointConnectionProperties),
       location: S.optional(S.String),
       tags: S.optional(PrivateEndpointConnectionsGetResponseTagsMap),
       etag: S.optional(S.String),
@@ -3650,7 +3358,7 @@ export interface PrivateEndpointConnection {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
+  properties?: MHSMPrivateEndpointConnectionProperties;
   /** Azure location of the key vault resource. */
   location?: string;
   /** Tags assigned to the key vault resource. */
@@ -3664,7 +3372,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(PrivateEndpointConnectionProperties),
+    properties: S.optional(MHSMPrivateEndpointConnectionProperties),
     location: S.optional(S.String),
     tags: S.optional(PrivateEndpointConnectionTagsMap),
     etag: S.optional(S.String),
@@ -3698,31 +3406,14 @@ export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateEndpointConnectionListResult>;
 
 /** Private endpoint object properties. */
-export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PrivateEndpointInput",
-}) as any as S.Schema<PrivateEndpointInput>;
+export type PrivateEndpointInput = UserAssignedIdentityInput;
+export const PrivateEndpointInput = UserAssignedIdentityInput;
 
 /** Properties of the private endpoint connection resource. */
-export interface PrivateEndpointConnectionPropertiesInput {
-  /** Properties of the private endpoint object. */
-  privateEndpoint?: PrivateEndpointInput;
-  /** Approval state of the private link connection. */
-  privateLinkServiceConnectionState?: PrivateLinkServiceConnectionState;
-}
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointInput),
-      privateLinkServiceConnectionState: S.optional(
-        PrivateLinkServiceConnectionState,
-      ),
-    }),
-).annotate({
-  identifier: "PrivateEndpointConnectionPropertiesInput",
-}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+export type PrivateEndpointConnectionPropertiesInput =
+  MHSMPrivateEndpointConnectionPropertiesInput;
+export const PrivateEndpointConnectionPropertiesInput =
+  MHSMPrivateEndpointConnectionPropertiesInput;
 
 export interface PrivateEndpointConnectionsPutRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3734,7 +3425,7 @@ export interface PrivateEndpointConnectionsPutRequest {
   /** Name of the private endpoint connection associated with the key vault. */
   privateEndpointConnectionName: string;
   /** Resource properties. */
-  properties?: PrivateEndpointConnectionPropertiesInput;
+  properties?: MHSMPrivateEndpointConnectionPropertiesInput;
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
 }
@@ -3745,7 +3436,7 @@ export const PrivateEndpointConnectionsPutRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       vaultName: S.String.pipe(T.Label()),
       privateEndpointConnectionName: S.String.pipe(T.Label()),
-      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+      properties: S.optional(MHSMPrivateEndpointConnectionPropertiesInput),
       etag: S.optional(S.String),
     }).pipe(
       T.Http({
@@ -3779,7 +3470,7 @@ export interface PrivateEndpointConnectionsPutResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
+  properties?: MHSMPrivateEndpointConnectionProperties;
   /** Azure location of the key vault resource. */
   location?: string;
   /** Tags assigned to the key vault resource. */
@@ -3794,7 +3485,7 @@ export const PrivateEndpointConnectionsPutResponse = /*@__PURE__*/ S.suspend(
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
+      properties: S.optional(MHSMPrivateEndpointConnectionProperties),
       location: S.optional(S.String),
       tags: S.optional(PrivateEndpointConnectionsPutResponseTagsMap),
       etag: S.optional(S.String),
@@ -4570,20 +4261,13 @@ export const VaultPropertiesInputAccessPoliciesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VaultPropertiesInputAccessPoliciesList>;
 
 /** A rule governing the accessibility of a vault from a specific ip address or ip range. */
-export interface IPRule {
-  /** An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78). */
-  value: string;
-}
-export const IPRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.String,
-  }),
-).annotate({ identifier: "IPRule" }) as any as S.Schema<IPRule>;
+export type IPRule = MHSMIPRule;
+export const IPRule = MHSMIPRule;
 
 /** The list of IP address rules. */
-export type NetworkRuleSetIpRulesList = Array<IPRule>;
+export type NetworkRuleSetIpRulesList = Array<MHSMIPRule>;
 export const NetworkRuleSetIpRulesList = /*@__PURE__*/ S.Array(
-  IPRule,
+  MHSMIPRule,
 ) as any as S.Schema<NetworkRuleSetIpRulesList>;
 
 /** A rule governing the accessibility of a vault from a specific virtual network. */
@@ -4728,30 +4412,15 @@ export const VaultPropertiesAccessPoliciesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<VaultPropertiesAccessPoliciesList>;
 
 /** Private endpoint connection item. */
-export interface PrivateEndpointConnectionItem {
-  /** Id of private endpoint connection. */
-  id?: string;
-  /** Modified whenever there is a change in the state of private endpoint connection. */
-  etag?: string;
-  /** Private endpoint connection properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
-export const PrivateEndpointConnectionItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    etag: S.optional(S.String),
-    properties: S.optional(PrivateEndpointConnectionProperties),
-  }),
-).annotate({
-  identifier: "PrivateEndpointConnectionItem",
-}) as any as S.Schema<PrivateEndpointConnectionItem>;
+export type PrivateEndpointConnectionItem = MHSMPrivateEndpointConnectionItem;
+export const PrivateEndpointConnectionItem = MHSMPrivateEndpointConnectionItem;
 
 /** List of private endpoint connections associated with the key vault. */
 export type VaultPropertiesPrivateEndpointConnectionsList =
-  Array<PrivateEndpointConnectionItem>;
+  Array<MHSMPrivateEndpointConnectionItem>;
 export const VaultPropertiesPrivateEndpointConnectionsList =
   /*@__PURE__*/ S.Array(
-    PrivateEndpointConnectionItem,
+    MHSMPrivateEndpointConnectionItem,
   ) as any as S.Schema<VaultPropertiesPrivateEndpointConnectionsList>;
 
 /** Properties of the vault */

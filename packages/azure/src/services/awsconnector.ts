@@ -3709,20 +3709,8 @@ export const MemoryGiBPerVCpuRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MemoryGiBPerVCpuRequest>;
 
 /** Definition of MemoryMiBRequest */
-export interface MemoryMiBRequest {
-  /** The memory maximum in MiB. */
-  max?: number;
-  /** The memory minimum in MiB. */
-  min?: number;
-}
-export const MemoryMiBRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    max: S.optional(S.Number),
-    min: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MemoryMiBRequest",
-}) as any as S.Schema<MemoryMiBRequest>;
+export type MemoryMiBRequest = AcceleratorTotalMemoryMiBRequest;
+export const MemoryMiBRequest = AcceleratorTotalMemoryMiBRequest;
 
 /** Definition of NetworkBandwidthGbpsRequest */
 export interface NetworkBandwidthGbpsRequest {
@@ -3823,7 +3811,7 @@ export interface InstanceRequirements {
   /** The minimum and maximum amount of memory per vCPU for an instance type, in GiB. Default: No minimum or maximum limits ``MemoryGiBPerVCpuRequest`` is a property of the ``InstanceRequirements`` property of the [AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-launchtemplateoverrides.html) property type that describes the minimum and maximum amount of memory per vCPU for an instance type, in GiB. */
   memoryGiBPerVCpu?: MemoryGiBPerVCpuRequest;
   /** The minimum and maximum instance memory size for an instance type, in MiB. ``MemoryMiBRequest`` is a property of the ``InstanceRequirements`` property of the [AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-launchtemplateoverrides.html) property type that describes the minimum and maximum instance memory size for an instance type, in MiB. */
-  memoryMiB?: MemoryMiBRequest;
+  memoryMiB?: AcceleratorTotalMemoryMiBRequest;
   /** The minimum and maximum amount of network bandwidth, in gigabits per second (Gbps). Default: No minimum or maximum limits ``NetworkBandwidthGbpsRequest`` is a property of the ``InstanceRequirements`` property of the [AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-launchtemplateoverrides.html) property type that describes the minimum and maximum network bandwidth for an instance type, in Gbps. Setting the minimum bandwidth does not guarantee that your instance will achieve the minimum bandwidth. Amazon EC2 will identify instance types that support the specified minimum bandwidth, but the actual bandwidth of your instance might go below the specified minimum at times. For more information, see [Available instance bandwidth](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-network-bandwidth.html#available-instance-bandwidth) in the *Amazon EC2 User Guide for Linux Instances*. */
   networkBandwidthGbps?: NetworkBandwidthGbpsRequest;
   /** The minimum and maximum number of network interfaces for an instance type. Default: No minimum or maximum limits ``NetworkInterfaceCountRequest`` is a property of the ``InstanceRequirements`` property of the [AWS::AutoScaling::AutoScalingGroup LaunchTemplateOverrides](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-autoscaling-autoscalinggroup-launchtemplateoverrides.html) property type that describes the minimum and maximum number of network interfaces for an instance type. */
@@ -3865,7 +3853,7 @@ export const InstanceRequirements = /*@__PURE__*/ S.suspend(() =>
     localStorageTypes: S.optional(InstanceRequirementsLocalStorageTypesList),
     maxSpotPriceAsPercentageOfOptimalOnDemandPrice: S.optional(S.Number),
     memoryGiBPerVCpu: S.optional(MemoryGiBPerVCpuRequest),
-    memoryMiB: S.optional(MemoryMiBRequest),
+    memoryMiB: S.optional(AcceleratorTotalMemoryMiBRequest),
     networkBandwidthGbps: S.optional(NetworkBandwidthGbpsRequest),
     networkInterfaceCount: S.optional(NetworkInterfaceCountRequest),
     onDemandMaxPricePercentageOverLowestPrice: S.optional(S.Number),
@@ -4694,23 +4682,13 @@ export type StackStatus =
 export const StackStatus = /*@__PURE__*/ S.String;
 
 /** Definition of Tag */
-export interface Tag_4 {
-  /** Property key */
-  key?: string;
-  /** Property value */
-  value?: string;
-}
-export const Tag_4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_4" }) as any as S.Schema<Tag_4>;
+export type Tag_4 = Tag_2;
+export const Tag_4 = Tag_2;
 
 /** Property tags */
-export type AwsCloudFormationStackPropertiesTagsList = Array<Tag_4>;
+export type AwsCloudFormationStackPropertiesTagsList = Array<Tag_2>;
 export const AwsCloudFormationStackPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_4,
+  Tag_2,
 ) as any as S.Schema<AwsCloudFormationStackPropertiesTagsList>;
 
 /** Definition of awsCloudFormationStack */
@@ -16689,23 +16667,13 @@ export type ResourceType_2 =
 export const ResourceType_2 = /*@__PURE__*/ S.String;
 
 /** Definition of Tag */
-export interface Tag_11 {
-  /** Property key */
-  key?: string;
-  /** Property value */
-  value?: string;
-}
-export const Tag_11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_11" }) as any as S.Schema<Tag_11>;
+export type Tag_11 = Tag_2;
+export const Tag_11 = Tag_2;
 
 /** The tags to apply to the flow logs. */
-export type AwsEc2FlowLogPropertiesTagsList = Array<Tag_11>;
+export type AwsEc2FlowLogPropertiesTagsList = Array<Tag_2>;
 export const AwsEc2FlowLogPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_11,
+  Tag_2,
 ) as any as S.Schema<AwsEc2FlowLogPropertiesTagsList>;
 
 /** TrafficType enum */
@@ -17495,23 +17463,13 @@ export const StateReason = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StateReason" }) as any as S.Schema<StateReason>;
 
 /** Definition of Tag */
-export interface Tag_12 {
-  /** <p>The key of the tag.</p> <p>Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with <code>aws:</code>.</p> */
-  key?: string;
-  /** <p>The value of the tag.</p> <p>Constraints: Tag values are case-sensitive and accept a maximum of 256 Unicode characters.</p> */
-  value?: string;
-}
-export const Tag_12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_12" }) as any as S.Schema<Tag_12>;
+export type Tag_12 = Tag_10;
+export const Tag_12 = Tag_10;
 
 /** <p>Any tags assigned to the image.</p> */
-export type AwsEc2ImagePropertiesTagsList = Array<Tag_12>;
+export type AwsEc2ImagePropertiesTagsList = Array<Tag_10>;
 export const AwsEc2ImagePropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_12,
+  Tag_10,
 ) as any as S.Schema<AwsEc2ImagePropertiesTagsList>;
 
 /** TpmSupportValues enum */
@@ -19857,23 +19815,13 @@ export const InstanceState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceState" }) as any as S.Schema<InstanceState>;
 
 /** Definition of Tag */
-export interface Tag_13 {
-  /** <p>The key of the tag.</p> <p>Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with <code>aws:</code>.</p> */
-  key?: string;
-  /** <p>The value of the tag.</p> <p>Constraints: Tag values are case-sensitive and accept a maximum of 256 Unicode characters.</p> */
-  value?: string;
-}
-export const Tag_13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_13" }) as any as S.Schema<Tag_13>;
+export type Tag_13 = Tag_10;
+export const Tag_13 = Tag_10;
 
 /** <p>Any tags assigned to the instance.</p> */
-export type AwsEc2InstancePropertiesTagsList = Array<Tag_13>;
+export type AwsEc2InstancePropertiesTagsList = Array<Tag_10>;
 export const AwsEc2InstancePropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_13,
+  Tag_10,
 ) as any as S.Schema<AwsEc2InstancePropertiesTagsList>;
 
 /** Definition of awsEc2Instance */
@@ -21230,23 +21178,13 @@ export const IpamStateEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamStateEnumValue>;
 
 /** Definition of Tag */
-export interface Tag_14 {
-  /** <p>The key of the tag.</p> <p>Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with <code>aws:</code>.</p> */
-  key?: string;
-  /** <p>The value of the tag.</p> <p>Constraints: Tag values are case-sensitive and accept a maximum of 256 Unicode characters.</p> */
-  value?: string;
-}
-export const Tag_14 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_14" }) as any as S.Schema<Tag_14>;
+export type Tag_14 = Tag_10;
+export const Tag_14 = Tag_10;
 
 /** <p>The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key <code>Owner</code> and the value <code>TeamA</code>, specify <code>tag:Owner</code> for the filter name and <code>TeamA</code> for the filter value.</p> */
-export type AwsEc2IpamPropertiesTagsList = Array<Tag_14>;
+export type AwsEc2IpamPropertiesTagsList = Array<Tag_10>;
 export const AwsEc2IpamPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_14,
+  Tag_10,
 ) as any as S.Schema<AwsEc2IpamPropertiesTagsList>;
 
 /** IpamTier enum */
@@ -22267,23 +22205,13 @@ export const Ec2NetworkAclsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<Ec2NetworkAclsCreateOrReplaceRequestTagsMap>;
 
 /** Definition of Tag */
-export interface Tag_16 {
-  /** The tag key. */
-  key?: string;
-  /** The tag value. */
-  value?: string;
-}
-export const Tag_16 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_16" }) as any as S.Schema<Tag_16>;
+export type Tag_16 = Tag_15;
+export const Tag_16 = Tag_15;
 
 /** The tags for the network ACL. */
-export type AwsEc2NetworkAclPropertiesTagsList = Array<Tag_16>;
+export type AwsEc2NetworkAclPropertiesTagsList = Array<Tag_15>;
 export const AwsEc2NetworkAclPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_16,
+  Tag_15,
 ) as any as S.Schema<AwsEc2NetworkAclPropertiesTagsList>;
 
 /** Definition of awsEc2NetworkAcl */
@@ -22875,23 +22803,13 @@ export const AwsEc2NetworkInterfacePropertiesSecondaryPrivateIpAddressesList =
   ) as any as S.Schema<AwsEc2NetworkInterfacePropertiesSecondaryPrivateIpAddressesList>;
 
 /** Definition of Tag */
-export interface Tag_17 {
-  /** Property key */
-  key?: string;
-  /** Property value */
-  value?: string;
-}
-export const Tag_17 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_17" }) as any as S.Schema<Tag_17>;
+export type Tag_17 = Tag_2;
+export const Tag_17 = Tag_2;
 
 /** An arbitrary set of tags (key-value pairs) for this network interface. */
-export type AwsEc2NetworkInterfacePropertiesTagsList = Array<Tag_17>;
+export type AwsEc2NetworkInterfacePropertiesTagsList = Array<Tag_2>;
 export const AwsEc2NetworkInterfacePropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_17,
+  Tag_2,
 ) as any as S.Schema<AwsEc2NetworkInterfacePropertiesTagsList>;
 
 /** Definition of awsEc2NetworkInterface */
@@ -23430,23 +23348,13 @@ export const Ec2RouteTablesCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<Ec2RouteTablesCreateOrReplaceRequestTagsMap>;
 
 /** Definition of Tag */
-export interface Tag_18 {
-  /** The tag key. */
-  key?: string;
-  /** The tag value. */
-  value?: string;
-}
-export const Tag_18 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_18" }) as any as S.Schema<Tag_18>;
+export type Tag_18 = Tag_15;
+export const Tag_18 = Tag_15;
 
 /** Any tags assigned to the route table. */
-export type AwsEc2RouteTablePropertiesTagsList = Array<Tag_18>;
+export type AwsEc2RouteTablePropertiesTagsList = Array<Tag_15>;
 export const AwsEc2RouteTablePropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_18,
+  Tag_15,
 ) as any as S.Schema<AwsEc2RouteTablePropertiesTagsList>;
 
 /** Definition of awsEc2RouteTable */
@@ -24059,23 +23967,13 @@ export const AwsEc2SecurityGroupPropertiesIpPermissionsEgressList =
   ) as any as S.Schema<AwsEc2SecurityGroupPropertiesIpPermissionsEgressList>;
 
 /** Definition of Tag */
-export interface Tag_19 {
-  /** <p>The key of the tag.</p> <p>Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with <code>aws:</code>.</p> */
-  key?: string;
-  /** <p>The value of the tag.</p> <p>Constraints: Tag values are case-sensitive and accept a maximum of 256 Unicode characters.</p> */
-  value?: string;
-}
-export const Tag_19 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_19" }) as any as S.Schema<Tag_19>;
+export type Tag_19 = Tag_10;
+export const Tag_19 = Tag_10;
 
 /** <p>Any tags assigned to the security group.</p> */
-export type AwsEc2SecurityGroupPropertiesTagsList = Array<Tag_19>;
+export type AwsEc2SecurityGroupPropertiesTagsList = Array<Tag_10>;
 export const AwsEc2SecurityGroupPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_19,
+  Tag_10,
 ) as any as S.Schema<AwsEc2SecurityGroupPropertiesTagsList>;
 
 /** Definition of awsEc2SecurityGroup */
@@ -24620,23 +24518,13 @@ export const StorageTierEnumValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageTierEnumValue>;
 
 /** Definition of Tag */
-export interface Tag_20 {
-  /** <p>The key of the tag.</p> <p>Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with <code>aws:</code>.</p> */
-  key?: string;
-  /** <p>The value of the tag.</p> <p>Constraints: Tag values are case-sensitive and accept a maximum of 256 Unicode characters.</p> */
-  value?: string;
-}
-export const Tag_20 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_20" }) as any as S.Schema<Tag_20>;
+export type Tag_20 = Tag_10;
+export const Tag_20 = Tag_10;
 
 /** <p>Any tags assigned to the snapshot.</p> */
-export type AwsEc2SnapshotPropertiesTagsList = Array<Tag_20>;
+export type AwsEc2SnapshotPropertiesTagsList = Array<Tag_10>;
 export const AwsEc2SnapshotPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_20,
+  Tag_10,
 ) as any as S.Schema<AwsEc2SnapshotPropertiesTagsList>;
 
 /** Definition of awsEc2Snapshot */
@@ -25175,23 +25063,13 @@ export const PrivateDnsNameOptionsOnLaunchModelProperties =
   }) as any as S.Schema<PrivateDnsNameOptionsOnLaunchModelProperties>;
 
 /** Definition of Tag */
-export interface Tag_21 {
-  /** The tag key. */
-  key?: string;
-  /** The tag value. */
-  value?: string;
-}
-export const Tag_21 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_21" }) as any as S.Schema<Tag_21>;
+export type Tag_21 = Tag_15;
+export const Tag_21 = Tag_15;
 
 /** Any tags assigned to the subnet. */
-export type AwsEc2SubnetPropertiesTagsList = Array<Tag_21>;
+export type AwsEc2SubnetPropertiesTagsList = Array<Tag_15>;
 export const AwsEc2SubnetPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_21,
+  Tag_15,
 ) as any as S.Schema<AwsEc2SubnetPropertiesTagsList>;
 
 /** Definition of awsEc2Subnet */
@@ -25710,23 +25588,13 @@ export const Ec2VolumesCreateOrReplaceRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<Ec2VolumesCreateOrReplaceRequestTagsMap>;
 
 /** Definition of Tag */
-export interface Tag_23 {
-  /** The tag key. */
-  key?: string;
-  /** The tag value. */
-  value?: string;
-}
-export const Tag_23 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_23" }) as any as S.Schema<Tag_23>;
+export type Tag_23 = Tag_15;
+export const Tag_23 = Tag_15;
 
 /** The tags to apply to the volume during creation. */
-export type AwsEc2VolumePropertiesTagsList = Array<Tag_23>;
+export type AwsEc2VolumePropertiesTagsList = Array<Tag_15>;
 export const AwsEc2VolumePropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_23,
+  Tag_15,
 ) as any as S.Schema<AwsEc2VolumePropertiesTagsList>;
 
 /** Definition of awsEc2Volume */
@@ -27295,23 +27163,13 @@ export const AwsEc2VpcPropertiesIpv6CidrBlocksList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsEc2VpcPropertiesIpv6CidrBlocksList>;
 
 /** Definition of Tag */
-export interface Tag_24 {
-  /** The tag key. */
-  key?: string;
-  /** The tag value. */
-  value?: string;
-}
-export const Tag_24 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_24" }) as any as S.Schema<Tag_24>;
+export type Tag_24 = Tag_15;
+export const Tag_24 = Tag_15;
 
 /** The tags for the VPC. */
-export type AwsEc2VpcPropertiesTagsList = Array<Tag_24>;
+export type AwsEc2VpcPropertiesTagsList = Array<Tag_15>;
 export const AwsEc2VpcPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_24,
+  Tag_15,
 ) as any as S.Schema<AwsEc2VpcPropertiesTagsList>;
 
 /** Definition of awsEc2Vpc */
@@ -29997,23 +29855,13 @@ export const AwsEcsServicePropertiesServiceRegistriesList =
   ) as any as S.Schema<AwsEcsServicePropertiesServiceRegistriesList>;
 
 /** Definition of Tag */
-export interface Tag_27 {
-  /** One part of a key-value pair that make up a tag. A ``key`` is a general label that acts like a category for more specific tag values. */
-  key?: string;
-  /** The optional part of a key-value pair that make up a tag. A ``value`` acts as a descriptor within a tag category (key). */
-  value?: string;
-}
-export const Tag_27 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_27" }) as any as S.Schema<Tag_27>;
+export type Tag_27 = Tag_26;
+export const Tag_27 = Tag_26;
 
 /** The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as well. The following basic restrictions apply to tags: + Maximum number of tags per resource - 50 + For each resource, each tag key must be unique, and each tag key can have only one value. + Maximum key length - 128 Unicode characters in UTF-8 + Maximum value length - 256 Unicode characters in UTF-8 + If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @. + Tag keys and values are case-sensitive. + Do not use ``aws:``, ``AWS:``, or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit. */
-export type AwsEcsServicePropertiesTagsList = Array<Tag_27>;
+export type AwsEcsServicePropertiesTagsList = Array<Tag_26>;
 export const AwsEcsServicePropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_27,
+  Tag_26,
 ) as any as S.Schema<AwsEcsServicePropertiesTagsList>;
 
 /** EBSTagSpecificationPropagateTags enum */
@@ -30021,9 +29869,9 @@ export type EBSTagSpecificationPropagateTags = "SERVICE" | "TASK_DEFINITION";
 export const EBSTagSpecificationPropagateTags = /*@__PURE__*/ S.String;
 
 /** The tags applied to this Amazon EBS volume. ``AmazonECSCreated`` and ``AmazonECSManaged`` are reserved tags that can't be used. */
-export type EBSTagSpecificationTagsList = Array<Tag_27>;
+export type EBSTagSpecificationTagsList = Array<Tag_26>;
 export const EBSTagSpecificationTagsList = /*@__PURE__*/ S.Array(
-  Tag_27,
+  Tag_26,
 ) as any as S.Schema<EBSTagSpecificationTagsList>;
 
 /** Definition of EBSTagSpecification */
@@ -31369,23 +31217,13 @@ export const RuntimePlatform = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RuntimePlatform>;
 
 /** Definition of Tag */
-export interface Tag_28 {
-  /** One part of a key-value pair that make up a tag. A ``key`` is a general label that acts like a category for more specific tag values. */
-  key?: string;
-  /** The optional part of a key-value pair that make up a tag. A ``value`` acts as a descriptor within a tag category (key). */
-  value?: string;
-}
-export const Tag_28 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_28" }) as any as S.Schema<Tag_28>;
+export type Tag_28 = Tag_26;
+export const Tag_28 = Tag_26;
 
 /** The metadata that you apply to the task definition to help you categorize and organize them. Each tag consists of a key and an optional value. You define both of them. The following basic restrictions apply to tags: + Maximum number of tags per resource - 50 + For each resource, each tag key must be unique, and each tag key can have only one value. + Maximum key length - 128 Unicode characters in UTF-8 + Maximum value length - 256 Unicode characters in UTF-8 + If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @. + Tag keys and values are case-sensitive. + Do not use ``aws:``, ``AWS:``, or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit. */
-export type AwsEcsTaskDefinitionPropertiesTagsList = Array<Tag_28>;
+export type AwsEcsTaskDefinitionPropertiesTagsList = Array<Tag_26>;
 export const AwsEcsTaskDefinitionPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_28,
+  Tag_26,
 ) as any as S.Schema<AwsEcsTaskDefinitionPropertiesTagsList>;
 
 /** Definition of DockerVolumeConfiguration */
@@ -35703,31 +35541,15 @@ export const ElasticBeanstalkEnvironmentsCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<ElasticBeanstalkEnvironmentsCreateOrReplaceRequestTagsMap>;
 
 /** Definition of OptionSetting */
-export interface OptionSetting {
-  /** A unique namespace that identifies the option's associated AWS resource. */
-  namespace?: string;
-  /** The name of the configuration option. */
-  optionName?: string;
-  /** A unique resource name for the option setting. Use it for a time–based scaling configuration option. */
-  resourceName?: string;
-  /** The current value for the configuration option. */
-  value?: string;
-}
-export const OptionSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespace: S.optional(S.String),
-    optionName: S.optional(S.String),
-    resourceName: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "OptionSetting" }) as any as S.Schema<OptionSetting>;
+export type OptionSetting = ConfigurationOptionSetting;
+export const OptionSetting = ConfigurationOptionSetting;
 
 /** Key-value pairs defining configuration options for this environment, such as the instance type. */
 export type AwsElasticBeanstalkEnvironmentPropertiesOptionSettingsList =
-  Array<OptionSetting>;
+  Array<ConfigurationOptionSetting>;
 export const AwsElasticBeanstalkEnvironmentPropertiesOptionSettingsList =
   /*@__PURE__*/ S.Array(
-    OptionSetting,
+    ConfigurationOptionSetting,
   ) as any as S.Schema<AwsElasticBeanstalkEnvironmentPropertiesOptionSettingsList>;
 
 /** Definition of Tag */
@@ -40084,17 +39906,8 @@ export const CFNMalwareProtectionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CFNMalwareProtectionConfiguration>;
 
 /** Definition of CFNS3LogsConfiguration */
-export interface CFNS3LogsConfiguration {
-  /** Property enable */
-  enable?: boolean;
-}
-export const CFNS3LogsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enable: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CFNS3LogsConfiguration",
-}) as any as S.Schema<CFNS3LogsConfiguration>;
+export type CFNS3LogsConfiguration = CFNKubernetesAuditLogsConfiguration;
+export const CFNS3LogsConfiguration = CFNKubernetesAuditLogsConfiguration;
 
 /** Definition of CFNDataSourceConfigurations */
 export interface CFNDataSourceConfigurations {
@@ -40103,13 +39916,13 @@ export interface CFNDataSourceConfigurations {
   /** Property malwareProtection */
   malwareProtection?: CFNMalwareProtectionConfiguration;
   /** Property s3Logs */
-  s3Logs?: CFNS3LogsConfiguration;
+  s3Logs?: CFNKubernetesAuditLogsConfiguration;
 }
 export const CFNDataSourceConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kubernetes: S.optional(CFNKubernetesConfiguration),
     malwareProtection: S.optional(CFNMalwareProtectionConfiguration),
-    s3Logs: S.optional(CFNS3LogsConfiguration),
+    s3Logs: S.optional(CFNKubernetesAuditLogsConfiguration),
   }),
 ).annotate({
   identifier: "CFNDataSourceConfigurations",
@@ -40172,23 +39985,13 @@ export const AwsGuardDutyDetectorPropertiesFeaturesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AwsGuardDutyDetectorPropertiesFeaturesList>;
 
 /** Definition of TagItem */
-export interface TagItem {
-  /** Property key */
-  key?: string;
-  /** Property value */
-  value?: string;
-}
-export const TagItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "TagItem" }) as any as S.Schema<TagItem>;
+export type TagItem = Tag_2;
+export const TagItem = Tag_2;
 
 /** Property tags */
-export type AwsGuardDutyDetectorPropertiesTagsList = Array<TagItem>;
+export type AwsGuardDutyDetectorPropertiesTagsList = Array<Tag_2>;
 export const AwsGuardDutyDetectorPropertiesTagsList = /*@__PURE__*/ S.Array(
-  TagItem,
+  Tag_2,
 ) as any as S.Schema<AwsGuardDutyDetectorPropertiesTagsList>;
 
 /** Definition of awsGuardDutyDetector */
@@ -44592,23 +44395,13 @@ export const IamServerCertificatesCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<IamServerCertificatesCreateOrReplaceRequestTagsMap>;
 
 /** Definition of Tag */
-export interface Tag_34 {
-  /** The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  key?: string;
-  /** The value for the tag. You can specify a value that is 0 to 256 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  value?: string;
-}
-export const Tag_34 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_34" }) as any as S.Schema<Tag_34>;
+export type Tag_34 = Tag_22;
+export const Tag_34 = Tag_22;
 
 /** Property tags */
-export type AwsIamServerCertificatePropertiesTagsList = Array<Tag_34>;
+export type AwsIamServerCertificatePropertiesTagsList = Array<Tag_22>;
 export const AwsIamServerCertificatePropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_34,
+  Tag_22,
 ) as any as S.Schema<AwsIamServerCertificatePropertiesTagsList>;
 
 /** Definition of awsIamServerCertificate */
@@ -45096,23 +44889,13 @@ export const IamVirtualMfaDevicesCreateOrReplaceRequestTagsMap =
   ) as any as S.Schema<IamVirtualMfaDevicesCreateOrReplaceRequestTagsMap>;
 
 /** Definition of Tag */
-export interface Tag_35 {
-  /** The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  key?: string;
-  /** The value for the tag. You can specify a value that is 0 to 256 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  value?: string;
-}
-export const Tag_35 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_35" }) as any as S.Schema<Tag_35>;
+export type Tag_35 = Tag_22;
+export const Tag_35 = Tag_22;
 
 /** Property tags */
-export type AwsIamVirtualMFADevicePropertiesTagsList = Array<Tag_35>;
+export type AwsIamVirtualMFADevicePropertiesTagsList = Array<Tag_22>;
 export const AwsIamVirtualMFADevicePropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_35,
+  Tag_22,
 ) as any as S.Schema<AwsIamVirtualMFADevicePropertiesTagsList>;
 
 /** Property users */
@@ -46093,23 +45876,13 @@ export type AwsKmsKeyPropertiesOrigin = "AWS_KMS" | "EXTERNAL";
 export const AwsKmsKeyPropertiesOrigin = /*@__PURE__*/ S.String;
 
 /** Definition of Tag */
-export interface Tag_36 {
-  /** Property key */
-  key?: string;
-  /** Property value */
-  value?: string;
-}
-export const Tag_36 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_36" }) as any as S.Schema<Tag_36>;
+export type Tag_36 = Tag_2;
+export const Tag_36 = Tag_2;
 
 /** Assigns one or more tags to the replica key. Tagging or untagging a KMS key can allow or deny permission to the KMS key. For details, see [ABAC for](https://docs.aws.amazon.com/kms/latest/developerguide/abac.html) in the *Developer Guide*. For information about tags in KMS, see [Tagging keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html) in the *Developer Guide*. For information about tags in CloudFormation, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html). */
-export type AwsKmsKeyPropertiesTagsList = Array<Tag_36>;
+export type AwsKmsKeyPropertiesTagsList = Array<Tag_2>;
 export const AwsKmsKeyPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_36,
+  Tag_2,
 ) as any as S.Schema<AwsKmsKeyPropertiesTagsList>;
 
 /** Definition of awsKmsKey */
@@ -47338,23 +47111,13 @@ export const SnapStartResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnapStartResponse>;
 
 /** Definition of Tag */
-export interface Tag_37 {
-  /** Property key */
-  key?: string;
-  /** Property value */
-  value?: string;
-}
-export const Tag_37 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_37" }) as any as S.Schema<Tag_37>;
+export type Tag_37 = Tag_2;
+export const Tag_37 = Tag_2;
 
 /** A list of [tags](https://docs.aws.amazon.com/lambda/latest/dg/tagging.html) to apply to the function. */
-export type AwsLambdaFunctionPropertiesTagsList = Array<Tag_37>;
+export type AwsLambdaFunctionPropertiesTagsList = Array<Tag_2>;
 export const AwsLambdaFunctionPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_37,
+  Tag_2,
 ) as any as S.Schema<AwsLambdaFunctionPropertiesTagsList>;
 
 /** TracingConfigMode enum */
@@ -47973,23 +47736,13 @@ export const AwsLightsailBucketPropertiesResourcesReceivingAccessList =
   ) as any as S.Schema<AwsLightsailBucketPropertiesResourcesReceivingAccessList>;
 
 /** Definition of Tag */
-export interface Tag_38 {
-  /** The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  key?: string;
-  /** The value for the tag. You can specify a value that is 0 to 256 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  value?: string;
-}
-export const Tag_38 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_38" }) as any as S.Schema<Tag_38>;
+export type Tag_38 = Tag_22;
+export const Tag_38 = Tag_22;
 
 /** An array of key-value pairs to apply to this resource. */
-export type AwsLightsailBucketPropertiesTagsList = Array<Tag_38>;
+export type AwsLightsailBucketPropertiesTagsList = Array<Tag_22>;
 export const AwsLightsailBucketPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_38,
+  Tag_22,
 ) as any as S.Schema<AwsLightsailBucketPropertiesTagsList>;
 
 /** Definition of awsLightsailBucket */
@@ -48703,23 +48456,13 @@ export const State = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "State" }) as any as S.Schema<State>;
 
 /** Definition of Tag */
-export interface Tag_39 {
-  /** The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  key?: string;
-  /** The value for the tag. You can specify a value that is 0 to 256 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  value?: string;
-}
-export const Tag_39 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_39" }) as any as S.Schema<Tag_39>;
+export type Tag_39 = Tag_22;
+export const Tag_39 = Tag_22;
 
 /** An array of key-value pairs to apply to this resource. */
-export type AwsLightsailInstancePropertiesTagsList = Array<Tag_39>;
+export type AwsLightsailInstancePropertiesTagsList = Array<Tag_22>;
 export const AwsLightsailInstancePropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_39,
+  Tag_22,
 ) as any as S.Schema<AwsLightsailInstancePropertiesTagsList>;
 
 /** Definition of awsLightsailInstance */
@@ -49250,23 +48993,13 @@ export type AwsLogsLogGroupPropertiesLogGroupClass =
 export const AwsLogsLogGroupPropertiesLogGroupClass = /*@__PURE__*/ S.String;
 
 /** Definition of Tag */
-export interface Tag_40 {
-  /** Property key */
-  key?: string;
-  /** Property value */
-  value?: string;
-}
-export const Tag_40 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_40" }) as any as S.Schema<Tag_40>;
+export type Tag_40 = Tag_2;
+export const Tag_40 = Tag_2;
 
 /** An array of key-value pairs to apply to the log group. For more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html). */
-export type AwsLogsLogGroupPropertiesTagsList = Array<Tag_40>;
+export type AwsLogsLogGroupPropertiesTagsList = Array<Tag_2>;
 export const AwsLogsLogGroupPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_40,
+  Tag_2,
 ) as any as S.Schema<AwsLogsLogGroupPropertiesTagsList>;
 
 /** Definition of awsLogsLogGroup */
@@ -52841,24 +52574,14 @@ export const FirewallPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirewallPolicy" }) as any as S.Schema<FirewallPolicy>;
 
 /** Definition of Tag */
-export interface Tag_43 {
-  /** Property key */
-  key?: string;
-  /** Property value */
-  value?: string;
-}
-export const Tag_43 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_43" }) as any as S.Schema<Tag_43>;
+export type Tag_43 = Tag_2;
+export const Tag_43 = Tag_2;
 
 /** Property tags */
-export type AwsNetworkFirewallFirewallPolicyPropertiesTagsList = Array<Tag_43>;
+export type AwsNetworkFirewallFirewallPolicyPropertiesTagsList = Array<Tag_2>;
 export const AwsNetworkFirewallFirewallPolicyPropertiesTagsList =
   /*@__PURE__*/ S.Array(
-    Tag_43,
+    Tag_2,
   ) as any as S.Schema<AwsNetworkFirewallFirewallPolicyPropertiesTagsList>;
 
 /** Definition of awsNetworkFirewallFirewallPolicy */
@@ -53394,24 +53117,14 @@ export const AwsNetworkFirewallFirewallPropertiesSubnetMappingsList =
   ) as any as S.Schema<AwsNetworkFirewallFirewallPropertiesSubnetMappingsList>;
 
 /** Definition of Tag */
-export interface Tag_42 {
-  /** Property key */
-  key?: string;
-  /** Property value */
-  value?: string;
-}
-export const Tag_42 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_42" }) as any as S.Schema<Tag_42>;
+export type Tag_42 = Tag_2;
+export const Tag_42 = Tag_2;
 
 /** Property tags */
-export type AwsNetworkFirewallFirewallPropertiesTagsList = Array<Tag_42>;
+export type AwsNetworkFirewallFirewallPropertiesTagsList = Array<Tag_2>;
 export const AwsNetworkFirewallFirewallPropertiesTagsList =
   /*@__PURE__*/ S.Array(
-    Tag_42,
+    Tag_2,
   ) as any as S.Schema<AwsNetworkFirewallFirewallPropertiesTagsList>;
 
 /** Definition of awsNetworkFirewallFirewall */
@@ -54387,24 +54100,14 @@ export const RuleGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuleGroup" }) as any as S.Schema<RuleGroup>;
 
 /** Definition of Tag */
-export interface Tag_44 {
-  /** Property key */
-  key?: string;
-  /** Property value */
-  value?: string;
-}
-export const Tag_44 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_44" }) as any as S.Schema<Tag_44>;
+export type Tag_44 = Tag_2;
+export const Tag_44 = Tag_2;
 
 /** Property tags */
-export type AwsNetworkFirewallRuleGroupPropertiesTagsList = Array<Tag_44>;
+export type AwsNetworkFirewallRuleGroupPropertiesTagsList = Array<Tag_2>;
 export const AwsNetworkFirewallRuleGroupPropertiesTagsList =
   /*@__PURE__*/ S.Array(
-    Tag_44,
+    Tag_2,
   ) as any as S.Schema<AwsNetworkFirewallRuleGroupPropertiesTagsList>;
 
 /** Type enum */
@@ -57547,23 +57250,13 @@ export const ServerlessV2ScalingConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerlessV2ScalingConfiguration>;
 
 /** Definition of Tag */
-export interface Tag_46 {
-  /** The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  key?: string;
-  /** The value for the tag. You can specify a value that is 0 to 256 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  value?: string;
-}
-export const Tag_46 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_46" }) as any as S.Schema<Tag_46>;
+export type Tag_46 = Tag_22;
+export const Tag_46 = Tag_22;
 
 /** An array of key-value pairs to apply to this resource. */
-export type AwsRdsDBClusterPropertiesTagsList = Array<Tag_46>;
+export type AwsRdsDBClusterPropertiesTagsList = Array<Tag_22>;
 export const AwsRdsDBClusterPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_46,
+  Tag_22,
 ) as any as S.Schema<AwsRdsDBClusterPropertiesTagsList>;
 
 /** A list of EC2 VPC security groups to associate with this DB cluster. */
@@ -60201,23 +59894,13 @@ export const AwsRdsEventSubscriptionPropertiesSourceIdsList =
   ) as any as S.Schema<AwsRdsEventSubscriptionPropertiesSourceIdsList>;
 
 /** Definition of Tag */
-export interface Tag_49 {
-  /** The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  key?: string;
-  /** The value for the tag. You can specify a value that is 0 to 256 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  value?: string;
-}
-export const Tag_49 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_49" }) as any as S.Schema<Tag_49>;
+export type Tag_49 = Tag_22;
+export const Tag_49 = Tag_22;
 
 /** An array of key-value pairs to apply to this resource. */
-export type AwsRdsEventSubscriptionPropertiesTagsList = Array<Tag_49>;
+export type AwsRdsEventSubscriptionPropertiesTagsList = Array<Tag_22>;
 export const AwsRdsEventSubscriptionPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_49,
+  Tag_22,
 ) as any as S.Schema<AwsRdsEventSubscriptionPropertiesTagsList>;
 
 /** Definition of awsRdsEventSubscription */
@@ -61258,24 +60941,14 @@ export const AwsRedshiftClusterParameterGroupPropertiesParametersList =
   ) as any as S.Schema<AwsRedshiftClusterParameterGroupPropertiesParametersList>;
 
 /** Definition of Tag */
-export interface Tag_50 {
-  /** The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  key?: string;
-  /** The value for the tag. You can specify a value that is 0 to 256 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  value?: string;
-}
-export const Tag_50 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_50" }) as any as S.Schema<Tag_50>;
+export type Tag_50 = Tag_22;
+export const Tag_50 = Tag_22;
 
 /** An array of key-value pairs to apply to this resource. */
-export type AwsRedshiftClusterParameterGroupPropertiesTagsList = Array<Tag_50>;
+export type AwsRedshiftClusterParameterGroupPropertiesTagsList = Array<Tag_22>;
 export const AwsRedshiftClusterParameterGroupPropertiesTagsList =
   /*@__PURE__*/ S.Array(
-    Tag_50,
+    Tag_22,
   ) as any as S.Schema<AwsRedshiftClusterParameterGroupPropertiesTagsList>;
 
 /** Definition of awsRedshiftClusterParameterGroup */
@@ -65878,23 +65551,13 @@ export const StorageClassAnalysis = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageClassAnalysis>;
 
 /** Definition of TagFilter */
-export interface TagFilter {
-  /** The tag key. */
-  key?: string;
-  /** The tag value. */
-  value?: string;
-}
-export const TagFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "TagFilter" }) as any as S.Schema<TagFilter>;
+export type TagFilter = Tag_15;
+export const TagFilter = Tag_15;
 
 /** The tags to use when evaluating an analytics filter. The analytics only includes objects that meet the filter's criteria. If no filter is specified, all of the contents of the bucket are included in the analysis. */
-export type AnalyticsConfigurationTagFiltersList = Array<TagFilter>;
+export type AnalyticsConfigurationTagFiltersList = Array<Tag_15>;
 export const AnalyticsConfigurationTagFiltersList = /*@__PURE__*/ S.Array(
-  TagFilter,
+  Tag_15,
 ) as any as S.Schema<AnalyticsConfigurationTagFiltersList>;
 
 /** Definition of AnalyticsConfiguration */
@@ -66069,10 +65732,10 @@ export type IntelligentTieringConfigurationStatus = "Disabled" | "Enabled";
 export const IntelligentTieringConfigurationStatus = /*@__PURE__*/ S.String;
 
 /** A container for a key-value pair. */
-export type IntelligentTieringConfigurationTagFiltersList = Array<TagFilter>;
+export type IntelligentTieringConfigurationTagFiltersList = Array<Tag_15>;
 export const IntelligentTieringConfigurationTagFiltersList =
   /*@__PURE__*/ S.Array(
-    TagFilter,
+    Tag_15,
   ) as any as S.Schema<IntelligentTieringConfigurationTagFiltersList>;
 
 /** TieringAccessTier enum */
@@ -66282,9 +65945,9 @@ export type RuleStatus = "Disabled" | "Enabled";
 export const RuleStatus = /*@__PURE__*/ S.String;
 
 /** Tags to use to identify a subset of objects to which the lifecycle rule applies. */
-export type RuleTagFiltersList = Array<TagFilter>;
+export type RuleTagFiltersList = Array<Tag_15>;
 export const RuleTagFiltersList = /*@__PURE__*/ S.Array(
-  TagFilter,
+  Tag_15,
 ) as any as S.Schema<RuleTagFiltersList>;
 
 /** TransitionStorageClass enum */
@@ -66450,9 +66113,9 @@ export const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoggingConfiguration>;
 
 /** Specifies a list of tag filters to use as a metrics configuration filter. The metrics configuration includes only objects that meet the filter's criteria. */
-export type MetricsConfigurationTagFiltersList = Array<TagFilter>;
+export type MetricsConfigurationTagFiltersList = Array<Tag_15>;
 export const MetricsConfigurationTagFiltersList = /*@__PURE__*/ S.Array(
-  TagFilter,
+  Tag_15,
 ) as any as S.Schema<MetricsConfigurationTagFiltersList>;
 
 /** Definition of MetricsConfiguration */
@@ -66900,9 +66563,9 @@ export const ReplicationDestination_2 = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationDestination_2>;
 
 /** An array of tags containing key and value pairs. */
-export type ReplicationRuleAndOperatorTagFiltersList = Array<TagFilter>;
+export type ReplicationRuleAndOperatorTagFiltersList = Array<Tag_15>;
 export const ReplicationRuleAndOperatorTagFiltersList = /*@__PURE__*/ S.Array(
-  TagFilter,
+  Tag_15,
 ) as any as S.Schema<ReplicationRuleAndOperatorTagFiltersList>;
 
 /** Definition of ReplicationRuleAndOperator */
@@ -66928,13 +66591,13 @@ export interface ReplicationRuleFilter {
   /** An object key name prefix that identifies the subset of objects to which the rule applies. Replacement must be made for object keys containing special characters (such as carriage returns) when using XML requests. For more information, see [XML related object key constraints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints). */
   prefix?: string;
   /** A container for specifying a tag key and value. The rule applies only to objects that have the tag in their tag set. Specifies tags to use to identify a subset of objects for an Amazon S3 bucket. */
-  tagFilter?: TagFilter;
+  tagFilter?: Tag_15;
 }
 export const ReplicationRuleFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     and: S.optional(ReplicationRuleAndOperator),
     prefix: S.optional(S.String),
-    tagFilter: S.optional(TagFilter),
+    tagFilter: S.optional(Tag_15),
   }),
 ).annotate({
   identifier: "ReplicationRuleFilter",
@@ -68361,23 +68024,13 @@ export const ResourceSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceSpec" }) as any as S.Schema<ResourceSpec>;
 
 /** Definition of Tag */
-export interface Tag_52 {
-  /** Property key */
-  key?: string;
-  /** Property value */
-  value?: string;
-}
-export const Tag_52 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_52" }) as any as S.Schema<Tag_52>;
+export type Tag_52 = Tag_2;
+export const Tag_52 = Tag_2;
 
 /** A list of tags to apply to the app. */
-export type AwsSageMakerAppPropertiesTagsList = Array<Tag_52>;
+export type AwsSageMakerAppPropertiesTagsList = Array<Tag_2>;
 export const AwsSageMakerAppPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_52,
+  Tag_2,
 ) as any as S.Schema<AwsSageMakerAppPropertiesTagsList>;
 
 /** Definition of awsSageMakerApp */
@@ -71709,23 +71362,13 @@ export const AwsSqsQueuePropertiesRedrivePolicyMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<AwsSqsQueuePropertiesRedrivePolicyMap>;
 
 /** Definition of Tag */
-export interface Tag_55 {
-  /** The key name of the tag. You can specify a value that is 1 to 128 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  key?: string;
-  /** The value for the tag. You can specify a value that is 0 to 256 Unicode characters in length and cannot be prefixed with aws:. You can use any of the following characters: the set of Unicode letters, digits, whitespace, _, ., /, =, +, and -. */
-  value?: string;
-}
-export const Tag_55 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tag_55" }) as any as S.Schema<Tag_55>;
+export type Tag_55 = Tag_22;
+export const Tag_55 = Tag_22;
 
 /** The tags that you attach to this queue. For more information, see [Resource tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html) in the *User Guide*. */
-export type AwsSqsQueuePropertiesTagsList = Array<Tag_55>;
+export type AwsSqsQueuePropertiesTagsList = Array<Tag_22>;
 export const AwsSqsQueuePropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag_55,
+  Tag_22,
 ) as any as S.Schema<AwsSqsQueuePropertiesTagsList>;
 
 /** Definition of awsSqsQueue */

@@ -1885,29 +1885,8 @@ export const DeviceGroupsListByProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeviceGroupsListByProductRequest>;
 
 /** The updatable properties of the DeviceGroup. */
-export interface DeviceGroupUpdateProperties {
-  /** Description of the device group. */
-  description?: string;
-  /** Operating system feed type of the device group. */
-  osFeedType?: OSFeedType | (string & {});
-  /** Update policy of the device group. */
-  updatePolicy?: UpdatePolicy | (string & {});
-  /** Flag to define if the user allows for crash dump collection. */
-  allowCrashDumpsCollection?: AllowCrashDumpCollection | (string & {});
-  /** Regional data boundary for the device group. */
-  regionalDataBoundary?: RegionalDataBoundary | (string & {});
-}
-export const DeviceGroupUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    osFeedType: S.optional(OSFeedType),
-    updatePolicy: S.optional(UpdatePolicy),
-    allowCrashDumpsCollection: S.optional(AllowCrashDumpCollection),
-    regionalDataBoundary: S.optional(RegionalDataBoundary),
-  }),
-).annotate({
-  identifier: "DeviceGroupUpdateProperties",
-}) as any as S.Schema<DeviceGroupUpdateProperties>;
+export type DeviceGroupUpdateProperties = DeviceGroupPropertiesInput;
+export const DeviceGroupUpdateProperties = DeviceGroupPropertiesInput;
 
 export interface DeviceGroupsUpdateRequest {
   /** The ID of the target subscription. */
@@ -1921,7 +1900,7 @@ export interface DeviceGroupsUpdateRequest {
   /** Name of device group. */
   deviceGroupName: string;
   /** The updatable properties of the DeviceGroup. */
-  properties?: DeviceGroupUpdateProperties;
+  properties?: DeviceGroupPropertiesInput;
 }
 export const DeviceGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1930,7 +1909,7 @@ export const DeviceGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     catalogName: S.String.pipe(T.Label()),
     productName: S.String.pipe(T.Label()),
     deviceGroupName: S.String.pipe(T.Label()),
-    properties: S.optional(DeviceGroupUpdateProperties),
+    properties: S.optional(DeviceGroupPropertiesInput),
   }).pipe(
     T.Http({
       method: "PATCH",

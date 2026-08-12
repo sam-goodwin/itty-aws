@@ -2910,17 +2910,8 @@ export type StorageConnectorPropertiesUpdateState = "Active" | "Inactive";
 export const StorageConnectorPropertiesUpdateState = /*@__PURE__*/ S.String;
 
 /** The storage connector backing data source information */
-export interface StorageConnectorSourceUpdate {
-  /** Type of the Storage Connector. Not mutable once the Storage Connector is created." */
-  type: StorageConnectorSourceType | (string & {});
-}
-export const StorageConnectorSourceUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: StorageConnectorSourceType,
-  }),
-).annotate({
-  identifier: "StorageConnectorSourceUpdate",
-}) as any as S.Schema<StorageConnectorSourceUpdate>;
+export type StorageConnectorSourceUpdate = StorageConnectorSource;
+export const StorageConnectorSourceUpdate = StorageConnectorSource;
 
 /** The storage connector properties */
 export interface StorageConnectorPropertiesUpdate {
@@ -2931,14 +2922,14 @@ export interface StorageConnectorPropertiesUpdate {
   /** Test connection to backing data source before creating the storage connector. */
   testConnection?: boolean;
   /** Information about how to communicate with and authenticate to the backing data store. */
-  source?: StorageConnectorSourceUpdate;
+  source?: StorageConnectorSource;
 }
 export const StorageConnectorPropertiesUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(StorageConnectorPropertiesUpdateState),
     description: S.optional(S.String),
     testConnection: S.optional(S.Boolean),
-    source: S.optional(StorageConnectorSourceUpdate),
+    source: S.optional(StorageConnectorSource),
   }),
 ).annotate({
   identifier: "StorageConnectorPropertiesUpdate",
@@ -8359,20 +8350,16 @@ export type IdentityType =
 export const IdentityType = /*@__PURE__*/ S.String;
 
 /** UserAssignedIdentity for the resource. */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
+export type UserAssignedIdentityInput = PrivateEndpointInput;
+export const UserAssignedIdentityInput = PrivateEndpointInput;
 
 /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here. */
 export type IdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
+  [key: string]: PrivateEndpointInput | undefined;
 };
 export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
-  UserAssignedIdentityInput,
+  PrivateEndpointInput,
 ) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
 
 /** Identity for the resource. */
@@ -11104,12 +11091,8 @@ export const StorageTaskAssignmentReport = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageTaskAssignmentReport>;
 
 /** Storage task execution report for a run instance. */
-export interface StorageTaskReportPropertiesInput {}
-export const StorageTaskReportPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "StorageTaskReportPropertiesInput",
-}) as any as S.Schema<StorageTaskReportPropertiesInput>;
+export type StorageTaskReportPropertiesInput = PrivateEndpointInput;
+export const StorageTaskReportPropertiesInput = PrivateEndpointInput;
 
 /** Properties of the storage task assignment. */
 export interface StorageTaskAssignmentPropertiesInput {
@@ -11124,7 +11107,7 @@ export interface StorageTaskAssignmentPropertiesInput {
   /** The storage task assignment report */
   report: StorageTaskAssignmentReport;
   /** Run status of storage task assignment */
-  runStatus?: StorageTaskReportPropertiesInput;
+  runStatus?: PrivateEndpointInput;
 }
 export const StorageTaskAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(
   () =>
@@ -11134,7 +11117,7 @@ export const StorageTaskAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(
       description: S.String,
       executionContext: StorageTaskAssignmentExecutionContext,
       report: StorageTaskAssignmentReport,
-      runStatus: S.optional(StorageTaskReportPropertiesInput),
+      runStatus: S.optional(PrivateEndpointInput),
     }),
 ).annotate({
   identifier: "StorageTaskAssignmentPropertiesInput",
@@ -11550,7 +11533,7 @@ export interface StorageTaskAssignmentUpdatePropertiesInput {
   /** The storage task assignment report */
   report?: StorageTaskAssignmentUpdateReport;
   /** Run status of storage task assignment */
-  runStatus?: StorageTaskReportPropertiesInput;
+  runStatus?: PrivateEndpointInput;
 }
 export const StorageTaskAssignmentUpdatePropertiesInput =
   /*@__PURE__*/ S.suspend(() =>
@@ -11559,7 +11542,7 @@ export const StorageTaskAssignmentUpdatePropertiesInput =
       description: S.optional(S.String),
       executionContext: S.optional(StorageTaskAssignmentUpdateExecutionContext),
       report: S.optional(StorageTaskAssignmentUpdateReport),
-      runStatus: S.optional(StorageTaskReportPropertiesInput),
+      runStatus: S.optional(PrivateEndpointInput),
     }),
   ).annotate({
     identifier: "StorageTaskAssignmentUpdatePropertiesInput",

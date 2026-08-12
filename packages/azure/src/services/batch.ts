@@ -1047,21 +1047,17 @@ export type ResourceIdentityType = "SystemAssigned" | "UserAssigned" | "None";
 export const ResourceIdentityType = /*@__PURE__*/ S.String;
 
 /** The list of associated user identities. */
-export interface UserAssignedIdentitiesInput {}
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentitiesInput",
-}) as any as S.Schema<UserAssignedIdentitiesInput>;
+export type UserAssignedIdentitiesInput = ApplicationPackagePropertiesInput;
+export const UserAssignedIdentitiesInput = ApplicationPackagePropertiesInput;
 
 /** The list of user identities associated with the Batch account. */
 export type BatchAccountIdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentitiesInput | undefined;
+  [key: string]: ApplicationPackagePropertiesInput | undefined;
 };
 export const BatchAccountIdentityInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserAssignedIdentitiesInput,
+    ApplicationPackagePropertiesInput,
   ) as any as S.Schema<BatchAccountIdentityInputUserAssignedIdentitiesMap>;
 
 /** The identity of the Batch account, if configured. This is used when the user specifies 'Microsoft.KeyVault' as their Batch account encryption configuration or when `ManagedIdentity` is selected as the auto-storage authentication mode. */
@@ -4278,12 +4274,12 @@ export const PoolIdentityType = /*@__PURE__*/ S.String;
 
 /** The list of user identities associated with the Batch pool. */
 export type BatchPoolIdentityInputUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentitiesInput | undefined;
+  [key: string]: ApplicationPackagePropertiesInput | undefined;
 };
 export const BatchPoolIdentityInputUserAssignedIdentitiesMap =
   /*@__PURE__*/ S.Record(
     S.String,
-    UserAssignedIdentitiesInput,
+    ApplicationPackagePropertiesInput,
   ) as any as S.Schema<BatchPoolIdentityInputUserAssignedIdentitiesMap>;
 
 /** The identity of the Batch pool, if configured. If the pool identity is updated during update an existing pool, only the new vms which are created after the pool shrinks to 0 will have the updated identities */

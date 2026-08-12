@@ -1805,21 +1805,8 @@ export const ServiceConfigurationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceConfigurationsUpdateResponse>;
 
 /** Solution configuration resource. */
-export interface SolutionConfigurationPropertiesInput {
-  /** The type of the solution */
-  solutionType: string;
-  /** Solution settings */
-  solutionSettings?: SolutionSettings;
-}
-export const SolutionConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      solutionType: S.String,
-      solutionSettings: S.optional(SolutionSettings),
-    }),
-).annotate({
-  identifier: "SolutionConfigurationPropertiesInput",
-}) as any as S.Schema<SolutionConfigurationPropertiesInput>;
+export type SolutionConfigurationPropertiesInput = SolutionTypeSettings;
+export const SolutionConfigurationPropertiesInput = SolutionTypeSettings;
 
 export interface SolutionConfigurationsCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -1827,14 +1814,14 @@ export interface SolutionConfigurationsCreateOrUpdateRequest {
   /** Represent Solution Configuration Resource. */
   solutionConfiguration: string;
   /** The resource-specific properties for this resource. */
-  properties?: SolutionConfigurationPropertiesInput;
+  properties?: SolutionTypeSettings;
 }
 export const SolutionConfigurationsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceUri: S.String.pipe(T.Label()),
       solutionConfiguration: S.String.pipe(T.Label()),
-      properties: S.optional(SolutionConfigurationPropertiesInput),
+      properties: S.optional(SolutionTypeSettings),
     }).pipe(
       T.Http({
         method: "PUT",

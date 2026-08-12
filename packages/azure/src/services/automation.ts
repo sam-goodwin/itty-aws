@@ -1119,26 +1119,10 @@ export const DeletedRunbookListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletedRunbookListResult>;
 
 /** The parameters supplied to the update account properties. */
-export interface AutomationAccountUpdateProperties {
-  /** Gets or sets account SKU. */
-  sku?: Sku;
-  /** Set the encryption properties for the automation account */
-  encryption?: EncryptionProperties;
-  /** Indicates whether traffic on the non-ARM endpoint (Webhook/Agent) is allowed from the public internet */
-  publicNetworkAccess?: boolean;
-  /** Indicates whether requests using non-AAD authentication are blocked */
-  disableLocalAuth?: boolean;
-}
-export const AutomationAccountUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sku: S.optional(Sku),
-    encryption: S.optional(EncryptionProperties),
-    publicNetworkAccess: S.optional(S.Boolean),
-    disableLocalAuth: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AutomationAccountUpdateProperties",
-}) as any as S.Schema<AutomationAccountUpdateProperties>;
+export type AutomationAccountUpdateProperties =
+  AutomationAccountCreateOrUpdateProperties;
+export const AutomationAccountUpdateProperties =
+  AutomationAccountCreateOrUpdateProperties;
 
 /** Gets or sets the tags attached to the resource. */
 export type AutomationAccountUpdateRequestTagsMap = {
@@ -1157,7 +1141,7 @@ export interface AutomationAccountUpdateRequest {
   /** The name of the automation account. */
   automationAccountName: string;
   /** Gets or sets account update properties. */
-  properties?: AutomationAccountUpdateProperties;
+  properties?: AutomationAccountCreateOrUpdateProperties;
   /** Gets or sets the name of the resource. */
   name?: string;
   /** Gets or sets the location of the resource. */
@@ -1172,7 +1156,7 @@ export const AutomationAccountUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
-    properties: S.optional(AutomationAccountUpdateProperties),
+    properties: S.optional(AutomationAccountCreateOrUpdateProperties),
     name: S.optional(S.String),
     location: S.optional(S.String),
     identity: S.optional(IdentityInput),
@@ -7931,17 +7915,8 @@ export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateLinkResourceListResult>;
 
 /** The parameters supplied to the create or update module properties. */
-export interface PythonPackageCreateProperties {
-  /** Gets or sets the module content link. */
-  contentLink: ContentLink;
-}
-export const PythonPackageCreateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentLink: ContentLink,
-  }),
-).annotate({
-  identifier: "PythonPackageCreateProperties",
-}) as any as S.Schema<PythonPackageCreateProperties>;
+export type PythonPackageCreateProperties = ModuleCreateOrUpdateProperties;
+export const PythonPackageCreateProperties = ModuleCreateOrUpdateProperties;
 
 /** Gets or sets the tags attached to the resource. */
 export type Python2PackageCreateOrUpdateRequestTagsMap = {
@@ -7963,7 +7938,7 @@ export interface Python2PackageCreateOrUpdateRequest {
   /** The python package name. */
   packageName: string;
   /** Gets or sets the module create properties. */
-  properties: PythonPackageCreateProperties;
+  properties: ModuleCreateOrUpdateProperties;
   /** Gets or sets the tags attached to the resource. */
   tags?: Python2PackageCreateOrUpdateRequestTagsMap;
 }
@@ -7973,7 +7948,7 @@ export const Python2PackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
-    properties: PythonPackageCreateProperties,
+    properties: ModuleCreateOrUpdateProperties,
     tags: S.optional(Python2PackageCreateOrUpdateRequestTagsMap),
   }).pipe(
     T.Http({
@@ -8264,7 +8239,7 @@ export interface Python3PackageCreateOrUpdateRequest {
   /** The python package name. */
   packageName: string;
   /** Gets or sets the module create properties. */
-  properties: PythonPackageCreateProperties;
+  properties: ModuleCreateOrUpdateProperties;
   /** Gets or sets the tags attached to the resource. */
   tags?: Python3PackageCreateOrUpdateRequestTagsMap;
 }
@@ -8274,7 +8249,7 @@ export const Python3PackageCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     resourceGroupName: S.String.pipe(T.Label()),
     automationAccountName: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
-    properties: PythonPackageCreateProperties,
+    properties: ModuleCreateOrUpdateProperties,
     tags: S.optional(Python3PackageCreateOrUpdateRequestTagsMap),
   }).pipe(
     T.Http({
@@ -8560,34 +8535,16 @@ export type RunbookTypeEnum =
 export const RunbookTypeEnum = /*@__PURE__*/ S.String;
 
 /** Definition of the runbook parameter type. */
-export interface RunbookParameter {
-  /** Gets or sets the type of the parameter. */
-  type?: string;
-  /** Gets or sets a Boolean value to indicate whether the parameter is mandatory or not. */
-  isMandatory?: boolean;
-  /** Get or sets the position of the parameter. */
-  position?: number;
-  /** Gets or sets the default value of parameter. */
-  defaultValue?: string;
-}
-export const RunbookParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    isMandatory: S.optional(S.Boolean),
-    position: S.optional(S.Number),
-    defaultValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunbookParameter",
-}) as any as S.Schema<RunbookParameter>;
+export type RunbookParameter = DscConfigurationParameter;
+export const RunbookParameter = DscConfigurationParameter;
 
 /** Gets or sets the runbook draft parameters. */
 export type RunbookDraftParametersMap = {
-  [key: string]: RunbookParameter | undefined;
+  [key: string]: DscConfigurationParameter | undefined;
 };
 export const RunbookDraftParametersMap = /*@__PURE__*/ S.Record(
   S.String,
-  RunbookParameter,
+  DscConfigurationParameter,
 ) as any as S.Schema<RunbookDraftParametersMap>;
 
 /** Gets or sets the runbook output types. */
@@ -8719,11 +8676,11 @@ export const RunbookState = /*@__PURE__*/ S.String;
 
 /** Gets or sets the runbook parameters. */
 export type RunbookPropertiesParametersMap = {
-  [key: string]: RunbookParameter | undefined;
+  [key: string]: DscConfigurationParameter | undefined;
 };
 export const RunbookPropertiesParametersMap = /*@__PURE__*/ S.Record(
   S.String,
-  RunbookParameter,
+  DscConfigurationParameter,
 ) as any as S.Schema<RunbookPropertiesParametersMap>;
 
 /** Gets or sets the runbook output types. */

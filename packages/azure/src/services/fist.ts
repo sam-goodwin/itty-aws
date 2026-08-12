@@ -1985,28 +1985,8 @@ export const WorkspacesGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesGetResponseTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface WorkspacesGetResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspacesGetResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WorkspacesGetResponseSku",
-}) as any as S.Schema<WorkspacesGetResponseSku>;
+export type WorkspacesGetResponseSku = WorkspacesCreateResponseSku;
+export const WorkspacesGetResponseSku = WorkspacesCreateResponseSku;
 
 export interface WorkspacesGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2024,7 +2004,7 @@ export interface WorkspacesGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkspaceProperties;
   /** The resource model definition representing SKU */
-  sku?: WorkspacesGetResponseSku;
+  sku?: WorkspacesCreateResponseSku;
 }
 export const WorkspacesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2035,7 +2015,7 @@ export const WorkspacesGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(WorkspacesGetResponseTagsMap),
     location: S.String,
     properties: S.optional(WorkspaceProperties),
-    sku: S.optional(WorkspacesGetResponseSku),
+    sku: S.optional(WorkspacesCreateResponseSku),
   }),
 ).annotate({
   identifier: "WorkspacesGetResponse",
@@ -2072,26 +2052,8 @@ export const WorkspaceTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspaceTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface WorkspaceSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspaceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "WorkspaceSku" }) as any as S.Schema<WorkspaceSku>;
+export type WorkspaceSku = WorkspacesCreateResponseSku;
+export const WorkspaceSku = WorkspacesCreateResponseSku;
 
 /** Firmware analysis workspace. */
 export interface Workspace {
@@ -2110,7 +2072,7 @@ export interface Workspace {
   /** The resource-specific properties for this resource. */
   properties?: WorkspaceProperties;
   /** The resource model definition representing SKU */
-  sku?: WorkspaceSku;
+  sku?: WorkspacesCreateResponseSku;
 }
 export const Workspace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2121,7 +2083,7 @@ export const Workspace = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(WorkspaceTagsMap),
     location: S.String,
     properties: S.optional(WorkspaceProperties),
-    sku: S.optional(WorkspaceSku),
+    sku: S.optional(WorkspacesCreateResponseSku),
   }),
 ).annotate({ identifier: "Workspace" }) as any as S.Schema<Workspace>;
 
@@ -2251,28 +2213,8 @@ export const WorkspacesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<WorkspacesUpdateResponseTagsMap>;
 
 /** The resource model definition representing SKU */
-export interface WorkspacesUpdateResponseSku {
-  /** The name of the SKU. E.g. P3. It is typically a letter+number code */
-  name: string;
-  tier?: SkuTier;
-  /** The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. */
-  size?: string;
-  /** If the service has different generations of hardware, for the same SKU, then that can be captured here. */
-  family?: string;
-  /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
-  capacity?: number;
-}
-export const WorkspacesUpdateResponseSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(SkuTier),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WorkspacesUpdateResponseSku",
-}) as any as S.Schema<WorkspacesUpdateResponseSku>;
+export type WorkspacesUpdateResponseSku = WorkspacesCreateResponseSku;
+export const WorkspacesUpdateResponseSku = WorkspacesCreateResponseSku;
 
 export interface WorkspacesUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2290,7 +2232,7 @@ export interface WorkspacesUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkspaceProperties;
   /** The resource model definition representing SKU */
-  sku?: WorkspacesUpdateResponseSku;
+  sku?: WorkspacesCreateResponseSku;
 }
 export const WorkspacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2301,7 +2243,7 @@ export const WorkspacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(WorkspacesUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(WorkspaceProperties),
-    sku: S.optional(WorkspacesUpdateResponseSku),
+    sku: S.optional(WorkspacesCreateResponseSku),
   }),
 ).annotate({
   identifier: "WorkspacesUpdateResponse",

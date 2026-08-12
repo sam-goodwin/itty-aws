@@ -5482,34 +5482,22 @@ export const Twitter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Twitter" }) as any as S.Schema<Twitter>;
 
 /** The configuration settings of the registration for the Apple provider */
-export interface AppleRegistration {
-  /** The Client ID of the app used for login. */
-  clientId?: string;
-  /** The app setting name that contains the client secret. */
-  clientSecretSettingName?: string;
-}
-export const AppleRegistration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.optional(S.String),
-    clientSecretSettingName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppleRegistration",
-}) as any as S.Schema<AppleRegistration>;
+export type AppleRegistration = ClientRegistration;
+export const AppleRegistration = ClientRegistration;
 
 /** The configuration settings of the Apple provider. */
 export interface Apple {
   /** <code>false</code> if the Apple provider should not be enabled despite the set registration; otherwise, <code>true</code>. */
   enabled?: boolean;
   /** The configuration settings of the Apple registration. */
-  registration?: AppleRegistration;
+  registration?: ClientRegistration;
   /** The configuration settings of the login flow. */
   login?: LoginScopes;
 }
 export const Apple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
-    registration: S.optional(AppleRegistration),
+    registration: S.optional(ClientRegistration),
     login: S.optional(LoginScopes),
   }),
 ).annotate({ identifier: "Apple" }) as any as S.Schema<Apple>;
@@ -8203,25 +8191,10 @@ export const ContainerAppsDiagnosticsGetRootResponseTagsMap =
   ) as any as S.Schema<ContainerAppsDiagnosticsGetRootResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ContainerAppsDiagnosticsGetRootResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type ContainerAppsDiagnosticsGetRootResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 export const ContainerAppsDiagnosticsGetRootResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "ContainerAppsDiagnosticsGetRootResponseIdentity",
-  }) as any as S.Schema<ContainerAppsDiagnosticsGetRootResponseIdentity>;
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface ContainerAppsDiagnosticsGetRootResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8241,7 +8214,7 @@ export interface ContainerAppsDiagnosticsGetRootResponse {
   /** The complex type of the extended location. */
   extendedLocation?: ExtendedLocation;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ContainerAppsDiagnosticsGetRootResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
   /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
   managedBy?: string;
   /** Metadata to represent the container app kind, representing if a container app is workflowapp or functionapp. */
@@ -8258,7 +8231,7 @@ export const ContainerAppsDiagnosticsGetRootResponse = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(ContainerAppProperties),
       extendedLocation: S.optional(ExtendedLocation),
-      identity: S.optional(ContainerAppsDiagnosticsGetRootResponseIdentity),
+      identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
       managedBy: S.optional(S.String),
       kind: S.optional(Kind),
     }),
@@ -8446,24 +8419,10 @@ export const ContainerAppsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ContainerAppsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ContainerAppsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ContainerAppsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ContainerAppsGetResponseIdentity",
-}) as any as S.Schema<ContainerAppsGetResponseIdentity>;
+export type ContainerAppsGetResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
+export const ContainerAppsGetResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface ContainerAppsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -8483,7 +8442,7 @@ export interface ContainerAppsGetResponse {
   /** The complex type of the extended location. */
   extendedLocation?: ExtendedLocation;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ContainerAppsGetResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
   /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
   managedBy?: string;
   /** Metadata to represent the container app kind, representing if a container app is workflowapp or functionapp. */
@@ -8499,7 +8458,7 @@ export const ContainerAppsGetResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ContainerAppProperties),
     extendedLocation: S.optional(ExtendedLocation),
-    identity: S.optional(ContainerAppsGetResponseIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
     managedBy: S.optional(S.String),
     kind: S.optional(Kind),
   }),
@@ -8618,24 +8577,8 @@ export const ContainerAppTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ContainerAppTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ContainerAppIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ContainerAppIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ContainerAppIdentity",
-}) as any as S.Schema<ContainerAppIdentity>;
+export type ContainerAppIdentity = ContainerAppsCreateOrUpdateResponseIdentity;
+export const ContainerAppIdentity = ContainerAppsCreateOrUpdateResponseIdentity;
 
 /** Container App. */
 export interface ContainerApp {
@@ -8656,7 +8599,7 @@ export interface ContainerApp {
   /** The complex type of the extended location. */
   extendedLocation?: ExtendedLocation;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ContainerAppIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
   /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
   managedBy?: string;
   /** Metadata to represent the container app kind, representing if a container app is workflowapp or functionapp. */
@@ -8672,7 +8615,7 @@ export const ContainerApp = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ContainerAppProperties),
     extendedLocation: S.optional(ExtendedLocation),
-    identity: S.optional(ContainerAppIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
     managedBy: S.optional(S.String),
     kind: S.optional(Kind),
   }),
@@ -8920,31 +8863,13 @@ export const ContainerAppsListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContainerAppsListSecretsRequest>;
 
 /** Container App Secret. */
-export interface ContainerAppSecret {
-  /** Secret Name. */
-  name?: string;
-  /** Secret Value. */
-  value?: string;
-  /** Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity. */
-  identity?: string;
-  /** Azure Key Vault URL pointing to the secret referenced by the container app. */
-  keyVaultUrl?: string;
-}
-export const ContainerAppSecret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-    identity: S.optional(S.String),
-    keyVaultUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ContainerAppSecret",
-}) as any as S.Schema<ContainerAppSecret>;
+export type ContainerAppSecret = Secret;
+export const ContainerAppSecret = Secret;
 
 /** Collection of resources. */
-export type SecretsCollectionValueList = Array<ContainerAppSecret>;
+export type SecretsCollectionValueList = Array<Secret>;
 export const SecretsCollectionValueList = /*@__PURE__*/ S.Array(
-  ContainerAppSecret,
+  Secret,
 ) as any as S.Schema<SecretsCollectionValueList>;
 
 /** Container App Secrets Collection ARM resource. */
@@ -9399,25 +9324,13 @@ export const ScaleConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScaleConfiguration>;
 
 /** Secret definition. */
-export interface SessionPoolSecret {
-  /** Secret Name. */
-  name?: string;
-  /** Secret Value. */
-  value?: string;
-}
-export const SessionPoolSecret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SessionPoolSecret",
-}) as any as S.Schema<SessionPoolSecret>;
+export type SessionPoolSecret = DaprSecret;
+export const SessionPoolSecret = DaprSecret;
 
 /** The secrets of the session pool. */
-export type SessionPoolPropertiesInputSecretsList = Array<SessionPoolSecret>;
+export type SessionPoolPropertiesInputSecretsList = Array<DaprSecret>;
 export const SessionPoolPropertiesInputSecretsList = /*@__PURE__*/ S.Array(
-  SessionPoolSecret,
+  DaprSecret,
 ) as any as S.Schema<SessionPoolPropertiesInputSecretsList>;
 
 /** The lifecycle type of the session pool. */
@@ -9497,20 +9410,8 @@ export const SessionContainerEnvList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SessionContainerEnvList>;
 
 /** Container resource requirements for sessions of the session pool. */
-export interface SessionContainerResources {
-  /** Required CPU in cores, e.g. 0.5 */
-  cpu?: number;
-  /** Required memory, e.g. "250Mb" */
-  memory?: string;
-}
-export const SessionContainerResources = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cpu: S.optional(S.Number),
-    memory: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SessionContainerResources",
-}) as any as S.Schema<SessionContainerResources>;
+export type SessionContainerResources = ContainerResourcesInput;
+export const SessionContainerResources = ContainerResourcesInput;
 
 /** Container definitions for the sessions of the session pool. */
 export interface SessionContainer {
@@ -9525,7 +9426,7 @@ export interface SessionContainer {
   /** Container environment variables. */
   env?: SessionContainerEnvList;
   /** Container resource requirements. */
-  resources?: SessionContainerResources;
+  resources?: ContainerResourcesInput;
 }
 export const SessionContainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9534,7 +9435,7 @@ export const SessionContainer = /*@__PURE__*/ S.suspend(() =>
     command: S.optional(SessionContainerCommandList),
     args: S.optional(SessionContainerArgsList),
     env: S.optional(SessionContainerEnvList),
-    resources: S.optional(SessionContainerResources),
+    resources: S.optional(ContainerResourcesInput),
   }),
 ).annotate({
   identifier: "SessionContainer",
@@ -9661,19 +9562,10 @@ export const SessionPoolPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionPoolPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ContainerAppsSessionPoolsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
+export type ContainerAppsSessionPoolsCreateOrUpdateRequestIdentity =
+  ContainerAppsCreateOrUpdateRequestIdentity;
 export const ContainerAppsSessionPoolsCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-  ).annotate({
-    identifier: "ContainerAppsSessionPoolsCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<ContainerAppsSessionPoolsCreateOrUpdateRequestIdentity>;
+  ContainerAppsCreateOrUpdateRequestIdentity;
 
 export interface ContainerAppsSessionPoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -9689,7 +9581,7 @@ export interface ContainerAppsSessionPoolsCreateOrUpdateRequest {
   /** Container App session pool resource specific properties */
   properties?: SessionPoolPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ContainerAppsSessionPoolsCreateOrUpdateRequestIdentity;
+  identity?: ContainerAppsCreateOrUpdateRequestIdentity;
 }
 export const ContainerAppsSessionPoolsCreateOrUpdateRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -9700,9 +9592,7 @@ export const ContainerAppsSessionPoolsCreateOrUpdateRequest =
       tags: S.optional(ContainerAppsSessionPoolsCreateOrUpdateRequestTagsMap),
       location: S.String,
       properties: S.optional(SessionPoolPropertiesInput),
-      identity: S.optional(
-        ContainerAppsSessionPoolsCreateOrUpdateRequestIdentity,
-      ),
+      identity: S.optional(ContainerAppsCreateOrUpdateRequestIdentity),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -9726,9 +9616,9 @@ export const ContainerAppsSessionPoolsCreateOrUpdateResponseTagsMap =
   ) as any as S.Schema<ContainerAppsSessionPoolsCreateOrUpdateResponseTagsMap>;
 
 /** The secrets of the session pool. */
-export type SessionPoolPropertiesSecretsList = Array<SessionPoolSecret>;
+export type SessionPoolPropertiesSecretsList = Array<DaprSecret>;
 export const SessionPoolPropertiesSecretsList = /*@__PURE__*/ S.Array(
-  SessionPoolSecret,
+  DaprSecret,
 ) as any as S.Schema<SessionPoolPropertiesSecretsList>;
 
 /** Provisioning state of the session pool. */
@@ -9797,25 +9687,10 @@ export const SessionPoolProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionPoolProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ContainerAppsSessionPoolsCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type ContainerAppsSessionPoolsCreateOrUpdateResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 export const ContainerAppsSessionPoolsCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "ContainerAppsSessionPoolsCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<ContainerAppsSessionPoolsCreateOrUpdateResponseIdentity>;
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface ContainerAppsSessionPoolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9833,7 +9708,7 @@ export interface ContainerAppsSessionPoolsCreateOrUpdateResponse {
   /** Container App session pool resource specific properties */
   properties?: SessionPoolProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ContainerAppsSessionPoolsCreateOrUpdateResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const ContainerAppsSessionPoolsCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -9845,9 +9720,7 @@ export const ContainerAppsSessionPoolsCreateOrUpdateResponse =
       tags: S.optional(ContainerAppsSessionPoolsCreateOrUpdateResponseTagsMap),
       location: S.String,
       properties: S.optional(SessionPoolProperties),
-      identity: S.optional(
-        ContainerAppsSessionPoolsCreateOrUpdateResponseIdentity,
-      ),
+      identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
     }),
   ).annotate({
     identifier: "ContainerAppsSessionPoolsCreateOrUpdateResponse",
@@ -9922,25 +9795,10 @@ export const ContainerAppsSessionPoolsGetResponseTagsMap =
   ) as any as S.Schema<ContainerAppsSessionPoolsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ContainerAppsSessionPoolsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type ContainerAppsSessionPoolsGetResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 export const ContainerAppsSessionPoolsGetResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "ContainerAppsSessionPoolsGetResponseIdentity",
-  }) as any as S.Schema<ContainerAppsSessionPoolsGetResponseIdentity>;
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface ContainerAppsSessionPoolsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -9958,7 +9816,7 @@ export interface ContainerAppsSessionPoolsGetResponse {
   /** Container App session pool resource specific properties */
   properties?: SessionPoolProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ContainerAppsSessionPoolsGetResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const ContainerAppsSessionPoolsGetResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -9970,7 +9828,7 @@ export const ContainerAppsSessionPoolsGetResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(ContainerAppsSessionPoolsGetResponseTagsMap),
       location: S.String,
       properties: S.optional(SessionPoolProperties),
-      identity: S.optional(ContainerAppsSessionPoolsGetResponseIdentity),
+      identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
     }),
 ).annotate({
   identifier: "ContainerAppsSessionPoolsGetResponse",
@@ -10007,24 +9865,8 @@ export const SessionPoolTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<SessionPoolTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface SessionPoolIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const SessionPoolIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "SessionPoolIdentity",
-}) as any as S.Schema<SessionPoolIdentity>;
+export type SessionPoolIdentity = ContainerAppsCreateOrUpdateResponseIdentity;
+export const SessionPoolIdentity = ContainerAppsCreateOrUpdateResponseIdentity;
 
 /** Container App session pool. */
 export interface SessionPool {
@@ -10043,7 +9885,7 @@ export interface SessionPool {
   /** Container App session pool resource specific properties */
   properties?: SessionPoolProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: SessionPoolIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const SessionPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -10054,7 +9896,7 @@ export const SessionPool = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(SessionPoolTagsMap),
     location: S.String,
     properties: S.optional(SessionPoolProperties),
-    identity: S.optional(SessionPoolIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "SessionPool" }) as any as S.Schema<SessionPool>;
 
@@ -10111,26 +9953,17 @@ export const ContainerAppsSessionPoolsUpdateRequestTagsMap =
   ) as any as S.Schema<ContainerAppsSessionPoolsUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ContainerAppsSessionPoolsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
+export type ContainerAppsSessionPoolsUpdateRequestIdentity =
+  ContainerAppsCreateOrUpdateRequestIdentity;
 export const ContainerAppsSessionPoolsUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-  ).annotate({
-    identifier: "ContainerAppsSessionPoolsUpdateRequestIdentity",
-  }) as any as S.Schema<ContainerAppsSessionPoolsUpdateRequestIdentity>;
+  ContainerAppsCreateOrUpdateRequestIdentity;
 
 /** The secrets of the session pool. */
 export type SessionPoolUpdatablePropertiesPropertiesSecretsList =
-  Array<SessionPoolSecret>;
+  Array<DaprSecret>;
 export const SessionPoolUpdatablePropertiesPropertiesSecretsList =
   /*@__PURE__*/ S.Array(
-    SessionPoolSecret,
+    DaprSecret,
   ) as any as S.Schema<SessionPoolUpdatablePropertiesPropertiesSecretsList>;
 
 /** Session pool resource specific updatable properties. */
@@ -10169,7 +10002,7 @@ export interface ContainerAppsSessionPoolsUpdateRequest {
   /** Resource tags. */
   tags?: ContainerAppsSessionPoolsUpdateRequestTagsMap;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ContainerAppsSessionPoolsUpdateRequestIdentity;
+  identity?: ContainerAppsCreateOrUpdateRequestIdentity;
   /** Session pool resource specific updatable properties. */
   properties?: SessionPoolUpdatablePropertiesProperties;
 }
@@ -10180,7 +10013,7 @@ export const ContainerAppsSessionPoolsUpdateRequest = /*@__PURE__*/ S.suspend(
       resourceGroupName: S.String.pipe(T.Label()),
       sessionPoolName: S.String.pipe(T.Label()),
       tags: S.optional(ContainerAppsSessionPoolsUpdateRequestTagsMap),
-      identity: S.optional(ContainerAppsSessionPoolsUpdateRequestIdentity),
+      identity: S.optional(ContainerAppsCreateOrUpdateRequestIdentity),
       properties: S.optional(SessionPoolUpdatablePropertiesProperties),
     }).pipe(
       T.Http({
@@ -10205,25 +10038,10 @@ export const ContainerAppsSessionPoolsUpdateResponseTagsMap =
   ) as any as S.Schema<ContainerAppsSessionPoolsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ContainerAppsSessionPoolsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type ContainerAppsSessionPoolsUpdateResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 export const ContainerAppsSessionPoolsUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "ContainerAppsSessionPoolsUpdateResponseIdentity",
-  }) as any as S.Schema<ContainerAppsSessionPoolsUpdateResponseIdentity>;
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface ContainerAppsSessionPoolsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10241,7 +10059,7 @@ export interface ContainerAppsSessionPoolsUpdateResponse {
   /** Container App session pool resource specific properties */
   properties?: SessionPoolProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ContainerAppsSessionPoolsUpdateResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const ContainerAppsSessionPoolsUpdateResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -10253,7 +10071,7 @@ export const ContainerAppsSessionPoolsUpdateResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(ContainerAppsSessionPoolsUpdateResponseTagsMap),
       location: S.String,
       properties: S.optional(SessionPoolProperties),
-      identity: S.optional(ContainerAppsSessionPoolsUpdateResponseIdentity),
+      identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
     }),
 ).annotate({
   identifier: "ContainerAppsSessionPoolsUpdateResponse",
@@ -10620,24 +10438,10 @@ export const ContainerAppsStartResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ContainerAppsStartResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ContainerAppsStartResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ContainerAppsStartResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ContainerAppsStartResponseIdentity",
-}) as any as S.Schema<ContainerAppsStartResponseIdentity>;
+export type ContainerAppsStartResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
+export const ContainerAppsStartResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface ContainerAppsStartResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10657,7 +10461,7 @@ export interface ContainerAppsStartResponse {
   /** The complex type of the extended location. */
   extendedLocation?: ExtendedLocation;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ContainerAppsStartResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
   /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
   managedBy?: string;
   /** Metadata to represent the container app kind, representing if a container app is workflowapp or functionapp. */
@@ -10673,7 +10477,7 @@ export const ContainerAppsStartResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ContainerAppProperties),
     extendedLocation: S.optional(ExtendedLocation),
-    identity: S.optional(ContainerAppsStartResponseIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
     managedBy: S.optional(S.String),
     kind: S.optional(Kind),
   }),
@@ -10716,24 +10520,10 @@ export const ContainerAppsStopResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ContainerAppsStopResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ContainerAppsStopResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ContainerAppsStopResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ContainerAppsStopResponseIdentity",
-}) as any as S.Schema<ContainerAppsStopResponseIdentity>;
+export type ContainerAppsStopResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
+export const ContainerAppsStopResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface ContainerAppsStopResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10753,7 +10543,7 @@ export interface ContainerAppsStopResponse {
   /** The complex type of the extended location. */
   extendedLocation?: ExtendedLocation;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ContainerAppsStopResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
   /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
   managedBy?: string;
   /** Metadata to represent the container app kind, representing if a container app is workflowapp or functionapp. */
@@ -10769,7 +10559,7 @@ export const ContainerAppsStopResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ContainerAppProperties),
     extendedLocation: S.optional(ExtendedLocation),
-    identity: S.optional(ContainerAppsStopResponseIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
     managedBy: S.optional(S.String),
     kind: S.optional(Kind),
   }),
@@ -10787,18 +10577,10 @@ export const ContainerAppsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ContainerAppsUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ContainerAppsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const ContainerAppsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "ContainerAppsUpdateRequestIdentity",
-}) as any as S.Schema<ContainerAppsUpdateRequestIdentity>;
+export type ContainerAppsUpdateRequestIdentity =
+  ContainerAppsCreateOrUpdateRequestIdentity;
+export const ContainerAppsUpdateRequestIdentity =
+  ContainerAppsCreateOrUpdateRequestIdentity;
 
 export interface ContainerAppsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10816,7 +10598,7 @@ export interface ContainerAppsUpdateRequest {
   /** The complex type of the extended location. */
   extendedLocation?: ExtendedLocation;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ContainerAppsUpdateRequestIdentity;
+  identity?: ContainerAppsCreateOrUpdateRequestIdentity;
   /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
   managedBy?: string;
   /** Metadata to represent the container app kind, representing if a container app is workflowapp or functionapp. */
@@ -10831,7 +10613,7 @@ export const ContainerAppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ContainerAppPropertiesInput),
     extendedLocation: S.optional(ExtendedLocation),
-    identity: S.optional(ContainerAppsUpdateRequestIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateRequestIdentity),
     managedBy: S.optional(S.String),
     kind: S.optional(Kind),
   }).pipe(
@@ -10856,24 +10638,10 @@ export const ContainerAppsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ContainerAppsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ContainerAppsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ContainerAppsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ContainerAppsUpdateResponseIdentity",
-}) as any as S.Schema<ContainerAppsUpdateResponseIdentity>;
+export type ContainerAppsUpdateResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
+export const ContainerAppsUpdateResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface ContainerAppsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -10893,7 +10661,7 @@ export interface ContainerAppsUpdateResponse {
   /** The complex type of the extended location. */
   extendedLocation?: ExtendedLocation;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ContainerAppsUpdateResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
   /** The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource. */
   managedBy?: string;
   /** Metadata to represent the container app kind, representing if a container app is workflowapp or functionapp. */
@@ -10909,7 +10677,7 @@ export const ContainerAppsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ContainerAppProperties),
     extendedLocation: S.optional(ExtendedLocation),
-    identity: S.optional(ContainerAppsUpdateResponseIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
     managedBy: S.optional(S.String),
     kind: S.optional(Kind),
   }),
@@ -12379,18 +12147,10 @@ export const JobPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface JobsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const JobsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "JobsCreateOrUpdateRequestIdentity",
-}) as any as S.Schema<JobsCreateOrUpdateRequestIdentity>;
+export type JobsCreateOrUpdateRequestIdentity =
+  ContainerAppsCreateOrUpdateRequestIdentity;
+export const JobsCreateOrUpdateRequestIdentity =
+  ContainerAppsCreateOrUpdateRequestIdentity;
 
 export interface JobsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -12406,7 +12166,7 @@ export interface JobsCreateOrUpdateRequest {
   /** Container Apps Job resource specific properties. */
   properties?: JobPropertiesInput;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: JobsCreateOrUpdateRequestIdentity;
+  identity?: ContainerAppsCreateOrUpdateRequestIdentity;
 }
 export const JobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12416,7 +12176,7 @@ export const JobsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(JobsCreateOrUpdateRequestTagsMap),
     location: S.String,
     properties: S.optional(JobPropertiesInput),
-    identity: S.optional(JobsCreateOrUpdateRequestIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -12518,24 +12278,10 @@ export const JobProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobProperties" }) as any as S.Schema<JobProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface JobsCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const JobsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "JobsCreateOrUpdateResponseIdentity",
-}) as any as S.Schema<JobsCreateOrUpdateResponseIdentity>;
+export type JobsCreateOrUpdateResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
+export const JobsCreateOrUpdateResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface JobsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12553,7 +12299,7 @@ export interface JobsCreateOrUpdateResponse {
   /** Container Apps Job resource specific properties. */
   properties?: JobProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: JobsCreateOrUpdateResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const JobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12564,7 +12310,7 @@ export const JobsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(JobsCreateOrUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(JobProperties),
-    identity: S.optional(JobsCreateOrUpdateResponseIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "JobsCreateOrUpdateResponse",
@@ -12706,24 +12452,10 @@ export const JobsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<JobsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface JobsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const JobsGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "JobsGetResponseIdentity",
-}) as any as S.Schema<JobsGetResponseIdentity>;
+export type JobsGetResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
+export const JobsGetResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface JobsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -12741,7 +12473,7 @@ export interface JobsGetResponse {
   /** Container Apps Job resource specific properties. */
   properties?: JobProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: JobsGetResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const JobsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12752,7 +12484,7 @@ export const JobsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(JobsGetResponseTagsMap),
     location: S.String,
     properties: S.optional(JobProperties),
-    identity: S.optional(JobsGetResponseIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "JobsGetResponse",
@@ -12840,22 +12572,8 @@ export const JobTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<JobTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface JobIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const JobIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({ identifier: "JobIdentity" }) as any as S.Schema<JobIdentity>;
+export type JobIdentity = ContainerAppsCreateOrUpdateResponseIdentity;
+export const JobIdentity = ContainerAppsCreateOrUpdateResponseIdentity;
 
 /** Container App Job */
 export interface Job {
@@ -12874,7 +12592,7 @@ export interface Job {
   /** Container Apps Job resource specific properties. */
   properties?: JobProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: JobIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12885,7 +12603,7 @@ export const Job = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(JobTagsMap),
     location: S.String,
     properties: S.optional(JobProperties),
-    identity: S.optional(JobIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 
@@ -13033,24 +12751,10 @@ export const JobsProxyGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<JobsProxyGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface JobsProxyGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const JobsProxyGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "JobsProxyGetResponseIdentity",
-}) as any as S.Schema<JobsProxyGetResponseIdentity>;
+export type JobsProxyGetResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
+export const JobsProxyGetResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface JobsProxyGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13068,7 +12772,7 @@ export interface JobsProxyGetResponse {
   /** Container Apps Job resource specific properties. */
   properties?: JobProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: JobsProxyGetResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const JobsProxyGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13079,7 +12783,7 @@ export const JobsProxyGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(JobsProxyGetResponseTagsMap),
     location: S.String,
     properties: S.optional(JobProperties),
-    identity: S.optional(JobsProxyGetResponseIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "JobsProxyGetResponse",
@@ -13252,18 +12956,10 @@ export const JobsStopMultipleExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobsStopMultipleExecutionsRequest>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface JobsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const JobsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-  }),
-).annotate({
-  identifier: "JobsUpdateRequestIdentity",
-}) as any as S.Schema<JobsUpdateRequestIdentity>;
+export type JobsUpdateRequestIdentity =
+  ContainerAppsCreateOrUpdateRequestIdentity;
+export const JobsUpdateRequestIdentity =
+  ContainerAppsCreateOrUpdateRequestIdentity;
 
 /** Resource tags. */
 export type JobsUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -13314,7 +13010,7 @@ export interface JobsUpdateRequest {
   /** Job Name */
   jobName: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: JobsUpdateRequestIdentity;
+  identity?: ContainerAppsCreateOrUpdateRequestIdentity;
   /** Resource tags. */
   tags?: JobsUpdateRequestTagsMap;
   properties?: JobPatchPropertiesPropertiesInput;
@@ -13324,7 +13020,7 @@ export const JobsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     jobName: S.String.pipe(T.Label()),
-    identity: S.optional(JobsUpdateRequestIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateRequestIdentity),
     tags: S.optional(JobsUpdateRequestTagsMap),
     properties: S.optional(JobPatchPropertiesPropertiesInput),
   }).pipe(
@@ -13347,24 +13043,10 @@ export const JobsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<JobsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface JobsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const JobsUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "JobsUpdateResponseIdentity",
-}) as any as S.Schema<JobsUpdateResponseIdentity>;
+export type JobsUpdateResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
+export const JobsUpdateResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface JobsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -13382,7 +13064,7 @@ export interface JobsUpdateResponse {
   /** Container Apps Job resource specific properties. */
   properties?: JobProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: JobsUpdateResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const JobsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13393,7 +13075,7 @@ export const JobsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(JobsUpdateResponseTagsMap),
     location: S.String,
     properties: S.optional(JobProperties),
-    identity: S.optional(JobsUpdateResponseIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "JobsUpdateResponse",
@@ -14588,12 +14270,8 @@ export const ManagedEnvironmentDiagnosticsListDetectorsRequest =
   }) as any as S.Schema<ManagedEnvironmentDiagnosticsListDetectorsRequest>;
 
 /** The Private Endpoint resource. */
-export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PrivateEndpointInput",
-}) as any as S.Schema<PrivateEndpointInput>;
+export type PrivateEndpointInput = UserAssignedIdentityInput;
+export const PrivateEndpointInput = UserAssignedIdentityInput;
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus =
@@ -14625,14 +14303,14 @@ export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The resource of private end point. */
-  privateEndpoint?: PrivateEndpointInput;
+  privateEndpoint?: UserAssignedIdentityInput;
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
 export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateEndpoint: S.optional(UserAssignedIdentityInput),
       privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
     }),
 ).annotate({
@@ -15124,20 +14802,12 @@ export const ManagedEnvironmentPropertiesInputWorkloadProfilesList =
   ) as any as S.Schema<ManagedEnvironmentPropertiesInputWorkloadProfilesList>;
 
 /** Configuration properties Keda component */
-export interface KedaConfigurationInput {}
-export const KedaConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "KedaConfigurationInput",
-}) as any as S.Schema<KedaConfigurationInput>;
+export type KedaConfigurationInput = UserAssignedIdentityInput;
+export const KedaConfigurationInput = UserAssignedIdentityInput;
 
 /** Configuration properties Dapr component */
-export interface DaprConfigurationInput {}
-export const DaprConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DaprConfigurationInput",
-}) as any as S.Schema<DaprConfigurationInput>;
+export type DaprConfigurationInput = UserAssignedIdentityInput;
+export const DaprConfigurationInput = UserAssignedIdentityInput;
 
 /** Configuration properties for mutual TLS authentication */
 export interface Mtls {
@@ -15238,9 +14908,9 @@ export interface ManagedEnvironmentPropertiesInput {
   /** Workload profiles configured for the Managed Environment. */
   workloadProfiles?: ManagedEnvironmentPropertiesInputWorkloadProfilesList;
   /** The configuration of Keda component. */
-  kedaConfiguration?: KedaConfigurationInput;
+  kedaConfiguration?: UserAssignedIdentityInput;
   /** The configuration of Dapr component. */
-  daprConfiguration?: DaprConfigurationInput;
+  daprConfiguration?: UserAssignedIdentityInput;
   /** Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet. */
   infrastructureResourceGroup?: string;
   /** Peer authentication settings for the Managed Environment */
@@ -15263,8 +14933,8 @@ export const ManagedEnvironmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
     workloadProfiles: S.optional(
       ManagedEnvironmentPropertiesInputWorkloadProfilesList,
     ),
-    kedaConfiguration: S.optional(KedaConfigurationInput),
-    daprConfiguration: S.optional(DaprConfigurationInput),
+    kedaConfiguration: S.optional(UserAssignedIdentityInput),
+    daprConfiguration: S.optional(UserAssignedIdentityInput),
     infrastructureResourceGroup: S.optional(S.String),
     peerAuthentication: S.optional(
       ManagedEnvironmentPropertiesPeerAuthentication,
@@ -15280,19 +14950,10 @@ export const ManagedEnvironmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedEnvironmentPropertiesInput>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedEnvironmentsCreateOrUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
+export type ManagedEnvironmentsCreateOrUpdateRequestIdentity =
+  ContainerAppsCreateOrUpdateRequestIdentity;
 export const ManagedEnvironmentsCreateOrUpdateRequestIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-  ).annotate({
-    identifier: "ManagedEnvironmentsCreateOrUpdateRequestIdentity",
-  }) as any as S.Schema<ManagedEnvironmentsCreateOrUpdateRequestIdentity>;
+  ContainerAppsCreateOrUpdateRequestIdentity;
 
 export interface ManagedEnvironmentsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -15310,7 +14971,7 @@ export interface ManagedEnvironmentsCreateOrUpdateRequest {
   /** Kind of the Environment. */
   kind?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedEnvironmentsCreateOrUpdateRequestIdentity;
+  identity?: ContainerAppsCreateOrUpdateRequestIdentity;
 }
 export const ManagedEnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -15322,7 +14983,7 @@ export const ManagedEnvironmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
       location: S.String,
       properties: S.optional(ManagedEnvironmentPropertiesInput),
       kind: S.optional(S.String),
-      identity: S.optional(ManagedEnvironmentsCreateOrUpdateRequestIdentity),
+      identity: S.optional(ContainerAppsCreateOrUpdateRequestIdentity),
     }).pipe(
       T.Http({
         method: "PUT",
@@ -15480,25 +15141,10 @@ export const ManagedEnvironmentProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedEnvironmentProperties>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedEnvironmentsCreateOrUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type ManagedEnvironmentsCreateOrUpdateResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 export const ManagedEnvironmentsCreateOrUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "ManagedEnvironmentsCreateOrUpdateResponseIdentity",
-  }) as any as S.Schema<ManagedEnvironmentsCreateOrUpdateResponseIdentity>;
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface ManagedEnvironmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -15518,7 +15164,7 @@ export interface ManagedEnvironmentsCreateOrUpdateResponse {
   /** Kind of the Environment. */
   kind?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedEnvironmentsCreateOrUpdateResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const ManagedEnvironmentsCreateOrUpdateResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -15531,7 +15177,7 @@ export const ManagedEnvironmentsCreateOrUpdateResponse =
       location: S.String,
       properties: S.optional(ManagedEnvironmentProperties),
       kind: S.optional(S.String),
-      identity: S.optional(ManagedEnvironmentsCreateOrUpdateResponseIdentity),
+      identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
     }),
   ).annotate({
     identifier: "ManagedEnvironmentsCreateOrUpdateResponse",
@@ -15606,25 +15252,10 @@ export const ManagedEnvironmentsDiagnosticsGetRootResponseTagsMap =
   ) as any as S.Schema<ManagedEnvironmentsDiagnosticsGetRootResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedEnvironmentsDiagnosticsGetRootResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type ManagedEnvironmentsDiagnosticsGetRootResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 export const ManagedEnvironmentsDiagnosticsGetRootResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "ManagedEnvironmentsDiagnosticsGetRootResponseIdentity",
-  }) as any as S.Schema<ManagedEnvironmentsDiagnosticsGetRootResponseIdentity>;
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface ManagedEnvironmentsDiagnosticsGetRootResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -15644,7 +15275,7 @@ export interface ManagedEnvironmentsDiagnosticsGetRootResponse {
   /** Kind of the Environment. */
   kind?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedEnvironmentsDiagnosticsGetRootResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const ManagedEnvironmentsDiagnosticsGetRootResponse =
   /*@__PURE__*/ S.suspend(() =>
@@ -15657,9 +15288,7 @@ export const ManagedEnvironmentsDiagnosticsGetRootResponse =
       location: S.String,
       properties: S.optional(ManagedEnvironmentProperties),
       kind: S.optional(S.String),
-      identity: S.optional(
-        ManagedEnvironmentsDiagnosticsGetRootResponseIdentity,
-      ),
+      identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
     }),
   ).annotate({
     identifier: "ManagedEnvironmentsDiagnosticsGetRootResponse",
@@ -15700,25 +15329,10 @@ export const ManagedEnvironmentsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ManagedEnvironmentsGetResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedEnvironmentsGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ManagedEnvironmentsGetResponseIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-).annotate({
-  identifier: "ManagedEnvironmentsGetResponseIdentity",
-}) as any as S.Schema<ManagedEnvironmentsGetResponseIdentity>;
+export type ManagedEnvironmentsGetResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
+export const ManagedEnvironmentsGetResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface ManagedEnvironmentsGetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -15738,7 +15352,7 @@ export interface ManagedEnvironmentsGetResponse {
   /** Kind of the Environment. */
   kind?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedEnvironmentsGetResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const ManagedEnvironmentsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15750,7 +15364,7 @@ export const ManagedEnvironmentsGetResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ManagedEnvironmentProperties),
     kind: S.optional(S.String),
-    identity: S.optional(ManagedEnvironmentsGetResponseIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ManagedEnvironmentsGetResponse",
@@ -15793,20 +15407,8 @@ export const ManagedEnvironmentsGetAuthTokenResponseTagsMap =
   ) as any as S.Schema<ManagedEnvironmentsGetAuthTokenResponseTagsMap>;
 
 /** Environment auth token resource specific properties */
-export interface EnvironmentAuthTokenProperties {
-  /** Auth token value. */
-  token?: string;
-  /** Token expiration date. */
-  expires?: string;
-}
-export const EnvironmentAuthTokenProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.optional(S.String),
-    expires: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnvironmentAuthTokenProperties",
-}) as any as S.Schema<EnvironmentAuthTokenProperties>;
+export type EnvironmentAuthTokenProperties = ContainerAppAuthTokenProperties;
+export const EnvironmentAuthTokenProperties = ContainerAppAuthTokenProperties;
 
 export interface ManagedEnvironmentsGetAuthTokenResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -15822,7 +15424,7 @@ export interface ManagedEnvironmentsGetAuthTokenResponse {
   /** The geo-location where the resource lives */
   location: string;
   /** Environment auth token resource specific properties */
-  properties?: EnvironmentAuthTokenProperties;
+  properties?: ContainerAppAuthTokenProperties;
 }
 export const ManagedEnvironmentsGetAuthTokenResponse = /*@__PURE__*/ S.suspend(
   () =>
@@ -15833,7 +15435,7 @@ export const ManagedEnvironmentsGetAuthTokenResponse = /*@__PURE__*/ S.suspend(
       systemData: S.optional(SystemData),
       tags: S.optional(ManagedEnvironmentsGetAuthTokenResponseTagsMap),
       location: S.String,
-      properties: S.optional(EnvironmentAuthTokenProperties),
+      properties: S.optional(ContainerAppAuthTokenProperties),
     }),
 ).annotate({
   identifier: "ManagedEnvironmentsGetAuthTokenResponse",
@@ -15870,24 +15472,10 @@ export const ManagedEnvironmentTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ManagedEnvironmentTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedEnvironmentIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
-export const ManagedEnvironmentIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(UserAssignedIdentities),
-  }),
-).annotate({
-  identifier: "ManagedEnvironmentIdentity",
-}) as any as S.Schema<ManagedEnvironmentIdentity>;
+export type ManagedEnvironmentIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
+export const ManagedEnvironmentIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 /** An environment for hosting container apps */
 export interface ManagedEnvironment {
@@ -15908,7 +15496,7 @@ export interface ManagedEnvironment {
   /** Kind of the Environment. */
   kind?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedEnvironmentIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const ManagedEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -15920,7 +15508,7 @@ export const ManagedEnvironment = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ManagedEnvironmentProperties),
     kind: S.optional(S.String),
-    identity: S.optional(ManagedEnvironmentIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ManagedEnvironment",
@@ -16325,19 +15913,10 @@ export const ManagedEnvironmentsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ManagedEnvironmentsUpdateRequestTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedEnvironmentsUpdateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  userAssignedIdentities?: UserAssignedIdentitiesInput;
-}
-export const ManagedEnvironmentsUpdateRequestIdentity = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
-    }),
-).annotate({
-  identifier: "ManagedEnvironmentsUpdateRequestIdentity",
-}) as any as S.Schema<ManagedEnvironmentsUpdateRequestIdentity>;
+export type ManagedEnvironmentsUpdateRequestIdentity =
+  ContainerAppsCreateOrUpdateRequestIdentity;
+export const ManagedEnvironmentsUpdateRequestIdentity =
+  ContainerAppsCreateOrUpdateRequestIdentity;
 
 export interface ManagedEnvironmentsUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -16355,7 +15934,7 @@ export interface ManagedEnvironmentsUpdateRequest {
   /** Kind of the Environment. */
   kind?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedEnvironmentsUpdateRequestIdentity;
+  identity?: ContainerAppsCreateOrUpdateRequestIdentity;
 }
 export const ManagedEnvironmentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16366,7 +15945,7 @@ export const ManagedEnvironmentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ManagedEnvironmentPropertiesInput),
     kind: S.optional(S.String),
-    identity: S.optional(ManagedEnvironmentsUpdateRequestIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateRequestIdentity),
   }).pipe(
     T.Http({
       method: "PATCH",
@@ -16389,25 +15968,10 @@ export const ManagedEnvironmentsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ManagedEnvironmentsUpdateResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
-export interface ManagedEnvironmentsUpdateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  userAssignedIdentities?: UserAssignedIdentities;
-}
+export type ManagedEnvironmentsUpdateResponseIdentity =
+  ContainerAppsCreateOrUpdateResponseIdentity;
 export const ManagedEnvironmentsUpdateResponseIdentity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      principalId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      type: ManagedServiceIdentityType,
-      userAssignedIdentities: S.optional(UserAssignedIdentities),
-    }),
-  ).annotate({
-    identifier: "ManagedEnvironmentsUpdateResponseIdentity",
-  }) as any as S.Schema<ManagedEnvironmentsUpdateResponseIdentity>;
+  ContainerAppsCreateOrUpdateResponseIdentity;
 
 export interface ManagedEnvironmentsUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -16427,7 +15991,7 @@ export interface ManagedEnvironmentsUpdateResponse {
   /** Kind of the Environment. */
   kind?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ManagedEnvironmentsUpdateResponseIdentity;
+  identity?: ContainerAppsCreateOrUpdateResponseIdentity;
 }
 export const ManagedEnvironmentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16439,7 +16003,7 @@ export const ManagedEnvironmentsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     location: S.String,
     properties: S.optional(ManagedEnvironmentProperties),
     kind: S.optional(S.String),
-    identity: S.optional(ManagedEnvironmentsUpdateResponseIdentity),
+    identity: S.optional(ContainerAppsCreateOrUpdateResponseIdentity),
   }),
 ).annotate({
   identifier: "ManagedEnvironmentsUpdateResponse",

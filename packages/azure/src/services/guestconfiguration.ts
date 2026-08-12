@@ -452,23 +452,20 @@ export const AssignmentInfoInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignmentInfoInput>;
 
 /** Information about the VM. */
-export interface VMInfoInput {}
-export const VMInfoInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "VMInfoInput" },
-) as any as S.Schema<VMInfoInput>;
+export type VMInfoInput = ConfigurationInfoInput;
+export const VMInfoInput = ConfigurationInfoInput;
 
 /** Reason and code for the compliance of the guest configuration assignment resource. */
-export interface AssignmentReportResourceComplianceReasonInput {}
+export type AssignmentReportResourceComplianceReasonInput =
+  ConfigurationInfoInput;
 export const AssignmentReportResourceComplianceReasonInput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AssignmentReportResourceComplianceReasonInput",
-  }) as any as S.Schema<AssignmentReportResourceComplianceReasonInput>;
+  ConfigurationInfoInput;
 
 /** Compliance reason and reason code for a resource. */
 export type AssignmentReportResourceInputReasonsList =
-  Array<AssignmentReportResourceComplianceReasonInput>;
+  Array<ConfigurationInfoInput>;
 export const AssignmentReportResourceInputReasonsList = /*@__PURE__*/ S.Array(
-  AssignmentReportResourceComplianceReasonInput,
+  ConfigurationInfoInput,
 ) as any as S.Schema<AssignmentReportResourceInputReasonsList>;
 
 /** The guest configuration assignment resource. */
@@ -495,14 +492,14 @@ export interface AssignmentReportInput {
   /** Configuration details of the guest configuration assignment. */
   assignment?: AssignmentInfoInput;
   /** Information about the VM. */
-  vm?: VMInfoInput;
+  vm?: ConfigurationInfoInput;
   /** The list of resources for which guest configuration assignment compliance is checked. */
   resources?: AssignmentReportInputResourcesList;
 }
 export const AssignmentReportInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignment: S.optional(AssignmentInfoInput),
-    vm: S.optional(VMInfoInput),
+    vm: S.optional(ConfigurationInfoInput),
     resources: S.optional(AssignmentReportInputResourcesList),
   }),
 ).annotate({
@@ -510,19 +507,15 @@ export const AssignmentReportInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssignmentReportInput>;
 
 /** Information about VMSS VM */
-export interface VMSSVMInfoInput {}
-export const VMSSVMInfoInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "VMSSVMInfoInput",
-}) as any as S.Schema<VMSSVMInfoInput>;
+export type VMSSVMInfoInput = ConfigurationInfoInput;
+export const VMSSVMInfoInput = ConfigurationInfoInput;
 
 /** The list of VM Compliance data for VMSS */
 export type GuestConfigurationAssignmentPropertiesInputVmssVMListList =
-  Array<VMSSVMInfoInput>;
+  Array<ConfigurationInfoInput>;
 export const GuestConfigurationAssignmentPropertiesInputVmssVMListList =
   /*@__PURE__*/ S.Array(
-    VMSSVMInfoInput,
+    ConfigurationInfoInput,
   ) as any as S.Schema<GuestConfigurationAssignmentPropertiesInputVmssVMListList>;
 
 /** Guest configuration assignment properties. */

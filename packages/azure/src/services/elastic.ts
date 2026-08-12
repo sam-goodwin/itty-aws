@@ -1276,24 +1276,20 @@ export const ElasticCloudUserInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticCloudUserInput>;
 
 /** Details of the user's elastic deployment associated with the monitor resource. */
-export interface ElasticCloudDeploymentInput {}
-export const ElasticCloudDeploymentInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ElasticCloudDeploymentInput",
-}) as any as S.Schema<ElasticCloudDeploymentInput>;
+export type ElasticCloudDeploymentInput = ElasticCloudUserInput;
+export const ElasticCloudDeploymentInput = ElasticCloudUserInput;
 
 /** Elastic Resource Properties. */
 export interface ElasticPropertiesInput {
   /** Details of the user's elastic account. */
   elasticCloudUser?: ElasticCloudUserInput;
   /** Details of the elastic cloud deployment. */
-  elasticCloudDeployment?: ElasticCloudDeploymentInput;
+  elasticCloudDeployment?: ElasticCloudUserInput;
 }
 export const ElasticPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elasticCloudUser: S.optional(ElasticCloudUserInput),
-    elasticCloudDeployment: S.optional(ElasticCloudDeploymentInput),
+    elasticCloudDeployment: S.optional(ElasticCloudUserInput),
   }),
 ).annotate({
   identifier: "ElasticPropertiesInput",
