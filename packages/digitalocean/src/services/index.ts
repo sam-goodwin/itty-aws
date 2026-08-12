@@ -3,3 +3,4 @@ export * as droplets from "./droplets.ts";
 export * as firewalls from "./firewalls.ts";
 export * as reservedIps from "./reservedIps.ts";
 export * as sshKeys from "./sshKeys.ts";
+export * as tags from "./tags.ts";

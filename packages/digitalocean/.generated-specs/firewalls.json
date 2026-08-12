@@ -45,19 +45,22 @@
         "id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A unique ID that can be used to identify and reference a firewall."
+            "smithy.api#documentation": "A unique ID that can be used to identify and reference a firewall.",
+            "smithy.api#required": {}
           }
         },
         "status": {
           "target": "com.digitalocean.firewalls#FirewallStatus",
           "traits": {
-            "smithy.api#documentation": "A status string indicating the current state of the firewall. This can be \"waiting\", \"succeeded\", or \"failed\"."
+            "smithy.api#documentation": "A status string indicating the current state of the firewall. This can be \"waiting\", \"succeeded\", or \"failed\".",
+            "smithy.api#required": {}
           }
         },
         "created_at": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the firewall was created."
+            "smithy.api#documentation": "A time value given in ISO8601 combined date and time format that represents when the firewall was created.",
+            "smithy.api#required": {}
           }
         },
         "pending_changes": {
@@ -69,7 +72,8 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A human-readable name for a firewall. The name must begin with an alphanumeric character. Subsequent characters must either be alphanumeric characters, a period (.), or a dash (-)."
+            "smithy.api#documentation": "A human-readable name for a firewall. The name must begin with an alphanumeric character. Subsequent characters must either be alphanumeric characters, a period (.), or a dash (-).",
+            "smithy.api#required": {}
           }
         },
         "droplet_ids": {
@@ -835,7 +839,10 @@
       "type": "structure",
       "members": {
         "firewall": {
-          "target": "com.digitalocean.firewalls#Firewall"
+          "target": "com.digitalocean.firewalls#Firewall",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -884,7 +891,10 @@
       "type": "structure",
       "members": {
         "firewall": {
-          "target": "com.digitalocean.firewalls#Firewall"
+          "target": "com.digitalocean.firewalls#Firewall",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -1227,7 +1237,10 @@
       "type": "structure",
       "members": {
         "firewall": {
-          "target": "com.digitalocean.firewalls#Firewall"
+          "target": "com.digitalocean.firewalls#Firewall",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {

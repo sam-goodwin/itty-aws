@@ -8,18 +8,18 @@
  * Output: .generated-specs/<service>.json
  *
  * The upstream spec is one document covering every DigitalOcean product
- * (~445 paths). Each service entry below slices it to that service's paths
- * via `preprocess` before conversion, so we only generate the services
- * alchemy actually consumes. Add a new entry (and its path allowlist) to
- * cover another product.
+ * (~445 paths). Each entry keeps only its service's paths before
+ * conversion; add a new entry (and its path allowlist) to cover another
+ * product. RFC-6902 patches in `patches/<service>/` apply to the OpenAPI
+ * document before conversion.
  */
 import { runOpenApiConvert } from "@distilled.cloud/core/codegen/openapi-cli";
 import * as YAML from "yaml";
 
 const SPEC = "specs/DigitalOcean-public.v2.yaml";
 
-/** Keep only the paths matching `keep`; drop everything else. */
-const slice = (keep: RegExp) => (spec: any) => {
+/** Drop every path not matching `keep`. Mutates the spec in place. */
+const keepPaths = (keep: RegExp) => (spec: any) => {
   spec.paths = Object.fromEntries(
     Object.entries(spec.paths).filter(([p]) => keep.test(p)),
   );
@@ -35,7 +35,7 @@ await runOpenApiConvert({
       specPath: SPEC,
       // Core droplet CRUD + the action API (resize/rename/power) — not the
       // autoscale pools, backup policies, or monitoring surfaces.
-      preprocess: slice(
+      preprocess: keepPaths(
         /^\/v2\/droplets(\/\{droplet_id\})?($|\/actions|\/destroy_with_associated_resources)/,
       ),
       options: {
@@ -46,7 +46,7 @@ await runOpenApiConvert({
     {
       name: "sshKeys",
       specPath: SPEC,
-      preprocess: slice(/^\/v2\/account\/keys/),
+      preprocess: keepPaths(/^\/v2\/account\/keys/),
       options: {
         namespace: "com.digitalocean.sshkeys",
         serviceName: "DigitalOceanSshKeys",
@@ -55,7 +55,7 @@ await runOpenApiConvert({
     {
       name: "firewalls",
       specPath: SPEC,
-      preprocess: slice(/^\/v2\/firewalls/),
+      preprocess: keepPaths(/^\/v2\/firewalls/),
       options: {
         namespace: "com.digitalocean.firewalls",
         serviceName: "DigitalOceanFirewalls",
@@ -64,10 +64,19 @@ await runOpenApiConvert({
     {
       name: "reservedIps",
       specPath: SPEC,
-      preprocess: slice(/^\/v2\/reserved_ips/),
+      preprocess: keepPaths(/^\/v2\/reserved_ips/),
       options: {
         namespace: "com.digitalocean.reservedips",
         serviceName: "DigitalOceanReservedIps",
+      },
+    },
+    {
+      name: "tags",
+      specPath: SPEC,
+      preprocess: keepPaths(/^\/v2\/tags/),
+      options: {
+        namespace: "com.digitalocean.tags",
+        serviceName: "DigitalOceanTags",
       },
     },
   ],
@@ -76,6 +85,9 @@ await runOpenApiConvert({
     // converter's default statusToErrorClass map covers the 4xx classes and
     // these statuses fall through to the shared default error channel.
     defaultErrorStatuses: ["401", "429", "500", "502", "503", "504"],
+    // Async-accept endpoints (droplet create, droplet/firewall actions)
+    // answer 202 with the created resource in the body.
+    successStatuses: ["200", "201", "202", "204"],
     skipDeprecated: true,
   },
 });

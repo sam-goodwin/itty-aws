@@ -212,7 +212,10 @@
       "type": "structure",
       "members": {
         "ssh_key": {
-          "target": "com.digitalocean.sshkeys#SshKeys"
+          "target": "com.digitalocean.sshkeys#SshKeys",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -227,6 +230,11 @@
       "output": {
         "target": "com.digitalocean.sshkeys#SshKeysCreateResponse"
       },
+      "errors": [
+        {
+          "target": "com.digitalocean.sshkeys#UnprocessableEntity"
+        }
+      ],
       "traits": {
         "smithy.api#http": {
           "method": "POST",
@@ -256,7 +264,10 @@
       "type": "structure",
       "members": {
         "ssh_key": {
-          "target": "com.digitalocean.sshkeys#SshKeys"
+          "target": "com.digitalocean.sshkeys#SshKeys",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -308,7 +319,10 @@
       "type": "structure",
       "members": {
         "ssh_key": {
-          "target": "com.digitalocean.sshkeys#SshKeys"
+          "target": "com.digitalocean.sshkeys#SshKeys",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -373,6 +387,19 @@
           "code": 200
         },
         "smithy.api#documentation": "Delete an SSH Key\n\nTo destroy a public SSH key that you have in your account, send a DELETE request to `/v2/account/keys/$KEY_ID` or `/v2/account/keys/$KEY_FINGERPRINT`.\nA 204 status will be returned, indicating that the action was successful and that the response body is empty."
+      }
+    },
+    "com.digitalocean.sshkeys#UnprocessableEntity": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 422,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 422
+          }
+        ]
       }
     },
     "com.digitalocean.sshkeys#NotFound": {

@@ -720,15 +720,15 @@ export const FirewallOutboundRulesList = /*@__PURE__*/ S.Array(
 
 export interface Firewall {
   /** A unique ID that can be used to identify and reference a firewall. */
-  id?: string;
+  id: string;
   /** A status string indicating the current state of the firewall. This can be "waiting", "succeeded", or "failed". */
-  status?: FirewallStatus;
+  status: FirewallStatus;
   /** A time value given in ISO8601 combined date and time format that represents when the firewall was created. */
-  created_at?: string;
+  created_at: string;
   /** An array of objects each containing the fields "droplet_id", "removing", and "status". It is provided to detail exactly which Droplets are having their security policies updated. When empty, all changes have been successfully applied. */
   pending_changes?: FirewallPendingChangesList;
   /** A human-readable name for a firewall. The name must begin with an alphanumeric character. Subsequent characters must either be alphanumeric characters, a period (.), or a dash (-). */
-  name?: string;
+  name: string;
   /** An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope. */
   droplet_ids?: FirewallDropletIdsList | null;
   tags?: unknown;
@@ -737,11 +737,11 @@ export interface Firewall {
 }
 export const Firewall = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    status: S.optional(FirewallStatus),
-    created_at: S.optional(S.String),
+    id: S.String,
+    status: FirewallStatus,
+    created_at: S.String,
     pending_changes: S.optional(FirewallPendingChangesList),
-    name: S.optional(S.String),
+    name: S.String,
     droplet_ids: S.optional(S.NullOr(FirewallDropletIdsList)),
     tags: S.optional(S.Unknown),
     inbound_rules: S.optional(S.NullOr(FirewallInboundRulesList)),
@@ -750,11 +750,11 @@ export const Firewall = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Firewall" }) as any as S.Schema<Firewall>;
 
 export interface FirewallsCreateResponse {
-  firewall?: Firewall;
+  firewall: Firewall;
 }
 export const FirewallsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    firewall: S.optional(Firewall),
+    firewall: Firewall,
   }),
 ).annotate({
   identifier: "FirewallsCreateResponse",
@@ -1087,11 +1087,11 @@ export const FirewallsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallsGetRequest>;
 
 export interface FirewallsGetResponse {
-  firewall?: Firewall;
+  firewall: Firewall;
 }
 export const FirewallsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    firewall: S.optional(Firewall),
+    firewall: Firewall,
   }),
 ).annotate({
   identifier: "FirewallsGetResponse",
@@ -1410,11 +1410,11 @@ export const FirewallsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FirewallsUpdateRequest>;
 
 export interface FirewallsUpdateResponse {
-  firewall?: Firewall;
+  firewall: Firewall;
 }
 export const FirewallsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    firewall: S.optional(Firewall),
+    firewall: Firewall,
   }),
 ).annotate({
   identifier: "FirewallsUpdateResponse",

@@ -7,7 +7,7 @@ import {
   type DigitalOceanOpError,
   type DigitalOceanOpContext,
 } from "../protocol.ts";
-import { NotFound } from "../errors.ts";
+import { NotFound, UnprocessableEntity } from "../errors.ts";
 import * as Retry from "../retry.ts";
 
 export type { DigitalOceanOpError, DigitalOceanOpContext };
@@ -43,11 +43,11 @@ export const SshKeys = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SshKeys" }) as any as S.Schema<SshKeys>;
 
 export interface SshKeysCreateResponse {
-  ssh_key?: SshKeys;
+  ssh_key: SshKeys;
 }
 export const SshKeysCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ssh_key: S.optional(SshKeys),
+    ssh_key: SshKeys,
   }),
 ).annotate({
   identifier: "SshKeysCreateResponse",
@@ -97,11 +97,11 @@ export const SshKeysGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SshKeysGetRequest>;
 
 export interface SshKeysGetResponse {
-  ssh_key?: SshKeys;
+  ssh_key: SshKeys;
 }
 export const SshKeysGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ssh_key: S.optional(SshKeys),
+    ssh_key: SshKeys,
   }),
 ).annotate({
   identifier: "SshKeysGetResponse",
@@ -214,17 +214,17 @@ export const SshKeysUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SshKeysUpdateRequest>;
 
 export interface SshKeysUpdateResponse {
-  ssh_key?: SshKeys;
+  ssh_key: SshKeys;
 }
 export const SshKeysUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ssh_key: S.optional(SshKeys),
+    ssh_key: SshKeys,
   }),
 ).annotate({
   identifier: "SshKeysUpdateResponse",
 }) as any as S.Schema<SshKeysUpdateResponse>;
 
-export type SshKeysCreateError = DigitalOceanOpError;
+export type SshKeysCreateError = UnprocessableEntity | DigitalOceanOpError;
 /** Create a New SSH Key To add a new SSH public key to your DigitalOcean account, send a POST request to `/v2/account/keys`. Set the `name` attribute to the name you wish to use and the `public_key` attribute to the full public key you are adding. */
 export const sshKeysCreate: API.OperationMethod<
   SshKeysCreateRequest,
@@ -234,7 +234,7 @@ export const sshKeysCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SshKeysCreateRequest,
   output: SshKeysCreateResponse,
-  errors: [],
+  errors: [UnprocessableEntity],
   protocol: DigitalOceanProtocol,
   retry: Retry.Retry,
 }));

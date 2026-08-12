@@ -73,9 +73,9 @@ export const Region = /*@__PURE__*/ S.suspend(() =>
 
 export interface Action {
   /** A unique numeric ID that can be used to identify and reference an action. */
-  id?: number;
+  id: number;
   /** The current status of the action. This can be "in-progress", "completed", or "errored". */
-  status?: ActionStatus;
+  status: ActionStatus;
   /** This is the type of action that the object represents. For example, this could be "transfer" to represent the state of an image transfer action. */
   type?: string;
   /** A time value given in ISO8601 combined date and time format that represents when the action was initiated. */
@@ -92,8 +92,8 @@ export interface Action {
 }
 export const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.Number),
-    status: S.optional(ActionStatus),
+    id: S.Number,
+    status: ActionStatus,
     type: S.optional(S.String),
     started_at: S.optional(S.String),
     completed_at: S.optional(S.NullOr(S.String)),
@@ -105,11 +105,11 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
 export interface DropletActionsGetResponse {
-  action?: Action;
+  action: Action;
 }
 export const DropletActionsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    action: S.optional(Action),
+    action: Action,
   }),
 ).annotate({
   identifier: "DropletActionsGetResponse",
@@ -655,11 +655,11 @@ export const DropletActionsPostRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DropletActionsPostRequest>;
 
 export interface DropletActionsPostResponse {
-  action?: Action;
+  action: Action;
 }
 export const DropletActionsPostResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    action: S.optional(Action),
+    action: Action,
   }),
 ).annotate({
   identifier: "DropletActionsPostResponse",
@@ -1651,11 +1651,11 @@ export const DropletsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DropletsGetRequest>;
 
 export interface DropletsGetResponse {
-  droplet?: Droplet;
+  droplet: Droplet;
 }
 export const DropletsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    droplet: S.optional(Droplet),
+    droplet: Droplet,
   }),
 ).annotate({
   identifier: "DropletsGetResponse",

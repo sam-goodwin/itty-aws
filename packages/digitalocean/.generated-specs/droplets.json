@@ -1988,7 +1988,10 @@
       "type": "structure",
       "members": {
         "droplet": {
-          "target": "com.digitalocean.droplets#Droplet"
+          "target": "com.digitalocean.droplets#Droplet",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -2091,13 +2094,15 @@
         "id": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "A unique numeric ID that can be used to identify and reference an action."
+            "smithy.api#documentation": "A unique numeric ID that can be used to identify and reference an action.",
+            "smithy.api#required": {}
           }
         },
         "status": {
           "target": "com.digitalocean.droplets#ActionStatus",
           "traits": {
-            "smithy.api#documentation": "The current status of the action. This can be \"in-progress\", \"completed\", or \"errored\"."
+            "smithy.api#documentation": "The current status of the action. This can be \"in-progress\", \"completed\", or \"errored\".",
+            "smithy.api#required": {}
           }
         },
         "type": {
@@ -3634,7 +3639,10 @@
       "type": "structure",
       "members": {
         "action": {
-          "target": "com.digitalocean.droplets#Action"
+          "target": "com.digitalocean.droplets#Action",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -3759,7 +3767,10 @@
       "type": "structure",
       "members": {
         "action": {
-          "target": "com.digitalocean.droplets#Action"
+          "target": "com.digitalocean.droplets#Action",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {

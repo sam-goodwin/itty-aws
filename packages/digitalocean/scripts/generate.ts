@@ -115,10 +115,9 @@ const digitalOceanSpec: SdkSpec = {
 runGeneratorCli({
   description: "Generate the DigitalOcean Effect SDK from the Smithy models",
   root: `${import.meta.dir}/..`,
-  // No RFC-6902 patch chain yet — when live testing surfaces untyped errors,
-  // add patches/<service>/*.patch.json against the OpenAPI document and wire
-  // the chain up in scripts/convert.ts (patchesDir stays false here either
-  // way; the chain applies to the OpenAPI document, not the Smithy model).
+  // The RFC-6902 patch chain (patches/<service>/*.patch.json) applies to
+  // the OpenAPI document during scripts/convert.ts, not the Smithy model —
+  // hence false here.
   patchesDir: false,
   spec: () => digitalOceanSpec,
 });
