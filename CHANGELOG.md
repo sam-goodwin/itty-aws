@@ -1,3 +1,30 @@
+## v1.0.0-rc.4
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- **deps**: Update to effect 4.0.0-beta.104 &nbsp;-&nbsp; by **Michael K** [<samp>(9fe73)</samp>](https://github.com/alchemy-run/distilled/commit/9fe73ad02)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **discord**: Add the Discord HTTP API v10 SDK &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/434 [<samp>(06fb0)</samp>](https://github.com/alchemy-run/distilled/commit/06fb03036)
+- **github**: Add the GitHub REST SDK &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/435 [<samp>(280d0)</samp>](https://github.com/alchemy-run/distilled/commit/280d0a741)
+- **railway**: Add the Railway SDK on shared GraphQL→Smithy tooling &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/438 [<samp>(27cd2)</samp>](https://github.com/alchemy-run/distilled/commit/27cd2f886)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**:
+  - **queues**:
+    - Type deleteQueue 11005 + surface producer scriptName &nbsp;-&nbsp; by **Sam Goodwin** in https://github.com/alchemy-run/distilled/issues/432 [<samp>(6b15a)</samp>](https://github.com/alchemy-run/distilled/commit/6b15a47e9)
+    - Regenerate for the effect-105 generator surface &nbsp;-&nbsp; by **Sam Goodwin** in https://github.com/alchemy-run/distilled/issues/433 [<samp>(545b2)</samp>](https://github.com/alchemy-run/distilled/commit/545b26012)
+  - **zero-trust**:
+    - Type Access exclude/require rules like include &nbsp;-&nbsp; by **Sam Goodwin** in https://github.com/alchemy-run/distilled/issues/430 [<samp>(d784f)</samp>](https://github.com/alchemy-run/distilled/commit/d784fd034)
+- **core**:
+  - Send a body on GET when the schema declares one &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/429 [<samp>(26852)</samp>](https://github.com/alchemy-run/distilled/commit/26852f05d)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v1.0.0-rc.3...HEAD)
+
+---
+
 ## v1.0.0-rc.3
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
