@@ -15,7 +15,7 @@
     },
     "packages/aws": {
       "name": "@distilled.cloud/aws",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@aws-crypto/crc32": "catalog:",
         "@aws-crypto/util": "catalog:",
@@ -41,7 +41,7 @@
     },
     "packages/axiom": {
       "name": "@distilled.cloud/axiom",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -56,7 +56,7 @@
     },
     "packages/azure": {
       "name": "@distilled.cloud/azure",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -71,7 +71,7 @@
     },
     "packages/cloudflare": {
       "name": "@distilled.cloud/cloudflare",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -86,7 +86,7 @@
     },
     "packages/coinbase": {
       "name": "@distilled.cloud/coinbase",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -101,7 +101,7 @@
     },
     "packages/core": {
       "name": "@distilled.cloud/core",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "devDependencies": {
         "@effect/platform-bun": "catalog:",
         "@types/bun": "catalog:",
@@ -114,7 +114,7 @@
     },
     "packages/discord": {
       "name": "@distilled.cloud/discord",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -129,7 +129,7 @@
     },
     "packages/expo-eas": {
       "name": "@distilled.cloud/expo-eas",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -144,7 +144,7 @@
     },
     "packages/fly-io": {
       "name": "@distilled.cloud/fly-io",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -159,7 +159,7 @@
     },
     "packages/gcp": {
       "name": "@distilled.cloud/gcp",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -174,7 +174,7 @@
     },
     "packages/github": {
       "name": "@distilled.cloud/github",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -189,7 +189,7 @@
     },
     "packages/kubernetes": {
       "name": "@distilled.cloud/kubernetes",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -204,7 +204,7 @@
     },
     "packages/mongodb-atlas": {
       "name": "@distilled.cloud/mongodb-atlas",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -219,7 +219,7 @@
     },
     "packages/neon": {
       "name": "@distilled.cloud/neon",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -234,7 +234,7 @@
     },
     "packages/planetscale": {
       "name": "@distilled.cloud/planetscale",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -249,7 +249,7 @@
     },
     "packages/posthog": {
       "name": "@distilled.cloud/posthog",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -264,7 +264,7 @@
     },
     "packages/prisma-postgres": {
       "name": "@distilled.cloud/prisma-postgres",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -279,7 +279,22 @@
     },
     "packages/railway": {
       "name": "@distilled.cloud/railway",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
+      "dependencies": {
+        "@distilled.cloud/core": "workspace:*",
+      },
+      "devDependencies": {
+        "@effect/platform-bun": "catalog:",
+        "@types/bun": "catalog:",
+        "@types/node": "catalog:",
+      },
+      "peerDependencies": {
+        "effect": "catalog:",
+      },
+    },
+    "packages/slack": {
+      "name": "@distilled.cloud/slack",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -294,7 +309,7 @@
     },
     "packages/stripe": {
       "name": "@distilled.cloud/stripe",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -309,7 +324,7 @@
     },
     "packages/supabase": {
       "name": "@distilled.cloud/supabase",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -324,7 +339,7 @@
     },
     "packages/turso": {
       "name": "@distilled.cloud/turso",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -339,7 +354,7 @@
     },
     "packages/typesense": {
       "name": "@distilled.cloud/typesense",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -369,7 +384,7 @@
     },
     "packages/workos": {
       "name": "@distilled.cloud/workos",
-      "version": "1.0.0-rc.3",
+      "version": "1.0.0-rc.4",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -477,6 +492,8 @@
     "@distilled.cloud/prisma-postgres": ["@distilled.cloud/prisma-postgres@workspace:packages/prisma-postgres"],
 
     "@distilled.cloud/railway": ["@distilled.cloud/railway@workspace:packages/railway"],
+
+    "@distilled.cloud/slack": ["@distilled.cloud/slack@workspace:packages/slack"],
 
     "@distilled.cloud/stripe": ["@distilled.cloud/stripe@workspace:packages/stripe"],
 
@@ -748,6 +765,8 @@
 
     "@distilled.cloud/railway/@types/node": ["@types/node@26.2.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg=="],
 
+    "@distilled.cloud/slack/@types/node": ["@types/node@26.2.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg=="],
+
     "@distilled.cloud/stripe/@types/node": ["@types/node@26.2.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg=="],
 
     "@distilled.cloud/supabase/@types/node": ["@types/node@26.2.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg=="],
@@ -797,6 +816,8 @@
     "@distilled.cloud/prisma-postgres/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
 
     "@distilled.cloud/railway/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
+
+    "@distilled.cloud/slack/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
 
     "@distilled.cloud/stripe/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
 
