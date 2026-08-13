@@ -1,10 +1,27 @@
 {
   "errorCategories": {
-    "ValidationException": ["BadRequestError"]
+    "ValidationException": [
+      "BadRequestError"
+    ]
   },
   "operations": {
     "describeAlarmContributors": {
-      "errors": ["ValidationException"]
+      "errors": [
+        "ValidationException"
+      ]
+    },
+    "describeInsightRules": {
+      "errors": [
+        "UnsupportedOperation"
+      ]
+    }
+  },
+  "errors": {
+    "UnsupportedOperation": {
+      "Message": {
+        "type": "string",
+        "optional": true
+      }
     }
   }
 }
