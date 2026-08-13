@@ -807,13 +807,12 @@ const resolveDesc = (
     // A truncated inline list with no arm bullets can't be enumerated —
     // widen literals to their base scalar.
     const widened = truncated
-      ? arms.map(
-          (a): Arm =>
-            a.k === "str"
-              ? { k: "strScalar" }
-              : a.k === "num"
-                ? { k: "numScalar", int: false }
-                : a,
+      ? arms.map((a): Arm =>
+          a.k === "str"
+            ? { k: "strScalar" }
+            : a.k === "num"
+              ? { k: "numScalar", int: false }
+              : a,
         )
       : arms;
     const r = armsToResolved(bag, widened, armHint);

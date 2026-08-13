@@ -17,6 +17,5 @@ lib/
 .turbo/
 .tmp
 *.tgz
-pnpm-lock.yaml
 .scripts-types/
 **/.turbo/

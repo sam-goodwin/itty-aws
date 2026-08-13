@@ -2513,7 +2513,9 @@ export const UpdatePackageGroupResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePackageGroupResult",
 }) as any as S.Schema<UpdatePackageGroupResult>;
 export type OriginRestrictions = {
-  [key in PackageGroupOriginRestrictionType]?: PackageGroupOriginRestrictionMode;
+  [
+    key in PackageGroupOriginRestrictionType
+  ]?: PackageGroupOriginRestrictionMode;
 };
 export const OriginRestrictions = /*@__PURE__*/ S.Record(
   PackageGroupOriginRestrictionType,
