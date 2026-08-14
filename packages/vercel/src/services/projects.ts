@@ -67100,7 +67100,11 @@ export const editProjectEnv: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FilterProjectEnvsError = BadRequest | Forbidden | VercelOpError;
+export type FilterProjectEnvsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | VercelOpError;
 /** Retrieve the environment variables of a project by id or name Retrieve the environment variables for a given project by passing either the project `id` or `name` in the URL. */
 export const filterProjectEnvs: API.OperationMethod<
   FilterProjectEnvsRequest,
@@ -67110,7 +67114,7 @@ export const filterProjectEnvs: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: FilterProjectEnvsRequest,
   output: FilterProjectEnvsResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

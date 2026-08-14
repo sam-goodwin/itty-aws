@@ -92267,6 +92267,9 @@
         },
         {
           "target": "com.vercel.projects#Forbidden"
+        },
+        {
+          "target": "com.vercel.projects#NotFound"
         }
       ],
       "traits": {

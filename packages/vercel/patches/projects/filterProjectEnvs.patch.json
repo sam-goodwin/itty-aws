@@ -1,0 +1,12 @@
+{
+  "description": "projects.filterProjectEnvs (GET /v10/projects/{idOrName}/env) omits the 404 the live API returns when the project is gone, so the typed union lacks NotFound. The ProjectEnv resource's read path observes env rows on a possibly-deleted project and branches on a typed NotFound tag. Add the 404 response so the generator attaches the status-class NotFound error.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v10~1projects~1{idOrName}~1env/get/responses/404",
+      "value": {
+        "description": "Project not found"
+      }
+    }
+  ]
+}
