@@ -22,6 +22,8 @@
     { "path": "./packages/gcp/tsconfig.scripts.json" },
     { "path": "./packages/github/tsconfig.json" },
     { "path": "./packages/github/tsconfig.scripts.json" },
+    { "path": "./packages/huggingface/tsconfig.json" },
+    { "path": "./packages/huggingface/tsconfig.scripts.json" },
     { "path": "./packages/kubernetes/tsconfig.json" },
     { "path": "./packages/kubernetes/tsconfig.scripts.json" },
     { "path": "./packages/mongodb-atlas/tsconfig.json" },

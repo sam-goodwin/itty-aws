@@ -14,7 +14,9 @@ lib/
 !.husky/pre-commit
 
 .cache
+.turbo/
 .tmp
 *.tgz
 pnpm-lock.yaml
 .scripts-types/
+**/.turbo/
