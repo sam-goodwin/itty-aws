@@ -9076,13 +9076,142 @@ export const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateProjectResponse",
 }) as any as S.Schema<CreateProjectResponse>;
 
-export type CreateProjectEnvRequestBodyCase1List = Array<unknown>;
+/** The type of environment variable */
+export type CreateProjectEnvRequestBodyCase0Type =
+  | "system"
+  | "encrypted"
+  | "plain"
+  | "sensitive";
+export const CreateProjectEnvRequestBodyCase0Type = /*@__PURE__*/ S.String;
+
+export type CreateProjectEnvRequestBodyCase0TargetItem =
+  | "production"
+  | "preview"
+  | "development";
+export const CreateProjectEnvRequestBodyCase0TargetItem =
+  /*@__PURE__*/ S.String;
+
+/** The target environment of the environment variable */
+export type CreateProjectEnvRequestBodyCase0TargetList = Array<
+  CreateProjectEnvRequestBodyCase0TargetItem | (string & {})
+>;
+export const CreateProjectEnvRequestBodyCase0TargetList = /*@__PURE__*/ S.Array(
+  CreateProjectEnvRequestBodyCase0TargetItem,
+) as any as S.Schema<CreateProjectEnvRequestBodyCase0TargetList>;
+
+/** The custom environment IDs associated with the environment variable */
+export type CreateProjectEnvRequestBodyCase0CustomEnvironmentIdsList =
+  Array<string>;
+export const CreateProjectEnvRequestBodyCase0CustomEnvironmentIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateProjectEnvRequestBodyCase0CustomEnvironmentIdsList>;
+
+export interface CreateProjectEnvRequestBodyCase0 {
+  /** The name of the environment variable */
+  key: string;
+  /** The value of the environment variable */
+  value: string;
+  /** The type of environment variable */
+  type: CreateProjectEnvRequestBodyCase0Type | (string & {});
+  /** The target environment of the environment variable */
+  target?: CreateProjectEnvRequestBodyCase0TargetList;
+  /** If defined, the git branch of the environment variable (must have target=preview) */
+  gitBranch?: string | null;
+  /** A comment to add context on what this environment variable is for */
+  comment?: string;
+  /** The custom environment IDs associated with the environment variable */
+  customEnvironmentIds?: CreateProjectEnvRequestBodyCase0CustomEnvironmentIdsList;
+}
+export const CreateProjectEnvRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.String,
+    value: S.String,
+    type: CreateProjectEnvRequestBodyCase0Type,
+    target: S.optional(CreateProjectEnvRequestBodyCase0TargetList),
+    gitBranch: S.optional(S.NullOr(S.String)),
+    comment: S.optional(S.String),
+    customEnvironmentIds: S.optional(
+      CreateProjectEnvRequestBodyCase0CustomEnvironmentIdsList,
+    ),
+  }),
+).annotate({
+  identifier: "CreateProjectEnvRequestBodyCase0",
+}) as any as S.Schema<CreateProjectEnvRequestBodyCase0>;
+
+/** The type of environment variable */
+export type CreateProjectEnvRequestBodyCase1ItemType =
+  | "system"
+  | "encrypted"
+  | "plain"
+  | "sensitive";
+export const CreateProjectEnvRequestBodyCase1ItemType = /*@__PURE__*/ S.String;
+
+export type CreateProjectEnvRequestBodyCase1ItemTargetItem =
+  | "production"
+  | "preview"
+  | "development";
+export const CreateProjectEnvRequestBodyCase1ItemTargetItem =
+  /*@__PURE__*/ S.String;
+
+/** The target environment of the environment variable */
+export type CreateProjectEnvRequestBodyCase1ItemTargetList = Array<
+  CreateProjectEnvRequestBodyCase1ItemTargetItem | (string & {})
+>;
+export const CreateProjectEnvRequestBodyCase1ItemTargetList =
+  /*@__PURE__*/ S.Array(
+    CreateProjectEnvRequestBodyCase1ItemTargetItem,
+  ) as any as S.Schema<CreateProjectEnvRequestBodyCase1ItemTargetList>;
+
+/** The custom environment IDs associated with the environment variable */
+export type CreateProjectEnvRequestBodyCase1ItemCustomEnvironmentIdsList =
+  Array<string>;
+export const CreateProjectEnvRequestBodyCase1ItemCustomEnvironmentIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CreateProjectEnvRequestBodyCase1ItemCustomEnvironmentIdsList>;
+
+export interface CreateProjectEnvRequestBodyCase1Item {
+  /** The name of the environment variable */
+  key: string;
+  /** The value of the environment variable */
+  value: string;
+  /** The type of environment variable */
+  type: CreateProjectEnvRequestBodyCase1ItemType | (string & {});
+  /** The target environment of the environment variable */
+  target?: CreateProjectEnvRequestBodyCase1ItemTargetList;
+  /** If defined, the git branch of the environment variable (must have target=preview) */
+  gitBranch?: string | null;
+  /** A comment to add context on what this environment variable is for */
+  comment?: string;
+  /** The custom environment IDs associated with the environment variable */
+  customEnvironmentIds?: CreateProjectEnvRequestBodyCase1ItemCustomEnvironmentIdsList;
+}
+export const CreateProjectEnvRequestBodyCase1Item = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      key: S.String,
+      value: S.String,
+      type: CreateProjectEnvRequestBodyCase1ItemType,
+      target: S.optional(CreateProjectEnvRequestBodyCase1ItemTargetList),
+      gitBranch: S.optional(S.NullOr(S.String)),
+      comment: S.optional(S.String),
+      customEnvironmentIds: S.optional(
+        CreateProjectEnvRequestBodyCase1ItemCustomEnvironmentIdsList,
+      ),
+    }),
+).annotate({
+  identifier: "CreateProjectEnvRequestBodyCase1Item",
+}) as any as S.Schema<CreateProjectEnvRequestBodyCase1Item>;
+
+export type CreateProjectEnvRequestBodyCase1List =
+  Array<CreateProjectEnvRequestBodyCase1Item>;
 export const CreateProjectEnvRequestBodyCase1List = /*@__PURE__*/ S.Array(
-  S.Unknown,
+  CreateProjectEnvRequestBodyCase1Item,
 ) as any as S.Schema<CreateProjectEnvRequestBodyCase1List>;
 
 export type CreateProjectEnvRequestBody =
-  | unknown
+  | CreateProjectEnvRequestBodyCase0
   | CreateProjectEnvRequestBodyCase1List;
 export const CreateProjectEnvRequestBody =
   /*@__PURE__*/ S.Unknown as any as S.Schema<CreateProjectEnvRequestBody>;
@@ -58506,17 +58635,20 @@ export interface UploadProjectAvatarRequest {
   teamId?: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
+  body?: Blob | Uint8Array | ArrayBuffer | string;
 }
 export const UploadProjectAvatarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(S.String.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",
       uri: "/v1/projects/{idOrName}/avatar",
       code: 200,
+      bodyMediaType: "application/octet-stream",
     }),
   ),
 ).annotate({
@@ -66931,6 +67063,7 @@ export const createTraceSession: API.OperationMethod<
 export type DeleteProjectError =
   | BadRequest
   | Forbidden
+  | NotFound
   | Conflict
   | VercelOpError;
 /** Delete a Project Delete a specific project by passing either the project `id` or `name` in the URL. */
@@ -66942,7 +67075,7 @@ export const deleteProject: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
-  errors: [BadRequest, Forbidden, Conflict],
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));
@@ -66982,7 +67115,7 @@ export const filterProjectEnvs: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectError = BadRequest | Forbidden | VercelOpError;
+export type GetProjectError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Find a project by id or name Get the information for a specific project by passing either the project `id` or `name` in the URL. */
 export const getProject: API.OperationMethod<
   GetProjectRequest,
@@ -66992,7 +67125,7 @@ export const getProject: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProjectRequest,
   output: GetProjectResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));
@@ -67012,7 +67145,11 @@ export const getProjectDomain: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectDomainsError = BadRequest | Forbidden | VercelOpError;
+export type GetProjectDomainsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | VercelOpError;
 /** Retrieve project domains by project by id or name Retrieve the domains associated with a given project by passing either the project `id` or `name` in the URL. */
 export const getProjectDomains: API.OperationMethod<
   GetProjectDomainsRequest,
@@ -67022,7 +67159,7 @@ export const getProjectDomains: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProjectDomainsRequest,
   output: GetProjectDomainsResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

@@ -1,0 +1,12 @@
+{
+  "description": "webhooks.getWebhook and webhooks.deleteWebhook (GET/DELETE /v1/webhooks/{id}) omit the 404 the live API returns for a missing webhook (probed 2026-08-13: status 404, code 'not_found', message 'Webhook not found.'), so distilled's typed union lacks NotFound on both operations. The Webhook provider's observe step (getWebhook -> missing -> recreate) and its idempotent delete both branch on the typed NotFound tag; without it the 404 surfaces as the out-of-union status class. Add the 404 responses so the generator attaches NotFound to both operations.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1webhooks~1{id}/get/responses/404",
+      "value": {
+        "description": "Webhook not found"
+      }
+    }
+  ]
+}

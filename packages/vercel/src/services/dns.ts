@@ -71,6 +71,47 @@ export type CreateRecordRequestType =
   | "NS";
 export const CreateRecordRequestType = /*@__PURE__*/ S.String;
 
+/** The SRV record payload. Required for SRV records. */
+export interface CreateRecordRequestSrv {
+  /** The SRV target hostname. */
+  target: string;
+  /** The SRV weight. */
+  weight: number;
+  /** The SRV port. */
+  port: number;
+  /** The SRV priority. */
+  priority: number;
+}
+export const CreateRecordRequestSrv = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    target: S.String,
+    weight: S.Number,
+    port: S.Number,
+    priority: S.Number,
+  }),
+).annotate({
+  identifier: "CreateRecordRequestSrv",
+}) as any as S.Schema<CreateRecordRequestSrv>;
+
+/** The HTTPS record payload. Required for HTTPS records. */
+export interface CreateRecordRequestHttps {
+  /** The HTTPS priority. */
+  priority: number;
+  /** The HTTPS target hostname. */
+  target: string;
+  /** The HTTPS parameter string. */
+  params?: string;
+}
+export const CreateRecordRequestHttps = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    priority: S.Number,
+    target: S.String,
+    params: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateRecordRequestHttps",
+}) as any as S.Schema<CreateRecordRequestHttps>;
+
 export interface CreateRecordRequest {
   /** The domain used to create the DNS record. */
   domain: string;
@@ -80,6 +121,20 @@ export interface CreateRecordRequest {
   slug?: string;
   /** The type of record, it could be one of the valid DNS records. */
   type: CreateRecordRequestType | (string & {});
+  /** A subdomain name or an empty string for the root domain. Required for every record type except SRV and HTTPS, whose name is derived from srv/https. */
+  name?: string;
+  /** The record value (address, hostname, or text depending on the record type). Not used for SRV and HTTPS records, which use the srv/https objects instead. */
+  value?: string;
+  /** The TTL value. Must be a number between 60 and 2147483647. Default value is 60. */
+  ttl?: number;
+  /** The MX priority value of the DNS record. Required for MX records. */
+  mxPriority?: number;
+  /** The SRV record payload. Required for SRV records. */
+  srv?: CreateRecordRequestSrv;
+  /** The HTTPS record payload. Required for HTTPS records. */
+  https?: CreateRecordRequestHttps;
+  /** A comment to add context on what this DNS record is for */
+  comment?: string;
 }
 export const CreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -87,6 +142,13 @@ export const CreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
     type: CreateRecordRequestType,
+    name: S.optional(S.String),
+    value: S.optional(S.String),
+    ttl: S.optional(S.Number),
+    mxPriority: S.optional(S.Number),
+    srv: S.optional(CreateRecordRequestSrv),
+    https: S.optional(CreateRecordRequestHttps),
+    comment: S.optional(S.String),
   }).pipe(
     T.Http({ method: "POST", uri: "/v2/domains/{domain}/records", code: 200 }),
   ),

@@ -1,0 +1,29 @@
+{
+  "description": "storage: the three documented storage operations (createStorageStoresBlob, getStorageStoresById, deleteStorageStoresBlobById) omit the standard teamId/slug query parameters every other team-scoped operation declares. Team-scoped tokens infer the team, but the alchemy provider doctrine passes the resolved teamId on every call, so declare them.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1blob~1{id}/delete/parameters/-",
+      "value": {
+        "description": "The Team identifier to perform the request on behalf of.",
+        "in": "query",
+        "name": "teamId",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1blob~1{id}/delete/parameters/-",
+      "value": {
+        "description": "The Team slug to perform the request on behalf of.",
+        "in": "query",
+        "name": "slug",
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  ]
+}

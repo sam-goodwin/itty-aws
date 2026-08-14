@@ -31,6 +31,15 @@ export class Forbidden
     [{ status: 403 }],
   ) {}
 
+export class NotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<NotFound>()("NotFound", {
+      code: S.Number,
+      message: S.String,
+    }).pipe(C.withBadRequestError),
+    [{ status: 404 }],
+  ) {}
+
 export type CreateWebhookRequestEventsItem =
   | "budget.reached"
   | "domain.created"
@@ -1027,7 +1036,11 @@ export const createWebhook: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteWebhookError = BadRequest | Forbidden | VercelOpError;
+export type DeleteWebhookError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | VercelOpError;
 /** Deletes a webhook Deletes a webhook */
 export const deleteWebhook: API.OperationMethod<
   DeleteWebhookRequest,
@@ -1037,12 +1050,12 @@ export const deleteWebhook: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteWebhookRequest,
   output: DeleteWebhookResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetWebhookError = BadRequest | Forbidden | VercelOpError;
+export type GetWebhookError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Get a webhook Get a webhook */
 export const getWebhook: API.OperationMethod<
   GetWebhookRequest,
@@ -1052,7 +1065,7 @@ export const getWebhook: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetWebhookRequest,
   output: GetWebhookResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

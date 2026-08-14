@@ -1,0 +1,13 @@
+{
+  "description": "projects.createProjectEnv (POST /v10/projects/{idOrName}/env) carries a constraint-only inner anyOf ([{required:[target]},{required:[customEnvironmentIds]}]) on both oneOf arms (single env object, and the batch array's items). The converter's union pass sees that anyOf before the object properties, converts both constraint-only branches to Document, and the whole body degrades to unknown. Strip the inner anyOf from both arms so the body types as the proper env object (key/value/type/target/gitBranch/comment/customEnvironmentIds) and its batch-array form; the target-or-customEnvironmentIds requirement is enforced server-side.",
+  "patches": [
+    {
+      "op": "remove",
+      "path": "/paths/~1v10~1projects~1{idOrName}~1env/post/requestBody/content/application~1json/schema/oneOf/0/anyOf"
+    },
+    {
+      "op": "remove",
+      "path": "/paths/~1v10~1projects~1{idOrName}~1env/post/requestBody/content/application~1json/schema/oneOf/1/items/anyOf"
+    }
+  ]
+}

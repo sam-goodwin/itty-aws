@@ -1,0 +1,9 @@
+{
+  "description": "environment.createCustomEnvironment / environment.updateCustomEnvironment: the request BODY carries `slug` (the custom environment's name to create / rename to), but both operations also declare a `slug` QUERY parameter (team slug, redundant with `teamId`). The converter's parameter+body flattening drops the body property on the name collision, so the generated requests cannot name the environment at all (creates fall back to a server-assigned slug and renames are unrepresentable). Remove the redundant team-slug query parameter from both operations so the body `slug` survives; team scoping remains available via `teamId`.",
+  "patches": [
+    {
+      "op": "remove",
+      "path": "/paths/~1v9~1projects~1{idOrName}~1custom-environments~1{environmentSlugOrId}/patch/parameters/3"
+    }
+  ]
+}

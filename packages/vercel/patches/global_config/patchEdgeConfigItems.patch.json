@@ -1,0 +1,9 @@
+{
+  "description": "global_config.patchEdgeConfigItems (PATCH /v1/global-config/{edgeConfigId}/items) models each items[] entry as a oneOf arm carrying a constraint-only inner anyOf (operation/key/value requiredness combinations); the converter's union pass degrades every arm to an `operation`-only struct, so key/value/description never reach PatchEdgeConfigItemsRequest. Strip the inner anyOf so the entry types as the flat object (operation/key/value/description); the per-operation requiredness is enforced server-side (live-verified: upsert+delete batch 200s).",
+  "patches": [
+    {
+      "op": "remove",
+      "path": "/paths/~1v1~1global-config~1{edgeConfigId}~1items/patch/requestBody/content/application~1json/schema/properties/items/items/oneOf/0/anyOf"
+    }
+  ]
+}

@@ -272,6 +272,9 @@
         },
         {
           "target": "com.vercel.access_groups#Forbidden"
+        },
+        {
+          "target": "com.vercel.access_groups#NotFound"
         }
       ],
       "traits": {
@@ -585,6 +588,9 @@
         },
         {
           "target": "com.vercel.access_groups#Forbidden"
+        },
+        {
+          "target": "com.vercel.access_groups#NotFound"
         }
       ],
       "traits": {
@@ -875,35 +881,35 @@
         "smithy.api#input": {}
       }
     },
-    "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList": {
+    "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsItemMembersList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList": {
+    "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsItemProjectsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList": {
+    "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsItemEntitlementsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList": {
+    "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsItemTeamPermissionsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList": {
+    "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsItemTeamRolesList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
@@ -912,20 +918,20 @@
         "smithy.api#documentation": "Roles that the team has in the access group."
       }
     },
-    "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsItem": {
+    "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsItem": {
       "type": "structure",
       "members": {
         "members": {
-          "target": "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsItemMembersList"
+          "target": "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsItemMembersList"
         },
         "projects": {
-          "target": "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsItemProjectsList"
+          "target": "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsItemProjectsList"
         },
         "entitlements": {
-          "target": "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsItemEntitlementsList"
+          "target": "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsItemEntitlementsList"
         },
         "teamPermissions": {
-          "target": "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamPermissionsList"
+          "target": "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsItemTeamPermissionsList"
         },
         "isDsyncManaged": {
           "target": "smithy.api#Boolean",
@@ -983,7 +989,7 @@
           }
         },
         "teamRoles": {
-          "target": "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsItemTeamRolesList",
+          "target": "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsItemTeamRolesList",
           "traits": {
             "smithy.api#documentation": "Roles that the team has in the access group."
           }
@@ -991,14 +997,14 @@
       },
       "traits": {}
     },
-    "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsList": {
+    "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsList": {
       "type": "list",
       "member": {
-        "target": "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsItem"
+        "target": "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsItem"
       },
       "traits": {}
     },
-    "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1Pagination": {
+    "com.vercel.access_groups#ListAccessGroupsResponsePagination": {
       "type": "structure",
       "members": {
         "count": {
@@ -1017,43 +1023,18 @@
       },
       "traits": {}
     },
-    "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1": {
+    "com.vercel.access_groups#ListAccessGroupsResponse": {
       "type": "structure",
       "members": {
         "accessGroups": {
-          "target": "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1AccessGroupsList",
+          "target": "com.vercel.access_groups#ListAccessGroupsResponseAccessGroupsList",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "pagination": {
-          "target": "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1Pagination",
+          "target": "com.vercel.access_groups#ListAccessGroupsResponsePagination",
           "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.access_groups#ListAccessGroupsResponseBody": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "smithy.api#Document"
-        },
-        "Case1": {
-          "target": "com.vercel.access_groups#ListAccessGroupsResponseBodyCase1"
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.access_groups#ListAccessGroupsResponse": {
-      "type": "structure",
-      "members": {
-        "body": {
-          "target": "com.vercel.access_groups#ListAccessGroupsResponseBody",
-          "traits": {
-            "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
           }
         }
@@ -1814,6 +1795,9 @@
         },
         {
           "target": "com.vercel.access_groups#Forbidden"
+        },
+        {
+          "target": "com.vercel.access_groups#NotFound"
         }
       ],
       "traits": {
@@ -2043,6 +2027,9 @@
         },
         {
           "target": "com.vercel.access_groups#Forbidden"
+        },
+        {
+          "target": "com.vercel.access_groups#NotFound"
         }
       ],
       "traits": {
@@ -2076,6 +2063,19 @@
         "com.distilled.openapi#errorMatchers": [
           {
             "status": 403
+          }
+        ]
+      }
+    },
+    "com.vercel.access_groups#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
           }
         ]
       }

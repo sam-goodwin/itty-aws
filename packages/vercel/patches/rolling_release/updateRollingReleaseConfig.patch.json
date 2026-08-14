@@ -1,0 +1,68 @@
+{
+  "description": "rolling_release.updateRollingReleaseConfig (PATCH /v1/projects/{idOrName}/rolling-release/config) has no requestBody in the spec, so UpdateRollingReleaseConfigRequest generates with only path/query members and the operation cannot send its configuration. Live-verified: PATCH with {enabled:true, advancementType, stages:[{targetPercentage, requireApproval?, duration?}], canaryResponseHeader?} 200s and writes the config (GET echoes target/stages/canaryResponseHeader); PATCH {enabled:false} 200s and clears it ({rollingRelease:null}). Add the requestBody so the flattened request carries the body members.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1projects~1{idOrName}~1rolling-release~1config/patch/requestBody",
+      "value": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "enabled"
+              ],
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "description": "Whether rolling releases are enabled for the project. `false` clears the configuration (equivalent to DELETE)."
+                },
+                "advancementType": {
+                  "type": "string",
+                  "enum": [
+                    "automatic",
+                    "manual-approval"
+                  ],
+                  "description": "How the rollout advances between stages: `automatic` (per-stage duration) or `manual-approval`."
+                },
+                "stages": {
+                  "type": "array",
+                  "description": "An array of all the stages required during a deployment release. The final stage must have targetPercentage: 100.",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "targetPercentage"
+                    ],
+                    "properties": {
+                      "targetPercentage": {
+                        "type": "number",
+                        "description": "The percentage of traffic to serve to the canary deployment (0-100)"
+                      },
+                      "requireApproval": {
+                        "type": "boolean",
+                        "description": "Whether or not this stage requires manual approval to proceed"
+                      },
+                      "duration": {
+                        "type": "number",
+                        "description": "Duration in minutes for automatic advancement to the next stage"
+                      },
+                      "linearShift": {
+                        "type": "boolean",
+                        "description": "Whether to linearly shift traffic over the duration of this stage"
+                      }
+                    }
+                  }
+                },
+                "canaryResponseHeader": {
+                  "type": "boolean",
+                  "description": "Whether requests served by the canary deployment should return a header indicating a canary was served."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

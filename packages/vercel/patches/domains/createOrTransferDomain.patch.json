@@ -1,0 +1,41 @@
+{
+  "description": "domains.createOrTransferDomain (POST /v7/domains) models its body as a top-level `method` property plus an add/move-in oneOf whose arms the request-body flattener drops, leaving only `method` — `name` (required by both arms) never reaches CreateOrTransferDomainRequest, so the operation cannot express which domain to add. Replace the requestBody schema with the flat merged object. NOTE (live-verified 2026-08-13): the SERVER also enforces the oneOf, and `method` has no enum in either arm, so a body of `{name, method: \"add\"}` matches BOTH arms and is rejected with 400 `should match exactly one schema in oneOf` — callers must send a bare `{name}` (plus optional cdnEnabled/zone) to add, and `{name, method: \"move-in\", token}` to move in. All fields optional except `name`; the add/move-in arm constraints are enforced server-side.",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/paths/~1v7~1domains/post/requestBody/content/application~1json/schema",
+      "value": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "description": "The domain name you want to add.",
+            "type": "string",
+            "example": "example.com"
+          },
+          "method": {
+            "description": "The domain operation to perform. Omit (or `add`) to add the domain; `move-in` moves a domain from another Vercel account using `token`. Live behavior: sending `method: \"add\"` together with `name` fails the server-side oneOf validation — omit `method` entirely when adding.",
+            "type": "string",
+            "example": "move-in"
+          },
+          "cdnEnabled": {
+            "description": "Whether the domain has the Vercel Edge Network enabled or not.",
+            "type": "boolean",
+            "example": true
+          },
+          "zone": {
+            "description": "Whether to create a DNS zone on Vercel. Set `true` if using Vercel nameservers (required before any DNS records can be created for the domain).",
+            "type": "boolean"
+          },
+          "token": {
+            "description": "The move-in token from the Move Requested email. Only used with `method: \"move-in\"`.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  ]
+}

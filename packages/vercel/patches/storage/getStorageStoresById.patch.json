@@ -1,0 +1,125 @@
+{
+  "description": "storage: getStorageStoresById's and createStorageStoresBlob's declared response schemas omit the store identity and configuration fields the live API returns (id, name, type, createdAt, updatedAt, billingState; the GET response additionally omits region, access, size, count, isTokenExpired). Live-verified 2026-08-13. The BlobStore reconciler observes name/access/region from GET and needs the id from the create response, so add them (id/name/type as required — always present on the wire). | storage: the three documented storage operations (createStorageStoresBlob, getStorageStoresById, deleteStorageStoresBlobById) omit the standard teamId/slug query parameters every other team-scoped operation declares. Team-scoped tokens infer the team, but the alchemy provider doctrine passes the resolved teamId on every call, so declare them.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/properties/id",
+      "value": {
+        "type": "string"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/properties/name",
+      "value": {
+        "type": "string"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/properties/type",
+      "value": {
+        "type": "string"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/properties/createdAt",
+      "value": {
+        "type": "number"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/properties/updatedAt",
+      "value": {
+        "type": "number"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/properties/billingState",
+      "value": {
+        "type": "string"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/properties/region",
+      "value": {
+        "type": "string"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/properties/access",
+      "value": {
+        "type": "string",
+        "enum": [
+          "public",
+          "private"
+        ]
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/properties/size",
+      "value": {
+        "type": "number"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/properties/count",
+      "value": {
+        "type": "number"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/properties/isTokenExpired",
+      "value": {
+        "type": "boolean"
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/required/-",
+      "value": "id"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/required/-",
+      "value": "name"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/responses/200/content/application~1json/schema/properties/store/required/-",
+      "value": "type"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/parameters/-",
+      "value": {
+        "description": "The Team identifier to perform the request on behalf of.",
+        "in": "query",
+        "name": "teamId",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1storage~1stores~1{id}/get/parameters/-",
+      "value": {
+        "description": "The Team slug to perform the request on behalf of.",
+        "in": "query",
+        "name": "slug",
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  ]
+}

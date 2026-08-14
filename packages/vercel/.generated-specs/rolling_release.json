@@ -599,6 +599,66 @@
         "smithy.api#documentation": "Get rolling release configuration\n\nGet the Rolling Releases configuration for a project. The project-level config is simply a template that will be used for any future rolling release, and not the configuration for any active rolling release."
       }
     },
+    "com.vercel.rolling_release#UpdateRollingReleaseConfigRequestAdvancementType": {
+      "type": "enum",
+      "members": {
+        "AUTOMATIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "automatic"
+          }
+        },
+        "MANUAL_APPROVAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "manual-approval"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "How the rollout advances between stages: `automatic` (per-stage duration) or `manual-approval`."
+      }
+    },
+    "com.vercel.rolling_release#UpdateRollingReleaseConfigRequestStagesItem": {
+      "type": "structure",
+      "members": {
+        "targetPercentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The percentage of traffic to serve to the canary deployment (0-100)",
+            "smithy.api#required": {}
+          }
+        },
+        "requireApproval": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not this stage requires manual approval to proceed"
+          }
+        },
+        "duration": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Duration in minutes for automatic advancement to the next stage"
+          }
+        },
+        "linearShift": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to linearly shift traffic over the duration of this stage"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.rolling_release#UpdateRollingReleaseConfigRequestStagesList": {
+      "type": "list",
+      "member": {
+        "target": "com.vercel.rolling_release#UpdateRollingReleaseConfigRequestStagesItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of all the stages required during a deployment release. The final stage must have targetPercentage: 100."
+      }
+    },
     "com.vercel.rolling_release#UpdateRollingReleaseConfigRequest": {
       "type": "structure",
       "members": {
@@ -622,6 +682,31 @@
           "traits": {
             "smithy.api#httpQuery": "slug",
             "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether rolling releases are enabled for the project. `false` clears the configuration (equivalent to DELETE).",
+            "smithy.api#required": {}
+          }
+        },
+        "advancementType": {
+          "target": "com.vercel.rolling_release#UpdateRollingReleaseConfigRequestAdvancementType",
+          "traits": {
+            "smithy.api#documentation": "How the rollout advances between stages: `automatic` (per-stage duration) or `manual-approval`."
+          }
+        },
+        "stages": {
+          "target": "com.vercel.rolling_release#UpdateRollingReleaseConfigRequestStagesList",
+          "traits": {
+            "smithy.api#documentation": "An array of all the stages required during a deployment release. The final stage must have targetPercentage: 100."
+          }
+        },
+        "canaryResponseHeader": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether requests served by the canary deployment should return a header indicating a canary was served."
           }
         }
       },

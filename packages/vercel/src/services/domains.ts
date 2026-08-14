@@ -203,14 +203,26 @@ export interface CreateOrTransferDomainRequest {
   teamId?: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
-  /** The domain operation to perform. It can be either `add` or `move-in`. */
+  /** The domain name you want to add. */
+  name: string;
+  /** The domain operation to perform. Omit (or `add`) to add the domain; `move-in` moves a domain from another Vercel account using `token`. Live behavior: sending `method: "add"` together with `name` fails the server-side oneOf validation — omit `method` entirely when adding. */
   method?: string;
+  /** Whether the domain has the Vercel Edge Network enabled or not. */
+  cdnEnabled?: boolean;
+  /** Whether to create a DNS zone on Vercel. Set `true` if using Vercel nameservers (required before any DNS records can be created for the domain). */
+  zone?: boolean;
+  /** The move-in token from the Move Requested email. Only used with `method: "move-in"`. */
+  token?: string;
 }
 export const CreateOrTransferDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.optional(S.String.pipe(T.Query())),
     slug: S.optional(S.String.pipe(T.Query())),
+    name: S.String,
     method: S.optional(S.String),
+    cdnEnabled: S.optional(S.Boolean),
+    zone: S.optional(S.Boolean),
+    token: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/v7/domains", code: 200 })),
 ).annotate({
   identifier: "CreateOrTransferDomainRequest",

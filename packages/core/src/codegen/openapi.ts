@@ -16,7 +16,10 @@
  *     as cookie params always are),
  *     body properties flattened alongside
  *     (labels win, then query, then headers, then body);
- *     non-object bodies become a sole `body` member with `smithy.api#httpPayload`
+ *     non-object bodies become a sole `body` member with `smithy.api#httpPayload`;
+ *     binary bodies (application/octet-stream, or an explicit
+ *     `type: string, format: binary` schema) become a sole `smithy.api#Blob`
+ *     payload member with the media type on the http trait's `bodyMediaType`
  *   • `$ref`s become NAMED shapes (`components/schemas/X` → `<ns>#X`), reused
  *     across operations; anonymous nested objects synthesize names from the
  *     parent + member path
@@ -196,6 +199,7 @@ const PRELUDE = {
   Double: "smithy.api#Double",
   Integer: "smithy.api#Integer",
   Document: "smithy.api#Document",
+  Blob: "smithy.api#Blob",
 } as const;
 
 /** snake/kebab/space/camel → PascalCase identifier (inner caps preserved). */
@@ -883,6 +887,18 @@ const convertSchema = (
   }
 };
 
+/**
+ * Whether a schema describes raw binary content: an explicit binary string
+ * (`type: string, format: binary` — OAS 3.0's file-upload idiom). Used only
+ * to classify request-body media types the JSON/form/multipart precedence
+ * didn't claim; a schema-less entry relies on its media type instead.
+ */
+const isBinarySchema = (ctx: Ctx, def: any): boolean => {
+  const r = deref(ctx, def);
+  if (!r || typeof r !== "object") return false;
+  return typeOf(r) === "string" && r.format === "binary";
+};
+
 /** Whether a property is a sensitive string (x-sensitive or name pattern). */
 const isSensitiveProperty = (ctx: Ctx, name: string, def: any): boolean => {
   const r = deref(ctx, def);
@@ -1315,10 +1331,12 @@ export const convertOpenApiToSmithy = (
         }
       }
 
-      // ---- Request body (json > form-urlencoded > multipart) ----
+      // ---- Request body (json > form-urlencoded > multipart > binary) ----
       let contentType: "form-urlencoded" | "multipart" | undefined;
       let bodySchema: any;
       let bodyRequired = false;
+      let binaryMediaType: string | undefined;
+      let binaryBodyDoc: string | undefined;
       if (version === "2.0") {
         const bodyParam = params.find((p) => p.in === "body");
         bodySchema = bodyParam?.schema;
@@ -1337,6 +1355,34 @@ export const convertOpenApiToSmithy = (
         } else if (content["multipart/form-data"]) {
           bodySchema = content["multipart/form-data"].schema;
           contentType = "multipart";
+        } else {
+          // Binary request body (raw upload): `application/octet-stream`, or
+          // any other media type whose schema is an explicit binary string
+          // (`type: string, format: binary`). Becomes a sole Blob `body`
+          // member (`smithy.api#httpPayload`) sent VERBATIM under the
+          // declared media type — `bodyMediaType` on the `smithy.api#http`
+          // trait routes it down the REST protocol's raw-send path, since
+          // JSON-encoding file bytes would corrupt every upload.
+          const binary = Object.entries(content).find(
+            ([mt, media]) =>
+              mt === "application/octet-stream" ||
+              isBinarySchema(ctx, (media as any)?.schema),
+          );
+          if (binary !== undefined) {
+            // A wildcard media type (`*/*`, `application/*`) is not a valid
+            // Content-Type to send — fall back to octet-stream.
+            binaryMediaType = binary[0].includes("*")
+              ? "application/octet-stream"
+              : binary[0];
+            const schemaDoc = deref(ctx, (binary[1] as any)?.schema);
+            binaryBodyDoc =
+              (typeof rb?.description === "string"
+                ? rb.description
+                : undefined) ??
+              (typeof schemaDoc?.description === "string"
+                ? schemaDoc.description
+                : undefined);
+          }
         }
       }
       if (bodySchema !== undefined) {
@@ -1379,6 +1425,19 @@ export const convertOpenApiToSmithy = (
             });
           }
         }
+      } else if (binaryMediaType !== undefined) {
+        // Binary body (see the content-type precedence above) → sole Blob
+        // payload member; `bodyMediaType` rides the http trait below.
+        addMember("body", {
+          target: PRELUDE.Blob,
+          traits: {
+            "smithy.api#httpPayload": {},
+            ...(bodyRequired ? { "smithy.api#required": {} } : {}),
+            ...(binaryBodyDoc
+              ? { "smithy.api#documentation": binaryBodyDoc }
+              : {}),
+          },
+        });
       }
 
       // ---- Input shape ----
@@ -1489,6 +1548,9 @@ export const convertOpenApiToSmithy = (
         code: 200,
       };
       if (contentType === "multipart") httpTrait.contentType = "multipart";
+      if (binaryMediaType !== undefined) {
+        httpTrait.bodyMediaType = binaryMediaType;
+      }
       const traits: Record<string, any> = { "smithy.api#http": httpTrait };
       const documentation = opDoc(op);
       if (documentation) traits["smithy.api#documentation"] = documentation;

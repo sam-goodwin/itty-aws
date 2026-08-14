@@ -23454,6 +23454,7 @@ export interface UploadFileRequest {
   xNowDigest?: string;
   /** The file size as an alternative to `Content-Length` */
   xNowSize?: number;
+  body?: Blob | Uint8Array | ArrayBuffer | string;
 }
 export const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -23463,7 +23464,15 @@ export const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
     xVercelDigest: S.optional(S.String.pipe(T.Header("x-Vercel-Digest"))),
     xNowDigest: S.optional(S.String.pipe(T.Header("x-Now-Digest"))),
     xNowSize: S.optional(S.Number.pipe(T.Header("x-Now-Size"))),
-  }).pipe(T.Http({ method: "POST", uri: "/v2/files", code: 200 })),
+    body: S.optional(S.String.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/v2/files",
+      code: 200,
+      bodyMediaType: "application/octet-stream",
+    }),
+  ),
 ).annotate({
   identifier: "UploadFileRequest",
 }) as any as S.Schema<UploadFileRequest>;

@@ -1,0 +1,131 @@
+{
+  "description": "dns.createRecord (POST /v2/domains/{domain}/records) models its body as a per-record-type anyOf whose arms the request-body flattener drops, leaving only the top-level `type` property — name/value/ttl/mxPriority/srv/https/comment never reach CreateRecordRequest. Replace the requestBody schema with the flat merged object (field template: the already-correct updateRecord shape). All fields optional except `type`; per-type value constraints (ipv4/ipv6 formats, MX requiring mxPriority, SRV/HTTPS requiring their sub-objects) are enforced server-side.",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/paths/~1v2~1domains~1{domain}~1records/post/requestBody/content/application~1json/schema",
+      "value": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "description": "The type of record, it could be one of the valid DNS records.",
+            "type": "string",
+            "enum": [
+              "A",
+              "AAAA",
+              "ALIAS",
+              "CAA",
+              "CNAME",
+              "HTTPS",
+              "MX",
+              "SRV",
+              "TXT",
+              "NS"
+            ]
+          },
+          "name": {
+            "description": "A subdomain name or an empty string for the root domain. Required for every record type except SRV and HTTPS, whose name is derived from srv/https.",
+            "type": "string",
+            "example": "subdomain"
+          },
+          "value": {
+            "description": "The record value (address, hostname, or text depending on the record type). Not used for SRV and HTTPS records, which use the srv/https objects instead.",
+            "type": "string",
+            "example": "192.0.2.42"
+          },
+          "ttl": {
+            "description": "The TTL value. Must be a number between 60 and 2147483647. Default value is 60.",
+            "type": "number",
+            "minimum": 60,
+            "maximum": 2147483647,
+            "example": 60
+          },
+          "mxPriority": {
+            "description": "The MX priority value of the DNS record. Required for MX records.",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 65535,
+            "example": 10
+          },
+          "srv": {
+            "description": "The SRV record payload. Required for SRV records.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "target",
+              "weight",
+              "port",
+              "priority"
+            ],
+            "properties": {
+              "target": {
+                "description": "The SRV target hostname.",
+                "type": "string",
+                "example": "example2.com."
+              },
+              "weight": {
+                "description": "The SRV weight.",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 65535,
+                "example": 10
+              },
+              "port": {
+                "description": "The SRV port.",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 65535,
+                "example": 5000
+              },
+              "priority": {
+                "description": "The SRV priority.",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 65535,
+                "example": 10
+              }
+            }
+          },
+          "https": {
+            "description": "The HTTPS record payload. Required for HTTPS records.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "priority",
+              "target"
+            ],
+            "properties": {
+              "priority": {
+                "description": "The HTTPS priority.",
+                "type": "number",
+                "minimum": 0,
+                "maximum": 65535,
+                "example": 10
+              },
+              "target": {
+                "description": "The HTTPS target hostname.",
+                "type": "string",
+                "example": "host.example.com"
+              },
+              "params": {
+                "description": "The HTTPS parameter string.",
+                "type": "string",
+                "example": "alpn=h2,h3"
+              }
+            }
+          },
+          "comment": {
+            "description": "A comment to add context on what this DNS record is for",
+            "type": "string",
+            "maxLength": 500,
+            "example": "used to verify ownership of domain"
+          }
+        }
+      }
+    }
+  ]
+}

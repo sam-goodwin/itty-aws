@@ -1,0 +1,12 @@
+{
+  "description": "environment.removeCustomEnvironment omits the 404 the live API returns for a missing environment (code `not_found`, message \"Environment not found.\" — live-verified 2026-08-13), so distilled's typed union lacks NotFound. The idempotent delete path catches the typed NotFound tag; without it the 404 surfaces as the catch-all. (Deleting by a still-existing id twice answers 200 both times; only an unknown slug/id 404s.)",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v9~1projects~1{idOrName}~1custom-environments~1{environmentSlugOrId}/delete/responses/404",
+      "value": {
+        "description": "Environment not found"
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "description": "global_config.createEdgeConfig (POST /v1/global-config) declares a `slug` query parameter (team slug) that collides with the required body property `slug` (the config name) in the flattened request struct, so the body slug is dropped and CreateEdgeConfigRequest cannot express the config name at all (live-verified: create without body slug 400s, with body slug 201s). Remove the redundant `slug` query parameter (teamId covers team scoping) so the body property survives flattening.",
+  "patches": [
+    {
+      "op": "remove",
+      "path": "/paths/~1v1~1global-config/post/parameters/1"
+    }
+  ]
+}

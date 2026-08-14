@@ -443,6 +443,9 @@
         },
         {
           "target": "com.vercel.certs#NotFound"
+        },
+        {
+          "target": "com.vercel.certs#DomainPretestFailed"
         }
       ],
       "traits": {
@@ -624,6 +627,19 @@
         "com.distilled.openapi#errorMatchers": [
           {
             "status": 402
+          }
+        ]
+      }
+    },
+    "com.vercel.certs#DomainPretestFailed": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 449,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 449
           }
         ]
       }

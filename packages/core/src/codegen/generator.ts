@@ -678,7 +678,15 @@ export const generateService = (
     spec.memberTsType?.(info, tsRefFn) ??
     (spec.extraBindings ?? []).find(
       (b) => b.binding === info.binding && b.tsType !== undefined,
-    )?.tsType;
+    )?.tsType ??
+    // Whole-body binary payloads (`smithy.api#httpPayload` targeting
+    // `smithy.api#Blob`) accept every raw form the REST protocol sends
+    // verbatim (see buildRequest's rawBody branch); the JSON-flavor prelude
+    // would otherwise type them as a bare `string`, inviting JSON-corrupted
+    // uploads. Providers can still override via `memberTsType`.
+    (info.binding === "rawBody" && info.target === "smithy.api#Blob"
+      ? "Blob | Uint8Array | ArrayBuffer | string"
+      : undefined);
 
   const emitMember = (info: EmittedMember, selfIdx: number): string => {
     let expr = ref(info.target, selfIdx);
