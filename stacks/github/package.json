@@ -7,10 +7,10 @@
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "alchemy": "next",
-    "effect": "4.0.0-beta.103",
-    "@effect/platform-node": "4.0.0-beta.103",
-    "@effect/platform-bun": "4.0.0-beta.103"
+    "alchemy": "2.0.0-beta.72",
+    "effect": "4.0.0-beta.105",
+    "@effect/platform-bun": "4.0.0-beta.105",
+    "@effect/platform-node": "4.0.0-beta.105"
   },
   "devDependencies": {
     "@types/bun": "latest",
