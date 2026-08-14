@@ -1,0 +1,63 @@
+{
+  "description": "getMicrofrontendsGroups (GET /v1/microfrontends/groups) declares its 200 response as an anonymous `{type: object}`, degrading the generated GetMicrofrontendsGroupsResponse to `unknown`. This list is the ONLY endpoint exposing group metadata (id/name/slug/fallbackEnvironment) — the group-by-id endpoint returns only member projects — so the MicrofrontendsGroup provider's observe step depends on it being typed. Replace the schema with the live-observed shape (probed 2026-08-13: { groups: [{ group, projects }], maxMicrofrontendsGroupsPerTeam, maxMicrofrontendsPerGroup }); unknown extra fields stay permitted (additionalProperties is left open).",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/paths/~1v1~1microfrontends~1groups/get/responses/200/content/application~1json/schema",
+      "value": {
+        "type": "object",
+        "required": ["groups"],
+        "properties": {
+          "groups": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["group", "projects"],
+              "properties": {
+                "group": {
+                  "type": "object",
+                  "required": ["id", "name", "slug"],
+                  "properties": {
+                    "id": { "type": "string" },
+                    "name": { "type": "string" },
+                    "slug": { "type": "string" },
+                    "fallbackEnvironment": { "type": "string" },
+                    "createdAt": { "type": "number" },
+                    "updatedAt": { "type": "number" }
+                  }
+                },
+                "projects": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["id", "name"],
+                    "properties": {
+                      "id": { "type": "string" },
+                      "name": { "type": "string" },
+                      "microfrontends": {
+                        "type": "object",
+                        "required": ["enabled"],
+                        "properties": {
+                          "enabled": { "type": "boolean" },
+                          "groupIds": {
+                            "type": "array",
+                            "items": { "type": "string" }
+                          },
+                          "isDefaultApp": { "type": "boolean" },
+                          "defaultRoute": { "type": "string" },
+                          "updatedAt": { "type": "number" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "maxMicrofrontendsGroupsPerTeam": { "type": "number" },
+          "maxMicrofrontendsPerGroup": { "type": "number" }
+        }
+      }
+    }
+  ]
+}

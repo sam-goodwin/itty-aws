@@ -3367,8 +3367,8 @@
         "slug": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpQuery": "slug",
-            "smithy.api#documentation": "The Team slug to perform the request on behalf of."
+            "smithy.api#documentation": "A unique (per project) key for the flag, composed of letters, numbers, dashes, and underscores",
+            "smithy.api#required": {}
           }
         },
         "kind": {

@@ -154,17 +154,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase0Map": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
-      },
-      "traits": {}
-    },
-    "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase1Version": {
+    "com.vercel.bulk_redirects#GetRedirectsResponseVersion": {
       "type": "structure",
       "members": {
         "id": {
@@ -226,7 +216,7 @@
       },
       "traits": {}
     },
-    "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase1RedirectsItem": {
+    "com.vercel.bulk_redirects#GetRedirectsResponseRedirectsItem": {
       "type": "structure",
       "members": {
         "statusCode": {
@@ -262,14 +252,14 @@
       },
       "traits": {}
     },
-    "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase1RedirectsList": {
+    "com.vercel.bulk_redirects#GetRedirectsResponseRedirectsList": {
       "type": "list",
       "member": {
-        "target": "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase1RedirectsItem"
+        "target": "com.vercel.bulk_redirects#GetRedirectsResponseRedirectsItem"
       },
       "traits": {}
     },
-    "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase1Pagination": {
+    "com.vercel.bulk_redirects#GetRedirectsResponsePagination": {
       "type": "structure",
       "members": {
         "page": {
@@ -289,195 +279,6 @@
           "traits": {
             "smithy.api#required": {}
           }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase1": {
-      "type": "structure",
-      "members": {
-        "version": {
-          "target": "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase1Version",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "redirects": {
-          "target": "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase1RedirectsList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "pagination": {
-          "target": "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase1Pagination",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase2RedirectsItem": {
-      "type": "structure",
-      "members": {
-        "statusCode": {
-          "target": "smithy.api#Double"
-        },
-        "permanent": {
-          "target": "smithy.api#Boolean"
-        },
-        "sensitive": {
-          "target": "smithy.api#Boolean"
-        },
-        "caseSensitive": {
-          "target": "smithy.api#Boolean"
-        },
-        "query": {
-          "target": "smithy.api#Boolean"
-        },
-        "preserveQueryParams": {
-          "target": "smithy.api#Boolean"
-        },
-        "destination": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "source": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase2RedirectsList": {
-      "type": "list",
-      "member": {
-        "target": "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase2RedirectsItem"
-      },
-      "traits": {}
-    },
-    "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase2Version": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The unique identifier for the version.",
-            "smithy.api#required": {}
-          }
-        },
-        "key": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The key of the version. The key may be duplicated across versions if the contents are the same as a different version.",
-            "smithy.api#required": {}
-          }
-        },
-        "lastModified": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "createdBy": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional name for the version. If not provided, defaults to an ISO timestamp string."
-          }
-        },
-        "isStaging": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this version has not been promoted to production yet and is not serving end users."
-          }
-        },
-        "isLive": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this version is currently live in production."
-          }
-        },
-        "redirectCount": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "The number of redirects in this version."
-          }
-        },
-        "alias": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The staging link for previewing redirects in this version."
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase2Pagination": {
-      "type": "structure",
-      "members": {
-        "page": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "per_page": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "numPages": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase2": {
-      "type": "structure",
-      "members": {
-        "redirects": {
-          "target": "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase2RedirectsList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "version": {
-          "target": "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase2Version"
-        },
-        "pagination": {
-          "target": "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase2Pagination",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.bulk_redirects#GetRedirectsResponseBody": {
-      "type": "union",
-      "members": {
-        "Case0": {
-          "target": "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase0Map"
-        },
-        "Case1": {
-          "target": "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase1"
-        },
-        "Case2": {
-          "target": "com.vercel.bulk_redirects#GetRedirectsResponseBodyCase2"
         }
       },
       "traits": {}
@@ -485,12 +286,20 @@
     "com.vercel.bulk_redirects#GetRedirectsResponse": {
       "type": "structure",
       "members": {
-        "body": {
-          "target": "com.vercel.bulk_redirects#GetRedirectsResponseBody",
+        "version": {
+          "target": "com.vercel.bulk_redirects#GetRedirectsResponseVersion",
           "traits": {
-            "com.distilled.openapi#rawResponse": {},
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "redirects": {
+          "target": "com.vercel.bulk_redirects#GetRedirectsResponseRedirectsList",
+          "traits": {
             "smithy.api#required": {}
           }
+        },
+        "pagination": {
+          "target": "com.vercel.bulk_redirects#GetRedirectsResponsePagination"
         }
       },
       "traits": {
@@ -580,13 +389,6 @@
     "com.vercel.bulk_redirects#StageRedirectsRequest": {
       "type": "structure",
       "members": {
-        "teamId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpQuery": "teamId",
-            "smithy.api#documentation": "The Team identifier to perform the request on behalf of."
-          }
-        },
         "slug": {
           "target": "smithy.api#String",
           "traits": {
@@ -595,6 +397,12 @@
           }
         },
         "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "teamId": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
@@ -711,6 +519,9 @@
         },
         {
           "target": "com.vercel.bulk_redirects#Forbidden"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#NotFound"
         }
       ],
       "traits": {
@@ -1559,6 +1370,9 @@
         },
         {
           "target": "com.vercel.bulk_redirects#Forbidden"
+        },
+        {
+          "target": "com.vercel.bulk_redirects#NotFound"
         }
       ],
       "traits": {

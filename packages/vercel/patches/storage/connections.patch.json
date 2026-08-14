@@ -1,9 +1,9 @@
 {
-  "description": "storage: the store<->project connection endpoints are real but absent from the OpenAPI document (used by the Vercel CLI's `blob store add` flow; live-verified 2026-08-13 against the alchemy-test team). Adds getStorageStoreConnections (GET /storage/stores/{storeId}/connections -> {connections: [...]}) and createStorageStoreConnection (POST, body {projectId, envVarEnvironments, type: \"integration\"} -> 201 empty body; injects a BLOB_READ_WRITE_TOKEN encrypted env var into the connected project) plus deleteStorageStoreConnection (DELETE /storage/stores/{storeId}/connections/{connectionId} -> 201 empty body; also removes the injected env var). A duplicate connect returns 400 code `store_project_connection_not_unique`.",
+  "description": "storage: the store<->project connection endpoints are real but absent from the OpenAPI document (used by the Vercel CLI's `blob store add` flow; live-verified 2026-08-13 against the alchemy-test team). Adds getStorageStoreConnections (GET /v1/storage/stores/{storeId}/connections -> {connections: [...]}) and createStorageStoreConnection (POST, body {projectId, envVarEnvironments, type: \"integration\"} -> 201 empty body; injects a BLOB_READ_WRITE_TOKEN encrypted env var into the connected project) plus deleteStorageStoreConnection (DELETE /v1/storage/stores/{storeId}/connections/{connectionId} -> 201 empty body; also removes the injected env var). A duplicate connect returns 400 code `store_project_connection_not_unique`. FIX 2026-08-14: the paths MUST carry the /v1 version prefix \u2014 the unversioned POST /storage/stores/{storeId}/connections started returning 500 internal_server_error (live-observed; the versioned /v1 path returns 201), so all three connection operations are now registered under /v1.",
   "patches": [
     {
       "op": "add",
-      "path": "/paths/~1storage~1stores~1{storeId}~1connections",
+      "path": "/paths/~1v1~1storage~1stores~1{storeId}~1connections",
       "value": {
         "get": {
           "description": "List the projects connected to a storage store.",
@@ -225,7 +225,7 @@
     },
     {
       "op": "add",
-      "path": "/paths/~1storage~1stores~1{storeId}~1connections~1{connectionId}",
+      "path": "/paths/~1v1~1storage~1stores~1{storeId}~1connections~1{connectionId}",
       "value": {
         "delete": {
           "description": "Disconnect a storage store from a project. Also removes the env var the connection injected into the project.",

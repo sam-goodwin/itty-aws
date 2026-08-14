@@ -1,0 +1,9 @@
+{
+  "description": "createFlag's request body carries a REQUIRED `slug` member (the flag's per-project key — live-verified 2026-08-13: omitting it is impossible, the API 201s only with it) that collides with the team-slug `slug` query parameter; the converter resolves the name collision by dropping the body member, so the generated CreateFlagRequest cannot name the flag at all. Remove the redundant team-slug query parameter (team scoping goes through `teamId`, the convention every alchemy provider uses) so the body `slug` survives codegen.",
+  "patches": [
+    {
+      "op": "remove",
+      "path": "/paths/~1v1~1projects~1{projectIdOrName}~1feature-flags~1flags/put/parameters/2"
+    }
+  ]
+}

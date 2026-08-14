@@ -628,9 +628,114 @@ export const GetMicrofrontendsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMicrofrontendsGroupsRequest",
 }) as any as S.Schema<GetMicrofrontendsGroupsRequest>;
 
-export type GetMicrofrontendsGroupsResponse = unknown;
+export interface GetMicrofrontendsGroupsResponseGroupsItemGroup {
+  id: string;
+  name: string;
+  slug: string;
+  fallbackEnvironment?: string;
+  createdAt?: number;
+  updatedAt?: number;
+}
+export const GetMicrofrontendsGroupsResponseGroupsItemGroup =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      name: S.String,
+      slug: S.String,
+      fallbackEnvironment: S.optional(S.String),
+      createdAt: S.optional(S.Number),
+      updatedAt: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GetMicrofrontendsGroupsResponseGroupsItemGroup",
+  }) as any as S.Schema<GetMicrofrontendsGroupsResponseGroupsItemGroup>;
+
+export type GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontendsGroupIdsList =
+  Array<string>;
+export const GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontendsGroupIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontendsGroupIdsList>;
+
+export interface GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontends {
+  enabled: boolean;
+  groupIds?: GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontendsGroupIdsList;
+  isDefaultApp?: boolean;
+  defaultRoute?: string;
+  updatedAt?: number;
+}
+export const GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontends =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      groupIds: S.optional(
+        GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontendsGroupIdsList,
+      ),
+      isDefaultApp: S.optional(S.Boolean),
+      defaultRoute: S.optional(S.String),
+      updatedAt: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontends",
+  }) as any as S.Schema<GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontends>;
+
+export interface GetMicrofrontendsGroupsResponseGroupsItemProjectsItem {
+  id: string;
+  name: string;
+  microfrontends?: GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontends;
+}
+export const GetMicrofrontendsGroupsResponseGroupsItemProjectsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      name: S.String,
+      microfrontends: S.optional(
+        GetMicrofrontendsGroupsResponseGroupsItemProjectsItemMicrofrontends,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetMicrofrontendsGroupsResponseGroupsItemProjectsItem",
+  }) as any as S.Schema<GetMicrofrontendsGroupsResponseGroupsItemProjectsItem>;
+
+export type GetMicrofrontendsGroupsResponseGroupsItemProjectsList =
+  Array<GetMicrofrontendsGroupsResponseGroupsItemProjectsItem>;
+export const GetMicrofrontendsGroupsResponseGroupsItemProjectsList =
+  /*@__PURE__*/ S.Array(
+    GetMicrofrontendsGroupsResponseGroupsItemProjectsItem,
+  ) as any as S.Schema<GetMicrofrontendsGroupsResponseGroupsItemProjectsList>;
+
+export interface GetMicrofrontendsGroupsResponseGroupsItem {
+  group: GetMicrofrontendsGroupsResponseGroupsItemGroup;
+  projects: GetMicrofrontendsGroupsResponseGroupsItemProjectsList;
+}
+export const GetMicrofrontendsGroupsResponseGroupsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      group: GetMicrofrontendsGroupsResponseGroupsItemGroup,
+      projects: GetMicrofrontendsGroupsResponseGroupsItemProjectsList,
+    }),
+  ).annotate({
+    identifier: "GetMicrofrontendsGroupsResponseGroupsItem",
+  }) as any as S.Schema<GetMicrofrontendsGroupsResponseGroupsItem>;
+
+export type GetMicrofrontendsGroupsResponseGroupsList =
+  Array<GetMicrofrontendsGroupsResponseGroupsItem>;
+export const GetMicrofrontendsGroupsResponseGroupsList = /*@__PURE__*/ S.Array(
+  GetMicrofrontendsGroupsResponseGroupsItem,
+) as any as S.Schema<GetMicrofrontendsGroupsResponseGroupsList>;
+
+export interface GetMicrofrontendsGroupsResponse {
+  groups: GetMicrofrontendsGroupsResponseGroupsList;
+  maxMicrofrontendsGroupsPerTeam?: number;
+  maxMicrofrontendsPerGroup?: number;
+}
 export const GetMicrofrontendsGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.RawResponseRoot()),
+  S.Struct({
+    groups: GetMicrofrontendsGroupsResponseGroupsList,
+    maxMicrofrontendsGroupsPerTeam: S.optional(S.Number),
+    maxMicrofrontendsPerGroup: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GetMicrofrontendsGroupsResponse",
 }) as any as S.Schema<GetMicrofrontendsGroupsResponse>;

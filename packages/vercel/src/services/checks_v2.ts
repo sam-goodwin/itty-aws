@@ -3035,7 +3035,11 @@ export const getDeploymentCheckRun: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectCheckError = BadRequest | Forbidden | VercelOpError;
+export type GetProjectCheckError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | VercelOpError;
 /** Get a check Return a detailed response for a single check. */
 export const getProjectCheck: API.OperationMethod<
   GetProjectCheckRequest,
@@ -3045,7 +3049,7 @@ export const getProjectCheck: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetProjectCheckRequest,
   output: GetProjectCheckResponse,
-  errors: [BadRequest, Forbidden],
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

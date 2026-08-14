@@ -1,0 +1,64 @@
+{
+  "description": "teams.inviteUserToTeam (POST /v2/teams/{teamId}/members) models its request body as an ARRAY of invitations, but the live API expects a single object — sending an array answers 400 {\"error\":{\"code\":\"bad_request\",\"message\":\"Expected an object\"}} while the object form works (live-verified: an object body with an invalid email reaches validation and answers code invalid_email). Replace the requestBody schema with the single-invitation object so the request fields flatten into InviteUserToTeamRequest.",
+  "patches": [
+    {
+      "op": "replace",
+      "path": "/paths/~1v2~1teams~1{teamId}~1members/post/requestBody/content/application~1json/schema",
+      "value": {
+        "type": "object",
+        "required": ["email"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "The email address of the user to invite",
+            "example": "john@example.com"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "OWNER",
+              "MEMBER",
+              "DEVELOPER",
+              "SECURITY",
+              "BILLING",
+              "VIEWER",
+              "VIEWER_FOR_PLUS",
+              "CONTRIBUTOR"
+            ],
+            "default": "VIEWER",
+            "description": "The role of the user to invite",
+            "example": "VIEWER"
+          },
+          "projects": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["role", "projectId"],
+              "properties": {
+                "projectId": {
+                  "type": "string",
+                  "maxLength": 64,
+                  "example": "prj_ndlgr43fadlPyCtREAqxxdyFK",
+                  "description": "The ID of the project."
+                },
+                "role": {
+                  "type": "string",
+                  "enum": [
+                    "ADMIN",
+                    "PROJECT_VIEWER",
+                    "PROJECT_DEVELOPER",
+                    "PROJECT_GUEST"
+                  ],
+                  "example": "ADMIN",
+                  "description": "Sets the project roles for the invited user"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -97,7 +97,7 @@ export const CreateStorageStoreConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/storage/stores/{storeId}/connections",
+      uri: "/v1/storage/stores/{storeId}/connections",
       code: 200,
     }),
   ),
@@ -542,7 +542,7 @@ export const DeleteStorageStoreConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "DELETE",
-      uri: "/storage/stores/{storeId}/connections/{connectionId}",
+      uri: "/v1/storage/stores/{storeId}/connections/{connectionId}",
       code: 200,
     }),
   ),
@@ -602,7 +602,7 @@ export const GetStorageStoreConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/storage/stores/{storeId}/connections",
+      uri: "/v1/storage/stores/{storeId}/connections",
       code: 200,
     }),
   ),

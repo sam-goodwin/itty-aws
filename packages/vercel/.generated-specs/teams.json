@@ -997,7 +997,7 @@
         "smithy.api#documentation": "List team members\n\nGet a paginated list of team members for the provided team."
       }
     },
-    "com.vercel.teams#InviteUserToTeamRequestBodyItemRole": {
+    "com.vercel.teams#InviteUserToTeamRequestRole": {
       "type": "enum",
       "members": {
         "OWNER": {
@@ -1053,7 +1053,7 @@
         "smithy.api#documentation": "The role of the user to invite"
       }
     },
-    "com.vercel.teams#InviteUserToTeamRequestBodyItemProjectsItemRole": {
+    "com.vercel.teams#InviteUserToTeamRequestProjectsItemRole": {
       "type": "enum",
       "members": {
         "ADMIN": {
@@ -1085,7 +1085,7 @@
         "smithy.api#documentation": "Sets the project roles for the invited user"
       }
     },
-    "com.vercel.teams#InviteUserToTeamRequestBodyItemProjectsItem": {
+    "com.vercel.teams#InviteUserToTeamRequestProjectsItem": {
       "type": "structure",
       "members": {
         "projectId": {
@@ -1096,7 +1096,7 @@
           }
         },
         "role": {
-          "target": "com.vercel.teams#InviteUserToTeamRequestBodyItemProjectsItemRole",
+          "target": "com.vercel.teams#InviteUserToTeamRequestProjectsItemRole",
           "traits": {
             "smithy.api#documentation": "Sets the project roles for the invited user",
             "smithy.api#required": {}
@@ -1105,39 +1105,10 @@
       },
       "traits": {}
     },
-    "com.vercel.teams#InviteUserToTeamRequestBodyItemProjectsList": {
+    "com.vercel.teams#InviteUserToTeamRequestProjectsList": {
       "type": "list",
       "member": {
-        "target": "com.vercel.teams#InviteUserToTeamRequestBodyItemProjectsItem"
-      },
-      "traits": {}
-    },
-    "com.vercel.teams#InviteUserToTeamRequestBodyItem": {
-      "type": "structure",
-      "members": {
-        "email": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The email address of the user to invite",
-            "smithy.api#required": {}
-          }
-        },
-        "role": {
-          "target": "com.vercel.teams#InviteUserToTeamRequestBodyItemRole",
-          "traits": {
-            "smithy.api#documentation": "The role of the user to invite"
-          }
-        },
-        "projects": {
-          "target": "com.vercel.teams#InviteUserToTeamRequestBodyItemProjectsList"
-        }
-      },
-      "traits": {}
-    },
-    "com.vercel.teams#InviteUserToTeamRequestBodyList": {
-      "type": "list",
-      "member": {
-        "target": "com.vercel.teams#InviteUserToTeamRequestBodyItem"
+        "target": "com.vercel.teams#InviteUserToTeamRequestProjectsItem"
       },
       "traits": {}
     },
@@ -1159,11 +1130,21 @@
             "smithy.api#documentation": "The Team slug to perform the request on behalf of."
           }
         },
-        "body": {
-          "target": "com.vercel.teams#InviteUserToTeamRequestBodyList",
+        "email": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpPayload": {}
+            "smithy.api#documentation": "The email address of the user to invite",
+            "smithy.api#required": {}
           }
+        },
+        "role": {
+          "target": "com.vercel.teams#InviteUserToTeamRequestRole",
+          "traits": {
+            "smithy.api#documentation": "The role of the user to invite"
+          }
+        },
+        "projects": {
+          "target": "com.vercel.teams#InviteUserToTeamRequestProjectsList"
         }
       },
       "traits": {
@@ -7816,6 +7797,9 @@
         },
         {
           "target": "com.vercel.teams#Forbidden"
+        },
+        {
+          "target": "com.vercel.teams#NotFound"
         },
         {
           "target": "com.vercel.teams#Conflict"

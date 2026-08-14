@@ -2255,7 +2255,7 @@ export const GetTeamsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTeamsResponse>;
 
 /** The role of the user to invite */
-export type InviteUserToTeamRequestBodyItemRole =
+export type InviteUserToTeamRequestRole =
   | "OWNER"
   | "MEMBER"
   | "DEVELOPER"
@@ -2264,75 +2264,55 @@ export type InviteUserToTeamRequestBodyItemRole =
   | "VIEWER"
   | "VIEWER_FOR_PLUS"
   | "CONTRIBUTOR";
-export const InviteUserToTeamRequestBodyItemRole = /*@__PURE__*/ S.String;
+export const InviteUserToTeamRequestRole = /*@__PURE__*/ S.String;
 
 /** Sets the project roles for the invited user */
-export type InviteUserToTeamRequestBodyItemProjectsItemRole =
+export type InviteUserToTeamRequestProjectsItemRole =
   | "ADMIN"
   | "PROJECT_VIEWER"
   | "PROJECT_DEVELOPER"
   | "PROJECT_GUEST";
-export const InviteUserToTeamRequestBodyItemProjectsItemRole =
-  /*@__PURE__*/ S.String;
+export const InviteUserToTeamRequestProjectsItemRole = /*@__PURE__*/ S.String;
 
-export interface InviteUserToTeamRequestBodyItemProjectsItem {
+export interface InviteUserToTeamRequestProjectsItem {
   /** The ID of the project. */
   projectId: string;
   /** Sets the project roles for the invited user */
-  role: InviteUserToTeamRequestBodyItemProjectsItemRole | (string & {});
+  role: InviteUserToTeamRequestProjectsItemRole | (string & {});
 }
-export const InviteUserToTeamRequestBodyItemProjectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectId: S.String,
-      role: InviteUserToTeamRequestBodyItemProjectsItemRole,
-    }),
-  ).annotate({
-    identifier: "InviteUserToTeamRequestBodyItemProjectsItem",
-  }) as any as S.Schema<InviteUserToTeamRequestBodyItemProjectsItem>;
-
-export type InviteUserToTeamRequestBodyItemProjectsList =
-  Array<InviteUserToTeamRequestBodyItemProjectsItem>;
-export const InviteUserToTeamRequestBodyItemProjectsList =
-  /*@__PURE__*/ S.Array(
-    InviteUserToTeamRequestBodyItemProjectsItem,
-  ) as any as S.Schema<InviteUserToTeamRequestBodyItemProjectsList>;
-
-export interface InviteUserToTeamRequestBodyItem {
-  /** The email address of the user to invite */
-  email: string;
-  /** The role of the user to invite */
-  role?: InviteUserToTeamRequestBodyItemRole | (string & {});
-  projects?: InviteUserToTeamRequestBodyItemProjectsList;
-}
-export const InviteUserToTeamRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+export const InviteUserToTeamRequestProjectsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.String,
-    role: S.optional(InviteUserToTeamRequestBodyItemRole),
-    projects: S.optional(InviteUserToTeamRequestBodyItemProjectsList),
+    projectId: S.String,
+    role: InviteUserToTeamRequestProjectsItemRole,
   }),
 ).annotate({
-  identifier: "InviteUserToTeamRequestBodyItem",
-}) as any as S.Schema<InviteUserToTeamRequestBodyItem>;
+  identifier: "InviteUserToTeamRequestProjectsItem",
+}) as any as S.Schema<InviteUserToTeamRequestProjectsItem>;
 
-export type InviteUserToTeamRequestBodyList =
-  Array<InviteUserToTeamRequestBodyItem>;
-export const InviteUserToTeamRequestBodyList = /*@__PURE__*/ S.Array(
-  InviteUserToTeamRequestBodyItem,
-) as any as S.Schema<InviteUserToTeamRequestBodyList>;
+export type InviteUserToTeamRequestProjectsList =
+  Array<InviteUserToTeamRequestProjectsItem>;
+export const InviteUserToTeamRequestProjectsList = /*@__PURE__*/ S.Array(
+  InviteUserToTeamRequestProjectsItem,
+) as any as S.Schema<InviteUserToTeamRequestProjectsList>;
 
 export interface InviteUserToTeamRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
-  body?: InviteUserToTeamRequestBodyList;
+  /** The email address of the user to invite */
+  email: string;
+  /** The role of the user to invite */
+  role?: InviteUserToTeamRequestRole | (string & {});
+  projects?: InviteUserToTeamRequestProjectsList;
 }
 export const InviteUserToTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.String.pipe(T.Label()),
     slug: S.optional(S.String.pipe(T.Query())),
-    body: S.optional(InviteUserToTeamRequestBodyList.pipe(T.HttpBody())),
+    email: S.String,
+    role: S.optional(InviteUserToTeamRequestRole),
+    projects: S.optional(InviteUserToTeamRequestProjectsList),
   }).pipe(
     T.Http({ method: "POST", uri: "/v2/teams/{teamId}/members", code: 200 }),
   ),
@@ -3744,6 +3724,7 @@ export type DeleteTeamError =
   | BadRequest
   | PaymentRequired
   | Forbidden
+  | NotFound
   | Conflict
   | VercelOpError;
 /** Delete a Team Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional array of reasons for deletion may also be sent. */
@@ -3755,7 +3736,7 @@ export const deleteTeam: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTeamRequest,
   output: DeleteTeamResponse,
-  errors: [BadRequest, PaymentRequired, Forbidden, Conflict],
+  errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
 }));

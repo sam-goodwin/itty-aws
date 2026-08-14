@@ -1,0 +1,10 @@
+{
+  "description": "project_members.addProjectMember (POST /v1/projects/{idOrName}/members): the live API returns 404 `not_found` (\"Project not found.\") when the target project no longer exists (probed 2026-08-13), but the spec declares no 404 — add it so a vanished host project surfaces as a typed NotFound instead of the catch-all. (Role-combination rejections like `invalid_team_and_project_role_combination` and unknown-uid `not_a_member` arrive as declared 400s and are already typed BadRequest.)",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1projects~1{idOrName}~1members/post/responses/404",
+      "value": { "description": "Project not found" }
+    }
+  ]
+}

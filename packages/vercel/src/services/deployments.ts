@@ -14103,7 +14103,8 @@ export type GetDeploymentResponseBodyCase0ReadyState =
   | "ERROR"
   | "INITIALIZING"
   | "QUEUED"
-  | "READY";
+  | "READY"
+  | "DELETED";
 export const GetDeploymentResponseBodyCase0ReadyState = /*@__PURE__*/ S.String;
 
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
@@ -14116,6 +14117,13 @@ export type GetDeploymentResponseBodyCase0AliasWarning =
   CancelDeploymentResponseAliasWarning;
 export const GetDeploymentResponseBodyCase0AliasWarning =
   CancelDeploymentResponseAliasWarning;
+
+export type GetDeploymentResponseBodyCase0ReadySubstate =
+  | "PROMOTED"
+  | "ROLLING"
+  | "STAGED";
+export const GetDeploymentResponseBodyCase0ReadySubstate =
+  /*@__PURE__*/ S.String;
 
 /** Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld. */
 export interface GetDeploymentResponseBodyCase0 {
@@ -14132,6 +14140,7 @@ export interface GetDeploymentResponseBodyCase0 {
   aliasWarning?: CancelDeploymentResponseAliasWarning | null;
   errorCode?: string;
   errorMessage?: string | null;
+  readySubstate?: GetDeploymentResponseBodyCase0ReadySubstate;
 }
 export const GetDeploymentResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14144,6 +14153,7 @@ export const GetDeploymentResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
     aliasWarning: S.optional(S.NullOr(CancelDeploymentResponseAliasWarning)),
     errorCode: S.optional(S.String),
     errorMessage: S.optional(S.NullOr(S.String)),
+    readySubstate: S.optional(GetDeploymentResponseBodyCase0ReadySubstate),
   }),
 ).annotate({
   identifier: "GetDeploymentResponseBodyCase0",
@@ -14833,7 +14843,8 @@ export type GetDeploymentResponseBodyCase1ReadyState =
   | "ERROR"
   | "INITIALIZING"
   | "QUEUED"
-  | "READY";
+  | "READY"
+  | "DELETED";
 export const GetDeploymentResponseBodyCase1ReadyState = /*@__PURE__*/ S.String;
 
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */
@@ -20961,7 +20972,8 @@ export type GetDeploymentResponseBodyCase2ReadyState =
   | "ERROR"
   | "INITIALIZING"
   | "QUEUED"
-  | "READY";
+  | "READY"
+  | "DELETED";
 export const GetDeploymentResponseBodyCase2ReadyState = /*@__PURE__*/ S.String;
 
 /** An object that will contain a `code` and a `message` when the aliasing fails, otherwise the value will be `null` */

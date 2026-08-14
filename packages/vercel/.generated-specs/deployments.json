@@ -1670,6 +1670,12 @@
           "traits": {
             "smithy.api#enumValue": "READY"
           }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETED"
+          }
         }
       },
       "traits": {
@@ -1716,6 +1722,30 @@
         },
         "action": {
           "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.vercel.deployments#GetDeploymentResponseBodyCase0ReadySubstate": {
+      "type": "enum",
+      "members": {
+        "PROMOTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROMOTED"
+          }
+        },
+        "ROLLING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ROLLING"
+          }
+        },
+        "STAGED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "STAGED"
+          }
         }
       },
       "traits": {}
@@ -1774,6 +1804,9 @@
           "traits": {
             "com.distilled.openapi#nullable": {}
           }
+        },
+        "readySubstate": {
+          "target": "com.vercel.deployments#GetDeploymentResponseBodyCase0ReadySubstate"
         }
       },
       "traits": {
@@ -3468,6 +3501,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "READY"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETED"
           }
         }
       },
@@ -13450,6 +13489,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "READY"
+          }
+        },
+        "DELETED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DELETED"
           }
         }
       },

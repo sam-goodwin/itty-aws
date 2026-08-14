@@ -1,0 +1,28 @@
+{
+  "description": "project_members.getProjectMembers (GET /v1/projects/{idOrName}/members): (1) the 200 response is a oneOf whose first branch is a bare `{type: object}`, which degrades the whole union to unknown — collapse it to the real paginated shape so `{members, pagination}` types cleanly; (2) the live API returns `pagination: {}` on a fresh project (probed 2026-08-13), so drop the pagination sub-required; (3) the live API returns 404 `not_found` for a deleted/missing project — add the 404 response so the reconciler's observe step gets a typed NotFound.",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/paths/~1v1~1projects~1{idOrName}~1members/get/responses/200/content/application~1json/schema/oneOf/1",
+      "path": "/paths/~1v1~1projects~1{idOrName}~1members/get/responses/200/content/application~1json/keepSchema"
+    },
+    {
+      "op": "remove",
+      "path": "/paths/~1v1~1projects~1{idOrName}~1members/get/responses/200/content/application~1json/schema"
+    },
+    {
+      "op": "move",
+      "from": "/paths/~1v1~1projects~1{idOrName}~1members/get/responses/200/content/application~1json/keepSchema",
+      "path": "/paths/~1v1~1projects~1{idOrName}~1members/get/responses/200/content/application~1json/schema"
+    },
+    {
+      "op": "remove",
+      "path": "/paths/~1v1~1projects~1{idOrName}~1members/get/responses/200/content/application~1json/schema/properties/pagination/required"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1projects~1{idOrName}~1members/get/responses/404",
+      "value": { "description": "Project not found" }
+    }
+  ]
+}

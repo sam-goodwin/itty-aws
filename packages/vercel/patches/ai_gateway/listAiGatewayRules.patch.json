@@ -1,0 +1,12 @@
+{
+  "description": "ai_gateway.listAiGatewayRules (GET /v1/ai-gateway/rules) is documented in the OpenAPI spec but the endpoint is not deployed on the live platform — it answers 404 {\"error\":{\"code\":\"not_found\",\"message\":\"The requested API endpoint was not found.\"}} (live-verified Aug 2026 on a Pro team). Add the 404 response so the availability rejection surfaces as the typed NotFound tag (pinned by the ungated AIGateway probe test) instead of an out-of-union catch-all.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1ai-gateway~1rules/get/responses/404",
+      "value": {
+        "description": "AI Gateway rules API not available"
+      }
+    }
+  ]
+}
