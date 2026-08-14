@@ -4,6 +4,7 @@ import * as GitHub from "alchemy/GitHub";
 import * as Config from "effect/Config";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
+import * as Option from "effect/Option";
 import * as Redacted from "effect/Redacted";
 
 /**
@@ -24,14 +25,14 @@ import * as Redacted from "effect/Redacted";
  * ```
  *
  * The org PAT is the one credential that cannot be minted via API (GitHub
- * has no endpoint for creating PATs), so it is passed in via
- * `DISTILLED_REPOS_PAT` and stored as a secret like everything else.
+ * has no endpoint for creating PATs). It is taken from `DISTILLED_REPOS_PAT`
+ * when set, otherwise the profile's own signed-in GitHub token is stored.
  */
 
 /** The repo whose Actions run the deploys — where the secrets live. */
 const REPO = { owner: "alchemy-run", repository: "distilled" };
 
-const ReposPat = Config.redacted("DISTILLED_REPOS_PAT");
+const ReposPat = Config.redacted("DISTILLED_REPOS_PAT").pipe(Config.option);
 
 const ReposOwner = Config.string("DISTILLED_REPOS_OWNER").pipe(
   Config.withDefault("alchemy-run"),
@@ -78,10 +79,21 @@ export default Alchemy.Stack(
       value: Redacted.make(accountId),
     });
 
+    const patOverride = yield* ReposPat;
+    const reposPat = Option.isSome(patOverride)
+      ? patOverride.value
+      : // Fall back to the profile's signed-in GitHub token — correct when
+        // the profile was logged in with the org PAT itself. The cast erases
+        // the GitHubCredentials requirement: it is provided at runtime by
+        // GitHub.providers() but is not part of the Stack requirement union.
+        (yield* yield* GitHub.GitHubCredentials as unknown as Effect.Effect<
+          Effect.Effect<{ readonly token: Redacted.Redacted<string> }>
+        >).token;
+
     yield* GitHub.Secret("repos-pat", {
       ...REPO,
       name: "ALCHEMY_GITHUB_TOKEN",
-      value: yield* ReposPat,
+      value: reposPat,
     });
 
     yield* GitHub.Variable("repos-owner", {
