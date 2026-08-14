@@ -272,11 +272,6 @@ export class ResourceNotFoundException
       T.HttpError(404),
     ),
   ).pipe(C.withBadRequestError) {}
-export class UnsupportedOperation
-  extends /*@__PURE__*/ S.TaggedError<UnsupportedOperation>()(
-    "UnsupportedOperation",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-  ) {}
 export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()(
     "ValidationException",
@@ -3721,10 +3716,7 @@ export const describeAnomalyDetectors: API.PaginatedOperationMethod<
   } as const,
 })) as any;
 
-export type DescribeInsightRulesError =
-  | InvalidNextToken
-  | UnsupportedOperation
-  | CommonErrors;
+export type DescribeInsightRulesError = InvalidNextToken | CommonErrors;
 /**
  * Returns a list of all the Contributor Insights rules in your account.
  *
@@ -3740,7 +3732,7 @@ export const describeInsightRules: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInsightRulesInput,
   output: DescribeInsightRulesOutput,
-  errors: [InvalidNextToken, UnsupportedOperation],
+  errors: [InvalidNextToken],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DescribeInsightRules",

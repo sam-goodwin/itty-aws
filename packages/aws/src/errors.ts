@@ -94,6 +94,11 @@ export class UnknownOperationException extends S.TaggedError<UnknownOperationExc
   { message: ErrorMessage },
 ).pipe(Category.withBadRequestError) {}
 
+export class UnsupportedOperation extends S.TaggedError<UnsupportedOperation>()(
+  "UnsupportedOperation",
+  { message: ErrorMessage },
+).pipe(Category.withBadRequestError) {}
+
 export class ValidationError extends S.TaggedError<ValidationError>()(
   "ValidationError",
   { message: ErrorMessage },
@@ -204,6 +209,7 @@ export const COMMON_ERRORS = [
   ThrottlingException,
   UnknownOperationException,
   UnrecognizedClientException,
+  UnsupportedOperation,
   ValidationError,
   ValidationException,
 ] as const;
@@ -224,6 +230,7 @@ export type CommonAwsError =
   | ThrottlingException
   | UnrecognizedClientException
   | UnknownOperationException
+  | UnsupportedOperation
   | ValidationError
   | ValidationException
   | OperationAborted;
