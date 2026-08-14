@@ -9,5 +9,5 @@
     "sourceMap": false,
     "composite": false
   },
-  "include": ["alchemy.run.ts"]
+  "include": ["alchemy.run.ts", "credentials.run.ts"]
 }

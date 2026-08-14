@@ -31,22 +31,39 @@ repositories themselves; pushing snapshot content into them is a follow-up.
 
 Runs automatically on every push to `main` via
 [`.github/workflows/deploy-github-stack.yml`](../../.github/workflows/deploy-github-stack.yml)
-(usually a no-op). The workflow needs:
+(usually a no-op). CI reads `ALCHEMY_GITHUB_TOKEN`, `CLOUDFLARE_API_TOKEN`,
+`CLOUDFLARE_ACCOUNT_ID` (secrets) and `DISTILLED_REPOS_OWNER` (variable) —
+all provisioned by the credentials stack below, never pasted by hand.
 
-- `ALCHEMY_GITHUB_TOKEN` (secret) — a fine-grained PAT owned by the snapshot
-  org, scoped to **All repositories**, with **Administration: Read and write**
-  (create repos, settings, topics) and **Contents: Read and write** (push
-  snapshot files) repository permissions (the built-in `GITHUB_TOKEN` cannot
-  create repositories, so a PAT is required). Add **Workflows: Read and
-  write** if the pushed snapshots ever contain `.github/workflows/` files —
-  GitHub rejects workflow-file pushes with Contents alone.
-- `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` (secrets) — for the
-  Cloudflare account hosting the remote state store.
-- `DISTILLED_REPOS_OWNER` (repository variable) — the snapshot org name.
+## One-time setup: the credentials stack
 
-To deploy manually, log in once (`bunx alchemy login`) and:
+[`credentials.run.ts`](./credentials.run.ts) follows the
+[CI/CD tutorial](https://alchemy.run/cloudflare/tutorial/part-5/): deployed
+once with your own (admin) profile, it mints a Cloudflare API token scoped to
+the state-store worker and writes all four CI values into this repo's Actions
+configuration.
+
+The only input is the org PAT (GitHub has no API to mint PATs): a
+fine-grained PAT owned by the snapshot org, scoped to **All repositories**,
+with **Administration: Read and write** (create repos, settings, topics) and
+**Contents: Read and write** (push snapshot files). Add **Workflows: Read and
+write** if snapshots ever contain `.github/workflows/` files. No organization
+permissions are needed. (The workflow's built-in `GITHUB_TOKEN` cannot create
+repositories, which is why a PAT is required at all.)
 
 ```bash
 cd stacks/github
-bun alchemy deploy --stage prod
+bun alchemy login credentials.run.ts --profile <profile>
+DISTILLED_REPOS_PAT=<org PAT> DISTILLED_REPOS_OWNER=<snapshot org> bun alchemy deploy credentials.run.ts --stage prod --profile <profile>
+```
+
+Your login needs admin on this repo (to write secrets), `API Tokens: Write`
+on the Cloudflare account, and the Cloudflare account must be the one hosting
+the shared alchemy state store.
+
+## Deploying the repos stack manually
+
+```bash
+cd stacks/github
+bun alchemy deploy --stage prod --profile <profile>
 ```
