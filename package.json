@@ -9,7 +9,7 @@
     "specs:sync": "git submodule sync --recursive && git submodule update --force --init --recursive --depth=1",
     "typecheck": "tsc -b",
     "format": "oxfmt '.'",
-    "format:check": "bun run format -- --check",
+    "format:check": "pnpm format -- --check",
     "lint": "oxlint",
     "prepare": "husky",
     "publish:packages": "pnpm publish --recursive --filter './packages/*' --access public",
@@ -23,5 +23,17 @@
     "oxfmt": "catalog:tooling",
     "oxlint": "catalog:tooling"
   },
-  "packageManager": "pnpm@11.21.0"
+  "packageManager": "pnpm@11.21.0",
+  "devEngines": {
+    "runtime": [ {
+        "name": "bun",
+        "version": "1.3.13",
+        "onFail": "warn"
+      },
+      {
+        "name": "node",
+        "version": "24",
+        "onFail": "warn"
+      } ]
+  }
 }
