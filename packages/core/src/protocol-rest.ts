@@ -185,8 +185,17 @@ export interface RestProtocolOptions<C> {
    * `<Sdk>OpContext` annotations.
    */
   readonly credentials: Effect.Effect<C, any, any>;
-  /** API base URL from the resolved credentials. */
-  readonly baseUrl: (credentials: C) => string;
+  /**
+   * API base URL from the resolved credentials. The second argument is the
+   * operation's config (see {@link API.ProtocolOperationConfig}) so a
+   * provider can resolve per-operation endpoints (e.g. a data-plane op
+   * carrying an `endpointHostPrefix`). The returned string may contain
+   * `{name}` placeholders filled by input members marked `HostLabel()`.
+   */
+  readonly baseUrl: (
+    credentials: C,
+    config?: API.ProtocolOperationConfig,
+  ) => string;
   /** Auth (and any fixed) headers from the resolved credentials. */
   readonly headers: (credentials: C) => Record<string, string>;
   /**
@@ -206,6 +215,18 @@ export interface RestProtocolOptions<C> {
   readonly unknownError: (info: RestErrorInfo) => unknown;
   /** Transform the parsed 2xx JSON before decoding (e.g. stripNulls). */
   readonly transformResponse?: (body: unknown) => unknown;
+  /**
+   * Intercept SUCCESS (< 400) decoding before the body is consumed as text —
+   * for responses that aren't JSON at all: raw binary bodies, multipart/mixed
+   * batches, header-projected outputs. Return an Effect producing the final
+   * decoded value to own the response, or `undefined` to fall through to the
+   * default text/JSON path. Error statuses never reach this hook.
+   */
+  readonly decodeSuccess?: (ctx: {
+    readonly response: HttpClientResponse.HttpClientResponse;
+    readonly outputAst: AST.AST;
+    readonly config?: API.ProtocolOperationConfig;
+  }) => Effect.Effect<unknown> | undefined;
   /** Passed through to `buildRequest` (member-header transforms). */
   readonly mapMemberHeader?: (name: string, value: string) => string;
   /** Passed through to `buildRequest` (wire names for unmodeled input keys). */
@@ -251,16 +272,18 @@ export const makeRestProtocol = <C>(
   const encode = ({
     input,
     inputAst,
+    config,
   }: {
     readonly input: unknown;
     readonly inputAst: AST.AST;
+    readonly config?: API.ProtocolOperationConfig;
   }) =>
     Effect.gen(function* () {
       const creds = yield* options.credentials as Effect.Effect<C>;
       return buildRequest({
         input: unwrapRedactedDeep(input),
         inputAst,
-        baseUrl: options.baseUrl(creds),
+        baseUrl: options.baseUrl(creds, config),
         headers: options.headers(creds),
         mapMemberHeader: options.mapMemberHeader,
         unknownKeyToWire: options.unknownKeyToWire,
@@ -271,12 +294,21 @@ export const makeRestProtocol = <C>(
     response,
     outputAst,
     errors: errorClasses,
+    config,
   }: {
     readonly response: HttpClientResponse.HttpClientResponse;
     readonly outputAst: AST.AST;
     readonly errors: ReadonlyArray<unknown>;
+    readonly config?: API.ProtocolOperationConfig;
   }) =>
     Effect.gen(function* () {
+      // Non-JSON success bodies (binary, multipart, header-projected
+      // outputs): the provider's hook owns them wholesale, BEFORE the body
+      // is consumed as text.
+      if (response.status < 400 && options.decodeSuccess !== undefined) {
+        const owned = options.decodeSuccess({ response, outputAst, config });
+        if (owned !== undefined) return yield* owned;
+      }
       // Read as text and parse tolerantly — error pages are often non-JSON.
       const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
       if (process.env.DISTILLED_DEBUG_HTTP) {
@@ -303,12 +335,17 @@ export const makeRestProtocol = <C>(
           (nonJson && text.trim() ? text.trim() : `HTTP ${status}`);
 
         // 1. Per-operation typed error (matcher metadata on the class).
-        const typed = matchTypedError(errorClasses, status, [
-          {
-            code: typeof env.code === "number" ? env.code : undefined,
-            message,
-          },
-        ]);
+        const typed = matchTypedError(
+          errorClasses,
+          status,
+          [
+            {
+              code: typeof env.code === "number" ? env.code : undefined,
+              message,
+            },
+          ],
+          headers,
+        );
         if (typed !== undefined) return yield* fail(typed);
 
         // 2. Status-mapped class (retryAfter only stamps on retryable
@@ -349,7 +386,13 @@ export const makeRestProtocol = <C>(
       // 2xx: the response body IS the payload (no envelope). Wire→TS key
       // mapping is schema-driven; `RawResponseRoot` responses are the body
       // verbatim (mapKeys handles arrays/scalars structurally either way).
-      let body: unknown = nonJson ? text : (json ?? {});
+      // An EMPTY body decodes as `{}`; a JSON `null` body stays `null` (a
+      // bare-payload response's value can legitimately be null).
+      let body: unknown = nonJson
+        ? text
+        : text.trim().length === 0
+          ? {}
+          : json;
       if (options.transformResponse) body = options.transformResponse(body);
       return wrapSensitive(outputAst, mapKeys(outputAst, body, "decode"));
     });

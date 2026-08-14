@@ -17,6 +17,7 @@ import {
   formDataFileSymbol,
   getErrorMatchers,
   headerSymbol,
+  hostLabelSymbol,
   httpBodySymbol,
   httpSymbol,
   keyDictionarySymbol,
@@ -430,10 +431,14 @@ export const buildRequest = ({
     | undefined;
 
   const headers: Record<string, string> = { ...baseHeaders };
+  // The operation's declared Accept, when the API serves several media types
+  // (member-bound headers can still override it below).
+  if (http.accept !== undefined) headers["accept"] = http.accept;
   const body: Record<string, unknown> = {};
   let rawBody: unknown; // whole-body member (T.HttpBody) — sent as-is
   const files: Array<Blob | File> = [];
   const query = new URLSearchParams();
+  let base = baseUrl;
   let uri = http.uri;
   const consumed = new Set<string>();
   let hasBodyMembers = false;
@@ -444,6 +449,7 @@ export const buildRequest = ({
     const value = inputObj[key];
     const isBodyMember =
       !hasPropAnn(prop, labelSymbol) &&
+      !hasPropAnn(prop, hostLabelSymbol) &&
       !hasPropAnn(prop, headerSymbol) &&
       !hasPropAnn(prop, querySymbol) &&
       !hasPropAnn(prop, deepQuerySymbol);
@@ -452,7 +458,20 @@ export const buildRequest = ({
 
     if (hasPropAnn(prop, labelSymbol)) {
       const token = nameOf(prop, labelSymbol);
-      uri = uri.replace(`{${token}}`, encodeURIComponent(String(value)));
+      // Greedy labels (`{token+}`, smithy's multi-segment form) keep their
+      // `/` separators, encoding each segment individually — path-like keys
+      // (S3/blob pathnames) would otherwise arrive with `%2F`.
+      uri = uri
+        .replace(
+          `{${token}+}`,
+          String(value).split("/").map(encodeURIComponent).join("/"),
+        )
+        .replace(`{${token}}`, encodeURIComponent(String(value)));
+    } else if (hasPropAnn(prop, hostLabelSymbol)) {
+      // Host labels fill `{token}` placeholders in the ENDPOINT template —
+      // raw, un-encoded (a template may take a whole origin as its label).
+      const token = nameOf(prop, hostLabelSymbol);
+      base = base.replaceAll(`{${token}}`, String(value));
     } else if (hasPropAnn(prop, headerSymbol)) {
       const hName = nameOf(prop, headerSymbol).toLowerCase();
       const hVal = String(value);
@@ -506,7 +525,7 @@ export const buildRequest = ({
   }
 
   const qs = query.toString();
-  const url = `${baseUrl}${uri}${qs ? `?${qs}` : ""}`;
+  const url = `${base}${uri}${qs ? `?${qs}` : ""}`;
   if (process.env.DISTILLED_DEBUG_HTTP) {
     console.error(
       `[distilled] ${http.method} ${url}` +
@@ -582,34 +601,33 @@ export const buildRequest = ({
     );
   } else if (rawBody !== undefined && !BODYLESS.has(http.method)) {
     // Whole-body member (raw arrays/scalars) — sent as the body itself.
-    // Binary payloads (Blob / ArrayBuffer / Uint8Array) send verbatim
-    // (raw object uploads — the Content-Type header member, when modeled,
-    // rides alongside). With a bodyMediaType, the member is a
-    // preserialized payload (string / bytes) sent verbatim under that
-    // media type (e.g. application/x-ndjson for Vectorize
-    // insert/upsert); otherwise it's JSON.
+    // The effective media type is the modeled Content-Type HEADER member's
+    // value when one was set (per-call content types — blob/queue payload
+    // uploads), else the operation's static bodyMediaType (preserialized
+    // payloads, e.g. application/x-ndjson for Vectorize insert/upsert).
+    // The explicit type must ride ON THE BODY: `setBody` unconditionally
+    // rewrites the content-type header from the body metadata (and REMOVES
+    // it when the body carries none), so a header set beforehand would be
+    // silently dropped.
+    const mediaType = headers["content-type"] ?? http.bodyMediaType;
     if (rawBody instanceof Blob || rawBody instanceof ArrayBuffer) {
-      // Honor the declared media type (e.g. application/x-ndjson for
-      // Vectorize insert/upsert) — without it the server may fall back to
-      // JSON parsing. When no bodyMediaType is modeled the header is left
-      // untouched (a modeled Content-Type header member rides alongside).
       request = request.pipe(
-        HttpClientRequest.setBody(
-          HttpBody.raw(rawBody, { contentType: http.bodyMediaType }),
-        ),
+        HttpClientRequest.setBody(HttpBody.raw(rawBody, { contentType: mediaType })),
       );
     } else if (rawBody instanceof Uint8Array) {
       request = request.pipe(
-        HttpClientRequest.setBody(
-          HttpBody.uint8Array(rawBody, http.bodyMediaType),
-        ),
+        HttpClientRequest.setBody(HttpBody.uint8Array(rawBody, mediaType)),
+      );
+    } else if (typeof rawBody === "string" && mediaType !== undefined) {
+      // A string payload with an explicit media type is preserialized
+      // content sent verbatim — JSON-quoting it would corrupt the upload.
+      request = request.pipe(
+        HttpClientRequest.setBody(HttpBody.text(rawBody, mediaType)),
       );
     } else if (http.bodyMediaType) {
       request = request.pipe(
         HttpClientRequest.setBody(
-          typeof rawBody === "string"
-            ? HttpBody.text(rawBody, http.bodyMediaType)
-            : HttpBody.uint8Array(rawBody as Uint8Array, http.bodyMediaType),
+          HttpBody.uint8Array(rawBody as Uint8Array, http.bodyMediaType),
         ),
       );
     } else {
@@ -641,18 +659,32 @@ export const buildRequest = ({
 /**
  * Whether one matcher matches one wire error: every present field must
  * match; a matcher (or a message object) with no constraints matches
- * nothing.
+ * nothing. `header` matches when the named response header is present
+ * (case-insensitive; only checkable when the caller passes headers).
  */
 export const matchesExpression = (
   m: ErrorMatcher,
   code: number | undefined,
   status: number,
   message: string,
+  headers?: Record<string, string | undefined>,
 ): boolean => {
-  if (m.code === undefined && m.status === undefined && m.message === undefined)
+  if (
+    m.code === undefined &&
+    m.status === undefined &&
+    m.message === undefined &&
+    m.header === undefined
+  )
     return false;
   if (m.code !== undefined && m.code !== code) return false;
   if (m.status !== undefined && m.status !== status) return false;
+  if (m.header !== undefined) {
+    if (headers === undefined) return false;
+    const name = m.header.toLowerCase();
+    if (headers[name] === undefined && headers[m.header] === undefined) {
+      return false;
+    }
+  }
   if (m.message !== undefined) {
     if (typeof m.message === "string") {
       if (m.message !== message) return false;
@@ -670,17 +702,20 @@ export const matchesExpression = (
 const matcherSpecificity = (m: ErrorMatcher): number =>
   (m.code !== undefined ? 1 : 0) +
   (m.status !== undefined ? 1 : 0) +
-  (m.message !== undefined ? 1 : 0);
+  (m.message !== undefined ? 1 : 0) +
+  (m.header !== undefined ? 1 : 0);
 
 /**
  * Pick the operation's typed error class for a failed response: among all
  * declared classes whose matchers (see `applyErrorMatchers`) match the wire
  * failure, the most specific matcher wins (ties break by declaration order).
+ * `headers` (the response headers) enables `header`-presence matchers.
  */
 export const matchTypedError = (
   errorClasses: ReadonlyArray<unknown>,
   status: number,
   errors: ReadonlyArray<{ code?: number; message: string }>,
+  headers?: Record<string, string | undefined>,
 ): unknown | undefined => {
   let best:
     | { cls: unknown; specificity: number; code?: number; message: string }
@@ -690,7 +725,7 @@ export const matchTypedError = (
     if (!matchers) continue;
     for (const m of matchers) {
       for (const e of errors) {
-        if (!matchesExpression(m, e.code, status, e.message)) continue;
+        if (!matchesExpression(m, e.code, status, e.message, headers)) continue;
         const specificity = matcherSpecificity(m);
         if (!best || specificity > best.specificity) {
           best = { cls, specificity, code: e.code, message: e.message };

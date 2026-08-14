@@ -1,0 +1,527 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "distilled.protocol": "QueuesDataProtocol",
+    "note": "Hand-authored: the Vercel Queues DATA PLANE (https://{region}.vercel-queue.com/api/v3) is absent from the management OpenAPI document. Routes, Vqs-* headers, multipart/mixed receives, and the typed error taxonomy are transcribed from the documented protocol + @vercel/queue@0.4.0, live-verified in processes/Vercel/PROBES.md (probe 4 + 'Queue subscribe / push-delivery probes'). Auth is a per-call OIDC bearer (per project+ENVIRONMENT namespace — externally minted tokens are always development-scoped). VERCEL_QUEUE_BASE_URL overrides the host (local broker emulation); the /api/v3 path prefix survives the override.",
+    "suppressions": [
+      { "id": "HttpUriConflict", "namespace": "*" },
+      { "id": "HttpMethodSemantics", "namespace": "*" },
+      { "id": "UnreferencedShape", "namespace": "*" }
+    ]
+  },
+  "shapes": {
+    "com.vercel.queues_data#QueueBadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "400 — invalid parameters (bad visibility timeout, malformed request, …).",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [{ "status": 400 }]
+      }
+    },
+    "com.vercel.queues_data#QueueUnauthorized": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "401 — the OIDC bearer token is missing, expired, or invalid.",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 401,
+        "com.distilled.openapi#errorMatchers": [{ "status": 401 }]
+      }
+    },
+    "com.vercel.queues_data#QueueForbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "403 — the token is valid but not allowed to access this topic.",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [{ "status": 403 }]
+      }
+    },
+    "com.vercel.queues_data#DuplicateMessage": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "409 on send — the `Vqs-Idempotency-Key` was already used.",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [{ "status": 409 }]
+      }
+    },
+    "com.vercel.queues_data#ConsumerDiscoveryFailed": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "502 on send — the platform could not discover a consumer for the topic.",
+        "smithy.api#error": "server",
+        "smithy.api#httpError": 502,
+        "com.distilled.openapi#errorMatchers": [{ "status": 502 }]
+      }
+    },
+    "com.vercel.queues_data#ConsumerRegistryNotConfigured": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "503 on send — the project has no consumer registry configured (no deployment carries a queue trigger for this topic yet). Deliberately carries NO retryable category: it is a configuration gap, not a transient failure.",
+        "smithy.api#error": "server",
+        "com.distilled.openapi#errorMatchers": [{ "status": 503 }]
+      }
+    },
+    "com.vercel.queues_data#MessageNotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "404 — no such message (or receipt handle) for this consumer group.",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [{ "status": 404 }]
+      }
+    },
+    "com.vercel.queues_data#MessageNotAvailable": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "409 — the message exists but is not in a receivable/ackable state for this consumer group (already leased, wrong receipt handle, or a duplicate whose `originalMessageId` — in the message body JSON — should be used instead).",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [{ "status": 409 }]
+      }
+    },
+    "com.vercel.queues_data#MessageAlreadyProcessed": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "410 — the message was already processed by this consumer group.",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 410,
+        "com.distilled.openapi#errorMatchers": [{ "status": 410 }]
+      }
+    },
+    "com.vercel.queues_data#QueueMessage": {
+      "type": "structure",
+      "members": {
+        "messageId": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Unique message id (`Vqs-Message-Id`).", "smithy.api#required": {} }
+        },
+        "deliveryCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Delivery attempt count for this consumer group (`Vqs-Delivery-Count`).",
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#Timestamp",
+          "traits": {
+            "smithy.api#documentation": "When the message was enqueued (`Vqs-Timestamp`, ISO 8601).",
+            "smithy.api#required": {}
+          }
+        },
+        "expiresAt": {
+          "target": "smithy.api#Timestamp",
+          "traits": { "smithy.api#documentation": "When the message expires (`Vqs-Expires-At`), if reported." }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Payload content type (`Content-Type` of the multipart part).",
+            "smithy.api#required": {}
+          }
+        },
+        "receiptHandle": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Lease handle for this delivery (`Vqs-Receipt-Handle`) — pass to acknowledgeMessage/extendLease. Scoped to the consumer group and delivery.",
+            "smithy.api#required": {}
+          }
+        },
+        "payload": {
+          "target": "smithy.api#Blob",
+          "traits": { "smithy.api#documentation": "The raw payload bytes of the part.", "smithy.api#required": {} }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "One received message: the `Vqs-*` part headers plus the raw payload bytes."
+      }
+    },
+    "com.vercel.queues_data#QueueMessageList": {
+      "type": "list",
+      "member": { "target": "com.vercel.queues_data#QueueMessage" }
+    },
+    "com.vercel.queues_data#SendMessageRequest": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Region host label (`https://{region}.vercel-queue.com`), e.g. `iad1`. Ignored while VERCEL_QUEUE_BASE_URL overrides the host.",
+            "smithy.api#hostLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OIDC bearer token.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "topic": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Topic (queue) name.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "deploymentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment partition pin (`Vqs-Deployment-Id`). Load-bearing: visibility is partitioned by it — unpinned sends are invisible to pinned receivers and vice versa.",
+            "smithy.api#httpHeader": "Vqs-Deployment-Id"
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Payload content type — echoed back on delivery.",
+            "smithy.api#httpHeader": "content-type",
+            "smithy.api#required": {}
+          }
+        },
+        "idempotencyKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Dedupe key (`Vqs-Idempotency-Key`) — a reuse fails with the typed DuplicateMessage.",
+            "smithy.api#httpHeader": "Vqs-Idempotency-Key"
+          }
+        },
+        "retentionSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": { "smithy.api#documentation": "Message retention (`Vqs-Retention-Seconds`).", "smithy.api#httpHeader": "Vqs-Retention-Seconds" }
+        },
+        "delaySeconds": {
+          "target": "smithy.api#Integer",
+          "traits": { "smithy.api#documentation": "Delivery delay (`Vqs-Delay-Seconds`).", "smithy.api#httpHeader": "Vqs-Delay-Seconds" }
+        },
+        "payload": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "smithy.api#documentation": "The message payload — sent verbatim as the request body.",
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.vercel.queues_data#SendMessageResponse": {
+      "type": "structure",
+      "members": {
+        "messageId": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "The enqueued message's id. A 202 response carries no id (absent)." }
+        }
+      }
+    },
+    "com.vercel.queues_data#SendMessage": {
+      "type": "operation",
+      "input": { "target": "com.vercel.queues_data#SendMessageRequest" },
+      "output": { "target": "com.vercel.queues_data#SendMessageResponse" },
+      "errors": [
+        { "target": "com.vercel.queues_data#DuplicateMessage" },
+        { "target": "com.vercel.queues_data#ConsumerDiscoveryFailed" },
+        { "target": "com.vercel.queues_data#ConsumerRegistryNotConfigured" },
+        { "target": "com.vercel.queues_data#QueueBadRequest" },
+        { "target": "com.vercel.queues_data#QueueUnauthorized" },
+        { "target": "com.vercel.queues_data#QueueForbidden" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "POST", "uri": "/api/v3/topic/{topic}", "code": 200 },
+        "smithy.api#documentation": "Enqueue one message: `POST /api/v3/topic/{topic}` with the payload as the raw body and delivery options as `Vqs-*` headers."
+      }
+    },
+    "com.vercel.queues_data#ReceiveMessagesRequest": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Region host label, e.g. `iad1`. Ignored while VERCEL_QUEUE_BASE_URL overrides the host.",
+            "smithy.api#hostLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OIDC bearer token.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "topic": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Topic (queue) name.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "consumerGroup": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Consumer group to lease under.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "deploymentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment partition pin (`Vqs-Deployment-Id`).",
+            "smithy.api#httpHeader": "Vqs-Deployment-Id"
+          }
+        },
+        "visibilityTimeoutSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Lease duration (`Vqs-Visibility-Timeout-Seconds`).",
+            "smithy.api#httpHeader": "Vqs-Visibility-Timeout-Seconds"
+          }
+        },
+        "maxMessages": {
+          "target": "smithy.api#Integer",
+          "traits": { "smithy.api#documentation": "Batch size, 1–10 (`Vqs-Max-Messages`).", "smithy.api#httpHeader": "Vqs-Max-Messages" }
+        }
+      }
+    },
+    "com.vercel.queues_data#ReceiveMessagesResponse": {
+      "type": "structure",
+      "members": {
+        "messages": {
+          "target": "com.vercel.queues_data#QueueMessageList",
+          "traits": {
+            "smithy.api#documentation": "The leased batch — empty on a 204 (nothing available). Parts missing required `Vqs-*` headers are skipped (they stay leased and expire back).",
+            "com.vercel.protocols#multipartMessages": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.vercel.queues_data#ReceiveMessages": {
+      "type": "operation",
+      "input": { "target": "com.vercel.queues_data#ReceiveMessagesRequest" },
+      "output": { "target": "com.vercel.queues_data#ReceiveMessagesResponse" },
+      "errors": [
+        { "target": "com.vercel.queues_data#QueueBadRequest" },
+        { "target": "com.vercel.queues_data#QueueUnauthorized" },
+        { "target": "com.vercel.queues_data#QueueForbidden" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "POST", "uri": "/api/v3/topic/{topic}/consumer/{consumerGroup}", "code": 200, "accept": "multipart/mixed" },
+        "smithy.api#documentation": "Lease a batch: `POST /api/v3/topic/{topic}/consumer/{consumerGroup}` (Accept: multipart/mixed). The multipart parts are parsed into typed message records; 204 → empty batch."
+      }
+    },
+    "com.vercel.queues_data#ReceiveMessageByIdRequest": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Region host label, e.g. `iad1`. Ignored while VERCEL_QUEUE_BASE_URL overrides the host.",
+            "smithy.api#hostLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OIDC bearer token.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "topic": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Topic (queue) name.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "consumerGroup": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Consumer group to lease under.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "messageId": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "The message id to lease (large-body push deliveries fetch by id).", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "deploymentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment partition pin (`Vqs-Deployment-Id`).",
+            "smithy.api#httpHeader": "Vqs-Deployment-Id"
+          }
+        },
+        "visibilityTimeoutSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Lease duration (`Vqs-Visibility-Timeout-Seconds`).",
+            "smithy.api#httpHeader": "Vqs-Visibility-Timeout-Seconds"
+          }
+        }
+      }
+    },
+    "com.vercel.queues_data#ReceiveMessageByIdResponse": {
+      "type": "structure",
+      "members": {
+        "messages": {
+          "target": "com.vercel.queues_data#QueueMessageList",
+          "traits": {
+            "smithy.api#documentation": "The response's message part(s) — the leased message is the first entry.",
+            "com.vercel.protocols#multipartMessages": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.vercel.queues_data#ReceiveMessageById": {
+      "type": "operation",
+      "input": { "target": "com.vercel.queues_data#ReceiveMessageByIdRequest" },
+      "output": { "target": "com.vercel.queues_data#ReceiveMessageByIdResponse" },
+      "errors": [
+        { "target": "com.vercel.queues_data#MessageNotFound" },
+        { "target": "com.vercel.queues_data#MessageNotAvailable" },
+        { "target": "com.vercel.queues_data#MessageAlreadyProcessed" },
+        { "target": "com.vercel.queues_data#QueueBadRequest" },
+        { "target": "com.vercel.queues_data#QueueUnauthorized" },
+        { "target": "com.vercel.queues_data#QueueForbidden" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "POST", "uri": "/api/v3/topic/{topic}/consumer/{consumerGroup}/id/{messageId}", "code": 200, "accept": "multipart/mixed" },
+        "smithy.api#documentation": "Lease one specific message by id (Accept: multipart/mixed)."
+      }
+    },
+    "com.vercel.queues_data#AcknowledgeMessageRequest": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Region host label, e.g. `iad1`. Ignored while VERCEL_QUEUE_BASE_URL overrides the host.",
+            "smithy.api#hostLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OIDC bearer token.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "topic": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Topic (queue) name.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "consumerGroup": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Consumer group the lease belongs to.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "receiptHandle": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "The delivery's lease handle.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "deploymentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment partition pin (`Vqs-Deployment-Id`).",
+            "smithy.api#httpHeader": "Vqs-Deployment-Id"
+          }
+        }
+      }
+    },
+    "com.vercel.queues_data#AcknowledgeMessageResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "com.vercel.queues_data#AcknowledgeMessage": {
+      "type": "operation",
+      "input": { "target": "com.vercel.queues_data#AcknowledgeMessageRequest" },
+      "output": { "target": "com.vercel.queues_data#AcknowledgeMessageResponse" },
+      "errors": [
+        { "target": "com.vercel.queues_data#MessageNotFound" },
+        { "target": "com.vercel.queues_data#MessageNotAvailable" },
+        { "target": "com.vercel.queues_data#QueueBadRequest" },
+        { "target": "com.vercel.queues_data#QueueUnauthorized" },
+        { "target": "com.vercel.queues_data#QueueForbidden" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "DELETE", "uri": "/api/v3/topic/{topic}/consumer/{consumerGroup}/lease/{receiptHandle}", "code": 200 },
+        "smithy.api#documentation": "Acknowledge (complete) a delivery: DELETE the lease."
+      }
+    },
+    "com.vercel.queues_data#ExtendLeaseRequest": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Region host label, e.g. `iad1`. Ignored while VERCEL_QUEUE_BASE_URL overrides the host.",
+            "smithy.api#hostLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OIDC bearer token.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "topic": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Topic (queue) name.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "consumerGroup": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Consumer group the lease belongs to.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "receiptHandle": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "The delivery's lease handle.", "smithy.api#httpLabel": {}, "smithy.api#required": {} }
+        },
+        "deploymentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deployment partition pin (`Vqs-Deployment-Id`).",
+            "smithy.api#httpHeader": "Vqs-Deployment-Id"
+          }
+        },
+        "visibilityTimeoutSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "New lease duration from now, in seconds (JSON body).",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.vercel.queues_data#ExtendLeaseResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "com.vercel.queues_data#ExtendLease": {
+      "type": "operation",
+      "input": { "target": "com.vercel.queues_data#ExtendLeaseRequest" },
+      "output": { "target": "com.vercel.queues_data#ExtendLeaseResponse" },
+      "errors": [
+        { "target": "com.vercel.queues_data#MessageNotFound" },
+        { "target": "com.vercel.queues_data#MessageNotAvailable" },
+        { "target": "com.vercel.queues_data#QueueBadRequest" },
+        { "target": "com.vercel.queues_data#QueueUnauthorized" },
+        { "target": "com.vercel.queues_data#QueueForbidden" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "PATCH", "uri": "/api/v3/topic/{topic}/consumer/{consumerGroup}/lease/{receiptHandle}", "code": 200 },
+        "smithy.api#documentation": "Extend a delivery's visibility timeout: PATCH the lease with `{visibilityTimeoutSeconds}`."
+      }
+    }
+  }
+}

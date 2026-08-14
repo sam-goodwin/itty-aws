@@ -109,6 +109,21 @@ export const labelSymbol = Symbol.for("@distilled.cloud/core/http/label");
 export const Label = (name?: string) =>
   makeAnnotation(labelSymbol, name ?? true);
 
+export const hostLabelSymbol = Symbol.for(
+  "@distilled.cloud/core/http/host-label",
+);
+/**
+ * Bind a member to a `{name}` placeholder in the ENDPOINT (base URL)
+ * template (mirrors `smithy.api#hostLabel`). Data-plane APIs commonly
+ * template their host per call — e.g. Vercel Queues'
+ * `https://{region}.vercel-queue.com` or a per-store content host. The value
+ * substitutes RAW (no percent-encoding — an endpoint template may take a
+ * whole origin as its label) and is never serialized into the path, query,
+ * headers, or body.
+ */
+export const HostLabel = (name?: string) =>
+  makeAnnotation(hostLabelSymbol, name ?? true);
+
 export const responseCodeSymbol = Symbol.for(
   "@distilled.cloud/core/http/response-code",
 );
@@ -204,9 +219,13 @@ export const errorMatchersSymbol = Symbol.for(
 /**
  * One wire-matching rule for a typed error class. A matcher matches a wire
  * failure when every present field matches: `code` equals the wire error's
- * code, `status` equals the HTTP status, and `message` either equals the
+ * code, `status` equals the HTTP status, `message` either equals the
  * error message (string form) or satisfies `includes` (substring) /
- * `matches` (regex). A matcher with no fields matches nothing.
+ * `matches` (regex), and `header` names a response header that must be
+ * PRESENT (some APIs discriminate failures by header — e.g. Vercel Edge
+ * Config's missing-item 404 carries `x-edge-config-digest` while a bare 404
+ * means the config itself is gone). A matcher with no fields matches
+ * nothing.
  */
 export interface ErrorMatcher {
   readonly code?: number;
@@ -214,6 +233,7 @@ export interface ErrorMatcher {
   readonly message?:
     | string
     | { readonly includes?: string; readonly matches?: string };
+  readonly header?: string;
 }
 
 /**

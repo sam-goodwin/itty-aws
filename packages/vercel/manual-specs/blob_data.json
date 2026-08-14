@@ -1,0 +1,513 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "distilled.protocol": "BlobDataProtocol",
+    "note": "Hand-authored: the Vercel Blob DATA PLANE (https://blob.vercel-storage.com) is absent from the management OpenAPI document. Routes, headers, and the typed error taxonomy are transcribed from the live-verified wire protocol (processes/Vercel/PROBES.md, 'Blob data-plane + connect probes' / 'Blob capability probes', cross-checked against @vercel/blob@2.8.0). Auth is the store's RW token (vercel_blob_rw_...), a per-call sensitive input member. VERCEL_BLOB_API_URL overrides the endpoint (local emulation); content reads then move from the per-store host to {override}/{storeIdLower}.{access}/{pathname}.",
+    "suppressions": [
+      { "id": "HttpUriConflict", "namespace": "*" },
+      { "id": "HttpMethodSemantics", "namespace": "*" },
+      { "id": "UnreferencedShape", "namespace": "*" }
+    ]
+  },
+  "shapes": {
+    "com.vercel.blob_data#BlobUnauthorized": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "401 — the data-plane token was rejected.",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 401,
+        "com.distilled.openapi#errorMatchers": [{ "status": 401 }]
+      }
+    },
+    "com.vercel.blob_data#BlobForbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "403 — the token is not allowed to perform the operation (or an unauthenticated private read).",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [{ "status": 403 }]
+      }
+    },
+    "com.vercel.blob_data#BlobNotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "404 `not_found` — the blob does not exist.",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [{ "status": 404 }]
+      }
+    },
+    "com.vercel.blob_data#BlobAlreadyExists": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "400 \"This blob already exists…\" — a conditional create (`x-allow-overwrite: 0`, or the header absent: the wire default REFUSES overwrites) hit an existing pathname.",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          { "status": 400, "message": { "includes": "already exists" } }
+        ]
+      }
+    },
+    "com.vercel.blob_data#BlobPreconditionFailed": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "412 `precondition_failed` — the `x-if-match` etag no longer matches (CAS).",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 412,
+        "com.distilled.openapi#errorMatchers": [{ "status": 412 }]
+      }
+    },
+    "com.vercel.blob_data#BlobBadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Any other 400 from the data plane (e.g. access-mode mismatch on a put).",
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [{ "status": 400 }]
+      }
+    },
+    "com.vercel.blob_data#BlobAccess": {
+      "type": "enum",
+      "members": {
+        "PUBLIC": { "target": "smithy.api#Unit", "traits": { "smithy.api#enumValue": "public" } },
+        "PRIVATE": { "target": "smithy.api#Unit", "traits": { "smithy.api#enumValue": "private" } }
+      },
+      "traits": {
+        "smithy.api#documentation": "The store's access mode — must match the store (a private store rejects `public` and missing alike)."
+      }
+    },
+    "com.vercel.blob_data#BlobAllowOverwrite": {
+      "type": "enum",
+      "members": {
+        "REFUSE": { "target": "smithy.api#Unit", "traits": { "smithy.api#enumValue": "0" } },
+        "ALLOW": { "target": "smithy.api#Unit", "traits": { "smithy.api#enumValue": "1" } }
+      },
+      "traits": {
+        "smithy.api#documentation": "`x-allow-overwrite` wire values: `1` overwrites, `0` is a conditional create (typed BlobAlreadyExists on an existing pathname). The wire DEFAULT with the header absent is to refuse overwrites — send it explicitly."
+      }
+    },
+    "com.vercel.blob_data#PutBlobRequest": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The store's RW token (`vercel_blob_rw_…`) — sent as the bearer.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "pathname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pathname of the blob within the store (query parameter, NOT the path).",
+            "smithy.api#httpQuery": "pathname",
+            "smithy.api#required": {}
+          }
+        },
+        "access": {
+          "target": "com.vercel.blob_data#BlobAccess",
+          "traits": {
+            "smithy.api#documentation": "The store's access mode.",
+            "smithy.api#httpHeader": "x-vercel-blob-access",
+            "smithy.api#required": {}
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Content type stored and served with the blob.",
+            "smithy.api#httpHeader": "content-type"
+          }
+        },
+        "ifMatch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Compare-and-swap: only write if the blob's current quoted etag matches (412 BlobPreconditionFailed otherwise).",
+            "smithy.api#httpHeader": "x-if-match"
+          }
+        },
+        "allowOverwrite": {
+          "target": "com.vercel.blob_data#BlobAllowOverwrite",
+          "traits": {
+            "smithy.api#documentation": "`1` to overwrite, `0` for a conditional create. The wire default (header absent) REFUSES overwrites.",
+            "smithy.api#httpHeader": "x-allow-overwrite"
+          }
+        },
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "smithy.api#documentation": "The blob content — sent verbatim as the request body.",
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.vercel.blob_data#PutBlobResponse": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Canonical blob URL (`https://{storeIdLower}.{access}.blob.vercel-storage.com/{pathname}`).",
+            "smithy.api#required": {}
+          }
+        },
+        "downloadUrl": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The blob URL with `?download=1` (forces attachment disposition).",
+            "smithy.api#required": {}
+          }
+        },
+        "pathname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pathname of the blob within the store.",
+            "smithy.api#required": {}
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Content type recorded at upload." }
+        },
+        "contentDisposition": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Content disposition served with the blob." }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Quoted entity tag of the NEW content — the CAS handle for the next write.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.vercel.blob_data#PutBlob": {
+      "type": "operation",
+      "input": { "target": "com.vercel.blob_data#PutBlobRequest" },
+      "output": { "target": "com.vercel.blob_data#PutBlobResponse" },
+      "errors": [
+        { "target": "com.vercel.blob_data#BlobAlreadyExists" },
+        { "target": "com.vercel.blob_data#BlobPreconditionFailed" },
+        { "target": "com.vercel.blob_data#BlobBadRequest" },
+        { "target": "com.vercel.blob_data#BlobUnauthorized" },
+        { "target": "com.vercel.blob_data#BlobForbidden" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "PUT", "uri": "/", "code": 200 },
+        "smithy.api#documentation": "Upload a blob: `PUT {endpoint}/?pathname=…` with the content as the raw body. Every put returns the new content's etag."
+      }
+    },
+    "com.vercel.blob_data#HeadBlobRequest": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The store's RW token — sent as the bearer.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The blob's CANONICAL url (`https://{storeIdLower}.{access}.blob.vercel-storage.com/{pathname}`) — `?url=` is what makes this a head; `?pathname=` on GET is a prefix LIST.",
+            "smithy.api#httpQuery": "url",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.vercel.blob_data#HeadBlobResponse": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Canonical blob URL.", "smithy.api#required": {} }
+        },
+        "downloadUrl": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "The blob URL with `?download=1`.", "smithy.api#required": {} }
+        },
+        "pathname": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Pathname of the blob within the store.", "smithy.api#required": {} }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Content type recorded at upload." }
+        },
+        "contentDisposition": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Content disposition served with the blob." }
+        },
+        "size": {
+          "target": "smithy.api#Long",
+          "traits": { "smithy.api#documentation": "Size in bytes.", "smithy.api#required": {} }
+        },
+        "uploadedAt": {
+          "target": "smithy.api#Timestamp",
+          "traits": { "smithy.api#documentation": "Upload timestamp (ISO 8601).", "smithy.api#required": {} }
+        },
+        "cacheControl": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Cache-control policy served with the blob." }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Quoted entity tag — pass to `ifMatch` for CAS.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.vercel.blob_data#HeadBlob": {
+      "type": "operation",
+      "input": { "target": "com.vercel.blob_data#HeadBlobRequest" },
+      "output": { "target": "com.vercel.blob_data#HeadBlobResponse" },
+      "errors": [
+        { "target": "com.vercel.blob_data#BlobNotFound" },
+        { "target": "com.vercel.blob_data#BlobBadRequest" },
+        { "target": "com.vercel.blob_data#BlobUnauthorized" },
+        { "target": "com.vercel.blob_data#BlobForbidden" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "GET", "uri": "/", "code": 200 },
+        "smithy.api#documentation": "Blob metadata: `GET {endpoint}/?url=<canonical url>` → metadata JSON, 404 BlobNotFound when the blob does not exist."
+      }
+    },
+    "com.vercel.blob_data#BlobListItem": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Canonical blob URL.", "smithy.api#required": {} }
+        },
+        "downloadUrl": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "The blob URL with `?download=1`.", "smithy.api#required": {} }
+        },
+        "pathname": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Pathname of the blob within the store.", "smithy.api#required": {} }
+        },
+        "size": {
+          "target": "smithy.api#Long",
+          "traits": { "smithy.api#documentation": "Size in bytes.", "smithy.api#required": {} }
+        },
+        "uploadedAt": {
+          "target": "smithy.api#Timestamp",
+          "traits": { "smithy.api#documentation": "Upload timestamp (ISO 8601).", "smithy.api#required": {} }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Quoted entity tag — pass to `ifMatch` for CAS.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata row returned by list — list rows carry no content type/disposition."
+      }
+    },
+    "com.vercel.blob_data#BlobListItemList": {
+      "type": "list",
+      "member": { "target": "com.vercel.blob_data#BlobListItem" }
+    },
+    "com.vercel.blob_data#ListBlobsRequest": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The store's RW token — sent as the bearer.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Only list blobs whose pathname starts with this prefix.",
+            "smithy.api#httpQuery": "prefix"
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": { "smithy.api#documentation": "Page size.", "smithy.api#httpQuery": "limit" }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Continuation cursor from a previous page.",
+            "smithy.api#httpQuery": "cursor"
+          }
+        }
+      }
+    },
+    "com.vercel.blob_data#ListBlobsResponse": {
+      "type": "structure",
+      "members": {
+        "hasMore": {
+          "target": "smithy.api#Boolean",
+          "traits": { "smithy.api#documentation": "Whether another page exists.", "smithy.api#required": {} }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": { "smithy.api#documentation": "Cursor for the next page (present when `hasMore`)." }
+        },
+        "blobs": {
+          "target": "com.vercel.blob_data#BlobListItemList",
+          "traits": { "smithy.api#documentation": "One page of blobs.", "smithy.api#required": {} }
+        }
+      }
+    },
+    "com.vercel.blob_data#ListBlobs": {
+      "type": "operation",
+      "input": { "target": "com.vercel.blob_data#ListBlobsRequest" },
+      "output": { "target": "com.vercel.blob_data#ListBlobsResponse" },
+      "errors": [
+        { "target": "com.vercel.blob_data#BlobBadRequest" },
+        { "target": "com.vercel.blob_data#BlobUnauthorized" },
+        { "target": "com.vercel.blob_data#BlobForbidden" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "GET", "uri": "/", "code": 200 },
+        "smithy.api#documentation": "One page of blobs: `GET {endpoint}/?prefix=&limit=&cursor=`. Callers advance `cursor` while `hasMore`."
+      }
+    },
+    "com.vercel.blob_data#UrlList": {
+      "type": "list",
+      "member": { "target": "smithy.api#String" }
+    },
+    "com.vercel.blob_data#DeleteBlobsRequest": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The store's RW token — sent as the bearer.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "urls": {
+          "target": "com.vercel.blob_data#UrlList",
+          "traits": {
+            "smithy.api#documentation": "CANONICAL blob urls to delete (idempotent — missing blobs are not an error).",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.vercel.blob_data#DeleteBlobsResponse": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "The wire answers `200 null`; there is no payload."
+      }
+    },
+    "com.vercel.blob_data#DeleteBlobs": {
+      "type": "operation",
+      "input": { "target": "com.vercel.blob_data#DeleteBlobsRequest" },
+      "output": { "target": "com.vercel.blob_data#DeleteBlobsResponse" },
+      "errors": [
+        { "target": "com.vercel.blob_data#BlobBadRequest" },
+        { "target": "com.vercel.blob_data#BlobUnauthorized" },
+        { "target": "com.vercel.blob_data#BlobForbidden" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "POST", "uri": "/delete", "code": 200 },
+        "smithy.api#documentation": "Idempotent batch delete by canonical URL: `POST {endpoint}/delete` `{urls: […]}`."
+      }
+    },
+    "com.vercel.blob_data#GetBlobContentRequest": {
+      "type": "structure",
+      "members": {
+        "store": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The store's content-host handle: `{bareStoreIdLower}.{access}` (store id minus `store_`, lowercased, dot, access mode). Fills the `{store}` endpoint label — live: `https://{store}.blob.vercel-storage.com`; under a VERCEL_BLOB_API_URL override: `{override}/{store}`.",
+            "smithy.api#hostLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The store's RW token — required for private stores, harmless for public ones.",
+            "smithy.api#httpHeader": "authorization",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        },
+        "pathname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pathname of the blob within the store (may contain `/` — encoded per segment).",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.vercel.blob_data#GetBlobContentResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "smithy.api#documentation": "The blob's content, buffered.",
+            "com.vercel.protocols#binaryResponseBody": {},
+            "smithy.api#required": {}
+          }
+        },
+        "contentType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Content type served with the blob.",
+            "smithy.api#httpHeader": "content-type"
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Quoted entity tag served with the content.",
+            "smithy.api#httpHeader": "etag"
+          }
+        }
+      }
+    },
+    "com.vercel.blob_data#GetBlobContent": {
+      "type": "operation",
+      "input": { "target": "com.vercel.blob_data#GetBlobContentRequest" },
+      "output": { "target": "com.vercel.blob_data#GetBlobContentResponse" },
+      "errors": [
+        { "target": "com.vercel.blob_data#BlobNotFound" },
+        { "target": "com.vercel.blob_data#BlobUnauthorized" },
+        { "target": "com.vercel.blob_data#BlobForbidden" }
+      ],
+      "traits": {
+        "smithy.api#http": { "method": "GET", "uri": "/{pathname+}", "code": 200 },
+        "smithy.api#endpoint": { "hostPrefix": "{store}." },
+        "smithy.api#documentation": "Fetch a blob's content from its per-store host (`https://{store}.blob.vercel-storage.com/{pathname}`; under a VERCEL_BLOB_API_URL override: `{override}/{store}/{pathname}`)."
+      }
+    }
+  }
+}

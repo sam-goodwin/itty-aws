@@ -22450,9 +22450,14 @@ export const GetDeploymentFileContentsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDeploymentFileContentsRequest",
 }) as any as S.Schema<GetDeploymentFileContentsRequest>;
 
-export interface GetDeploymentFileContentsResponse {}
+export interface GetDeploymentFileContentsResponse {
+  /** The file contents, base64-encoded */
+  data: string;
+}
 export const GetDeploymentFileContentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  S.Struct({
+    data: S.String,
+  }),
 ).annotate({
   identifier: "GetDeploymentFileContentsResponse",
 }) as any as S.Schema<GetDeploymentFileContentsResponse>;

@@ -39434,13 +39434,28 @@
         "smithy.api#input": {}
       }
     },
+    "com.vercel.deployments#GetDeploymentFileContentsResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The file contents, base64-encoded",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
     "com.vercel.deployments#GetDeploymentFileContents": {
       "type": "operation",
       "input": {
         "target": "com.vercel.deployments#GetDeploymentFileContentsRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.vercel.deployments#GetDeploymentFileContentsResponse"
       },
       "errors": [
         {

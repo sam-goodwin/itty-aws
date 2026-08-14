@@ -35,6 +35,8 @@ const NULLABLE_TRAIT = "com.distilled.openapi#nullable";
 const ERROR_MATCHERS_TRAIT = "com.distilled.openapi#errorMatchers";
 const RAW_RESPONSE_TRAIT = "com.distilled.openapi#rawResponse";
 const SENSITIVE_TRAIT = "smithy.api#sensitive";
+const BINARY_RESPONSE_BODY_TRAIT = "com.vercel.protocols#binaryResponseBody";
+const MULTIPART_MESSAGES_TRAIT = "com.vercel.protocols#multipartMessages";
 
 /** `access_groups` → `accessGroups` (the barrel's export name). */
 const camel = (slug: string): string =>
@@ -109,12 +111,95 @@ const spec: SdkSpec = {
   },
 };
 
+/**
+ * Spec variant for the DATA-PLANE services (hand-authored models in
+ * `manual-specs/` whose `metadata["distilled.protocol"]` names their
+ * protocol const — `BlobDataProtocol` / `QueuesDataProtocol` /
+ * `EdgeConfigDataProtocol` in `src/data-protocol.ts`). Same trait
+ * vocabulary as the management spec, plus:
+ *
+ * - `com.vercel.protocols#binaryResponseBody` — raw binary response body
+ *   (blob content reads), delivered as buffered bytes with sibling
+ *   `httpHeader` members projected from the response headers.
+ * - `com.vercel.protocols#multipartMessages` — multipart/mixed receive
+ *   batches (queues), parsed into typed message records by the protocol.
+ * - `smithy.api#endpoint` hostPrefix on an operation → emitted as the op's
+ *   `endpointHostPrefix` config (per-op endpoint templates, filled by
+ *   `smithy.api#hostLabel` members).
+ *
+ * Data-plane auth is a per-call `sensitive` input member, so the generated
+ * ops require only an HttpClient (`VercelDataOpContext`) — never the
+ * management `Credentials`.
+ */
+const dataPlaneSpec = (protocol: string): SdkSpec => ({
+  ...spec,
+
+  extraBindings: [
+    ...(spec.extraBindings ?? []),
+    {
+      // Endpoint-template label (`{region}`, `{store}`, `{origin}`):
+      // substituted into the base URL, never serialized elsewhere. Opted
+      // into per provider (NOT a generic binding) because AWS's
+      // `smithy.api#hostLabel` members must still serialize as normal
+      // members per their protocol.
+      trait: "smithy.api#hostLabel",
+      binding: "hostLabel",
+      pipe: "T.HostLabel()",
+    },
+    {
+      trait: BINARY_RESPONSE_BODY_TRAIT,
+      binding: "binaryBody",
+      pipe: "T.BinaryResponseBody()",
+      tsType: "T.BinaryResponseBody",
+    },
+    {
+      trait: MULTIPART_MESSAGES_TRAIT,
+      binding: "multipartMessages",
+      pipe: "T.MultipartMessages()",
+    },
+  ],
+
+  // Response-side binary payloads (queue message payload bytes) are real
+  // bytes, not the JSON prelude's string; request-side whole-body payloads
+  // keep the generic accepting union.
+  memberTsType: (m) =>
+    SENSITIVE_TRAIT in m.traits
+      ? `string | Redacted.Redacted<string>${m.nullable ? " | null" : ""}`
+      : m.target === "smithy.api#Blob" && m.binding !== "rawBody"
+        ? "Uint8Array"
+        : undefined,
+
+  sourceNote: "manual-specs (hand-authored data-plane models)",
+
+  operationDecl: {
+    contextType: "VercelDataOpContext",
+    commonErrorType: "VercelDataOpError",
+    commonErrorClasses: [],
+    protocol,
+    retry: "Retry.Retry",
+    extraConfig: (ctx) => {
+      const endpoint = ctx.op.def.traits?.["smithy.api#endpoint"] as
+        | { hostPrefix?: string }
+        | undefined;
+      return endpoint?.hostPrefix
+        ? [`endpointHostPrefix: ${JSON.stringify(endpoint.hostPrefix)}`]
+        : [];
+    },
+  },
+});
+
 runGeneratorCli({
   description: "Generate the Vercel Effect SDK from the Smithy models",
   root: `${import.meta.dir}/..`,
   // The RFC-6902 patch chain in patches/ applies to the OpenAPI document in
   // scripts/convert.ts — never to the Smithy models.
   patchesDir: false,
+  // Hand-authored models for the product data planes (Blob, Queues, Edge
+  // Config reads) that the management OpenAPI document doesn't cover.
+  manualSpecsDir: "manual-specs",
   barrelExportName: camel,
-  spec: () => spec,
+  spec: (model) => {
+    const protocol = model?.metadata?.["distilled.protocol"];
+    return typeof protocol === "string" ? dataPlaneSpec(protocol) : spec;
+  },
 });

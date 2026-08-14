@@ -14,5 +14,6 @@ export {
   type VercelOpError,
   type VercelOpContext,
 } from "./protocol.ts";
+export * from "./data-protocol.ts";
 export * as Retry from "./retry.ts";
 export * as Services from "./services/index.ts";
