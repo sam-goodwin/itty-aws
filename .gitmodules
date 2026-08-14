@@ -87,3 +87,5 @@
 [submodule "packages/datadog/specs/datadog-api-client-typescript"]
 	path = packages/datadog/specs/datadog-api-client-typescript
 	url = https://github.com/DataDog/datadog-api-client-typescript.git
+	shallow = true
+	ignore = dirty

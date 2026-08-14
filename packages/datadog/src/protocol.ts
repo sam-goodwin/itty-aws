@@ -41,6 +41,7 @@ import { UnknownDatadogError, type DefaultErrors } from "./errors.ts";
 export type DatadogOpError =
   | DefaultErrors
   | ConfigError
+  | UnknownDatadogError
   | HttpClientError.HttpClientError;
 
 /** Context (requirements) shared by every generated Datadog operation. */
