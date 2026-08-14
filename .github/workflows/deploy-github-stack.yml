@@ -52,4 +52,13 @@ jobs:
         working-directory: stacks/github
         env:
           GITHUB_ACCESS_TOKEN: ${{ secrets.ALCHEMY_GITHUB_TOKEN }}
-        run: bun alchemy deploy --stage prod
+          # Remote state lives in the Cloudflare state store (the same one the
+          # alchemy monorepo uses), so the deploy needs Cloudflare credentials
+          # for the account hosting it.
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # The dedicated org the per-SDK snapshot repositories live in.
+          DISTILLED_REPOS_OWNER: ${{ vars.DISTILLED_REPOS_OWNER }}
+        # --yes auto-accepts prompts (e.g. a state-store version upgrade),
+        # which would otherwise hang a non-interactive CI run.
+        run: bun alchemy deploy --stage prod --yes

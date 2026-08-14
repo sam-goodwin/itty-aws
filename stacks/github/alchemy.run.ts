@@ -1,6 +1,7 @@
 import * as Alchemy from "alchemy";
+import * as Cloudflare from "alchemy/Cloudflare";
 import * as GitHub from "alchemy/GitHub";
-import { localState } from "alchemy/State";
+import * as Config from "effect/Config";
 import * as Effect from "effect/Effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
@@ -19,13 +20,21 @@ import * as Path from "effect/Path";
  *
  * Repositories default to Alchemy's `retain` removal policy: removing a
  * package (or destroying the stack) never deletes a repository on GitHub.
- * State is local (`.alchemy/state`); in CI each run starts from empty state,
- * which is safe here because `GitHub.Repository` converges against the live
- * repository — an existing repo is adopted and its settings synced, not
- * duplicated.
+ * State lives in the remote Cloudflare state store (the same one the alchemy
+ * monorepo uses), so every deploy — local or CI — converges the same stack.
  */
 
-const OWNER = "alchemy-run";
+/**
+ * The GitHub org the per-SDK repositories live in. Overridable via
+ * `DISTILLED_REPOS_OWNER` so the workflow can point at the dedicated
+ * snapshot org without a code change.
+ */
+const Owner = Config.string("DISTILLED_REPOS_OWNER").pipe(
+  // An unset repository variable reaches the workflow as an empty string, so
+  // treat empty the same as missing.
+  Config.withDefault(""),
+  Config.map((owner) => (owner.trim() === "" ? "alchemy-run" : owner.trim())),
+);
 
 const discoverPackages = Effect.gen(function* () {
   const fs = yield* FileSystem.FileSystem;
@@ -47,15 +56,16 @@ export default Alchemy.Stack(
   "distilled-github",
   {
     providers: GitHub.providers(),
-    state: localState(),
+    state: Cloudflare.state(),
   },
   Effect.gen(function* () {
+    const owner = yield* Owner;
     const packages = yield* discoverPackages;
 
     const repositories = yield* Effect.all(
       packages.map((pkg) =>
         GitHub.Repository(pkg, {
-          owner: OWNER,
+          owner,
           name: `distilled-${pkg}`,
           description:
             pkg === "core"

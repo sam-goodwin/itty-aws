@@ -17,9 +17,11 @@ repositories themselves; pushing snapshot content into them is a follow-up.
 - `GitHub.Repository` converges against the live repository: if the repo
   already exists it is adopted and its settings synced, never duplicated. The
   default removal policy is `retain`, so nothing here can delete a repository.
-- State is local (`.alchemy/state`, gitignored). CI runs start from empty
-  state, which is safe for this stack because every resource reconciles
-  against the live GitHub API.
+- State lives in the remote Cloudflare state store (`Cloudflare.state()`) —
+  the same store the alchemy monorepo uses — so local and CI deploys converge
+  one shared stack instead of each starting from scratch.
+- The target org is `vars.DISTILLED_REPOS_OWNER` (repository variable),
+  falling back to `alchemy-run` when unset.
 - This directory is deliberately **not** a workspace member and has its own
   `bun.lock`: `alchemy` pins an older `effect` beta (`4.0.0-beta.103`) than
   the monorepo's catalog, and a shared workspace install would hoist a single
@@ -29,16 +31,19 @@ repositories themselves; pushing snapshot content into them is a follow-up.
 
 Runs automatically on every push to `main` via
 [`.github/workflows/deploy-github-stack.yml`](../../.github/workflows/deploy-github-stack.yml)
-(usually a no-op). The workflow authenticates with the `ALCHEMY_GITHUB_TOKEN`
-repository secret — a PAT with `repo` scope and permission to create
-repositories in the `alchemy-run` org (the workflow's built-in `GITHUB_TOKEN`
-cannot create repositories, so a PAT is required).
+(usually a no-op). The workflow needs:
 
-To deploy manually:
+- `ALCHEMY_GITHUB_TOKEN` (secret) — a fine-grained PAT owned by the snapshot
+  org, scoped to **All repositories**, with **Administration: Read and write**
+  and **Contents: Read and write** repository permissions (the built-in
+  `GITHUB_TOKEN` cannot create repositories, so a PAT is required).
+- `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` (secrets) — for the
+  Cloudflare account hosting the remote state store.
+- `DISTILLED_REPOS_OWNER` (repository variable) — the snapshot org name.
+
+To deploy manually, log in once (`bunx alchemy login`) and:
 
 ```bash
 cd stacks/github
-GITHUB_ACCESS_TOKEN=<pat> CI=1 bun alchemy deploy --stage prod
+bun alchemy deploy --stage prod
 ```
-
-(Or run `bunx alchemy login` once and drop the env vars.)
