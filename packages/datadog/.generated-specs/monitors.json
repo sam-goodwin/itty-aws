@@ -1,0 +1,4115 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.datadog.monitors#ListMonitorsRequest": {
+      "type": "structure",
+      "members": {
+        "group_states": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "group_states",
+            "smithy.api#documentation": "When specified, shows additional information about the group states.\nChoose one or more from `all`, `alert`, `warn`, and `no data`."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "name",
+            "smithy.api#documentation": "A string to filter monitors by name."
+          }
+        },
+        "tags": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "tags",
+            "smithy.api#documentation": "A comma separated list indicating what tags, if any, should be used to filter the list of monitors by scope.\nFor example, `host:host0`."
+          }
+        },
+        "monitor_tags": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "monitor_tags",
+            "smithy.api#documentation": "A comma separated list indicating what service and/or custom tags, if any, should be used to filter the list of monitors.\nTags created in the Datadog UI automatically have the service key prepended. For example, `service:my-app`."
+          }
+        },
+        "with_downtimes": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "with_downtimes",
+            "smithy.api#documentation": "If this argument is set to true, then the returned data includes all current active downtimes for each monitor."
+          }
+        },
+        "id_offset": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "id_offset",
+            "smithy.api#documentation": "Use this parameter for paginating through large sets of monitors. Start with a value of zero, make a request, set the value to the last ID of result set, and then repeat until the response is empty."
+          }
+        },
+        "page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page",
+            "smithy.api#documentation": "The page to start paginating from. If this argument is not specified, the request returns all monitors without pagination."
+          }
+        },
+        "page_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page_size",
+            "smithy.api#documentation": "The number of monitors to return per page. If the page argument is not specified, the default behavior returns all monitors without a `page_size` limit. However, if page is specified and `page_size` is not, the argument defaults to 100."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.monitors#Monitor": {
+      "type": "structure",
+      "members": {
+        "assets": {
+          "target": "com.datadog.monitors#MonitorAssetsList",
+          "traits": {
+            "smithy.api#documentation": "The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks)."
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of the monitor creation."
+          }
+        },
+        "creator": {
+          "target": "com.datadog.monitors#Creator"
+        },
+        "deleted": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Whether or not the monitor is deleted. (Always `null`)",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "draft_status": {
+          "target": "com.datadog.monitors#MonitorDraftStatus"
+        },
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "ID of this monitor."
+          }
+        },
+        "matching_downtimes": {
+          "target": "com.datadog.monitors#MonitorMatchingDowntimesList",
+          "traits": {
+            "smithy.api#documentation": "A list of active v1 downtimes that match this monitor."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A message to include with notifications for this monitor."
+          }
+        },
+        "modified": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last timestamp when the monitor was edited."
+          }
+        },
+        "multi": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not the monitor is broken down on different groups."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor name."
+          }
+        },
+        "options": {
+          "target": "com.datadog.monitors#MonitorOptions"
+        },
+        "overall_state": {
+          "target": "com.datadog.monitors#MonitorOverallStates"
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Integer from 1 (high) to 5 (low) indicating alert severity.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor query.",
+            "smithy.api#required": {}
+          }
+        },
+        "restricted_roles": {
+          "target": "com.datadog.monitors#MonitorRestrictedRolesList",
+          "traits": {
+            "smithy.api#documentation": "A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "state": {
+          "target": "com.datadog.monitors#MonitorState"
+        },
+        "tags": {
+          "target": "com.datadog.monitors#MonitorTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags associated to your monitor."
+          }
+        },
+        "type": {
+          "target": "com.datadog.monitors#MonitorType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object describing a monitor."
+      }
+    },
+    "com.datadog.monitors#MonitorAsset": {
+      "type": "structure",
+      "members": {
+        "category": {
+          "target": "com.datadog.monitors#MonitorAssetCategory",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name for the monitor asset",
+            "smithy.api#required": {}
+          }
+        },
+        "resource_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Represents the identifier of the internal Datadog resource that this asset represents. IDs in this field should be passed in as strings."
+          }
+        },
+        "resource_type": {
+          "target": "com.datadog.monitors#MonitorAssetResourceType"
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL link for the asset. For links with an internal resource type set, this should be the relative path to where the Datadog domain is appended internally. For external links, this should be the full URL path.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Represents key links tied to a monitor to help users take action on alerts.\nThis feature is in Preview and only available to users with the feature enabled."
+      }
+    },
+    "com.datadog.monitors#MonitorAssetCategory": {
+      "type": "enum",
+      "members": {
+        "RUNBOOK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "runbook"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates the type of asset this entity represents on a monitor."
+      }
+    },
+    "com.datadog.monitors#MonitorAssetResourceType": {
+      "type": "enum",
+      "members": {
+        "NOTEBOOK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "notebook"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of internal Datadog resource associated with a monitor asset."
+      }
+    },
+    "com.datadog.monitors#MonitorAssetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorAsset"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks)."
+      }
+    },
+    "com.datadog.monitors#Creator": {
+      "type": "structure",
+      "members": {
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the creator."
+          }
+        },
+        "handle": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Handle of the creator."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the creator.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object describing the creator of the shared element."
+      }
+    },
+    "com.datadog.monitors#MonitorDraftStatus": {
+      "type": "enum",
+      "members": {
+        "DRAFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "draft"
+          }
+        },
+        "PUBLISHED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "published"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Indicates whether the monitor is in a draft or published state.\n\n`draft`: The monitor appears as Draft and does not send notifications.\n`published`: The monitor is active and evaluates conditions and notify as configured.\n\nThis field is in preview. The draft value is only available to customers with the feature enabled."
+      }
+    },
+    "com.datadog.monitors#MatchingDowntime": {
+      "type": "structure",
+      "members": {
+        "end": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "POSIX timestamp to end the downtime.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The downtime ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "com.datadog.monitors#MatchingDowntimeScopeList",
+          "traits": {
+            "smithy.api#documentation": "The scope(s) to which the downtime applies. Must be in `key:value` format. For example, `host:app2`.\nProvide multiple scopes as a comma-separated list like `env:dev,env:prod`.\nThe resulting downtime applies to sources that matches ALL provided scopes (`env:dev` **AND** `env:prod`)."
+          }
+        },
+        "start": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "POSIX timestamp to start the downtime."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object describing a downtime that matches this monitor."
+      }
+    },
+    "com.datadog.monitors#MatchingDowntimeScopeList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The scope(s) to which the downtime applies. Must be in `key:value` format. For example, `host:app2`.\nProvide multiple scopes as a comma-separated list like `env:dev,env:prod`.\nThe resulting downtime applies to sources that matches ALL provided scopes (`env:dev` **AND** `env:prod`)."
+      }
+    },
+    "com.datadog.monitors#MonitorMatchingDowntimesList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MatchingDowntime"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of active v1 downtimes that match this monitor."
+      }
+    },
+    "com.datadog.monitors#MonitorOptions": {
+      "type": "structure",
+      "members": {
+        "aggregation": {
+          "target": "com.datadog.monitors#MonitorOptionsAggregation"
+        },
+        "device_ids": {
+          "target": "com.datadog.monitors#MonitorOptionsDeviceIdsList",
+          "traits": {
+            "smithy.api#documentation": "IDs of the device the Synthetics monitor is running on."
+          }
+        },
+        "enable_logs_sample": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to send a log sample when the log monitor triggers."
+          }
+        },
+        "enable_samples": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to send a list of samples when the monitor triggers. This is only used by CI Test and Pipeline monitors."
+          }
+        },
+        "escalation_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "We recommend using the [is_renotify](https://docs.datadoghq.com/monitors/notify/?tab=is_alert#renotify),\nblock in the original message instead.\nA message to include with a re-notification. Supports the `@username` notification we allow elsewhere.\nNot applicable if `renotify_interval` is `None`."
+          }
+        },
+        "evaluation_delay": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time (in seconds) to delay evaluation, as a non-negative integer. For example, if the value is set to `300` (5min),\nthe timeframe is set to `last_5m` and the time is 7:00, the monitor evaluates data from 6:50 to 6:55.\nThis is useful for AWS CloudWatch and other backfilled metrics to ensure the monitor always has data during evaluation.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "group_retention_duration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time span after which groups with missing data are dropped from the monitor state.\nThe minimum value is one hour, and the maximum value is 72 hours.\nExample values are: \"60m\", \"1h\", and \"2d\".\nThis option is only available for APM Trace Analytics, Audit Trail, CI, Error Tracking, Event, Logs, and RUM monitors."
+          }
+        },
+        "groupby_simple_monitor": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the log alert monitor triggers a single alert or multiple alerts when any group breaches a threshold. Use `notify_by` instead."
+          }
+        },
+        "include_tags": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A Boolean indicating whether notifications from this monitor automatically inserts its triggering tags into the title.\n\n**Examples**\n- If `True`, `[Triggered on {host:h1}] Monitor Title`\n- If `False`, `[Triggered] Monitor Title`"
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not the monitor is locked (only editable by creator and admins). Use `restricted_roles` instead."
+          }
+        },
+        "min_failure_duration": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "How long the test should be in failure before alerting (integer, number of seconds, max 7200).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "min_location_failed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of locations in failure at the same time during\nat least one moment in the `min_failure_duration` period (`min_location_failed` and `min_failure_duration`\nare part of the advanced alerting rules - integer, >= 1).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "new_group_delay": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time (in seconds) to skip evaluations for new groups.\n\nFor example, this option can be used to skip evaluations for new hosts while they initialize.\n\nMust be a non negative integer.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "new_host_delay": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time (in seconds) to allow a host to boot and applications\nto fully start before starting the evaluation of monitor results.\nShould be a non negative integer.\n\nUse new_group_delay instead.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "no_data_timeframe": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of minutes before a monitor notifies after data stops reporting.\nDatadog recommends at least 2x the monitor timeframe for query alerts or 2 minutes for service checks.\nIf omitted, 2x the evaluation timeframe is used for query alerts, and 24 hours is used for service checks.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "notification_preset_name": {
+          "target": "com.datadog.monitors#MonitorOptionsNotificationPresets"
+        },
+        "notify_audit": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A Boolean indicating whether tagged users is notified on changes to this monitor."
+          }
+        },
+        "notify_by": {
+          "target": "com.datadog.monitors#MonitorOptionsNotifyByList",
+          "traits": {
+            "smithy.api#documentation": "Controls what granularity a monitor alerts on. Only available for monitors with groupings.\nFor instance, a monitor grouped by `cluster`, `namespace`, and `pod` can be configured to only notify on each\nnew `cluster` violating the alert conditions by setting `notify_by` to `[\"cluster\"]`. Tags mentioned\nin `notify_by` must be a subset of the grouping tags in the query.\nFor example, a query grouped by `cluster` and `namespace` cannot notify on `region`.\nSetting `notify_by` to `[\"*\"]` configures the monitor to notify as a simple-alert."
+          }
+        },
+        "notify_no_data": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A Boolean indicating whether this monitor notifies when data stops reporting. Defaults to `false`."
+          }
+        },
+        "on_missing_data": {
+          "target": "com.datadog.monitors#OnMissingDataOption"
+        },
+        "renotify_interval": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of minutes after the last notification before a monitor re-notifies on the current status.\nIt only re-notifies if it’s not resolved.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "renotify_occurrences": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of times re-notification messages should be sent on the current status at the provided re-notification interval.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "renotify_statuses": {
+          "target": "com.datadog.monitors#MonitorOptionsRenotifyStatusesList",
+          "traits": {
+            "smithy.api#documentation": "The types of monitor statuses for which re-notification messages are sent.\nDefault: **null** if `renotify_interval` is **null**.\nIf `renotify_interval` is set, defaults to renotify on `Alert` and `No Data`.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "require_full_window": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A Boolean indicating whether this monitor needs a full window of data before it’s evaluated.\nWe highly recommend you set this to `false` for sparse metrics,\notherwise some evaluations are skipped. Default is false. This setting only applies to\nmetric monitors."
+          }
+        },
+        "scheduling_options": {
+          "target": "com.datadog.monitors#MonitorOptionsSchedulingOptions"
+        },
+        "silenced": {
+          "target": "com.datadog.monitors#MonitorOptionsSilencedMap",
+          "traits": {
+            "smithy.api#documentation": "Information about the downtime applied to the monitor. Only shows v1 downtimes."
+          }
+        },
+        "synthetics_check_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the corresponding Synthetic check.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "threshold_windows": {
+          "target": "com.datadog.monitors#MonitorThresholdWindowOptions"
+        },
+        "thresholds": {
+          "target": "com.datadog.monitors#MonitorThresholds"
+        },
+        "timeout_h": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of hours of the monitor not reporting data before it automatically resolves from a triggered state. The minimum allowed value is 0 hours. The maximum allowed value is 24 hours.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "variables": {
+          "target": "com.datadog.monitors#MonitorOptionsVariablesList",
+          "traits": {
+            "smithy.api#documentation": "List of requests that can be used in the monitor query. **This feature is currently in beta.**"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of options associated with your monitor."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsAggregation": {
+      "type": "structure",
+      "members": {
+        "group_by": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Group to break down the monitor on."
+          }
+        },
+        "metric": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metric name used in the monitor."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metric type used in the monitor."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Type of aggregation performed in the monitor query."
+      }
+    },
+    "com.datadog.monitors#MonitorDeviceID": {
+      "type": "enum",
+      "members": {
+        "LAPTOP_LARGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "laptop_large"
+          }
+        },
+        "TABLET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tablet"
+          }
+        },
+        "MOBILE_SMALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mobile_small"
+          }
+        },
+        "CHROME_LAPTOP_LARGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chrome.laptop_large"
+          }
+        },
+        "CHROME_TABLET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chrome.tablet"
+          }
+        },
+        "CHROME_MOBILE_SMALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "chrome.mobile_small"
+          }
+        },
+        "FIREFOX_LAPTOP_LARGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firefox.laptop_large"
+          }
+        },
+        "FIREFOX_TABLET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firefox.tablet"
+          }
+        },
+        "FIREFOX_MOBILE_SMALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "firefox.mobile_small"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ID of the device the Synthetics monitor is running on. Same as `SyntheticsDeviceID`."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsDeviceIdsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorDeviceID"
+      },
+      "traits": {
+        "smithy.api#documentation": "IDs of the device the Synthetics monitor is running on."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsNotificationPresets": {
+      "type": "enum",
+      "members": {
+        "SHOW_ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "show_all"
+          }
+        },
+        "HIDE_QUERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hide_query"
+          }
+        },
+        "HIDE_HANDLES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hide_handles"
+          }
+        },
+        "HIDE_ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hide_all"
+          }
+        },
+        "HIDE_QUERY_AND_HANDLES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hide_query_and_handles"
+          }
+        },
+        "SHOW_ONLY_SNAPSHOT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "show_only_snapshot"
+          }
+        },
+        "HIDE_HANDLES_AND_FOOTER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "hide_handles_and_footer"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Toggles the display of additional content sent in the monitor notification."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsNotifyByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Controls what granularity a monitor alerts on. Only available for monitors with groupings.\nFor instance, a monitor grouped by `cluster`, `namespace`, and `pod` can be configured to only notify on each\nnew `cluster` violating the alert conditions by setting `notify_by` to `[\"cluster\"]`. Tags mentioned\nin `notify_by` must be a subset of the grouping tags in the query.\nFor example, a query grouped by `cluster` and `namespace` cannot notify on `region`.\nSetting `notify_by` to `[\"*\"]` configures the monitor to notify as a simple-alert."
+      }
+    },
+    "com.datadog.monitors#OnMissingDataOption": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "default"
+          }
+        },
+        "SHOW_NO_DATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "show_no_data"
+          }
+        },
+        "SHOW_AND_NOTIFY_NO_DATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "show_and_notify_no_data"
+          }
+        },
+        "RESOLVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "resolve"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Controls how groups or monitors are treated if an evaluation does not return any data points.\nThe default option results in different behavior depending on the monitor query type.\nFor monitors using Count queries, an empty monitor evaluation is treated as 0 and is compared to the threshold conditions.\nFor monitors using any query type other than Count, for example Gauge, Measure, or Rate, the monitor shows the last known status.\nThis option is available for APM Trace Analytics, Audit Trail, CI, Error Tracking, Event, Logs, and RUM monitors.\nIt is also required for metric monitors that use `scheduling_options.custom_schedule`."
+      }
+    },
+    "com.datadog.monitors#MonitorRenotifyStatusType": {
+      "type": "enum",
+      "members": {
+        "ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "alert"
+          }
+        },
+        "WARN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "warn"
+          }
+        },
+        "NO_DATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "no data"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The different statuses for which renotification is supported."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsRenotifyStatusesList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorRenotifyStatusType"
+      },
+      "traits": {
+        "smithy.api#documentation": "The types of monitor statuses for which re-notification messages are sent.\nDefault: **null** if `renotify_interval` is **null**.\nIf `renotify_interval` is set, defaults to renotify on `Alert` and `No Data`."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsSchedulingOptions": {
+      "type": "structure",
+      "members": {
+        "custom_schedule": {
+          "target": "com.datadog.monitors#MonitorOptionsCustomSchedule"
+        },
+        "evaluation_window": {
+          "target": "com.datadog.monitors#MonitorOptionsSchedulingOptionsEvaluationWindow"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configuration options for scheduling."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsCustomSchedule": {
+      "type": "structure",
+      "members": {
+        "recurrences": {
+          "target": "com.datadog.monitors#MonitorOptionsCustomScheduleRecurrencesList",
+          "traits": {
+            "smithy.api#documentation": "Array of custom schedule recurrences."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configuration options for the custom schedule. **This feature is in private beta.**"
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsCustomScheduleRecurrence": {
+      "type": "structure",
+      "members": {
+        "rrule": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the recurrence rule (RRULE) for a given schedule."
+          }
+        },
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the start date and time of the recurring schedule."
+          }
+        },
+        "timezone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the timezone the schedule runs on."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configuration for a recurrence set on the monitor options for custom schedule."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsCustomScheduleRecurrencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorOptionsCustomScheduleRecurrence"
+      },
+      "traits": {
+        "smithy.api#documentation": "Array of custom schedule recurrences."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsSchedulingOptionsEvaluationWindow": {
+      "type": "structure",
+      "members": {
+        "day_starts": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time of the day at which a one day cumulative evaluation window starts."
+          }
+        },
+        "hour_starts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minute of the hour at which a one hour cumulative evaluation window starts."
+          }
+        },
+        "month_starts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The day of the month at which a one month cumulative evaluation window starts."
+          }
+        },
+        "timezone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timezone of the time of the day of the cumulative evaluation window start."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configuration options for the evaluation window. If `hour_starts` is set, no other fields may be set. Otherwise, `day_starts` and `month_starts` must be set together."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsSilencedMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the downtime applied to the monitor. Only shows v1 downtimes."
+      }
+    },
+    "com.datadog.monitors#MonitorThresholdWindowOptions": {
+      "type": "structure",
+      "members": {
+        "recovery_window": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Describes how long an anomalous metric must be normal before the alert recovers.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "trigger_window": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Describes how long a metric must be anomalous before an alert triggers.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Alerting time window options."
+      }
+    },
+    "com.datadog.monitors#MonitorThresholds": {
+      "type": "structure",
+      "members": {
+        "critical": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The monitor `CRITICAL` threshold."
+          }
+        },
+        "critical_query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Query evaluated as a dynamic `CRITICAL` threshold. Only supported on metric monitors with a formula query and options['variables']. Cannot be combined with static thresholds. This field is in preview."
+          }
+        },
+        "critical_recovery": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The monitor `CRITICAL` recovery threshold.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "critical_recovery_query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Query evaluated as a dynamic `CRITICAL` recovery threshold. Only supported on metric monitors with a formula query and options['variables']. Cannot be combined with static thresholds. This field is in preview."
+          }
+        },
+        "ok": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The monitor `OK` threshold.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "unknown": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The monitor UNKNOWN threshold.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "warning": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The monitor `WARNING` threshold.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "warning_recovery": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The monitor `WARNING` recovery threshold.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of the different monitor threshold available."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionQueryDefinition": {
+      "type": "union",
+      "members": {
+        "MonitorFormulaAndFunctionEventQueryDefinition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinition"
+        },
+        "MonitorFormulaAndFunctionCostQueryDefinition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionCostQueryDefinition"
+        },
+        "MonitorFormulaAndFunctionDataQualityQueryDefinition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionDataQualityQueryDefinition"
+        },
+        "MonitorFormulaAndFunctionDataJobsQueryDefinition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionDataJobsQueryDefinition"
+        },
+        "MonitorFormulaAndFunctionAggregateAugmentedQueryDefinition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateAugmentedQueryDefinition"
+        },
+        "MonitorFormulaAndFunctionAggregateFilteredQueryDefinition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateFilteredQueryDefinition"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A formula and function query."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinition": {
+      "type": "structure",
+      "members": {
+        "compute": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinitionCompute",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "data_source": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventsDataSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "group_by": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinitionGroupByList",
+          "traits": {
+            "smithy.api#documentation": "Group by options."
+          }
+        },
+        "indexes": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinitionIndexesList",
+          "traits": {
+            "smithy.api#documentation": "An array of index names to query in the stream. Omit or use `[]` to query all indexes at once."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the query for use in formulas.",
+            "smithy.api#required": {}
+          }
+        },
+        "search": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinitionSearch"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A formula and functions events query."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinitionCompute": {
+      "type": "structure",
+      "members": {
+        "aggregation": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventAggregation",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A time interval in milliseconds."
+          }
+        },
+        "metric": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Measurable attribute to compute."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name assigned to this aggregation, when multiple aggregations are defined for a query."
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source reference for composite query payloads."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Compute options."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionEventAggregation": {
+      "type": "enum",
+      "members": {
+        "COUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "count"
+          }
+        },
+        "CARDINALITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cardinality"
+          }
+        },
+        "MEDIAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "median"
+          }
+        },
+        "PC75": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pc75"
+          }
+        },
+        "PC90": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pc90"
+          }
+        },
+        "PC95": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pc95"
+          }
+        },
+        "PC98": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pc98"
+          }
+        },
+        "PC99": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pc99"
+          }
+        },
+        "SUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sum"
+          }
+        },
+        "MIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "min"
+          }
+        },
+        "MAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "max"
+          }
+        },
+        "AVG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "avg"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Aggregation methods for event platform queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionEventsDataSource": {
+      "type": "enum",
+      "members": {
+        "RUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rum"
+          }
+        },
+        "CI_PIPELINES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ci_pipelines"
+          }
+        },
+        "CI_TESTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ci_tests"
+          }
+        },
+        "AUDIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audit"
+          }
+        },
+        "EVENTS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "events"
+          }
+        },
+        "LOGS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "logs"
+          }
+        },
+        "SPANS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "spans"
+          }
+        },
+        "DATABASE_QUERIES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "database_queries"
+          }
+        },
+        "NETWORK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network"
+          }
+        },
+        "NETWORK_PATH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network_path"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data source for event platform-based queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryGroupBy": {
+      "type": "structure",
+      "members": {
+        "facet": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Event facet.",
+            "smithy.api#required": {}
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of groups to return."
+          }
+        },
+        "sort": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryGroupBySort"
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source reference for composite query payloads."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of objects used to group by."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryGroupBySort": {
+      "type": "structure",
+      "members": {
+        "aggregation": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventAggregation",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "metric": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metric used for sorting group by results."
+          }
+        },
+        "order": {
+          "target": "com.datadog.monitors#QuerySortOrder"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Options for sorting group by results."
+      }
+    },
+    "com.datadog.monitors#QuerySortOrder": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Direction of sort."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinitionGroupByList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryGroupBy"
+      },
+      "traits": {
+        "smithy.api#documentation": "Group by options."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinitionIndexesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of index names to query in the stream. Omit or use `[]` to query all indexes at once."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinitionSearch": {
+      "type": "structure",
+      "members": {
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Events search string.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Search options."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionCostQueryDefinition": {
+      "type": "structure",
+      "members": {
+        "aggregator": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionCostAggregator"
+        },
+        "data_source": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionCostDataSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the query for use in formulas.",
+            "smithy.api#required": {}
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor query.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A formula and functions cost query."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionCostAggregator": {
+      "type": "enum",
+      "members": {
+        "AVG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "avg"
+          }
+        },
+        "SUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sum"
+          }
+        },
+        "MAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "max"
+          }
+        },
+        "MIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "min"
+          }
+        },
+        "LAST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "last"
+          }
+        },
+        "AREA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "area"
+          }
+        },
+        "L2NORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "l2norm"
+          }
+        },
+        "PERCENTILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "percentile"
+          }
+        },
+        "STDDEV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stddev"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Aggregation methods for metric queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionCostDataSource": {
+      "type": "enum",
+      "members": {
+        "METRICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "metrics"
+          }
+        },
+        "CLOUD_COST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloud_cost"
+          }
+        },
+        "DATADOG_USAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "datadog_usage"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data source for cost queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionDataQualityQueryDefinition": {
+      "type": "structure",
+      "members": {
+        "data_source": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionDataQualityDataSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter expression used to match on data entities. Uses Aastra query syntax.",
+            "smithy.api#required": {}
+          }
+        },
+        "group_by": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionDataQualityQueryDefinitionGroupByList",
+          "traits": {
+            "smithy.api#documentation": "Optional grouping fields for aggregation."
+          }
+        },
+        "measure": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_options": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionDataQualityMonitorOptions"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the query for use in formulas.",
+            "smithy.api#required": {}
+          }
+        },
+        "schema_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Schema version for the data quality query."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional scoping expression to further filter metrics. Uses metrics filter syntax.\nThis is useful when an entity has been configured to emit metrics with additional tags."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A formula and functions data quality query."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionDataQualityDataSource": {
+      "type": "enum",
+      "members": {
+        "DATA_QUALITY_METRICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "data_quality_metrics"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data source for data quality queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionDataQualityQueryDefinitionGroupByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Optional grouping fields for aggregation."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionDataQualityMonitorOptions": {
+      "type": "structure",
+      "members": {
+        "crontab_override": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Crontab expression to override the default schedule."
+          }
+        },
+        "custom_sql": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom SQL query for the monitor."
+          }
+        },
+        "custom_where": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom WHERE clause for the query."
+          }
+        },
+        "group_by_columns": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionDataQualityMonitorOptionsGroupByColumnsList",
+          "traits": {
+            "smithy.api#documentation": "Columns to group results by."
+          }
+        },
+        "model_type_override": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionDataQualityModelTypeOverride"
+        },
+        "sensitivity": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Sensitivity of the anomaly detection model, expressed as a multiplier on the width\nof the predicted bounds. Higher values widen the bounds and produce fewer alerts;\nlower values tighten them and produce more alerts. Defaults to `3.0`."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Monitor configuration options for data quality queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionDataQualityMonitorOptionsGroupByColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Columns to group results by."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionDataQualityModelTypeOverride": {
+      "type": "enum",
+      "members": {
+        "FRESHNESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "freshness"
+          }
+        },
+        "PERCENTAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "percentage"
+          }
+        },
+        "ANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Override for the model type used in anomaly detection."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionDataJobsQueryDefinition": {
+      "type": "structure",
+      "members": {
+        "job_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of job being monitored. Valid values include:\n`databricks.job`, `spark.application`, `airflow.dag`,\n`dbt.job`, `dbt.model`, `dbt.test`, `glue.job`.\nCustom job types are supported with the `custom.ol.` prefix.",
+            "smithy.api#required": {}
+          }
+        },
+        "jobs_query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter expression used to select the jobs to monitor.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the query for use in formulas. Must be `run_query`.",
+            "smithy.api#required": {}
+          }
+        },
+        "query_dialect": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Query dialect for data jobs queries. Currently only `metric` is supported.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A formula and functions data jobs query."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateAugmentedQueryDefinition": {
+      "type": "structure",
+      "members": {
+        "augment_query": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateAugmentQuery",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "base_query": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateBaseQuery",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compute": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionComputeList",
+          "traits": {
+            "smithy.api#documentation": "Compute options for the query.",
+            "smithy.api#required": {}
+          }
+        },
+        "data_source": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateAugmentedDataSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "group_by": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionGroupByList",
+          "traits": {
+            "smithy.api#documentation": "Group by options for the query.",
+            "smithy.api#required": {}
+          }
+        },
+        "join_condition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateQueryJoinCondition",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the query for use in formulas."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A formula and functions aggregate augmented query. Used to enrich base query results with data from a reference table."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateAugmentQuery": {
+      "type": "union",
+      "members": {
+        "MonitorFormulaAndFunctionEventQueryDefinition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinition"
+        },
+        "MonitorFormulaAndFunctionReferenceTableQueryDefinition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionReferenceTableQueryDefinition"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Augment query for aggregate augmented queries. Can be an events query or a reference table query."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionReferenceTableQueryDefinition": {
+      "type": "structure",
+      "members": {
+        "columns": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionReferenceTableQueryDefinitionColumnsList",
+          "traits": {
+            "smithy.api#documentation": "List of columns to retrieve from the reference table."
+          }
+        },
+        "data_source": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionReferenceTableDataSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the query."
+          }
+        },
+        "query_filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional filter expression for the reference table query."
+          }
+        },
+        "table_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the reference table.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A reference table query for use in aggregate queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionReferenceTableColumn": {
+      "type": "structure",
+      "members": {
+        "alias": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional alias for the column."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the column.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A column definition for reference table queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionReferenceTableQueryDefinitionColumnsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorFormulaAndFunctionReferenceTableColumn"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of columns to retrieve from the reference table."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionReferenceTableDataSource": {
+      "type": "enum",
+      "members": {
+        "REFERENCE_TABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reference_table"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data source for reference table queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateBaseQuery": {
+      "type": "union",
+      "members": {
+        "MonitorFormulaAndFunctionEventQueryDefinition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinition"
+        },
+        "MonitorFormulaAndFunctionMetricsQueryDefinition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionMetricsQueryDefinition"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Base query for aggregate queries. Can be an events query or a metrics query."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionMetricsQueryDefinition": {
+      "type": "structure",
+      "members": {
+        "aggregator": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionMetricsAggregator"
+        },
+        "data_source": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionMetricsDataSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the query for use in formulas."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The metrics query definition.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A formula and functions metrics query for use in aggregate queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionMetricsAggregator": {
+      "type": "enum",
+      "members": {
+        "AVG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "avg"
+          }
+        },
+        "MIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "min"
+          }
+        },
+        "MAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "max"
+          }
+        },
+        "SUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sum"
+          }
+        },
+        "LAST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "last"
+          }
+        },
+        "MEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mean"
+          }
+        },
+        "AREA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "area"
+          }
+        },
+        "L2NORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "l2norm"
+          }
+        },
+        "PERCENTILE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "percentile"
+          }
+        },
+        "STDDEV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stddev"
+          }
+        },
+        "COUNT_UNIQUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "count_unique"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Aggregator for metrics queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionMetricsDataSource": {
+      "type": "enum",
+      "members": {
+        "METRICS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "metrics"
+          }
+        },
+        "CLOUD_COST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloud_cost"
+          }
+        },
+        "DATADOG_USAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "datadog_usage"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data source for metrics queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionComputeList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinitionCompute"
+      },
+      "traits": {
+        "smithy.api#documentation": "Compute options for the query."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateAugmentedDataSource": {
+      "type": "enum",
+      "members": {
+        "AGGREGATE_AUGMENTED_QUERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aggregate_augmented_query"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data source for aggregate augmented queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateAugmentedQueryDefinitionGroupByList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryGroupBy"
+      },
+      "traits": {
+        "smithy.api#documentation": "Group by options for the query."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateQueryJoinCondition": {
+      "type": "structure",
+      "members": {
+        "augment_attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Attribute from the augment query to join on.",
+            "smithy.api#required": {}
+          }
+        },
+        "base_attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Attribute from the base query to join on.",
+            "smithy.api#required": {}
+          }
+        },
+        "join_type": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateQueryJoinType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Join condition for aggregate augmented queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateQueryJoinType": {
+      "type": "enum",
+      "members": {
+        "INNER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inner"
+          }
+        },
+        "LEFT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "left"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Join type for aggregate query join conditions."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateFilteredQueryDefinition": {
+      "type": "structure",
+      "members": {
+        "base_query": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateBaseQuery",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compute": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionComputeList",
+          "traits": {
+            "smithy.api#documentation": "Compute options for the query."
+          }
+        },
+        "data_source": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateFilteredDataSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filter_query": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateFilterQuery",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filters": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionFiltersList",
+          "traits": {
+            "smithy.api#documentation": "Filter conditions for the query.",
+            "smithy.api#required": {}
+          }
+        },
+        "group_by": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionGroupByList",
+          "traits": {
+            "smithy.api#documentation": "Group by options for the query."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the query for use in formulas."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A formula and functions aggregate filtered query. Used to filter base query results using data from another source."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionComputeList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinitionCompute"
+      },
+      "traits": {
+        "smithy.api#documentation": "Compute options for the query."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateFilteredDataSource": {
+      "type": "enum",
+      "members": {
+        "AGGREGATE_FILTERED_QUERY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "aggregate_filtered_query"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Data source for aggregate filtered queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateFilterQuery": {
+      "type": "union",
+      "members": {
+        "MonitorFormulaAndFunctionEventQueryDefinition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryDefinition"
+        },
+        "MonitorFormulaAndFunctionReferenceTableQueryDefinition": {
+          "target": "com.datadog.monitors#MonitorFormulaAndFunctionReferenceTableQueryDefinition"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Filter query for aggregate filtered queries. Can be an events query or a reference table query."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateQueryFilter": {
+      "type": "structure",
+      "members": {
+        "base_attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Attribute from the base query to filter on.",
+            "smithy.api#required": {}
+          }
+        },
+        "exclude": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to exclude matching records instead of including them."
+          }
+        },
+        "filter_attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Attribute from the filter query to match against.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Filter definition for aggregate filtered queries."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionFiltersList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorFormulaAndFunctionAggregateQueryFilter"
+      },
+      "traits": {
+        "smithy.api#documentation": "Filter conditions for the query."
+      }
+    },
+    "com.datadog.monitors#MonitorFormulaAndFunctionAggregateFilteredQueryDefinitionGroupByList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorFormulaAndFunctionEventQueryGroupBy"
+      },
+      "traits": {
+        "smithy.api#documentation": "Group by options for the query."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsVariablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorFormulaAndFunctionQueryDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of requests that can be used in the monitor query. **This feature is currently in beta.**"
+      }
+    },
+    "com.datadog.monitors#MonitorOverallStates": {
+      "type": "enum",
+      "members": {
+        "ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Alert"
+          }
+        },
+        "IGNORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Ignored"
+          }
+        },
+        "NO_DATA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "No Data"
+          }
+        },
+        "OK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OK"
+          }
+        },
+        "SKIPPED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Skipped"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unknown"
+          }
+        },
+        "WARN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Warn"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The different states your monitor can be in."
+      }
+    },
+    "com.datadog.monitors#MonitorRestrictedRolesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles."
+      }
+    },
+    "com.datadog.monitors#MonitorState": {
+      "type": "structure",
+      "members": {
+        "groups": {
+          "target": "com.datadog.monitors#MonitorStateGroupsMap",
+          "traits": {
+            "smithy.api#documentation": "Dictionary where the keys are groups (comma separated lists of tags) and the values are\nthe list of groups your monitor is broken down on."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Wrapper object with the different monitor states."
+      }
+    },
+    "com.datadog.monitors#MonitorStateGroup": {
+      "type": "structure",
+      "members": {
+        "last_nodata_ts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Latest timestamp the monitor was in NO_DATA state."
+          }
+        },
+        "last_notified_ts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Latest timestamp of the notification sent for this monitor group."
+          }
+        },
+        "last_resolved_ts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Latest timestamp the monitor group was resolved."
+          }
+        },
+        "last_triggered_ts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Latest timestamp the monitor group triggered."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the monitor."
+          }
+        },
+        "status": {
+          "target": "com.datadog.monitors#MonitorOverallStates"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Monitor state for a single group."
+      }
+    },
+    "com.datadog.monitors#MonitorStateGroupsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.datadog.monitors#MonitorStateGroup"
+      },
+      "traits": {
+        "smithy.api#documentation": "Dictionary where the keys are groups (comma separated lists of tags) and the values are\nthe list of groups your monitor is broken down on."
+      }
+    },
+    "com.datadog.monitors#MonitorTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated to your monitor."
+      }
+    },
+    "com.datadog.monitors#MonitorType": {
+      "type": "enum",
+      "members": {
+        "COMPOSITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "composite"
+          }
+        },
+        "EVENT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "event alert"
+          }
+        },
+        "LOG_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log alert"
+          }
+        },
+        "METRIC_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "metric alert"
+          }
+        },
+        "PROCESS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "process alert"
+          }
+        },
+        "QUERY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "query alert"
+          }
+        },
+        "RUM_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rum alert"
+          }
+        },
+        "SERVICE_CHECK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "service check"
+          }
+        },
+        "SYNTHETICS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "synthetics alert"
+          }
+        },
+        "TRACE_ANALYTICS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "trace-analytics alert"
+          }
+        },
+        "SLO_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "slo alert"
+          }
+        },
+        "EVENT_V2_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "event-v2 alert"
+          }
+        },
+        "AUDIT_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "audit alert"
+          }
+        },
+        "CI_PIPELINES_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ci-pipelines alert"
+          }
+        },
+        "CI_TESTS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ci-tests alert"
+          }
+        },
+        "ERROR_TRACKING_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "error-tracking alert"
+          }
+        },
+        "DATABASE_MONITORING_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "database-monitoring alert"
+          }
+        },
+        "NETWORK_PERFORMANCE_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network-performance alert"
+          }
+        },
+        "COST_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cost alert"
+          }
+        },
+        "DATA_QUALITY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "data-quality alert"
+          }
+        },
+        "NETWORK_PATH_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "network-path alert"
+          }
+        },
+        "DATA_JOBS_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "data-jobs alert"
+          }
+        },
+        "LLM_OBSERVABILITY_ALERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "llm-observability alert"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The type of the monitor. For more information about `type`, see the [monitor options](https://docs.datadoghq.com/monitors/guide/monitor_api_options/) docs."
+      }
+    },
+    "com.datadog.monitors#ListMonitorsResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#Monitor"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of monitor objects."
+      }
+    },
+    "com.datadog.monitors#ListMonitorsResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.datadog.monitors#ListMonitorsResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.datadog.monitors#ListMonitors": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.monitors#ListMonitorsRequest"
+      },
+      "output": {
+        "target": "com.datadog.monitors#ListMonitorsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.monitors#BadRequest"
+        },
+        {
+          "target": "com.datadog.monitors#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/v1/monitor",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get all monitors\n\nGet all monitors from your organization."
+      }
+    },
+    "com.datadog.monitors#CreateMonitorRequestAssetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorAsset"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks)."
+      }
+    },
+    "com.datadog.monitors#MatchingDowntimeInput": {
+      "type": "structure",
+      "members": {
+        "end": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "POSIX timestamp to end the downtime.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "scope": {
+          "target": "com.datadog.monitors#MatchingDowntimeInputScopeList",
+          "traits": {
+            "smithy.api#documentation": "The scope(s) to which the downtime applies. Must be in `key:value` format. For example, `host:app2`.\nProvide multiple scopes as a comma-separated list like `env:dev,env:prod`.\nThe resulting downtime applies to sources that matches ALL provided scopes (`env:dev` **AND** `env:prod`)."
+          }
+        },
+        "start": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "POSIX timestamp to start the downtime."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Object describing a downtime that matches this monitor."
+      }
+    },
+    "com.datadog.monitors#MatchingDowntimeInputScopeList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The scope(s) to which the downtime applies. Must be in `key:value` format. For example, `host:app2`.\nProvide multiple scopes as a comma-separated list like `env:dev,env:prod`.\nThe resulting downtime applies to sources that matches ALL provided scopes (`env:dev` **AND** `env:prod`)."
+      }
+    },
+    "com.datadog.monitors#CreateMonitorRequestMatchingDowntimesList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MatchingDowntimeInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of active v1 downtimes that match this monitor."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsInput": {
+      "type": "structure",
+      "members": {
+        "enable_logs_sample": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to send a log sample when the log monitor triggers."
+          }
+        },
+        "enable_samples": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not to send a list of samples when the monitor triggers. This is only used by CI Test and Pipeline monitors."
+          }
+        },
+        "escalation_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "We recommend using the [is_renotify](https://docs.datadoghq.com/monitors/notify/?tab=is_alert#renotify),\nblock in the original message instead.\nA message to include with a re-notification. Supports the `@username` notification we allow elsewhere.\nNot applicable if `renotify_interval` is `None`."
+          }
+        },
+        "evaluation_delay": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time (in seconds) to delay evaluation, as a non-negative integer. For example, if the value is set to `300` (5min),\nthe timeframe is set to `last_5m` and the time is 7:00, the monitor evaluates data from 6:50 to 6:55.\nThis is useful for AWS CloudWatch and other backfilled metrics to ensure the monitor always has data during evaluation.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "group_retention_duration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time span after which groups with missing data are dropped from the monitor state.\nThe minimum value is one hour, and the maximum value is 72 hours.\nExample values are: \"60m\", \"1h\", and \"2d\".\nThis option is only available for APM Trace Analytics, Audit Trail, CI, Error Tracking, Event, Logs, and RUM monitors."
+          }
+        },
+        "groupby_simple_monitor": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the log alert monitor triggers a single alert or multiple alerts when any group breaches a threshold. Use `notify_by` instead."
+          }
+        },
+        "include_tags": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A Boolean indicating whether notifications from this monitor automatically inserts its triggering tags into the title.\n\n**Examples**\n- If `True`, `[Triggered on {host:h1}] Monitor Title`\n- If `False`, `[Triggered] Monitor Title`"
+          }
+        },
+        "locked": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not the monitor is locked (only editable by creator and admins). Use `restricted_roles` instead."
+          }
+        },
+        "min_failure_duration": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "How long the test should be in failure before alerting (integer, number of seconds, max 7200).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "min_location_failed": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of locations in failure at the same time during\nat least one moment in the `min_failure_duration` period (`min_location_failed` and `min_failure_duration`\nare part of the advanced alerting rules - integer, >= 1).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "new_group_delay": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time (in seconds) to skip evaluations for new groups.\n\nFor example, this option can be used to skip evaluations for new hosts while they initialize.\n\nMust be a non negative integer.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "new_host_delay": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Time (in seconds) to allow a host to boot and applications\nto fully start before starting the evaluation of monitor results.\nShould be a non negative integer.\n\nUse new_group_delay instead.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "no_data_timeframe": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of minutes before a monitor notifies after data stops reporting.\nDatadog recommends at least 2x the monitor timeframe for query alerts or 2 minutes for service checks.\nIf omitted, 2x the evaluation timeframe is used for query alerts, and 24 hours is used for service checks.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "notification_preset_name": {
+          "target": "com.datadog.monitors#MonitorOptionsNotificationPresets"
+        },
+        "notify_audit": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A Boolean indicating whether tagged users is notified on changes to this monitor."
+          }
+        },
+        "notify_by": {
+          "target": "com.datadog.monitors#MonitorOptionsInputNotifyByList",
+          "traits": {
+            "smithy.api#documentation": "Controls what granularity a monitor alerts on. Only available for monitors with groupings.\nFor instance, a monitor grouped by `cluster`, `namespace`, and `pod` can be configured to only notify on each\nnew `cluster` violating the alert conditions by setting `notify_by` to `[\"cluster\"]`. Tags mentioned\nin `notify_by` must be a subset of the grouping tags in the query.\nFor example, a query grouped by `cluster` and `namespace` cannot notify on `region`.\nSetting `notify_by` to `[\"*\"]` configures the monitor to notify as a simple-alert."
+          }
+        },
+        "notify_no_data": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A Boolean indicating whether this monitor notifies when data stops reporting. Defaults to `false`."
+          }
+        },
+        "on_missing_data": {
+          "target": "com.datadog.monitors#OnMissingDataOption"
+        },
+        "renotify_interval": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of minutes after the last notification before a monitor re-notifies on the current status.\nIt only re-notifies if it’s not resolved.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "renotify_occurrences": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of times re-notification messages should be sent on the current status at the provided re-notification interval.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "renotify_statuses": {
+          "target": "com.datadog.monitors#MonitorOptionsInputRenotifyStatusesList",
+          "traits": {
+            "smithy.api#documentation": "The types of monitor statuses for which re-notification messages are sent.\nDefault: **null** if `renotify_interval` is **null**.\nIf `renotify_interval` is set, defaults to renotify on `Alert` and `No Data`.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "require_full_window": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A Boolean indicating whether this monitor needs a full window of data before it’s evaluated.\nWe highly recommend you set this to `false` for sparse metrics,\notherwise some evaluations are skipped. Default is false. This setting only applies to\nmetric monitors."
+          }
+        },
+        "scheduling_options": {
+          "target": "com.datadog.monitors#MonitorOptionsSchedulingOptions"
+        },
+        "silenced": {
+          "target": "com.datadog.monitors#MonitorOptionsInputSilencedMap",
+          "traits": {
+            "smithy.api#documentation": "Information about the downtime applied to the monitor. Only shows v1 downtimes."
+          }
+        },
+        "synthetics_check_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the corresponding Synthetic check.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "threshold_windows": {
+          "target": "com.datadog.monitors#MonitorThresholdWindowOptions"
+        },
+        "thresholds": {
+          "target": "com.datadog.monitors#MonitorThresholds"
+        },
+        "timeout_h": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of hours of the monitor not reporting data before it automatically resolves from a triggered state. The minimum allowed value is 0 hours. The maximum allowed value is 24 hours.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "variables": {
+          "target": "com.datadog.monitors#MonitorOptionsInputVariablesList",
+          "traits": {
+            "smithy.api#documentation": "List of requests that can be used in the monitor query. **This feature is currently in beta.**"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "List of options associated with your monitor."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsInputNotifyByList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Controls what granularity a monitor alerts on. Only available for monitors with groupings.\nFor instance, a monitor grouped by `cluster`, `namespace`, and `pod` can be configured to only notify on each\nnew `cluster` violating the alert conditions by setting `notify_by` to `[\"cluster\"]`. Tags mentioned\nin `notify_by` must be a subset of the grouping tags in the query.\nFor example, a query grouped by `cluster` and `namespace` cannot notify on `region`.\nSetting `notify_by` to `[\"*\"]` configures the monitor to notify as a simple-alert."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsInputRenotifyStatusesList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorRenotifyStatusType"
+      },
+      "traits": {
+        "smithy.api#documentation": "The types of monitor statuses for which re-notification messages are sent.\nDefault: **null** if `renotify_interval` is **null**.\nIf `renotify_interval` is set, defaults to renotify on `Alert` and `No Data`."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsInputSilencedMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "Information about the downtime applied to the monitor. Only shows v1 downtimes."
+      }
+    },
+    "com.datadog.monitors#MonitorOptionsInputVariablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorFormulaAndFunctionQueryDefinition"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of requests that can be used in the monitor query. **This feature is currently in beta.**"
+      }
+    },
+    "com.datadog.monitors#CreateMonitorRequestRestrictedRolesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles."
+      }
+    },
+    "com.datadog.monitors#CreateMonitorRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated to your monitor."
+      }
+    },
+    "com.datadog.monitors#CreateMonitorRequest": {
+      "type": "structure",
+      "members": {
+        "assets": {
+          "target": "com.datadog.monitors#CreateMonitorRequestAssetsList",
+          "traits": {
+            "smithy.api#documentation": "The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks)."
+          }
+        },
+        "draft_status": {
+          "target": "com.datadog.monitors#MonitorDraftStatus"
+        },
+        "matching_downtimes": {
+          "target": "com.datadog.monitors#CreateMonitorRequestMatchingDowntimesList",
+          "traits": {
+            "smithy.api#documentation": "A list of active v1 downtimes that match this monitor."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A message to include with notifications for this monitor."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor name."
+          }
+        },
+        "options": {
+          "target": "com.datadog.monitors#MonitorOptionsInput"
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Integer from 1 (high) to 5 (low) indicating alert severity.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor query.",
+            "smithy.api#required": {}
+          }
+        },
+        "restricted_roles": {
+          "target": "com.datadog.monitors#CreateMonitorRequestRestrictedRolesList",
+          "traits": {
+            "smithy.api#documentation": "A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tags": {
+          "target": "com.datadog.monitors#CreateMonitorRequestTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags associated to your monitor."
+          }
+        },
+        "type": {
+          "target": "com.datadog.monitors#MonitorType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.monitors#CreateMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.monitors#CreateMonitorRequest"
+      },
+      "output": {
+        "target": "com.datadog.monitors#Monitor"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.monitors#BadRequest"
+        },
+        {
+          "target": "com.datadog.monitors#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/v1/monitor",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a monitor\n\nCreate a monitor using the specified options.\n\n#### Monitor Types\n\nThe type of monitor chosen from:\n\n- anomaly: `query alert`\n- APM: `query alert` or `trace-analytics alert`\n- composite: `composite`\n- custom: `service check`\n- forecast: `query alert`\n- host: `service check`\n- integration: `query alert` or `service check`\n- live process: `process alert`\n- logs: `log alert`\n- metric: `query alert`\n- network: `service check`\n- outlier: `query alert`\n- process: `service check`\n- rum: `rum alert`\n- SLO: `slo alert`\n- watchdog: `event-v2 alert`\n- event-v2: `event-v2 alert`\n- audit: `audit alert`\n- error-tracking: `error-tracking alert`\n- database-monitoring: `database-monitoring alert`\n- network-performance: `network-performance alert`\n- cloud cost: `cost alert`\n- network-path: `network-path alert`\n\n**Notes**:\n- Synthetic monitors are created through the Synthetics API. See the [Synthetics API](https://docs.datadoghq.com/api/latest/synthetics/) documentation for more information.\n- Log monitors require an unscoped App Key.\n\n#### Query Types\n\n##### Metric Alert Query\n\nExample: `time_aggr(time_window):space_aggr:metric{tags} [by {key}] operator #`\n\n- `time_aggr`: avg, sum, max, min, change, or pct_change\n- `time_window`: `last_#m` (with `#` between 1 and 10080 depending on the monitor type) or `last_#h`(with `#` between 1 and 168 depending on the monitor type) or `last_1d`, or `last_1w`\n- `space_aggr`: avg, sum, min, or max\n- `tags`: one or more tags (comma-separated), or *\n- `key`: a 'key' in key:value tag syntax; defines a separate alert for each tag in the group (multi-alert)\n- `operator`: <, <=, >, >=, ==, or !=\n- `#`: an integer or decimal number used to set the threshold\n\nTo use a dynamic threshold on a metric monitor with a formula query, replace `#` with the `threshold` keyword\n(for example, `... > threshold`) and provide the threshold as a query via `critical_query` on `options.thresholds`.\nThis feature is in preview.\n\nIf you are using the `_change_` or `_pct_change_` time aggregator, instead use `change_aggr(time_aggr(time_window),\ntimeshift):space_aggr:metric{tags} [by {key}] operator #` with:\n\n- `change_aggr` change, pct_change\n- `time_aggr` avg, sum, max, min [Learn more](https://docs.datadoghq.com/monitors/create/types/#define-the-conditions)\n- `time_window` last\\_#m (between 1 and 2880 depending on the monitor type), last\\_#h (between 1 and 48 depending on the monitor type), or last_#d (1 or 2)\n- `timeshift` #m_ago (5, 10, 15, or 30), #h_ago (1, 2, or 4), or 1d_ago\n\nUse this to create an outlier monitor using the following query:\n`avg(last_30m):outliers(avg:system.cpu.user{role:es-events-data} by {host}, 'dbscan', 7) > 0`\n\n##### Service Check Query\n\nExample: `\"check\".over(tags).last(count).by(group).count_by_status()`\n\n- `check` name of the check, for example `datadog.agent.up`\n- `tags` one or more quoted tags (comma-separated), or \"*\". for example: `.over(\"env:prod\", \"role:db\")`; `over` cannot be blank.\n- `count` must be at greater than or equal to your max threshold (defined in the `options`). It is limited to 100.\nFor example, if you've specified to notify on 1 critical, 3 ok, and 2 warn statuses, `count` should be at least 3.\n- `group` must be specified for check monitors. Per-check grouping is already explicitly known for some service checks.\nFor example, Postgres integration monitors are tagged by `db`, `host`, and `port`, and Network monitors by `host`, `instance`, and `url`. See [Service Checks](https://docs.datadoghq.com/api/latest/service-checks/) documentation for more information.\n\n##### Event Alert Query\n\n**Note:** The Event Alert Query has been replaced by the Event V2 Alert Query. For more information, see the [Event Migration guide](https://docs.datadoghq.com/service_management/events/guides/migrating_to_new_events_features/).\n\n##### Event V2 Alert Query\n\nExample: `events(query).rollup(rollup_method[, measure]).last(time_window) operator #`\n\n- `query` The search query - following the [Log search syntax](https://docs.datadoghq.com/logs/search_syntax/).\n- `rollup_method` The stats roll-up method - supports `count`, `avg` and `cardinality`.\n- `measure` For `avg` and cardinality `rollup_method` - specify the measure or the facet name you want to use.\n- `time_window` #m (between 1 and 2880), #h (between 1 and 48).\n- `operator` `<`, `<=`, `>`, `>=`, `==`, or `!=`.\n- `#` an integer or decimal number used to set the threshold.\n\n##### Process Alert Query\n\nExample: `processes(search).over(tags).rollup('count').last(timeframe) operator #`\n\n- `search` free text search string for querying processes.\nMatching processes match results on the [Live Processes](https://docs.datadoghq.com/infrastructure/process/?tab=linuxwindows) page.\n- `tags` one or more tags (comma-separated)\n- `timeframe` the timeframe to roll up the counts. Examples: 10m, 4h. Supported timeframes: s, m, h and d\n- `operator` <, <=, >, >=, ==, or !=\n- `#` an integer or decimal number used to set the threshold\n\n##### Logs Alert Query\n\nExample: `logs(query).index(index_name).rollup(rollup_method[, measure]).last(time_window) operator #`\n\n- `query` The search query - following the [Log search syntax](https://docs.datadoghq.com/logs/search_syntax/).\n- `index_name` For multi-index organizations, the log index in which the request is performed.\n- `rollup_method` The stats roll-up method - supports `count`, `avg` and `cardinality`.\n- `measure` For `avg` and cardinality `rollup_method` - specify the measure or the facet name you want to use.\n- `time_window` #m (between 1 and 2880), #h (between 1 and 48).\n- `operator` `<`, `<=`, `>`, `>=`, `==`, or `!=`.\n- `#` an integer or decimal number used to set the threshold.\n\n##### Composite Query\n\nExample: `12345 && 67890`, where `12345` and `67890` are the IDs of non-composite monitors\n\n* `name` [*required*, *default* = **dynamic, based on query**]: The name of the alert.\n* `message` [*required*, *default* = **dynamic, based on query**]: A message to include with notifications for this monitor.\nEmail notifications can be sent to specific users by using the same '@username' notation as events.\n* `tags` [*optional*, *default* = **empty list**]: A list of tags to associate with your monitor.\nWhen getting all monitor details via the API, use the `monitor_tags` argument to filter results by these tags.\nIt is only available via the API and isn't visible or editable in the Datadog UI.\n\n##### SLO Alert Query\n\nExample: `error_budget(\"slo_id\").over(\"time_window\") operator #`\n\n- `slo_id`: The alphanumeric SLO ID of the SLO you are configuring the alert for.\n- `time_window`: The time window of the SLO target you wish to alert on. Valid options: `7d`, `30d`, `90d`.\n- `operator`: `>=` or `>`\n\n##### Audit Alert Query\n\nExample: `audits(query).rollup(rollup_method[, measure]).last(time_window) operator #`\n\n- `query` The search query - following the [Log search syntax](https://docs.datadoghq.com/logs/search_syntax/).\n- `rollup_method` The stats roll-up method - supports `count`, `avg` and `cardinality`.\n- `measure` For `avg` and cardinality `rollup_method` - specify the measure or the facet name you want to use.\n- `time_window` #m (between 1 and 2880), #h (between 1 and 48).\n- `operator` `<`, `<=`, `>`, `>=`, `==`, or `!=`.\n- `#` an integer or decimal number used to set the threshold.\n\n##### CI Pipelines Alert Query\n\nExample: `ci-pipelines(query).rollup(rollup_method[, measure]).last(time_window) operator #`\n\n- `query` The search query - following the [Log search syntax](https://docs.datadoghq.com/logs/search_syntax/).\n- `rollup_method` The stats roll-up method - supports `count`, `avg`, and `cardinality`.\n- `measure` For `avg` and cardinality `rollup_method` - specify the measure or the facet name you want to use.\n- `time_window` #m (between 1 and 2880), #h (between 1 and 48).\n- `operator` `<`, `<=`, `>`, `>=`, `==`, or `!=`.\n- `#` an integer or decimal number used to set the threshold.\n\n##### CI Tests Alert Query\n\nExample: `ci-tests(query).rollup(rollup_method[, measure]).last(time_window) operator #`\n\n- `query` The search query - following the [Log search syntax](https://docs.datadoghq.com/logs/search_syntax/).\n- `rollup_method` The stats roll-up method - supports `count`, `avg`, and `cardinality`.\n- `measure` For `avg` and cardinality `rollup_method` - specify the measure or the facet name you want to use.\n- `time_window` #m (between 1 and 2880), #h (between 1 and 48).\n- `operator` `<`, `<=`, `>`, `>=`, `==`, or `!=`.\n- `#` an integer or decimal number used to set the threshold.\n\n##### Error Tracking Alert Query\n\n\"New issue\" example: `error-tracking(query).source(issue_source).new().rollup(rollup_method[, measure]).by(group_by).last(time_window) operator #`\n\"High impact issue\" example: `error-tracking(query).source(issue_source).impact().rollup(rollup_method[, measure]).by(group_by).last(time_window) operator #`\n\n- `query` The search query - following the [Log search syntax](https://docs.datadoghq.com/logs/search_syntax/).\n- `issue_source` The issue source - supports `all`, `browser`, `mobile` and `backend` and defaults to `all` if omitted.\n- `rollup_method` The stats roll-up method - supports `count`, `avg`, and `cardinality` and defaults to `count` if omitted.\n- `measure` For `avg` and cardinality `rollup_method` - specify the measure or the facet name you want to use.\n- `group by` Comma-separated list of attributes to group by - should contain at least `issue.id`.\n- `time_window` #m (between 1 and 2880), #h (between 1 and 48).\n- `operator` `<`, `<=`, `>`, `>=`, `==`, or `!=`.\n- `#` an integer or decimal number used to set the threshold.\n\n**Database Monitoring Alert Query**\n\nExample: `database-monitoring(query).rollup(rollup_method[, measure]).last(time_window) operator #`\n\n- `query` The search query - following the [Log search syntax](https://docs.datadoghq.com/logs/search_syntax/).\n- `rollup_method` The stats roll-up method - supports `count`, `avg`, and `cardinality`.\n- `measure` For `avg` and cardinality `rollup_method` - specify the measure or the facet name you want to use.\n- `time_window` #m (between 1 and 2880), #h (between 1 and 48).\n- `operator` `<`, `<=`, `>`, `>=`, `==`, or `!=`.\n- `#` an integer or decimal number used to set the threshold.\n\n**Network Performance Alert Query**\n\nExample: `network-performance(query).rollup(rollup_method[, measure]).last(time_window) operator #`\n\n- `query` The search query - following the [Log search syntax](https://docs.datadoghq.com/logs/search_syntax/).\n- `rollup_method` The stats roll-up method - supports `count`, `avg`, and `cardinality`.\n- `measure` For `avg` and cardinality `rollup_method` - specify the measure or the facet name you want to use.\n- `time_window` #m (between 1 and 2880), #h (between 1 and 48).\n- `operator` `<`, `<=`, `>`, `>=`, `==`, or `!=`.\n- `#` an integer or decimal number used to set the threshold.\n\n**Cost Alert Query**\n\nExample: `formula(query).timeframe_type(time_window).function(parameter) operator #`\n\n- `query` The search query - following the [Log search syntax](https://docs.datadoghq.com/logs/search_syntax/).\n- `timeframe_type` The timeframe type to evaluate the cost\n        - for `forecast` supports `current`\n        - for `change`, `anomaly`, `threshold` supports `last`\n- `time_window` - supports daily roll-up e.g. `7d`\n- `function` - [optional, defaults to `threshold` monitor if omitted] supports `change`, `anomaly`, `forecast`\n- `parameter` Specify the parameter of the type\n    - for `change`:\n        - supports `relative`, `absolute`\n        - [optional] supports `#`, where `#` is an integer or decimal number used to set the threshold\n    - for `anomaly`:\n        - supports `direction=both`, `direction=above`, `direction=below`\n        - [optional] supports `threshold=#`, where `#` is an integer or decimal number used to set the threshold\n- `operator`\n    - for `threshold` supports `<`, `<=`, `>`, `>=`, `==`, or `!=`\n    - for `change` supports `>`, `<`\n    - for `anomaly` supports `>=`\n    - for `forecast` supports `>`\n- `#` an integer or decimal number used to set the threshold.\n\n**Network Path Alert Query**\n\nExample: `network-path(query).index(index_name).rollup(rollup_method[, measure]).last(time_window) operator #`\n\n- `query` The search query - following the [Log search syntax](https://docs.datadoghq.com/logs/search_syntax/).\n- `index_name` The data type to monitor on - supports `netpath-path` and `netpath-hop`.\n- `rollup_method` The stats roll-up method - supports `count`, `avg`, and `cardinality`.\n- `measure` For `avg` and cardinality `rollup_method` - specify the measure or the facet name you want to use.\n- `time_window` #m (between 1 and 2880), #h (between 1 and 48).\n- `operator` `<`, `<=`, `>`, `>=`, `==`, or `!=`.\n- `#` an integer or decimal number used to set the threshold."
+      }
+    },
+    "com.datadog.monitors#CheckCanDeleteMonitorRequestMonitorIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {}
+    },
+    "com.datadog.monitors#CheckCanDeleteMonitorRequest": {
+      "type": "structure",
+      "members": {
+        "monitor_ids": {
+          "target": "com.datadog.monitors#CheckCanDeleteMonitorRequestMonitorIdsList",
+          "traits": {
+            "smithy.api#httpQuery": "monitor_ids",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The IDs of the monitor to check."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.monitors#CheckCanDeleteMonitorResponse": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.datadog.monitors#CheckCanDeleteMonitorResponseData",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "errors": {
+          "target": "com.datadog.monitors#CheckCanDeleteMonitorResponseErrorsMap",
+          "traits": {
+            "smithy.api#documentation": "A mapping of Monitor ID to strings denoting where it's used.",
+            "com.distilled.openapi#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response of monitor IDs that can or can't be safely deleted."
+      }
+    },
+    "com.datadog.monitors#CheckCanDeleteMonitorResponseData": {
+      "type": "structure",
+      "members": {
+        "ok": {
+          "target": "com.datadog.monitors#CheckCanDeleteMonitorResponseDataOkList",
+          "traits": {
+            "smithy.api#documentation": "An array of Monitor IDs that can be safely deleted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Wrapper object with the list of monitor IDs."
+      }
+    },
+    "com.datadog.monitors#CheckCanDeleteMonitorResponseDataOkList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Integer"
+      },
+      "traits": {
+        "smithy.api#documentation": "An array of Monitor IDs that can be safely deleted."
+      }
+    },
+    "com.datadog.monitors#CheckCanDeleteMonitorResponseErrorsValueList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Strings denoting where a monitor is used."
+      }
+    },
+    "com.datadog.monitors#CheckCanDeleteMonitorResponseErrorsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.datadog.monitors#CheckCanDeleteMonitorResponseErrorsValueList"
+      },
+      "traits": {
+        "smithy.api#documentation": "A mapping of Monitor ID to strings denoting where it's used."
+      }
+    },
+    "com.datadog.monitors#CheckCanDeleteMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.monitors#CheckCanDeleteMonitorRequest"
+      },
+      "output": {
+        "target": "com.datadog.monitors#CheckCanDeleteMonitorResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.monitors#BadRequest"
+        },
+        {
+          "target": "com.datadog.monitors#Forbidden"
+        },
+        {
+          "target": "com.datadog.monitors#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/v1/monitor/can_delete",
+          "code": 200
+        },
+        "smithy.api#documentation": "Check if a monitor can be deleted\n\nCheck if the given monitors can be deleted."
+      }
+    },
+    "com.datadog.monitors#SearchMonitorGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "query",
+            "smithy.api#documentation": "After entering a search query on the [Triggered Monitors page][1], use the query parameter value in the\nURL of the page as a value for this parameter. For more information, see the [Manage Monitors documentation][2].\n\nThe query can contain any number of space-separated monitor attributes, for instance: `query=\"type:metric group_status:alert\"`.\n\n[1]: https://app.datadoghq.com/monitors/triggered\n[2]: /monitors/manage/#triggered-monitors"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page",
+            "smithy.api#documentation": "Page to start paginating from."
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "per_page",
+            "smithy.api#documentation": "Number of monitors to return per page."
+          }
+        },
+        "sort": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "sort",
+            "smithy.api#documentation": "String for sort order, composed of field and sort order separate by a comma, for example `name,asc`. Supported sort directions: `asc`, `desc`. Supported fields:\n\n* `name`\n* `status`\n* `tags`"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.monitors#MonitorGroupSearchResponse": {
+      "type": "structure",
+      "members": {
+        "counts": {
+          "target": "com.datadog.monitors#MonitorGroupSearchResponseCounts"
+        },
+        "groups": {
+          "target": "com.datadog.monitors#MonitorGroupSearchResponseGroupsList",
+          "traits": {
+            "smithy.api#documentation": "The list of found monitor groups."
+          }
+        },
+        "metadata": {
+          "target": "com.datadog.monitors#MonitorSearchResponseMetadata"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response of a monitor group search."
+      }
+    },
+    "com.datadog.monitors#MonitorGroupSearchResponseCounts": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.datadog.monitors#MonitorSearchCount"
+        },
+        "type": {
+          "target": "com.datadog.monitors#MonitorSearchCount"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The counts of monitor groups per different criteria."
+      }
+    },
+    "com.datadog.monitors#MonitorSearchCount": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorSearchCountItem"
+      },
+      "traits": {
+        "smithy.api#documentation": "Search facets."
+      }
+    },
+    "com.datadog.monitors#MonitorSearchCountItem": {
+      "type": "structure",
+      "members": {
+        "count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of found monitors with the listed value."
+          }
+        },
+        "name": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The facet value."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A facet item."
+      }
+    },
+    "com.datadog.monitors#MonitorGroupSearchResult": {
+      "type": "structure",
+      "members": {
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the group."
+          }
+        },
+        "group_tags": {
+          "target": "com.datadog.monitors#MonitorGroupSearchResultGroupTagsList",
+          "traits": {
+            "smithy.api#documentation": "The list of tags of the monitor group."
+          }
+        },
+        "last_nodata_ts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Latest timestamp the monitor group was in NO_DATA state."
+          }
+        },
+        "last_triggered_ts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Latest timestamp the monitor group triggered.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "monitor_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The ID of the monitor."
+          }
+        },
+        "monitor_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the monitor."
+          }
+        },
+        "status": {
+          "target": "com.datadog.monitors#MonitorOverallStates"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A single monitor group search result."
+      }
+    },
+    "com.datadog.monitors#MonitorGroupSearchResultGroupTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of tags of the monitor group."
+      }
+    },
+    "com.datadog.monitors#MonitorGroupSearchResponseGroupsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorGroupSearchResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of found monitor groups."
+      }
+    },
+    "com.datadog.monitors#MonitorSearchResponseMetadata": {
+      "type": "structure",
+      "members": {
+        "page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The page to start paginating from."
+          }
+        },
+        "page_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of pages."
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The number of monitors to return per page."
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The total number of monitors."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Metadata about the response."
+      }
+    },
+    "com.datadog.monitors#SearchMonitorGroups": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.monitors#SearchMonitorGroupsRequest"
+      },
+      "output": {
+        "target": "com.datadog.monitors#MonitorGroupSearchResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.monitors#BadRequest"
+        },
+        {
+          "target": "com.datadog.monitors#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/v1/monitor/groups/search",
+          "code": 200
+        },
+        "smithy.api#documentation": "Monitors group search\n\nSearch and filter your monitor groups details."
+      }
+    },
+    "com.datadog.monitors#SearchMonitorsRequest": {
+      "type": "structure",
+      "members": {
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "query",
+            "smithy.api#documentation": "After entering a search query in your [Manage Monitor page][1] use the query parameter value in the\nURL of the page as value for this parameter. Consult the dedicated [manage monitor documentation][2]\npage to learn more.\n\nThe query can contain any number of space-separated monitor attributes, for instance `query=\"type:metric status:alert\"`.\n\n[1]: https://app.datadoghq.com/monitors/manage\n[2]: /monitors/manage/#find-the-monitors"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page",
+            "smithy.api#documentation": "Page to start paginating from."
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "per_page",
+            "smithy.api#documentation": "Number of monitors to return per page."
+          }
+        },
+        "sort": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "sort",
+            "smithy.api#documentation": "String for sort order, composed of field and sort order separate by a comma, for example `name,asc`. Supported sort directions: `asc`, `desc`. Supported fields:\n\n* `name`\n* `status`\n* `tags`"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.monitors#MonitorSearchResponse": {
+      "type": "structure",
+      "members": {
+        "counts": {
+          "target": "com.datadog.monitors#MonitorSearchResponseCounts"
+        },
+        "metadata": {
+          "target": "com.datadog.monitors#MonitorSearchResponseMetadata"
+        },
+        "monitors": {
+          "target": "com.datadog.monitors#MonitorSearchResponseMonitorsList",
+          "traits": {
+            "smithy.api#documentation": "The list of found monitors."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The response from a monitor search."
+      }
+    },
+    "com.datadog.monitors#MonitorSearchResponseCounts": {
+      "type": "structure",
+      "members": {
+        "muted": {
+          "target": "com.datadog.monitors#MonitorSearchCount"
+        },
+        "status": {
+          "target": "com.datadog.monitors#MonitorSearchCount"
+        },
+        "tag": {
+          "target": "com.datadog.monitors#MonitorSearchCount"
+        },
+        "type": {
+          "target": "com.datadog.monitors#MonitorSearchCount"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The counts of monitors per different criteria."
+      }
+    },
+    "com.datadog.monitors#MonitorSearchResult": {
+      "type": "structure",
+      "members": {
+        "classification": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Classification of the monitor."
+          }
+        },
+        "creator": {
+          "target": "com.datadog.monitors#Creator"
+        },
+        "id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "ID of the monitor."
+          }
+        },
+        "last_triggered_ts": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Latest timestamp the monitor triggered.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "metrics": {
+          "target": "com.datadog.monitors#MonitorSearchResultMetricsList",
+          "traits": {
+            "smithy.api#documentation": "Metrics used by the monitor."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor name."
+          }
+        },
+        "notifications": {
+          "target": "com.datadog.monitors#MonitorSearchResultNotificationsList",
+          "traits": {
+            "smithy.api#documentation": "The notification triggered by the monitor."
+          }
+        },
+        "org_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The ID of the organization."
+          }
+        },
+        "quality_issues": {
+          "target": "com.datadog.monitors#MonitorSearchResultQualityIssuesList",
+          "traits": {
+            "smithy.api#documentation": "Quality issues detected with the monitor."
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor query."
+          }
+        },
+        "scopes": {
+          "target": "com.datadog.monitors#MonitorSearchResultScopesList",
+          "traits": {
+            "smithy.api#documentation": "The scope(s) to which the downtime applies, for example `host:app2`.\nProvide multiple scopes as a comma-separated list, for example `env:dev,env:prod`.\nThe resulting downtime applies to sources that matches ALL provided scopes\n(that is `env:dev AND env:prod`), NOT any of them."
+          }
+        },
+        "status": {
+          "target": "com.datadog.monitors#MonitorOverallStates"
+        },
+        "tags": {
+          "target": "com.datadog.monitors#MonitorSearchResultTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags associated with the monitor."
+          }
+        },
+        "type": {
+          "target": "com.datadog.monitors#MonitorType"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Holds search results."
+      }
+    },
+    "com.datadog.monitors#MonitorSearchResultMetricsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Metrics used by the monitor."
+      }
+    },
+    "com.datadog.monitors#MonitorSearchResultNotification": {
+      "type": "structure",
+      "members": {
+        "handle": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address that received the notification."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The username receiving the notification"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A notification triggered by the monitor."
+      }
+    },
+    "com.datadog.monitors#MonitorSearchResultNotificationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorSearchResultNotification"
+      },
+      "traits": {
+        "smithy.api#documentation": "The notification triggered by the monitor."
+      }
+    },
+    "com.datadog.monitors#MonitorSearchResultQualityIssuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Quality issues detected with the monitor."
+      }
+    },
+    "com.datadog.monitors#MonitorSearchResultScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "The scope(s) to which the downtime applies, for example `host:app2`.\nProvide multiple scopes as a comma-separated list, for example `env:dev,env:prod`.\nThe resulting downtime applies to sources that matches ALL provided scopes\n(that is `env:dev AND env:prod`), NOT any of them."
+      }
+    },
+    "com.datadog.monitors#MonitorSearchResultTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated with the monitor."
+      }
+    },
+    "com.datadog.monitors#MonitorSearchResponseMonitorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorSearchResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of found monitors."
+      }
+    },
+    "com.datadog.monitors#SearchMonitors": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.monitors#SearchMonitorsRequest"
+      },
+      "output": {
+        "target": "com.datadog.monitors#MonitorSearchResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.monitors#BadRequest"
+        },
+        {
+          "target": "com.datadog.monitors#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/v1/monitor/search",
+          "code": 200
+        },
+        "smithy.api#documentation": "Monitors search\n\nSearch and filter your monitors details."
+      }
+    },
+    "com.datadog.monitors#ValidateMonitorRequestAssetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorAsset"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks)."
+      }
+    },
+    "com.datadog.monitors#ValidateMonitorRequestMatchingDowntimesList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MatchingDowntimeInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of active v1 downtimes that match this monitor."
+      }
+    },
+    "com.datadog.monitors#ValidateMonitorRequestRestrictedRolesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles."
+      }
+    },
+    "com.datadog.monitors#ValidateMonitorRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated to your monitor."
+      }
+    },
+    "com.datadog.monitors#ValidateMonitorRequest": {
+      "type": "structure",
+      "members": {
+        "assets": {
+          "target": "com.datadog.monitors#ValidateMonitorRequestAssetsList",
+          "traits": {
+            "smithy.api#documentation": "The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks)."
+          }
+        },
+        "draft_status": {
+          "target": "com.datadog.monitors#MonitorDraftStatus"
+        },
+        "matching_downtimes": {
+          "target": "com.datadog.monitors#ValidateMonitorRequestMatchingDowntimesList",
+          "traits": {
+            "smithy.api#documentation": "A list of active v1 downtimes that match this monitor."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A message to include with notifications for this monitor."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor name."
+          }
+        },
+        "options": {
+          "target": "com.datadog.monitors#MonitorOptionsInput"
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Integer from 1 (high) to 5 (low) indicating alert severity.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor query.",
+            "smithy.api#required": {}
+          }
+        },
+        "restricted_roles": {
+          "target": "com.datadog.monitors#ValidateMonitorRequestRestrictedRolesList",
+          "traits": {
+            "smithy.api#documentation": "A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tags": {
+          "target": "com.datadog.monitors#ValidateMonitorRequestTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags associated to your monitor."
+          }
+        },
+        "type": {
+          "target": "com.datadog.monitors#MonitorType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.monitors#ValidateMonitorResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.datadog.monitors#ValidateMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.monitors#ValidateMonitorRequest"
+      },
+      "output": {
+        "target": "com.datadog.monitors#ValidateMonitorResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.monitors#BadRequest"
+        },
+        {
+          "target": "com.datadog.monitors#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/v1/monitor/validate",
+          "code": 200
+        },
+        "smithy.api#documentation": "Validate a monitor\n\nValidate the monitor provided in the request.\n\n**Note**: Log monitors require an unscoped App Key and `logs_read_data` permission."
+      }
+    },
+    "com.datadog.monitors#GetMonitorRequest": {
+      "type": "structure",
+      "members": {
+        "monitor_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the monitor"
+          }
+        },
+        "group_states": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "group_states",
+            "smithy.api#documentation": "When specified, shows additional information about the group states. Choose one or more from `all`, `alert`, `warn`, and `no data`."
+          }
+        },
+        "with_downtimes": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "with_downtimes",
+            "smithy.api#documentation": "If this argument is set to true, then the returned data includes all current active downtimes for the monitor."
+          }
+        },
+        "with_assets": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "with_assets",
+            "smithy.api#documentation": "If this argument is set to `true`, the returned data includes all assets tied to this monitor."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.monitors#GetMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.monitors#GetMonitorRequest"
+      },
+      "output": {
+        "target": "com.datadog.monitors#Monitor"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.monitors#BadRequest"
+        },
+        {
+          "target": "com.datadog.monitors#Forbidden"
+        },
+        {
+          "target": "com.datadog.monitors#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/v1/monitor/{monitor_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get a monitor's details\n\nGet details about the specified monitor from your organization."
+      }
+    },
+    "com.datadog.monitors#UpdateMonitorRequestAssetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorAsset"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks)."
+      }
+    },
+    "com.datadog.monitors#UpdateMonitorRequestRestrictedRolesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles."
+      }
+    },
+    "com.datadog.monitors#UpdateMonitorRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated to your monitor."
+      }
+    },
+    "com.datadog.monitors#UpdateMonitorRequest": {
+      "type": "structure",
+      "members": {
+        "monitor_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the monitor."
+          }
+        },
+        "assets": {
+          "target": "com.datadog.monitors#UpdateMonitorRequestAssetsList",
+          "traits": {
+            "smithy.api#documentation": "The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks).",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "draft_status": {
+          "target": "com.datadog.monitors#MonitorDraftStatus"
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A message to include with notifications for this monitor."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor name."
+          }
+        },
+        "options": {
+          "target": "com.datadog.monitors#MonitorOptionsInput"
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Integer from 1 (high) to 5 (low) indicating alert severity.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor query."
+          }
+        },
+        "restricted_roles": {
+          "target": "com.datadog.monitors#UpdateMonitorRequestRestrictedRolesList",
+          "traits": {
+            "smithy.api#documentation": "A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tags": {
+          "target": "com.datadog.monitors#UpdateMonitorRequestTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags associated to your monitor."
+          }
+        },
+        "type": {
+          "target": "com.datadog.monitors#MonitorType"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.monitors#UpdateMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.monitors#UpdateMonitorRequest"
+      },
+      "output": {
+        "target": "com.datadog.monitors#Monitor"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.monitors#BadRequest"
+        },
+        {
+          "target": "com.datadog.monitors#Forbidden"
+        },
+        {
+          "target": "com.datadog.monitors#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/api/v1/monitor/{monitor_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Edit a monitor\n\nEdit the specified monitor."
+      }
+    },
+    "com.datadog.monitors#DeleteMonitorRequest": {
+      "type": "structure",
+      "members": {
+        "monitor_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the monitor."
+          }
+        },
+        "force": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "force",
+            "smithy.api#documentation": "Delete the monitor even if it's referenced by other resources (for example SLO, composite monitor)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.monitors#DeletedMonitor": {
+      "type": "structure",
+      "members": {
+        "deleted_monitor_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "ID of the deleted monitor."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response from the delete monitor call."
+      }
+    },
+    "com.datadog.monitors#DeleteMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.monitors#DeleteMonitorRequest"
+      },
+      "output": {
+        "target": "com.datadog.monitors#DeletedMonitor"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.monitors#BadRequest"
+        },
+        {
+          "target": "com.datadog.monitors#Forbidden"
+        },
+        {
+          "target": "com.datadog.monitors#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/api/v1/monitor/{monitor_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a monitor\n\nDelete the specified monitor"
+      }
+    },
+    "com.datadog.monitors#ValidateExistingMonitorRequestAssetsList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MonitorAsset"
+      },
+      "traits": {
+        "smithy.api#documentation": "The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks)."
+      }
+    },
+    "com.datadog.monitors#ValidateExistingMonitorRequestMatchingDowntimesList": {
+      "type": "list",
+      "member": {
+        "target": "com.datadog.monitors#MatchingDowntimeInput"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of active v1 downtimes that match this monitor."
+      }
+    },
+    "com.datadog.monitors#ValidateExistingMonitorRequestRestrictedRolesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles."
+      }
+    },
+    "com.datadog.monitors#ValidateExistingMonitorRequestTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated to your monitor."
+      }
+    },
+    "com.datadog.monitors#ValidateExistingMonitorRequest": {
+      "type": "structure",
+      "members": {
+        "monitor_id": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The ID of the monitor"
+          }
+        },
+        "assets": {
+          "target": "com.datadog.monitors#ValidateExistingMonitorRequestAssetsList",
+          "traits": {
+            "smithy.api#documentation": "The list of monitor assets tied to a monitor, which represents key links for users to take action on monitor alerts (for example, runbooks)."
+          }
+        },
+        "draft_status": {
+          "target": "com.datadog.monitors#MonitorDraftStatus"
+        },
+        "matching_downtimes": {
+          "target": "com.datadog.monitors#ValidateExistingMonitorRequestMatchingDowntimesList",
+          "traits": {
+            "smithy.api#documentation": "A list of active v1 downtimes that match this monitor."
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A message to include with notifications for this monitor."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor name."
+          }
+        },
+        "options": {
+          "target": "com.datadog.monitors#MonitorOptionsInput"
+        },
+        "priority": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Integer from 1 (high) to 5 (low) indicating alert severity.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The monitor query.",
+            "smithy.api#required": {}
+          }
+        },
+        "restricted_roles": {
+          "target": "com.datadog.monitors#ValidateExistingMonitorRequestRestrictedRolesList",
+          "traits": {
+            "smithy.api#documentation": "A list of unique role identifiers to define which roles are allowed to edit the monitor. The unique identifiers for all roles can be pulled from the [Roles API](https://docs.datadoghq.com/api/latest/roles/#list-roles) and are located in the `data.id` field. Editing a monitor includes any updates to the monitor configuration, monitor deletion, and muting of the monitor for any amount of time. You can use the [Restriction Policies API](https://docs.datadoghq.com/api/latest/restriction-policies/) to manage write authorization for individual monitors by teams and users, in addition to roles.",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "tags": {
+          "target": "com.datadog.monitors#ValidateExistingMonitorRequestTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags associated to your monitor."
+          }
+        },
+        "type": {
+          "target": "com.datadog.monitors#MonitorType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.datadog.monitors#ValidateExistingMonitorResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.datadog.monitors#ValidateExistingMonitor": {
+      "type": "operation",
+      "input": {
+        "target": "com.datadog.monitors#ValidateExistingMonitorRequest"
+      },
+      "output": {
+        "target": "com.datadog.monitors#ValidateExistingMonitorResponse"
+      },
+      "errors": [
+        {
+          "target": "com.datadog.monitors#BadRequest"
+        },
+        {
+          "target": "com.datadog.monitors#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/api/v1/monitor/{monitor_id}/validate",
+          "code": 200
+        },
+        "smithy.api#documentation": "Validate an existing monitor\n\nValidate the monitor provided in the request.\n\n**Note**: Log monitors require an unscoped App Key and `logs_read_data` permission."
+      }
+    },
+    "com.datadog.monitors#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.datadog.monitors#Forbidden": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 403,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 403
+          }
+        ]
+      }
+    },
+    "com.datadog.monitors#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
+    "com.datadog.monitors#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.datadog.monitors#Monitors": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.datadog.monitors#ListMonitors"
+        },
+        {
+          "target": "com.datadog.monitors#CreateMonitor"
+        },
+        {
+          "target": "com.datadog.monitors#CheckCanDeleteMonitor"
+        },
+        {
+          "target": "com.datadog.monitors#SearchMonitorGroups"
+        },
+        {
+          "target": "com.datadog.monitors#SearchMonitors"
+        },
+        {
+          "target": "com.datadog.monitors#ValidateMonitor"
+        },
+        {
+          "target": "com.datadog.monitors#GetMonitor"
+        },
+        {
+          "target": "com.datadog.monitors#UpdateMonitor"
+        },
+        {
+          "target": "com.datadog.monitors#DeleteMonitor"
+        },
+        {
+          "target": "com.datadog.monitors#ValidateExistingMonitor"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "Datadog API V1 Collection",
+        "smithy.api#documentation": "Collection of all Datadog Public endpoints."
+      }
+    }
+  }
+}
