@@ -35,8 +35,11 @@ Runs automatically on every push to `main` via
 
 - `ALCHEMY_GITHUB_TOKEN` (secret) — a fine-grained PAT owned by the snapshot
   org, scoped to **All repositories**, with **Administration: Read and write**
-  and **Contents: Read and write** repository permissions (the built-in
-  `GITHUB_TOKEN` cannot create repositories, so a PAT is required).
+  (create repos, settings, topics) and **Contents: Read and write** (push
+  snapshot files) repository permissions (the built-in `GITHUB_TOKEN` cannot
+  create repositories, so a PAT is required). Add **Workflows: Read and
+  write** if the pushed snapshots ever contain `.github/workflows/` files —
+  GitHub rejects workflow-file pushes with Contents alone.
 - `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` (secrets) — for the
   Cloudflare account hosting the remote state store.
 - `DISTILLED_REPOS_OWNER` (repository variable) — the snapshot org name.
