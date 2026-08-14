@@ -49,11 +49,14 @@ jobs:
           fetch-depth: 0
           token: ${{ steps.bot-token.outputs.token }}
 
-      - name: Setup pnpm, Node.js, Bun
+      - name: Setup pnpm & Bun
         uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
         with:
           cache: true
           install: true
+
+      - name: Install Node 24
+        run: pnpm runtime set node 24 -g
 
       - id: release
         name: Prepare release
@@ -109,11 +112,14 @@ jobs:
           ref: ${{ needs.build.outputs.sha }}
           fetch-depth: 0
 
-      - name: Setup pnpm, Node.js, Bun
+      - name: Setup pnpm & Bun
         uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
         with:
           cache: true
           install: true
+
+      - name: Install Node 24
+        run: pnpm runtime set node 24 -g
 
       - run: sed -i '/always-auth/d' ~/.npmrc 2>/dev/null || true
 

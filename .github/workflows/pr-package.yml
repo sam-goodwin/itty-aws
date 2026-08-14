@@ -28,11 +28,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup pnpm, Node.js, Bun
+      - name: Setup pnpm & Bun
         uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
         with:
           cache: true
           install: true
+
+      - name: Install Node 24
+        run: pnpm runtime set node 24 -g
 
       - name: Build packages
         run: bun run build
