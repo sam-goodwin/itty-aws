@@ -32,10 +32,13 @@ jobs:
         uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
         with:
           cache: true
-          install: true
+          install: false
 
       - name: Install Node 24
         run: pnpm runtime set node 24 -g
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build packages
         run: bun run build
