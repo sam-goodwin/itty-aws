@@ -7,7 +7,7 @@
       "dependencies": {
         "@effect/platform-bun": "4.0.0-beta.105",
         "@effect/platform-node": "4.0.0-beta.105",
-        "alchemy": "2.0.0-beta.72",
+        "alchemy": "next",
         "effect": "4.0.0-beta.105",
       },
       "devDependencies": {
