@@ -42,7 +42,7 @@ jobs:
 
       - name: Publish packages
         id: publish
-        uses: alchemy-run/actions/actions/pr-package@ab9b8d7a9e09390ba578b85373dcac972bf3edc4 # actions#10
+        uses: alchemy-run/actions/actions/pr-package@1936076679cb6ccd4514873fb2f7e777d3900ca6 # actions#11
         with:
           packages: |
             [
@@ -87,7 +87,7 @@ jobs:
         if: >-
           github.event_name == 'pull_request' &&
           fromJson(steps.publish.outputs.plan).packages[0] != null
-        uses: alchemy-run/actions/actions/pr-package-comment@ab9b8d7a9e09390ba578b85373dcac972bf3edc4 # actions#10
+        uses: alchemy-run/actions/actions/pr-package-comment@1936076679cb6ccd4514873fb2f7e777d3900ca6 # actions#11
         with:
           plan: ${{ steps.publish.outputs.plan }}
           token: ${{ steps.bot-token.outputs.token }}
