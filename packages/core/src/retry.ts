@@ -171,10 +171,42 @@ const serverHintMillis = (
   error: unknown,
   capMs: number,
 ): number | undefined => {
+  const raw = rawServerHintMillis(error);
+  return raw === undefined ? undefined : Math.min(raw, capMs);
+};
+
+/** The server's `retryAfter` hint in milliseconds, uncapped. */
+const rawServerHintMillis = (error: unknown): number | undefined => {
   const hint = (error as { retryAfter?: unknown } | null | undefined)
     ?.retryAfter;
   if (!Duration.isDuration(hint)) return undefined;
-  return Math.min(Duration.toMillis(hint), capMs);
+  return Duration.toMillis(hint);
+};
+
+/**
+ * Whether the server's `Retry-After` hint exceeds our patience entirely.
+ *
+ * When a server says "retry in 24 hours" (e.g. Vercel's 5-per-day
+ * `POST /v1/teams` limit answers 429 with `retry-after: 86400`), retrying
+ * with delays capped at the hint cap provably cannot succeed — every capped
+ * retry lands inside the same window and burns the caller's timeout. The
+ * retry `while` predicates give up immediately in that case, surfacing the
+ * typed throttling error to the caller.
+ *
+ * Synchronous by necessity (`while` is a sync predicate), so the cap is
+ * resolved from `DISTILLED_SERVER_RETRY_HINT_CAP_MS` / the default only —
+ * the {@link ServerRetryHintCapMs} layer override affects delay computation,
+ * not the give-up threshold.
+ */
+const hintExceedsPatience = (error: unknown): boolean => {
+  const raw = rawServerHintMillis(error);
+  if (raw === undefined) return false;
+  const fromEnv = Number(process.env[ENV_SERVER_RETRY_HINT_CAP_MS] ?? "");
+  const capMs =
+    Number.isFinite(fromEnv) && fromEnv >= 0
+      ? Math.trunc(fromEnv)
+      : DEFAULT_SERVER_RETRY_HINT_CAP_MS;
+  return raw > capMs;
 };
 
 /**
@@ -222,7 +254,7 @@ const honorServerHint = (
  * while a genuinely broken credential still fails within seconds.
  */
 export const makeDefault: Factory = (lastError) => ({
-  while: (error) => isTransientError(error),
+  while: (error) => isTransientError(error) && !hintExceedsPatience(error),
   // The 5s cap applies to the exponential backoff BEFORE the server hint is
   // considered, so a server-provided retryAfter longer than 5s is honored in
   // full (bounded only by the 60s hint cap inside honorServerHint). Capping
@@ -248,7 +280,7 @@ export const makeDefault: Factory = (lastError) => ({
  * present so callers using `<SDK>.Retry.throttling` get correct backoff.
  */
 export const throttlingFactory: Factory = (lastError) => ({
-  while: (error) => isThrottling(error),
+  while: (error) => isThrottling(error) && !hintExceedsPatience(error),
   schedule: pipe(
     Schedule.exponential(1000, 2),
     capped(Duration.seconds(5)),
@@ -265,7 +297,7 @@ export const throttlingFactory: Factory = (lastError) => ({
  * cannot read `error.retryAfter`.
  */
 export const throttlingOptions: Options = {
-  while: (error) => isThrottling(error),
+  while: (error) => isThrottling(error) && !hintExceedsPatience(error),
   schedule: pipe(
     Schedule.exponential(1000, 2),
     capped(Duration.seconds(5)),
