@@ -225,6 +225,57 @@
     },
     {
       "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#AccessApplicationNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404,
+              "message": {
+                "includes": "unknown_application"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#AccessDestinationConflict",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "message": {
+                "includes": "destination belongs to another application"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
       "path": "/shapes/com.cloudflare.zero_trust#AccessTagNotFound",
       "value": {
         "type": "structure",

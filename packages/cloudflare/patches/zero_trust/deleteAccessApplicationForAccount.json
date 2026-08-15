@@ -25,6 +25,15 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.zero_trust#DeleteAccessApplicationForAccount/output/target",
       "value": "com.cloudflare.zero_trust#DeleteAccessApplicationForAccountResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#DeleteAccessApplicationForAccount/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#AccessApplicationNotFound"
+        }
+      ]
     }
   ]
 }
