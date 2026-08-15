@@ -1,5 +1,5 @@
 {
-  "description": "Align getAccessApplicationForAccount rename and type Forbidden (403) — Cloudflare returns 403 as transient token back-pressure",
+  "description": "Align getAccessApplicationForAccount rename and type Forbidden (403) \u2014 Cloudflare returns 403 as transient token back-pressure; type the 404 for a missing application as AccessApplicationNotFound",
   "patches": [
     {
       "op": "move",
@@ -34,6 +34,13 @@
           "target": "com.cloudflare.zero_trust#Forbidden"
         }
       ]
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#GetAccessApplicationForAccount/errors/-",
+      "value": {
+        "target": "com.cloudflare.zero_trust#AccessApplicationNotFound"
+      }
     }
   ]
 }

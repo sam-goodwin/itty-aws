@@ -576,6 +576,18 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   workerId: "worker_id",
 };
 
+export class AccessApplicationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<AccessApplicationNotFound>()(
+      "AccessApplicationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404 }],
+  ) {}
+
 export class AccessBookmarkNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<AccessBookmarkNotFound>()(
@@ -170878,7 +170890,10 @@ export const getAccessApplicationCaForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccessApplicationForAccountError = Forbidden | CloudflareOpError;
+export type GetAccessApplicationForAccountError =
+  | Forbidden
+  | AccessApplicationNotFound
+  | CloudflareOpError;
 /** Fetches information about an Access application. */
 export const getAccessApplicationForAccount: API.OperationMethod<
   GetAccessApplicationForAccountRequest,
@@ -170888,7 +170903,12 @@ export const getAccessApplicationForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApplicationForAccountRequest,
   output: GetAccessApplicationResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  errors: [
+    Forbidden,
+    AccessApplicationNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
