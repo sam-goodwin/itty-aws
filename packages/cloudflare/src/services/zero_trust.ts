@@ -576,6 +576,18 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   workerId: "worker_id",
 };
 
+export class AccessApplicationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<AccessApplicationNotFound>()(
+      "AccessApplicationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404, message: { includes: "unknown_application" } }],
+  ) {}
+
 export class AccessBookmarkNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<AccessBookmarkNotFound>()(
@@ -639,6 +651,18 @@ export class AccessCustomPagesNotEntitled
         message: { includes: "does not have permission for custom pages" },
       },
     ],
+  ) {}
+
+export class AccessDestinationConflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<AccessDestinationConflict>()(
+      "AccessDestinationConflict",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ message: { includes: "destination belongs to another application" } }],
   ) {}
 
 export class AccessGroupNotFound
@@ -168481,6 +168505,7 @@ export const createAccessApplicationCaForZone: API.OperationMethod<
 
 export type CreateAccessApplicationForAccountError =
   | AccessReferenceNotFound
+  | AccessDestinationConflict
   | CloudflareOpError;
 /** Adds a new application to Access. */
 export const createAccessApplicationForAccount: API.OperationMethod<
@@ -168491,7 +168516,12 @@ export const createAccessApplicationForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessApplicationForAccountRequest,
   output: CreateAccessApplicationResponse,
-  errors: [AccessReferenceNotFound, CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessReferenceNotFound,
+    AccessDestinationConflict,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -169667,7 +169697,9 @@ export const deleteAccessApplicationCaForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccessApplicationForAccountError = CloudflareOpError;
+export type DeleteAccessApplicationForAccountError =
+  | AccessApplicationNotFound
+  | CloudflareOpError;
 /** Deletes an application from Access. */
 export const deleteAccessApplicationForAccount: API.OperationMethod<
   DeleteAccessApplicationForAccountRequest,
@@ -169677,7 +169709,7 @@ export const deleteAccessApplicationForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessApplicationForAccountRequest,
   output: DeleteAccessApplicationResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessApplicationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -170878,7 +170910,10 @@ export const getAccessApplicationCaForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccessApplicationForAccountError = Forbidden | CloudflareOpError;
+export type GetAccessApplicationForAccountError =
+  | Forbidden
+  | AccessApplicationNotFound
+  | CloudflareOpError;
 /** Fetches information about an Access application. */
 export const getAccessApplicationForAccount: API.OperationMethod<
   GetAccessApplicationForAccountRequest,
@@ -170888,7 +170923,12 @@ export const getAccessApplicationForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApplicationForAccountRequest,
   output: GetAccessApplicationResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  errors: [
+    Forbidden,
+    AccessApplicationNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
