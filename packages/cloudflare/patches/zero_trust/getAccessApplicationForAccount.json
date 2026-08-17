@@ -32,6 +32,9 @@
       "value": [
         {
           "target": "com.cloudflare.zero_trust#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#AccessApplicationNotFound"
         }
       ]
     }

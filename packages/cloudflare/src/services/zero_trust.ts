@@ -576,6 +576,18 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   workerId: "worker_id",
 };
 
+export class AccessApplicationNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<AccessApplicationNotFound>()(
+      "AccessApplicationNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ status: 404, message: { includes: "unknown_application" } }],
+  ) {}
+
 export class AccessBookmarkNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<AccessBookmarkNotFound>()(
@@ -639,6 +651,18 @@ export class AccessCustomPagesNotEntitled
         message: { includes: "does not have permission for custom pages" },
       },
     ],
+  ) {}
+
+export class AccessDestinationConflict
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<AccessDestinationConflict>()(
+      "AccessDestinationConflict",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [{ message: { includes: "destination belongs to another application" } }],
   ) {}
 
 export class AccessGroupNotFound
@@ -4631,10 +4655,1468 @@ export const AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCas
       "AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2",
   }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2>;
 
+export type AccessPoliciesCreateRequestDecision =
+  | "allow"
+  | "deny"
+  | "non_identity"
+  | "bypass";
+export const AccessPoliciesCreateRequestDecision = /*@__PURE__*/ S.String;
+
+export interface AccessPoliciesCreateRequestIncludeItemGroupRuleGroup {
+  /** The ID of a previously created Access group. */
+  id: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemGroupRuleGroup =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemGroupRuleGroup",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemGroupRuleGroup>;
+
+export interface AccessPoliciesCreateRequestIncludeItemGroupRule {
+  group: AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
+}
+export const AccessPoliciesCreateRequestIncludeItemGroupRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      group: AccessPoliciesCreateRequestIncludeItemGroupRuleGroup,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemGroupRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemGroupRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule {
+  /** An empty object which matches on all service tokens. */
+  anyValidServiceToken: unknown;
+}
+export const AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      anyValidServiceToken: S.Unknown.pipe(T.Body("any_valid_service_token")),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext {
+  /** The ID of an Authentication context. */
+  id: string;
+  /** The ACID of an Authentication context. */
+  acId: string;
+  /** The ID of your Azure identity provider. */
+  identityProviderId: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      acId: S.String.pipe(T.Body("ac_id")),
+      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule {
+  authContext: AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      authContext:
+        AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext.pipe(
+          T.Body("auth_context"),
+        ),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod {
+  /** The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2. */
+  authMethod: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      authMethod: S.String.pipe(T.Body("auth_method")),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule {
+  authMethod: AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
+}
+export const AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      authMethod:
+        AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD {
+  /** The ID of an Azure group. */
+  id: string;
+  /** The ID of your Azure identity provider. */
+  identityProviderId: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAzureGroupRule {
+  azureAD: AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
+}
+export const AccessPoliciesCreateRequestIncludeItemAzureGroupRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      azureAD: AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemAzureGroupRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAzureGroupRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemCertificateRule {
+  certificate: unknown;
+}
+export const AccessPoliciesCreateRequestIncludeItemCertificateRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      certificate: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemCertificateRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemCertificateRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName {
+  /** The common name to match. */
+  commonName: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      commonName: S.String.pipe(T.Body("common_name")),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule {
+  commonName: AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      commonName:
+        AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName.pipe(
+          T.Body("common_name"),
+        ),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemCountryRuleGeo {
+  /** The country code that should be matched. */
+  countryCode: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemCountryRuleGeo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      countryCode: S.String.pipe(T.Body("country_code")),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemCountryRuleGeo",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemCountryRuleGeo>;
+
+export interface AccessPoliciesCreateRequestIncludeItemCountryRule {
+  geo: AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
+}
+export const AccessPoliciesCreateRequestIncludeItemCountryRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      geo: AccessPoliciesCreateRequestIncludeItemCountryRuleGeo,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemCountryRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemCountryRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture {
+  /** The ID of a device posture integration. */
+  integrationUid: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      integrationUid: S.String.pipe(T.Body("integration_uid")),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule {
+  devicePosture: AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      devicePosture:
+        AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture.pipe(
+          T.Body("device_posture"),
+        ),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain {
+  /** The email domain to match. */
+  domain: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      domain: S.String,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain>;
+
+export interface AccessPoliciesCreateRequestIncludeItemDomainRule {
+  emailDomain: AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
+}
+export const AccessPoliciesCreateRequestIncludeItemDomainRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      emailDomain:
+        AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain.pipe(
+          T.Body("email_domain"),
+        ),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemDomainRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemDomainRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList {
+  /** The ID of a previously created email list. */
+  id: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList>;
+
+export interface AccessPoliciesCreateRequestIncludeItemEmailListRule {
+  emailList: AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
+}
+export const AccessPoliciesCreateRequestIncludeItemEmailListRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      emailList:
+        AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList.pipe(
+          T.Body("email_list"),
+        ),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemEmailListRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemEmailListRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemEmailRuleEmail {
+  /** The email of the user. */
+  email: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemEmailRuleEmail =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      email: S.String,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemEmailRuleEmail",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemEmailRuleEmail>;
+
+export interface AccessPoliciesCreateRequestIncludeItemEmailRule {
+  email: AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
+}
+export const AccessPoliciesCreateRequestIncludeItemEmailRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      email: AccessPoliciesCreateRequestIncludeItemEmailRuleEmail,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemEmailRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemEmailRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemEveryoneRule {
+  /** An empty object which matches on all users. */
+  everyone: unknown;
+}
+export const AccessPoliciesCreateRequestIncludeItemEveryoneRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      everyone: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemEveryoneRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemEveryoneRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation {
+  /** The API endpoint containing your business logic. */
+  evaluateUrl: string;
+  /** The API endpoint containing the key that Access uses to verify that the response came from your API. */
+  keysUrl: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      evaluateUrl: S.String.pipe(T.Body("evaluate_url")),
+      keysUrl: S.String.pipe(T.Body("keys_url")),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation>;
+
+export interface AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule {
+  externalEvaluation: AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
+}
+export const AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      externalEvaluation:
+        AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation.pipe(
+          T.Body("external_evaluation"),
+        ),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization {
+  /** The ID of your Github identity provider. */
+  identityProviderId: string;
+  /** The name of the organization. */
+  name: string;
+  /** The name of the team */
+  team?: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
+      name: S.String,
+      team: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization>;
+
+export interface AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule {
+  githubOrganization: AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
+}
+export const AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      githubOrganization:
+        AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization.pipe(
+          T.Body("github-organization"),
+        ),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite {
+  /** The email of the Google Workspace group. */
+  email: string;
+  /** The ID of your Google Workspace identity provider. */
+  identityProviderId: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      email: S.String,
+      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite>;
+
+export interface AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule {
+  gsuite: AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
+}
+export const AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      gsuite: AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod {
+  /** The ID of an identity provider. */
+  id: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule {
+  loginMethod: AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      loginMethod:
+        AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod.pipe(
+          T.Body("login_method"),
+        ),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemIPListRuleIpList {
+  /** The ID of a previously created IP list. */
+  id: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemIPListRuleIpList =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemIPListRuleIpList",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemIPListRuleIpList>;
+
+export interface AccessPoliciesCreateRequestIncludeItemIPListRule {
+  ipList: AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
+}
+export const AccessPoliciesCreateRequestIncludeItemIPListRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ipList: AccessPoliciesCreateRequestIncludeItemIPListRuleIpList.pipe(
+        T.Body("ip_list"),
+      ),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemIPListRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemIPListRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemIPRuleIp {
+  /** An IPv4 or IPv6 CIDR block. */
+  ip: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemIPRuleIp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ip: S.String,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemIPRuleIp",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemIPRuleIp>;
+
+export interface AccessPoliciesCreateRequestIncludeItemIPRule {
+  ip: AccessPoliciesCreateRequestIncludeItemIPRuleIp;
+}
+export const AccessPoliciesCreateRequestIncludeItemIPRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ip: AccessPoliciesCreateRequestIncludeItemIPRuleIp,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemIPRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemIPRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta {
+  /** The ID of your Okta identity provider. */
+  identityProviderId: string;
+  /** The name of the Okta group. */
+  name: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta>;
+
+export interface AccessPoliciesCreateRequestIncludeItemOktaGroupRule {
+  okta: AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
+}
+export const AccessPoliciesCreateRequestIncludeItemOktaGroupRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      okta: AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemOktaGroupRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemOktaGroupRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml {
+  /** The name of the SAML attribute. */
+  attributeName: string;
+  /** The SAML attribute value to look for. */
+  attributeValue: string;
+  /** The ID of your SAML identity provider. */
+  identityProviderId: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attributeName: S.String.pipe(T.Body("attribute_name")),
+      attributeValue: S.String.pipe(T.Body("attribute_value")),
+      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml>;
+
+export interface AccessPoliciesCreateRequestIncludeItemSAMLGroupRule {
+  saml: AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
+}
+export const AccessPoliciesCreateRequestIncludeItemSAMLGroupRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      saml: AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemSAMLGroupRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemSAMLGroupRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc {
+  /** The name of the OIDC claim. */
+  claimName: string;
+  /** The OIDC claim value to look for. */
+  claimValue: string;
+  /** The ID of your OIDC identity provider. */
+  identityProviderId: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      claimName: S.String.pipe(T.Body("claim_name")),
+      claimValue: S.String.pipe(T.Body("claim_value")),
+      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule {
+  oidc: AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      oidc: AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc,
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken {
+  /** The ID of a Service Token. */
+  tokenId: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tokenId: S.String.pipe(T.Body("token_id")),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken>;
+
+export interface AccessPoliciesCreateRequestIncludeItemServiceTokenRule {
+  serviceToken: AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
+}
+export const AccessPoliciesCreateRequestIncludeItemServiceTokenRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serviceToken:
+        AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken.pipe(
+          T.Body("service_token"),
+        ),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemServiceTokenRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemServiceTokenRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken {
+  /** The ID of an Access OIDC SaaS application */
+  appUid: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      appUid: S.String.pipe(T.Body("app_uid")),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule {
+  linkedAppToken: AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      linkedAppToken:
+        AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken.pipe(
+          T.Body("linked_app_token"),
+        ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule>;
+
+export type AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
+  "low" | "medium" | "high" | "unscored";
+export const AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
+  /*@__PURE__*/ S.String;
+
+export type AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreList =
+  Array<
+    | AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem
+    | (string & {})
+  >;
+export const AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreList =
+  /*@__PURE__*/ S.Array(
+    AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem,
+  ) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreList>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore {
+  /** A list of risk score levels to match. Values can be low, medium, high, or unscored. */
+  userRiskScore: AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreList;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userRiskScore:
+        AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreList.pipe(
+          T.Body("user_risk_score"),
+        ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule {
+  userRiskScore: AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userRiskScore:
+        AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore.pipe(
+          T.Body("user_risk_score"),
+        ),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember {
+  /** Identifier. */
+  accountId?: string;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember>;
+
+export interface AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule {
+  cloudflareAccountMember: AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+}
+export const AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cloudflareAccountMember:
+        AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember.pipe(
+          T.Body("cloudflare_account_member"),
+        ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule>;
+
+export type AccessPoliciesCreateRequestIncludeItem =
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
+export const AccessPoliciesCreateRequestIncludeItem =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["group"],
+      ["anyValidServiceToken"],
+      ["authContext"],
+      ["authMethod"],
+      ["azureAD"],
+      ["certificate"],
+      ["commonName"],
+      ["geo"],
+      ["devicePosture"],
+      ["emailDomain"],
+      ["emailList"],
+      ["email"],
+      ["everyone"],
+      ["externalEvaluation"],
+      ["githubOrganization"],
+      ["gsuite"],
+      ["loginMethod"],
+      ["ipList"],
+      ["ip"],
+      ["okta"],
+      ["saml"],
+      ["oidc"],
+      ["serviceToken"],
+      ["linkedAppToken"],
+      ["userRiskScore"],
+      ["cloudflareAccountMember"],
+    ]),
+  );
+
+export type AccessPoliciesCreateRequestIncludeList =
+  Array<AccessPoliciesCreateRequestIncludeItem>;
+export const AccessPoliciesCreateRequestIncludeList = /*@__PURE__*/ S.Array(
+  AccessPoliciesCreateRequestIncludeItem,
+) as any as S.Schema<AccessPoliciesCreateRequestIncludeList>;
+
+export interface AccessPoliciesCreateRequestExcludeItemGroupRule {
+  group?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemGroupRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      group: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemGroupRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemGroupRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule {
+  anyValidServiceToken?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      anyValidServiceToken: S.optional(
+        S.Unknown.pipe(T.Body("any_valid_service_token")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule {
+  authContext?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      authContext: S.optional(S.Unknown.pipe(T.Body("auth_context"))),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule {
+  authMethod?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      authMethod: S.optional(S.Unknown.pipe(T.Body("auth_method"))),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemAzureGroupRule {
+  azureAD?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemAzureGroupRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      azureAD: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemAzureGroupRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemAzureGroupRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemCertificateRule {
+  certificate?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemCertificateRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      certificate: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemCertificateRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemCertificateRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule {
+  commonName?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      commonName: S.optional(S.Unknown.pipe(T.Body("common_name"))),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemCountryRule {
+  geo?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemCountryRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      geo: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemCountryRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemCountryRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule {
+  devicePosture?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      devicePosture: S.optional(S.Unknown.pipe(T.Body("device_posture"))),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemDomainRule {
+  emailDomain?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemDomainRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      emailDomain: S.optional(S.Unknown.pipe(T.Body("email_domain"))),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemDomainRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemDomainRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemEmailListRule {
+  emailList?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemEmailListRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      emailList: S.optional(S.Unknown.pipe(T.Body("email_list"))),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemEmailListRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemEmailListRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemEmailRule {
+  email?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemEmailRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      email: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemEmailRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemEmailRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemEveryoneRule {
+  everyone?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemEveryoneRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      everyone: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemEveryoneRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemEveryoneRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule {
+  externalEvaluation?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      externalEvaluation: S.optional(
+        S.Unknown.pipe(T.Body("external_evaluation")),
+      ),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule {
+  "github-organization"?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "github-organization": S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule {
+  gsuite?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      gsuite: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule {
+  loginMethod?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      loginMethod: S.optional(S.Unknown.pipe(T.Body("login_method"))),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemIPListRule {
+  ipList?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemIPListRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ipList: S.optional(S.Unknown.pipe(T.Body("ip_list"))),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemIPListRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemIPListRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemIPRule {
+  ip?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemIPRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ip: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemIPRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemIPRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemOktaGroupRule {
+  okta?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemOktaGroupRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      okta: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemOktaGroupRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemOktaGroupRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemSAMLGroupRule {
+  saml?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemSAMLGroupRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      saml: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemSAMLGroupRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemSAMLGroupRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule {
+  oidc?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      oidc: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemServiceTokenRule {
+  serviceToken?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemServiceTokenRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serviceToken: S.optional(S.Unknown.pipe(T.Body("service_token"))),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemServiceTokenRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemServiceTokenRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule {
+  linkedAppToken?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      linkedAppToken: S.optional(S.Unknown.pipe(T.Body("linked_app_token"))),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule {
+  userRiskScore?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      userRiskScore: S.optional(S.Unknown.pipe(T.Body("user_risk_score"))),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule>;
+
+export interface AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule {
+  cloudflareAccountMember?: unknown;
+}
+export const AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cloudflareAccountMember: S.optional(
+        S.Unknown.pipe(T.Body("cloudflare_account_member")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule",
+  }) as any as S.Schema<AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule>;
+
+export type AccessPoliciesCreateRequestExcludeItem =
+  | AccessPoliciesCreateRequestExcludeItemGroupRule
+  | AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestExcludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestExcludeItemCertificateRule
+  | AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestExcludeItemCountryRule
+  | AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestExcludeItemDomainRule
+  | AccessPoliciesCreateRequestExcludeItemEmailListRule
+  | AccessPoliciesCreateRequestExcludeItemEmailRule
+  | AccessPoliciesCreateRequestExcludeItemEveryoneRule
+  | AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule
+  | AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestExcludeItemIPListRule
+  | AccessPoliciesCreateRequestExcludeItemIPRule
+  | AccessPoliciesCreateRequestExcludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestExcludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestExcludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule
+  | AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
+export const AccessPoliciesCreateRequestExcludeItem =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["group"],
+      ["anyValidServiceToken"],
+      ["authContext"],
+      ["authMethod"],
+      ["azureAD"],
+      ["certificate"],
+      ["commonName"],
+      ["geo"],
+      ["devicePosture"],
+      ["emailDomain"],
+      ["emailList"],
+      ["email"],
+      ["everyone"],
+      ["externalEvaluation"],
+      ["github-organization"],
+      ["gsuite"],
+      ["loginMethod"],
+      ["ipList"],
+      ["ip"],
+      ["okta"],
+      ["saml"],
+      ["oidc"],
+      ["serviceToken"],
+      ["linkedAppToken"],
+      ["userRiskScore"],
+      ["cloudflareAccountMember"],
+    ]),
+  );
+
+export type AccessPoliciesCreateRequestExcludeList =
+  Array<AccessPoliciesCreateRequestExcludeItem>;
+export const AccessPoliciesCreateRequestExcludeList = /*@__PURE__*/ S.Array(
+  AccessPoliciesCreateRequestExcludeItem,
+) as any as S.Schema<AccessPoliciesCreateRequestExcludeList>;
+
+export type AccessPoliciesCreateRequestRequireItemGroupRule =
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
+export const AccessPoliciesCreateRequestRequireItemGroupRule =
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
+
+export type AccessPoliciesCreateRequestRequireItemAnyValidServiceTokenRule =
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
+export const AccessPoliciesCreateRequestRequireItemAnyValidServiceTokenRule =
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
+
+export type AccessPoliciesCreateRequestRequireItemAccessAuthContextRule =
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
+export const AccessPoliciesCreateRequestRequireItemAccessAuthContextRule =
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
+
+export type AccessPoliciesCreateRequestRequireItemAuthenticationMethodRule =
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
+export const AccessPoliciesCreateRequestRequireItemAuthenticationMethodRule =
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
+
+export type AccessPoliciesCreateRequestRequireItemAzureGroupRule =
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
+export const AccessPoliciesCreateRequestRequireItemAzureGroupRule =
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
+
+export type AccessPoliciesCreateRequestRequireItemCertificateRule =
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
+export const AccessPoliciesCreateRequestRequireItemCertificateRule =
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
+
+export type AccessPoliciesCreateRequestRequireItemAccessCommonNameRule =
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
+export const AccessPoliciesCreateRequestRequireItemAccessCommonNameRule =
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
+
+export type AccessPoliciesCreateRequestRequireItemCountryRule =
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
+export const AccessPoliciesCreateRequestRequireItemCountryRule =
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
+
+export type AccessPoliciesCreateRequestRequireItemAccessDevicePostureRule =
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
+export const AccessPoliciesCreateRequestRequireItemAccessDevicePostureRule =
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
+
+export type AccessPoliciesCreateRequestRequireItemDomainRule =
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
+export const AccessPoliciesCreateRequestRequireItemDomainRule =
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
+
+export type AccessPoliciesCreateRequestRequireItemEmailListRule =
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
+export const AccessPoliciesCreateRequestRequireItemEmailListRule =
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
+
+export type AccessPoliciesCreateRequestRequireItemEmailRule =
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
+export const AccessPoliciesCreateRequestRequireItemEmailRule =
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
+
+export type AccessPoliciesCreateRequestRequireItemEveryoneRule =
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
+export const AccessPoliciesCreateRequestRequireItemEveryoneRule =
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
+
+export type AccessPoliciesCreateRequestRequireItemExternalEvaluationRule =
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
+export const AccessPoliciesCreateRequestRequireItemExternalEvaluationRule =
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
+
+export type AccessPoliciesCreateRequestRequireItemGitHubOrganizationRule =
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
+export const AccessPoliciesCreateRequestRequireItemGitHubOrganizationRule =
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
+
+export type AccessPoliciesCreateRequestRequireItemGSuiteGroupRule =
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
+export const AccessPoliciesCreateRequestRequireItemGSuiteGroupRule =
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
+
+export type AccessPoliciesCreateRequestRequireItemAccessLoginMethodRule =
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
+export const AccessPoliciesCreateRequestRequireItemAccessLoginMethodRule =
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
+
+export type AccessPoliciesCreateRequestRequireItemIPListRule =
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
+export const AccessPoliciesCreateRequestRequireItemIPListRule =
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
+
+export type AccessPoliciesCreateRequestRequireItemIPRule =
+  AccessPoliciesCreateRequestExcludeItemIPRule;
+export const AccessPoliciesCreateRequestRequireItemIPRule =
+  AccessPoliciesCreateRequestExcludeItemIPRule;
+
+export type AccessPoliciesCreateRequestRequireItemOktaGroupRule =
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
+export const AccessPoliciesCreateRequestRequireItemOktaGroupRule =
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
+
+export type AccessPoliciesCreateRequestRequireItemSAMLGroupRule =
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
+export const AccessPoliciesCreateRequestRequireItemSAMLGroupRule =
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
+
+export type AccessPoliciesCreateRequestRequireItemAccessOIDCClaimRule =
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
+export const AccessPoliciesCreateRequestRequireItemAccessOIDCClaimRule =
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
+
+export type AccessPoliciesCreateRequestRequireItemServiceTokenRule =
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
+export const AccessPoliciesCreateRequestRequireItemServiceTokenRule =
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
+
+export type AccessPoliciesCreateRequestRequireItemAccessLinkedAppTokenRule =
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
+export const AccessPoliciesCreateRequestRequireItemAccessLinkedAppTokenRule =
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
+
+export type AccessPoliciesCreateRequestRequireItemAccessUserRiskScoreRule =
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
+export const AccessPoliciesCreateRequestRequireItemAccessUserRiskScoreRule =
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
+
+export type AccessPoliciesCreateRequestRequireItemAccessCloudflareAccountMemberRule =
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
+export const AccessPoliciesCreateRequestRequireItemAccessCloudflareAccountMemberRule =
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
+
+export type AccessPoliciesCreateRequestRequireItem =
+  | AccessPoliciesCreateRequestExcludeItemGroupRule
+  | AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestExcludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestExcludeItemCertificateRule
+  | AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestExcludeItemCountryRule
+  | AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestExcludeItemDomainRule
+  | AccessPoliciesCreateRequestExcludeItemEmailListRule
+  | AccessPoliciesCreateRequestExcludeItemEmailRule
+  | AccessPoliciesCreateRequestExcludeItemEveryoneRule
+  | AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule
+  | AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestExcludeItemIPListRule
+  | AccessPoliciesCreateRequestExcludeItemIPRule
+  | AccessPoliciesCreateRequestExcludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestExcludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestExcludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule
+  | AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
+export const AccessPoliciesCreateRequestRequireItem =
+  /*@__PURE__*/ S.Unknown.pipe(
+    T.UnionCases([
+      ["group"],
+      ["anyValidServiceToken"],
+      ["authContext"],
+      ["authMethod"],
+      ["azureAD"],
+      ["certificate"],
+      ["commonName"],
+      ["geo"],
+      ["devicePosture"],
+      ["emailDomain"],
+      ["emailList"],
+      ["email"],
+      ["everyone"],
+      ["externalEvaluation"],
+      ["github-organization"],
+      ["gsuite"],
+      ["loginMethod"],
+      ["ipList"],
+      ["ip"],
+      ["okta"],
+      ["saml"],
+      ["oidc"],
+      ["serviceToken"],
+      ["linkedAppToken"],
+      ["userRiskScore"],
+      ["cloudflareAccountMember"],
+    ]),
+  );
+
+export type AccessPoliciesCreateRequestRequireList =
+  Array<AccessPoliciesCreateRequestRequireItem>;
+export const AccessPoliciesCreateRequestRequireList = /*@__PURE__*/ S.Array(
+  AccessPoliciesCreateRequestRequireItem,
+) as any as S.Schema<AccessPoliciesCreateRequestRequireList>;
+
+export type AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList =
+  Array<string>;
+export const AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList>;
+
+export interface AccessPoliciesCreateRequestApprovalGroupsItem {
+  /** The number of approvals needed to obtain access. */
+  approvalsNeeded: number;
+  /** A list of emails that can approve the access request. */
+  emailAddresses?: AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList;
+  /** The UUID of an re-usable email list. */
+  emailListUuid?: string;
+}
+export const AccessPoliciesCreateRequestApprovalGroupsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      approvalsNeeded: S.Number.pipe(T.Body("approvals_needed")),
+      emailAddresses: S.optional(
+        AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList.pipe(
+          T.Body("email_addresses"),
+        ),
+      ),
+      emailListUuid: S.optional(S.String.pipe(T.Body("email_list_uuid"))),
+    }),
+  ).annotate({
+    identifier: "AccessPoliciesCreateRequestApprovalGroupsItem",
+  }) as any as S.Schema<AccessPoliciesCreateRequestApprovalGroupsItem>;
+
+export type AccessPoliciesCreateRequestApprovalGroupsList =
+  Array<AccessPoliciesCreateRequestApprovalGroupsItem>;
+export const AccessPoliciesCreateRequestApprovalGroupsList =
+  /*@__PURE__*/ S.Array(
+    AccessPoliciesCreateRequestApprovalGroupsItem,
+  ) as any as S.Schema<AccessPoliciesCreateRequestApprovalGroupsList>;
+
+export interface InlineAccessPolicy {
+  id?: string;
+  decision: AccessPoliciesCreateRequestDecision | (string & {});
+  include: AccessPoliciesCreateRequestIncludeList;
+  exclude?: AccessPoliciesCreateRequestExcludeList;
+  require?: AccessPoliciesCreateRequestRequireList;
+  name?: string;
+  precedence?: number;
+  approvalGroups?: AccessPoliciesCreateRequestApprovalGroupsList;
+  approvalRequired?: boolean;
+  isolationRequired?: boolean;
+  purposeJustificationPrompt?: string;
+  purposeJustificationRequired?: boolean;
+  sessionDuration?: string;
+}
+export const InlineAccessPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    decision: AccessPoliciesCreateRequestDecision,
+    include: AccessPoliciesCreateRequestIncludeList,
+    exclude: S.optional(AccessPoliciesCreateRequestExcludeList),
+    require: S.optional(AccessPoliciesCreateRequestRequireList),
+    name: S.optional(S.String),
+    precedence: S.optional(S.Number),
+    approvalGroups: S.optional(
+      AccessPoliciesCreateRequestApprovalGroupsList.pipe(
+        T.Body("approval_groups"),
+      ),
+    ),
+    approvalRequired: S.optional(S.Boolean.pipe(T.Body("approval_required"))),
+    isolationRequired: S.optional(S.Boolean.pipe(T.Body("isolation_required"))),
+    purposeJustificationPrompt: S.optional(
+      S.String.pipe(T.Body("purpose_justification_prompt")),
+    ),
+    purposeJustificationRequired: S.optional(
+      S.Boolean.pipe(T.Body("purpose_justification_required")),
+    ),
+    sessionDuration: S.optional(S.String.pipe(T.Body("session_duration"))),
+  }),
+).annotate({
+  identifier: "InlineAccessPolicy",
+}) as any as S.Schema<InlineAccessPolicy>;
+
 export type AccessApplicationsCreateForAccountRequestPoliciesSelfHostedApplicationItem =
     | string
     | AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemAccessAppPolicyLink
-    | AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2;
+    | AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2
+    | InlineAccessPolicy;
 export const AccessApplicationsCreateForAccountRequestPoliciesSelfHostedApplicationItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -4648,6 +6130,21 @@ export const AccessApplicationsCreateForAccountRequestPoliciesSelfHostedApplicat
         "isolationRequired",
         "mfaConfig",
         "precedence",
+        "purposeJustificationPrompt",
+        "purposeJustificationRequired",
+        "sessionDuration",
+      ],
+      [
+        "id",
+        "decision",
+        "include",
+        "exclude",
+        "require",
+        "name",
+        "precedence",
+        "approvalGroups",
+        "approvalRequired",
+        "isolationRequired",
         "purposeJustificationPrompt",
         "purposeJustificationRequired",
         "sessionDuration",
@@ -4667,689 +6164,230 @@ export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItem
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemDecision =
   /*@__PURE__*/ S.String;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup {
-  /** The ID of a previously created Access group. */
-  id: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup =
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup>;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule {
-  group: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule =
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      group:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule>;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule {
-  /** An empty object which matches on all service tokens. */
-  anyValidServiceToken: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule =
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      anyValidServiceToken: S.Unknown.pipe(T.Body("any_valid_service_token")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule>;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext {
-  /** The ID of an Authentication context. */
-  id: string;
-  /** The ACID of an Authentication context. */
-  acId: string;
-  /** The ID of your Azure identity provider. */
-  identityProviderId: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext =
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      acId: S.String.pipe(T.Body("ac_id")),
-      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext>;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule {
-  authContext: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule =
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authContext:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext.pipe(
-          T.Body("auth_context"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule>;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod {
-  /** The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2. */
-  authMethod: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod =
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authMethod: S.String.pipe(T.Body("auth_method")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod>;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule {
-  authMethod: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule =
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authMethod:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule>;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD {
-  /** The ID of an Azure group. */
-  id: string;
-  /** The ID of your Azure identity provider. */
-  identityProviderId: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD =
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD>;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule {
-  azureAD: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule =
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      azureAD:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule>;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule {
-  certificate: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule =
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certificate: S.Unknown,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule>;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName {
-  /** The common name to match. */
-  commonName: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName =
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      commonName: S.String.pipe(T.Body("common_name")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName>;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule {
-  commonName: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule =
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      commonName:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName.pipe(
-          T.Body("common_name"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule>;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo {
-  /** The country code that should be matched. */
-  countryCode: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo =
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      countryCode: S.String.pipe(T.Body("country_code")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo>;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule {
-  geo: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule =
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      geo: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule>;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture {
-  /** The ID of a device posture integration. */
-  integrationUid: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture =
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      integrationUid: S.String.pipe(T.Body("integration_uid")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture>;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule {
-  devicePosture: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule =
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      devicePosture:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture.pipe(
-          T.Body("device_posture"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule>;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain {
-  /** The email domain to match. */
-  domain: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain =
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domain: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain>;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule {
-  emailDomain: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule =
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      emailDomain:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain.pipe(
-          T.Body("email_domain"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule>;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList {
-  /** The ID of a previously created email list. */
-  id: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList =
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList>;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule {
-  emailList: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule =
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      emailList:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList.pipe(
-          T.Body("email_list"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule>;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail {
-  /** The email of the user. */
-  email: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail =
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      email: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail>;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule {
-  email: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule =
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      email:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule>;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule {
-  /** An empty object which matches on all users. */
-  everyone: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule =
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      everyone: S.Unknown,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule>;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation {
-  /** The API endpoint containing your business logic. */
-  evaluateUrl: string;
-  /** The API endpoint containing the key that Access uses to verify that the response came from your API. */
-  keysUrl: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation =
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      evaluateUrl: S.String.pipe(T.Body("evaluate_url")),
-      keysUrl: S.String.pipe(T.Body("keys_url")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation>;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule {
-  externalEvaluation: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule =
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      externalEvaluation:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation.pipe(
-          T.Body("external_evaluation"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule>;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization {
-  /** The ID of your Github identity provider. */
-  identityProviderId: string;
-  /** The name of the organization. */
-  name: string;
-  /** The name of the team */
-  team?: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization =
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
-      name: S.String,
-      team: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization>;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule {
-  githubOrganization: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule =
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      githubOrganization:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization.pipe(
-          T.Body("github-organization"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule>;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite {
-  /** The email of the Google Workspace group. */
-  email: string;
-  /** The ID of your Google Workspace identity provider. */
-  identityProviderId: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite =
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      email: S.String,
-      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite>;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule {
-  gsuite: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule =
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      gsuite:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule>;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod {
-  /** The ID of an identity provider. */
-  id: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod =
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod>;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule {
-  loginMethod: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule =
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      loginMethod:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod.pipe(
-          T.Body("login_method"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule>;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList {
-  /** The ID of a previously created IP list. */
-  id: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList =
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList>;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule {
-  ipList: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule =
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipList:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList.pipe(
-          T.Body("ip_list"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule>;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp {
-  /** An IPv4 or IPv6 CIDR block. */
-  ip: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp =
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ip: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp>;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule {
-  ip: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule =
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ip: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule>;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta {
-  /** The ID of your Okta identity provider. */
-  identityProviderId: string;
-  /** The name of the Okta group. */
-  name: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta =
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
-      name: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta>;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule {
-  okta: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule =
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      okta: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule>;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml {
-  /** The name of the SAML attribute. */
-  attributeName: string;
-  /** The SAML attribute value to look for. */
-  attributeValue: string;
-  /** The ID of your SAML identity provider. */
-  identityProviderId: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml =
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributeName: S.String.pipe(T.Body("attribute_name")),
-      attributeValue: S.String.pipe(T.Body("attribute_value")),
-      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml>;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule {
-  saml: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule =
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      saml: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule>;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc {
-  /** The name of the OIDC claim. */
-  claimName: string;
-  /** The OIDC claim value to look for. */
-  claimValue: string;
-  /** The ID of your OIDC identity provider. */
-  identityProviderId: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc =
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      claimName: S.String.pipe(T.Body("claim_name")),
-      claimValue: S.String.pipe(T.Body("claim_value")),
-      identityProviderId: S.String.pipe(T.Body("identity_provider_id")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc>;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule {
-  oidc: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule =
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      oidc: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc,
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule>;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken {
-  /** The ID of a Service Token. */
-  tokenId: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken =
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tokenId: S.String.pipe(T.Body("token_id")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken>;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule {
-  serviceToken: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule =
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceToken:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken.pipe(
-          T.Body("service_token"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule>;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken {
-  /** The ID of an Access OIDC SaaS application */
-  appUid: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appUid: S.String.pipe(T.Body("app_uid")),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken>;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule {
-  linkedAppToken: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule =
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      linkedAppToken:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken.pipe(
-          T.Body("linked_app_token"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule>;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -5399,63 +6437,43 @@ export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationIte
       "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRule",
   }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRule>;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember {
-  /** Identifier. */
-  accountId?: string;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.optional(S.String.pipe(T.Body("account_id"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember>;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule {
-  cloudflareAccountMember: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule =
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cloudflareAccountMember:
-        AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember.pipe(
-          T.Body("cloudflare_account_member"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule>;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestIncludeItemGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestIncludeItemCertificateRule
+    | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestIncludeItemCountryRule
+    | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestIncludeItemDomainRule
+    | AccessPoliciesCreateRequestIncludeItemEmailListRule
+    | AccessPoliciesCreateRequestIncludeItemEmailRule
+    | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+    | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule
+    | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestIncludeItemIPListRule
+    | AccessPoliciesCreateRequestIncludeItemIPRule
+    | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
     | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+    | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -5536,377 +6554,163 @@ export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationIte
       "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRules",
   }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRules>;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule {
-  group?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule =
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      group: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule>;
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule {
-  anyValidServiceToken?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule =
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      anyValidServiceToken: S.optional(
-        S.Unknown.pipe(T.Body("any_valid_service_token")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule>;
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule {
-  authContext?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule =
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authContext: S.optional(S.Unknown.pipe(T.Body("auth_context"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule>;
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule {
-  authMethod?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule =
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authMethod: S.optional(S.Unknown.pipe(T.Body("auth_method"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule>;
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule {
-  azureAD?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule =
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      azureAD: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule>;
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule {
-  certificate?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule =
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certificate: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule>;
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule {
-  commonName?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule =
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      commonName: S.optional(S.Unknown.pipe(T.Body("common_name"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule>;
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule {
-  geo?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule =
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      geo: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule>;
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule {
-  devicePosture?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule =
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      devicePosture: S.optional(S.Unknown.pipe(T.Body("device_posture"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule>;
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule {
-  emailDomain?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule =
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      emailDomain: S.optional(S.Unknown.pipe(T.Body("email_domain"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule>;
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule {
-  emailList?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule =
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      emailList: S.optional(S.Unknown.pipe(T.Body("email_list"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule>;
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule {
-  email?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule =
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      email: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule>;
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule {
-  everyone?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule =
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      everyone: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule>;
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule {
-  externalEvaluation?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule =
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      externalEvaluation: S.optional(
-        S.Unknown.pipe(T.Body("external_evaluation")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule>;
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule {
-  "github-organization"?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule =
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "github-organization": S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule>;
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule {
-  gsuite?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule =
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      gsuite: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule>;
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule {
-  loginMethod?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule =
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      loginMethod: S.optional(S.Unknown.pipe(T.Body("login_method"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule>;
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule {
-  ipList?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule =
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ipList: S.optional(S.Unknown.pipe(T.Body("ip_list"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule>;
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule {
-  ip?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule =
+  AccessPoliciesCreateRequestExcludeItemIPRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ip: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule>;
+  AccessPoliciesCreateRequestExcludeItemIPRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule {
-  okta?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule =
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      okta: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule>;
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule {
-  saml?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule =
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      saml: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule>;
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule {
-  oidc?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule =
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      oidc: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule>;
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule {
-  serviceToken?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule =
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceToken: S.optional(S.Unknown.pipe(T.Body("service_token"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule>;
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule {
-  linkedAppToken?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule =
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      linkedAppToken: S.optional(S.Unknown.pipe(T.Body("linked_app_token"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule>;
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule {
-  userRiskScore?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule =
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userRiskScore: S.optional(S.Unknown.pipe(T.Body("user_risk_score"))),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule>;
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
 
-export interface AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule {
-  cloudflareAccountMember?: unknown;
-}
+export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule =
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cloudflareAccountMember: S.optional(
-        S.Unknown.pipe(T.Body("cloudflare_account_member")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule",
-  }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule>;
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+    | AccessPoliciesCreateRequestExcludeItemGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestExcludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestExcludeItemCertificateRule
+    | AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestExcludeItemCountryRule
+    | AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestExcludeItemDomainRule
+    | AccessPoliciesCreateRequestExcludeItemEmailListRule
+    | AccessPoliciesCreateRequestExcludeItemEmailRule
+    | AccessPoliciesCreateRequestExcludeItemEveryoneRule
+    | AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule
+    | AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestExcludeItemIPListRule
+    | AccessPoliciesCreateRequestExcludeItemIPRule
+    | AccessPoliciesCreateRequestExcludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestExcludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestExcludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule
+    | AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -5986,162 +6790,162 @@ export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationIte
   }) as any as S.Schema<AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemMfaConfig>;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule;
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule;
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule;
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule;
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule;
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule;
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule;
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule;
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule;
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule;
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule;
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule;
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule;
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule;
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule;
+  AccessPoliciesCreateRequestExcludeItemIPRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule;
+  AccessPoliciesCreateRequestExcludeItemIPRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessUserRiskScoreRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule;
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessUserRiskScoreRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule;
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+    | AccessPoliciesCreateRequestExcludeItemGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestExcludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestExcludeItemCertificateRule
+    | AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestExcludeItemCountryRule
+    | AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestExcludeItemDomainRule
+    | AccessPoliciesCreateRequestExcludeItemEmailListRule
+    | AccessPoliciesCreateRequestExcludeItemEmailRule
+    | AccessPoliciesCreateRequestExcludeItemEveryoneRule
+    | AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule
+    | AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestExcludeItemIPListRule
+    | AccessPoliciesCreateRequestExcludeItemIPRule
+    | AccessPoliciesCreateRequestExcludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestExcludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestExcludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule
+    | AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -8198,129 +9002,129 @@ export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemDeci
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export interface AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization {
   /** The ID of your Github identity provider. */
@@ -8359,94 +9163,94 @@ export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcl
   }) as any as S.Schema<AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule>;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -8524,30 +9328,30 @@ export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcl
   }) as any as S.Schema<AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule>;
 
 export type AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestIncludeItemGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestIncludeItemCertificateRule
+    | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestIncludeItemCountryRule
+    | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestIncludeItemDomainRule
+    | AccessPoliciesCreateRequestIncludeItemEmailListRule
+    | AccessPoliciesCreateRequestIncludeItemEmailRule
+    | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+    | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
     | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestIncludeItemIPListRule
+    | AccessPoliciesCreateRequestIncludeItemIPRule
+    | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
     | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessUserRiskScoreRule
     | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItem =
@@ -24970,7 +25774,8 @@ export const CreateAccessApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 export type AccessApplicationsCreateForZoneRequestPoliciesSelfHostedApplicationItem =
     | string
     | AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemAccessAppPolicyLink
-    | AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2;
+    | AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2
+    | InlineAccessPolicy;
 export const AccessApplicationsCreateForZoneRequestPoliciesSelfHostedApplicationItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -24984,6 +25789,21 @@ export const AccessApplicationsCreateForZoneRequestPoliciesSelfHostedApplication
         "isolationRequired",
         "mfaConfig",
         "precedence",
+        "purposeJustificationPrompt",
+        "purposeJustificationRequired",
+        "sessionDuration",
+      ],
+      [
+        "id",
+        "decision",
+        "include",
+        "exclude",
+        "require",
+        "name",
+        "precedence",
+        "approvalGroups",
+        "approvalRequired",
+        "isolationRequired",
         "purposeJustificationPrompt",
         "purposeJustificationRequired",
         "sessionDuration",
@@ -25534,129 +26354,129 @@ export const AccessApplicationsPoliciesCreateResponseDecision =
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -25669,94 +26489,94 @@ export const AccessApplicationsPoliciesCreateResponseExcludeItemGitHubOrganizati
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -25814,30 +26634,30 @@ export const AccessApplicationsPoliciesCreateResponseExcludeItemAccessCloudflare
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsPoliciesCreateResponseExcludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessApplicationsPoliciesCreateResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesCreateResponseExcludeItem =
@@ -26473,229 +27293,229 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0Decision
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGitHubOrganizationRuleGithubOrganization =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGitHubOrganizationRuleGithubOrganization =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -26746,42 +27566,42 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeI
   }) as any as S.Schema<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessUserRiskScoreRule>;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestIncludeItemGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestIncludeItemCertificateRule
+    | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestIncludeItemCountryRule
+    | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestIncludeItemDomainRule
+    | AccessPoliciesCreateRequestIncludeItemEmailListRule
+    | AccessPoliciesCreateRequestIncludeItemEmailRule
+    | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+    | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule
+    | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestIncludeItemIPListRule
+    | AccessPoliciesCreateRequestIncludeItemIPRule
+    | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
     | AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItemAccessUserRiskScoreRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+    | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0IncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -26931,162 +27751,162 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0Connecti
   }) as any as S.Schema<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ConnectionRules>;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule;
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule;
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule;
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule;
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule;
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule;
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule;
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule;
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule;
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule;
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule;
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule;
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule;
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule;
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule;
+  AccessPoliciesCreateRequestExcludeItemIPRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule;
+  AccessPoliciesCreateRequestExcludeItemIPRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessUserRiskScoreRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule;
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessUserRiskScoreRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule;
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+    | AccessPoliciesCreateRequestExcludeItemGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestExcludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestExcludeItemCertificateRule
+    | AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestExcludeItemCountryRule
+    | AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestExcludeItemDomainRule
+    | AccessPoliciesCreateRequestExcludeItemEmailListRule
+    | AccessPoliciesCreateRequestExcludeItemEmailRule
+    | AccessPoliciesCreateRequestExcludeItemEveryoneRule
+    | AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule
+    | AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestExcludeItemIPListRule
+    | AccessPoliciesCreateRequestExcludeItemIPRule
+    | AccessPoliciesCreateRequestExcludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestExcludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestExcludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule
+    | AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0ExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -27166,162 +27986,162 @@ export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfi
   }) as any as S.Schema<AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0MfaConfig>;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule;
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule;
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule;
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule;
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule;
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule;
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule;
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule;
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule;
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule;
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule;
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule;
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule;
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule;
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule;
+  AccessPoliciesCreateRequestExcludeItemIPRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule;
+  AccessPoliciesCreateRequestExcludeItemIPRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessUserRiskScoreRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule;
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessUserRiskScoreRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule;
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+    | AccessPoliciesCreateRequestExcludeItemGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestExcludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestExcludeItemCertificateRule
+    | AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestExcludeItemCountryRule
+    | AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestExcludeItemDomainRule
+    | AccessPoliciesCreateRequestExcludeItemEmailListRule
+    | AccessPoliciesCreateRequestExcludeItemEmailRule
+    | AccessPoliciesCreateRequestExcludeItemEveryoneRule
+    | AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule
+    | AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestExcludeItemIPListRule
+    | AccessPoliciesCreateRequestExcludeItemIPRule
+    | AccessPoliciesCreateRequestExcludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestExcludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestExcludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule
+    | AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPolicyTestsCreateRequestPoliciesItemCase0RequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -27784,229 +28604,229 @@ export const CreateAccessGatewayCaResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccessGatewayCaResponse>;
 
 export type AccessGroupsCreateRequestIncludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessGroupsCreateRequestIncludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessGroupsCreateRequestIncludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessGroupsCreateRequestIncludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessGroupsCreateRequestIncludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessGroupsCreateRequestIncludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessGroupsCreateRequestIncludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessGroupsCreateRequestIncludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessGroupsCreateRequestIncludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessGroupsCreateRequestIncludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessGroupsCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessGroupsCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessGroupsCreateRequestIncludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessGroupsCreateRequestIncludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessGroupsCreateRequestIncludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessGroupsCreateRequestIncludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessGroupsCreateRequestIncludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessGroupsCreateRequestIncludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessGroupsCreateRequestIncludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessGroupsCreateRequestIncludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessGroupsCreateRequestIncludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessGroupsCreateRequestIncludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessGroupsCreateRequestIncludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessGroupsCreateRequestIncludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessGroupsCreateRequestIncludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessGroupsCreateRequestIncludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessGroupsCreateRequestIncludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessGroupsCreateRequestIncludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessGroupsCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessGroupsCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessGroupsCreateRequestIncludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessGroupsCreateRequestIncludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessGroupsCreateRequestIncludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessGroupsCreateRequestIncludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessGroupsCreateRequestIncludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessGroupsCreateRequestIncludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessGroupsCreateRequestIncludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessGroupsCreateRequestIncludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessGroupsCreateRequestIncludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessGroupsCreateRequestIncludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessGroupsCreateRequestIncludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessGroupsCreateRequestIncludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessGroupsCreateRequestIncludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessGroupsCreateRequestIncludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessGroupsCreateRequestIncludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessGroupsCreateRequestIncludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessGroupsCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessGroupsCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessGroupsCreateRequestIncludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessGroupsCreateRequestIncludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessGroupsCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
 export const AccessGroupsCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
 
 export type AccessGroupsCreateRequestIncludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule;
 export const AccessGroupsCreateRequestIncludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule;
 
 export type AccessGroupsCreateRequestIncludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessGroupsCreateRequestIncludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessGroupsCreateRequestIncludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessGroupsCreateRequestIncludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessGroupsCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessGroupsCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessGroupsCreateRequestIncludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessGroupsCreateRequestIncludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessGroupsCreateRequestIncludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessGroupsCreateRequestIncludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessGroupsCreateRequestIncludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessGroupsCreateRequestIncludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessGroupsCreateRequestIncludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessGroupsCreateRequestIncludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessGroupsCreateRequestIncludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessGroupsCreateRequestIncludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessGroupsCreateRequestIncludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessGroupsCreateRequestIncludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessGroupsCreateRequestIncludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessGroupsCreateRequestIncludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessGroupsCreateRequestIncludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessGroupsCreateRequestIncludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessGroupsCreateRequestIncludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessGroupsCreateRequestIncludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessGroupsCreateRequestIncludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessGroupsCreateRequestIncludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessGroupsCreateRequestIncludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessGroupsCreateRequestIncludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessGroupsCreateRequestIncludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessGroupsCreateRequestIncludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessGroupsCreateRequestIncludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessGroupsCreateRequestIncludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessGroupsCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessGroupsCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessGroupsCreateRequestIncludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessGroupsCreateRequestIncludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessGroupsCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -28056,42 +28876,42 @@ export const AccessGroupsCreateRequestIncludeItemAccessUserRiskScoreRule =
   }) as any as S.Schema<AccessGroupsCreateRequestIncludeItemAccessUserRiskScoreRule>;
 
 export type AccessGroupsCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
 export const AccessGroupsCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
 
 export type AccessGroupsCreateRequestIncludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsCreateRequestIncludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessGroupsCreateRequestIncludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessGroupsCreateRequestIncludeItemAccessUserRiskScoreRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsCreateRequestIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -28166,129 +28986,129 @@ export const CreateAccessGroupForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccessGroupForAccountRequest>;
 
 export type AccessGroupsCreateResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessGroupsCreateResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessGroupsCreateResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessGroupsCreateResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessGroupsCreateResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessGroupsCreateResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessGroupsCreateResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessGroupsCreateResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessGroupsCreateResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessGroupsCreateResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessGroupsCreateResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessGroupsCreateResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessGroupsCreateResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessGroupsCreateResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessGroupsCreateResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessGroupsCreateResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessGroupsCreateResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessGroupsCreateResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessGroupsCreateResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessGroupsCreateResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessGroupsCreateResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessGroupsCreateResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessGroupsCreateResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessGroupsCreateResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessGroupsCreateResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessGroupsCreateResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessGroupsCreateResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessGroupsCreateResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessGroupsCreateResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessGroupsCreateResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessGroupsCreateResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessGroupsCreateResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessGroupsCreateResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessGroupsCreateResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessGroupsCreateResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessGroupsCreateResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessGroupsCreateResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessGroupsCreateResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessGroupsCreateResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessGroupsCreateResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessGroupsCreateResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessGroupsCreateResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessGroupsCreateResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessGroupsCreateResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessGroupsCreateResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessGroupsCreateResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessGroupsCreateResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessGroupsCreateResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessGroupsCreateResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessGroupsCreateResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessGroupsCreateResponseExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -28301,94 +29121,94 @@ export const AccessGroupsCreateResponseExcludeItemGitHubOrganizationRule =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessGroupsCreateResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessGroupsCreateResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessGroupsCreateResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessGroupsCreateResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessGroupsCreateResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessGroupsCreateResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessGroupsCreateResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessGroupsCreateResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessGroupsCreateResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessGroupsCreateResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessGroupsCreateResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessGroupsCreateResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessGroupsCreateResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessGroupsCreateResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessGroupsCreateResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessGroupsCreateResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessGroupsCreateResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessGroupsCreateResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessGroupsCreateResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessGroupsCreateResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessGroupsCreateResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessGroupsCreateResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessGroupsCreateResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessGroupsCreateResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessGroupsCreateResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessGroupsCreateResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessGroupsCreateResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessGroupsCreateResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessGroupsCreateResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessGroupsCreateResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessGroupsCreateResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessGroupsCreateResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessGroupsCreateResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessGroupsCreateResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessGroupsCreateResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessGroupsCreateResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessGroupsCreateResponseExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -28445,30 +29265,30 @@ export const AccessGroupsCreateResponseExcludeItemAccessCloudflareAccountMemberR
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessGroupsCreateResponseExcludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessGroupsCreateResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsCreateResponseExcludeItem =
@@ -29086,397 +29906,6 @@ export const CreateAccessInfrastructureTargetResponse = /*@__PURE__*/ S.suspend(
   identifier: "CreateAccessInfrastructureTargetResponse",
 }) as any as S.Schema<CreateAccessInfrastructureTargetResponse>;
 
-export type AccessPoliciesCreateRequestDecision =
-  | "allow"
-  | "deny"
-  | "non_identity"
-  | "bypass";
-export const AccessPoliciesCreateRequestDecision = /*@__PURE__*/ S.String;
-
-export type AccessPoliciesCreateRequestIncludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
-export const AccessPoliciesCreateRequestIncludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
-
-export type AccessPoliciesCreateRequestIncludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
-export const AccessPoliciesCreateRequestIncludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
-
-export type AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
-export const AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
-export const AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
-export const AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
-
-export type AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
-export const AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
-
-export type AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
-export const AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
-
-export type AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
-export const AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
-
-export type AccessPoliciesCreateRequestIncludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
-export const AccessPoliciesCreateRequestIncludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
-
-export type AccessPoliciesCreateRequestIncludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
-export const AccessPoliciesCreateRequestIncludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
-export const AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
-export const AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
-
-export type AccessPoliciesCreateRequestIncludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
-export const AccessPoliciesCreateRequestIncludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
-
-export type AccessPoliciesCreateRequestIncludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
-export const AccessPoliciesCreateRequestIncludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
-export const AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
-export const AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
-
-export type AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
-export const AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
-
-export type AccessPoliciesCreateRequestIncludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
-export const AccessPoliciesCreateRequestIncludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
-
-export type AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
-export const AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
-
-export type AccessPoliciesCreateRequestIncludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
-export const AccessPoliciesCreateRequestIncludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
-
-export type AccessPoliciesCreateRequestIncludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
-export const AccessPoliciesCreateRequestIncludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
-
-export type AccessPoliciesCreateRequestIncludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
-export const AccessPoliciesCreateRequestIncludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
-
-export type AccessPoliciesCreateRequestIncludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
-export const AccessPoliciesCreateRequestIncludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
-
-export type AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
-export const AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
-
-export type AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
-export const AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
-
-export type AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
-export const AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
-
-export type AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule;
-export const AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule;
-
-export type AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
-export const AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
-
-export type AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
-export const AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
-export const AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
-export const AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
-
-export type AccessPoliciesCreateRequestIncludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
-export const AccessPoliciesCreateRequestIncludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
-
-export type AccessPoliciesCreateRequestIncludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
-export const AccessPoliciesCreateRequestIncludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
-
-export type AccessPoliciesCreateRequestIncludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
-export const AccessPoliciesCreateRequestIncludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
-
-export type AccessPoliciesCreateRequestIncludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
-export const AccessPoliciesCreateRequestIncludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
-
-export type AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
-export const AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
-
-export type AccessPoliciesCreateRequestIncludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
-export const AccessPoliciesCreateRequestIncludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
-
-export type AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
-export const AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
-
-export type AccessPoliciesCreateRequestIncludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
-export const AccessPoliciesCreateRequestIncludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
-export const AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
-export const AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
-
-export type AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
-export const AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
-
-export type AccessPoliciesCreateRequestIncludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
-export const AccessPoliciesCreateRequestIncludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
-export const AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
-export const AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
-  "low" | "medium" | "high" | "unscored";
-export const AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
-  /*@__PURE__*/ S.String;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreList =
-  Array<
-    | AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem
-    | (string & {})
-  >;
-export const AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreList =
-  /*@__PURE__*/ S.Array(
-    AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem,
-  ) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreList>;
-
-export interface AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore {
-  /** A list of risk score levels to match. Values can be low, medium, high, or unscored. */
-  userRiskScore: AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreList;
-}
-export const AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userRiskScore:
-        AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreList.pipe(
-          T.Body("user_risk_score"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore",
-  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore>;
-
-export interface AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule {
-  userRiskScore: AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore;
-}
-export const AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userRiskScore:
-        AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScore.pipe(
-          T.Body("user_risk_score"),
-        ),
-    }),
-  ).annotate({
-    identifier: "AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule",
-  }) as any as S.Schema<AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule>;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
-export const AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
-
-export type AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
-export const AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
-
-export type AccessPoliciesCreateRequestIncludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
-  | AccessPoliciesCreateRequestIncludeItemAccessUserRiskScoreRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
-export const AccessPoliciesCreateRequestIncludeItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    T.UnionCases([
-      ["group"],
-      ["anyValidServiceToken"],
-      ["authContext"],
-      ["authMethod"],
-      ["azureAD"],
-      ["certificate"],
-      ["commonName"],
-      ["geo"],
-      ["devicePosture"],
-      ["emailDomain"],
-      ["emailList"],
-      ["email"],
-      ["everyone"],
-      ["externalEvaluation"],
-      ["githubOrganization"],
-      ["gsuite"],
-      ["loginMethod"],
-      ["ipList"],
-      ["ip"],
-      ["okta"],
-      ["saml"],
-      ["oidc"],
-      ["serviceToken"],
-      ["linkedAppToken"],
-      ["userRiskScore"],
-      ["cloudflareAccountMember"],
-    ]),
-  );
-
-export type AccessPoliciesCreateRequestIncludeList =
-  Array<AccessPoliciesCreateRequestIncludeItem>;
-export const AccessPoliciesCreateRequestIncludeList = /*@__PURE__*/ S.Array(
-  AccessPoliciesCreateRequestIncludeItem,
-) as any as S.Schema<AccessPoliciesCreateRequestIncludeList>;
-
-export type AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList =
-  Array<string>;
-export const AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList>;
-
-export interface AccessPoliciesCreateRequestApprovalGroupsItem {
-  /** The number of approvals needed to obtain access. */
-  approvalsNeeded: number;
-  /** A list of emails that can approve the access request. */
-  emailAddresses?: AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList;
-  /** The UUID of an re-usable email list. */
-  emailListUuid?: string;
-}
-export const AccessPoliciesCreateRequestApprovalGroupsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      approvalsNeeded: S.Number.pipe(T.Body("approvals_needed")),
-      emailAddresses: S.optional(
-        AccessPoliciesCreateRequestApprovalGroupsItemEmailAddressesList.pipe(
-          T.Body("email_addresses"),
-        ),
-      ),
-      emailListUuid: S.optional(S.String.pipe(T.Body("email_list_uuid"))),
-    }),
-  ).annotate({
-    identifier: "AccessPoliciesCreateRequestApprovalGroupsItem",
-  }) as any as S.Schema<AccessPoliciesCreateRequestApprovalGroupsItem>;
-
-export type AccessPoliciesCreateRequestApprovalGroupsList =
-  Array<AccessPoliciesCreateRequestApprovalGroupsItem>;
-export const AccessPoliciesCreateRequestApprovalGroupsList =
-  /*@__PURE__*/ S.Array(
-    AccessPoliciesCreateRequestApprovalGroupsItem,
-  ) as any as S.Schema<AccessPoliciesCreateRequestApprovalGroupsList>;
-
 export type AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem =
   "text";
 export const AccessPoliciesCreateRequestConnectionRulesRdpAllowedClipboardLocalToRemoteFormatsItem =
@@ -29765,129 +30194,129 @@ export type AccessPoliciesCreateResponseDecision =
 export const AccessPoliciesCreateResponseDecision = /*@__PURE__*/ S.String;
 
 export type AccessPoliciesCreateResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessPoliciesCreateResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessPoliciesCreateResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessPoliciesCreateResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessPoliciesCreateResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessPoliciesCreateResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessPoliciesCreateResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessPoliciesCreateResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessPoliciesCreateResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessPoliciesCreateResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessPoliciesCreateResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessPoliciesCreateResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessPoliciesCreateResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessPoliciesCreateResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessPoliciesCreateResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessPoliciesCreateResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessPoliciesCreateResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessPoliciesCreateResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessPoliciesCreateResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessPoliciesCreateResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessPoliciesCreateResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessPoliciesCreateResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessPoliciesCreateResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessPoliciesCreateResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessPoliciesCreateResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessPoliciesCreateResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessPoliciesCreateResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessPoliciesCreateResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessPoliciesCreateResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessPoliciesCreateResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessPoliciesCreateResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessPoliciesCreateResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessPoliciesCreateResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessPoliciesCreateResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessPoliciesCreateResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessPoliciesCreateResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessPoliciesCreateResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessPoliciesCreateResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessPoliciesCreateResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessPoliciesCreateResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessPoliciesCreateResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessPoliciesCreateResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessPoliciesCreateResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessPoliciesCreateResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessPoliciesCreateResponseExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -29900,94 +30329,94 @@ export const AccessPoliciesCreateResponseExcludeItemGitHubOrganizationRule =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessPoliciesCreateResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessPoliciesCreateResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessPoliciesCreateResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessPoliciesCreateResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessPoliciesCreateResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessPoliciesCreateResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessPoliciesCreateResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessPoliciesCreateResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessPoliciesCreateResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessPoliciesCreateResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessPoliciesCreateResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessPoliciesCreateResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessPoliciesCreateResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessPoliciesCreateResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessPoliciesCreateResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessPoliciesCreateResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessPoliciesCreateResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessPoliciesCreateResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessPoliciesCreateResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessPoliciesCreateResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessPoliciesCreateResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessPoliciesCreateResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessPoliciesCreateResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessPoliciesCreateResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessPoliciesCreateResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessPoliciesCreateResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessPoliciesCreateResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessPoliciesCreateResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessPoliciesCreateResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessPoliciesCreateResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessPoliciesCreateResponseExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -30045,30 +30474,30 @@ export const AccessPoliciesCreateResponseExcludeItemAccessCloudflareAccountMembe
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessPoliciesCreateResponseExcludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessPoliciesCreateResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesCreateResponseExcludeItem =
@@ -52047,129 +52476,129 @@ export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemDecisio
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -52182,94 +52611,94 @@ export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExclude
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -52327,30 +52756,30 @@ export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExclude
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestIncludeItemGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestIncludeItemCertificateRule
+    | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestIncludeItemCountryRule
+    | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestIncludeItemDomainRule
+    | AccessPoliciesCreateRequestIncludeItemEmailListRule
+    | AccessPoliciesCreateRequestIncludeItemEmailRule
+    | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+    | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
     | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestIncludeItemIPListRule
+    | AccessPoliciesCreateRequestIncludeItemIPRule
+    | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
     | AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItemAccessUserRiskScoreRule
     | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsGetResultSelfHostedApplicationPoliciesItemExcludeItem =
@@ -68569,129 +68998,129 @@ export const AccessApplicationsPoliciesGetResponseDecision =
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessApplicationsPoliciesGetResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessApplicationsPoliciesGetResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessApplicationsPoliciesGetResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessApplicationsPoliciesGetResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessApplicationsPoliciesGetResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessApplicationsPoliciesGetResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -68704,94 +69133,94 @@ export const AccessApplicationsPoliciesGetResponseExcludeItemGitHubOrganizationR
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessApplicationsPoliciesGetResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessApplicationsPoliciesGetResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessApplicationsPoliciesGetResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessApplicationsPoliciesGetResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessApplicationsPoliciesGetResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessApplicationsPoliciesGetResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -68849,30 +69278,30 @@ export const AccessApplicationsPoliciesGetResponseExcludeItemAccessCloudflareAcc
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsPoliciesGetResponseExcludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessApplicationsPoliciesGetResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesGetResponseExcludeItem =
@@ -69835,129 +70264,129 @@ export const GetAccessGroupForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccessGroupForAccountRequest>;
 
 export type AccessGroupsGetResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessGroupsGetResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessGroupsGetResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessGroupsGetResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessGroupsGetResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessGroupsGetResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessGroupsGetResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessGroupsGetResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessGroupsGetResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessGroupsGetResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessGroupsGetResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessGroupsGetResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessGroupsGetResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessGroupsGetResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessGroupsGetResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessGroupsGetResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessGroupsGetResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessGroupsGetResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessGroupsGetResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessGroupsGetResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessGroupsGetResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessGroupsGetResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessGroupsGetResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessGroupsGetResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessGroupsGetResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessGroupsGetResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessGroupsGetResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessGroupsGetResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessGroupsGetResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessGroupsGetResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessGroupsGetResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessGroupsGetResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessGroupsGetResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessGroupsGetResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessGroupsGetResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessGroupsGetResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessGroupsGetResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessGroupsGetResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessGroupsGetResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessGroupsGetResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessGroupsGetResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessGroupsGetResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessGroupsGetResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessGroupsGetResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessGroupsGetResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessGroupsGetResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessGroupsGetResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessGroupsGetResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessGroupsGetResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessGroupsGetResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessGroupsGetResponseExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -69970,94 +70399,94 @@ export const AccessGroupsGetResponseExcludeItemGitHubOrganizationRule =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessGroupsGetResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessGroupsGetResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessGroupsGetResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessGroupsGetResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessGroupsGetResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessGroupsGetResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessGroupsGetResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessGroupsGetResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessGroupsGetResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessGroupsGetResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessGroupsGetResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessGroupsGetResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessGroupsGetResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessGroupsGetResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessGroupsGetResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessGroupsGetResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessGroupsGetResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessGroupsGetResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessGroupsGetResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessGroupsGetResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessGroupsGetResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessGroupsGetResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessGroupsGetResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessGroupsGetResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessGroupsGetResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessGroupsGetResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessGroupsGetResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessGroupsGetResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessGroupsGetResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessGroupsGetResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessGroupsGetResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessGroupsGetResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessGroupsGetResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessGroupsGetResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessGroupsGetResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessGroupsGetResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessGroupsGetResponseExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -70114,30 +70543,30 @@ export const AccessGroupsGetResponseExcludeItemAccessCloudflareAccountMemberRule
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessGroupsGetResponseExcludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessGroupsGetResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsGetResponseExcludeItem = /*@__PURE__*/ S.Unknown.pipe(
@@ -70896,129 +71325,129 @@ export type AccessPoliciesGetResponseDecision =
 export const AccessPoliciesGetResponseDecision = /*@__PURE__*/ S.String;
 
 export type AccessPoliciesGetResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessPoliciesGetResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessPoliciesGetResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessPoliciesGetResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessPoliciesGetResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessPoliciesGetResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessPoliciesGetResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessPoliciesGetResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessPoliciesGetResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessPoliciesGetResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessPoliciesGetResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessPoliciesGetResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessPoliciesGetResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessPoliciesGetResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessPoliciesGetResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessPoliciesGetResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessPoliciesGetResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessPoliciesGetResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessPoliciesGetResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessPoliciesGetResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessPoliciesGetResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessPoliciesGetResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessPoliciesGetResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessPoliciesGetResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessPoliciesGetResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessPoliciesGetResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessPoliciesGetResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessPoliciesGetResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessPoliciesGetResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessPoliciesGetResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessPoliciesGetResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessPoliciesGetResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessPoliciesGetResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessPoliciesGetResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessPoliciesGetResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessPoliciesGetResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessPoliciesGetResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessPoliciesGetResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessPoliciesGetResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessPoliciesGetResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessPoliciesGetResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessPoliciesGetResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessPoliciesGetResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessPoliciesGetResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessPoliciesGetResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessPoliciesGetResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessPoliciesGetResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessPoliciesGetResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessPoliciesGetResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessPoliciesGetResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessPoliciesGetResponseExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -71031,94 +71460,94 @@ export const AccessPoliciesGetResponseExcludeItemGitHubOrganizationRule =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessPoliciesGetResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessPoliciesGetResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessPoliciesGetResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessPoliciesGetResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessPoliciesGetResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessPoliciesGetResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessPoliciesGetResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessPoliciesGetResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessPoliciesGetResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessPoliciesGetResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessPoliciesGetResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessPoliciesGetResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessPoliciesGetResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessPoliciesGetResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessPoliciesGetResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessPoliciesGetResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessPoliciesGetResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessPoliciesGetResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessPoliciesGetResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessPoliciesGetResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessPoliciesGetResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessPoliciesGetResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessPoliciesGetResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessPoliciesGetResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessPoliciesGetResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessPoliciesGetResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessPoliciesGetResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessPoliciesGetResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessPoliciesGetResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessPoliciesGetResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessPoliciesGetResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessPoliciesGetResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessPoliciesGetResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessPoliciesGetResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessPoliciesGetResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessPoliciesGetResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessPoliciesGetResponseExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -71175,30 +71604,30 @@ export const AccessPoliciesGetResponseExcludeItemAccessCloudflareAccountMemberRu
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessPoliciesGetResponseExcludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessPoliciesGetResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesGetResponseExcludeItem =
@@ -89176,129 +89605,129 @@ export const AccessApplicationsPoliciesListResultItemDecision =
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessApplicationsPoliciesListResultItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessApplicationsPoliciesListResultItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessApplicationsPoliciesListResultItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessApplicationsPoliciesListResultItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessApplicationsPoliciesListResultItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessApplicationsPoliciesListResultItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -89311,94 +89740,94 @@ export const AccessApplicationsPoliciesListResultItemExcludeItemGitHubOrganizati
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessApplicationsPoliciesListResultItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessApplicationsPoliciesListResultItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessApplicationsPoliciesListResultItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessApplicationsPoliciesListResultItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessApplicationsPoliciesListResultItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessApplicationsPoliciesListResultItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -89456,30 +89885,30 @@ export const AccessApplicationsPoliciesListResultItemExcludeItemAccessCloudflare
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsPoliciesListResultItemExcludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessApplicationsPoliciesListResultItemExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesListResultItemExcludeItem =
@@ -90780,129 +91209,129 @@ export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemDe
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -90915,94 +91344,94 @@ export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemEx
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -91060,30 +91489,30 @@ export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemEx
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestIncludeItemGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestIncludeItemCertificateRule
+    | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestIncludeItemCountryRule
+    | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestIncludeItemDomainRule
+    | AccessPoliciesCreateRequestIncludeItemEmailListRule
+    | AccessPoliciesCreateRequestIncludeItemEmailRule
+    | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+    | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
     | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestIncludeItemIPListRule
+    | AccessPoliciesCreateRequestIncludeItemIPRule
+    | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
     | AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItemAccessUserRiskScoreRule
     | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsListResultItemSelfHostedApplicationPoliciesItemExcludeItem =
@@ -107710,129 +108139,129 @@ export const ListAccessGroupsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccessGroupsForAccountRequest>;
 
 export type AccessGroupsListResultItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessGroupsListResultItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessGroupsListResultItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessGroupsListResultItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessGroupsListResultItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessGroupsListResultItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessGroupsListResultItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessGroupsListResultItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessGroupsListResultItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessGroupsListResultItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessGroupsListResultItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessGroupsListResultItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessGroupsListResultItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessGroupsListResultItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessGroupsListResultItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessGroupsListResultItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessGroupsListResultItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessGroupsListResultItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessGroupsListResultItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessGroupsListResultItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessGroupsListResultItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessGroupsListResultItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessGroupsListResultItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessGroupsListResultItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessGroupsListResultItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessGroupsListResultItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessGroupsListResultItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessGroupsListResultItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessGroupsListResultItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessGroupsListResultItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessGroupsListResultItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessGroupsListResultItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessGroupsListResultItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessGroupsListResultItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessGroupsListResultItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessGroupsListResultItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessGroupsListResultItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessGroupsListResultItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessGroupsListResultItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessGroupsListResultItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessGroupsListResultItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessGroupsListResultItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessGroupsListResultItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessGroupsListResultItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessGroupsListResultItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessGroupsListResultItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessGroupsListResultItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessGroupsListResultItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessGroupsListResultItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessGroupsListResultItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessGroupsListResultItemExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -107845,94 +108274,94 @@ export const AccessGroupsListResultItemExcludeItemGitHubOrganizationRule =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessGroupsListResultItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessGroupsListResultItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessGroupsListResultItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessGroupsListResultItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessGroupsListResultItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessGroupsListResultItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessGroupsListResultItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessGroupsListResultItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessGroupsListResultItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessGroupsListResultItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessGroupsListResultItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessGroupsListResultItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessGroupsListResultItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessGroupsListResultItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessGroupsListResultItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessGroupsListResultItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessGroupsListResultItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessGroupsListResultItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessGroupsListResultItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessGroupsListResultItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessGroupsListResultItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessGroupsListResultItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessGroupsListResultItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessGroupsListResultItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessGroupsListResultItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessGroupsListResultItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessGroupsListResultItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessGroupsListResultItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessGroupsListResultItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessGroupsListResultItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessGroupsListResultItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessGroupsListResultItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessGroupsListResultItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessGroupsListResultItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessGroupsListResultItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessGroupsListResultItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessGroupsListResultItemExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -107989,30 +108418,30 @@ export const AccessGroupsListResultItemExcludeItemAccessCloudflareAccountMemberR
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessGroupsListResultItemExcludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessGroupsListResultItemExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsListResultItemExcludeItem =
@@ -109302,129 +109731,129 @@ export type AccessPoliciesListResultItemDecision =
 export const AccessPoliciesListResultItemDecision = /*@__PURE__*/ S.String;
 
 export type AccessPoliciesListResultItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessPoliciesListResultItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessPoliciesListResultItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessPoliciesListResultItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessPoliciesListResultItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessPoliciesListResultItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessPoliciesListResultItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessPoliciesListResultItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessPoliciesListResultItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessPoliciesListResultItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessPoliciesListResultItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessPoliciesListResultItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessPoliciesListResultItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessPoliciesListResultItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessPoliciesListResultItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessPoliciesListResultItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessPoliciesListResultItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessPoliciesListResultItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessPoliciesListResultItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessPoliciesListResultItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessPoliciesListResultItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessPoliciesListResultItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessPoliciesListResultItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessPoliciesListResultItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessPoliciesListResultItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessPoliciesListResultItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessPoliciesListResultItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessPoliciesListResultItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessPoliciesListResultItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessPoliciesListResultItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessPoliciesListResultItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessPoliciesListResultItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessPoliciesListResultItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessPoliciesListResultItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessPoliciesListResultItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessPoliciesListResultItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessPoliciesListResultItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessPoliciesListResultItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessPoliciesListResultItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessPoliciesListResultItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessPoliciesListResultItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessPoliciesListResultItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessPoliciesListResultItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessPoliciesListResultItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessPoliciesListResultItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessPoliciesListResultItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessPoliciesListResultItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessPoliciesListResultItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessPoliciesListResultItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessPoliciesListResultItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessPoliciesListResultItemExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -109437,94 +109866,94 @@ export const AccessPoliciesListResultItemExcludeItemGitHubOrganizationRule =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessPoliciesListResultItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessPoliciesListResultItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessPoliciesListResultItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessPoliciesListResultItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessPoliciesListResultItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessPoliciesListResultItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessPoliciesListResultItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessPoliciesListResultItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessPoliciesListResultItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessPoliciesListResultItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessPoliciesListResultItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessPoliciesListResultItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessPoliciesListResultItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessPoliciesListResultItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessPoliciesListResultItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessPoliciesListResultItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessPoliciesListResultItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessPoliciesListResultItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessPoliciesListResultItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessPoliciesListResultItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessPoliciesListResultItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessPoliciesListResultItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessPoliciesListResultItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessPoliciesListResultItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessPoliciesListResultItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessPoliciesListResultItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessPoliciesListResultItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessPoliciesListResultItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessPoliciesListResultItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessPoliciesListResultItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessPoliciesListResultItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessPoliciesListResultItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessPoliciesListResultItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessPoliciesListResultItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessPoliciesListResultItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessPoliciesListResultItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessPoliciesListResultItemExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -109582,30 +110011,30 @@ export const AccessPoliciesListResultItemExcludeItemAccessCloudflareAccountMembe
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessPoliciesListResultItemExcludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessPoliciesListResultItemExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesListResultItemExcludeItem =
@@ -133895,7 +134324,8 @@ export const AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCas
 export type AccessApplicationsUpdateForAccountRequestPoliciesSelfHostedApplicationItem =
     | string
     | AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemAccessAppPolicyLink
-    | AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2;
+    | AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2
+    | InlineAccessPolicy;
 export const AccessApplicationsUpdateForAccountRequestPoliciesSelfHostedApplicationItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -133909,6 +134339,21 @@ export const AccessApplicationsUpdateForAccountRequestPoliciesSelfHostedApplicat
         "isolationRequired",
         "mfaConfig",
         "precedence",
+        "purposeJustificationPrompt",
+        "purposeJustificationRequired",
+        "sessionDuration",
+      ],
+      [
+        "id",
+        "decision",
+        "include",
+        "exclude",
+        "require",
+        "name",
+        "precedence",
+        "approvalGroups",
+        "approvalRequired",
+        "isolationRequired",
         "purposeJustificationPrompt",
         "purposeJustificationRequired",
         "sessionDuration",
@@ -133929,229 +134374,229 @@ export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationIte
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -134202,42 +134647,42 @@ export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationIte
   }) as any as S.Schema<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRule>;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestIncludeItemGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestIncludeItemCertificateRule
+    | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestIncludeItemCountryRule
+    | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestIncludeItemDomainRule
+    | AccessPoliciesCreateRequestIncludeItemEmailListRule
+    | AccessPoliciesCreateRequestIncludeItemEmailRule
+    | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+    | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule
+    | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestIncludeItemIPListRule
+    | AccessPoliciesCreateRequestIncludeItemIPRule
+    | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
     | AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessUserRiskScoreRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+    | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -134319,162 +134764,162 @@ export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationIte
   }) as any as S.Schema<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemConnectionRules>;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule;
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule;
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule;
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule;
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule;
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule;
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule;
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule;
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule;
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule;
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule;
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule;
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule;
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule;
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule;
+  AccessPoliciesCreateRequestExcludeItemIPRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule;
+  AccessPoliciesCreateRequestExcludeItemIPRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule;
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule;
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+    | AccessPoliciesCreateRequestExcludeItemGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestExcludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestExcludeItemCertificateRule
+    | AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestExcludeItemCountryRule
+    | AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestExcludeItemDomainRule
+    | AccessPoliciesCreateRequestExcludeItemEmailListRule
+    | AccessPoliciesCreateRequestExcludeItemEmailRule
+    | AccessPoliciesCreateRequestExcludeItemEveryoneRule
+    | AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule
+    | AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestExcludeItemIPListRule
+    | AccessPoliciesCreateRequestExcludeItemIPRule
+    | AccessPoliciesCreateRequestExcludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestExcludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestExcludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule
+    | AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemExcludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -134554,162 +134999,162 @@ export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationIte
   }) as any as S.Schema<AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemMfaConfig>;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestExcludeItemAzureGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule;
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule;
+  AccessPoliciesCreateRequestExcludeItemCertificateRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule;
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule;
+  AccessPoliciesCreateRequestExcludeItemCountryRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule;
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule;
+  AccessPoliciesCreateRequestExcludeItemDomainRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule;
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule;
+  AccessPoliciesCreateRequestExcludeItemEmailListRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule;
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule;
+  AccessPoliciesCreateRequestExcludeItemEmailRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule;
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule;
+  AccessPoliciesCreateRequestExcludeItemEveryoneRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule;
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule;
+  AccessPoliciesCreateRequestExcludeItemIPListRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule;
+  AccessPoliciesCreateRequestExcludeItemIPRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule;
+  AccessPoliciesCreateRequestExcludeItemIPRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestExcludeItemOktaGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestExcludeItemSAMLGroupRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestExcludeItemServiceTokenRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessUserRiskScoreRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule;
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessUserRiskScoreRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule;
+  AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemExternalEvaluationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessLinkedAppTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessUserRiskScoreRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemExcludeItemAccessCloudflareAccountMemberRule;
+    | AccessPoliciesCreateRequestExcludeItemGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestExcludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestExcludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestExcludeItemCertificateRule
+    | AccessPoliciesCreateRequestExcludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestExcludeItemCountryRule
+    | AccessPoliciesCreateRequestExcludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestExcludeItemDomainRule
+    | AccessPoliciesCreateRequestExcludeItemEmailListRule
+    | AccessPoliciesCreateRequestExcludeItemEmailRule
+    | AccessPoliciesCreateRequestExcludeItemEveryoneRule
+    | AccessPoliciesCreateRequestExcludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestExcludeItemGitHubOrganizationRule
+    | AccessPoliciesCreateRequestExcludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestExcludeItemIPListRule
+    | AccessPoliciesCreateRequestExcludeItemIPRule
+    | AccessPoliciesCreateRequestExcludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestExcludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestExcludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestExcludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestExcludeItemAccessUserRiskScoreRule
+    | AccessPoliciesCreateRequestExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateRequestPoliciesInfrastructureApplicationItemRequireItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -136634,129 +137079,129 @@ export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemDeci
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -136769,94 +137214,94 @@ export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcl
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -136914,30 +137359,30 @@ export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcl
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItem =
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+    | AccessPoliciesCreateRequestIncludeItemGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+    | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+    | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+    | AccessPoliciesCreateRequestIncludeItemCertificateRule
+    | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+    | AccessPoliciesCreateRequestIncludeItemCountryRule
+    | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+    | AccessPoliciesCreateRequestIncludeItemDomainRule
+    | AccessPoliciesCreateRequestIncludeItemEmailListRule
+    | AccessPoliciesCreateRequestIncludeItemEmailRule
+    | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+    | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
     | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-    | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+    | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+    | AccessPoliciesCreateRequestIncludeItemIPListRule
+    | AccessPoliciesCreateRequestIncludeItemIPRule
+    | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+    | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+    | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+    | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+    | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
     | AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItemAccessUserRiskScoreRule
     | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsUpdateResultSelfHostedApplicationPoliciesItemExcludeItem =
@@ -153021,7 +153466,8 @@ export const UpdateAccessApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 export type AccessApplicationsUpdateForZoneRequestPoliciesSelfHostedApplicationItem =
     | string
     | AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemAccessAppPolicyLink
-    | AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2;
+    | AccessApplicationsUpdateRequestPoliciesSelfHostedApplicationItemCase2
+    | InlineAccessPolicy;
 export const AccessApplicationsUpdateForZoneRequestPoliciesSelfHostedApplicationItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -153035,6 +153481,21 @@ export const AccessApplicationsUpdateForZoneRequestPoliciesSelfHostedApplication
         "isolationRequired",
         "mfaConfig",
         "precedence",
+        "purposeJustificationPrompt",
+        "purposeJustificationRequired",
+        "sessionDuration",
+      ],
+      [
+        "id",
+        "decision",
+        "include",
+        "exclude",
+        "require",
+        "name",
+        "precedence",
+        "approvalGroups",
+        "approvalRequired",
+        "isolationRequired",
         "purposeJustificationPrompt",
         "purposeJustificationRequired",
         "sessionDuration",
@@ -153591,129 +154052,129 @@ export const AccessApplicationsPoliciesUpdateResponseDecision =
   /*@__PURE__*/ S.String;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -153726,94 +154187,94 @@ export const AccessApplicationsPoliciesUpdateResponseExcludeItemGitHubOrganizati
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -153871,30 +154332,30 @@ export const AccessApplicationsPoliciesUpdateResponseExcludeItemAccessCloudflare
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessApplicationsPoliciesUpdateResponseExcludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessApplicationsPoliciesUpdateResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessApplicationsPoliciesUpdateResponseExcludeItem =
@@ -154760,229 +155221,229 @@ export const UpdateAccessCustomPageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAccessCustomPageResponse>;
 
 export type AccessGroupsUpdateRequestIncludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessGroupsUpdateRequestIncludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessGroupsUpdateRequestIncludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessGroupsUpdateRequestIncludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessGroupsUpdateRequestIncludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessGroupsUpdateRequestIncludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessGroupsUpdateRequestIncludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessGroupsUpdateRequestIncludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessGroupsUpdateRequestIncludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessGroupsUpdateRequestIncludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessGroupsUpdateRequestIncludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessGroupsUpdateRequestIncludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessGroupsUpdateRequestIncludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessGroupsUpdateRequestIncludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessGroupsUpdateRequestIncludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessGroupsUpdateRequestIncludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessGroupsUpdateRequestIncludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessGroupsUpdateRequestIncludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessGroupsUpdateRequestIncludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessGroupsUpdateRequestIncludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessGroupsUpdateRequestIncludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessGroupsUpdateRequestIncludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessGroupsUpdateRequestIncludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessGroupsUpdateRequestIncludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessGroupsUpdateRequestIncludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessGroupsUpdateRequestIncludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessGroupsUpdateRequestIncludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessGroupsUpdateRequestIncludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessGroupsUpdateRequestIncludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessGroupsUpdateRequestIncludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessGroupsUpdateRequestIncludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessGroupsUpdateRequestIncludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessGroupsUpdateRequestIncludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessGroupsUpdateRequestIncludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessGroupsUpdateRequestIncludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessGroupsUpdateRequestIncludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessGroupsUpdateRequestIncludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessGroupsUpdateRequestIncludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessGroupsUpdateRequestIncludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessGroupsUpdateRequestIncludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessGroupsUpdateRequestIncludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessGroupsUpdateRequestIncludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessGroupsUpdateRequestIncludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessGroupsUpdateRequestIncludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessGroupsUpdateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
 export const AccessGroupsUpdateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
 
 export type AccessGroupsUpdateRequestIncludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule;
 export const AccessGroupsUpdateRequestIncludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule;
 
 export type AccessGroupsUpdateRequestIncludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessGroupsUpdateRequestIncludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessGroupsUpdateRequestIncludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessGroupsUpdateRequestIncludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessGroupsUpdateRequestIncludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessGroupsUpdateRequestIncludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessGroupsUpdateRequestIncludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessGroupsUpdateRequestIncludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessGroupsUpdateRequestIncludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessGroupsUpdateRequestIncludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessGroupsUpdateRequestIncludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessGroupsUpdateRequestIncludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessGroupsUpdateRequestIncludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessGroupsUpdateRequestIncludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessGroupsUpdateRequestIncludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessGroupsUpdateRequestIncludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessGroupsUpdateRequestIncludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessGroupsUpdateRequestIncludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessGroupsUpdateRequestIncludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessGroupsUpdateRequestIncludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessGroupsUpdateRequestIncludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessGroupsUpdateRequestIncludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessGroupsUpdateRequestIncludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessGroupsUpdateRequestIncludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessGroupsUpdateRequestIncludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessGroupsUpdateRequestIncludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessGroupsUpdateRequestIncludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessGroupsUpdateRequestIncludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessGroupsUpdateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessGroupsUpdateRequestIncludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -155032,42 +155493,42 @@ export const AccessGroupsUpdateRequestIncludeItemAccessUserRiskScoreRule =
   }) as any as S.Schema<AccessGroupsUpdateRequestIncludeItemAccessUserRiskScoreRule>;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
 export const AccessGroupsUpdateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
 
 export type AccessGroupsUpdateRequestIncludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsUpdateRequestIncludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessGroupsUpdateRequestIncludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessGroupsUpdateRequestIncludeItemAccessUserRiskScoreRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsUpdateRequestIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -155145,129 +155606,129 @@ export const UpdateAccessGroupForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAccessGroupForAccountRequest>;
 
 export type AccessGroupsUpdateResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessGroupsUpdateResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessGroupsUpdateResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessGroupsUpdateResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessGroupsUpdateResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessGroupsUpdateResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessGroupsUpdateResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessGroupsUpdateResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessGroupsUpdateResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessGroupsUpdateResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessGroupsUpdateResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessGroupsUpdateResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessGroupsUpdateResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessGroupsUpdateResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessGroupsUpdateResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessGroupsUpdateResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessGroupsUpdateResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessGroupsUpdateResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessGroupsUpdateResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessGroupsUpdateResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessGroupsUpdateResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessGroupsUpdateResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessGroupsUpdateResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessGroupsUpdateResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessGroupsUpdateResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessGroupsUpdateResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessGroupsUpdateResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessGroupsUpdateResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessGroupsUpdateResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessGroupsUpdateResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessGroupsUpdateResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessGroupsUpdateResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessGroupsUpdateResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessGroupsUpdateResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessGroupsUpdateResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessGroupsUpdateResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessGroupsUpdateResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessGroupsUpdateResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessGroupsUpdateResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessGroupsUpdateResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessGroupsUpdateResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessGroupsUpdateResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessGroupsUpdateResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessGroupsUpdateResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessGroupsUpdateResponseExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -155280,94 +155741,94 @@ export const AccessGroupsUpdateResponseExcludeItemGitHubOrganizationRule =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessGroupsUpdateResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessGroupsUpdateResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessGroupsUpdateResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessGroupsUpdateResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessGroupsUpdateResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessGroupsUpdateResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessGroupsUpdateResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessGroupsUpdateResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessGroupsUpdateResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessGroupsUpdateResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessGroupsUpdateResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessGroupsUpdateResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessGroupsUpdateResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessGroupsUpdateResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessGroupsUpdateResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessGroupsUpdateResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessGroupsUpdateResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessGroupsUpdateResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessGroupsUpdateResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessGroupsUpdateResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessGroupsUpdateResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessGroupsUpdateResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessGroupsUpdateResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessGroupsUpdateResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessGroupsUpdateResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessGroupsUpdateResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessGroupsUpdateResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessGroupsUpdateResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessGroupsUpdateResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessGroupsUpdateResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessGroupsUpdateResponseExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -155424,30 +155885,30 @@ export const AccessGroupsUpdateResponseExcludeItemAccessCloudflareAccountMemberR
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessGroupsUpdateResponseExcludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessGroupsUpdateResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessGroupsUpdateResponseExcludeItem =
@@ -156038,229 +156499,229 @@ export type AccessPoliciesUpdateRequestDecision =
 export const AccessPoliciesUpdateRequestDecision = /*@__PURE__*/ S.String;
 
 export type AccessPoliciesUpdateRequestIncludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessPoliciesUpdateRequestIncludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessPoliciesUpdateRequestIncludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessPoliciesUpdateRequestIncludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessPoliciesUpdateRequestIncludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessPoliciesUpdateRequestIncludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessPoliciesUpdateRequestIncludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessPoliciesUpdateRequestIncludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessPoliciesUpdateRequestIncludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessPoliciesUpdateRequestIncludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessPoliciesUpdateRequestIncludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessPoliciesUpdateRequestIncludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessPoliciesUpdateRequestIncludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessPoliciesUpdateRequestIncludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessPoliciesUpdateRequestIncludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessPoliciesUpdateRequestIncludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessPoliciesUpdateRequestIncludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessPoliciesUpdateRequestIncludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessPoliciesUpdateRequestIncludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessPoliciesUpdateRequestIncludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessPoliciesUpdateRequestIncludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessPoliciesUpdateRequestIncludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessPoliciesUpdateRequestIncludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessPoliciesUpdateRequestIncludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessPoliciesUpdateRequestIncludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessPoliciesUpdateRequestIncludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessPoliciesUpdateRequestIncludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessPoliciesUpdateRequestIncludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessPoliciesUpdateRequestIncludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessPoliciesUpdateRequestIncludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessPoliciesUpdateRequestIncludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessPoliciesUpdateRequestIncludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessPoliciesUpdateRequestIncludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessPoliciesUpdateRequestIncludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
 export const AccessPoliciesUpdateRequestIncludeItemGitHubOrganizationRuleGithubOrganization =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRuleGithubOrganization;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRuleGithubOrganization;
 
 export type AccessPoliciesUpdateRequestIncludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule;
 export const AccessPoliciesUpdateRequestIncludeItemGitHubOrganizationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule;
+  AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessPoliciesUpdateRequestIncludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessPoliciesUpdateRequestIncludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessPoliciesUpdateRequestIncludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessPoliciesUpdateRequestIncludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessPoliciesUpdateRequestIncludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessPoliciesUpdateRequestIncludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessPoliciesUpdateRequestIncludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessPoliciesUpdateRequestIncludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessPoliciesUpdateRequestIncludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessPoliciesUpdateRequestIncludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessPoliciesUpdateRequestIncludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessPoliciesUpdateRequestIncludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessPoliciesUpdateRequestIncludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessPoliciesUpdateRequestIncludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessPoliciesUpdateRequestIncludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessPoliciesUpdateRequestIncludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessPoliciesUpdateRequestIncludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessPoliciesUpdateRequestIncludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessPoliciesUpdateRequestIncludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessPoliciesUpdateRequestIncludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessPoliciesUpdateRequestIncludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessPoliciesUpdateRequestIncludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessPoliciesUpdateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessPoliciesUpdateRequestIncludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -156310,42 +156771,42 @@ export const AccessPoliciesUpdateRequestIncludeItemAccessUserRiskScoreRule =
   }) as any as S.Schema<AccessPoliciesUpdateRequestIncludeItemAccessUserRiskScoreRule>;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
 export const AccessPoliciesUpdateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRuleCloudflareAccountMember;
 
 export type AccessPoliciesUpdateRequestIncludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesUpdateRequestIncludeItemAccessCloudflareAccountMemberRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessPoliciesUpdateRequestIncludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGitHubOrganizationRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessPoliciesUpdateRequestIncludeItemAccessUserRiskScoreRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCloudflareAccountMemberRule;
+  | AccessPoliciesCreateRequestIncludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesUpdateRequestIncludeItem =
   /*@__PURE__*/ S.Unknown.pipe(
     T.UnionCases([
@@ -156712,129 +157173,129 @@ export type AccessPoliciesUpdateResponseDecision =
 export const AccessPoliciesUpdateResponseDecision = /*@__PURE__*/ S.String;
 
 export type AccessPoliciesUpdateResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 export const AccessPoliciesUpdateResponseExcludeItemGroupRuleGroup =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRuleGroup;
+  AccessPoliciesCreateRequestIncludeItemGroupRuleGroup;
 
 export type AccessPoliciesUpdateResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 export const AccessPoliciesUpdateResponseExcludeItemGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGroupRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 export const AccessPoliciesUpdateResponseExcludeItemAnyValidServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 export const AccessPoliciesUpdateResponseExcludeItemAccessAuthContextRuleAuthContext =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRuleAuthContext;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRuleAuthContext;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 export const AccessPoliciesUpdateResponseExcludeItemAccessAuthContextRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule;
+  AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 export const AccessPoliciesUpdateResponseExcludeItemAuthenticationMethodRuleAuthMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRuleAuthMethod;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRuleAuthMethod;
 
 export type AccessPoliciesUpdateResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 export const AccessPoliciesUpdateResponseExcludeItemAuthenticationMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 export const AccessPoliciesUpdateResponseExcludeItemAzureGroupRuleAzureAD =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRuleAzureAD;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRuleAzureAD;
 
 export type AccessPoliciesUpdateResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 export const AccessPoliciesUpdateResponseExcludeItemAzureGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule;
+  AccessPoliciesCreateRequestIncludeItemAzureGroupRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 export const AccessPoliciesUpdateResponseExcludeItemCertificateRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule;
+  AccessPoliciesCreateRequestIncludeItemCertificateRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 export const AccessPoliciesUpdateResponseExcludeItemAccessCommonNameRuleCommonName =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRuleCommonName;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRuleCommonName;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 export const AccessPoliciesUpdateResponseExcludeItemAccessCommonNameRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule;
+  AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 export const AccessPoliciesUpdateResponseExcludeItemCountryRuleGeo =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRuleGeo;
+  AccessPoliciesCreateRequestIncludeItemCountryRuleGeo;
 
 export type AccessPoliciesUpdateResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 export const AccessPoliciesUpdateResponseExcludeItemCountryRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule;
+  AccessPoliciesCreateRequestIncludeItemCountryRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 export const AccessPoliciesUpdateResponseExcludeItemAccessDevicePostureRuleDevicePosture =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRuleDevicePosture;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRuleDevicePosture;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 export const AccessPoliciesUpdateResponseExcludeItemAccessDevicePostureRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule;
+  AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 export const AccessPoliciesUpdateResponseExcludeItemDomainRuleEmailDomain =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRuleEmailDomain;
+  AccessPoliciesCreateRequestIncludeItemDomainRuleEmailDomain;
 
 export type AccessPoliciesUpdateResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 export const AccessPoliciesUpdateResponseExcludeItemDomainRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule;
+  AccessPoliciesCreateRequestIncludeItemDomainRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 export const AccessPoliciesUpdateResponseExcludeItemEmailListRuleEmailList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRuleEmailList;
+  AccessPoliciesCreateRequestIncludeItemEmailListRuleEmailList;
 
 export type AccessPoliciesUpdateResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 export const AccessPoliciesUpdateResponseExcludeItemEmailListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule;
+  AccessPoliciesCreateRequestIncludeItemEmailListRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 export const AccessPoliciesUpdateResponseExcludeItemEmailRuleEmail =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRuleEmail;
+  AccessPoliciesCreateRequestIncludeItemEmailRuleEmail;
 
 export type AccessPoliciesUpdateResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 export const AccessPoliciesUpdateResponseExcludeItemEmailRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule;
+  AccessPoliciesCreateRequestIncludeItemEmailRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 export const AccessPoliciesUpdateResponseExcludeItemEveryoneRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule;
+  AccessPoliciesCreateRequestIncludeItemEveryoneRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 export const AccessPoliciesUpdateResponseExcludeItemExternalEvaluationRuleExternalEvaluation =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRuleExternalEvaluation;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRuleExternalEvaluation;
 
 export type AccessPoliciesUpdateResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 export const AccessPoliciesUpdateResponseExcludeItemExternalEvaluationRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule;
+  AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemGitHubOrganizationRuleGithubOrganization =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRuleGithubOrganization;
@@ -156847,94 +157308,94 @@ export const AccessPoliciesUpdateResponseExcludeItemGitHubOrganizationRule =
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 export const AccessPoliciesUpdateResponseExcludeItemGSuiteGroupRuleGsuite =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRuleGsuite;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRuleGsuite;
 
 export type AccessPoliciesUpdateResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 export const AccessPoliciesUpdateResponseExcludeItemGSuiteGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule;
+  AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 export const AccessPoliciesUpdateResponseExcludeItemAccessLoginMethodRuleLoginMethod =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRuleLoginMethod;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRuleLoginMethod;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 export const AccessPoliciesUpdateResponseExcludeItemAccessLoginMethodRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 export const AccessPoliciesUpdateResponseExcludeItemIPListRuleIpList =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRuleIpList;
+  AccessPoliciesCreateRequestIncludeItemIPListRuleIpList;
 
 export type AccessPoliciesUpdateResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 export const AccessPoliciesUpdateResponseExcludeItemIPListRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule;
+  AccessPoliciesCreateRequestIncludeItemIPListRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 export const AccessPoliciesUpdateResponseExcludeItemIPRuleIp =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRuleIp;
+  AccessPoliciesCreateRequestIncludeItemIPRuleIp;
 
 export type AccessPoliciesUpdateResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 export const AccessPoliciesUpdateResponseExcludeItemIPRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule;
+  AccessPoliciesCreateRequestIncludeItemIPRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 export const AccessPoliciesUpdateResponseExcludeItemOktaGroupRuleOkta =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRuleOkta;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRuleOkta;
 
 export type AccessPoliciesUpdateResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 export const AccessPoliciesUpdateResponseExcludeItemOktaGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule;
+  AccessPoliciesCreateRequestIncludeItemOktaGroupRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 export const AccessPoliciesUpdateResponseExcludeItemSAMLGroupRuleSaml =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRuleSaml;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRuleSaml;
 
 export type AccessPoliciesUpdateResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 export const AccessPoliciesUpdateResponseExcludeItemSAMLGroupRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule;
+  AccessPoliciesCreateRequestIncludeItemSAMLGroupRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 export const AccessPoliciesUpdateResponseExcludeItemAccessOIDCClaimRuleOidc =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRuleOidc;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRuleOidc;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 export const AccessPoliciesUpdateResponseExcludeItemAccessOIDCClaimRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule;
+  AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 export const AccessPoliciesUpdateResponseExcludeItemServiceTokenRuleServiceToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRuleServiceToken;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRuleServiceToken;
 
 export type AccessPoliciesUpdateResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 export const AccessPoliciesUpdateResponseExcludeItemServiceTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule;
+  AccessPoliciesCreateRequestIncludeItemServiceTokenRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 export const AccessPoliciesUpdateResponseExcludeItemAccessLinkedAppTokenRuleLinkedAppToken =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRuleLinkedAppToken;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 export const AccessPoliciesUpdateResponseExcludeItemAccessLinkedAppTokenRule =
-  AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule;
+  AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule;
 
 export type AccessPoliciesUpdateResponseExcludeItemAccessUserRiskScoreRuleUserRiskScoreUserRiskScoreItem =
   "low" | "medium" | "high" | "unscored";
@@ -156992,30 +157453,30 @@ export const AccessPoliciesUpdateResponseExcludeItemAccessCloudflareAccountMembe
   AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 
 export type AccessPoliciesUpdateResponseExcludeItem =
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAnyValidServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessAuthContextRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAuthenticationMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAzureGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCertificateRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessCommonNameRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemCountryRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessDevicePostureRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemDomainRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEmailRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemEveryoneRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemExternalEvaluationRule
+  | AccessPoliciesCreateRequestIncludeItemGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAnyValidServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessAuthContextRule
+  | AccessPoliciesCreateRequestIncludeItemAuthenticationMethodRule
+  | AccessPoliciesCreateRequestIncludeItemAzureGroupRule
+  | AccessPoliciesCreateRequestIncludeItemCertificateRule
+  | AccessPoliciesCreateRequestIncludeItemAccessCommonNameRule
+  | AccessPoliciesCreateRequestIncludeItemCountryRule
+  | AccessPoliciesCreateRequestIncludeItemAccessDevicePostureRule
+  | AccessPoliciesCreateRequestIncludeItemDomainRule
+  | AccessPoliciesCreateRequestIncludeItemEmailListRule
+  | AccessPoliciesCreateRequestIncludeItemEmailRule
+  | AccessPoliciesCreateRequestIncludeItemEveryoneRule
+  | AccessPoliciesCreateRequestIncludeItemExternalEvaluationRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemGitHubOrganizationRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemGSuiteGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLoginMethodRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPListRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemIPRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemOktaGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemSAMLGroupRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessOIDCClaimRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemServiceTokenRule
-  | AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemIncludeItemAccessLinkedAppTokenRule
+  | AccessPoliciesCreateRequestIncludeItemGSuiteGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLoginMethodRule
+  | AccessPoliciesCreateRequestIncludeItemIPListRule
+  | AccessPoliciesCreateRequestIncludeItemIPRule
+  | AccessPoliciesCreateRequestIncludeItemOktaGroupRule
+  | AccessPoliciesCreateRequestIncludeItemSAMLGroupRule
+  | AccessPoliciesCreateRequestIncludeItemAccessOIDCClaimRule
+  | AccessPoliciesCreateRequestIncludeItemServiceTokenRule
+  | AccessPoliciesCreateRequestIncludeItemAccessLinkedAppTokenRule
   | AccessPoliciesUpdateResponseExcludeItemAccessUserRiskScoreRule
   | AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemExcludeItemAccessCloudflareAccountMemberRule;
 export const AccessPoliciesUpdateResponseExcludeItem =
@@ -168481,6 +168942,7 @@ export const createAccessApplicationCaForZone: API.OperationMethod<
 
 export type CreateAccessApplicationForAccountError =
   | AccessReferenceNotFound
+  | AccessDestinationConflict
   | CloudflareOpError;
 /** Adds a new application to Access. */
 export const createAccessApplicationForAccount: API.OperationMethod<
@@ -168491,7 +168953,12 @@ export const createAccessApplicationForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessApplicationForAccountRequest,
   output: CreateAccessApplicationResponse,
-  errors: [AccessReferenceNotFound, CloudflareRateLimited, CloudflareError],
+  errors: [
+    AccessReferenceNotFound,
+    AccessDestinationConflict,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -169667,7 +170134,9 @@ export const deleteAccessApplicationCaForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAccessApplicationForAccountError = CloudflareOpError;
+export type DeleteAccessApplicationForAccountError =
+  | AccessApplicationNotFound
+  | CloudflareOpError;
 /** Deletes an application from Access. */
 export const deleteAccessApplicationForAccount: API.OperationMethod<
   DeleteAccessApplicationForAccountRequest,
@@ -169677,7 +170146,7 @@ export const deleteAccessApplicationForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessApplicationForAccountRequest,
   output: DeleteAccessApplicationResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [AccessApplicationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -170878,7 +171347,10 @@ export const getAccessApplicationCaForZone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAccessApplicationForAccountError = Forbidden | CloudflareOpError;
+export type GetAccessApplicationForAccountError =
+  | Forbidden
+  | AccessApplicationNotFound
+  | CloudflareOpError;
 /** Fetches information about an Access application. */
 export const getAccessApplicationForAccount: API.OperationMethod<
   GetAccessApplicationForAccountRequest,
@@ -170888,7 +171360,12 @@ export const getAccessApplicationForAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessApplicationForAccountRequest,
   output: GetAccessApplicationResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  errors: [
+    Forbidden,
+    AccessApplicationNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
