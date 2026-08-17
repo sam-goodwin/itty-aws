@@ -19,13 +19,13 @@
       "packages/*"
     ],
     "catalog": {
-      "@effect/platform-bun": ">=4.0.0-beta.104 || >=4.0.0",
-      "@effect/platform-node-shared": ">=4.0.0-beta.104 || >=4.0.0",
-      "@effect/sql-pg": ">=4.0.0-beta.104 || >=4.0.0",
+      "@effect/platform-bun": ">=4.0.0-rc.110 || >=4.0.0",
+      "@effect/platform-node-shared": ">=4.0.0-rc.110 || >=4.0.0",
+      "@effect/sql-pg": ">=4.0.0-rc.110 || >=4.0.0",
       "@types/bun": "latest",
       "@types/node": "latest",
       "typescript": "^7.0.2",
-      "effect": ">=4.0.0-beta.104 || >=4.0.0",
+      "effect": ">=4.0.0-rc.110 || >=4.0.0",
       "@aws-crypto/crc32": "^5.2.0",
       "@aws-crypto/util": "^5.2.0",
       "@aws-sdk/credential-providers": "^3.994.0",
