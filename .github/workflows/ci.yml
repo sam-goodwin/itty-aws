@@ -1,4 +1,4 @@
-name: ci
+name: CI
 
 # Typecheck gate for PRs and pushes to main.
 #
@@ -26,41 +26,45 @@ permissions:
 
 jobs:
   typecheck:
-    # Checking aws/azure/gcp together needs more memory than the default
-    # runner has.
-    runs-on: ubuntu-22-large
+    name: Typecheck (all packages, generated code included)
+    runs-on: blacksmith-8vcpu-ubuntu-2404
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+      - name: Setup pnpm & Bun
+        uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
         with:
-          bun-version: latest
+          cache: true
+          install: false
 
-      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
-        with:
-          path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-          restore-keys: bun-${{ runner.os }}-
+      - name: Install Node 24
+        run: pnpm runtime set node 24 -g
 
-      - run: bun install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: Typecheck (all packages, generated code included)
-        run: bun run typecheck:ci
+      - name: Run Typecheck
+        run: pnpm typecheck:ci
 
   format:
-    runs-on: ubuntu-latest
+    name: Check formatting
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+      - name: Setup pnpm & Bun
+        uses: pnpm/setup@84cb39b217b10273981911c288cd62326dc7c6d2 # v2.0.2
         with:
-          bun-version: latest
+          cache: true
+          install: false
 
-      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
-        with:
-          path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-          restore-keys: bun-${{ runner.os }}-
+      - name: Install Node 24
+        run: pnpm runtime set node 24 -g
 
-      - run: bun install --frozen-lockfile
-      - run: bun run format:check
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check formatting
+        run: pnpm format:check

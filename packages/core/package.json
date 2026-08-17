@@ -31,12 +31,12 @@
     "build": "tsc -b"
   },
   "devDependencies": {
-    "@effect/platform-bun": "catalog:",
-    "@types/bun": "catalog:",
-    "@types/node": "catalog:",
-    "effect": "catalog:"
+    "@effect/platform-bun": "catalog:effect",
+    "@types/bun": "catalog:tooling",
+    "@types/node": "catalog:tooling",
+    "effect": "catalog:effect"
   },
   "peerDependencies": {
-    "effect": "catalog:"
+    "effect": "catalog:effect"
   }
 }

@@ -82,11 +82,11 @@
     "@distilled.cloud/core": "workspace:*"
   },
   "devDependencies": {
-    "@types/bun": "catalog:",
-    "@types/node": "catalog:",
-    "@effect/platform-bun": "catalog:"
+    "@types/bun": "catalog:tooling",
+    "@types/node": "catalog:tooling",
+    "@effect/platform-bun": "catalog:effect"
   },
   "peerDependencies": {
-    "effect": "catalog:"
+    "effect": "catalog:effect"
   }
 }

@@ -952,7 +952,9 @@ export const TableBucketMaintenanceConfigurationValue = /*@__PURE__*/ S.suspend(
   identifier: "TableBucketMaintenanceConfigurationValue",
 }) as any as S.Schema<TableBucketMaintenanceConfigurationValue>;
 export type TableBucketMaintenanceConfiguration = {
-  [key in TableBucketMaintenanceType]?: TableBucketMaintenanceConfigurationValue;
+  [
+    key in TableBucketMaintenanceType
+  ]?: TableBucketMaintenanceConfigurationValue;
 };
 export const TableBucketMaintenanceConfiguration = /*@__PURE__*/ S.Record(
   TableBucketMaintenanceType,

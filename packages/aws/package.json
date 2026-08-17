@@ -97,31 +97,30 @@
     "fmt": "oxfmt --write src",
     "lint": "oxlint --fix src",
     "check": "tsc && oxlint src && oxfmt --check src",
-    "publish:npm": "bun run build && bun publish --access public",
     "generate": "bun run scripts/generate.ts",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/api-models-aws && git -C specs/api-models-aws checkout -- .",
     "specs:update": "git -C specs/api-models-aws fetch && git -C specs/api-models-aws checkout main && git -C specs/api-models-aws pull"
   },
   "dependencies": {
-    "@aws-crypto/crc32": "catalog:",
-    "@aws-crypto/util": "catalog:",
-    "@aws-sdk/credential-providers": "catalog:",
-    "@aws-sdk/types": "catalog:",
+    "@aws-crypto/crc32": "catalog:aws",
+    "@aws-crypto/util": "catalog:aws",
+    "@aws-sdk/credential-providers": "catalog:aws",
+    "@aws-sdk/types": "catalog:aws",
     "@distilled.cloud/core": "workspace:*",
-    "@smithy/shared-ini-file-loader": "catalog:",
-    "@smithy/types": "catalog:",
-    "@smithy/util-base64": "catalog:",
-    "aws4fetch": "catalog:",
-    "fast-xml-parser": "catalog:"
+    "@smithy/shared-ini-file-loader": "catalog:aws",
+    "@smithy/types": "catalog:aws",
+    "@smithy/util-base64": "catalog:aws",
+    "aws4fetch": "catalog:aws",
+    "fast-xml-parser": "catalog:shared"
   },
   "devDependencies": {
-    "@effect/platform-bun": "catalog:",
-    "@types/bun": "catalog:",
-    "@types/node": "catalog:",
-    "dedent": "catalog:",
-    "pathe": "catalog:"
+    "@effect/platform-bun": "catalog:effect",
+    "@types/bun": "catalog:tooling",
+    "@types/node": "catalog:tooling",
+    "dedent": "catalog:tooling",
+    "pathe": "catalog:tooling"
   },
   "peerDependencies": {
-    "effect": "catalog:"
+    "effect": "catalog:effect"
   }
 }
