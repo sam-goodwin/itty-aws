@@ -13,16 +13,16 @@ catalogs:
       specifier: ^5.2.0
       version: 5.2.0
     '@aws-sdk/credential-providers':
-      specifier: ^3.0.0
+      specifier: ^3.994.0
       version: 3.1109.0
     '@aws-sdk/types':
       specifier: ^3.973.1
       version: 3.974.3
     '@smithy/shared-ini-file-loader':
-      specifier: ^4.3.4
+      specifier: ^4.4.3
       version: 4.7.0
     '@smithy/types':
-      specifier: ^4.8.1
+      specifier: ^4.12.0
       version: 4.17.0
     '@smithy/util-base64':
       specifier: ^4.3.0
@@ -36,11 +36,11 @@ catalogs:
       version: 7.0.2
   effect:
     '@effect/platform-bun':
-      specifier: '>=4.0.0-beta.105 || >=4.0.0'
-      version: 4.0.0-rc.108
+      specifier: '>=4.0.0-rc.110 || >=4.0.0'
+      version: 4.0.0-rc.110
     effect:
-      specifier: '>=4.0.0-beta.105 || >=4.0.0'
-      version: 4.0.0-rc.108
+      specifier: '>=4.0.0-rc.110 || >=4.0.0'
+      version: 4.0.0-rc.110
   shared:
     fast-xml-parser:
       specifier: ^5.3.4
@@ -122,14 +122,14 @@ importers:
         version: 1.0.20
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
       fast-xml-parser:
         specifier: catalog:shared
         version: 5.10.1
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -150,11 +150,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -169,11 +169,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -188,11 +188,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -207,11 +207,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -223,7 +223,7 @@ importers:
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -232,7 +232,7 @@ importers:
         version: 26.2.0
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
 
   packages/discord:
     dependencies:
@@ -241,11 +241,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -260,11 +260,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -279,11 +279,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -298,11 +298,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -317,11 +317,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -336,11 +336,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -355,11 +355,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -374,11 +374,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -393,11 +393,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -412,11 +412,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -431,11 +431,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -450,11 +450,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -469,11 +469,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -488,11 +488,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -507,11 +507,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -526,11 +526,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -545,11 +545,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -564,11 +564,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -583,11 +583,11 @@ importers:
         version: link:../core
       effect:
         specifier: catalog:effect
-        version: 4.0.0-rc.108
+        version: 4.0.0-rc.110
     devDependencies:
       '@effect/platform-bun':
         specifier: catalog:effect
-        version: 4.0.0-rc.108(effect@4.0.0-rc.108)
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
       '@types/bun':
         specifier: catalog:tooling
         version: 1.3.14
@@ -672,16 +672,16 @@ packages:
     resolution: {integrity: sha512-sl4Bm6yiMNYrZKkqqDFWN0UfnWhlS8ivKxrYl+6t0gCLrqr8y3B2IqZZbFRkfaVVp7C/baApyh71P+LeE1A2sQ==}
     engines: {node: '>=18.0.0'}
 
-  '@effect/platform-bun@4.0.0-rc.108':
-    resolution: {integrity: sha512-27RoALzmzx6Qp4LrPIE8bYJfHe+8ZaAO3xLhJMEE6mVA8fxcPh4HAGwBv09Nk2qTFVh578SlSCY5ojUlqeSJ4A==}
+  '@effect/platform-bun@4.0.0-rc.110':
+    resolution: {integrity: sha512-f4AcFTWVwGby9RvSitqAcG/McN8OCDy7LW8PYRG4NIOO2eYphlW73S5Z7jm3UDP+FmIwwzjfgfIfBYkfPR+YfA==}
     peerDependencies:
-      effect: ^4.0.0-rc.108
+      effect: ^4.0.0-rc.110
 
-  '@effect/platform-node-shared@4.0.0-rc.108':
-    resolution: {integrity: sha512-g5dSRR+tHzFcWav5A6zbug78oV8WPJL5BJqgKlKtow0cQ2IpULcLZaP2xCYR3RJDvz5SETREmPCJ+BNONIsalw==}
+  '@effect/platform-node-shared@4.0.0-rc.110':
+    resolution: {integrity: sha512-P8EZloxS7RtCOSL3VSBPyqSenUm93xLbXf9jkWoy67cibZ2wgZ9nAou9iN8f1i4vzgxUsWtDuy6BEmg67np6Zw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      effect: ^4.0.0-rc.108
+      effect: ^4.0.0-rc.110
 
   '@msgpackr-extract/msgpackr-extract-darwin-arm64@3.0.4':
     resolution: {integrity: sha512-LCkGo6JDfaBhgST7UpPWgNgLINpcpabaHfyz5OBx75nUYxBsaEPxjnyNjWpeb/xBup/682QnBfRBy2/LvPutZQ==}
@@ -1160,8 +1160,8 @@ packages:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
 
-  effect@4.0.0-rc.108:
-    resolution: {integrity: sha512-KmI3DlKZWPvCL4QQ2FMaPOuxMt/7DrKMENCY/gQ+MkDR5QYw25wgU5Zmh/wVLboNjIci1gNOgNCFe4xqgxli3A==}
+  effect@4.0.0-rc.110:
+    resolution: {integrity: sha512-ega6FTJ8CS2of7tHZiADvgyJyV999Q6tZ9juE56V81O0jw6flRwydaPNtyfvP2a5LL9PZrse8A1jnNUD5sWVHg==}
 
   fast-check@4.9.0:
     resolution: {integrity: sha512-7ms6T7SybUev/PQITciI0yLM2pOSFy5zpG8Ty7tQofcVaQUvrMXp6CBwqF6fThLCLOrfBtuHAtwq6Yu4XPCllg==}
@@ -1181,9 +1181,6 @@ packages:
 
   is-unsafe@2.0.0:
     resolution: {integrity: sha512-2LdV822R+wmI86unXA93WCFpL6g+av8ynWk0nrHyJqGop5VoocYsSLFgN8jrfalT6iGeLNM4KXuVSsULP53kEA==}
-
-  kubernetes-types@1.30.0:
-    resolution: {integrity: sha512-Dew1okvhM/SQcIa2rcgujNndZwU8VnSapDgdxlYoB84ZlpAD43U6KLAFqYo17ykSFGHNPrg0qry0bP+GJd9v7Q==}
 
   msgpackr-extract@3.0.4:
     resolution: {integrity: sha512-4kmO/MdyUIkLIvTPr8VHLil4AtoKIoniWPIEk5+CDy0xnWC84azhSFmuJ7PxZdsYtiP5kEeQsORAVIeMgxT+Hw==}
@@ -1249,10 +1246,6 @@ packages:
 
   undici-types@8.3.0:
     resolution: {integrity: sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ==}
-
-  uuid@14.0.1:
-    resolution: {integrity: sha512-6ZxzVpzDXDa3bJWaHilVayA+BH/1zmxCJoVgvmqJnid/gPoKHxUrS/aC/T6LGQtNHT+XHG9fXPJB4d+IrU30Ew==}
-    hasBin: true
 
   ws@8.21.3:
     resolution: {integrity: sha512-201TZ/kPWxoPr/OKWjquZR1SWKXcvxdH+e1xrx89b3YbmzLMFCLfnaG1HFIgWzJOEWZ7MvpK++odZufgYR50Rw==}
@@ -1445,18 +1438,18 @@ snapshots:
 
   '@aws/lambda-invoke-store@0.3.0': {}
 
-  '@effect/platform-bun@4.0.0-rc.108(effect@4.0.0-rc.108)':
+  '@effect/platform-bun@4.0.0-rc.110(effect@4.0.0-rc.110)':
     dependencies:
-      '@effect/platform-node-shared': 4.0.0-rc.108(effect@4.0.0-rc.108)
-      effect: 4.0.0-rc.108
+      '@effect/platform-node-shared': 4.0.0-rc.110(effect@4.0.0-rc.110)
+      effect: 4.0.0-rc.110
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node-shared@4.0.0-rc.108(effect@4.0.0-rc.108)':
+  '@effect/platform-node-shared@4.0.0-rc.110(effect@4.0.0-rc.110)':
     dependencies:
       '@types/ws': 8.18.1
-      effect: 4.0.0-rc.108
+      effect: 4.0.0-rc.110
       ws: 8.21.3
     transitivePeerDependencies:
       - bufferutil
@@ -1742,13 +1735,11 @@ snapshots:
   detect-libc@2.1.2:
     optional: true
 
-  effect@4.0.0-rc.108:
+  effect@4.0.0-rc.110:
     dependencies:
       '@standard-schema/spec': 1.1.0
       fast-check: 4.9.0
-      kubernetes-types: 1.30.0
       msgpackr: 2.0.5
-      uuid: 14.0.1
 
   fast-check@4.9.0:
     dependencies:
@@ -1771,8 +1762,6 @@ snapshots:
   husky@9.1.7: {}
 
   is-unsafe@2.0.0: {}
-
-  kubernetes-types@1.30.0: {}
 
   msgpackr-extract@3.0.4:
     dependencies:
@@ -1879,8 +1868,6 @@ snapshots:
       '@typescript/typescript-win32-x64': 7.0.2
 
   undici-types@8.3.0: {}
-
-  uuid@14.0.1: {}
 
   ws@8.21.3: {}
 

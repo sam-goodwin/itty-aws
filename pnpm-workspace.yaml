@@ -29,3 +29,8 @@ catalogs:
     oxfmt: latest
     oxlint: latest
     pathe: ^2.0.3
+
+minimumReleaseAgeExclude:
+  - "@effect/platform-bun@4.0.0-rc.110"
+  - "@effect/platform-node-shared@4.0.0-rc.110"
+  - effect@4.0.0-rc.110
