@@ -307,6 +307,21 @@
         "effect": "catalog:",
       },
     },
+    "packages/slack": {
+      "name": "@distilled.cloud/slack",
+      "version": "1.0.0-rc.4",
+      "dependencies": {
+        "@distilled.cloud/core": "workspace:*",
+      },
+      "devDependencies": {
+        "@effect/platform-bun": "catalog:",
+        "@types/bun": "catalog:",
+        "@types/node": "catalog:",
+      },
+      "peerDependencies": {
+        "effect": "catalog:",
+      },
+    },
     "packages/stripe": {
       "name": "@distilled.cloud/stripe",
       "version": "1.0.0-rc.4",
@@ -494,6 +509,8 @@
     "@distilled.cloud/prisma-postgres": ["@distilled.cloud/prisma-postgres@workspace:packages/prisma-postgres"],
 
     "@distilled.cloud/railway": ["@distilled.cloud/railway@workspace:packages/railway"],
+
+    "@distilled.cloud/slack": ["@distilled.cloud/slack@workspace:packages/slack"],
 
     "@distilled.cloud/stripe": ["@distilled.cloud/stripe@workspace:packages/stripe"],
 
@@ -767,6 +784,8 @@
 
     "@distilled.cloud/railway/@types/node": ["@types/node@26.2.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg=="],
 
+    "@distilled.cloud/slack/@types/node": ["@types/node@26.2.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg=="],
+
     "@distilled.cloud/stripe/@types/node": ["@types/node@26.2.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg=="],
 
     "@distilled.cloud/supabase/@types/node": ["@types/node@26.2.0", "", { "dependencies": { "undici-types": "~8.3.0" } }, "sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg=="],
@@ -818,6 +837,8 @@
     "@distilled.cloud/prisma-postgres/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
 
     "@distilled.cloud/railway/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
+
+    "@distilled.cloud/slack/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
 
     "@distilled.cloud/stripe/@types/node/undici-types": ["undici-types@8.3.0", "", {}, "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="],
 
