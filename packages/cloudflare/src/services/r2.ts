@@ -5522,7 +5522,7 @@ export const listBucketMetrics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListBucketObjectsError = CloudflareOpError;
+export type ListBucketObjectsError = NoSuchBucket | CloudflareOpError;
 /** Lists objects in an R2 bucket. Returns object metadata including key, size, etag, last modified date, HTTP metadata, and custom metadata. For most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead. */
 export const listBucketObjects: API.PaginatedOperationMethod<
   ListBucketObjectsRequest,
@@ -5534,7 +5534,7 @@ export const listBucketObjects: API.PaginatedOperationMethod<
   () => ({
     input: ListBucketObjectsRequest,
     output: ListBucketObjectsResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
+    errors: [NoSuchBucket, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
     pagination: {
