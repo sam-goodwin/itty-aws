@@ -1,5 +1,5 @@
 {
-  "description": "Align r2#BucketsDelete with distilled cloudflare/r2 deleteBucket",
+  "description": "Align r2#BucketsDelete with distilled cloudflare/r2 deleteBucket, and type the non-empty-bucket rejection",
   "patches": [
     {
       "op": "move",
@@ -32,6 +32,9 @@
       "value": [
         {
           "target": "com.cloudflare.r2#NoSuchBucket"
+        },
+        {
+          "target": "com.cloudflare.r2#BucketNotEmpty"
         },
         {
           "target": "com.cloudflare.r2#InvalidRoute"
