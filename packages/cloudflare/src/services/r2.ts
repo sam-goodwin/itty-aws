@@ -35,6 +35,15 @@ export class BucketAlreadyExists
     [{ code: 10004 }],
   ) {}
 
+export class BucketNotEmpty
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<BucketNotEmpty>()("BucketNotEmpty", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 409, message: { includes: "is not empty" } }],
+  ) {}
+
 export class BucketNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<BucketNotFound>()("BucketNotFound", {
@@ -5088,6 +5097,7 @@ export const createTemporaryCredential: API.OperationMethod<
 
 export type DeleteBucketError =
   | NoSuchBucket
+  | BucketNotEmpty
   | InvalidRoute
   | NoRoute
   | CloudflareOpError;
@@ -5102,6 +5112,7 @@ export const deleteBucket: API.OperationMethod<
   output: DeleteBucketResponse,
   errors: [
     NoSuchBucket,
+    BucketNotEmpty,
     InvalidRoute,
     NoRoute,
     CloudflareRateLimited,
