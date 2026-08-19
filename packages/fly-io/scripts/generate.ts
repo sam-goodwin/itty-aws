@@ -32,6 +32,7 @@ const CORE_ERROR_CLASSES = [
   "BadRequest",
   "Conflict",
   "Forbidden",
+  "GatewayTimeout",
   "NotFound",
   "UnprocessableEntity",
 ];

@@ -163,6 +163,12 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
+        },
+        {
+          "target": "com.flyio.machines#UnprocessableEntity"
         }
       ],
       "traits": {
@@ -677,6 +683,9 @@
           "target": "com.flyio.machines#NotFound"
         },
         {
+          "target": "com.flyio.machines#Conflict"
+        },
+        {
           "target": "com.flyio.machines#UnprocessableEntity"
         }
       ],
@@ -734,6 +743,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         },
         {
           "target": "com.flyio.machines#UnprocessableEntity"
@@ -1255,6 +1267,9 @@
         },
         "shared": {
           "target": "smithy.api#Boolean"
+        },
+        "type": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {}
@@ -1339,6 +1354,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -3462,6 +3480,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -3599,6 +3620,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -3655,6 +3679,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -5099,6 +5126,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -5539,6 +5569,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#GatewayTimeout"
         }
       ],
       "traits": {
@@ -5599,7 +5632,7 @@
           "target": "smithy.api#String"
         },
         "public_key": {
-          "target": "com.flyio.machines#SecretKeyPublicKeyList"
+          "target": "smithy.api#String"
         },
         "type": {
           "target": "smithy.api#String"
@@ -5607,13 +5640,6 @@
         "updated_at": {
           "target": "smithy.api#String"
         }
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SecretKeyPublicKeyList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
       },
       "traits": {}
     },
@@ -5758,7 +5784,7 @@
           "target": "smithy.api#String"
         },
         "public_key": {
-          "target": "com.flyio.machines#SetSecretkeyResponsePublicKeyList"
+          "target": "smithy.api#String"
         },
         "type": {
           "target": "smithy.api#String"
@@ -5769,13 +5795,6 @@
         "version": {
           "target": "smithy.api#Integer"
         }
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SetSecretkeyResponsePublicKeyList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
       },
       "traits": {}
     },
@@ -5796,6 +5815,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -6115,6 +6137,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -6453,6 +6478,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -6601,6 +6629,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -6938,6 +6969,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -7094,6 +7128,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -7311,6 +7348,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -8464,6 +8504,19 @@
         ]
       }
     },
+    "com.flyio.machines#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
     "com.flyio.machines#UnprocessableEntity": {
       "type": "structure",
       "members": {},
@@ -8473,6 +8526,19 @@
         "com.distilled.openapi#errorMatchers": [
           {
             "status": 422
+          }
+        ]
+      }
+    },
+    "com.flyio.machines#GatewayTimeout": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 408,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 408
           }
         ]
       }

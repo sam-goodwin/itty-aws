@@ -9,7 +9,9 @@ import {
 } from "../protocol.ts";
 import {
   BadRequest,
+  Conflict,
   Forbidden,
+  GatewayTimeout,
   NotFound,
   UnprocessableEntity,
 } from "../errors.ts";
@@ -626,6 +628,7 @@ export interface IPAssignment {
   region?: string;
   service_name?: string;
   shared?: boolean;
+  type?: string;
 }
 export const IPAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -634,6 +637,7 @@ export const IPAssignment = /*@__PURE__*/ S.suspend(() =>
     region: S.optional(S.String),
     service_name: S.optional(S.String),
     shared: S.optional(S.Boolean),
+    type: S.optional(S.String),
   }),
 ).annotate({ identifier: "IPAssignment" }) as any as S.Schema<IPAssignment>;
 
@@ -3719,17 +3723,12 @@ export const SecretkeyGenerateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecretkeyGenerateRequest",
 }) as any as S.Schema<SecretkeyGenerateRequest>;
 
-export type SetSecretkeyResponsePublicKeyList = Array<number>;
-export const SetSecretkeyResponsePublicKeyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SetSecretkeyResponsePublicKeyList>;
-
 export interface SetSecretkeyResponse {
   /** DEPRECATED */
   Version?: number;
   created_at?: string;
   name?: string;
-  public_key?: SetSecretkeyResponsePublicKeyList;
+  public_key?: string;
   type?: string;
   updated_at?: string;
   version?: number;
@@ -3739,7 +3738,7 @@ export const SetSecretkeyResponse = /*@__PURE__*/ S.suspend(() =>
     Version: S.optional(S.Number),
     created_at: S.optional(S.String),
     name: S.optional(S.String),
-    public_key: S.optional(SetSecretkeyResponsePublicKeyList),
+    public_key: S.optional(S.String),
     type: S.optional(S.String),
     updated_at: S.optional(S.String),
     version: S.optional(S.Number),
@@ -3772,15 +3771,10 @@ export const SecretkeyGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SecretkeyGetRequest",
 }) as any as S.Schema<SecretkeyGetRequest>;
 
-export type SecretKeyPublicKeyList = Array<number>;
-export const SecretKeyPublicKeyList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SecretKeyPublicKeyList>;
-
 export interface SecretKey {
   created_at?: string;
   name?: string;
-  public_key?: SecretKeyPublicKeyList;
+  public_key?: string;
   type?: string;
   updated_at?: string;
 }
@@ -3788,7 +3782,7 @@ export const SecretKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     name: S.optional(S.String),
-    public_key: S.optional(SecretKeyPublicKeyList),
+    public_key: S.optional(S.String),
     type: S.optional(S.String),
     updated_at: S.optional(S.String),
   }),
@@ -4673,6 +4667,7 @@ export type AppCertificatesAcmeCreateError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | UnprocessableEntity
   | FlyIoOpError;
 /** Request ACME certificate */
@@ -4684,7 +4679,7 @@ export const appCertificatesAcmeCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AppCertificatesAcmeCreateRequest,
   output: CertificateDetail,
-  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
+  errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -4730,6 +4725,7 @@ export type AppCertificatesCustomCreateError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | UnprocessableEntity
   | FlyIoOpError;
 /** Upload custom certificate */
@@ -4741,7 +4737,7 @@ export const appCertificatesCustomCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AppCertificatesCustomCreateRequest,
   output: CertificateDetail,
-  errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
+  errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -4832,6 +4828,7 @@ export type AppIPAssignmentsCreateError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | FlyIoOpError;
 /** Assign new IP address to app */
 export const appIPAssignmentsCreate: API.OperationMethod<
@@ -4842,7 +4839,7 @@ export const appIPAssignmentsCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AppIPAssignmentsCreateRequest,
   output: IPAssignment,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -4877,7 +4874,13 @@ export const appIPAssignmentsList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AppsCreateError = BadRequest | Forbidden | NotFound | FlyIoOpError;
+export type AppsCreateError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | Conflict
+  | UnprocessableEntity
+  | FlyIoOpError;
 /** Create App Create an app with the specified details in the request body. */
 export const appsCreate: API.OperationMethod<
   AppsCreateRequest,
@@ -4887,7 +4890,7 @@ export const appsCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AppsCreateRequest,
   output: AppsCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -4941,6 +4944,7 @@ export type CreateVolumeSnapshotError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | FlyIoOpError;
 /** Create Snapshot Create a snapshot for a specific volume within an app. */
 export const createVolumeSnapshot: API.OperationMethod<
@@ -4951,7 +4955,7 @@ export const createVolumeSnapshot: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVolumeSnapshotRequest,
   output: CreateVolumeSnapshotResponse,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -4994,6 +4998,7 @@ export type MachinesCreateError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | FlyIoOpError;
 /** Create Machine Create a Machine within a specific app using the details provided in the request body. **Important**: This request can fail, and you’re responsible for handling that failure. If you ask for a large Machine, or a Machine in a region we happen to be at capacity for, you might need to retry the request, or to fall back to another region. If you’re working directly with the Machines API, you’re taking some responsibility for your own orchestration! */
 export const machinesCreate: API.OperationMethod<
@@ -5004,7 +5009,7 @@ export const machinesCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MachinesCreateRequest,
   output: Machine,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -5028,7 +5033,11 @@ export const machinesCreateLease: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MachinesDeleteError = Forbidden | NotFound | FlyIoOpError;
+export type MachinesDeleteError =
+  | Forbidden
+  | NotFound
+  | Conflict
+  | FlyIoOpError;
 /** Destroy Machine Delete a specific Machine within an app by Machine ID, with an optional force parameter to force kill the Machine if it's running. */
 export const machinesDelete: API.OperationMethod<
   MachinesDeleteRequest,
@@ -5038,7 +5047,7 @@ export const machinesDelete: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MachinesDeleteRequest,
   output: MachinesDeleteResponse,
-  errors: [Forbidden, NotFound],
+  errors: [Forbidden, NotFound, Conflict],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -5326,6 +5335,7 @@ export type MachinesStartError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | FlyIoOpError;
 /** Start Machine Start a specific Machine within an app. */
 export const machinesStart: API.OperationMethod<
@@ -5336,7 +5346,7 @@ export const machinesStart: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MachinesStartRequest,
   output: MachinesStartResponse,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -5402,6 +5412,7 @@ export type MachinesUpdateError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | FlyIoOpError;
 /** Update Machine Update a Machine's configuration using the details provided in the request body. */
 export const machinesUpdate: API.OperationMethod<
@@ -5412,7 +5423,7 @@ export const machinesUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MachinesUpdateRequest,
   output: Machine,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -5474,6 +5485,7 @@ export type MachinesWaitError =
   | BadRequest
   | Forbidden
   | NotFound
+  | GatewayTimeout
   | FlyIoOpError;
 /** Wait for State Wait for a Machine to reach a specific state. Specify the desired state with the state parameter. See the [Machine states table](https://fly.io/docs/machines/working-with-machines/#machine-states) for a list of possible states. The default for this parameter is `started`. This request will block for up to 60 seconds. Set a shorter timeout with the timeout parameter. */
 export const machinesWait: API.OperationMethod<
@@ -5484,7 +5496,7 @@ export const machinesWait: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MachinesWaitRequest,
   output: WaitMachineResponse,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, GatewayTimeout],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -5523,6 +5535,7 @@ export type SecretCreateError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | FlyIoOpError;
 /** Create or update Secret */
 export const secretCreate: API.OperationMethod<
@@ -5533,7 +5546,7 @@ export const secretCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SecretCreateRequest,
   output: SetAppSecretResponse,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -5625,6 +5638,7 @@ export type SecretkeyGenerateError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | FlyIoOpError;
 /** Generate a random secret key */
 export const secretkeyGenerate: API.OperationMethod<
@@ -5635,7 +5649,7 @@ export const secretkeyGenerate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SecretkeyGenerateRequest,
   output: SetSecretkeyResponse,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -5659,6 +5673,7 @@ export type SecretkeySetError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | FlyIoOpError;
 /** Create or update a secret key */
 export const secretkeySet: API.OperationMethod<
@@ -5669,7 +5684,7 @@ export const secretkeySet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SecretkeySetRequest,
   output: SetSecretkeyResponse,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -5746,6 +5761,7 @@ export type SecretsUpdateError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | FlyIoOpError;
 /** Update app secrets belonging to an app */
 export const secretsUpdate: API.OperationMethod<
@@ -5756,7 +5772,7 @@ export const secretsUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SecretsUpdateRequest,
   output: AppSecretsUpdateResp,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -5829,7 +5845,7 @@ export const tokensRequestOIDC: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VolumeDeleteError = Forbidden | NotFound | FlyIoOpError;
+export type VolumeDeleteError = Forbidden | NotFound | Conflict | FlyIoOpError;
 /** Destroy Volume Delete a specific volume within an app by volume ID. */
 export const volumeDelete: API.OperationMethod<
   VolumeDeleteRequest,
@@ -5839,7 +5855,7 @@ export const volumeDelete: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: VolumeDeleteRequest,
   output: Volume,
-  errors: [Forbidden, NotFound],
+  errors: [Forbidden, NotFound, Conflict],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
@@ -5848,6 +5864,7 @@ export type VolumesCreateError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | FlyIoOpError;
 /** Create Volume Create a volume for a specific app using the details provided in the request body. */
 export const volumesCreate: API.OperationMethod<
@@ -5858,7 +5875,7 @@ export const volumesCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: VolumesCreateRequest,
   output: Volume,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
 }));
