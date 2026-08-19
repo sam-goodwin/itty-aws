@@ -329,6 +329,25 @@ importers:
         specifier: catalog:tooling
         version: 26.2.0
 
+  packages/hetzner:
+    dependencies:
+      '@distilled.cloud/core':
+        specifier: workspace:*
+        version: link:../core
+      effect:
+        specifier: catalog:effect
+        version: 4.0.0-rc.110
+    devDependencies:
+      '@effect/platform-bun':
+        specifier: catalog:effect
+        version: 4.0.0-rc.110(effect@4.0.0-rc.110)
+      '@types/bun':
+        specifier: catalog:tooling
+        version: 1.3.14
+      '@types/node':
+        specifier: catalog:tooling
+        version: 26.2.0
+
   packages/huggingface:
     dependencies:
       '@distilled.cloud/core':
