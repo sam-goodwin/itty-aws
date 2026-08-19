@@ -10,11 +10,13 @@
  * ordering is load-bearing:
  *
  *   1. Read the full spec.
- *   2. Apply ALL `patches/*.patch.json` ONCE to the full spec (RFC-6902,
- *      sorted name order; stale targets warn+skip — the spec is refetched
- *      from a live URL and drifts — malformed patches fail the run).
- *      Patching per-slice would hard-fail: a patch targeting one tag's paths
- *      doesn't resolve against another tag's slice.
+ *   2. Apply ALL `patches/<service>/<op>.json` ONCE to the full spec
+ *      (Cloudflare layout: service dir = tag slug, file = camelCase
+ *      operation id; `_errors.json` is shared service errors; `*.manual.json`
+ *      last. Stale targets warn+skip — the spec is refetched from a live URL
+ *      and drifts — malformed patches fail the run). Patching per-slice
+ *      would hard-fail: a patch targeting one tag's paths doesn't resolve
+ *      against another tag's slice.
  *   3. Bucket operations by PRIMARY (first) tag — every operation in this
  *      spec carries exactly one, so there is no untagged-routing table the
  *      way Vercel needs.
@@ -80,32 +82,57 @@ if (!fs.existsSync(specPath)) {
 const fullSpec = JSON.parse(fs.readFileSync(specPath, "utf-8"));
 
 // ---- 2. Apply the patch chain ONCE to the full spec ------------------------
+// Cloudflare layout: patches/<service>/<op>.json. Still applied to the
+// bundled OpenAPI document here (generate.ts leaves patchesDir: false).
+const SKIP_PATCH_NAMES = new Set(["_metadata.json"]);
+
+const listPatchFiles = (root: string): string[] => {
+  if (!fs.existsSync(root)) return [];
+  const out: string[] = [];
+  for (const ent of fs
+    .readdirSync(root, { withFileTypes: true })
+    .sort((a, b) => a.name.localeCompare(b.name))) {
+    if (ent.isFile()) {
+      console.warn(
+        `   ⚠️  patches/${ent.name} is not patches/<service>/<op>.json — ignored`,
+      );
+      continue;
+    }
+    if (!ent.isDirectory()) continue;
+    const files = fs
+      .readdirSync(path.join(root, ent.name))
+      .filter((f) => f.endsWith(".json") && !SKIP_PATCH_NAMES.has(f))
+      .sort(
+        (a, b) =>
+          Number(a.endsWith(".manual.json")) -
+            Number(b.endsWith(".manual.json")) || a.localeCompare(b),
+      );
+    for (const file of files) out.push(path.join(ent.name, file));
+  }
+  return out;
+};
+
 let patchFiles = 0;
 let staleOps = 0;
 const badPatches: string[] = [];
-if (fs.existsSync(patchDir)) {
-  for (const pf of fs
-    .readdirSync(patchDir)
-    .filter((f) => f.endsWith(".patch.json"))
-    .sort((a, b) => a.localeCompare(b))) {
-    const parsed = JSON.parse(
-      fs.readFileSync(path.join(patchDir, pf), "utf-8"),
-    ) as PatchFile;
-    for (const patchOp of parsed.patches ?? []) {
-      try {
-        applyOperation(fullSpec, patchOp);
-      } catch (e) {
-        const msg = e instanceof Error ? e.message : String(e);
-        if (isStaleTargetError(msg)) {
-          staleOps++;
-          console.warn(`   ⚠️  stale: ${pf} [${patchOp.op} ${patchOp.path}]`);
-        } else {
-          badPatches.push(`${pf} [${patchOp.op} ${patchOp.path}]: ${msg}`);
-        }
+for (const rel of listPatchFiles(patchDir)) {
+  const parsed = JSON.parse(
+    fs.readFileSync(path.join(patchDir, rel), "utf-8"),
+  ) as PatchFile;
+  for (const patchOp of parsed.patches ?? []) {
+    try {
+      applyOperation(fullSpec, patchOp);
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e);
+      if (isStaleTargetError(msg)) {
+        staleOps++;
+        console.warn(`   ⚠️  stale: ${rel} [${patchOp.op} ${patchOp.path}]`);
+      } else {
+        badPatches.push(`${rel} [${patchOp.op} ${patchOp.path}]: ${msg}`);
       }
     }
-    patchFiles++;
   }
+  patchFiles++;
 }
 if (badPatches.length) {
   for (const b of badPatches) console.error(`❌ bad patch: ${b}`);
