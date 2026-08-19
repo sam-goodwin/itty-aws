@@ -399,6 +399,9 @@
               "message": {
                 "includes": "specified key does not exist"
               }
+            },
+            {
+              "code": 10007
             }
           ]
         }
