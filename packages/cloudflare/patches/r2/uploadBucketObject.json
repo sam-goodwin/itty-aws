@@ -1,5 +1,5 @@
 {
-  "description": "Align r2#BucketsObjectsUpload with distilled cloudflare/r2 uploadBucketObject",
+  "description": "Align r2#BucketsObjectsUpload with distilled cloudflare/r2 uploadBucketObject, and type the missing-bucket rejection",
   "patches": [
     {
       "op": "move",
@@ -40,6 +40,15 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.r2#UploadBucketObject/traits/smithy.api#http/uri",
       "value": "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_name}"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#UploadBucketObject/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.r2#NoSuchBucket"
+        }
+      ]
     }
   ]
 }

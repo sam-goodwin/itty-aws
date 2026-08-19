@@ -191,7 +191,10 @@ export class NoSuchKey
       code: S.Number,
       message: S.String,
     }),
-    [{ status: 404, message: { includes: "specified key does not exist" } }],
+    [
+      { status: 404, message: { includes: "specified key does not exist" } },
+      { code: 10007 },
+    ],
   ) {}
 
 export class QueueNotFound
@@ -5190,7 +5193,10 @@ export const deleteBucketEventNotification: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteBucketObjectError = CloudflareOpError;
+export type DeleteBucketObjectError =
+  | NoSuchBucket
+  | NoSuchKey
+  | CloudflareOpError;
 /** Deletes an object from an R2 bucket. For most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead. */
 export const deleteBucketObject: API.OperationMethod<
   DeleteBucketObjectRequest,
@@ -5200,7 +5206,7 @@ export const deleteBucketObject: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteBucketObjectRequest,
   output: DeleteBucketObjectResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [NoSuchBucket, NoSuchKey, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -5522,7 +5528,7 @@ export const listBucketMetrics: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListBucketObjectsError = CloudflareOpError;
+export type ListBucketObjectsError = NoSuchBucket | CloudflareOpError;
 /** Lists objects in an R2 bucket. Returns object metadata including key, size, etag, last modified date, HTTP metadata, and custom metadata. For most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead. */
 export const listBucketObjects: API.PaginatedOperationMethod<
   ListBucketObjectsRequest,
@@ -5534,7 +5540,7 @@ export const listBucketObjects: API.PaginatedOperationMethod<
   () => ({
     input: ListBucketObjectsRequest,
     output: ListBucketObjectsResponse,
-    errors: [CloudflareRateLimited, CloudflareError],
+    errors: [NoSuchBucket, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
     pagination: {
@@ -5832,7 +5838,7 @@ export const updateBucketDomainCustom: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UploadBucketObjectError = CloudflareOpError;
+export type UploadBucketObjectError = NoSuchBucket | CloudflareOpError;
 /** Uploads an object to an R2 bucket. The object body is provided as the request body. Returns metadata about the uploaded object. The maximum upload size for this endpoint is 300 MB. For most workloads, we recommend using R2's [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/) or a [Worker with an R2 binding](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) instead. */
 export const uploadBucketObject: API.OperationMethod<
   UploadBucketObjectRequest,
@@ -5842,7 +5848,7 @@ export const uploadBucketObject: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UploadBucketObjectRequest,
   output: UploadBucketObjectResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [NoSuchBucket, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

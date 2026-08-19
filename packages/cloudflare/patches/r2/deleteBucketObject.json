@@ -1,5 +1,5 @@
 {
-  "description": "Align r2#BucketsObjectsDelete with distilled cloudflare/r2 deleteBucketObject",
+  "description": "Align r2#BucketsObjectsDelete with distilled cloudflare/r2 deleteBucketObject, and type the missing-bucket / missing-key rejections",
   "patches": [
     {
       "op": "move",
@@ -35,6 +35,18 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.r2#DeleteBucketObject/traits/smithy.api#http/uri",
       "value": "/accounts/{account_id}/r2/buckets/{bucket_name}/objects/{object_name}"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketObject/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.r2#NoSuchBucket"
+        },
+        {
+          "target": "com.cloudflare.r2#NoSuchKey"
+        }
+      ]
     }
   ]
 }

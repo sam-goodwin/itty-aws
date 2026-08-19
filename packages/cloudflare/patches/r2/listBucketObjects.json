@@ -1,5 +1,5 @@
 {
-  "description": "Align r2#BucketsObjectsList with distilled cloudflare/r2 listBucketObjects",
+  "description": "Align r2#BucketsObjectsList with distilled cloudflare/r2 listBucketObjects, and type the missing-bucket rejection",
   "patches": [
     {
       "op": "move",
@@ -36,6 +36,15 @@
         "items": "result",
         "pageSize": "perPage"
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#ListBucketObjects/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.r2#NoSuchBucket"
+        }
+      ]
     }
   ]
 }
