@@ -10,8 +10,14 @@ export * from "./errors.ts";
 export * as T from "./traits.ts";
 export {
   FlyIoProtocol,
+  FlyApiProtocol,
+  FlyGraphqlProtocol,
+  SpritesProtocol,
   type FlyIoOpError,
   type FlyIoOpContext,
+  type SpritesOpError,
+  type SpritesOpContext,
 } from "./protocol.ts";
 export * as Retry from "./retry.ts";
+export * as Pagination from "./pagination.ts";
 export * as Services from "./services/index.ts";
