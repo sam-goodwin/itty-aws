@@ -3,10 +3,61 @@
   "info": {
     "title": "Fly Sprites API",
     "version": "v1",
-    "description": "REST API at https://api.sprites.dev/v1. Auth is Authorization: Bearer $SPRITES_TOKEN. No published OpenAPI — hand-authored from https://sprites.dev/api."
+    "description": "REST API at https://api.sprites.dev/v1. Auth is FLY_API_TOKEN only: mint POST /v1/organizations/{org}/tokens with Authorization: FlyV1 {token}, cache, then Bearer the minted token on sprite ops. Never SPRITES_TOKEN. No published OpenAPI — hand-authored from https://sprites.dev/api and github.com/superfly/sprites-js."
   },
   "servers": [{ "url": "https://api.sprites.dev/v1" }],
   "paths": {
+    "/organizations/{org}/tokens": {
+      "post": {
+        "operationId": "createOrganizationToken",
+        "summary": "Mint a Sprites bearer token from a Fly.io macaroon",
+        "description": "POST with Authorization: FlyV1 {FLY_API_TOKEN}. Sprite CRUD rejects Bearer FLY_API_TOKEN (401); callers mint once, cache, then Bearer the returned token. 401 with 'sprites not enabled' means the org has not enabled Sprites.",
+        "parameters": [
+          {
+            "name": "org",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Fly organization slug"
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrganizationTokenRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Minted Sprites bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateOrganizationTokenResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Minted Sprites bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateOrganizationTokenResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sprites is not enabled for this organization, or the Fly macaroon is invalid"
+          }
+        }
+      }
+    },
     "/sprites": {
       "post": {
         "operationId": "createSprite",
@@ -454,6 +505,30 @@
           "exit_code": { "type": "integer" },
           "stdout": { "type": "string" },
           "stderr": { "type": "string" }
+        }
+      },
+      "CreateOrganizationTokenRequest": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Human-readable label for the minted token"
+          },
+          "invite_code": {
+            "type": "string",
+            "description": "Optional Sprites invite code"
+          }
+        }
+      },
+      "CreateOrganizationTokenResponse": {
+        "type": "object",
+        "required": ["token"],
+        "properties": {
+          "token": {
+            "type": "string",
+            "x-sensitive": true,
+            "description": "Sprites bearer token. Send as Authorization: Bearer on subsequent sprite ops."
+          }
         }
       },
       "CreateCheckpointRequest": {

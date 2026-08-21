@@ -26,6 +26,7 @@
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import { runOpenApiConvert } from "@distilled.cloud/core/codegen/openapi-cli";
+import { ERROR_MATCHERS_TRAIT } from "@distilled.cloud/core/codegen/openapi";
 import {
   convertGraphQLToSmithy,
   PRELUDE,
@@ -149,6 +150,29 @@ await runOpenApiConvert({
         namespace: "com.flyio.sprites",
         serviceName: "FlySprites",
         successStatuses: ["200", "201", "204"],
+        // 401 on mint is SpritesNotEnabled (message-matched), not the
+        // catch-all Unauthorized that defaultErrorStatuses would swallow.
+        defaultErrorStatuses: DEFAULT_ERROR_STATUSES.filter((s) => s !== "401"),
+        statusToErrorClass: {
+          ...STATUS_TO_ERROR,
+          401: "SpritesNotEnabled",
+        },
+        errorShapes: {
+          SpritesNotEnabled: {
+            members: {
+              code: { target: "smithy.api#Integer" },
+              message: { target: "smithy.api#String" },
+            },
+            traits: {
+              [ERROR_MATCHERS_TRAIT]: [
+                {
+                  status: 401,
+                  message: { matches: "[Ss]prites not enabled" },
+                },
+              ],
+            },
+          },
+        },
       },
     },
     {

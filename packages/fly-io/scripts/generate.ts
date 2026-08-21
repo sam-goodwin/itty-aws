@@ -3,7 +3,7 @@
  * generate — turn Smithy JSON models in .generated-specs into Effect SDKs.
  *
  *   machines.json  → src/services/machines.ts   FlyIoProtocol (Machines REST)
- *   sprites.json   → src/services/sprites.ts    SpritesProtocol (SPRITES_TOKEN)
+ *   sprites.json   → src/services/sprites.ts    SpritesProtocol (mint from FLY_API_TOKEN)
  *   mpg.json       → src/services/mpg.ts        FlyApiProtocol (api.fly.io REST)
  *   addons.json    → src/services/addons.ts     FlyGraphqlProtocol
  *
@@ -13,6 +13,7 @@
 import { type SdkSpec } from "@distilled.cloud/core/codegen/generator";
 import { runGeneratorCli } from "@distilled.cloud/core/codegen/cli";
 import {
+  ERROR_MATCHERS_TRAIT,
   NULLABLE_TRAIT,
   RAW_RESPONSE_TRAIT,
 } from "@distilled.cloud/core/codegen/openapi";
@@ -23,6 +24,7 @@ const CORE_ERROR_CLASSES = [
   "Forbidden",
   "GatewayTimeout",
   "NotFound",
+  "SpritesNotEnabled",
   "UnprocessableEntity",
 ];
 
@@ -67,6 +69,7 @@ const restSpec = (opts: {
 }): SdkSpec => ({
   nullableTrait: NULLABLE_TRAIT,
   sourceNote: opts.sourceNote,
+  errorMatchersTrait: ERROR_MATCHERS_TRAIT,
   extraBindings: [
     {
       trait: RAW_RESPONSE_TRAIT,

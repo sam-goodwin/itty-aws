@@ -17,6 +17,70 @@
     ]
   },
   "shapes": {
+    "com.flyio.sprites#CreateOrganizationTokenRequest": {
+      "type": "structure",
+      "members": {
+        "org": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Fly organization slug"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable label for the minted token"
+          }
+        },
+        "invite_code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional Sprites invite code"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.flyio.sprites#CreateOrganizationTokenResponse": {
+      "type": "structure",
+      "members": {
+        "token": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sprites bearer token. Send as Authorization: Bearer on subsequent sprite ops.",
+            "smithy.api#required": {},
+            "smithy.api#sensitive": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.flyio.sprites#CreateOrganizationToken": {
+      "type": "operation",
+      "input": {
+        "target": "com.flyio.sprites#CreateOrganizationTokenRequest"
+      },
+      "output": {
+        "target": "com.flyio.sprites#CreateOrganizationTokenResponse"
+      },
+      "errors": [
+        {
+          "target": "com.flyio.sprites#SpritesNotEnabled"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/organizations/{org}/tokens",
+          "code": 200
+        },
+        "smithy.api#documentation": "Mint a Sprites bearer token from a Fly.io macaroon\n\nPOST with Authorization: FlyV1 {FLY_API_TOKEN}. Sprite CRUD rejects Bearer FLY_API_TOKEN (401); callers mint once, cache, then Bearer the returned token. 401 with 'sprites not enabled' means the org has not enabled Sprites."
+      }
+    },
     "com.flyio.sprites#ListSpritesRequest": {
       "type": "structure",
       "members": {
@@ -877,6 +941,29 @@
         "smithy.api#documentation": "Restore a checkpoint (NDJSON progress stream). Destructive."
       }
     },
+    "com.flyio.sprites#SpritesNotEnabled": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Integer"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 401,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 401,
+            "message": {
+              "matches": "[Ss]prites not enabled"
+            }
+          }
+        ]
+      }
+    },
     "com.flyio.sprites#BadRequest": {
       "type": "structure",
       "members": {},
@@ -921,6 +1008,9 @@
       "version": "v1",
       "operations": [
         {
+          "target": "com.flyio.sprites#CreateOrganizationToken"
+        },
+        {
           "target": "com.flyio.sprites#ListSprites"
         },
         {
@@ -956,7 +1046,7 @@
       ],
       "traits": {
         "smithy.api#title": "Fly Sprites API",
-        "smithy.api#documentation": "REST API at https://api.sprites.dev/v1. Auth is Authorization: Bearer $SPRITES_TOKEN. No published OpenAPI — hand-authored from https://sprites.dev/api."
+        "smithy.api#documentation": "REST API at https://api.sprites.dev/v1. Auth is FLY_API_TOKEN only: mint POST /v1/organizations/{org}/tokens with Authorization: FlyV1 {token}, cache, then Bearer the minted token on sprite ops. Never SPRITES_TOKEN. No published OpenAPI — hand-authored from https://sprites.dev/api and github.com/superfly/sprites-js."
       }
     }
   }
