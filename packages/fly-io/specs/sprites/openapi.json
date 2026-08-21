@@ -405,6 +405,160 @@
           "404": { "description": "Not found" }
         }
       }
+    },
+    "/sprites/{name}/fs/write": {
+      "put": {
+        "operationId": "writeFile",
+        "summary": "Write file contents to the sprite filesystem. Request body is raw file bytes.",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "path",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Path to the file to write"
+          },
+          {
+            "name": "workingDir",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Working directory for resolving relative paths"
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "File permissions in octal (e.g. 0644)"
+          },
+          {
+            "name": "mkdir",
+            "in": "query",
+            "schema": { "type": "boolean" },
+            "description": "Create parent directories if they do not exist"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": { "type": "string", "format": "binary" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Written",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/WriteFileResponse" }
+              }
+            }
+          },
+          "400": { "description": "Invalid request" },
+          "404": { "description": "Sprite not found" }
+        }
+      }
+    },
+    "/sprites/{name}/services": {
+      "get": {
+        "operationId": "listServices",
+        "summary": "List configured sprite services",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/SpriteService" }
+                }
+              }
+            }
+          },
+          "404": { "description": "Sprite not found" }
+        }
+      }
+    },
+    "/sprites/{name}/services/{service_name}": {
+      "parameters": [
+        {
+          "name": "name",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "string" }
+        },
+        {
+          "name": "service_name",
+          "in": "path",
+          "required": true,
+          "schema": { "type": "string" }
+        }
+      ],
+      "get": {
+        "operationId": "getService",
+        "summary": "Get a sprite service",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SpriteService" }
+              }
+            }
+          },
+          "404": { "description": "Not found" }
+        }
+      },
+      "put": {
+        "operationId": "putService",
+        "summary": "Create or update a sprite service. Returns NDJSON start progress.",
+        "parameters": [
+          {
+            "name": "duration",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Time to monitor logs after starting (default 5s)"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/SpriteServiceSpec" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "NDJSON progress events",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/StreamEvent" }
+                }
+              }
+            }
+          },
+          "400": { "description": "Invalid request body" },
+          "404": { "description": "Sprite not found" }
+        }
+      }
     }
   },
   "components": {
@@ -554,6 +708,69 @@
           "data": { "type": "string" },
           "error": { "type": "string" },
           "time": { "type": "string" }
+        }
+      },
+      "WriteFileResponse": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string" },
+          "size": { "type": "number" },
+          "mode": { "type": "string" }
+        }
+      },
+      "SpriteServiceState": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "status": { "type": "string" },
+          "pid": { "type": "integer" },
+          "started_at": { "type": "string" },
+          "error": { "type": "string" }
+        }
+      },
+      "SpriteService": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "cmd": { "type": "string" },
+          "args": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "needs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "http_port": { "type": "integer" },
+          "state": { "$ref": "#/components/schemas/SpriteServiceState" }
+        }
+      },
+      "SpriteServiceSpec": {
+        "type": "object",
+        "required": ["cmd"],
+        "properties": {
+          "cmd": {
+            "type": "string",
+            "description": "Command to execute"
+          },
+          "args": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Command arguments"
+          },
+          "dir": {
+            "type": "string",
+            "description": "Working directory for the service"
+          },
+          "needs": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Service dependencies (started first)"
+          },
+          "http_port": {
+            "type": "integer",
+            "description": "HTTP port for proxy routing"
+          }
         }
       }
     }

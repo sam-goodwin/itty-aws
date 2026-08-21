@@ -214,6 +214,7 @@ export interface ExecCommandRequest {
   env?: ExecCommandRequestEnvList;
   /** Working directory */
   dir?: string;
+  body?: Uint8Array | string;
 }
 export const ExecCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -223,7 +224,15 @@ export const ExecCommandRequest = /*@__PURE__*/ S.suspend(() =>
     stdin: S.optional(S.Boolean.pipe(T.Query())),
     env: S.optional(ExecCommandRequestEnvList.pipe(T.Query())),
     dir: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "POST", uri: "/sprites/{name}/exec", code: 200 })),
+    body: S.optional(S.String.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/sprites/{name}/exec",
+      code: 200,
+      bodyMediaType: "application/octet-stream",
+    }),
+  ),
 ).annotate({
   identifier: "ExecCommandRequest",
 }) as any as S.Schema<ExecCommandRequest>;
@@ -277,6 +286,73 @@ export const Checkpoint = /*@__PURE__*/ S.suspend(() =>
     health: S.optional(S.String),
   }),
 ).annotate({ identifier: "Checkpoint" }) as any as S.Schema<Checkpoint>;
+
+export interface GetServiceRequest {
+  name: string;
+  service_name: string;
+}
+export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    service_name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/sprites/{name}/services/{service_name}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetServiceRequest",
+}) as any as S.Schema<GetServiceRequest>;
+
+export type SpriteServiceArgsList = Array<string>;
+export const SpriteServiceArgsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SpriteServiceArgsList>;
+
+export type SpriteServiceNeedsList = Array<string>;
+export const SpriteServiceNeedsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SpriteServiceNeedsList>;
+
+export interface SpriteServiceState {
+  name?: string;
+  status?: string;
+  pid?: number;
+  started_at?: string;
+  error?: string;
+}
+export const SpriteServiceState = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    status: S.optional(S.String),
+    pid: S.optional(S.Number),
+    started_at: S.optional(S.String),
+    error: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SpriteServiceState",
+}) as any as S.Schema<SpriteServiceState>;
+
+export interface SpriteService {
+  name?: string;
+  cmd?: string;
+  args?: SpriteServiceArgsList;
+  needs?: SpriteServiceNeedsList;
+  http_port?: number;
+  state?: SpriteServiceState;
+}
+export const SpriteService = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    cmd: S.optional(S.String),
+    args: S.optional(SpriteServiceArgsList),
+    needs: S.optional(SpriteServiceNeedsList),
+    http_port: S.optional(S.Number),
+    state: S.optional(SpriteServiceState),
+  }),
+).annotate({ identifier: "SpriteService" }) as any as S.Schema<SpriteService>;
 
 export interface GetSpriteRequest {
   /** Unique sprite name */
@@ -361,6 +437,31 @@ export const ListExecSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListExecSessionsResponse",
 }) as any as S.Schema<ListExecSessionsResponse>;
 
+export interface ListServicesRequest {
+  name: string;
+}
+export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/sprites/{name}/services", code: 200 }),
+  ),
+).annotate({
+  identifier: "ListServicesRequest",
+}) as any as S.Schema<ListServicesRequest>;
+
+export type ListServicesResponseBodyList = Array<SpriteService>;
+export const ListServicesResponseBodyList = /*@__PURE__*/ S.Array(
+  SpriteService,
+) as any as S.Schema<ListServicesResponseBodyList>;
+
+export type ListServicesResponse = ListServicesResponseBodyList;
+export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
+  ListServicesResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "ListServicesResponse",
+}) as any as S.Schema<ListServicesResponse>;
+
 export interface ListSpritesRequest {
   /** Filter sprites by name prefix */
   prefix?: string;
@@ -411,6 +512,67 @@ export const ListSpritesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListSpritesResponse",
 }) as any as S.Schema<ListSpritesResponse>;
 
+/** Command arguments */
+export type PutServiceRequestArgsList = Array<string>;
+export const PutServiceRequestArgsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PutServiceRequestArgsList>;
+
+/** Service dependencies (started first) */
+export type PutServiceRequestNeedsList = Array<string>;
+export const PutServiceRequestNeedsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PutServiceRequestNeedsList>;
+
+export interface PutServiceRequest {
+  name: string;
+  service_name: string;
+  /** Time to monitor logs after starting (default 5s) */
+  duration?: string;
+  /** Command to execute */
+  cmd: string;
+  /** Command arguments */
+  args?: PutServiceRequestArgsList;
+  /** Working directory for the service */
+  dir?: string;
+  /** Service dependencies (started first) */
+  needs?: PutServiceRequestNeedsList;
+  /** HTTP port for proxy routing */
+  http_port?: number;
+}
+export const PutServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    service_name: S.String.pipe(T.Label()),
+    duration: S.optional(S.String.pipe(T.Query())),
+    cmd: S.String,
+    args: S.optional(PutServiceRequestArgsList),
+    dir: S.optional(S.String),
+    needs: S.optional(PutServiceRequestNeedsList),
+    http_port: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/sprites/{name}/services/{service_name}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PutServiceRequest",
+}) as any as S.Schema<PutServiceRequest>;
+
+export type PutServiceResponseBodyList = Array<StreamEvent>;
+export const PutServiceResponseBodyList = /*@__PURE__*/ S.Array(
+  StreamEvent,
+) as any as S.Schema<PutServiceResponseBodyList>;
+
+export type PutServiceResponse = PutServiceResponseBodyList;
+export const PutServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  PutServiceResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "PutServiceResponse",
+}) as any as S.Schema<PutServiceResponse>;
+
 export interface RestoreCheckpointRequest {
   name: string;
   checkpoint_id: string;
@@ -455,6 +617,53 @@ export const UpdateSpriteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSpriteRequest",
 }) as any as S.Schema<UpdateSpriteRequest>;
+
+export interface WriteFileRequest {
+  name: string;
+  /** Path to the file to write */
+  path: string;
+  /** Working directory for resolving relative paths */
+  workingDir: string;
+  /** File permissions in octal (e.g. 0644) */
+  mode?: string;
+  /** Create parent directories if they do not exist */
+  mkdir?: boolean;
+  body: Uint8Array | string;
+}
+export const WriteFileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    path: S.String.pipe(T.Query()),
+    workingDir: S.String.pipe(T.Query()),
+    mode: S.optional(S.String.pipe(T.Query())),
+    mkdir: S.optional(S.Boolean.pipe(T.Query())),
+    body: S.String.pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/sprites/{name}/fs/write",
+      code: 200,
+      bodyMediaType: "application/octet-stream",
+    }),
+  ),
+).annotate({
+  identifier: "WriteFileRequest",
+}) as any as S.Schema<WriteFileRequest>;
+
+export interface WriteFileResponse {
+  path?: string;
+  size?: number;
+  mode?: string;
+}
+export const WriteFileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.optional(S.String),
+    size: S.optional(S.Number),
+    mode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WriteFileResponse",
+}) as any as S.Schema<WriteFileResponse>;
 
 export type CreateCheckpointError = NotFound | SpritesOpError;
 /** Create a checkpoint (NDJSON progress stream) */
@@ -546,6 +755,21 @@ export const getCheckpoint: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetServiceError = NotFound | SpritesOpError;
+/** Get a sprite service */
+export const getService: API.OperationMethod<
+  GetServiceRequest,
+  SpriteService,
+  GetServiceError,
+  SpritesOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceRequest,
+  output: SpriteService,
+  errors: [NotFound],
+  protocol: SpritesProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetSpriteError = NotFound | SpritesOpError;
 /** Get a sprite */
 export const getSprite: API.OperationMethod<
@@ -591,6 +815,21 @@ export const listExecSessions: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type ListServicesError = NotFound | SpritesOpError;
+/** List configured sprite services */
+export const listServices: API.OperationMethod<
+  ListServicesRequest,
+  ListServicesResponse,
+  ListServicesError,
+  SpritesOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServicesRequest,
+  output: ListServicesResponse,
+  errors: [NotFound],
+  protocol: SpritesProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ListSpritesError = SpritesOpError;
 /** List sprites for the authenticated organization */
 export const listSprites: API.PaginatedOperationMethod<
@@ -616,6 +855,21 @@ export const listSprites: API.PaginatedOperationMethod<
   }),
   paginateCursor,
 ) as any;
+
+export type PutServiceError = BadRequest | NotFound | SpritesOpError;
+/** Create or update a sprite service. Returns NDJSON start progress. */
+export const putService: API.OperationMethod<
+  PutServiceRequest,
+  PutServiceResponse,
+  PutServiceError,
+  SpritesOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutServiceRequest,
+  output: PutServiceResponse,
+  errors: [BadRequest, NotFound],
+  protocol: SpritesProtocol,
+  retry: Retry.Retry,
+}));
 
 export type RestoreCheckpointError = NotFound | SpritesOpError;
 /** Restore a checkpoint (NDJSON progress stream). Destructive. */
@@ -643,6 +897,21 @@ export const updateSprite: API.OperationMethod<
   input: UpdateSpriteRequest,
   output: Sprite,
   errors: [NotFound],
+  protocol: SpritesProtocol,
+  retry: Retry.Retry,
+}));
+
+export type WriteFileError = BadRequest | NotFound | SpritesOpError;
+/** Write file contents to the sprite filesystem. Request body is raw file bytes. */
+export const writeFile: API.OperationMethod<
+  WriteFileRequest,
+  WriteFileResponse,
+  WriteFileError,
+  SpritesOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: WriteFileRequest,
+  output: WriteFileResponse,
+  errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
 }));

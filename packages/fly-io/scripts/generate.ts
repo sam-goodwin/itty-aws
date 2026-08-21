@@ -21,6 +21,7 @@ import {
 const CORE_ERROR_CLASSES = [
   "BadRequest",
   "Conflict",
+  "CreateExtensionTosAgreementNotAuthorized",
   "Forbidden",
   "GatewayTimeout",
   "NotFound",
@@ -66,6 +67,8 @@ const restSpec = (opts: {
   pagination?: boolean;
   /** Surface sensitive strings as `string | Redacted`. Off for machines (leave generated file stable). */
   sensitiveTs?: boolean;
+  /** Type httpPayload Blob members as `Uint8Array | string` (Sprites writeFile / exec stdin). */
+  blobBody?: boolean;
 }): SdkSpec => ({
   nullableTrait: NULLABLE_TRAIT,
   sourceNote: opts.sourceNote,
@@ -81,15 +84,20 @@ const restSpec = (opts: {
   memberTraitPipes: {
     "smithy.api#sensitive": "T.SensitiveValue",
   },
-  ...(opts.sensitiveTs
+  ...(opts.sensitiveTs || opts.blobBody
     ? {
         memberTsType: (m: {
           traits?: Record<string, unknown>;
           nullable?: boolean;
-        }) =>
-          "smithy.api#sensitive" in (m.traits ?? {})
-            ? `string | Redacted.Redacted<string>${m.nullable ? " | null" : ""}`
-            : undefined,
+        }) => {
+          if (opts.sensitiveTs && "smithy.api#sensitive" in (m.traits ?? {})) {
+            return `string | Redacted.Redacted<string>${m.nullable ? " | null" : ""}`;
+          }
+          if (opts.blobBody && "smithy.api#httpPayload" in (m.traits ?? {})) {
+            return "Uint8Array | string";
+          }
+          return undefined;
+        },
       }
     : {}),
   errors: {
@@ -208,6 +216,11 @@ const addonsSpec = (model: any): SdkSpec => ({
     "smithy.api#sensitive" in (m.traits ?? {})
       ? `string | Redacted.Redacted<string>${m.nullable ? " | null" : ""}`
       : undefined,
+  errorMatchersTrait: ERROR_MATCHERS_TRAIT,
+  errors: {
+    override: ({ name }) =>
+      CORE_ERROR_CLASSES.includes(name) ? [] : undefined,
+  },
   paginationProfiles: {
     relay: {
       strategy: "paginateRelay",
@@ -217,7 +230,11 @@ const addonsSpec = (model: any): SdkSpec => ({
   operationDecl: {
     contextType: "FlyIoOpContext",
     commonErrorType: "FlyIoOpError",
-    commonErrorClasses: ["UnknownFlyIoError", "FlyIoParseError"],
+    commonErrorClasses: [
+      "UnknownFlyIoError",
+      "FlyIoParseError",
+      "CreateExtensionTosAgreementNotAuthorized",
+    ],
     protocol: "FlyGraphqlProtocol",
     retry: "Retry.Retry",
   },
@@ -257,6 +274,7 @@ runGeneratorCli({
         sourceNote: ".generated-specs (sprites OpenAPI)",
         pagination: true,
         sensitiveTs: true,
+        blobBody: true,
       });
     }
     if (ns === "com.flyio.mpg") {

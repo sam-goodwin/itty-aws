@@ -624,6 +624,12 @@
             "smithy.api#httpQuery": "dir",
             "smithy.api#documentation": "Working directory"
           }
+        },
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "smithy.api#httpPayload": {}
+          }
         }
       },
       "traits": {
@@ -665,7 +671,8 @@
         "smithy.api#http": {
           "method": "POST",
           "uri": "/sprites/{name}/exec",
-          "code": 200
+          "code": 200,
+          "bodyMediaType": "application/octet-stream"
         },
         "smithy.api#documentation": "Execute a command via HTTP POST (non-TTY). Simpler than the WebSocket exec API."
       }
@@ -941,6 +948,386 @@
         "smithy.api#documentation": "Restore a checkpoint (NDJSON progress stream). Destructive."
       }
     },
+    "com.flyio.sprites#WriteFileRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "path",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Path to the file to write"
+          }
+        },
+        "workingDir": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "workingDir",
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Working directory for resolving relative paths"
+          }
+        },
+        "mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "mode",
+            "smithy.api#documentation": "File permissions in octal (e.g. 0644)"
+          }
+        },
+        "mkdir": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "mkdir",
+            "smithy.api#documentation": "Create parent directories if they do not exist"
+          }
+        },
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.flyio.sprites#WriteFileResponse": {
+      "type": "structure",
+      "members": {
+        "path": {
+          "target": "smithy.api#String"
+        },
+        "size": {
+          "target": "smithy.api#Double"
+        },
+        "mode": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.flyio.sprites#WriteFile": {
+      "type": "operation",
+      "input": {
+        "target": "com.flyio.sprites#WriteFileRequest"
+      },
+      "output": {
+        "target": "com.flyio.sprites#WriteFileResponse"
+      },
+      "errors": [
+        {
+          "target": "com.flyio.sprites#BadRequest"
+        },
+        {
+          "target": "com.flyio.sprites#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/sprites/{name}/fs/write",
+          "code": 200,
+          "bodyMediaType": "application/octet-stream"
+        },
+        "smithy.api#documentation": "Write file contents to the sprite filesystem. Request body is raw file bytes."
+      }
+    },
+    "com.flyio.sprites#ListServicesRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.flyio.sprites#SpriteService": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "cmd": {
+          "target": "smithy.api#String"
+        },
+        "args": {
+          "target": "com.flyio.sprites#SpriteServiceArgsList"
+        },
+        "needs": {
+          "target": "com.flyio.sprites#SpriteServiceNeedsList"
+        },
+        "http_port": {
+          "target": "smithy.api#Integer"
+        },
+        "state": {
+          "target": "com.flyio.sprites#SpriteServiceState"
+        }
+      },
+      "traits": {}
+    },
+    "com.flyio.sprites#SpriteServiceArgsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.flyio.sprites#SpriteServiceNeedsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.flyio.sprites#SpriteServiceState": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "status": {
+          "target": "smithy.api#String"
+        },
+        "pid": {
+          "target": "smithy.api#Integer"
+        },
+        "started_at": {
+          "target": "smithy.api#String"
+        },
+        "error": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.flyio.sprites#ListServicesResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.flyio.sprites#SpriteService"
+      },
+      "traits": {}
+    },
+    "com.flyio.sprites#ListServicesResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.flyio.sprites#ListServicesResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.flyio.sprites#ListServices": {
+      "type": "operation",
+      "input": {
+        "target": "com.flyio.sprites#ListServicesRequest"
+      },
+      "output": {
+        "target": "com.flyio.sprites#ListServicesResponse"
+      },
+      "errors": [
+        {
+          "target": "com.flyio.sprites#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/sprites/{name}/services",
+          "code": 200
+        },
+        "smithy.api#documentation": "List configured sprite services"
+      }
+    },
+    "com.flyio.sprites#GetServiceRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "service_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.flyio.sprites#GetService": {
+      "type": "operation",
+      "input": {
+        "target": "com.flyio.sprites#GetServiceRequest"
+      },
+      "output": {
+        "target": "com.flyio.sprites#SpriteService"
+      },
+      "errors": [
+        {
+          "target": "com.flyio.sprites#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/sprites/{name}/services/{service_name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get a sprite service"
+      }
+    },
+    "com.flyio.sprites#PutServiceRequestArgsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Command arguments"
+      }
+    },
+    "com.flyio.sprites#PutServiceRequestNeedsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Service dependencies (started first)"
+      }
+    },
+    "com.flyio.sprites#PutServiceRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "service_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "duration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "duration",
+            "smithy.api#documentation": "Time to monitor logs after starting (default 5s)"
+          }
+        },
+        "cmd": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Command to execute",
+            "smithy.api#required": {}
+          }
+        },
+        "args": {
+          "target": "com.flyio.sprites#PutServiceRequestArgsList",
+          "traits": {
+            "smithy.api#documentation": "Command arguments"
+          }
+        },
+        "dir": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Working directory for the service"
+          }
+        },
+        "needs": {
+          "target": "com.flyio.sprites#PutServiceRequestNeedsList",
+          "traits": {
+            "smithy.api#documentation": "Service dependencies (started first)"
+          }
+        },
+        "http_port": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "HTTP port for proxy routing"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.flyio.sprites#PutServiceResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.flyio.sprites#StreamEvent"
+      },
+      "traits": {}
+    },
+    "com.flyio.sprites#PutServiceResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.flyio.sprites#PutServiceResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.flyio.sprites#PutService": {
+      "type": "operation",
+      "input": {
+        "target": "com.flyio.sprites#PutServiceRequest"
+      },
+      "output": {
+        "target": "com.flyio.sprites#PutServiceResponse"
+      },
+      "errors": [
+        {
+          "target": "com.flyio.sprites#BadRequest"
+        },
+        {
+          "target": "com.flyio.sprites#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/sprites/{name}/services/{service_name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create or update a sprite service. Returns NDJSON start progress."
+      }
+    },
     "com.flyio.sprites#SpritesNotEnabled": {
       "type": "structure",
       "members": {
@@ -1042,6 +1429,18 @@
         },
         {
           "target": "com.flyio.sprites#RestoreCheckpoint"
+        },
+        {
+          "target": "com.flyio.sprites#WriteFile"
+        },
+        {
+          "target": "com.flyio.sprites#ListServices"
+        },
+        {
+          "target": "com.flyio.sprites#GetService"
+        },
+        {
+          "target": "com.flyio.sprites#PutService"
         }
       ],
       "traits": {

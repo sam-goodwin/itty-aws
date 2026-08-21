@@ -222,6 +222,44 @@ await runOpenApiConvert({
       "   ⚠️  com.flyio.sprites#ListSprites not found — pagination not stamped",
     );
   }
+
+  // OpenAPI convert only flattens json / form / multipart bodies. Sprites
+  // writeFile and exec stdin are `application/octet-stream`, so stamp a
+  // Blob httpPayload member onto the generated input shapes.
+  const stampBlobBody = (shapeId: string, required: boolean) => {
+    const shape = model.shapes[shapeId];
+    if (shape?.type !== "structure") {
+      console.warn(`   ⚠️  ${shapeId} not found — blob payload not stamped`);
+      return;
+    }
+    shape.members = shape.members ?? {};
+    shape.members.body = {
+      target: "smithy.api#Blob",
+      traits: {
+        "smithy.api#httpPayload": {},
+        ...(required ? { "smithy.api#required": {} } : {}),
+      },
+    };
+    console.log(`   stamped ${shapeId} blob httpPayload`);
+  };
+  stampBlobBody("com.flyio.sprites#ExecCommandRequest", false);
+  stampBlobBody("com.flyio.sprites#WriteFileRequest", true);
+
+  const stampOctetStream = (opId: string) => {
+    const op = model.shapes[opId];
+    const http = op?.traits?.["smithy.api#http"];
+    if (http === undefined || typeof http !== "object") {
+      console.warn(
+        `   ⚠️  ${opId} http trait missing — bodyMediaType not stamped`,
+      );
+      return;
+    }
+    http.bodyMediaType = "application/octet-stream";
+    console.log(`   stamped ${opId} bodyMediaType application/octet-stream`);
+  };
+  stampOctetStream("com.flyio.sprites#ExecCommand");
+  stampOctetStream("com.flyio.sprites#WriteFile");
+  await fs.writeFile(spritesPath, JSON.stringify(model, null, 2) + "\n");
 }
 
 // ---------------------------------------------------------------------------
@@ -325,6 +363,28 @@ const addonsResult = convertGraphQLToSmithy({
   const service = model.shapes[serviceId];
   if (service?.type === "service") {
     service.operations = [...(service.operations ?? []), { target: opId }];
+  }
+}
+
+{
+  const addonsPatchFiles = await listPatchFiles(
+    path.join(patchesRoot, "addons"),
+  );
+  for (const file of addonsPatchFiles) {
+    const { parsed } = await loadPatch(file);
+    for (const op of parsed.patches ?? []) {
+      try {
+        applyOperation(addonsResult.model, op);
+      } catch (error) {
+        if (isStaleTargetError(error)) {
+          console.warn(
+            `   ⚠️  stale addons patch ${file}: ${(error as Error).message}`,
+          );
+          continue;
+        }
+        throw error;
+      }
+    }
   }
 }
 
