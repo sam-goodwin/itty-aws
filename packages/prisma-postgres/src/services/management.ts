@@ -7858,6 +7858,7 @@ export const deleteV1WorkspacesByWorkspaceIdServiceTokensByServiceTokenId: API.O
 
 export type GetV1AppsError =
   | Forbidden
+  | NotFound
   | UnprocessableEntity
   | PrismaPostgresOpError;
 /** List apps ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns all apps the token has access to, ordered by creation time (oldest first). Optionally filter by project ID. Supports cursor-based pagination. */
@@ -7869,7 +7870,12 @@ export const getV1Apps: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetV1AppsRequest,
   output: GetV1AppsResponse,
-  errors: [Forbidden, UnprocessableEntity, UnknownPrismaPostgresError],
+  errors: [
+    Forbidden,
+    NotFound,
+    UnprocessableEntity,
+    UnknownPrismaPostgresError,
+  ],
   protocol: PrismaPostgresProtocol,
   retry: Retry.Retry,
 }));
@@ -8219,6 +8225,7 @@ export const getV1DomainsByDomainId: API.OperationMethod<
 }));
 
 export type GetV1EnvironmentVariablesError =
+  | NotFound
   | UnprocessableEntity
   | PrismaPostgresOpError;
 /** List environment variables ⚠️ Experimental endpoint: this API is in active development and may change at any time without notice. ⚠️ Returns a paginated list of environment variables. All filters are optional; combine `projectId`, `class`, and `key` to look up a specific variable by name. */
@@ -8230,7 +8237,7 @@ export const getV1EnvironmentVariables: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetV1EnvironmentVariablesRequest,
   output: GetV1EnvironmentVariablesResponse,
-  errors: [UnprocessableEntity, UnknownPrismaPostgresError],
+  errors: [NotFound, UnprocessableEntity, UnknownPrismaPostgresError],
   protocol: PrismaPostgresProtocol,
   retry: Retry.Retry,
 }));
