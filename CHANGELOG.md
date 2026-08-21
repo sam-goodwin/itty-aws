@@ -1,3 +1,33 @@
+## v1.0.0-rc.5
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **aws**: Endpoint.fromEnv — resolve the AWS_ENDPOINT_URL override &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/451 [<samp>(45e3d)</samp>](https://github.com/alchemy-run/distilled/commit/45e3d861f)
+- **hetzner**: Add the Hetzner Cloud SDK &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/464 [<samp>(5fa46)</samp>](https://github.com/alchemy-run/distilled/commit/5fa4677b4)
+- **huggingface**: Add the Hugging Face Hub API SDK &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/449 [<samp>(4916c)</samp>](https://github.com/alchemy-run/distilled/commit/4916c3c61)
+- **vercel**: Add the Vercel REST SDK &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/446 [<samp>(05b44)</samp>](https://github.com/alchemy-run/distilled/commit/05b444fa8)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **aws**:
+  - **cloudwatch**: Type UnsupportedOperation on describeInsightRules &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/450 [<samp>(e2f14)</samp>](https://github.com/alchemy-run/distilled/commit/e2f141df6)
+- **cloudflare**:
+  - **r2**:
+    - Type the non-empty bucket rejection on deleteBucket &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/462 [<samp>(34ba2)</samp>](https://github.com/alchemy-run/distilled/commit/34ba21a5a)
+    - Type the object-plane missing-bucket / missing-key rejections &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/463 [<samp>(f1218)</samp>](https://github.com/alchemy-run/distilled/commit/f1218aa53)
+  - **zero_trust**:
+    - Access application typed errors + inline policies on self-hosted apps &nbsp;-&nbsp; by **Michael K**, **Maximilian Schwarzmüller** and **sam** in https://github.com/alchemy-run/distilled/issues/460 [<samp>(9c978)</samp>](https://github.com/alchemy-run/distilled/commit/9c9789ee9)
+- **core,aws**:
+  - Honor per-call context overrides in yield-first ops; parse X-Amz-Errortype &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/467 [<samp>(8fce7)</samp>](https://github.com/alchemy-run/distilled/commit/8fce771ec)
+- **deps**:
+  - Update to effect 4.0.0-rc.110 &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/459 [<samp>(2627d)</samp>](https://github.com/alchemy-run/distilled/commit/2627ddaf9)
+- **hetzner**:
+  - Type errors and schema gaps for alchemy &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/465 [<samp>(e70eb)</samp>](https://github.com/alchemy-run/distilled/commit/e70eb61de)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v1.0.0-rc.4...v1.0.0-rc.5)
+
+---
+
 ## v1.0.0-rc.4
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
