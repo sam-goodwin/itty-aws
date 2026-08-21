@@ -41,6 +41,7 @@ import { type Config, Credentials } from "./credentials.ts";
 import {
   type DefaultErrors,
   RAILWAY_ERROR_CODE_MAP,
+  RAILWAY_ERROR_MATCHERS,
   RailwayParseError,
   RailwayRateLimited,
   UnknownRailwayError,
@@ -129,6 +130,24 @@ const matchError = (
     const first = envelope.value.errors[0]!;
     const code = first.extensions?.code ?? first.extensions?.errorCode;
     const message = first.message;
+
+    const matcher = RAILWAY_ERROR_MATCHERS.find((entry) => {
+      if (entry.code !== undefined && entry.code !== code) return false;
+      if (
+        entry.messageIncludes !== undefined &&
+        !message.includes(entry.messageIncludes)
+      ) {
+        return false;
+      }
+      return true;
+    });
+    if (matcher) {
+      if (matcher.error === RailwayRateLimited) {
+        const retryAfter = parseRetryAfterForStatus(429, headers);
+        return fail(new RailwayRateLimited({ message, retryAfter }));
+      }
+      return fail(new matcher.error({ message }));
+    }
 
     if (code) {
       const TypedClass = RAILWAY_ERROR_CODE_MAP[code];

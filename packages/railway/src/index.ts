@@ -5,11 +5,28 @@
  * `.generated-specs` (converted from Railway's GraphQL introspection schema
  * by `scripts/convert.ts`). Everything else in this folder is hand-written.
  *
- * @example
+ * The generated barrel is re-exported at the package root, same as every
+ * other distilled SDK:
+ *
+ * @example Package namespace
  * ```ts
  * import * as Railway from "@distilled.cloud/railway";
- * import { projects, serviceCreate } from "@distilled.cloud/railway/railway";
+ *
+ * yield* Railway.railway.projectCreate({ input: { name: "demo" } });
+ * yield* Railway.railway.serviceCreate({
+ *   input: { projectId, source: { image: "hashicorp/http-echo" } },
+ * });
  * ```
+ *
+ * @example Per-service path
+ * ```ts
+ * import * as railway from "@distilled.cloud/railway/railway";
+ *
+ * yield* railway.projectCreate({ input: { name: "demo" } });
+ * yield* railway.me({});
+ * ```
+ *
+ * GraphQL field names are the spec (`projectCreate`, not `createProject`).
  */
 export * from "./credentials.ts";
 export * from "./errors.ts";
@@ -21,4 +38,4 @@ export {
 } from "./protocol.ts";
 export * as Pagination from "./pagination.ts";
 export * as Retry from "./retry.ts";
-export * as Services from "./services/index.ts";
+export * from "./services/index.ts";

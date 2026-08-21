@@ -7225,7 +7225,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "query environment($id: String!, $projectId: String) {\n  environment(id: $id, projectId: $projectId) {\n    canAccess\n    canvasGroupRefs\n    configEtag\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n  }\n}",
+          "query": "query environment($id: String!, $projectId: String) {\n  environment(id: $id, projectId: $projectId) {\n    canAccess\n    canvasGroupRefs\n    config\n    configEtag\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n    volumeInstances(first: 50) {\n      edges {\n        node {\n          createdAt\n          currentSizeMB\n          deletedAt\n          environmentId\n          id\n          isPendingDeletion\n          mountPath\n          region\n          serviceId\n          sizeMB\n          state\n          volume {\n            createdAt\n            id\n            name\n            projectId\n          }\n          volumeId\n        }\n      }\n    }\n  }\n}",
           "operationName": "environment",
           "type": "query"
         }
@@ -7366,6 +7366,18 @@
         },
         "updatedAt": {
           "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "volumeInstances": {
+          "target": "com.railway.api#EnvironmentResponseVolumeInstances",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "config": {
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {}
           }
@@ -15842,7 +15854,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "query project($id: String!) {\n  project(id: $id) {\n    baseEnvironment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    baseEnvironmentId\n    botPrEnvironments\n    createdAt\n    deletedAt\n    description\n    expiredAt\n    featureFlags\n    focusedPrEnvironments\n    id\n    isPublic\n    isTempProject\n    members {\n      avatar\n      email\n      id\n      name\n      role\n    }\n    name\n    prDeploys\n    primaryEnvironmentId\n    subscriptionPlanLimit\n    subscriptionType\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    teamId\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n  }\n}",
+          "query": "query project($id: String!) {\n  project(id: $id) {\n    baseEnvironment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    baseEnvironmentId\n    botPrEnvironments\n    createdAt\n    deletedAt\n    description\n    expiredAt\n    featureFlags\n    focusedPrEnvironments\n    id\n    isPublic\n    isTempProject\n    members {\n      avatar\n      email\n      id\n      name\n      role\n    }\n    name\n    prDeploys\n    primaryEnvironmentId\n    subscriptionPlanLimit\n    subscriptionType\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    teamId\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n    services(first: 50) {\n      edges {\n        node {\n          createdAt\n          deletedAt\n          id\n          name\n          projectId\n        }\n      }\n    }\n    buckets(first: 50) {\n      edges {\n        node {\n          createdAt\n          groupId\n          id\n          name\n          projectId\n          updatedAt\n        }\n      }\n    }\n  }\n}",
           "operationName": "project",
           "type": "query"
         }
@@ -16333,6 +16345,18 @@
           "traits": {
             "smithy.api#required": {},
             "com.railway.graphql#nullable": {}
+          }
+        },
+        "services": {
+          "target": "com.railway.api#ProjectResponseServices",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "buckets": {
+          "target": "com.railway.api#ProjectResponseBuckets",
+          "traits": {
+            "smithy.api#required": {}
           }
         }
       },
@@ -26433,7 +26457,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "query variables($environmentId: String!, $projectId: String!, $serviceId: String, $unrendered: Boolean) {\n  variables(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId, unrendered: $unrendered) {\n    __typename\n  }\n}",
+          "query": "query variables($environmentId: String!, $projectId: String!, $serviceId: String, $unrendered: Boolean) {\n  variables(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId, unrendered: $unrendered)\n}",
           "operationName": "variables",
           "type": "query"
         }
@@ -26642,7 +26666,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "query volumeInstance($id: String!) {\n  volumeInstance(id: $id) {\n    createdAt\n    currentSizeMB\n    deletedAt\n    environment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    externalId\n    id\n    isPendingDeletion\n    mountPath\n    region\n    service {\n      createdAt\n      deletedAt\n      featureFlags\n      groupId\n      hasHiddenRegistryCredentialsFromTemplate\n      icon\n      id\n      isRestricted\n      name\n      projectId\n      templateId\n      templateServiceId\n      templateThreadSlug\n      updatedAt\n    }\n    serviceId\n    sizeMB\n    state\n    volume {\n      createdAt\n      id\n      name\n      projectId\n    }\n    volumeId\n  }\n}",
+          "query": "query volumeInstance($id: String!) {\n  volumeInstance(id: $id) {\n    createdAt\n    currentSizeMB\n    deletedAt\n    environment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    externalId\n    id\n    isPendingDeletion\n    mountPath\n    region\n    serviceId\n    sizeMB\n    state\n    volume {\n      createdAt\n      id\n      name\n      projectId\n    }\n    volumeId\n  }\n}",
           "operationName": "volumeInstance",
           "type": "query"
         }
@@ -26920,7 +26944,7 @@
         "service": {
           "target": "com.railway.api#VolumeInstanceResponseService",
           "traits": {
-            "smithy.api#required": {}
+            "com.railway.graphql#nullable": {}
           }
         },
         "serviceId": {
@@ -32355,7 +32379,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation customDomainDelete($id: String!) {\n  customDomainDelete(id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation customDomainDelete($id: String!) {\n  customDomainDelete(id: $id)\n}",
           "operationName": "customDomainDelete",
           "type": "mutation"
         }
@@ -32408,7 +32432,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation customDomainIssueCertificate($id: String!) {\n  customDomainIssueCertificate(id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation customDomainIssueCertificate($id: String!) {\n  customDomainIssueCertificate(id: $id)\n}",
           "operationName": "customDomainIssueCertificate",
           "type": "mutation"
         }
@@ -32473,7 +32497,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation customDomainUpdate($environmentId: String!, $id: String!, $targetPort: Int) {\n  customDomainUpdate(environmentId: $environmentId, id: $id, targetPort: $targetPort) {\n    __typename\n  }\n}",
+          "query": "mutation customDomainUpdate($environmentId: String!, $id: String!, $targetPort: Int) {\n  customDomainUpdate(environmentId: $environmentId, id: $id, targetPort: $targetPort)\n}",
           "operationName": "customDomainUpdate",
           "type": "mutation"
         }
@@ -35183,7 +35207,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id)\n}",
           "operationName": "environmentDelete",
           "type": "mutation"
         }
@@ -35248,7 +35272,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation environmentPatchCommit($commitMessage: String, $environmentId: String!, $patch: EnvironmentConfig) {\n  environmentPatchCommit(commitMessage: $commitMessage, environmentId: $environmentId, patch: $patch) {\n    __typename\n  }\n}",
+          "query": "mutation environmentPatchCommit($commitMessage: String, $environmentId: String!, $patch: EnvironmentConfig) {\n  environmentPatchCommit(commitMessage: $commitMessage, environmentId: $environmentId, patch: $patch)\n}",
           "operationName": "environmentPatchCommit",
           "type": "mutation"
         }
@@ -35314,7 +35338,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation environmentPatchCommitStaged($commitMessage: String, $environmentId: String!, $skipDeploys: Boolean) {\n  environmentPatchCommitStaged(commitMessage: $commitMessage, environmentId: $environmentId, skipDeploys: $skipDeploys) {\n    __typename\n  }\n}",
+          "query": "mutation environmentPatchCommitStaged($commitMessage: String, $environmentId: String!, $skipDeploys: Boolean) {\n  environmentPatchCommitStaged(commitMessage: $commitMessage, environmentId: $environmentId, skipDeploys: $skipDeploys)\n}",
           "operationName": "environmentPatchCommitStaged",
           "type": "mutation"
         }
@@ -40450,7 +40474,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation projectDelete($id: String!) {\n  projectDelete(id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation projectDelete($id: String!) {\n  projectDelete(id: $id)\n}",
           "operationName": "projectDelete",
           "type": "mutation"
         }
@@ -44945,7 +44969,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation serviceDelete($environmentId: String, $id: String!) {\n  serviceDelete(environmentId: $environmentId, id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation serviceDelete($environmentId: String, $id: String!) {\n  serviceDelete(environmentId: $environmentId, id: $id)\n}",
           "operationName": "serviceDelete",
           "type": "mutation"
         }
@@ -45447,7 +45471,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation serviceDomainDelete($id: String!) {\n  serviceDomainDelete(id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation serviceDomainDelete($id: String!) {\n  serviceDomainDelete(id: $id)\n}",
           "operationName": "serviceDomainDelete",
           "type": "mutation"
         }
@@ -45535,7 +45559,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation serviceDomainUpdate($input: ServiceDomainUpdateInput!) {\n  serviceDomainUpdate(input: $input) {\n    __typename\n  }\n}",
+          "query": "mutation serviceDomainUpdate($input: ServiceDomainUpdateInput!) {\n  serviceDomainUpdate(input: $input)\n}",
           "operationName": "serviceDomainUpdate",
           "type": "mutation"
         }
@@ -45875,7 +45899,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation serviceInstanceDeployV2($commitSha: String, $environmentId: String!, $serviceId: String!) {\n  serviceInstanceDeployV2(commitSha: $commitSha, environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}",
+          "query": "mutation serviceInstanceDeployV2($commitSha: String, $environmentId: String!, $serviceId: String!) {\n  serviceInstanceDeployV2(commitSha: $commitSha, environmentId: $environmentId, serviceId: $serviceId)\n}",
           "operationName": "serviceInstanceDeployV2",
           "type": "mutation"
         }
@@ -46227,7 +46251,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation serviceInstanceUpdate($environmentId: String, $input: ServiceInstanceUpdateInput!, $serviceId: String!) {\n  serviceInstanceUpdate(environmentId: $environmentId, input: $input, serviceId: $serviceId) {\n    __typename\n  }\n}",
+          "query": "mutation serviceInstanceUpdate($environmentId: String, $input: ServiceInstanceUpdateInput!, $serviceId: String!) {\n  serviceInstanceUpdate(environmentId: $environmentId, input: $input, serviceId: $serviceId)\n}",
           "operationName": "serviceInstanceUpdate",
           "type": "mutation"
         }
@@ -49017,7 +49041,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id)\n}",
           "operationName": "tcpProxyDelete",
           "type": "mutation"
         }
@@ -53219,7 +53243,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input) {\n    __typename\n  }\n}",
+          "query": "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input)\n}",
           "operationName": "variableDelete",
           "type": "mutation"
         }
@@ -53314,7 +53338,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation variableUpsert($input: VariableUpsertInput!) {\n  variableUpsert(input: $input) {\n    __typename\n  }\n}",
+          "query": "mutation variableUpsert($input: VariableUpsertInput!) {\n  variableUpsert(input: $input)\n}",
           "operationName": "variableUpsert",
           "type": "mutation"
         }
@@ -53615,7 +53639,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId) {\n    __typename\n  }\n}",
+          "query": "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId)\n}",
           "operationName": "volumeDelete",
           "type": "mutation"
         }
@@ -54094,7 +54118,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation volumeInstanceUpdate($environmentId: String, $input: VolumeInstanceUpdateInput!, $volumeId: String!) {\n  volumeInstanceUpdate(environmentId: $environmentId, input: $input, volumeId: $volumeId) {\n    __typename\n  }\n}",
+          "query": "mutation volumeInstanceUpdate($environmentId: String, $input: VolumeInstanceUpdateInput!, $volumeId: String!) {\n  volumeInstanceUpdate(environmentId: $environmentId, input: $input, volumeId: $volumeId)\n}",
           "operationName": "volumeInstanceUpdate",
           "type": "mutation"
         }
@@ -57217,11 +57241,395 @@
         },
         {
           "target": "com.railway.api#WorkspaceUserRemove"
+        },
+        {
+          "target": "com.railway.api#TcpProxyCreate"
         }
       ],
       "traits": {
         "smithy.api#title": "Railway",
         "smithy.api#documentation": "Railway's public API — a single GraphQL endpoint at https://backboard.railway.com/graphql/v2. Every operation is `POST /graphql/v2` with a `{ query, operationName, variables }` envelope; responses unwrap `data.<responsePath>`. List queries are Relay connections and expose `.pages()` / `.items()`."
+      }
+    },
+    "com.railway.api#TCPProxyCreateInput": {
+      "type": "structure",
+      "members": {
+        "applicationPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "serviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#TcpProxyCreateRequest": {
+      "type": "structure",
+      "members": {
+        "input": {
+          "target": "com.railway.api#TCPProxyCreateInput",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {},
+        "com.railway.graphql#operation": {
+          "query": "mutation tcpProxyCreate($input: TCPProxyCreateInput!) {\n  tcpProxyCreate(input: $input) {\n    applicationPort\n    createdAt\n    deletedAt\n    domain\n    environmentId\n    id\n    proxyPort\n    serviceId\n    syncStatus\n    updatedAt\n  }\n}",
+          "operationName": "tcpProxyCreate",
+          "type": "mutation"
+        }
+      }
+    },
+    "com.railway.api#TcpProxyCreateResponse": {
+      "type": "structure",
+      "members": {
+        "applicationPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "deletedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "domain": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "environmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "proxyPort": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "serviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "syncStatus": {
+          "target": "com.railway.api#TCPProxySyncStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "com.railway.graphql#responsePath": "tcpProxyCreate",
+        "smithy.api#documentation": "Selection set for `tcpProxyCreate` (unwrapped from the GraphQL `data` envelope)."
+      }
+    },
+    "com.railway.api#TcpProxyCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.railway.api#TcpProxyCreateRequest"
+      },
+      "output": {
+        "target": "com.railway.api#TcpProxyCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/graphql/v2",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates a new TCP proxy for a service instance."
+      }
+    },
+    "com.railway.api#EnvironmentResponseVolumeInstancesEdgesItemNode": {
+      "type": "structure",
+      "members": {
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "currentSizeMB": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deletedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "environmentId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "isPendingDeletion": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "mountPath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "serviceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "sizeMB": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.railway.api#VolumeState",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "volume": {
+          "target": "com.railway.api#AdminVolumeInstancesForVolumeResultItemVolume",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "volumeId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#EnvironmentResponseVolumeInstancesEdgesItem": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "com.railway.api#EnvironmentResponseVolumeInstancesEdgesItemNode",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#EnvironmentResponseVolumeInstancesEdgesList": {
+      "type": "list",
+      "member": {
+        "target": "com.railway.api#EnvironmentResponseVolumeInstancesEdgesItem"
+      }
+    },
+    "com.railway.api#EnvironmentResponseVolumeInstances": {
+      "type": "structure",
+      "members": {
+        "edges": {
+          "target": "com.railway.api#EnvironmentResponseVolumeInstancesEdgesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#ProjectResponseServicesEdgesItemNode": {
+      "type": "structure",
+      "members": {
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "deletedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#ProjectResponseServicesEdgesItem": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "com.railway.api#ProjectResponseServicesEdgesItemNode",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#ProjectResponseServicesEdgesList": {
+      "type": "list",
+      "member": {
+        "target": "com.railway.api#ProjectResponseServicesEdgesItem"
+      }
+    },
+    "com.railway.api#ProjectResponseServices": {
+      "type": "structure",
+      "members": {
+        "edges": {
+          "target": "com.railway.api#ProjectResponseServicesEdgesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#ProjectResponseBucketsEdgesItemNode": {
+      "type": "structure",
+      "members": {
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updatedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#ProjectResponseBucketsEdgesItem": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "com.railway.api#ProjectResponseBucketsEdgesItemNode",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#ProjectResponseBucketsEdgesList": {
+      "type": "list",
+      "member": {
+        "target": "com.railway.api#ProjectResponseBucketsEdgesItem"
+      }
+    },
+    "com.railway.api#ProjectResponseBuckets": {
+      "type": "structure",
+      "members": {
+        "edges": {
+          "target": "com.railway.api#ProjectResponseBucketsEdgesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     }
   }

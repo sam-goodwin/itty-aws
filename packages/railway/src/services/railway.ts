@@ -2746,7 +2746,7 @@ export const CustomDomainDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation customDomainDelete($id: String!) {\n  customDomainDelete(id: $id) {\n    __typename\n  }\n}",
+          "mutation customDomainDelete($id: String!) {\n  customDomainDelete(id: $id)\n}",
         operationName: "customDomainDelete",
         type: "mutation",
       }),
@@ -2773,7 +2773,7 @@ export const CustomDomainIssueCertificateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation customDomainIssueCertificate($id: String!) {\n  customDomainIssueCertificate(id: $id) {\n    __typename\n  }\n}",
+          "mutation customDomainIssueCertificate($id: String!) {\n  customDomainIssueCertificate(id: $id)\n}",
         operationName: "customDomainIssueCertificate",
         type: "mutation",
       }),
@@ -2808,7 +2808,7 @@ export const CustomDomainUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation customDomainUpdate($environmentId: String!, $id: String!, $targetPort: Int) {\n  customDomainUpdate(environmentId: $environmentId, id: $id, targetPort: $targetPort) {\n    __typename\n  }\n}",
+          "mutation customDomainUpdate($environmentId: String!, $id: String!, $targetPort: Int) {\n  customDomainUpdate(environmentId: $environmentId, id: $id, targetPort: $targetPort)\n}",
         operationName: "customDomainUpdate",
         type: "mutation",
       }),
@@ -5277,7 +5277,7 @@ export const EnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query environment($id: String!, $projectId: String) {\n  environment(id: $id, projectId: $projectId) {\n    canAccess\n    canvasGroupRefs\n    configEtag\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n  }\n}",
+          "query environment($id: String!, $projectId: String) {\n  environment(id: $id, projectId: $projectId) {\n    canAccess\n    canvasGroupRefs\n    config\n    configEtag\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n    volumeInstances(first: 50) {\n      edges {\n        node {\n          createdAt\n          currentSizeMB\n          deletedAt\n          environmentId\n          id\n          isPendingDeletion\n          mountPath\n          region\n          serviceId\n          sizeMB\n          state\n          volume {\n            createdAt\n            id\n            name\n            projectId\n          }\n          volumeId\n        }\n      }\n    }\n  }\n}",
         operationName: "environment",
         type: "query",
       }),
@@ -5311,6 +5311,72 @@ export const EnvironmentResponseMeta = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentResponseMeta",
 }) as any as S.Schema<EnvironmentResponseMeta>;
 
+export interface EnvironmentResponseVolumeInstancesEdgesItemNode {
+  createdAt: string;
+  currentSizeMB: number;
+  deletedAt: string | null;
+  environmentId: string;
+  id: string;
+  isPendingDeletion: boolean;
+  mountPath: string;
+  region: string | null;
+  serviceId: string | null;
+  sizeMB: number;
+  state: VolumeState | null;
+  volume: AdminVolumeInstancesForVolumeResultItemVolume;
+  volumeId: string;
+}
+export const EnvironmentResponseVolumeInstancesEdgesItemNode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdAt: S.String,
+      currentSizeMB: S.Number,
+      deletedAt: S.NullOr(S.String),
+      environmentId: S.String,
+      id: S.String,
+      isPendingDeletion: S.Boolean,
+      mountPath: S.String,
+      region: S.NullOr(S.String),
+      serviceId: S.NullOr(S.String),
+      sizeMB: S.Number,
+      state: S.NullOr(VolumeState),
+      volume: AdminVolumeInstancesForVolumeResultItemVolume,
+      volumeId: S.String,
+    }),
+  ).annotate({
+    identifier: "EnvironmentResponseVolumeInstancesEdgesItemNode",
+  }) as any as S.Schema<EnvironmentResponseVolumeInstancesEdgesItemNode>;
+
+export interface EnvironmentResponseVolumeInstancesEdgesItem {
+  node: EnvironmentResponseVolumeInstancesEdgesItemNode;
+}
+export const EnvironmentResponseVolumeInstancesEdgesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      node: EnvironmentResponseVolumeInstancesEdgesItemNode,
+    }),
+  ).annotate({
+    identifier: "EnvironmentResponseVolumeInstancesEdgesItem",
+  }) as any as S.Schema<EnvironmentResponseVolumeInstancesEdgesItem>;
+
+export type EnvironmentResponseVolumeInstancesEdgesList =
+  Array<EnvironmentResponseVolumeInstancesEdgesItem>;
+export const EnvironmentResponseVolumeInstancesEdgesList =
+  /*@__PURE__*/ S.Array(
+    EnvironmentResponseVolumeInstancesEdgesItem,
+  ) as any as S.Schema<EnvironmentResponseVolumeInstancesEdgesList>;
+
+export interface EnvironmentResponseVolumeInstances {
+  edges: EnvironmentResponseVolumeInstancesEdgesList;
+}
+export const EnvironmentResponseVolumeInstances = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    edges: EnvironmentResponseVolumeInstancesEdgesList,
+  }),
+).annotate({
+  identifier: "EnvironmentResponseVolumeInstances",
+}) as any as S.Schema<EnvironmentResponseVolumeInstances>;
+
 /** Selection set for `environment` (unwrapped from the GraphQL `data` envelope). */
 export interface EnvironmentResponse {
   canAccess: boolean;
@@ -5325,6 +5391,8 @@ export interface EnvironmentResponse {
   projectId: string;
   unmergedChangesCount: number | null;
   updatedAt: string;
+  volumeInstances: EnvironmentResponseVolumeInstances;
+  config: unknown;
 }
 export const EnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5340,6 +5408,8 @@ export const EnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
     projectId: S.String,
     unmergedChangesCount: S.NullOr(S.Number),
     updatedAt: S.String,
+    volumeInstances: EnvironmentResponseVolumeInstances,
+    config: S.Unknown,
   }).pipe(T.ResponsePath("environment")),
 ).annotate({
   identifier: "EnvironmentResponse",
@@ -5575,7 +5645,7 @@ export const EnvironmentDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id) {\n    __typename\n  }\n}",
+          "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id)\n}",
         operationName: "environmentDelete",
         type: "mutation",
       }),
@@ -5801,7 +5871,7 @@ export const EnvironmentPatchCommitRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation environmentPatchCommit($commitMessage: String, $environmentId: String!, $patch: EnvironmentConfig) {\n  environmentPatchCommit(commitMessage: $commitMessage, environmentId: $environmentId, patch: $patch) {\n    __typename\n  }\n}",
+          "mutation environmentPatchCommit($commitMessage: String, $environmentId: String!, $patch: EnvironmentConfig) {\n  environmentPatchCommit(commitMessage: $commitMessage, environmentId: $environmentId, patch: $patch)\n}",
         operationName: "environmentPatchCommit",
         type: "mutation",
       }),
@@ -5836,7 +5906,7 @@ export const EnvironmentPatchCommitStagedRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation environmentPatchCommitStaged($commitMessage: String, $environmentId: String!, $skipDeploys: Boolean) {\n  environmentPatchCommitStaged(commitMessage: $commitMessage, environmentId: $environmentId, skipDeploys: $skipDeploys) {\n    __typename\n  }\n}",
+          "mutation environmentPatchCommitStaged($commitMessage: String, $environmentId: String!, $skipDeploys: Boolean) {\n  environmentPatchCommitStaged(commitMessage: $commitMessage, environmentId: $environmentId, skipDeploys: $skipDeploys)\n}",
         operationName: "environmentPatchCommitStaged",
         type: "mutation",
       }),
@@ -10988,7 +11058,7 @@ export const ProjectRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query project($id: String!) {\n  project(id: $id) {\n    baseEnvironment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    baseEnvironmentId\n    botPrEnvironments\n    createdAt\n    deletedAt\n    description\n    expiredAt\n    featureFlags\n    focusedPrEnvironments\n    id\n    isPublic\n    isTempProject\n    members {\n      avatar\n      email\n      id\n      name\n      role\n    }\n    name\n    prDeploys\n    primaryEnvironmentId\n    subscriptionPlanLimit\n    subscriptionType\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    teamId\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n  }\n}",
+          "query project($id: String!) {\n  project(id: $id) {\n    baseEnvironment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    baseEnvironmentId\n    botPrEnvironments\n    createdAt\n    deletedAt\n    description\n    expiredAt\n    featureFlags\n    focusedPrEnvironments\n    id\n    isPublic\n    isTempProject\n    members {\n      avatar\n      email\n      id\n      name\n      role\n    }\n    name\n    prDeploys\n    primaryEnvironmentId\n    subscriptionPlanLimit\n    subscriptionType\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    teamId\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n    services(first: 50) {\n      edges {\n        node {\n          createdAt\n          deletedAt\n          id\n          name\n          projectId\n        }\n      }\n    }\n    buckets(first: 50) {\n      edges {\n        node {\n          createdAt\n          groupId\n          id\n          name\n          projectId\n          updatedAt\n        }\n      }\n    }\n  }\n}",
         operationName: "project",
         type: "query",
       }),
@@ -11076,6 +11146,103 @@ export const ProjectResponseWorkspace = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectResponseWorkspace",
 }) as any as S.Schema<ProjectResponseWorkspace>;
 
+export interface ProjectResponseServicesEdgesItemNode {
+  createdAt: string;
+  deletedAt: string | null;
+  id: string;
+  name: string;
+  projectId: string;
+}
+export const ProjectResponseServicesEdgesItemNode = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdAt: S.String,
+      deletedAt: S.NullOr(S.String),
+      id: S.String,
+      name: S.String,
+      projectId: S.String,
+    }),
+).annotate({
+  identifier: "ProjectResponseServicesEdgesItemNode",
+}) as any as S.Schema<ProjectResponseServicesEdgesItemNode>;
+
+export interface ProjectResponseServicesEdgesItem {
+  node: ProjectResponseServicesEdgesItemNode;
+}
+export const ProjectResponseServicesEdgesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    node: ProjectResponseServicesEdgesItemNode,
+  }),
+).annotate({
+  identifier: "ProjectResponseServicesEdgesItem",
+}) as any as S.Schema<ProjectResponseServicesEdgesItem>;
+
+export type ProjectResponseServicesEdgesList =
+  Array<ProjectResponseServicesEdgesItem>;
+export const ProjectResponseServicesEdgesList = /*@__PURE__*/ S.Array(
+  ProjectResponseServicesEdgesItem,
+) as any as S.Schema<ProjectResponseServicesEdgesList>;
+
+export interface ProjectResponseServices {
+  edges: ProjectResponseServicesEdgesList;
+}
+export const ProjectResponseServices = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    edges: ProjectResponseServicesEdgesList,
+  }),
+).annotate({
+  identifier: "ProjectResponseServices",
+}) as any as S.Schema<ProjectResponseServices>;
+
+export interface ProjectResponseBucketsEdgesItemNode {
+  createdAt: string;
+  groupId: string | null;
+  id: string;
+  name: string;
+  projectId: string;
+  updatedAt: string;
+}
+export const ProjectResponseBucketsEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    groupId: S.NullOr(S.String),
+    id: S.String,
+    name: S.String,
+    projectId: S.String,
+    updatedAt: S.String,
+  }),
+).annotate({
+  identifier: "ProjectResponseBucketsEdgesItemNode",
+}) as any as S.Schema<ProjectResponseBucketsEdgesItemNode>;
+
+export interface ProjectResponseBucketsEdgesItem {
+  node: ProjectResponseBucketsEdgesItemNode;
+}
+export const ProjectResponseBucketsEdgesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    node: ProjectResponseBucketsEdgesItemNode,
+  }),
+).annotate({
+  identifier: "ProjectResponseBucketsEdgesItem",
+}) as any as S.Schema<ProjectResponseBucketsEdgesItem>;
+
+export type ProjectResponseBucketsEdgesList =
+  Array<ProjectResponseBucketsEdgesItem>;
+export const ProjectResponseBucketsEdgesList = /*@__PURE__*/ S.Array(
+  ProjectResponseBucketsEdgesItem,
+) as any as S.Schema<ProjectResponseBucketsEdgesList>;
+
+export interface ProjectResponseBuckets {
+  edges: ProjectResponseBucketsEdgesList;
+}
+export const ProjectResponseBuckets = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    edges: ProjectResponseBucketsEdgesList,
+  }),
+).annotate({
+  identifier: "ProjectResponseBuckets",
+}) as any as S.Schema<ProjectResponseBuckets>;
+
 /** Selection set for `project` (unwrapped from the GraphQL `data` envelope). */
 export interface ProjectResponse {
   baseEnvironment: AdminVolumeInstancesForVolumeResultItemEnvironment | null;
@@ -11101,6 +11268,8 @@ export interface ProjectResponse {
   updatedAt: string;
   workspace: ProjectResponseWorkspace | null;
   workspaceId: string | null;
+  services: ProjectResponseServices;
+  buckets: ProjectResponseBuckets;
 }
 export const ProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11129,6 +11298,8 @@ export const ProjectResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.String,
     workspace: S.NullOr(ProjectResponseWorkspace),
     workspaceId: S.NullOr(S.String),
+    services: ProjectResponseServices,
+    buckets: ProjectResponseBuckets,
   }).pipe(T.ResponsePath("project")),
 ).annotate({
   identifier: "ProjectResponse",
@@ -11645,7 +11816,7 @@ export const ProjectDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation projectDelete($id: String!) {\n  projectDelete(id: $id) {\n    __typename\n  }\n}",
+          "mutation projectDelete($id: String!) {\n  projectDelete(id: $id)\n}",
         operationName: "projectDelete",
         type: "mutation",
       }),
@@ -15961,7 +16132,7 @@ export const ServiceDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation serviceDelete($environmentId: String, $id: String!) {\n  serviceDelete(environmentId: $environmentId, id: $id) {\n    __typename\n  }\n}",
+          "mutation serviceDelete($environmentId: String, $id: String!) {\n  serviceDelete(environmentId: $environmentId, id: $id)\n}",
         operationName: "serviceDelete",
         type: "mutation",
       }),
@@ -16217,7 +16388,7 @@ export const ServiceDomainDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation serviceDomainDelete($id: String!) {\n  serviceDomainDelete(id: $id) {\n    __typename\n  }\n}",
+          "mutation serviceDomainDelete($id: String!) {\n  serviceDomainDelete(id: $id)\n}",
         operationName: "serviceDomainDelete",
         type: "mutation",
       }),
@@ -16263,7 +16434,7 @@ export const ServiceDomainUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation serviceDomainUpdate($input: ServiceDomainUpdateInput!) {\n  serviceDomainUpdate(input: $input) {\n    __typename\n  }\n}",
+          "mutation serviceDomainUpdate($input: ServiceDomainUpdateInput!) {\n  serviceDomainUpdate(input: $input)\n}",
         operationName: "serviceDomainUpdate",
         type: "mutation",
       }),
@@ -16746,7 +16917,7 @@ export const ServiceInstanceDeployV2Request = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation serviceInstanceDeployV2($commitSha: String, $environmentId: String!, $serviceId: String!) {\n  serviceInstanceDeployV2(commitSha: $commitSha, environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}",
+          "mutation serviceInstanceDeployV2($commitSha: String, $environmentId: String!, $serviceId: String!) {\n  serviceInstanceDeployV2(commitSha: $commitSha, environmentId: $environmentId, serviceId: $serviceId)\n}",
         operationName: "serviceInstanceDeployV2",
         type: "mutation",
       }),
@@ -17014,7 +17185,7 @@ export const ServiceInstanceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation serviceInstanceUpdate($environmentId: String, $input: ServiceInstanceUpdateInput!, $serviceId: String!) {\n  serviceInstanceUpdate(environmentId: $environmentId, input: $input, serviceId: $serviceId) {\n    __typename\n  }\n}",
+          "mutation serviceInstanceUpdate($environmentId: String, $input: ServiceInstanceUpdateInput!, $serviceId: String!) {\n  serviceInstanceUpdate(environmentId: $environmentId, input: $input, serviceId: $serviceId)\n}",
         operationName: "serviceInstanceUpdate",
         type: "mutation",
       }),
@@ -18831,6 +19002,71 @@ export const TcpProxiesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TcpProxiesResponse",
 }) as any as S.Schema<TcpProxiesResponse>;
 
+export interface TCPProxyCreateInput {
+  applicationPort: number;
+  environmentId: string;
+  serviceId: string;
+}
+export const TCPProxyCreateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationPort: S.Number,
+    environmentId: S.String,
+    serviceId: S.String,
+  }),
+).annotate({
+  identifier: "TCPProxyCreateInput",
+}) as any as S.Schema<TCPProxyCreateInput>;
+
+export interface TcpProxyCreateRequest {
+  input: TCPProxyCreateInput;
+}
+export const TcpProxyCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: TCPProxyCreateInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation tcpProxyCreate($input: TCPProxyCreateInput!) {\n  tcpProxyCreate(input: $input) {\n    applicationPort\n    createdAt\n    deletedAt\n    domain\n    environmentId\n    id\n    proxyPort\n    serviceId\n    syncStatus\n    updatedAt\n  }\n}",
+        operationName: "tcpProxyCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "TcpProxyCreateRequest",
+}) as any as S.Schema<TcpProxyCreateRequest>;
+
+/** Selection set for `tcpProxyCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface TcpProxyCreateResponse {
+  applicationPort: number;
+  createdAt: string | null;
+  deletedAt: string | null;
+  domain: string;
+  environmentId: string;
+  id: string;
+  proxyPort: number;
+  serviceId: string;
+  syncStatus: TCPProxySyncStatus;
+  updatedAt: string | null;
+}
+export const TcpProxyCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationPort: S.Number,
+    createdAt: S.NullOr(S.String),
+    deletedAt: S.NullOr(S.String),
+    domain: S.String,
+    environmentId: S.String,
+    id: S.String,
+    proxyPort: S.Number,
+    serviceId: S.String,
+    syncStatus: TCPProxySyncStatus,
+    updatedAt: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("tcpProxyCreate")),
+).annotate({
+  identifier: "TcpProxyCreateResponse",
+}) as any as S.Schema<TcpProxyCreateResponse>;
+
 export interface TcpProxyDeleteRequest {
   id: string;
 }
@@ -18842,7 +19078,7 @@ export const TcpProxyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id) {\n    __typename\n  }\n}",
+          "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id)\n}",
         operationName: "tcpProxyDelete",
         type: "mutation",
       }),
@@ -21540,7 +21776,7 @@ export const VariableDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input) {\n    __typename\n  }\n}",
+          "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input)\n}",
         operationName: "variableDelete",
         type: "mutation",
       }),
@@ -21574,7 +21810,7 @@ export const VariablesRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query variables($environmentId: String!, $projectId: String!, $serviceId: String, $unrendered: Boolean) {\n  variables(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId, unrendered: $unrendered) {\n    __typename\n  }\n}",
+          "query variables($environmentId: String!, $projectId: String!, $serviceId: String, $unrendered: Boolean) {\n  variables(environmentId: $environmentId, projectId: $projectId, serviceId: $serviceId, unrendered: $unrendered)\n}",
         operationName: "variables",
         type: "query",
       }),
@@ -21659,7 +21895,7 @@ export const VariableUpsertRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation variableUpsert($input: VariableUpsertInput!) {\n  variableUpsert(input: $input) {\n    __typename\n  }\n}",
+          "mutation variableUpsert($input: VariableUpsertInput!) {\n  variableUpsert(input: $input)\n}",
         operationName: "variableUpsert",
         type: "mutation",
       }),
@@ -21857,7 +22093,7 @@ export const VolumeDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId) {\n    __typename\n  }\n}",
+          "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId)\n}",
         operationName: "volumeDelete",
         type: "mutation",
       }),
@@ -21884,7 +22120,7 @@ export const VolumeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query volumeInstance($id: String!) {\n  volumeInstance(id: $id) {\n    createdAt\n    currentSizeMB\n    deletedAt\n    environment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    externalId\n    id\n    isPendingDeletion\n    mountPath\n    region\n    service {\n      createdAt\n      deletedAt\n      featureFlags\n      groupId\n      hasHiddenRegistryCredentialsFromTemplate\n      icon\n      id\n      isRestricted\n      name\n      projectId\n      templateId\n      templateServiceId\n      templateThreadSlug\n      updatedAt\n    }\n    serviceId\n    sizeMB\n    state\n    volume {\n      createdAt\n      id\n      name\n      projectId\n    }\n    volumeId\n  }\n}",
+          "query volumeInstance($id: String!) {\n  volumeInstance(id: $id) {\n    createdAt\n    currentSizeMB\n    deletedAt\n    environment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    externalId\n    id\n    isPendingDeletion\n    mountPath\n    region\n    serviceId\n    sizeMB\n    state\n    volume {\n      createdAt\n      id\n      name\n      projectId\n    }\n    volumeId\n  }\n}",
         operationName: "volumeInstance",
         type: "query",
       }),
@@ -21959,7 +22195,7 @@ export interface VolumeInstanceResponse {
   isPendingDeletion: boolean;
   mountPath: string;
   region: string | null;
-  service: VolumeInstanceResponseService;
+  service?: VolumeInstanceResponseService | null;
   serviceId: string | null;
   sizeMB: number;
   state: VolumeState | null;
@@ -21978,7 +22214,7 @@ export const VolumeInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     isPendingDeletion: S.Boolean,
     mountPath: S.String,
     region: S.NullOr(S.String),
-    service: VolumeInstanceResponseService,
+    service: S.optional(S.NullOr(VolumeInstanceResponseService)),
     serviceId: S.NullOr(S.String),
     sizeMB: S.Number,
     state: S.NullOr(VolumeState),
@@ -22380,7 +22616,7 @@ export const VolumeInstanceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation volumeInstanceUpdate($environmentId: String, $input: VolumeInstanceUpdateInput!, $volumeId: String!) {\n  volumeInstanceUpdate(environmentId: $environmentId, input: $input, volumeId: $volumeId) {\n    __typename\n  }\n}",
+          "mutation volumeInstanceUpdate($environmentId: String, $input: VolumeInstanceUpdateInput!, $volumeId: String!) {\n  volumeInstanceUpdate(environmentId: $environmentId, input: $input, volumeId: $volumeId)\n}",
         operationName: "volumeInstanceUpdate",
         type: "mutation",
       }),
@@ -28707,6 +28943,21 @@ export const tcpProxies: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TcpProxiesRequest,
   output: TcpProxiesResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type TcpProxyCreateError = RailwayOpError;
+/** Creates a new TCP proxy for a service instance. */
+export const tcpProxyCreate: API.OperationMethod<
+  TcpProxyCreateRequest,
+  TcpProxyCreateResponse,
+  TcpProxyCreateError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: TcpProxyCreateRequest,
+  output: TcpProxyCreateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,

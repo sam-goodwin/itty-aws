@@ -39,6 +39,22 @@ export interface Config {
   readonly apiBaseUrl: string;
 }
 
+/**
+ * Build a {@link Config} from a raw token string. Always wraps with this
+ * package's `Redacted` so protocol-side `Redacted.value` works even when
+ * the caller lives in a different `effect` install (nested distilled vs
+ * alchemy workspace).
+ */
+export const toConfig = (config: {
+  readonly token: string;
+  readonly tokenKind?: TokenKind;
+  readonly apiBaseUrl?: string;
+}): Config => ({
+  token: Redacted.make(config.token),
+  tokenKind: config.tokenKind ?? "account",
+  apiBaseUrl: config.apiBaseUrl ?? DEFAULT_API_BASE_URL,
+});
+
 export class Credentials extends Context.Service<
   Credentials,
   Effect.Effect<Config>
@@ -53,13 +69,15 @@ export const CredentialsFromToken = (config: {
 }): Layer.Layer<Credentials> =>
   Layer.succeed(
     Credentials,
-    Effect.succeed({
-      token: Redacted.isRedacted(config.token)
-        ? config.token
-        : Redacted.make(config.token),
-      tokenKind: config.tokenKind ?? "account",
-      apiBaseUrl: config.apiBaseUrl ?? DEFAULT_API_BASE_URL,
-    }),
+    Effect.succeed(
+      toConfig({
+        token: Redacted.isRedacted(config.token)
+          ? Redacted.value(config.token)
+          : config.token,
+        tokenKind: config.tokenKind,
+        apiBaseUrl: config.apiBaseUrl,
+      }),
+    ),
   );
 
 const envConfig = EffectConfig.all({
