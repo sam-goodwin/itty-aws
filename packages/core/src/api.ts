@@ -292,7 +292,10 @@ export function make<
       return Effect.map(
         Effect.context(),
         (context) => (input: unknown) =>
-          Effect.updateContext(fn(input), (current: Context.Context<never>) =>
+          // `Context` is contravariant, so `Context<never>` is not assignable
+          // to the `Context<any>` updateContext expects — the widening cast is
+          // sound (the merge only ever adds entries).
+          Effect.updateContext(fn(input), (current): Context.Context<any> =>
             Context.merge(context, current),
           ),
       );
@@ -444,7 +447,8 @@ export function makePaginated<
   fn.asEffect = () =>
     Effect.map(Effect.context(), (context) =>
       withStreams((input: unknown) =>
-        Effect.updateContext(fn(input), (current: Context.Context<never>) =>
+        // Same contravariance widening as Proto.asEffect above.
+        Effect.updateContext(fn(input), (current): Context.Context<any> =>
           Context.merge(context, current),
         ),
       ),
