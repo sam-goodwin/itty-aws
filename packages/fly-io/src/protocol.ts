@@ -166,6 +166,36 @@ const parseMaybeNdjson = (body: unknown): unknown => {
   }
 };
 
+/**
+ * HTTP exec (`POST /sprites/{name}/exec`) returns `application/octet-stream`
+ * frames: 1-byte stream id + payload. Ids: 1 stdout, 2 stderr, 3 exit
+ * (payload is a single exit-code byte). HTTP may coalesce chunks; for a
+ * complete body the exit frame is the last two bytes when present.
+ */
+const parseSpritesExecFrames = (
+  bytes: Uint8Array,
+): { stdout: string; stderr: string; exit_code: number } | undefined => {
+  if (bytes.length === 0) return undefined;
+  const first = bytes[0]!;
+  if (first > 3) return undefined;
+  let end = bytes.length;
+  let exit_code = 0;
+  if (end >= 2 && bytes[end - 2] === 3) {
+    exit_code = bytes[end - 1]!;
+    end -= 2;
+  }
+  let stdout = "";
+  let stderr = "";
+  if (end > 0) {
+    const decoder = new TextDecoder();
+    const id = bytes[0]!;
+    const payload = decoder.decode(bytes.subarray(1, end));
+    if (id === 2) stderr = payload;
+    else stdout = payload;
+  }
+  return { stdout, stderr, exit_code };
+};
+
 const fail = (e: unknown): Effect.Effect<never> =>
   Effect.fail(e) as Effect.Effect<never>;
 
@@ -437,10 +467,14 @@ const decodeSpritesResponse = ({
   readonly errors: ReadonlyArray<unknown>;
 }) =>
   Effect.gen(function* () {
-    const text = yield* readResponseText(response);
+    const buffer = yield* response.arrayBuffer.pipe(
+      Effect.map((bytes) => new Uint8Array(bytes)),
+    );
+    const text = new TextDecoder().decode(buffer);
+    const execFrames = parseSpritesExecFrames(buffer);
     let json: unknown;
     let nonJson = false;
-    if (text.trim().length > 0) {
+    if (execFrames === undefined && text.trim().length > 0) {
       try {
         json = JSON.parse(text);
       } catch {
@@ -498,6 +532,10 @@ const decodeSpritesResponse = ({
           body: nonJson ? text : json,
         }),
       );
+    }
+
+    if (execFrames !== undefined) {
+      return wrapSensitive(outputAst, mapKeys(outputAst, execFrames, "decode"));
     }
 
     let body: unknown = nonJson ? text : (json ?? {});
