@@ -1,116 +1,322 @@
 #!/usr/bin/env bun
 /**
- * generate — turn the Smithy JSON model in .generated-specs into an Effect
- * SDK.
+ * generate — turn Smithy JSON models in .generated-specs into Effect SDKs.
  *
- * Input:  .generated-specs/machines.json  (written by scripts/convert.ts)
- * Output: src/services/machines.ts  +  src/services/index.ts
+ *   machines.json  → src/services/machines.ts   FlyIoProtocol (Machines REST)
+ *   sprites.json   → src/services/sprites.ts    SpritesProtocol (mint from FLY_API_TOKEN)
+ *   mpg.json       → src/services/mpg.ts        FlyApiProtocol (api.fly.io REST)
+ *   addons.json    → src/services/addons.ts     FlyGraphqlProtocol
  *
- * The smithy→SDK compiler and CLI pipeline live in
- * `@distilled.cloud/core/codegen`; this script is Fly.io's provider spec.
- * Fly.io is the simple case: bearer auth, no envelope, no pagination, and
- * per-op errors that are purely status-mapped onto the shared core error
- * classes — so the only provider decisions here are the openapi trait
- * bindings and the error-class import strategy (core classes from
- * `../errors.ts` instead of per-module class emission, matching v0's typed
- * unions of shared classes).
+ * OpenAPI patches apply in scripts/convert.ts. This run uses patchesDir:
+ * false so machines OpenAPI patches are never re-applied as Smithy patches.
  */
 import { type SdkSpec } from "@distilled.cloud/core/codegen/generator";
 import { runGeneratorCli } from "@distilled.cloud/core/codegen/cli";
 import {
+  ERROR_MATCHERS_TRAIT,
   NULLABLE_TRAIT,
   RAW_RESPONSE_TRAIT,
 } from "@distilled.cloud/core/codegen/openapi";
 
-/**
- * The status-mapped error classes the converter can name (its
- * `statusToErrorClass` default — v0 parity). They exist in core and are
- * re-exported by `src/errors.ts`, so the driver must NOT emit per-module
- * classes for them; the header imports them instead.
- */
 const CORE_ERROR_CLASSES = [
   "BadRequest",
   "Conflict",
+  "CreateExtensionTosAgreementNotAuthorized",
   "Forbidden",
+  "GatewayTimeout",
   "NotFound",
+  "SpritesNotEnabled",
   "UnprocessableEntity",
 ];
 
-/** Fly.io's provider spec for the shared smithy→SDK compiler. */
-const flySpec: SdkSpec = {
-  nullableTrait: NULLABLE_TRAIT,
-  sourceNote: ".generated-specs",
+const GQL_OP = "com.flyio.graphql#operation";
+const GQL_RESPONSE_PATH = "com.flyio.graphql#responsePath";
+const GQL_NULLABLE = "com.flyio.graphql#nullable";
+const GQL_NULLABLE_ITEMS = "com.flyio.graphql#nullableItems";
+const GQL_PAYLOAD = "com.flyio.graphql#payload";
 
+const PURE = "/*@__PURE__*/ ";
+
+const namespaceOf = (model: any): string => {
+  for (const id of Object.keys(model.shapes ?? {})) {
+    const ns = String(id).split("#")[0] ?? "";
+    if (ns.startsWith("com.flyio.")) return ns;
+  }
+  return "com.flyio.machines";
+};
+
+const pruneCoreErrorImport = (code: string): string => {
+  const importLine = `import { ${CORE_ERROR_CLASSES.join(", ")} } from "../errors.ts";`;
+  const rest = code.replace(importLine, "");
+  const used = CORE_ERROR_CLASSES.filter((n) =>
+    new RegExp(`\\b${n}\\b`).test(rest),
+  );
+  return code.replace(
+    importLine,
+    used.length
+      ? `import { ${used.join(", ")} } from "../errors.ts";`
+      : `// (no status-mapped error classes referenced)`,
+  );
+};
+
+const restSpec = (opts: {
+  protocol: string;
+  contextType: string;
+  errorType: string;
+  sourceNote: string;
+  pagination?: boolean;
+  /** Surface sensitive strings as `string | Redacted`. Off for machines (leave generated file stable). */
+  sensitiveTs?: boolean;
+  /** Type httpPayload Blob members as `Uint8Array | string` (Sprites writeFile / exec stdin). */
+  blobBody?: boolean;
+}): SdkSpec => ({
+  nullableTrait: NULLABLE_TRAIT,
+  sourceNote: opts.sourceNote,
+  errorMatchersTrait: ERROR_MATCHERS_TRAIT,
   extraBindings: [
     {
-      // Sole output member carrying a bare (array/scalar) response body —
-      // the response IS the payload.
       trait: RAW_RESPONSE_TRAIT,
       binding: "rawResponse",
       pipe: "T.RawResponse()",
       rootPipe: "T.RawResponseRoot()",
     },
   ],
-
   memberTraitPipes: {
-    // The REST protocol wraps decoded values in `Redacted` on the way out
-    // and unwraps on the way in.
     "smithy.api#sensitive": "T.SensitiveValue",
   },
-
-  // Per-op error classes are the shared core HTTP classes (re-exported by
-  // src/errors.ts) — suppress the driver's per-module class emission; the
-  // header imports them instead. The REST protocol constructs them from its
-  // status map, exactly like distilled v0's matchError.
+  ...(opts.sensitiveTs || opts.blobBody
+    ? {
+        memberTsType: (m: {
+          traits?: Record<string, unknown>;
+          nullable?: boolean;
+        }) => {
+          if (opts.sensitiveTs && "smithy.api#sensitive" in (m.traits ?? {})) {
+            return `string | Redacted.Redacted<string>${m.nullable ? " | null" : ""}`;
+          }
+          if (opts.blobBody && "smithy.api#httpPayload" in (m.traits ?? {})) {
+            return "Uint8Array | string";
+          }
+          return undefined;
+        },
+      }
+    : {}),
   errors: {
     override: ({ name }) =>
       CORE_ERROR_CLASSES.includes(name) ? [] : undefined,
   },
-
+  ...(opts.pagination
+    ? {
+        paginationProfiles: {
+          cursor: {
+            strategy: "paginateCursor",
+            itemsFallback: "sprites",
+          },
+        },
+      }
+    : {}),
   operationDecl: {
-    contextType: "FlyIoOpContext",
-    commonErrorType: "FlyIoOpError",
+    contextType: opts.contextType,
+    commonErrorType: opts.errorType,
     commonErrorClasses: [],
-    protocol: "FlyIoProtocol",
+    protocol: opts.protocol,
     retry: "Retry.Retry",
   },
-
-  header: () =>
+  header: ({ hasPaginated }) =>
     `// AUTO-GENERATED by scripts/generate.ts from .generated-specs. Do not edit.\n` +
     `import * as S from "@distilled.cloud/core/schema";\n` +
     `import * as API from "@distilled.cloud/core/api";\n` +
     `import * as T from "../traits.ts";\n` +
     `import {\n` +
-    `  FlyIoProtocol,\n` +
-    `  type FlyIoOpError,\n` +
-    `  type FlyIoOpContext,\n` +
+    `  ${opts.protocol},\n` +
+    `  type ${opts.errorType},\n` +
+    `  type ${opts.contextType},\n` +
     `} from "../protocol.ts";\n` +
+    (hasPaginated && opts.pagination
+      ? `import { paginateCursor } from "../pagination.ts";\n`
+      : "") +
     `import { ${CORE_ERROR_CLASSES.join(", ")} } from "../errors.ts";\n` +
     `import * as Retry from "../retry.ts";\n\n` +
-    `export type { FlyIoOpError, FlyIoOpContext };\n\n`,
-
-  // Drop error-class names the module never references (e.g. Conflict when
-  // no op declares a 409) from the header import.
+    `export type { ${opts.errorType}, ${opts.contextType} };\n\n`,
   postProcess: (code) => {
-    const importLine = `import { ${CORE_ERROR_CLASSES.join(", ")} } from "../errors.ts";`;
-    const rest = code.replace(importLine, "");
-    const used = CORE_ERROR_CLASSES.filter((n) =>
-      new RegExp(`\\b${n}\\b`).test(rest),
-    );
-    return code.replace(
-      importLine,
-      used.length
-        ? `import { ${used.join(", ")} } from "../errors.ts";`
-        : `// (no status-mapped error classes referenced)`,
-    );
+    let next = pruneCoreErrorImport(code);
+    if (
+      next.includes("Redacted.Redacted<") &&
+      !next.includes('from "effect/Redacted"')
+    ) {
+      next = next.replace(
+        `import * as S from "@distilled.cloud/core/schema";\n`,
+        `import * as S from "@distilled.cloud/core/schema";\n` +
+          `import type * as Redacted from "effect/Redacted";\n`,
+      );
+    }
+    return next;
   },
-};
+});
+
+const addonsSpec = (model: any): SdkSpec => ({
+  nullableTrait: GQL_NULLABLE,
+  sourceNote: ".generated-specs (Fly GraphQL add-ons introspection → smithy)",
+  structPipes: (ctx) => {
+    const traits = model.shapes?.[ctx.id]?.traits ?? {};
+    const pipes: string[] = [];
+    if (ctx.httpTrait) {
+      pipes.push(`T.Http(${JSON.stringify(ctx.httpTrait)})`);
+    }
+    if (traits[GQL_OP] !== undefined) {
+      pipes.push(`T.GraphQLOp(${JSON.stringify(traits[GQL_OP])})`);
+    }
+    if (traits[GQL_RESPONSE_PATH] !== undefined) {
+      pipes.push(
+        `T.ResponsePath(${JSON.stringify(traits[GQL_RESPONSE_PATH])})`,
+      );
+    }
+    return pipes;
+  },
+  shapeOverride: (ctx) => {
+    if (
+      ctx.def.type === "list" &&
+      ctx.def.traits?.[GQL_NULLABLE_ITEMS] !== undefined
+    ) {
+      const t = ctx.def.member.target;
+      return [
+        `export type ${ctx.name} = (${ctx.tsRef(t)} | null)[];`,
+        `export const ${ctx.name} = ${PURE}S.Array(S.NullOr(${ctx.ref(t, ctx.selfIdx)})) as any as S.Schema<${ctx.name}>;\n`,
+      ];
+    }
+    if (ctx.def.type === "structure") {
+      const entries = Object.entries(ctx.def.members ?? {});
+      if (entries.length === 1) {
+        const [, m] = entries[0]! as [string, any];
+        const mTraits = m.traits ?? {};
+        if (GQL_PAYLOAD in mTraits) {
+          const nullable = GQL_NULLABLE in mTraits;
+          const rp = ctx.def.traits?.[GQL_RESPONSE_PATH];
+          const inner = nullable
+            ? `S.NullOr(${ctx.ref(m.target, ctx.selfIdx)})`
+            : ctx.ref(m.target, ctx.selfIdx);
+          const pipes = [
+            "T.GraphQLPayloadRoot()",
+            ...(rp !== undefined
+              ? [`T.ResponsePath(${JSON.stringify(rp)})`]
+              : []),
+          ];
+          return [
+            `export type ${ctx.name} = ${ctx.tsRef(m.target)}${nullable ? " | null" : ""};`,
+            `export const ${ctx.name} = ${PURE}S.suspend(() =>\n${inner}.pipe(${pipes.join(", ")}),\n).annotate({ identifier: ${JSON.stringify(ctx.name)} }) as any as S.Schema<${ctx.name}>;\n`,
+          ];
+        }
+      }
+    }
+    return undefined;
+  },
+  memberTraitPipes: {
+    "smithy.api#sensitive": "T.SensitiveValue",
+  },
+  memberTsType: (m) =>
+    "smithy.api#sensitive" in (m.traits ?? {})
+      ? `string | Redacted.Redacted<string>${m.nullable ? " | null" : ""}`
+      : undefined,
+  errorMatchersTrait: ERROR_MATCHERS_TRAIT,
+  errors: {
+    override: ({ name }) =>
+      CORE_ERROR_CLASSES.includes(name) ? [] : undefined,
+  },
+  paginationProfiles: {
+    relay: {
+      strategy: "paginateRelay",
+      itemsFallback: "edges.node",
+    },
+  },
+  operationDecl: {
+    contextType: "FlyIoOpContext",
+    commonErrorType: "FlyIoOpError",
+    commonErrorClasses: ["UnknownFlyIoError", "FlyIoParseError"],
+    protocol: "FlyGraphqlProtocol",
+    retry: "Retry.Retry",
+  },
+  postProcess: (code) => {
+    let next = code;
+    if (
+      next.includes("Redacted.Redacted<") &&
+      !next.includes('from "effect/Redacted"')
+    ) {
+      next = next.replace(
+        `import * as S from "@distilled.cloud/core/schema";\n`,
+        `import * as S from "@distilled.cloud/core/schema";\n` +
+          `import type * as Redacted from "effect/Redacted";\n`,
+      );
+    }
+    if (
+      next.includes("CreateExtensionTosAgreementNotAuthorized") &&
+      !next.includes(
+        "CreateExtensionTosAgreementNotAuthorized, FlyIoParseError",
+      )
+    ) {
+      next = next.replace(
+        `import { FlyIoParseError, UnknownFlyIoError } from "../errors.ts";`,
+        `import { CreateExtensionTosAgreementNotAuthorized, FlyIoParseError, UnknownFlyIoError } from "../errors.ts";`,
+      );
+    }
+    return next;
+  },
+});
+
+const machinesSpec = restSpec({
+  protocol: "FlyIoProtocol",
+  contextType: "FlyIoOpContext",
+  errorType: "FlyIoOpError",
+  sourceNote: ".generated-specs",
+});
 
 runGeneratorCli({
-  description: "Generate the Fly.io Effect SDK from the Smithy model",
+  description: "Generate the Fly.io Effect SDK from Smithy models",
   root: `${import.meta.dir}/..`,
-  // The RFC-6902 patch chain applies to the OpenAPI document in
-  // scripts/convert.ts, not to the Smithy model.
   patchesDir: false,
-  spec: () => flySpec,
+  spec: (model) => {
+    const ns = namespaceOf(model);
+    if (ns === "com.flyio.sprites") {
+      return restSpec({
+        protocol: "SpritesProtocol",
+        contextType: "SpritesOpContext",
+        errorType: "SpritesOpError",
+        sourceNote: ".generated-specs (sprites OpenAPI)",
+        pagination: true,
+        sensitiveTs: true,
+        blobBody: true,
+      });
+    }
+    if (ns === "com.flyio.mpg") {
+      return restSpec({
+        protocol: "FlyApiProtocol",
+        contextType: "FlyIoOpContext",
+        errorType: "FlyIoOpError",
+        sourceNote: ".generated-specs (mpg UI-EX OpenAPI)",
+        sensitiveTs: true,
+      });
+    }
+    if (ns === "com.flyio.addons") {
+      return addonsSpec(model);
+    }
+    return machinesSpec;
+  },
+  transformModel: (model, resource) => {
+    if (resource !== "addons") return;
+    // Stamp sensitive on add-on secret members (password, environment JSON
+    // containing Tigris keys / Redis URLs, publicUrl with embedded creds).
+    let n = 0;
+    for (const def of Object.values(model.shapes ?? {}) as any[]) {
+      if (def?.type !== "structure") continue;
+      for (const [name, member] of Object.entries(def.members ?? {}) as any[]) {
+        if (name === "password" || name === "publicUrl") {
+          member.traits = {
+            ...(member.traits ?? {}),
+            "smithy.api#sensitive": {},
+          };
+          n++;
+        }
+      }
+    }
+    if (n)
+      return `stamped smithy.api#sensitive on ${n} add-on secret member(s)`;
+  },
 });

@@ -51,11 +51,35 @@
       "worker": "./src/traits.ts",
       "default": "./lib/traits.js"
     },
+    "./Pagination": {
+      "types": "./lib/pagination.d.ts",
+      "bun": "./src/pagination.ts",
+      "worker": "./src/pagination.ts",
+      "default": "./lib/pagination.js"
+    },
     "./machines": {
       "types": "./lib/services/machines.d.ts",
       "bun": "./src/services/machines.ts",
       "worker": "./src/services/machines.ts",
       "default": "./lib/services/machines.js"
+    },
+    "./sprites": {
+      "types": "./lib/services/sprites.d.ts",
+      "bun": "./src/services/sprites.ts",
+      "worker": "./src/services/sprites.ts",
+      "default": "./lib/services/sprites.js"
+    },
+    "./mpg": {
+      "types": "./lib/services/mpg.d.ts",
+      "bun": "./src/services/mpg.ts",
+      "worker": "./src/services/mpg.ts",
+      "default": "./lib/services/mpg.js"
+    },
+    "./addons": {
+      "types": "./lib/services/addons.d.ts",
+      "bun": "./src/services/addons.ts",
+      "worker": "./src/services/addons.ts",
+      "default": "./lib/services/addons.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",

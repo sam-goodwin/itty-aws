@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.flyio.machines#AppsListRequest": {
+    "com.flyio.machines#ListAppsRequest": {
       "type": "structure",
       "members": {
         "org_slug": {
@@ -104,10 +104,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#AppsList": {
+    "com.flyio.machines#ListApps": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppsListRequest"
+        "target": "com.flyio.machines#ListAppsRequest"
       },
       "output": {
         "target": "com.flyio.machines#ListAppsResponse"
@@ -126,7 +126,7 @@
         "smithy.api#documentation": "List Apps\n\nList all apps with the ability to filter by organization slug."
       }
     },
-    "com.flyio.machines#AppsCreateRequest": {
+    "com.flyio.machines#CreateAppRequest": {
       "type": "structure",
       "members": {
         "enable_subdomains": {
@@ -146,10 +146,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#AppsCreate": {
+    "com.flyio.machines#CreateApp": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppsCreateRequest"
+        "target": "com.flyio.machines#CreateAppRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -163,6 +163,12 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
+        },
+        {
+          "target": "com.flyio.machines#UnprocessableEntity"
         }
       ],
       "traits": {
@@ -174,7 +180,7 @@
         "smithy.api#documentation": "Create App\n\nCreate an app with the specified details in the request body."
       }
     },
-    "com.flyio.machines#AppsShowRequest": {
+    "com.flyio.machines#GetAppRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -190,10 +196,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#AppsShow": {
+    "com.flyio.machines#GetApp": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppsShowRequest"
+        "target": "com.flyio.machines#GetAppRequest"
       },
       "output": {
         "target": "com.flyio.machines#App"
@@ -215,7 +221,7 @@
         "smithy.api#documentation": "Get App\n\nRetrieve details about a specific app by its name."
       }
     },
-    "com.flyio.machines#AppsDeleteRequest": {
+    "com.flyio.machines#DeleteAppRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -231,10 +237,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#AppsDelete": {
+    "com.flyio.machines#DeleteApp": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppsDeleteRequest"
+        "target": "com.flyio.machines#DeleteAppRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -256,7 +262,7 @@
         "smithy.api#documentation": "Destroy App\n\nDelete an app by its name."
       }
     },
-    "com.flyio.machines#AppCertificatesListRequest": {
+    "com.flyio.machines#ListAppCertificatesRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -360,10 +366,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#AppCertificatesList": {
+    "com.flyio.machines#ListAppCertificates": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppCertificatesListRequest"
+        "target": "com.flyio.machines#ListAppCertificatesRequest"
       },
       "output": {
         "target": "com.flyio.machines#ListCertificatesResponse"
@@ -385,7 +391,7 @@
         "smithy.api#documentation": "List certificates for app"
       }
     },
-    "com.flyio.machines#AppCertificatesAcmeCreateRequest": {
+    "com.flyio.machines#CreateAppAcmeCertificateRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -658,10 +664,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#AppCertificatesAcmeCreate": {
+    "com.flyio.machines#CreateAppAcmeCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppCertificatesAcmeCreateRequest"
+        "target": "com.flyio.machines#CreateAppAcmeCertificateRequest"
       },
       "output": {
         "target": "com.flyio.machines#CertificateDetail"
@@ -677,6 +683,9 @@
           "target": "com.flyio.machines#NotFound"
         },
         {
+          "target": "com.flyio.machines#Conflict"
+        },
+        {
           "target": "com.flyio.machines#UnprocessableEntity"
         }
       ],
@@ -689,7 +698,7 @@
         "smithy.api#documentation": "Request ACME certificate"
       }
     },
-    "com.flyio.machines#AppCertificatesCustomCreateRequest": {
+    "com.flyio.machines#CreateAppCustomCertificateRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -717,10 +726,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#AppCertificatesCustomCreate": {
+    "com.flyio.machines#CreateAppCustomCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppCertificatesCustomCreateRequest"
+        "target": "com.flyio.machines#CreateAppCustomCertificateRequest"
       },
       "output": {
         "target": "com.flyio.machines#CertificateDetail"
@@ -736,6 +745,9 @@
           "target": "com.flyio.machines#NotFound"
         },
         {
+          "target": "com.flyio.machines#Conflict"
+        },
+        {
           "target": "com.flyio.machines#UnprocessableEntity"
         }
       ],
@@ -748,7 +760,7 @@
         "smithy.api#documentation": "Upload custom certificate"
       }
     },
-    "com.flyio.machines#AppCertificatesShowRequest": {
+    "com.flyio.machines#GetAppCertificateRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -772,10 +784,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#AppCertificatesShow": {
+    "com.flyio.machines#GetAppCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppCertificatesShowRequest"
+        "target": "com.flyio.machines#GetAppCertificateRequest"
       },
       "output": {
         "target": "com.flyio.machines#CertificateDetail"
@@ -797,7 +809,7 @@
         "smithy.api#documentation": "Get certificate details"
       }
     },
-    "com.flyio.machines#AppCertificatesDeleteRequest": {
+    "com.flyio.machines#DeleteAppCertificateRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -821,10 +833,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#AppCertificatesDelete": {
+    "com.flyio.machines#DeleteAppCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppCertificatesDeleteRequest"
+        "target": "com.flyio.machines#DeleteAppCertificateRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -846,7 +858,7 @@
         "smithy.api#documentation": "Remove certificate"
       }
     },
-    "com.flyio.machines#AppCertificatesAcmeDeleteRequest": {
+    "com.flyio.machines#DeleteAppAcmeCertificateRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -870,10 +882,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#AppCertificatesAcmeDelete": {
+    "com.flyio.machines#DeleteAppAcmeCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppCertificatesAcmeDeleteRequest"
+        "target": "com.flyio.machines#DeleteAppAcmeCertificateRequest"
       },
       "output": {
         "target": "com.flyio.machines#CertificateDetail"
@@ -895,7 +907,7 @@
         "smithy.api#documentation": "Remove ACME certificates"
       }
     },
-    "com.flyio.machines#AppCertificatesCheckRequest": {
+    "com.flyio.machines#CheckAppCertificateRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -1027,10 +1039,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#AppCertificatesCheck": {
+    "com.flyio.machines#CheckAppCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppCertificatesCheckRequest"
+        "target": "com.flyio.machines#CheckAppCertificateRequest"
       },
       "output": {
         "target": "com.flyio.machines#CertificateCheckResponse"
@@ -1055,7 +1067,7 @@
         "smithy.api#documentation": "Check DNS and re-validate certificate"
       }
     },
-    "com.flyio.machines#AppCertificatesCustomDeleteRequest": {
+    "com.flyio.machines#DeleteAppCustomCertificateRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -1132,10 +1144,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#AppCertificatesCustomDelete": {
+    "com.flyio.machines#DeleteAppCustomCertificate": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppCertificatesCustomDeleteRequest"
+        "target": "com.flyio.machines#DeleteAppCustomCertificateRequest"
       },
       "output": {
         "target": "com.flyio.machines#DestroyCustomCertificateResponse"
@@ -1157,7 +1169,7 @@
         "smithy.api#documentation": "Remove custom certificate"
       }
     },
-    "com.flyio.machines#AppCreateDeployTokenRequest": {
+    "com.flyio.machines#CreateAppDeployTokenRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -1185,10 +1197,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#AppCreateDeployToken": {
+    "com.flyio.machines#CreateAppDeployToken": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppCreateDeployTokenRequest"
+        "target": "com.flyio.machines#CreateAppDeployTokenRequest"
       },
       "output": {
         "target": "com.flyio.machines#CreateAppResponse"
@@ -1213,7 +1225,7 @@
         "smithy.api#documentation": "Create App deploy token"
       }
     },
-    "com.flyio.machines#AppIPAssignmentsListRequest": {
+    "com.flyio.machines#ListAppIPAssignmentsRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -1255,6 +1267,9 @@
         },
         "shared": {
           "target": "smithy.api#Boolean"
+        },
+        "type": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {}
@@ -1266,10 +1281,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#AppIPAssignmentsList": {
+    "com.flyio.machines#ListAppIPAssignments": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppIPAssignmentsListRequest"
+        "target": "com.flyio.machines#ListAppIPAssignmentsRequest"
       },
       "output": {
         "target": "com.flyio.machines#ListIPAssignmentsResponse"
@@ -1291,7 +1306,7 @@
         "smithy.api#documentation": "List IP assignments for app"
       }
     },
-    "com.flyio.machines#AppIPAssignmentsCreateRequest": {
+    "com.flyio.machines#CreateAppIPAssignmentRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -1322,10 +1337,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#AppIPAssignmentsCreate": {
+    "com.flyio.machines#CreateAppIPAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppIPAssignmentsCreateRequest"
+        "target": "com.flyio.machines#CreateAppIPAssignmentRequest"
       },
       "output": {
         "target": "com.flyio.machines#IPAssignment"
@@ -1339,6 +1354,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -1350,7 +1368,7 @@
         "smithy.api#documentation": "Assign new IP address to app"
       }
     },
-    "com.flyio.machines#AppIPAssignmentsDeleteRequest": {
+    "com.flyio.machines#DeleteAppIPAssignmentRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -1374,10 +1392,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#AppIPAssignmentsDelete": {
+    "com.flyio.machines#DeleteAppIPAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#AppIPAssignmentsDeleteRequest"
+        "target": "com.flyio.machines#DeleteAppIPAssignmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1399,7 +1417,7 @@
         "smithy.api#documentation": "Remove IP assignment from app"
       }
     },
-    "com.flyio.machines#MachinesListRequest": {
+    "com.flyio.machines#ListMachinesRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -3349,18 +3367,18 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesListResponseBodyList": {
+    "com.flyio.machines#ListMachinesResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.flyio.machines#Machine"
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesListResponse": {
+    "com.flyio.machines#ListMachinesResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.flyio.machines#MachinesListResponseBodyList",
+          "target": "com.flyio.machines#ListMachinesResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -3371,13 +3389,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.flyio.machines#MachinesList": {
+    "com.flyio.machines#ListMachines": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesListRequest"
+        "target": "com.flyio.machines#ListMachinesRequest"
       },
       "output": {
-        "target": "com.flyio.machines#MachinesListResponse"
+        "target": "com.flyio.machines#ListMachinesResponse"
       },
       "errors": [
         {
@@ -3396,7 +3414,7 @@
         "smithy.api#documentation": "List Machines\n\nList all Machines associated with a specific app, with optional filters for including deleted Machines and filtering by region."
       }
     },
-    "com.flyio.machines#MachinesCreateRequest": {
+    "com.flyio.machines#CreateMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -3445,10 +3463,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesCreate": {
+    "com.flyio.machines#CreateMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesCreateRequest"
+        "target": "com.flyio.machines#CreateMachineRequest"
       },
       "output": {
         "target": "com.flyio.machines#Machine"
@@ -3462,6 +3480,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -3473,7 +3494,7 @@
         "smithy.api#documentation": "Create Machine\n\nCreate a Machine within a specific app using the details provided in the request body.\n\n**Important**: This request can fail, and you’re responsible for handling that failure. If you ask for a large Machine, or a Machine in a region we happen to be at capacity for, you might need to retry the request, or to fall back to another region. If you’re working directly with the Machines API, you’re taking some responsibility for your own orchestration!"
       }
     },
-    "com.flyio.machines#MachinesShowRequest": {
+    "com.flyio.machines#GetMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -3497,10 +3518,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesShow": {
+    "com.flyio.machines#GetMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesShowRequest"
+        "target": "com.flyio.machines#GetMachineRequest"
       },
       "output": {
         "target": "com.flyio.machines#Machine"
@@ -3522,7 +3543,7 @@
         "smithy.api#documentation": "Get Machine\n\nGet details of a specific Machine within an app by the Machine ID."
       }
     },
-    "com.flyio.machines#MachinesUpdateRequest": {
+    "com.flyio.machines#UpdateMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -3582,10 +3603,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesUpdate": {
+    "com.flyio.machines#UpdateMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesUpdateRequest"
+        "target": "com.flyio.machines#UpdateMachineRequest"
       },
       "output": {
         "target": "com.flyio.machines#Machine"
@@ -3599,6 +3620,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -3610,7 +3634,7 @@
         "smithy.api#documentation": "Update Machine\n\nUpdate a Machine's configuration using the details provided in the request body."
       }
     },
-    "com.flyio.machines#MachinesDeleteRequest": {
+    "com.flyio.machines#DeleteMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -3641,10 +3665,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesDelete": {
+    "com.flyio.machines#DeleteMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesDeleteRequest"
+        "target": "com.flyio.machines#DeleteMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3655,6 +3679,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -3666,7 +3693,7 @@
         "smithy.api#documentation": "Destroy Machine\n\nDelete a specific Machine within an app by Machine ID, with an optional force parameter to force kill the Machine if it's running."
       }
     },
-    "com.flyio.machines#MachinesCordonRequest": {
+    "com.flyio.machines#CordonMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -3690,10 +3717,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesCordon": {
+    "com.flyio.machines#CordonMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesCordonRequest"
+        "target": "com.flyio.machines#CordonMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3718,7 +3745,7 @@
         "smithy.api#documentation": "Cordon Machine\n\n“Cordoning” a Machine refers to disabling its services, so the Fly Proxy won’t route requests to it. In flyctl this is used by blue/green deployments; one set of Machines is started up with services disabled, and when they are all healthy, the services are enabled on the new Machines and disabled on the old ones."
       }
     },
-    "com.flyio.machines#MachinesListEventsRequest": {
+    "com.flyio.machines#ListMachineEventsRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -3749,18 +3776,18 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesListEventsResponseBodyList": {
+    "com.flyio.machines#ListMachineEventsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.flyio.machines#MachineEvent"
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesListEventsResponse": {
+    "com.flyio.machines#ListMachineEventsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.flyio.machines#MachinesListEventsResponseBodyList",
+          "target": "com.flyio.machines#ListMachineEventsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -3771,13 +3798,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.flyio.machines#MachinesListEvents": {
+    "com.flyio.machines#ListMachineEvents": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesListEventsRequest"
+        "target": "com.flyio.machines#ListMachineEventsRequest"
       },
       "output": {
-        "target": "com.flyio.machines#MachinesListEventsResponse"
+        "target": "com.flyio.machines#ListMachineEventsResponse"
       },
       "errors": [
         {
@@ -3796,14 +3823,14 @@
         "smithy.api#documentation": "List Events\n\nList all events associated with a specific Machine within an app."
       }
     },
-    "com.flyio.machines#MachinesExecRequestCommandList": {
+    "com.flyio.machines#ExecMachineRequestCommandList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesExecRequest": {
+    "com.flyio.machines#ExecMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -3829,7 +3856,7 @@
           }
         },
         "command": {
-          "target": "com.flyio.machines#MachinesExecRequestCommandList"
+          "target": "com.flyio.machines#ExecMachineRequestCommandList"
         },
         "container": {
           "target": "smithy.api#String"
@@ -3863,10 +3890,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesExec": {
+    "com.flyio.machines#ExecMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesExecRequest"
+        "target": "com.flyio.machines#ExecMachineRequest"
       },
       "output": {
         "target": "com.flyio.machines#Flydv1ExecResponse"
@@ -3891,7 +3918,7 @@
         "smithy.api#documentation": "Execute Command\n\nExecute a command on a specific Machine and return the raw command output bytes."
       }
     },
-    "com.flyio.machines#MachinesShowLeaseRequest": {
+    "com.flyio.machines#GetMachineLeaseRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -3951,10 +3978,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesShowLease": {
+    "com.flyio.machines#GetMachineLease": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesShowLeaseRequest"
+        "target": "com.flyio.machines#GetMachineLeaseRequest"
       },
       "output": {
         "target": "com.flyio.machines#Lease"
@@ -3976,7 +4003,7 @@
         "smithy.api#documentation": "Get Lease\n\nRetrieve the current lease of a specific Machine within an app. Machine leases can be used to obtain an exclusive lock on modifying a Machine."
       }
     },
-    "com.flyio.machines#MachinesCreateLeaseRequest": {
+    "com.flyio.machines#CreateMachineLeaseRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4009,10 +4036,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesCreateLease": {
+    "com.flyio.machines#CreateMachineLease": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesCreateLeaseRequest"
+        "target": "com.flyio.machines#CreateMachineLeaseRequest"
       },
       "output": {
         "target": "com.flyio.machines#Lease"
@@ -4037,7 +4064,7 @@
         "smithy.api#documentation": "Create Lease\n\nCreate a lease for a specific Machine within an app using the details provided in the request body. Machine leases can be used to obtain an exclusive lock on modifying a Machine."
       }
     },
-    "com.flyio.machines#MachinesReleaseLeaseRequest": {
+    "com.flyio.machines#ReleaseMachineLeaseRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4061,10 +4088,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesReleaseLease": {
+    "com.flyio.machines#ReleaseMachineLease": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesReleaseLeaseRequest"
+        "target": "com.flyio.machines#ReleaseMachineLeaseRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4086,7 +4113,7 @@
         "smithy.api#documentation": "Release Lease\n\nRelease the lease of a specific Machine within an app. Machine leases can be used to obtain an exclusive lock on modifying a Machine."
       }
     },
-    "com.flyio.machines#MachinesGetMemoryRequest": {
+    "com.flyio.machines#GetMachineMemoryRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4122,10 +4149,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesGetMemory": {
+    "com.flyio.machines#GetMachineMemory": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesGetMemoryRequest"
+        "target": "com.flyio.machines#GetMachineMemoryRequest"
       },
       "output": {
         "target": "com.flyio.machines#MainMemoryResponse"
@@ -4147,7 +4174,7 @@
         "smithy.api#documentation": "Get Machine Memory\n\nGet current memory limit and available capacity for a machine"
       }
     },
-    "com.flyio.machines#MachinesSetMemoryLimitRequest": {
+    "com.flyio.machines#SetMachineMemoryLimitRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4174,10 +4201,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesSetMemoryLimit": {
+    "com.flyio.machines#SetMachineMemoryLimit": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesSetMemoryLimitRequest"
+        "target": "com.flyio.machines#SetMachineMemoryLimitRequest"
       },
       "output": {
         "target": "com.flyio.machines#MainMemoryResponse"
@@ -4202,7 +4229,7 @@
         "smithy.api#documentation": "Set Machine Memory Limit\n\nSet the memory limit for a machine using the balloon device"
       }
     },
-    "com.flyio.machines#MachinesReclaimMemoryRequest": {
+    "com.flyio.machines#ReclaimMachineMemoryRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4238,10 +4265,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesReclaimMemory": {
+    "com.flyio.machines#ReclaimMachineMemory": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesReclaimMemoryRequest"
+        "target": "com.flyio.machines#ReclaimMachineMemoryRequest"
       },
       "output": {
         "target": "com.flyio.machines#MainReclaimMemoryResponse"
@@ -4266,7 +4293,7 @@
         "smithy.api#documentation": "Reclaim Machine Memory\n\nTrigger the balloon device to reclaim memory from a machine"
       }
     },
-    "com.flyio.machines#MachinesShowMetadataRequest": {
+    "com.flyio.machines#GetMachineMetadataRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4290,7 +4317,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesShowMetadataResponseBodyMap": {
+    "com.flyio.machines#GetMachineMetadataResponseBodyMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4300,11 +4327,11 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesShowMetadataResponse": {
+    "com.flyio.machines#GetMachineMetadataResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.flyio.machines#MachinesShowMetadataResponseBodyMap",
+          "target": "com.flyio.machines#GetMachineMetadataResponseBodyMap",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -4315,13 +4342,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.flyio.machines#MachinesShowMetadata": {
+    "com.flyio.machines#GetMachineMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesShowMetadataRequest"
+        "target": "com.flyio.machines#GetMachineMetadataRequest"
       },
       "output": {
-        "target": "com.flyio.machines#MachinesShowMetadataResponse"
+        "target": "com.flyio.machines#GetMachineMetadataResponse"
       },
       "errors": [
         {
@@ -4340,7 +4367,7 @@
         "smithy.api#documentation": "Get Metadata\n\nRetrieve metadata for a specific Machine within an app."
       }
     },
-    "com.flyio.machines#MachinesUpdateMetadataRequestMetadataMap": {
+    "com.flyio.machines#UpdateMachineMetadataRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4350,7 +4377,7 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesUpdateMetadataRequest": {
+    "com.flyio.machines#UpdateMachineMetadataRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4373,7 +4400,7 @@
           "target": "smithy.api#String"
         },
         "metadata": {
-          "target": "com.flyio.machines#MachinesUpdateMetadataRequestMetadataMap"
+          "target": "com.flyio.machines#UpdateMachineMetadataRequestMetadataMap"
         },
         "updated_at": {
           "target": "smithy.api#String"
@@ -4383,10 +4410,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesUpdateMetadata": {
+    "com.flyio.machines#UpdateMachineMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesUpdateMetadataRequest"
+        "target": "com.flyio.machines#UpdateMachineMetadataRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4411,7 +4438,7 @@
         "smithy.api#documentation": "Update Metadata (set/remove multiple keys)\n\nUpdate multiple metadata keys at once. Null values and empty strings remove keys.\n+ If `machine_version` is provided and no longer matches the current machine version, returns 412 Precondition Failed."
       }
     },
-    "com.flyio.machines#MachinesUpdateMetadataRequestMetadataMap2": {
+    "com.flyio.machines#PatchMachineMetadataRequestMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4421,7 +4448,7 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesUpdateMetadataRequest2": {
+    "com.flyio.machines#PatchMachineMetadataRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4444,7 +4471,7 @@
           "target": "smithy.api#String"
         },
         "metadata": {
-          "target": "com.flyio.machines#MachinesUpdateMetadataRequestMetadataMap2"
+          "target": "com.flyio.machines#PatchMachineMetadataRequestMetadataMap"
         },
         "updated_at": {
           "target": "smithy.api#String"
@@ -4454,10 +4481,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesUpdateMetadata2": {
+    "com.flyio.machines#PatchMachineMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesUpdateMetadataRequest2"
+        "target": "com.flyio.machines#PatchMachineMetadataRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4476,7 +4503,7 @@
         "smithy.api#documentation": "Update Metadata (set/remove multiple keys)\n\nUpdate multiple metadata keys at once. Null values and empty strings remove keys.\n+ If `machine_version` is provided and no longer matches the current machine version, returns 412 Precondition Failed."
       }
     },
-    "com.flyio.machines#MachinesGetMetadataKeyRequest": {
+    "com.flyio.machines#GetMachineMetadataKeyRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4517,10 +4544,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesGetMetadataKey": {
+    "com.flyio.machines#GetMachineMetadataKey": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesGetMetadataKeyRequest"
+        "target": "com.flyio.machines#GetMachineMetadataKeyRequest"
       },
       "output": {
         "target": "com.flyio.machines#MetadataValueResponse"
@@ -4539,7 +4566,7 @@
         "smithy.api#documentation": "Get Metadata Value\n\nGet the value of a specific metadata key"
       }
     },
-    "com.flyio.machines#MachinesUpsertMetadataRequest": {
+    "com.flyio.machines#UpsertMachineMetadataRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4577,10 +4604,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesUpsertMetadata": {
+    "com.flyio.machines#UpsertMachineMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesUpsertMetadataRequest"
+        "target": "com.flyio.machines#UpsertMachineMetadataRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4605,7 +4632,7 @@
         "smithy.api#documentation": "Upsert Metadata Key\n\nUpdate metadata for a specific machine within an app by providing a metadata key."
       }
     },
-    "com.flyio.machines#MachinesDeleteMetadataRequest": {
+    "com.flyio.machines#DeleteMachineMetadataRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4637,10 +4664,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesDeleteMetadata": {
+    "com.flyio.machines#DeleteMachineMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesDeleteMetadataRequest"
+        "target": "com.flyio.machines#DeleteMachineMetadataRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4662,7 +4689,7 @@
         "smithy.api#documentation": "Delete Metadata\n\nDelete metadata for a specific Machine within an app by providing a metadata key."
       }
     },
-    "com.flyio.machines#MachinesListProcessesRequest": {
+    "com.flyio.machines#ListMachineProcessesRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4749,18 +4776,18 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesListProcessesResponseBodyList": {
+    "com.flyio.machines#ListMachineProcessesResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.flyio.machines#ProcessStat"
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesListProcessesResponse": {
+    "com.flyio.machines#ListMachineProcessesResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.flyio.machines#MachinesListProcessesResponseBodyList",
+          "target": "com.flyio.machines#ListMachineProcessesResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -4771,13 +4798,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.flyio.machines#MachinesListProcesses": {
+    "com.flyio.machines#ListMachineProcesses": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesListProcessesRequest"
+        "target": "com.flyio.machines#ListMachineProcessesRequest"
       },
       "output": {
-        "target": "com.flyio.machines#MachinesListProcessesResponse"
+        "target": "com.flyio.machines#ListMachineProcessesResponse"
       },
       "errors": [
         {
@@ -4799,7 +4826,7 @@
         "smithy.api#documentation": "List Processes\n\nList all processes running on a specific Machine within an app, with optional sorting parameters."
       }
     },
-    "com.flyio.machines#MachinesRestartRequestSignal": {
+    "com.flyio.machines#RestartMachineRequestSignal": {
       "type": "enum",
       "members": {
         "SIGHUP": {
@@ -4847,7 +4874,7 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesRestartRequest": {
+    "com.flyio.machines#RestartMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -4874,7 +4901,7 @@
           }
         },
         "signal": {
-          "target": "com.flyio.machines#MachinesRestartRequestSignal",
+          "target": "com.flyio.machines#RestartMachineRequestSignal",
           "traits": {
             "smithy.api#httpQuery": "signal",
             "smithy.api#documentation": "Unix signal name"
@@ -4885,10 +4912,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesRestart": {
+    "com.flyio.machines#RestartMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesRestartRequest"
+        "target": "com.flyio.machines#RestartMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4913,7 +4940,7 @@
         "smithy.api#documentation": "Restart Machine\n\nRestart a specific Machine within an app, with an optional timeout parameter."
       }
     },
-    "com.flyio.machines#MachinesSignalRequestSignal": {
+    "com.flyio.machines#SignalMachineRequestSignal": {
       "type": "enum",
       "members": {
         "SIGABRT": {
@@ -5003,7 +5030,7 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesSignalRequest": {
+    "com.flyio.machines#SignalMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -5023,17 +5050,17 @@
           }
         },
         "signal": {
-          "target": "com.flyio.machines#MachinesSignalRequestSignal"
+          "target": "com.flyio.machines#SignalMachineRequestSignal"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesSignal": {
+    "com.flyio.machines#SignalMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesSignalRequest"
+        "target": "com.flyio.machines#SignalMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5058,7 +5085,7 @@
         "smithy.api#documentation": "Signal Machine\n\nSend a signal to a specific Machine within an app using the details provided in the request body."
       }
     },
-    "com.flyio.machines#MachinesStartRequest": {
+    "com.flyio.machines#StartMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -5082,10 +5109,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesStart": {
+    "com.flyio.machines#StartMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesStartRequest"
+        "target": "com.flyio.machines#StartMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5099,6 +5126,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -5110,7 +5140,7 @@
         "smithy.api#documentation": "Start Machine\n\nStart a specific Machine within an app."
       }
     },
-    "com.flyio.machines#MachinesStopRequestSignal": {
+    "com.flyio.machines#StopMachineRequestSignal": {
       "type": "enum",
       "members": {
         "SIGHUP": {
@@ -5158,7 +5188,7 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesStopRequest": {
+    "com.flyio.machines#StopMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -5178,7 +5208,7 @@
           }
         },
         "signal": {
-          "target": "com.flyio.machines#MachinesStopRequestSignal"
+          "target": "com.flyio.machines#StopMachineRequestSignal"
         },
         "timeout": {
           "target": "smithy.api#String"
@@ -5188,10 +5218,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesStop": {
+    "com.flyio.machines#StopMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesStopRequest"
+        "target": "com.flyio.machines#StopMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5216,7 +5246,7 @@
         "smithy.api#documentation": "Stop Machine\n\nStop a specific Machine within an app, with an optional request body to specify signal and timeout."
       }
     },
-    "com.flyio.machines#MachinesSuspendRequest": {
+    "com.flyio.machines#SuspendMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -5240,10 +5270,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesSuspend": {
+    "com.flyio.machines#SuspendMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesSuspendRequest"
+        "target": "com.flyio.machines#SuspendMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5268,7 +5298,7 @@
         "smithy.api#documentation": "Suspend Machine\n\nSuspend a specific Machine within an app. The next start operation will attempt (but is not guaranteed) to resume the Machine from a snapshot taken at suspension time, rather than performing a cold boot."
       }
     },
-    "com.flyio.machines#MachinesUncordonRequest": {
+    "com.flyio.machines#UncordonMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -5292,10 +5322,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#MachinesUncordon": {
+    "com.flyio.machines#UncordonMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesUncordonRequest"
+        "target": "com.flyio.machines#UncordonMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5320,7 +5350,7 @@
         "smithy.api#documentation": "Uncordon Machine\n\n“Cordoning” a Machine refers to disabling its services, so the Fly Proxy won’t route requests to it. In flyctl this is used by blue/green deployments; one set of Machines is started up with services disabled, and when they are all healthy, the services are enabled on the new Machines and disabled on the old ones."
       }
     },
-    "com.flyio.machines#MachinesListVersionsRequest": {
+    "com.flyio.machines#ListMachineVersionsRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -5356,18 +5386,18 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesListVersionsResponseBodyList": {
+    "com.flyio.machines#ListMachineVersionsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.flyio.machines#MachineVersion"
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesListVersionsResponse": {
+    "com.flyio.machines#ListMachineVersionsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.flyio.machines#MachinesListVersionsResponseBodyList",
+          "target": "com.flyio.machines#ListMachineVersionsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -5378,13 +5408,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.flyio.machines#MachinesListVersions": {
+    "com.flyio.machines#ListMachineVersions": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesListVersionsRequest"
+        "target": "com.flyio.machines#ListMachineVersionsRequest"
       },
       "output": {
-        "target": "com.flyio.machines#MachinesListVersionsResponse"
+        "target": "com.flyio.machines#ListMachineVersionsResponse"
       },
       "errors": [
         {
@@ -5403,7 +5433,7 @@
         "smithy.api#documentation": "List Versions\n\nList all versions of the configuration for a specific Machine within an app."
       }
     },
-    "com.flyio.machines#MachinesWaitRequestState": {
+    "com.flyio.machines#WaitMachineRequestState": {
       "type": "enum",
       "members": {
         "STARTED": {
@@ -5445,7 +5475,7 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesWaitRequest": {
+    "com.flyio.machines#WaitMachineRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -5493,7 +5523,7 @@
           }
         },
         "state": {
-          "target": "com.flyio.machines#MachinesWaitRequestState",
+          "target": "com.flyio.machines#WaitMachineRequestState",
           "traits": {
             "smithy.api#httpQuery": "state",
             "smithy.api#documentation": "desired state(s), supports repeated or comma-separated values"
@@ -5522,10 +5552,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesWait": {
+    "com.flyio.machines#WaitMachine": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesWaitRequest"
+        "target": "com.flyio.machines#WaitMachineRequest"
       },
       "output": {
         "target": "com.flyio.machines#WaitMachineResponse"
@@ -5539,6 +5569,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#GatewayTimeout"
         }
       ],
       "traits": {
@@ -5550,7 +5583,7 @@
         "smithy.api#documentation": "Wait for State\n\nWait for a Machine to reach a specific state. Specify the desired state with the state parameter. See the [Machine states table](https://fly.io/docs/machines/working-with-machines/#machine-states) for a list of possible states. The default for this parameter is `started`.\n\nThis request will block for up to 60 seconds. Set a shorter timeout with the timeout parameter."
       }
     },
-    "com.flyio.machines#SecretkeysListRequest": {
+    "com.flyio.machines#ListSecretKeysRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -5599,7 +5632,7 @@
           "target": "smithy.api#String"
         },
         "public_key": {
-          "target": "com.flyio.machines#SecretKeyPublicKeyList"
+          "target": "smithy.api#String"
         },
         "type": {
           "target": "smithy.api#String"
@@ -5610,13 +5643,6 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#SecretKeyPublicKeyList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
     "com.flyio.machines#SecretKeysSecretKeysList": {
       "type": "list",
       "member": {
@@ -5624,10 +5650,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#SecretkeysList": {
+    "com.flyio.machines#ListSecretKeys": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretkeysListRequest"
+        "target": "com.flyio.machines#ListSecretKeysRequest"
       },
       "output": {
         "target": "com.flyio.machines#SecretKeys"
@@ -5649,7 +5675,7 @@
         "smithy.api#documentation": "List secret keys belonging to an app"
       }
     },
-    "com.flyio.machines#SecretkeyGetRequest": {
+    "com.flyio.machines#GetSecretKeyRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -5680,10 +5706,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#SecretkeyGet": {
+    "com.flyio.machines#GetSecretKey": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretkeyGetRequest"
+        "target": "com.flyio.machines#GetSecretKeyRequest"
       },
       "output": {
         "target": "com.flyio.machines#SecretKey"
@@ -5705,14 +5731,14 @@
         "smithy.api#documentation": "Get an app's secret key"
       }
     },
-    "com.flyio.machines#SecretkeySetRequestValueList": {
+    "com.flyio.machines#SetSecretKeyRequestValueList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
       },
       "traits": {}
     },
-    "com.flyio.machines#SecretkeySetRequest": {
+    "com.flyio.machines#SetSecretKeyRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -5735,7 +5761,7 @@
           "target": "smithy.api#String"
         },
         "value": {
-          "target": "com.flyio.machines#SecretkeySetRequestValueList"
+          "target": "com.flyio.machines#SetSecretKeyRequestValueList"
         }
       },
       "traits": {
@@ -5758,7 +5784,7 @@
           "target": "smithy.api#String"
         },
         "public_key": {
-          "target": "com.flyio.machines#SetSecretkeyResponsePublicKeyList"
+          "target": "smithy.api#String"
         },
         "type": {
           "target": "smithy.api#String"
@@ -5772,17 +5798,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#SetSecretkeyResponsePublicKeyList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SecretkeySet": {
+    "com.flyio.machines#SetSecretKey": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretkeySetRequest"
+        "target": "com.flyio.machines#SetSecretKeyRequest"
       },
       "output": {
         "target": "com.flyio.machines#SetSecretkeyResponse"
@@ -5796,6 +5815,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -5807,7 +5829,7 @@
         "smithy.api#documentation": "Create or update a secret key"
       }
     },
-    "com.flyio.machines#SecretkeyDeleteRequest": {
+    "com.flyio.machines#DeleteSecretKeyRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -5846,10 +5868,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#SecretkeyDelete": {
+    "com.flyio.machines#DeleteSecretKey": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretkeyDeleteRequest"
+        "target": "com.flyio.machines#DeleteSecretKeyRequest"
       },
       "output": {
         "target": "com.flyio.machines#DeleteSecretkeyResponse"
@@ -5871,21 +5893,7 @@
         "smithy.api#documentation": "Delete an app's secret key"
       }
     },
-    "com.flyio.machines#SecretkeyDecryptRequestAssociatedDataList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SecretkeyDecryptRequestCiphertextList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SecretkeyDecryptRequest": {
+    "com.flyio.machines#DecryptSecretKeyRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -5912,10 +5920,10 @@
           }
         },
         "associated_data": {
-          "target": "com.flyio.machines#SecretkeyDecryptRequestAssociatedDataList"
+          "target": "smithy.api#String"
         },
         "ciphertext": {
-          "target": "com.flyio.machines#SecretkeyDecryptRequestCiphertextList"
+          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -5926,22 +5934,18 @@
       "type": "structure",
       "members": {
         "plaintext": {
-          "target": "com.flyio.machines#DecryptSecretkeyResponsePlaintextList"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {}
+          }
         }
       },
       "traits": {}
     },
-    "com.flyio.machines#DecryptSecretkeyResponsePlaintextList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SecretkeyDecrypt": {
+    "com.flyio.machines#DecryptSecretKey": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretkeyDecryptRequest"
+        "target": "com.flyio.machines#DecryptSecretKeyRequest"
       },
       "output": {
         "target": "com.flyio.machines#DecryptSecretkeyResponse"
@@ -5966,21 +5970,7 @@
         "smithy.api#documentation": "Decrypt with a secret key"
       }
     },
-    "com.flyio.machines#SecretkeyEncryptRequestAssociatedDataList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SecretkeyEncryptRequestPlaintextList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SecretkeyEncryptRequest": {
+    "com.flyio.machines#EncryptSecretKeyRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -6007,10 +5997,13 @@
           }
         },
         "associated_data": {
-          "target": "com.flyio.machines#SecretkeyEncryptRequestAssociatedDataList"
+          "target": "smithy.api#String"
         },
         "plaintext": {
-          "target": "com.flyio.machines#SecretkeyEncryptRequestPlaintextList"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {}
+          }
         }
       },
       "traits": {
@@ -6021,22 +6014,15 @@
       "type": "structure",
       "members": {
         "ciphertext": {
-          "target": "com.flyio.machines#EncryptSecretkeyResponseCiphertextList"
+          "target": "smithy.api#String"
         }
       },
       "traits": {}
     },
-    "com.flyio.machines#EncryptSecretkeyResponseCiphertextList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SecretkeyEncrypt": {
+    "com.flyio.machines#EncryptSecretKey": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretkeyEncryptRequest"
+        "target": "com.flyio.machines#EncryptSecretKeyRequest"
       },
       "output": {
         "target": "com.flyio.machines#EncryptSecretkeyResponse"
@@ -6061,14 +6047,14 @@
         "smithy.api#documentation": "Encrypt with a secret key"
       }
     },
-    "com.flyio.machines#SecretkeyGenerateRequestValueList": {
+    "com.flyio.machines#GenerateSecretKeyRequestValueList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Integer"
       },
       "traits": {}
     },
-    "com.flyio.machines#SecretkeyGenerateRequest": {
+    "com.flyio.machines#GenerateSecretKeyRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -6091,17 +6077,17 @@
           "target": "smithy.api#String"
         },
         "value": {
-          "target": "com.flyio.machines#SecretkeyGenerateRequestValueList"
+          "target": "com.flyio.machines#GenerateSecretKeyRequestValueList"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#SecretkeyGenerate": {
+    "com.flyio.machines#GenerateSecretKey": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretkeyGenerateRequest"
+        "target": "com.flyio.machines#GenerateSecretKeyRequest"
       },
       "output": {
         "target": "com.flyio.machines#SetSecretkeyResponse"
@@ -6115,6 +6101,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -6126,14 +6115,7 @@
         "smithy.api#documentation": "Generate a random secret key"
       }
     },
-    "com.flyio.machines#SecretkeySignRequestPlaintextList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SecretkeySignRequest": {
+    "com.flyio.machines#SignSecretKeyRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -6160,7 +6142,10 @@
           }
         },
         "plaintext": {
-          "target": "com.flyio.machines#SecretkeySignRequestPlaintextList"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {}
+          }
         }
       },
       "traits": {
@@ -6171,22 +6156,15 @@
       "type": "structure",
       "members": {
         "signature": {
-          "target": "com.flyio.machines#SignSecretkeyResponseSignatureList"
+          "target": "smithy.api#String"
         }
       },
       "traits": {}
     },
-    "com.flyio.machines#SignSecretkeyResponseSignatureList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SecretkeySign": {
+    "com.flyio.machines#SignSecretKey": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretkeySignRequest"
+        "target": "com.flyio.machines#SignSecretKeyRequest"
       },
       "output": {
         "target": "com.flyio.machines#SignSecretkeyResponse"
@@ -6211,21 +6189,7 @@
         "smithy.api#documentation": "Sign with a secret key"
       }
     },
-    "com.flyio.machines#SecretkeyVerifyRequestPlaintextList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SecretkeyVerifyRequestSignatureList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#Integer"
-      },
-      "traits": {}
-    },
-    "com.flyio.machines#SecretkeyVerifyRequest": {
+    "com.flyio.machines#VerifySecretKeyRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -6252,20 +6216,23 @@
           }
         },
         "plaintext": {
-          "target": "com.flyio.machines#SecretkeyVerifyRequestPlaintextList"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {}
+          }
         },
         "signature": {
-          "target": "com.flyio.machines#SecretkeyVerifyRequestSignatureList"
+          "target": "smithy.api#String"
         }
       },
       "traits": {
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#SecretkeyVerify": {
+    "com.flyio.machines#VerifySecretKey": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretkeyVerifyRequest"
+        "target": "com.flyio.machines#VerifySecretKeyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6290,7 +6257,7 @@
         "smithy.api#documentation": "Verify with a secret key"
       }
     },
-    "com.flyio.machines#SecretsListRequest": {
+    "com.flyio.machines#ListSecretsRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -6357,10 +6324,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#SecretsList": {
+    "com.flyio.machines#ListSecrets": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretsListRequest"
+        "target": "com.flyio.machines#ListSecretsRequest"
       },
       "output": {
         "target": "com.flyio.machines#AppSecrets"
@@ -6382,7 +6349,7 @@
         "smithy.api#documentation": "List app secrets belonging to an app"
       }
     },
-    "com.flyio.machines#SecretsUpdateRequestValuesMap": {
+    "com.flyio.machines#UpdateSecretsRequestValuesMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -6392,7 +6359,7 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#SecretsUpdateRequest": {
+    "com.flyio.machines#UpdateSecretsRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -6404,7 +6371,7 @@
           }
         },
         "values": {
-          "target": "com.flyio.machines#SecretsUpdateRequestValuesMap"
+          "target": "com.flyio.machines#UpdateSecretsRequestValuesMap"
         }
       },
       "traits": {
@@ -6436,10 +6403,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#SecretsUpdate": {
+    "com.flyio.machines#UpdateSecrets": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretsUpdateRequest"
+        "target": "com.flyio.machines#UpdateSecretsRequest"
       },
       "output": {
         "target": "com.flyio.machines#AppSecretsUpdateResp"
@@ -6453,6 +6420,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -6464,7 +6434,7 @@
         "smithy.api#documentation": "Update app secrets belonging to an app"
       }
     },
-    "com.flyio.machines#SecretGetRequest": {
+    "com.flyio.machines#GetSecretRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -6502,10 +6472,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#SecretGet": {
+    "com.flyio.machines#GetSecret": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretGetRequest"
+        "target": "com.flyio.machines#GetSecretRequest"
       },
       "output": {
         "target": "com.flyio.machines#AppSecret"
@@ -6527,7 +6497,7 @@
         "smithy.api#documentation": "Get an app secret"
       }
     },
-    "com.flyio.machines#SecretCreateRequest": {
+    "com.flyio.machines#CreateSecretRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -6584,10 +6554,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#SecretCreate": {
+    "com.flyio.machines#CreateSecret": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretCreateRequest"
+        "target": "com.flyio.machines#CreateSecretRequest"
       },
       "output": {
         "target": "com.flyio.machines#SetAppSecretResponse"
@@ -6601,6 +6571,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -6612,7 +6585,7 @@
         "smithy.api#documentation": "Create or update Secret"
       }
     },
-    "com.flyio.machines#SecretDeleteRequest": {
+    "com.flyio.machines#DeleteSecretRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -6651,10 +6624,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#SecretDelete": {
+    "com.flyio.machines#DeleteSecret": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#SecretDeleteRequest"
+        "target": "com.flyio.machines#DeleteSecretRequest"
       },
       "output": {
         "target": "com.flyio.machines#DeleteAppSecretResponse"
@@ -6676,7 +6649,7 @@
         "smithy.api#documentation": "Delete an app secret"
       }
     },
-    "com.flyio.machines#VolumesListRequest": {
+    "com.flyio.machines#ListVolumesRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -6810,18 +6783,18 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#VolumesListResponseBodyList": {
+    "com.flyio.machines#ListVolumesResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.flyio.machines#Volume"
       },
       "traits": {}
     },
-    "com.flyio.machines#VolumesListResponse": {
+    "com.flyio.machines#ListVolumesResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.flyio.machines#VolumesListResponseBodyList",
+          "target": "com.flyio.machines#ListVolumesResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -6832,13 +6805,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.flyio.machines#VolumesList": {
+    "com.flyio.machines#ListVolumes": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#VolumesListRequest"
+        "target": "com.flyio.machines#ListVolumesRequest"
       },
       "output": {
-        "target": "com.flyio.machines#VolumesListResponse"
+        "target": "com.flyio.machines#ListVolumesResponse"
       },
       "errors": [
         {
@@ -6857,7 +6830,7 @@
         "smithy.api#documentation": "List Volumes\n\nList all volumes associated with a specific app."
       }
     },
-    "com.flyio.machines#VolumesCreateRequest": {
+    "com.flyio.machines#CreateVolumeRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -6921,10 +6894,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#VolumesCreate": {
+    "com.flyio.machines#CreateVolume": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#VolumesCreateRequest"
+        "target": "com.flyio.machines#CreateVolumeRequest"
       },
       "output": {
         "target": "com.flyio.machines#Volume"
@@ -6938,6 +6911,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -6949,7 +6925,7 @@
         "smithy.api#documentation": "Create Volume\n\nCreate a volume for a specific app using the details provided in the request body."
       }
     },
-    "com.flyio.machines#VolumesGetByIdRequest": {
+    "com.flyio.machines#GetVolumeByIdRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -6973,10 +6949,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#VolumesGetById": {
+    "com.flyio.machines#GetVolumeById": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#VolumesGetByIdRequest"
+        "target": "com.flyio.machines#GetVolumeByIdRequest"
       },
       "output": {
         "target": "com.flyio.machines#Volume"
@@ -6998,7 +6974,7 @@
         "smithy.api#documentation": "Get Volume\n\nRetrieve details about a specific volume by its ID within an app."
       }
     },
-    "com.flyio.machines#VolumesUpdateRequest": {
+    "com.flyio.machines#UpdateVolumeRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -7028,10 +7004,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#VolumesUpdate": {
+    "com.flyio.machines#UpdateVolume": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#VolumesUpdateRequest"
+        "target": "com.flyio.machines#UpdateVolumeRequest"
       },
       "output": {
         "target": "com.flyio.machines#Volume"
@@ -7056,7 +7032,7 @@
         "smithy.api#documentation": "Update Volume\n\nUpdate a volume's configuration using the details provided in the request body."
       }
     },
-    "com.flyio.machines#VolumeDeleteRequest": {
+    "com.flyio.machines#DeleteVolumeRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -7080,10 +7056,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#VolumeDelete": {
+    "com.flyio.machines#DeleteVolume": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#VolumeDeleteRequest"
+        "target": "com.flyio.machines#DeleteVolumeRequest"
       },
       "output": {
         "target": "com.flyio.machines#Volume"
@@ -7094,6 +7070,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -7105,7 +7084,7 @@
         "smithy.api#documentation": "Destroy Volume\n\nDelete a specific volume within an app by volume ID."
       }
     },
-    "com.flyio.machines#VolumesExtendRequest": {
+    "com.flyio.machines#ExtendVolumeRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -7144,10 +7123,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#VolumesExtend": {
+    "com.flyio.machines#ExtendVolume": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#VolumesExtendRequest"
+        "target": "com.flyio.machines#ExtendVolumeRequest"
       },
       "output": {
         "target": "com.flyio.machines#ExtendVolumeResponse"
@@ -7172,7 +7151,7 @@
         "smithy.api#documentation": "Extend Volume\n\nExtend a volume's size within an app using the details provided in the request body."
       }
     },
-    "com.flyio.machines#VolumesListSnapshotsRequest": {
+    "com.flyio.machines#ListVolumeSnapshotsRequest": {
       "type": "structure",
       "members": {
         "app_name": {
@@ -7223,18 +7202,18 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#VolumesListSnapshotsResponseBodyList": {
+    "com.flyio.machines#ListVolumeSnapshotsResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.flyio.machines#VolumeSnapshot"
       },
       "traits": {}
     },
-    "com.flyio.machines#VolumesListSnapshotsResponse": {
+    "com.flyio.machines#ListVolumeSnapshotsResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.flyio.machines#VolumesListSnapshotsResponseBodyList",
+          "target": "com.flyio.machines#ListVolumeSnapshotsResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -7245,13 +7224,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.flyio.machines#VolumesListSnapshots": {
+    "com.flyio.machines#ListVolumeSnapshots": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#VolumesListSnapshotsRequest"
+        "target": "com.flyio.machines#ListVolumeSnapshotsRequest"
       },
       "output": {
-        "target": "com.flyio.machines#VolumesListSnapshotsResponse"
+        "target": "com.flyio.machines#ListVolumeSnapshotsResponse"
       },
       "errors": [
         {
@@ -7311,6 +7290,9 @@
         },
         {
           "target": "com.flyio.machines#NotFound"
+        },
+        {
+          "target": "com.flyio.machines#Conflict"
         }
       ],
       "traits": {
@@ -7322,7 +7304,7 @@
         "smithy.api#documentation": "Create Snapshot\n\nCreate a snapshot for a specific volume within an app."
       }
     },
-    "com.flyio.machines#MachinesOrgListRequest": {
+    "com.flyio.machines#ListOrgMachinesRequest": {
       "type": "structure",
       "members": {
         "org_slug": {
@@ -7483,10 +7465,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#MachinesOrgList": {
+    "com.flyio.machines#ListOrgMachines": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#MachinesOrgListRequest"
+        "target": "com.flyio.machines#ListOrgMachinesRequest"
       },
       "output": {
         "target": "com.flyio.machines#OrgMachinesResponse"
@@ -7508,7 +7490,7 @@
         "smithy.api#documentation": "List All Machines\n\nList all Machines associated with a specific organization. Machines are sorted by their `updated_at` timestamps, oldest to newest.\n\nThis API call represents \"a point in time\". Recent machine changes, including creations and destructions, may take time to propagate. When polling with `updated_after`, offset your timestamps to catch late-arriving events."
       }
     },
-    "com.flyio.machines#VolumesOrgListRequest": {
+    "com.flyio.machines#ListOrgVolumesRequest": {
       "type": "structure",
       "members": {
         "org_slug": {
@@ -7715,10 +7697,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#VolumesOrgList": {
+    "com.flyio.machines#ListOrgVolumes": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#VolumesOrgListRequest"
+        "target": "com.flyio.machines#ListOrgVolumesRequest"
       },
       "output": {
         "target": "com.flyio.machines#OrgVolumesResponse"
@@ -7742,7 +7724,7 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#PlatformPlacementsPostRequest": {
+    "com.flyio.machines#GetPlacementsRequest": {
       "type": "structure",
       "members": {
         "compute": {
@@ -7817,10 +7799,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#PlatformPlacementsPost": {
+    "com.flyio.machines#GetPlacements": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#PlatformPlacementsPostRequest"
+        "target": "com.flyio.machines#GetPlacementsRequest"
       },
       "output": {
         "target": "com.flyio.machines#MainGetPlacementsResponse"
@@ -7891,7 +7873,7 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#PlatformRegionsGet": {
+    "com.flyio.machines#GetRegions": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -7913,7 +7895,7 @@
         "smithy.api#documentation": "Get Regions\n\nList all regions on the platform with their details."
       }
     },
-    "com.flyio.machines#TokensAuthenticateRequest": {
+    "com.flyio.machines#AuthenticateTokenRequest": {
       "type": "structure",
       "members": {
         "header": {
@@ -7994,18 +7976,18 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#TokensAuthenticateResponseBodyList": {
+    "com.flyio.machines#AuthenticateTokenResponseBodyList": {
       "type": "list",
       "member": {
         "target": "com.flyio.machines#RootVerifiedToken"
       },
       "traits": {}
     },
-    "com.flyio.machines#TokensAuthenticateResponse": {
+    "com.flyio.machines#AuthenticateTokenResponse": {
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.flyio.machines#TokensAuthenticateResponseBodyList",
+          "target": "com.flyio.machines#AuthenticateTokenResponseBodyList",
           "traits": {
             "com.distilled.openapi#rawResponse": {},
             "smithy.api#required": {}
@@ -8016,13 +7998,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.flyio.machines#TokensAuthenticate": {
+    "com.flyio.machines#AuthenticateToken": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#TokensAuthenticateRequest"
+        "target": "com.flyio.machines#AuthenticateTokenRequest"
       },
       "output": {
-        "target": "com.flyio.machines#TokensAuthenticateResponse"
+        "target": "com.flyio.machines#AuthenticateTokenResponse"
       },
       "errors": [
         {
@@ -8173,7 +8155,7 @@
         "smithy.api#documentation": "Command is the command being executed on a machine. If this is specified,\nthe Machine must be set."
       }
     },
-    "com.flyio.machines#TokensAuthorizeRequest": {
+    "com.flyio.machines#AuthorizeTokenRequest": {
       "type": "structure",
       "members": {
         "access": {
@@ -8257,10 +8239,10 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#TokensAuthorize": {
+    "com.flyio.machines#AuthorizeToken": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#TokensAuthorizeRequest"
+        "target": "com.flyio.machines#AuthorizeTokenRequest"
       },
       "output": {
         "target": "com.flyio.machines#AuthorizeResponse"
@@ -8338,7 +8320,7 @@
       },
       "traits": {}
     },
-    "com.flyio.machines#CurrentTokenShow": {
+    "com.flyio.machines#GetCurrentToken": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -8355,7 +8337,7 @@
         "smithy.api#documentation": "Get Current Token Information\n\nGet information about the current macaroon token(s), including organizations, apps, user identity hashes, and machine restrictions"
       }
     },
-    "com.flyio.machines#TokensRequestKms": {
+    "com.flyio.machines#RequestKmsToken": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -8383,7 +8365,7 @@
         "smithy.api#documentation": "Request a Petsem token for accessing KMS\n\nThis site hosts documentation generated from the Fly.io Machines API OpenAPI specification. Visit our complete [Machines API docs](https://fly.io/docs/machines/api/apps-resource/) for details about using the Apps resource."
       }
     },
-    "com.flyio.machines#TokensRequestOIDCRequest": {
+    "com.flyio.machines#RequestOidcTokenRequest": {
       "type": "structure",
       "members": {
         "aud": {
@@ -8397,10 +8379,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#TokensRequestOIDC": {
+    "com.flyio.machines#RequestOidcToken": {
       "type": "operation",
       "input": {
-        "target": "com.flyio.machines#TokensRequestOIDCRequest"
+        "target": "com.flyio.machines#RequestOidcTokenRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8464,6 +8446,19 @@
         ]
       }
     },
+    "com.flyio.machines#Conflict": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 409,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 409
+          }
+        ]
+      }
+    },
     "com.flyio.machines#UnprocessableEntity": {
       "type": "structure",
       "members": {},
@@ -8477,237 +8472,250 @@
         ]
       }
     },
+    "com.flyio.machines#GatewayTimeout": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 408,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 408
+          }
+        ]
+      }
+    },
     "com.flyio.machines#FlyMachines": {
       "type": "service",
       "version": "1.0",
       "operations": [
         {
-          "target": "com.flyio.machines#AppsList"
+          "target": "com.flyio.machines#ListApps"
         },
         {
-          "target": "com.flyio.machines#AppsCreate"
+          "target": "com.flyio.machines#CreateApp"
         },
         {
-          "target": "com.flyio.machines#AppsShow"
+          "target": "com.flyio.machines#GetApp"
         },
         {
-          "target": "com.flyio.machines#AppsDelete"
+          "target": "com.flyio.machines#DeleteApp"
         },
         {
-          "target": "com.flyio.machines#AppCertificatesList"
+          "target": "com.flyio.machines#ListAppCertificates"
         },
         {
-          "target": "com.flyio.machines#AppCertificatesAcmeCreate"
+          "target": "com.flyio.machines#CreateAppAcmeCertificate"
         },
         {
-          "target": "com.flyio.machines#AppCertificatesCustomCreate"
+          "target": "com.flyio.machines#CreateAppCustomCertificate"
         },
         {
-          "target": "com.flyio.machines#AppCertificatesShow"
+          "target": "com.flyio.machines#GetAppCertificate"
         },
         {
-          "target": "com.flyio.machines#AppCertificatesDelete"
+          "target": "com.flyio.machines#DeleteAppCertificate"
         },
         {
-          "target": "com.flyio.machines#AppCertificatesAcmeDelete"
+          "target": "com.flyio.machines#DeleteAppAcmeCertificate"
         },
         {
-          "target": "com.flyio.machines#AppCertificatesCheck"
+          "target": "com.flyio.machines#CheckAppCertificate"
         },
         {
-          "target": "com.flyio.machines#AppCertificatesCustomDelete"
+          "target": "com.flyio.machines#DeleteAppCustomCertificate"
         },
         {
-          "target": "com.flyio.machines#AppCreateDeployToken"
+          "target": "com.flyio.machines#CreateAppDeployToken"
         },
         {
-          "target": "com.flyio.machines#AppIPAssignmentsList"
+          "target": "com.flyio.machines#ListAppIPAssignments"
         },
         {
-          "target": "com.flyio.machines#AppIPAssignmentsCreate"
+          "target": "com.flyio.machines#CreateAppIPAssignment"
         },
         {
-          "target": "com.flyio.machines#AppIPAssignmentsDelete"
+          "target": "com.flyio.machines#DeleteAppIPAssignment"
         },
         {
-          "target": "com.flyio.machines#MachinesList"
+          "target": "com.flyio.machines#ListMachines"
         },
         {
-          "target": "com.flyio.machines#MachinesCreate"
+          "target": "com.flyio.machines#CreateMachine"
         },
         {
-          "target": "com.flyio.machines#MachinesShow"
+          "target": "com.flyio.machines#GetMachine"
         },
         {
-          "target": "com.flyio.machines#MachinesUpdate"
+          "target": "com.flyio.machines#UpdateMachine"
         },
         {
-          "target": "com.flyio.machines#MachinesDelete"
+          "target": "com.flyio.machines#DeleteMachine"
         },
         {
-          "target": "com.flyio.machines#MachinesCordon"
+          "target": "com.flyio.machines#CordonMachine"
         },
         {
-          "target": "com.flyio.machines#MachinesListEvents"
+          "target": "com.flyio.machines#ListMachineEvents"
         },
         {
-          "target": "com.flyio.machines#MachinesExec"
+          "target": "com.flyio.machines#ExecMachine"
         },
         {
-          "target": "com.flyio.machines#MachinesShowLease"
+          "target": "com.flyio.machines#GetMachineLease"
         },
         {
-          "target": "com.flyio.machines#MachinesCreateLease"
+          "target": "com.flyio.machines#CreateMachineLease"
         },
         {
-          "target": "com.flyio.machines#MachinesReleaseLease"
+          "target": "com.flyio.machines#ReleaseMachineLease"
         },
         {
-          "target": "com.flyio.machines#MachinesGetMemory"
+          "target": "com.flyio.machines#GetMachineMemory"
         },
         {
-          "target": "com.flyio.machines#MachinesSetMemoryLimit"
+          "target": "com.flyio.machines#SetMachineMemoryLimit"
         },
         {
-          "target": "com.flyio.machines#MachinesReclaimMemory"
+          "target": "com.flyio.machines#ReclaimMachineMemory"
         },
         {
-          "target": "com.flyio.machines#MachinesShowMetadata"
+          "target": "com.flyio.machines#GetMachineMetadata"
         },
         {
-          "target": "com.flyio.machines#MachinesUpdateMetadata"
+          "target": "com.flyio.machines#UpdateMachineMetadata"
         },
         {
-          "target": "com.flyio.machines#MachinesUpdateMetadata2"
+          "target": "com.flyio.machines#PatchMachineMetadata"
         },
         {
-          "target": "com.flyio.machines#MachinesGetMetadataKey"
+          "target": "com.flyio.machines#GetMachineMetadataKey"
         },
         {
-          "target": "com.flyio.machines#MachinesUpsertMetadata"
+          "target": "com.flyio.machines#UpsertMachineMetadata"
         },
         {
-          "target": "com.flyio.machines#MachinesDeleteMetadata"
+          "target": "com.flyio.machines#DeleteMachineMetadata"
         },
         {
-          "target": "com.flyio.machines#MachinesListProcesses"
+          "target": "com.flyio.machines#ListMachineProcesses"
         },
         {
-          "target": "com.flyio.machines#MachinesRestart"
+          "target": "com.flyio.machines#RestartMachine"
         },
         {
-          "target": "com.flyio.machines#MachinesSignal"
+          "target": "com.flyio.machines#SignalMachine"
         },
         {
-          "target": "com.flyio.machines#MachinesStart"
+          "target": "com.flyio.machines#StartMachine"
         },
         {
-          "target": "com.flyio.machines#MachinesStop"
+          "target": "com.flyio.machines#StopMachine"
         },
         {
-          "target": "com.flyio.machines#MachinesSuspend"
+          "target": "com.flyio.machines#SuspendMachine"
         },
         {
-          "target": "com.flyio.machines#MachinesUncordon"
+          "target": "com.flyio.machines#UncordonMachine"
         },
         {
-          "target": "com.flyio.machines#MachinesListVersions"
+          "target": "com.flyio.machines#ListMachineVersions"
         },
         {
-          "target": "com.flyio.machines#MachinesWait"
+          "target": "com.flyio.machines#WaitMachine"
         },
         {
-          "target": "com.flyio.machines#SecretkeysList"
+          "target": "com.flyio.machines#ListSecretKeys"
         },
         {
-          "target": "com.flyio.machines#SecretkeyGet"
+          "target": "com.flyio.machines#GetSecretKey"
         },
         {
-          "target": "com.flyio.machines#SecretkeySet"
+          "target": "com.flyio.machines#SetSecretKey"
         },
         {
-          "target": "com.flyio.machines#SecretkeyDelete"
+          "target": "com.flyio.machines#DeleteSecretKey"
         },
         {
-          "target": "com.flyio.machines#SecretkeyDecrypt"
+          "target": "com.flyio.machines#DecryptSecretKey"
         },
         {
-          "target": "com.flyio.machines#SecretkeyEncrypt"
+          "target": "com.flyio.machines#EncryptSecretKey"
         },
         {
-          "target": "com.flyio.machines#SecretkeyGenerate"
+          "target": "com.flyio.machines#GenerateSecretKey"
         },
         {
-          "target": "com.flyio.machines#SecretkeySign"
+          "target": "com.flyio.machines#SignSecretKey"
         },
         {
-          "target": "com.flyio.machines#SecretkeyVerify"
+          "target": "com.flyio.machines#VerifySecretKey"
         },
         {
-          "target": "com.flyio.machines#SecretsList"
+          "target": "com.flyio.machines#ListSecrets"
         },
         {
-          "target": "com.flyio.machines#SecretsUpdate"
+          "target": "com.flyio.machines#UpdateSecrets"
         },
         {
-          "target": "com.flyio.machines#SecretGet"
+          "target": "com.flyio.machines#GetSecret"
         },
         {
-          "target": "com.flyio.machines#SecretCreate"
+          "target": "com.flyio.machines#CreateSecret"
         },
         {
-          "target": "com.flyio.machines#SecretDelete"
+          "target": "com.flyio.machines#DeleteSecret"
         },
         {
-          "target": "com.flyio.machines#VolumesList"
+          "target": "com.flyio.machines#ListVolumes"
         },
         {
-          "target": "com.flyio.machines#VolumesCreate"
+          "target": "com.flyio.machines#CreateVolume"
         },
         {
-          "target": "com.flyio.machines#VolumesGetById"
+          "target": "com.flyio.machines#GetVolumeById"
         },
         {
-          "target": "com.flyio.machines#VolumesUpdate"
+          "target": "com.flyio.machines#UpdateVolume"
         },
         {
-          "target": "com.flyio.machines#VolumeDelete"
+          "target": "com.flyio.machines#DeleteVolume"
         },
         {
-          "target": "com.flyio.machines#VolumesExtend"
+          "target": "com.flyio.machines#ExtendVolume"
         },
         {
-          "target": "com.flyio.machines#VolumesListSnapshots"
+          "target": "com.flyio.machines#ListVolumeSnapshots"
         },
         {
           "target": "com.flyio.machines#CreateVolumeSnapshot"
         },
         {
-          "target": "com.flyio.machines#MachinesOrgList"
+          "target": "com.flyio.machines#ListOrgMachines"
         },
         {
-          "target": "com.flyio.machines#VolumesOrgList"
+          "target": "com.flyio.machines#ListOrgVolumes"
         },
         {
-          "target": "com.flyio.machines#PlatformPlacementsPost"
+          "target": "com.flyio.machines#GetPlacements"
         },
         {
-          "target": "com.flyio.machines#PlatformRegionsGet"
+          "target": "com.flyio.machines#GetRegions"
         },
         {
-          "target": "com.flyio.machines#TokensAuthenticate"
+          "target": "com.flyio.machines#AuthenticateToken"
         },
         {
-          "target": "com.flyio.machines#TokensAuthorize"
+          "target": "com.flyio.machines#AuthorizeToken"
         },
         {
-          "target": "com.flyio.machines#CurrentTokenShow"
+          "target": "com.flyio.machines#GetCurrentToken"
         },
         {
-          "target": "com.flyio.machines#TokensRequestKms"
+          "target": "com.flyio.machines#RequestKmsToken"
         },
         {
-          "target": "com.flyio.machines#TokensRequestOIDC"
+          "target": "com.flyio.machines#RequestOidcToken"
         }
       ],
       "traits": {
