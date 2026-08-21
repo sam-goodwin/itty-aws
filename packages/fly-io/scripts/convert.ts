@@ -16,12 +16,13 @@
  *             → .generated-specs/mpg.json
  *             patches: patches/mpg/*.patch.json
  *
- *   addons    GraphQL  scripts/addons-introspection.ts (thin flyctl add-on
- *             schema for Tigris + Upstash Redis)
+ *   addons    GraphQL  specs/addons/schema.json (thin flyctl add-on
+ *             introspection for Tigris + Upstash Redis)
  *             → .generated-specs/addons.json
+ *             patches: patches/addons/*.patch.json (Smithy)
  *
- * `scripts/generate.ts` also runs with `patchesDir: false` — OpenAPI patches
- * apply here; GraphQL extra ops (agreedToProviderTos) are injected below.
+ * `scripts/generate.ts` also runs with `patchesDir: false` — OpenAPI and
+ * GraphQL patches apply here.
  */
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
@@ -30,13 +31,13 @@ import { ERROR_MATCHERS_TRAIT } from "@distilled.cloud/core/codegen/openapi";
 import {
   convertGraphQLToSmithy,
   PRELUDE,
+  readIntrospection,
 } from "@distilled.cloud/core/codegen/graphql";
 import {
   applyOperation,
   isStaleTargetError,
   type PatchFile,
 } from "@distilled.cloud/core/json-patch";
-import { addonsIntrospection } from "./addons-introspection.ts";
 
 const root = `${import.meta.dir}/..`;
 const patchesRoot = path.join(root, "patches");
@@ -274,8 +275,14 @@ const graphqlTraits = {
   payload: "com.flyio.graphql#payload",
 } as const;
 
+const addonsSchema = readIntrospection(
+  JSON.parse(
+    await fs.readFile(path.join(root, "specs/addons/schema.json"), "utf8"),
+  ),
+);
+
 const addonsResult = convertGraphQLToSmithy({
-  schema: addonsIntrospection(),
+  schema: addonsSchema,
   namespace: "com.flyio.addons",
   serviceName: "FlyAddons",
   serviceTitle: "Fly GraphQL add-ons",
@@ -294,77 +301,6 @@ const addonsResult = convertGraphQLToSmithy({
   },
   relay: { after: "after", first: "first" },
 });
-
-// Inject agreedToProviderTos — the real field lives on Organization and
-// takes an argument, so the generic walker cannot select it. Baked document
-// matches flyctl's AgreedToProviderTos query (org-scoped).
-{
-  const ns = "com.flyio.addons";
-  const model = addonsResult.model;
-  const opName = "AgreedToProviderTos";
-  const reqId = `${ns}#${opName}Request`;
-  const resId = `${ns}#${opName}Response`;
-  const opId = `${ns}#${opName}`;
-  model.shapes[reqId] = {
-    type: "structure",
-    members: {
-      slug: {
-        target: "smithy.api#String",
-        traits: { "smithy.api#required": {} },
-      },
-      providerName: {
-        target: "smithy.api#String",
-        traits: { "smithy.api#required": {} },
-      },
-    },
-    traits: {
-      "smithy.api#input": {},
-      [graphqlTraits.operation]: {
-        query:
-          "query agreedToProviderTos($slug: String!, $providerName: String!) {\n" +
-          "  organization(slug: $slug) {\n" +
-          "    agreedToProviderTos(providerName: $providerName)\n" +
-          "  }\n" +
-          "}",
-        operationName: "agreedToProviderTos",
-        type: "query",
-      },
-    },
-  };
-  model.shapes[resId] = {
-    type: "structure",
-    members: {
-      result: {
-        target: "smithy.api#Boolean",
-        traits: {
-          [graphqlTraits.payload]: {},
-          "smithy.api#required": {},
-          [graphqlTraits.nullable]: {},
-        },
-      },
-    },
-    traits: {
-      "smithy.api#output": {},
-      [graphqlTraits.responsePath]: "organization.agreedToProviderTos",
-    },
-  };
-  model.shapes[opId] = {
-    type: "operation",
-    input: { target: reqId },
-    output: { target: resId },
-    traits: {
-      "smithy.api#http": { method: "POST", uri: "/graphql", code: 200 },
-      "smithy.api#readonly": {},
-      "smithy.api#documentation":
-        "Whether the organization has agreed to an add-on provider's ToS.",
-    },
-  };
-  const serviceId = `${ns}#FlyAddons`;
-  const service = model.shapes[serviceId];
-  if (service?.type === "service") {
-    service.operations = [...(service.operations ?? []), { target: opId }];
-  }
-}
 
 {
   const addonsPatchFiles = await listPatchFiles(
@@ -397,5 +333,5 @@ await fs.writeFile(
 console.log(
   `✅ addons: ${addonsResult.converted} GraphQL operations ` +
     `(${addonsResult.paginated} paginated, ${addonsResult.failed} failed, ` +
-    `${addonsResult.shapeCount} shapes) + agreedToProviderTos → ${addonsOut}`,
+    `${addonsResult.shapeCount} shapes) → ${addonsOut}`,
 );
