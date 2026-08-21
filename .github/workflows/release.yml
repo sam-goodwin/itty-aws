@@ -26,6 +26,9 @@ permissions:
   contents: write
   id-token: write
 
+env:
+  ALCHEMY_REPO: alchemy-run/distilled
+
 jobs:
   build:
     name: Build and pack
@@ -84,13 +87,17 @@ jobs:
         name: Commit and tag
         env:
           VERSION: ${{ steps.release.outputs.version }}
+          CHANNEL: ${{ steps.release.outputs.channel }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           TAG="v${VERSION}"
           git config user.email "alchemy-version-bot[bot]@users.noreply.github.com"
           git config user.name "alchemy-version-bot[bot]"
+          if [[ "$CHANNEL" != "tag" ]]; then bun scripts/release/release-notes.ts "$TAG"; fi
           mapfile -t PACKAGE_JSONS < <(jq -r '.[] | "\(.)/package.json"' release-package-dirs.json)
           git add "${PACKAGE_JSONS[@]}" pnpm-lock.yaml
+          if [[ "$CHANNEL" != "tag" ]]; then git add CHANGELOG.md; fi
           if ! git diff --cached --quiet; then git commit -m "chore(release): ${VERSION}"; fi
           if ! git rev-parse --verify "refs/tags/${TAG}" >/dev/null 2>&1; then git tag -a "$TAG" -m "Release ${TAG}"; fi
           git push origin HEAD
@@ -144,7 +151,17 @@ jobs:
         run: bash scripts/release/publish.sh
 
       - name: Create GitHub release
+        if: needs.build.outputs.channel != 'tag'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
           VERSION: ${{ needs.build.outputs.version }}
-        run: gh release view "v${VERSION}" >/dev/null 2>&1 || gh release create "v${VERSION}" --verify-tag --generate-notes --title "v${VERSION}"
+          CHANNEL: ${{ needs.build.outputs.channel }}
+        run: bun scripts/release/github-release.ts "v${VERSION}" "$CHANNEL"
+
+      - name: Notify Discord
+        if: needs.build.outputs.channel != 'tag'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          VERSION: ${{ needs.build.outputs.version }}
+          CHANNEL: ${{ needs.build.outputs.channel }}
+        run: bun scripts/release/discord-notify.ts "v${VERSION}" "$CHANNEL"
