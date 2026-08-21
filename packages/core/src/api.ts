@@ -276,7 +276,11 @@ export function make<
 
   // Make the operation itself yieldable: `yield* operation` captures the
   // current context and returns a requirement-free call function (mirrors
-  // the distilled repo's OperationMethod).
+  // the distilled repo's OperationMethod). The captured context is a
+  // FALLBACK, not a snapshot: entries present on the calling fiber at call
+  // time win, so per-call overrides — e.g. providing `Endpoint` with a
+  // discovered data-plane address around one invocation — take effect
+  // instead of being shadowed by the context captured at yield time.
   const Proto = {
     [Symbol.iterator](this: any) {
       return new SingleShotGen(this.asEffect());
@@ -288,7 +292,9 @@ export function make<
       return Effect.map(
         Effect.context(),
         (context) => (input: unknown) =>
-          Effect.provideContext(fn(input), context),
+          Effect.updateContext(fn(input), (current: Context.Context<never>) =>
+            Context.merge(context, current),
+          ),
       );
     },
   };
@@ -432,11 +438,15 @@ export function makePaginated<
   // `yield* operation` runs through `make`'s Proto.asEffect, which builds a
   // fresh arrow and would drop `.pages` / `.items` (distilled #145). Override
   // it here — Proto's `[Symbol.iterator]`/`pipe` dispatch on `this`, so both
-  // pick this up. Only paginated operations pay for it.
+  // pick this up. Only paginated operations pay for it. Same fallback (not
+  // snapshot) semantics as Proto.asEffect: call-time fiber entries win over
+  // the captured context.
   fn.asEffect = () =>
     Effect.map(Effect.context(), (context) =>
       withStreams((input: unknown) =>
-        Effect.provideContext(fn(input), context),
+        Effect.updateContext(fn(input), (current: Context.Context<never>) =>
+          Context.merge(context, current),
+        ),
       ),
     );
 
