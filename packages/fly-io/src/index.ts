@@ -12,7 +12,7 @@
  * ```ts
  * import * as Fly from "@distilled.cloud/fly-io";
  *
- * yield* Fly.machines.appsList({ org_slug });
+ * yield* Fly.machines.listApps({ org_slug });
  * yield* Fly.mpg.createCluster({
  *   name, region, org_slug, plan, pg_major_version: "16", storage_in_gb: 10,
  * });
@@ -26,7 +26,7 @@
  * ```ts
  * import * as Machines from "@distilled.cloud/fly-io/machines";
  *
- * yield* Machines.appsList({ org_slug });
+ * yield* Machines.listApps({ org_slug });
  * ```
  */
 export * from "./credentials.ts";
