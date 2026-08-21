@@ -7728,6 +7728,7 @@ export const deleteV1IntegrationsById: API.OperationMethod<
 export type DeleteV1ProjectsByIdError =
   | BadRequest
   | NotFound
+  | Conflict
   | UnprocessableEntity
   | PrismaPostgresOpError;
 /** Delete project Deletes the project with the given ID. */
@@ -7742,6 +7743,7 @@ export const deleteV1ProjectsById: API.OperationMethod<
   errors: [
     BadRequest,
     NotFound,
+    Conflict,
     UnprocessableEntity,
     UnknownPrismaPostgresError,
   ],
@@ -9025,6 +9027,7 @@ export const postV1Builds: API.OperationMethod<
 
 export type PostV1ConnectionsError =
   | NotFound
+  | Conflict
   | UnprocessableEntity
   | PrismaPostgresOpError;
 /** Create connection Creates a new connection for the specified database. */
@@ -9036,7 +9039,7 @@ export const postV1Connections: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PostV1ConnectionsRequest,
   output: PostV1ConnectionsResponse,
-  errors: [NotFound, UnprocessableEntity, UnknownPrismaPostgresError],
+  errors: [NotFound, Conflict, UnprocessableEntity, UnknownPrismaPostgresError],
   protocol: PrismaPostgresProtocol,
   retry: Retry.Retry,
 }));
@@ -9060,6 +9063,7 @@ export type PostV1DatabasesError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | UnprocessableEntity
   | PrismaPostgresOpError;
 /** Create database Creates a new database in the specified project. */
@@ -9075,6 +9079,7 @@ export const postV1Databases: API.OperationMethod<
     BadRequest,
     Forbidden,
     NotFound,
+    Conflict,
     UnprocessableEntity,
     UnknownPrismaPostgresError,
   ],
@@ -9195,7 +9200,10 @@ export const postV1EnvironmentVariables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PostV1ProjectsError = UnprocessableEntity | PrismaPostgresOpError;
+export type PostV1ProjectsError =
+  | Conflict
+  | UnprocessableEntity
+  | PrismaPostgresOpError;
 /** Create project with a postgres database Creates a new project with a postgres database. */
 export const postV1Projects: API.OperationMethod<
   PostV1ProjectsRequest,
@@ -9205,7 +9213,7 @@ export const postV1Projects: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PostV1ProjectsRequest,
   output: PostV1ProjectsResponse,
-  errors: [UnprocessableEntity, UnknownPrismaPostgresError],
+  errors: [Conflict, UnprocessableEntity, UnknownPrismaPostgresError],
   protocol: PrismaPostgresProtocol,
   retry: Retry.Retry,
 }));
@@ -9270,6 +9278,7 @@ export type PostV1ProjectsByProjectIdDatabasesError =
   | BadRequest
   | Forbidden
   | NotFound
+  | Conflict
   | UnprocessableEntity
   | PrismaPostgresOpError;
 /** Create database Creates a new database for the given project. */
@@ -9285,6 +9294,7 @@ export const postV1ProjectsByProjectIdDatabases: API.OperationMethod<
     BadRequest,
     Forbidden,
     NotFound,
+    Conflict,
     UnprocessableEntity,
     UnknownPrismaPostgresError,
   ],

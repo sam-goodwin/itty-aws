@@ -6230,6 +6230,9 @@
           "target": "com.prisma.postgres#NotFound"
         },
         {
+          "target": "com.prisma.postgres#Conflict"
+        },
+        {
           "target": "com.prisma.postgres#UnprocessableEntity"
         }
       ],
@@ -8038,6 +8041,9 @@
         },
         {
           "target": "com.prisma.postgres#NotFound"
+        },
+        {
+          "target": "com.prisma.postgres#Conflict"
         },
         {
           "target": "com.prisma.postgres#UnprocessableEntity"
@@ -11897,6 +11903,9 @@
       },
       "errors": [
         {
+          "target": "com.prisma.postgres#Conflict"
+        },
+        {
           "target": "com.prisma.postgres#UnprocessableEntity"
         }
       ],
@@ -12225,6 +12234,9 @@
         },
         {
           "target": "com.prisma.postgres#NotFound"
+        },
+        {
+          "target": "com.prisma.postgres#Conflict"
         },
         {
           "target": "com.prisma.postgres#UnprocessableEntity"
@@ -14747,6 +14759,9 @@
         },
         {
           "target": "com.prisma.postgres#NotFound"
+        },
+        {
+          "target": "com.prisma.postgres#Conflict"
         },
         {
           "target": "com.prisma.postgres#UnprocessableEntity"
