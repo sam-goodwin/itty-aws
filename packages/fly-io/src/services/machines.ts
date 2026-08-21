@@ -624,6 +624,17 @@ export const CreateAppDeployTokenRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateAppDeployTokenRequest",
 }) as any as S.Schema<CreateAppDeployTokenRequest>;
 
+export interface CreateAppDeployTokenResponse {
+  token?: string;
+}
+export const CreateAppDeployTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    token: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateAppDeployTokenResponse",
+}) as any as S.Schema<CreateAppDeployTokenResponse>;
+
 export interface CreateAppIPAssignmentRequest {
   /** Fly App Name */
   app_name: string;
@@ -4738,12 +4749,12 @@ export type CreateAppDeployTokenError =
 /** Create App deploy token */
 export const createAppDeployToken: API.OperationMethod<
   CreateAppDeployTokenRequest,
-  CreateAppResponse,
+  CreateAppDeployTokenResponse,
   CreateAppDeployTokenError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAppDeployTokenRequest,
-  output: CreateAppResponse,
+  output: CreateAppDeployTokenResponse,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: FlyIoProtocol,
   retry: Retry.Retry,
