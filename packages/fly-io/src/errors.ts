@@ -72,6 +72,26 @@ applyErrorMatchers(SpritesNotEnabled, [
 ]);
 
 /**
+ * The Fly token cannot record add-on provider ToS agreement
+ * (`createExtensionTosAgreement`). GraphQL returns this as a 200
+ * with `Not authorized to access this createextensiontosagreement`.
+ */
+export class CreateExtensionTosAgreementNotAuthorized extends Schema.TaggedError<CreateExtensionTosAgreementNotAuthorized>()(
+  "CreateExtensionTosAgreementNotAuthorized",
+  {
+    code: Schema.optional(Schema.Int),
+    message: Schema.optional(Schema.String),
+  },
+).pipe(Category.withAuthError) {}
+applyErrorMatchers(CreateExtensionTosAgreementNotAuthorized, [
+  {
+    message: {
+      matches: "[Nn]ot authorized to access this createextensiontosagreement",
+    },
+  },
+]);
+
+/**
  * Errors any Fly.io operation may surface in addition to the status-mapped
  * per-operation errors.
  */

@@ -54,6 +54,7 @@ import {
 import {
   ConfigError as FlyConfigError,
   FlyIoParseError,
+  CreateExtensionTosAgreementNotAuthorized,
   SpritesNotEnabled,
   UnknownFlyIoError,
   type DefaultErrors,
@@ -75,6 +76,7 @@ import {
 export type FlyIoOpError =
   | DefaultErrors
   | ConfigError
+  | CreateExtensionTosAgreementNotAuthorized
   | HttpClientError.HttpClientError;
 
 /** Context (requirements) shared by Machines / MPG / GraphQL operations. */
@@ -539,12 +541,20 @@ const decodeEnvelope = Schema.decodeUnknownOption(GraphQLEnvelope);
 const matchGraphqlError = (
   status: number,
   errorBody: unknown,
-  headers?: Record<string, string | undefined>,
+  headers: Record<string, string | undefined> | undefined,
+  errorClasses: ReadonlyArray<unknown>,
 ): Effect.Effect<never> => {
   const envelope = decodeEnvelope(errorBody);
   if (envelope._tag === "Some" && envelope.value.errors?.length) {
     const first = envelope.value.errors[0]!;
     const message = first.message;
+    const typed = matchTypedError(errorClasses, status, [{ message }]);
+    if (typed !== undefined) return fail(typed);
+    if (
+      /not authorized to access this createextensiontosagreement/i.test(message)
+    ) {
+      return fail(new CreateExtensionTosAgreementNotAuthorized({ message }));
+    }
     const StatusClass = (HTTP_STATUS_MAP as Record<number, unknown>)[status] as
       | (new (args: {
           message: string;
@@ -623,6 +633,7 @@ const graphqlEncode = ({
 const graphqlDecode = ({
   response,
   outputAst,
+  errors,
 }: {
   readonly response: HttpClientResponse.HttpClientResponse;
   readonly outputAst: AST.AST;
@@ -646,7 +657,7 @@ const graphqlDecode = ({
 
     if (!parsed) {
       if (status >= 400) {
-        return yield* matchGraphqlError(status, text, headers);
+        return yield* matchGraphqlError(status, text, headers, errors);
       }
       return yield* fail(
         new FlyIoParseError({
@@ -663,7 +674,7 @@ const graphqlDecode = ({
       Array.isArray(envelope.errors) &&
       envelope.errors.length > 0;
     if (hasGraphQLErrors || status >= 400) {
-      return yield* matchGraphqlError(status, json, headers);
+      return yield* matchGraphqlError(status, json, headers, errors);
     }
 
     const path = getAnn(outputAst, responsePathSymbol) as string | undefined;

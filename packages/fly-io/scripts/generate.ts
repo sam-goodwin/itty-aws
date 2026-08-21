@@ -230,26 +230,34 @@ const addonsSpec = (model: any): SdkSpec => ({
   operationDecl: {
     contextType: "FlyIoOpContext",
     commonErrorType: "FlyIoOpError",
-    commonErrorClasses: [
-      "UnknownFlyIoError",
-      "FlyIoParseError",
-      "CreateExtensionTosAgreementNotAuthorized",
-    ],
+    commonErrorClasses: ["UnknownFlyIoError", "FlyIoParseError"],
     protocol: "FlyGraphqlProtocol",
     retry: "Retry.Retry",
   },
   postProcess: (code) => {
+    let next = code;
     if (
-      code.includes("Redacted.Redacted<") &&
-      !code.includes('from "effect/Redacted"')
+      next.includes("Redacted.Redacted<") &&
+      !next.includes('from "effect/Redacted"')
     ) {
-      return code.replace(
+      next = next.replace(
         `import * as S from "@distilled.cloud/core/schema";\n`,
         `import * as S from "@distilled.cloud/core/schema";\n` +
           `import type * as Redacted from "effect/Redacted";\n`,
       );
     }
-    return code;
+    if (
+      next.includes("CreateExtensionTosAgreementNotAuthorized") &&
+      !next.includes(
+        "CreateExtensionTosAgreementNotAuthorized, FlyIoParseError",
+      )
+    ) {
+      next = next.replace(
+        `import { FlyIoParseError, UnknownFlyIoError } from "../errors.ts";`,
+        `import { CreateExtensionTosAgreementNotAuthorized, FlyIoParseError, UnknownFlyIoError } from "../errors.ts";`,
+      );
+    }
+    return next;
   },
 });
 

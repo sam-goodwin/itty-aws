@@ -2540,7 +2540,12 @@
           "uri": "/graphql",
           "code": 200
         }
-      }
+      },
+      "errors": [
+        {
+          "target": "com.flyio.addons#CreateExtensionTosAgreementNotAuthorized"
+        }
+      ]
     },
     "com.flyio.addons#ResetAddOnPasswordInput": {
       "type": "structure",
@@ -2838,6 +2843,27 @@
         },
         "smithy.api#readonly": {},
         "smithy.api#documentation": "Whether the organization has agreed to an add-on provider's ToS."
+      }
+    },
+    "com.flyio.addons#CreateExtensionTosAgreementNotAuthorized": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Integer"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#error": "client",
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "message": {
+              "matches": "[Nn]ot authorized to access this createextensiontosagreement"
+            }
+          }
+        ]
       }
     }
   }

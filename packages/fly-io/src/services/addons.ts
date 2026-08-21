@@ -9,7 +9,11 @@ import {
   type FlyIoOpContext,
 } from "../protocol.ts";
 import { paginateRelay } from "../pagination.ts";
-import { FlyIoParseError, UnknownFlyIoError } from "../errors.ts";
+import {
+  CreateExtensionTosAgreementNotAuthorized,
+  FlyIoParseError,
+  UnknownFlyIoError,
+} from "../errors.ts";
 import * as Retry from "../retry.ts";
 
 export type { FlyIoOpError, FlyIoOpContext };
@@ -1232,7 +1236,9 @@ export const createAddOn: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateExtensionTosAgreementError = FlyIoOpError;
+export type CreateExtensionTosAgreementError =
+  | CreateExtensionTosAgreementNotAuthorized
+  | FlyIoOpError;
 export const createExtensionTosAgreement: API.OperationMethod<
   CreateExtensionTosAgreementRequest,
   CreateExtensionTosAgreementResponse,
@@ -1241,7 +1247,11 @@ export const createExtensionTosAgreement: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateExtensionTosAgreementRequest,
   output: CreateExtensionTosAgreementResponse,
-  errors: [UnknownFlyIoError, FlyIoParseError],
+  errors: [
+    CreateExtensionTosAgreementNotAuthorized,
+    UnknownFlyIoError,
+    FlyIoParseError,
+  ],
   protocol: FlyGraphqlProtocol,
   retry: Retry.Retry,
 }));
