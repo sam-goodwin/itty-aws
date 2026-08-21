@@ -245,13 +245,16 @@ const haystackOf = (body: unknown, text: string): string => {
   return parts.join(" ");
 };
 
+const errorEnv = (body: unknown): { message?: string; code?: string } =>
+  spritesErrorEnvelope(body) ?? flyErrorEnvelope(body) ?? {};
+
 const failHttp = (
   status: number,
   body: unknown,
   text: string,
   headers: Record<string, string | undefined>,
 ): Effect.Effect<never> => {
-  const env = spritesErrorEnvelope(body) ?? flyErrorEnvelope(body) ?? {};
+  const env = errorEnv(body);
   const message =
     env.message ?? (text.trim().length > 0 ? text.trim() : `HTTP ${status}`);
   if (status === 401 && SPRITES_NOT_ENABLED.test(haystackOf(body, message))) {
@@ -405,10 +408,10 @@ const mintOnce = (fly: Config) =>
   });
 
 const mintedTokens = new Map<string, string>();
-const mintInFlight = new Map<string, Effect.Effect<string>>();
+const mintInFlight = new Map<string, ReturnType<typeof mintOnce>>();
 
 /** Mint (and process-wide cache) a Sprites bearer from `FLY_API_TOKEN`. */
-const mintSpritesToken = (fly: Config): Effect.Effect<string> =>
+const mintSpritesToken = (fly: Config) =>
   Effect.gen(function* () {
     const key = Redacted.value(fly.apiKey);
     const hit = mintedTokens.get(key);
@@ -485,7 +488,7 @@ const decodeSpritesResponse = ({
     const headers = response.headers as Record<string, string | undefined>;
 
     if (status >= 400) {
-      const env = (nonJson ? undefined : spritesErrorEnvelope(json)) ?? {};
+      const env = nonJson ? {} : errorEnv(json);
       const message =
         env.message ??
         (nonJson && text.trim() ? text.trim() : `HTTP ${status}`);
@@ -551,7 +554,7 @@ export const SpritesProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
       encodeSpritesRequest(
         args,
       ) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
-    decode: decodeSpritesResponse,
+    decode: (args) => decodeSpritesResponse(args) as Effect.Effect<unknown>,
   }),
 );
 

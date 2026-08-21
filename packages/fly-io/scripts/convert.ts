@@ -312,10 +312,9 @@ const addonsResult = convertGraphQLToSmithy({
       try {
         applyOperation(addonsResult.model, op);
       } catch (error) {
-        if (isStaleTargetError(error)) {
-          console.warn(
-            `   ⚠️  stale addons patch ${file}: ${(error as Error).message}`,
-          );
+        const msg = error instanceof Error ? error.message : String(error);
+        if (isStaleTargetError(msg)) {
+          console.warn(`   ⚠️  stale addons patch ${file}: ${msg}`);
           continue;
         }
         throw error;
