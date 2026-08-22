@@ -532,7 +532,6 @@ export const DeleteDnsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteDnsRequest",
 }) as any as S.Schema<DeleteDnsRequest>;
 
-/** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface DeleteDnsResponse {}
 export const DeleteDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -866,10 +865,109 @@ export const GetDnsRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetDnsRequest" }) as any as S.Schema<GetDnsRequest>;
 
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface GetDnsResponse {}
+export type DnsGetResponseErrorsItemMissingType =
+  | "A"
+  | "AAAA"
+  | "CNAME"
+  | "HTTPS"
+  | "TXT"
+  | "SRV"
+  | "LOC"
+  | "MX"
+  | "NS"
+  | "CERT"
+  | "DNSKEY"
+  | "DS"
+  | "NAPTR"
+  | "SMIMEA"
+  | "SSHFP"
+  | "SVCB"
+  | "TLSA"
+  | "URI";
+export const DnsGetResponseErrorsItemMissingType = /*@__PURE__*/ S.String;
+
+export interface DnsGetResponseErrorsItemMissing {
+  /** DNS record content. */
+  content?: string | null;
+  /** DNS record name (or @ for the zone apex). */
+  name?: string | null;
+  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
+  priority?: number | null;
+  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
+  ttl?: number | null;
+  /** DNS record type. */
+  type?: DnsGetResponseErrorsItemMissingType | null;
+}
+export const DnsGetResponseErrorsItemMissing = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.Number)),
+    ttl: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(DnsGetResponseErrorsItemMissingType)),
+  }),
+).annotate({
+  identifier: "DnsGetResponseErrorsItemMissing",
+}) as any as S.Schema<DnsGetResponseErrorsItemMissing>;
+
+export interface DnsGetResponseErrorsItem {
+  code?: string | null;
+  /** List of records needed to enable an Email Routing zone. */
+  missing?: DnsGetResponseErrorsItemMissing | null;
+}
+export const DnsGetResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.NullOr(S.String)),
+    missing: S.optional(S.NullOr(DnsGetResponseErrorsItemMissing)),
+  }),
+).annotate({
+  identifier: "DnsGetResponseErrorsItem",
+}) as any as S.Schema<DnsGetResponseErrorsItem>;
+
+export type DnsGetResponseErrorsList = Array<DnsGetResponseErrorsItem>;
+export const DnsGetResponseErrorsList = /*@__PURE__*/ S.Array(
+  DnsGetResponseErrorsItem,
+) as any as S.Schema<DnsGetResponseErrorsList>;
+
+export interface DnsGetResponseRecordItem {
+  /** DNS record content. */
+  content?: string | null;
+  /** DNS record name (or @ for the zone apex). */
+  name?: string | null;
+  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
+  priority?: number | null;
+  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
+  ttl?: number | null;
+  /** DNS record type. */
+  type?: string | null;
+}
+export const DnsGetResponseRecordItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    priority: S.optional(S.NullOr(S.Number)),
+    ttl: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "DnsGetResponseRecordItem",
+}) as any as S.Schema<DnsGetResponseRecordItem>;
+
+export type DnsGetResponseRecordList = Array<DnsGetResponseRecordItem>;
+export const DnsGetResponseRecordList = /*@__PURE__*/ S.Array(
+  DnsGetResponseRecordItem,
+) as any as S.Schema<DnsGetResponseRecordList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetDnsResponse {
+  errors?: DnsGetResponseErrorsList | null;
+  record?: DnsGetResponseRecordList | null;
+}
 export const GetDnsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({
+    errors: S.optional(S.NullOr(DnsGetResponseErrorsList)),
+    record: S.optional(S.NullOr(DnsGetResponseRecordList)),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetDnsResponse" }) as any as S.Schema<GetDnsResponse>;
 
 export interface GetEmailRoutingRequest {

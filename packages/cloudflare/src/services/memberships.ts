@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 import * as Retry from "../retry.ts";
 
@@ -448,10 +450,101 @@ export const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListMembershipsRequest",
 }) as any as S.Schema<ListMembershipsRequest>;
 
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ListMembershipsResponse {}
+export type ListResultItemAccountType = "standard" | "enterprise";
+export const ListResultItemAccountType = /*@__PURE__*/ S.String;
+
+export type ListResultItemAccountManagedBy = GetResponseAccountManagedBy;
+export const ListResultItemAccountManagedBy = GetResponseAccountManagedBy;
+
+export type ListResultItemAccountSettings = GetResponseAccountSettings;
+export const ListResultItemAccountSettings = GetResponseAccountSettings;
+
+export interface ListResultItemAccount {
+  /** Identifier */
+  id: string;
+  /** Account name */
+  name: string;
+  type: ListResultItemAccountType;
+  /** Timestamp for the creation of the account */
+  createdOn?: string | null;
+  /** Parent container details */
+  managedBy?: GetResponseAccountManagedBy | null;
+  /** Account settings */
+  settings?: GetResponseAccountSettings | null;
+}
+export const ListResultItemAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    type: ListResultItemAccountType,
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    managedBy: S.optional(
+      S.NullOr(GetResponseAccountManagedBy).pipe(T.Body("managed_by")),
+    ),
+    settings: S.optional(S.NullOr(GetResponseAccountSettings)),
+  }),
+).annotate({
+  identifier: "ListResultItemAccount",
+}) as any as S.Schema<ListResultItemAccount>;
+
+export type ListResultItemPermissionsAnalytics =
+  GetResponsePermissionsAnalytics;
+export const ListResultItemPermissionsAnalytics =
+  GetResponsePermissionsAnalytics;
+
+export type ListResultItemPermissions = GetResponsePermissions;
+export const ListResultItemPermissions = GetResponsePermissions;
+
+export type ListResultItemRolesList = Array<string>;
+export const ListResultItemRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemRolesList>;
+
+export type ListResultItemStatus = "accepted" | "pending" | "rejected";
+export const ListResultItemStatus = /*@__PURE__*/ S.String;
+
+export interface ListResultItem {
+  /** Membership identifier tag. */
+  id?: string | null;
+  account?: ListResultItemAccount | null;
+  /** Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account. */
+  apiAccessEnabled?: boolean | null;
+  /** All access permissions for the user at the account. */
+  permissions?: GetResponsePermissions | null;
+  /** List of role names the membership has for this account. */
+  roles?: ListResultItemRolesList | null;
+  /** Status of this membership. */
+  status?: ListResultItemStatus | null;
+}
+export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    account: S.optional(S.NullOr(ListResultItemAccount)),
+    apiAccessEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("api_access_enabled")),
+    ),
+    permissions: S.optional(S.NullOr(GetResponsePermissions)),
+    roles: S.optional(S.NullOr(ListResultItemRolesList)),
+    status: S.optional(S.NullOr(ListResultItemStatus)),
+  }),
+).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
+
+export type ListResultList = Array<ListResultItem>;
+export const ListResultList = /*@__PURE__*/ S.Array(
+  ListResultItem,
+) as any as S.Schema<ListResultList>;
+
+export interface ListMembershipsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result: ListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
+}
 export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({
+    result: ListResultList.pipe(T.EnvelopePayload()),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListMembershipsResponse",
 }) as any as S.Schema<ListMembershipsResponse>;
@@ -720,18 +813,29 @@ export const getMembership: API.OperationMethod<
 
 export type ListMembershipsError = CloudflareOpError;
 /** List memberships of accounts the user can access. */
-export const listMemberships: API.OperationMethod<
+export const listMemberships: API.PaginatedOperationMethod<
   ListMembershipsRequest,
   ListMembershipsResponse,
   ListMembershipsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListMembershipsRequest,
-  output: ListMembershipsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
+  CloudflareOpContext,
+  ListResultItem
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListMembershipsRequest,
+    output: ListMembershipsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type PutMembershipError = CloudflareOpError;
 /** Accept or reject this account invitation. */

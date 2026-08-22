@@ -637,12 +637,238 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.memberships#ListResultItemAccountType": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "standard"
+          }
+        },
+        "ENTERPRISE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "enterprise"
+          }
+        }
+      }
+    },
+    "com.cloudflare.memberships#ListResultItemAccountManagedBy": {
+      "type": "structure",
+      "members": {
+        "parent_org_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the parent Organization, if one exists"
+          }
+        },
+        "parent_org_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the parent Organization, if one exists"
+          }
+        }
+      }
+    },
+    "com.cloudflare.memberships#ListResultItemAccountSettings": {
+      "type": "structure",
+      "members": {
+        "abuse_contact_email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sets an abuse contact email to notify for abuse reports."
+          }
+        },
+        "enforce_twofactor": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates whether membership in this account requires that"
+          }
+        }
+      }
+    },
+    "com.cloudflare.memberships#ListResultItemAccount": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account name",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.memberships#ListResultItemAccountType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp for the creation of the account"
+          }
+        },
+        "managed_by": {
+          "target": "com.cloudflare.memberships#ListResultItemAccountManagedBy",
+          "traits": {
+            "smithy.api#documentation": "Parent container details"
+          }
+        },
+        "settings": {
+          "target": "com.cloudflare.memberships#ListResultItemAccountSettings",
+          "traits": {
+            "smithy.api#documentation": "Account settings"
+          }
+        }
+      }
+    },
+    "com.cloudflare.memberships#ListResultItemPermissionsAnalytics": {
+      "type": "structure",
+      "members": {
+        "read": {
+          "target": "smithy.api#Boolean"
+        },
+        "write": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.memberships#ListResultItemPermissions": {
+      "type": "structure",
+      "members": {
+        "analytics": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissionsAnalytics"
+        },
+        "billing": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissionsAnalytics"
+        },
+        "cache_purge": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissionsAnalytics"
+        },
+        "dns": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissionsAnalytics"
+        },
+        "dns_records": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissionsAnalytics"
+        },
+        "lb": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissionsAnalytics"
+        },
+        "logs": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissionsAnalytics"
+        },
+        "organization": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissionsAnalytics"
+        },
+        "ssl": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissionsAnalytics"
+        },
+        "waf": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissionsAnalytics"
+        },
+        "zone_settings": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissionsAnalytics"
+        },
+        "zones": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissionsAnalytics"
+        }
+      }
+    },
+    "com.cloudflare.memberships#ListResultItemRolesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.memberships#ListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "ACCEPTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "accepted"
+          }
+        },
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pending"
+          }
+        },
+        "REJECTED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rejected"
+          }
+        }
+      }
+    },
+    "com.cloudflare.memberships#ListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Membership identifier tag."
+          }
+        },
+        "account": {
+          "target": "com.cloudflare.memberships#ListResultItemAccount"
+        },
+        "api_access_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enterprise only. Indicates whether or not API access is enabled specifically for this user on a given account."
+          }
+        },
+        "permissions": {
+          "target": "com.cloudflare.memberships#ListResultItemPermissions",
+          "traits": {
+            "smithy.api#documentation": "All access permissions for the user at the account."
+          }
+        },
+        "roles": {
+          "target": "com.cloudflare.memberships#ListResultItemRolesList",
+          "traits": {
+            "smithy.api#documentation": "List of role names the membership has for this account."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.memberships#ListResultItemStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of this membership."
+          }
+        }
+      }
+    },
+    "com.cloudflare.memberships#ListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.memberships#ListResultItem"
+      }
+    },
     "com.cloudflare.memberships#ListResponse": {
       "type": "structure",
-      "members": {},
+      "members": {
+        "result": {
+          "target": "com.cloudflare.memberships#ListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.memberships#List": {

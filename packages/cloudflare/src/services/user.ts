@@ -1328,10 +1328,123 @@ export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListAuditLogsRequest",
 }) as any as S.Schema<ListAuditLogsRequest>;
 
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ListAuditLogsResponse {}
+export interface AuditLogsListResultItemAction {
+  /** A boolean that indicates if the action attempted was successful. */
+  result?: boolean | null;
+  /** A short string that describes the action that was performed. */
+  type?: string | null;
+}
+export const AuditLogsListResultItemAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.NullOr(S.Boolean)),
+    type: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "AuditLogsListResultItemAction",
+}) as any as S.Schema<AuditLogsListResultItemAction>;
+
+export type AuditLogsListResultItemActorType = "user" | "admin" | "Cloudflare";
+export const AuditLogsListResultItemActorType = /*@__PURE__*/ S.String;
+
+export interface AuditLogsListResultItemActor {
+  /** The ID of the actor that performed the action. If a user performed the action, this will be their User ID. */
+  id?: string | null;
+  /** The email of the user that performed the action. */
+  email?: string | null;
+  /** The IP address of the request that performed the action. */
+  ip?: string | null;
+  /** The type of actor, whether a User, Cloudflare Admin, or an Automated System. */
+  type?: AuditLogsListResultItemActorType | null;
+}
+export const AuditLogsListResultItemActor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    email: S.optional(S.NullOr(S.String)),
+    ip: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(AuditLogsListResultItemActorType)),
+  }),
+).annotate({
+  identifier: "AuditLogsListResultItemActor",
+}) as any as S.Schema<AuditLogsListResultItemActor>;
+
+export interface AuditLogsListResultItemOwner {
+  /** Identifier */
+  id?: string | null;
+}
+export const AuditLogsListResultItemOwner = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "AuditLogsListResultItemOwner",
+}) as any as S.Schema<AuditLogsListResultItemOwner>;
+
+export interface AuditLogsListResultItemResource {
+  /** An identifier for the resource that was affected by the action. */
+  id?: string | null;
+  /** A short string that describes the resource that was affected by the action. */
+  type?: string | null;
+}
+export const AuditLogsListResultItemResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "AuditLogsListResultItemResource",
+}) as any as S.Schema<AuditLogsListResultItemResource>;
+
+export interface AuditLogsListResultItem {
+  /** A string that uniquely identifies the audit log. */
+  id?: string | null;
+  action?: AuditLogsListResultItemAction | null;
+  actor?: AuditLogsListResultItemActor | null;
+  /** The source of the event. */
+  interface?: string | null;
+  /** An object which can lend more context to the action being logged. This is a flexible value and varies between different actions. */
+  metadata?: unknown | null;
+  /** The new value of the resource that was modified. */
+  newValue?: string | null;
+  /** The value of the resource before it was modified. */
+  oldValue?: string | null;
+  owner?: AuditLogsListResultItemOwner | null;
+  resource?: AuditLogsListResultItemResource | null;
+  /** A UTC RFC3339 timestamp that specifies when the action being logged occured. */
+  when?: string | null;
+}
+export const AuditLogsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    action: S.optional(S.NullOr(AuditLogsListResultItemAction)),
+    actor: S.optional(S.NullOr(AuditLogsListResultItemActor)),
+    interface: S.optional(S.NullOr(S.String)),
+    metadata: S.optional(S.NullOr(S.Unknown)),
+    newValue: S.optional(S.NullOr(S.String)),
+    oldValue: S.optional(S.NullOr(S.String)),
+    owner: S.optional(S.NullOr(AuditLogsListResultItemOwner)),
+    resource: S.optional(S.NullOr(AuditLogsListResultItemResource)),
+    when: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "AuditLogsListResultItem",
+}) as any as S.Schema<AuditLogsListResultItem>;
+
+export type AuditLogsListResultList = Array<AuditLogsListResultItem>;
+export const AuditLogsListResultList = /*@__PURE__*/ S.Array(
+  AuditLogsListResultItem,
+) as any as S.Schema<AuditLogsListResultList>;
+
+export interface ListAuditLogsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result: AuditLogsListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
+}
 export const ListAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  S.Struct({
+    result: AuditLogsListResultList.pipe(T.EnvelopePayload()),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+  }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListAuditLogsResponse",
 }) as any as S.Schema<ListAuditLogsResponse>;
@@ -2913,18 +3026,29 @@ export const getUser: API.OperationMethod<
 
 export type ListAuditLogsError = CloudflareOpError;
 /** Gets a list of audit logs for a user account. Can be filtered by who made the change, on which zone, and the timeframe of the change. */
-export const listAuditLogs: API.OperationMethod<
+export const listAuditLogs: API.PaginatedOperationMethod<
   ListAuditLogsRequest,
   ListAuditLogsResponse,
   ListAuditLogsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAuditLogsRequest,
-  output: ListAuditLogsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
+  CloudflareOpContext,
+  AuditLogsListResultItem
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListAuditLogsRequest,
+    output: ListAuditLogsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type ListBillingHistoriesError = CloudflareOpError;
 /** Accesses your billing history object. */

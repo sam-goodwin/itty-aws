@@ -576,12 +576,175 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.user#AuditLogsListResultItemAction": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "A boolean that indicates if the action attempted was successful."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short string that describes the action that was performed."
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResultItemActorType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "ADMIN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "admin"
+          }
+        },
+        "CLOUDFLARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Cloudflare"
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResultItemActor": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the actor that performed the action. If a user performed the action, this will be their User ID."
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email of the user that performed the action."
+          }
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The IP address of the request that performed the action."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.user#AuditLogsListResultItemActorType",
+          "traits": {
+            "smithy.api#documentation": "The type of actor, whether a User, Cloudflare Admin, or an Automated System."
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResultItemOwner": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResultItemResource": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An identifier for the resource that was affected by the action."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short string that describes the resource that was affected by the action."
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string that uniquely identifies the audit log."
+          }
+        },
+        "action": {
+          "target": "com.cloudflare.user#AuditLogsListResultItemAction"
+        },
+        "actor": {
+          "target": "com.cloudflare.user#AuditLogsListResultItemActor"
+        },
+        "interface": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The source of the event."
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object which can lend more context to the action being logged. This is a flexible value and varies between different actions."
+          }
+        },
+        "newValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The new value of the resource that was modified."
+          }
+        },
+        "oldValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The value of the resource before it was modified."
+          }
+        },
+        "owner": {
+          "target": "com.cloudflare.user#AuditLogsListResultItemOwner"
+        },
+        "resource": {
+          "target": "com.cloudflare.user#AuditLogsListResultItemResource"
+        },
+        "when": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A UTC RFC3339 timestamp that specifies when the action being logged occured."
+          }
+        }
+      }
+    },
+    "com.cloudflare.user#AuditLogsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.user#AuditLogsListResultItem"
+      }
+    },
     "com.cloudflare.user#AuditLogsListResponse": {
       "type": "structure",
-      "members": {},
+      "members": {
+        "result": {
+          "target": "com.cloudflare.user#AuditLogsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.user#AuditLogsList": {

@@ -1226,21 +1226,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.email_routing#DnsDeleteResponse": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
-      }
-    },
     "com.cloudflare.email_routing#DnsDelete": {
       "type": "operation",
       "input": {
         "target": "com.cloudflare.email_routing#DnsDeleteRequest"
       },
       "output": {
-        "target": "com.cloudflare.email_routing#DnsDeleteResponse"
+        "target": "smithy.api#Unit"
       },
       "traits": {
         "smithy.api#http": {
@@ -1415,12 +1407,228 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.email_routing#DnsGetResponseErrorsItemMissingType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "CNAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CNAME"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HTTPS"
+          }
+        },
+        "TXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TXT"
+          }
+        },
+        "SRV": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SRV"
+          }
+        },
+        "LOC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LOC"
+          }
+        },
+        "MX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MX"
+          }
+        },
+        "NS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NS"
+          }
+        },
+        "CERT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CERT"
+          }
+        },
+        "DNSKEY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DNSKEY"
+          }
+        },
+        "DS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DS"
+          }
+        },
+        "NAPTR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "NAPTR"
+          }
+        },
+        "SMIMEA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SMIMEA"
+          }
+        },
+        "SSHFP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SSHFP"
+          }
+        },
+        "SVCB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SVCB"
+          }
+        },
+        "TLSA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TLSA"
+          }
+        },
+        "URI": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "URI"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseErrorsItemMissing": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record content."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record name (or @ for the zone apex)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseErrorsItemMissingType",
+          "traits": {
+            "smithy.api#documentation": "DNS record type."
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseErrorsItem": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#String"
+        },
+        "missing": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseErrorsItemMissing",
+          "traits": {
+            "smithy.api#documentation": "List of records needed to enable an Email Routing zone."
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseErrorsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.email_routing#DnsGetResponseErrorsItem"
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseRecordItem": {
+      "type": "structure",
+      "members": {
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record content."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record name (or @ for the zone apex)."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DNS record type."
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_routing#DnsGetResponseRecordList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.email_routing#DnsGetResponseRecordItem"
+      }
+    },
     "com.cloudflare.email_routing#DnsGetResponse": {
       "type": "structure",
-      "members": {},
+      "members": {
+        "errors": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseErrorsList"
+        },
+        "record": {
+          "target": "com.cloudflare.email_routing#DnsGetResponseRecordList"
+        }
+      },
       "traits": {
         "smithy.api#output": {},
-        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
       }
     },
     "com.cloudflare.email_routing#DnsGet": {
