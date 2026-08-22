@@ -1590,12 +1590,115 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultItemObjectType": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account"
+          }
+        },
+        "ZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zone"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultItemSchemaPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultItemSchemaRequiredList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultItemSchemaType": {
+      "type": "enum",
+      "members": {
+        "OBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "object"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultItemSchema": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultItemSchemaPropertiesMap"
+        },
+        "required": {
+          "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultItemSchemaRequiredList"
+        },
+        "type": {
+          "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultItemSchemaType"
+        }
+      }
+    },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultItem": {
+      "type": "structure",
+      "members": {
+        "dataset": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Dataset type name (e.g. `http_requests`).",
+            "smithy.api#required": {}
+          }
+        },
+        "object_type": {
+          "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultItemObjectType",
+          "traits": {
+            "smithy.api#documentation": "Whether this dataset type is account-scoped or zone-scoped.",
+            "smithy.api#required": {}
+          }
+        },
+        "schema": {
+          "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultItemSchema",
+          "traits": {
+            "smithy.api#documentation": "JSON Schema that describes the fields this dataset exposes.",
+            "smithy.api#required": {}
+          }
+        },
+        "timestamp_field": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary timestamp field name for this dataset.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultItem"
+      }
+    },
     "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResponse": {
       "type": "structure",
-      "members": {},
+      "members": {
+        "result": {
+          "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccountResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.logs#LogExplorerDatasetsAvailableListForAccount": {
@@ -1632,12 +1735,115 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultItemObjectType": {
+      "type": "enum",
+      "members": {
+        "ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "account"
+          }
+        },
+        "ZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "zone"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultItemSchemaPropertiesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultItemSchemaRequiredList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultItemSchemaType": {
+      "type": "enum",
+      "members": {
+        "OBJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "object"
+          }
+        }
+      }
+    },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultItemSchema": {
+      "type": "structure",
+      "members": {
+        "properties": {
+          "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultItemSchemaPropertiesMap"
+        },
+        "required": {
+          "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultItemSchemaRequiredList"
+        },
+        "type": {
+          "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultItemSchemaType"
+        }
+      }
+    },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultItem": {
+      "type": "structure",
+      "members": {
+        "dataset": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Dataset type name (e.g. `http_requests`).",
+            "smithy.api#required": {}
+          }
+        },
+        "object_type": {
+          "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultItemObjectType",
+          "traits": {
+            "smithy.api#documentation": "Whether this dataset type is account-scoped or zone-scoped.",
+            "smithy.api#required": {}
+          }
+        },
+        "schema": {
+          "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultItemSchema",
+          "traits": {
+            "smithy.api#documentation": "JSON Schema that describes the fields this dataset exposes.",
+            "smithy.api#required": {}
+          }
+        },
+        "timestamp_field": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary timestamp field name for this dataset.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultItem"
+      }
+    },
     "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResponse": {
       "type": "structure",
-      "members": {},
+      "members": {
+        "result": {
+          "target": "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZoneResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
       "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+        "smithy.api#output": {}
       }
     },
     "com.cloudflare.logs#LogExplorerDatasetsAvailableListForZone": {

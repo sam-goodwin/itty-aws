@@ -600,10 +600,98 @@ export const ListLogExplorerDatasetAvailablesForAccountRequest =
     identifier: "ListLogExplorerDatasetAvailablesForAccountRequest",
   }) as any as S.Schema<ListLogExplorerDatasetAvailablesForAccountRequest>;
 
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ListLogExplorerDatasetAvailablesResponse {}
+export type LogExplorerDatasetsAvailableListResultItemObjectType =
+  | "account"
+  | "zone";
+export const LogExplorerDatasetsAvailableListResultItemObjectType =
+  /*@__PURE__*/ S.String;
+
+export type LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap = {
+  [key: string]: unknown | undefined;
+};
+export const LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap>;
+
+export type LogExplorerDatasetsAvailableListResultItemSchemaRequiredList =
+  Array<string>;
+export const LogExplorerDatasetsAvailableListResultItemSchemaRequiredList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<LogExplorerDatasetsAvailableListResultItemSchemaRequiredList>;
+
+export type LogExplorerDatasetsAvailableListResultItemSchemaType = "object";
+export const LogExplorerDatasetsAvailableListResultItemSchemaType =
+  /*@__PURE__*/ S.String;
+
+export interface LogExplorerDatasetsAvailableListResultItemSchema {
+  properties?: LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap | null;
+  required?: LogExplorerDatasetsAvailableListResultItemSchemaRequiredList | null;
+  type?: LogExplorerDatasetsAvailableListResultItemSchemaType | null;
+}
+export const LogExplorerDatasetsAvailableListResultItemSchema =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      properties: S.optional(
+        S.NullOr(LogExplorerDatasetsAvailableListResultItemSchemaPropertiesMap),
+      ),
+      required: S.optional(
+        S.NullOr(LogExplorerDatasetsAvailableListResultItemSchemaRequiredList),
+      ),
+      type: S.optional(
+        S.NullOr(LogExplorerDatasetsAvailableListResultItemSchemaType),
+      ),
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsAvailableListResultItemSchema",
+  }) as any as S.Schema<LogExplorerDatasetsAvailableListResultItemSchema>;
+
+export interface LogExplorerDatasetsAvailableListResultItem {
+  /** Dataset type name (e.g. `http_requests`). */
+  dataset: string;
+  /** Whether this dataset type is account-scoped or zone-scoped. */
+  objectType: LogExplorerDatasetsAvailableListResultItemObjectType;
+  /** JSON Schema that describes the fields this dataset exposes. */
+  schema: LogExplorerDatasetsAvailableListResultItemSchema;
+  /** The primary timestamp field name for this dataset. */
+  timestampField: string;
+}
+export const LogExplorerDatasetsAvailableListResultItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dataset: S.String,
+      objectType: LogExplorerDatasetsAvailableListResultItemObjectType.pipe(
+        T.Body("object_type"),
+      ),
+      schema: LogExplorerDatasetsAvailableListResultItemSchema,
+      timestampField: S.String.pipe(T.Body("timestamp_field")),
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsAvailableListResultItem",
+  }) as any as S.Schema<LogExplorerDatasetsAvailableListResultItem>;
+
+export type LogExplorerDatasetsAvailableListResultList =
+  Array<LogExplorerDatasetsAvailableListResultItem>;
+export const LogExplorerDatasetsAvailableListResultList = /*@__PURE__*/ S.Array(
+  LogExplorerDatasetsAvailableListResultItem,
+) as any as S.Schema<LogExplorerDatasetsAvailableListResultList>;
+
+export interface ListLogExplorerDatasetAvailablesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result: LogExplorerDatasetsAvailableListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
+}
 export const ListLogExplorerDatasetAvailablesResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+  () =>
+    S.Struct({
+      result: LogExplorerDatasetsAvailableListResultList.pipe(
+        T.EnvelopePayload(),
+      ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+    }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListLogExplorerDatasetAvailablesResponse",
 }) as any as S.Schema<ListLogExplorerDatasetAvailablesResponse>;
@@ -1151,33 +1239,43 @@ export const getReceivedField: API.OperationMethod<
 
 export type ListLogExplorerDatasetAvailablesForAccountError = CloudflareOpError;
 /** Returns all dataset types that this account or zone can create. Each entry includes the dataset schema and timestamp field. The schema shows all possible fields for a dataset. However, not all fields may be available for your account or zone. When creating or updating a dataset, only fields available to your account or zone can be enabled. If you request a field that is not available, you will receive an error. */
-export const listLogExplorerDatasetAvailablesForAccount: API.OperationMethod<
+export const listLogExplorerDatasetAvailablesForAccount: API.PaginatedOperationMethod<
   ListLogExplorerDatasetAvailablesForAccountRequest,
   ListLogExplorerDatasetAvailablesResponse,
   ListLogExplorerDatasetAvailablesForAccountError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListLogExplorerDatasetAvailablesForAccountRequest,
-  output: ListLogExplorerDatasetAvailablesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
+  CloudflareOpContext,
+  LogExplorerDatasetsAvailableListResultItem
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListLogExplorerDatasetAvailablesForAccountRequest,
+    output: ListLogExplorerDatasetAvailablesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type ListLogExplorerDatasetAvailablesForZoneError = CloudflareOpError;
 /** Returns all dataset types that this account or zone can create. Each entry includes the dataset schema and timestamp field. The schema shows all possible fields for a dataset. However, not all fields may be available for your account or zone. When creating or updating a dataset, only fields available to your account or zone can be enabled. If you request a field that is not available, you will receive an error. */
-export const listLogExplorerDatasetAvailablesForZone: API.OperationMethod<
+export const listLogExplorerDatasetAvailablesForZone: API.PaginatedOperationMethod<
   ListLogExplorerDatasetAvailablesForZoneRequest,
   ListLogExplorerDatasetAvailablesResponse,
   ListLogExplorerDatasetAvailablesForZoneError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListLogExplorerDatasetAvailablesForZoneRequest,
-  output: ListLogExplorerDatasetAvailablesResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
+  CloudflareOpContext,
+  LogExplorerDatasetsAvailableListResultItem
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListLogExplorerDatasetAvailablesForZoneRequest,
+    output: ListLogExplorerDatasetAvailablesResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type ListLogExplorerDatasetsForAccountError = CloudflareOpError;
 /** Returns all Log Explorer datasets configured for the account or zone. Pass `include_zones=true` to also include zone-level datasets that belong to this account or zone. List responses omit the `fields` property; use the single-dataset endpoint to retrieve field configuration. */
