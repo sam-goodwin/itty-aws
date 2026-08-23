@@ -209,6 +209,16 @@ export const RAILWAY_ERROR_MATCHERS: ReadonlyArray<{
     messageIncludes: "Project not found",
     error: RailwayNotFound,
   },
+  {
+    code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "Source canvas view not found",
+    error: RailwayNotFound,
+  },
+  {
+    code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "Login session",
+    error: RailwayNotFound,
+  },
 ];
 
 /** Union of the Railway-specific tagged error classes above. */

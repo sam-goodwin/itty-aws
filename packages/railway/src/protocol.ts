@@ -199,6 +199,22 @@ const matchError = (
     );
   }
 
+  const StatusClass = (HTTP_STATUS_MAP as Record<number, unknown>)[status] as
+    | StatusClass
+    | undefined;
+  if (StatusClass && status >= 400) {
+    const message =
+      typeof errorBody === "string" && errorBody.trim().length > 0
+        ? errorBody
+        : `HTTP ${status}`;
+    return fail(
+      new StatusClass({
+        message,
+        retryAfter: parseRetryAfterForStatus(status, headers),
+      }),
+    );
+  }
+
   return fail(new UnknownRailwayError({ body: errorBody }));
 };
 
@@ -240,11 +256,17 @@ const encode = ({
       if (v !== undefined) variables[k] = v;
     }
 
-    const token = Redacted.value(creds.token);
+    const token = Redacted.value(creds.token).trim();
+    // Public mutations (loginSessionCreate / verify / consume / cancel)
+    // run before the user has a token. An empty credential must not send a
+    // bogus `Authorization: Bearer ` header — Railway rejects that as
+    // UNAUTHENTICATED even for otherwise-unauthenticated fields.
     const auth =
-      creds.tokenKind === "project"
-        ? { "Project-Access-Token": token }
-        : { Authorization: `Bearer ${token}` };
+      token.length === 0
+        ? {}
+        : creds.tokenKind === "project"
+          ? { "Project-Access-Token": token }
+          : { Authorization: `Bearer ${token}` };
 
     const url = `${creds.apiBaseUrl}${http?.uri ?? "/graphql/v2"}`;
     if (process.env.DISTILLED_DEBUG_HTTP) {

@@ -1092,7 +1092,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "query auditLog($id: String!, $workspaceId: String!) {\n  auditLog(id: $id, workspaceId: $workspaceId) {\n    context\n    createdAt\n    environment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    eventType\n    id\n    payload\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n    workspaceId\n  }\n}",
+          "query": "query auditLog($id: String!, $workspaceId: String!) {\n  auditLog(id: $id, workspaceId: $workspaceId) {\n    context\n    createdAt\n    environmentId\n    eventType\n    id\n    payload\n    projectId\n    workspaceId\n  }\n}",
           "operationName": "auditLog",
           "type": "query"
         }
@@ -1359,13 +1359,6 @@
             "smithy.api#required": {}
           }
         },
-        "environment": {
-          "target": "com.railway.api#AuditLogResponseEnvironment",
-          "traits": {
-            "smithy.api#required": {},
-            "com.railway.graphql#nullable": {}
-          }
-        },
         "environmentId": {
           "target": "smithy.api#String",
           "traits": {
@@ -1387,13 +1380,6 @@
         },
         "payload": {
           "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "com.railway.graphql#nullable": {}
-          }
-        },
-        "project": {
-          "target": "com.railway.api#AuditLogResponseProject",
           "traits": {
             "smithy.api#required": {},
             "com.railway.graphql#nullable": {}
@@ -1620,7 +1606,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "query auditLogs($after: String, $before: String, $filter: AuditLogFilterInput, $first: Int, $last: Int, $sort: SortOrder, $workspaceId: String!) {\n  auditLogs(after: $after, before: $before, filter: $filter, first: $first, last: $last, sort: $sort, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        context\n        createdAt\n        environment {\n          canAccess\n          canvasGroupRefs\n          configEtag\n          createdAt\n          deletedAt\n          id\n          isEphemeral\n          name\n          projectId\n          unmergedChangesCount\n          updatedAt\n        }\n        environmentId\n        eventType\n        id\n        payload\n        project {\n          baseEnvironmentId\n          botPrEnvironments\n          createdAt\n          deletedAt\n          description\n          expiredAt\n          featureFlags\n          focusedPrEnvironments\n          id\n          isPublic\n          isTempProject\n          name\n          prDeploys\n          primaryEnvironmentId\n          subscriptionPlanLimit\n          subscriptionType\n          teamId\n          updatedAt\n          workspaceId\n        }\n        projectId\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
+          "query": "query auditLogs($after: String, $before: String, $filter: AuditLogFilterInput, $first: Int, $last: Int, $sort: SortOrder, $workspaceId: String!) {\n  auditLogs(after: $after, before: $before, filter: $filter, first: $first, last: $last, sort: $sort, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        context\n        createdAt\n        environmentId\n        eventType\n        id\n        payload\n        projectId\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
           "operationName": "auditLogs",
           "type": "query"
         }
@@ -1847,13 +1833,6 @@
             "smithy.api#required": {}
           }
         },
-        "environment": {
-          "target": "com.railway.api#AuditLogsResponseEdgesItemNodeEnvironment",
-          "traits": {
-            "smithy.api#required": {},
-            "com.railway.graphql#nullable": {}
-          }
-        },
         "environmentId": {
           "target": "smithy.api#String",
           "traits": {
@@ -1875,13 +1854,6 @@
         },
         "payload": {
           "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {},
-            "com.railway.graphql#nullable": {}
-          }
-        },
-        "project": {
-          "target": "com.railway.api#AuditLogsResponseEdgesItemNodeProject",
           "traits": {
             "smithy.api#required": {},
             "com.railway.graphql#nullable": {}
@@ -15566,61 +15538,13 @@
     "com.railway.api#PrivateNetworkEndpointResponse": {
       "type": "structure",
       "members": {
-        "createdAt": {
-          "target": "smithy.api#String",
+        "result": {
+          "target": "com.railway.api#PrivateNetworkEndpointValue",
           "traits": {
+            "com.railway.graphql#payload": {},
+            "com.railway.graphql#nullable": {},
             "smithy.api#required": {},
-            "com.railway.graphql#nullable": {}
-          }
-        },
-        "deletedAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.railway.graphql#nullable": {}
-          }
-        },
-        "dnsName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "newDnsName": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.railway.graphql#nullable": {}
-          }
-        },
-        "privateIps": {
-          "target": "com.railway.api#PrivateNetworkEndpointResponsePrivateIpsList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "publicId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "serviceInstanceId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "syncStatus": {
-          "target": "com.railway.api#PrivateNetworkEndpointSyncStatus",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "tags": {
-          "target": "com.railway.api#PrivateNetworkEndpointResponseTagsList",
-          "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "The value of `data.privateNetworkEndpoint`."
           }
         }
       },
@@ -15673,7 +15597,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "query privateNetworkEndpointNameAvailable($environmentId: String!, $prefix: String!, $privateNetworkId: String!) {\n  privateNetworkEndpointNameAvailable(environmentId: $environmentId, prefix: $prefix, privateNetworkId: $privateNetworkId) {\n    __typename\n  }\n}",
+          "query": "query privateNetworkEndpointNameAvailable($environmentId: String!, $prefix: String!, $privateNetworkId: String!) {\n  privateNetworkEndpointNameAvailable(environmentId: $environmentId, prefix: $prefix, privateNetworkId: $privateNetworkId)\n}",
           "operationName": "privateNetworkEndpointNameAvailable",
           "type": "query"
         }
@@ -15854,7 +15778,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "query project($id: String!) {\n  project(id: $id) {\n    baseEnvironment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    baseEnvironmentId\n    botPrEnvironments\n    createdAt\n    deletedAt\n    description\n    expiredAt\n    featureFlags\n    focusedPrEnvironments\n    id\n    isPublic\n    isTempProject\n    members {\n      avatar\n      email\n      id\n      name\n      role\n    }\n    name\n    prDeploys\n    primaryEnvironmentId\n    subscriptionPlanLimit\n    subscriptionType\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    teamId\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n    services(first: 50) {\n      edges {\n        node {\n          createdAt\n          deletedAt\n          id\n          name\n          projectId\n        }\n      }\n    }\n    buckets(first: 50) {\n      edges {\n        node {\n          createdAt\n          groupId\n          id\n          name\n          projectId\n          updatedAt\n        }\n      }\n    }\n  }\n}",
+          "query": "query project($id: String!) {\n  project(id: $id) {\n    baseEnvironment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    baseEnvironmentId\n    botPrEnvironments\n    createdAt\n    deletedAt\n    description\n    expiredAt\n    featureFlags\n    focusedPrEnvironments\n    id\n    isPublic\n    isTempProject\n    members {\n      avatar\n      email\n      id\n      name\n      role\n    }\n    name\n    prDeploys\n    primaryEnvironmentId\n    subscriptionPlanLimit\n    subscriptionType\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    teamId\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n    services(first: 50) {\n      edges {\n        node {\n          createdAt\n          deletedAt\n          groupId\n          id\n          name\n          projectId\n        }\n      }\n    }\n    buckets(first: 50) {\n      edges {\n        node {\n          createdAt\n          groupId\n          id\n          name\n          projectId\n          updatedAt\n        }\n      }\n    }\n    groups(first: 50) {\n      edges {\n        node {\n          color\n          groupId\n          icon\n          id\n          isCollapsed\n          name\n          projectId\n        }\n      }\n    }\n  }\n}",
           "operationName": "project",
           "type": "query"
         }
@@ -16355,6 +16279,12 @@
         },
         "buckets": {
           "target": "com.railway.api#ProjectResponseBuckets",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "groups": {
+          "target": "com.railway.api#ProjectResponseGroups",
           "traits": {
             "smithy.api#required": {}
           }
@@ -27342,7 +27272,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "query workspace($workspaceId: String!) {\n  workspace(workspaceId: $workspaceId) {\n    adoptionHistory {\n      adoptionLevel\n      createdAt\n      deltaLevel\n      id\n      matchedIcpEmail\n      monthlyEstimatedUsage\n      numConfigFile\n      numCronSchedule\n      numDeploys\n      numEnvs\n      numFailedDeploys\n      numHealthcheck\n      numIconConfig\n      numRegion\n      numReplicas\n      numRootDirectory\n      numSeats\n      numServices\n      numVariables\n      numWatchPatterns\n      totalCores\n      totalDisk\n      totalNetwork\n      updatedAt\n    }\n    adoptionLevel\n    allowDeprecatedRegions\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    customer {\n      appliedCredits\n      billingEmail\n      creditBalance\n      currentUsage\n      defaultPaymentMethodId\n      hasExhaustedFreePlan\n      id\n      isPrepaying\n      isTrialing\n      isUsageSubscriber\n      isWithdrawingToCredits\n      remainingUsageCreditBalance\n      state\n      stripeCustomerId\n      supportedWithdrawalPlatforms\n      trialDaysRemaining\n    }\n    discordRole\n    has2FAEnforcement\n    hasAutomaticDiagnosis\n    hasGuardrailsAccess\n    hasHipaaBAA\n    hasSAML\n    id\n    members {\n      avatar\n      email\n      featureFlags\n      id\n      name\n      role\n      twoFactorAuthEnabled\n    }\n    name\n    partnerProfile {\n      category\n      description\n      slug\n      type\n      website\n    }\n    plan\n    preferredRegion\n    redactedDueTo2FAPending\n    referredUsers {\n      code\n      id\n      status\n    }\n    slackChannelId\n    subscriptionModel\n    subscriptionPlanLimit\n    supportTierOverride\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    updatedAt\n    usersWithout2FA\n  }\n}",
+          "query": "query workspace($workspaceId: String!) {\n  workspace(workspaceId: $workspaceId) {\n    adoptionHistory {\n      adoptionLevel\n      createdAt\n      deltaLevel\n      id\n      matchedIcpEmail\n      monthlyEstimatedUsage\n      numConfigFile\n      numCronSchedule\n      numDeploys\n      numEnvs\n      numFailedDeploys\n      numHealthcheck\n      numIconConfig\n      numRegion\n      numReplicas\n      numRootDirectory\n      numSeats\n      numServices\n      numVariables\n      numWatchPatterns\n      totalCores\n      totalDisk\n      totalNetwork\n      updatedAt\n    }\n    adoptionLevel\n    allowDeprecatedRegions\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    customer {\n      appliedCredits\n      billingEmail\n      creditBalance\n      currentUsage\n      defaultPaymentMethodId\n      hasExhaustedFreePlan\n      id\n      isPrepaying\n      isTrialing\n      isUsageSubscriber\n      isWithdrawingToCredits\n      remainingUsageCreditBalance\n      state\n      stripeCustomerId\n      supportedWithdrawalPlatforms\n      trialDaysRemaining\n      usageLimit {\n        agentHardLimitCents\n        agentSoftLimitCents\n        customerId\n        hardLimit\n        id\n        isOverLimit\n        softLimit\n      }\n    }\n    discordRole\n    has2FAEnforcement\n    hasAutomaticDiagnosis\n    hasGuardrailsAccess\n    hasHipaaBAA\n    hasSAML\n    id\n    members {\n      avatar\n      email\n      featureFlags\n      id\n      name\n      role\n      twoFactorAuthEnabled\n    }\n    name\n    partnerProfile {\n      category\n      description\n      slug\n      type\n      website\n    }\n    plan\n    preferredRegion\n    redactedDueTo2FAPending\n    referredUsers {\n      code\n      id\n      status\n    }\n    slackChannelId\n    subscriptionModel\n    subscriptionPlanLimit\n    supportTierOverride\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    updatedAt\n    usersWithout2FA\n  }\n}",
           "operationName": "workspace",
           "type": "query"
         }
@@ -27661,6 +27591,13 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#required": {}
+          }
+        },
+        "usageLimit": {
+          "target": "com.railway.api#WorkspaceResponseCustomerUsageLimit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
           }
         }
       }
@@ -28156,7 +28093,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "query workspaceByCode($code: String!) {\n  workspaceByCode(code: $code) {\n    adoptionHistory {\n      adoptionLevel\n      createdAt\n      deltaLevel\n      id\n      matchedIcpEmail\n      monthlyEstimatedUsage\n      numConfigFile\n      numCronSchedule\n      numDeploys\n      numEnvs\n      numFailedDeploys\n      numHealthcheck\n      numIconConfig\n      numRegion\n      numReplicas\n      numRootDirectory\n      numSeats\n      numServices\n      numVariables\n      numWatchPatterns\n      totalCores\n      totalDisk\n      totalNetwork\n      updatedAt\n    }\n    adoptionLevel\n    allowDeprecatedRegions\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    customer {\n      appliedCredits\n      billingEmail\n      creditBalance\n      currentUsage\n      defaultPaymentMethodId\n      hasExhaustedFreePlan\n      id\n      isPrepaying\n      isTrialing\n      isUsageSubscriber\n      isWithdrawingToCredits\n      remainingUsageCreditBalance\n      state\n      stripeCustomerId\n      supportedWithdrawalPlatforms\n      trialDaysRemaining\n    }\n    discordRole\n    has2FAEnforcement\n    hasAutomaticDiagnosis\n    hasGuardrailsAccess\n    hasHipaaBAA\n    hasSAML\n    id\n    members {\n      avatar\n      email\n      featureFlags\n      id\n      name\n      role\n      twoFactorAuthEnabled\n    }\n    name\n    partnerProfile {\n      category\n      description\n      slug\n      type\n      website\n    }\n    plan\n    preferredRegion\n    redactedDueTo2FAPending\n    referredUsers {\n      code\n      id\n      status\n    }\n    slackChannelId\n    subscriptionModel\n    subscriptionPlanLimit\n    supportTierOverride\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    updatedAt\n    usersWithout2FA\n  }\n}",
+          "query": "query workspaceByCode($code: String!) {\n  workspaceByCode(code: $code) {\n    adoptionHistory {\n      adoptionLevel\n      createdAt\n      deltaLevel\n      id\n      matchedIcpEmail\n      monthlyEstimatedUsage\n      numConfigFile\n      numCronSchedule\n      numDeploys\n      numEnvs\n      numFailedDeploys\n      numHealthcheck\n      numIconConfig\n      numRegion\n      numReplicas\n      numRootDirectory\n      numSeats\n      numServices\n      numVariables\n      numWatchPatterns\n      totalCores\n      totalDisk\n      totalNetwork\n      updatedAt\n    }\n    adoptionLevel\n    allowDeprecatedRegions\n    apiTokenRateLimit {\n      remainingPoints\n      resetsAt\n    }\n    avatar\n    banReason\n    createdAt\n    customer {\n      appliedCredits\n      billingEmail\n      creditBalance\n      currentUsage\n      defaultPaymentMethodId\n      hasExhaustedFreePlan\n      id\n      isPrepaying\n      isTrialing\n      isUsageSubscriber\n      isWithdrawingToCredits\n      remainingUsageCreditBalance\n      state\n      stripeCustomerId\n      supportedWithdrawalPlatforms\n      trialDaysRemaining\n      usageLimit {\n        agentHardLimitCents\n        agentSoftLimitCents\n        customerId\n        hardLimit\n        id\n        isOverLimit\n        softLimit\n      }\n    }\n    discordRole\n    has2FAEnforcement\n    hasAutomaticDiagnosis\n    hasGuardrailsAccess\n    hasHipaaBAA\n    hasSAML\n    id\n    members {\n      avatar\n      email\n      featureFlags\n      id\n      name\n      role\n      twoFactorAuthEnabled\n    }\n    name\n    partnerProfile {\n      category\n      description\n      slug\n      type\n      website\n    }\n    plan\n    preferredRegion\n    redactedDueTo2FAPending\n    referredUsers {\n      code\n      id\n      status\n    }\n    slackChannelId\n    subscriptionModel\n    subscriptionPlanLimit\n    supportTierOverride\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    updatedAt\n    usersWithout2FA\n  }\n}",
           "operationName": "workspaceByCode",
           "type": "query"
         }
@@ -28446,6 +28383,13 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#required": {}
+          }
+        },
+        "usageLimit": {
+          "target": "com.railway.api#WorkspaceResponseCustomerUsageLimit",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
           }
         }
       }
@@ -30909,7 +30853,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation canvasViewMerge($sourceEnvironmentId: String!, $targetEnvironmentId: String!) {\n  canvasViewMerge(sourceEnvironmentId: $sourceEnvironmentId, targetEnvironmentId: $targetEnvironmentId) {\n    __typename\n  }\n}",
+          "query": "mutation canvasViewMerge($sourceEnvironmentId: String!, $targetEnvironmentId: String!) {\n  canvasViewMerge(sourceEnvironmentId: $sourceEnvironmentId, targetEnvironmentId: $targetEnvironmentId)\n}",
           "operationName": "canvasViewMerge",
           "type": "mutation"
         }
@@ -31492,7 +31436,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation cloudAgentDelete($id: ID!) {\n  cloudAgentDelete(id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation cloudAgentDelete($id: ID!) {\n  cloudAgentDelete(id: $id)\n}",
           "operationName": "cloudAgentDelete",
           "type": "mutation"
         }
@@ -31853,7 +31797,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation cloudAgentStateReport($input: CloudAgentStateReportInput!) {\n  cloudAgentStateReport(input: $input) {\n    __typename\n  }\n}",
+          "query": "mutation cloudAgentStateReport($input: CloudAgentStateReportInput!) {\n  cloudAgentStateReport(input: $input)\n}",
           "operationName": "cloudAgentStateReport",
           "type": "mutation"
         }
@@ -37425,7 +37369,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation loginSessionAuth($input: LoginSessionAuthInput!) {\n  loginSessionAuth(input: $input) {\n    __typename\n  }\n}",
+          "query": "mutation loginSessionAuth($input: LoginSessionAuthInput!) {\n  loginSessionAuth(input: $input)\n}",
           "operationName": "loginSessionAuth",
           "type": "mutation"
         }
@@ -37478,7 +37422,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation loginSessionCancel($code: String!) {\n  loginSessionCancel(code: $code) {\n    __typename\n  }\n}",
+          "query": "mutation loginSessionCancel($code: String!) {\n  loginSessionCancel(code: $code)\n}",
           "operationName": "loginSessionCancel",
           "type": "mutation"
         }
@@ -37531,7 +37475,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation loginSessionConsume($code: String!) {\n  loginSessionConsume(code: $code) {\n    __typename\n  }\n}",
+          "query": "mutation loginSessionConsume($code: String!) {\n  loginSessionConsume(code: $code)\n}",
           "operationName": "loginSessionConsume",
           "type": "mutation"
         }
@@ -37578,7 +37522,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation loginSessionCreate {\n  loginSessionCreate {\n    __typename\n  }\n}",
+          "query": "mutation loginSessionCreate {\n  loginSessionCreate\n}",
           "operationName": "loginSessionCreate",
           "type": "mutation"
         }
@@ -37631,7 +37575,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation loginSessionVerify($code: String!) {\n  loginSessionVerify(code: $code) {\n    __typename\n  }\n}",
+          "query": "mutation loginSessionVerify($code: String!) {\n  loginSessionVerify(code: $code)\n}",
           "operationName": "loginSessionVerify",
           "type": "mutation"
         }
@@ -39138,7 +39082,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation privateNetworkEndpointDelete($id: String!) {\n  privateNetworkEndpointDelete(id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation privateNetworkEndpointDelete($id: String!) {\n  privateNetworkEndpointDelete(id: $id)\n}",
           "operationName": "privateNetworkEndpointDelete",
           "type": "mutation"
         }
@@ -39203,7 +39147,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation privateNetworkEndpointRename($dnsName: String!, $id: String!, $privateNetworkId: String!) {\n  privateNetworkEndpointRename(dnsName: $dnsName, id: $id, privateNetworkId: $privateNetworkId) {\n    __typename\n  }\n}",
+          "query": "mutation privateNetworkEndpointRename($dnsName: String!, $id: String!, $privateNetworkId: String!) {\n  privateNetworkEndpointRename(dnsName: $dnsName, id: $id, privateNetworkId: $privateNetworkId)\n}",
           "operationName": "privateNetworkEndpointRename",
           "type": "mutation"
         }
@@ -39256,7 +39200,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation privateNetworksForEnvironmentDelete($environmentId: String!) {\n  privateNetworksForEnvironmentDelete(environmentId: $environmentId) {\n    __typename\n  }\n}",
+          "query": "mutation privateNetworksForEnvironmentDelete($environmentId: String!) {\n  privateNetworksForEnvironmentDelete(environmentId: $environmentId)\n}",
           "operationName": "privateNetworksForEnvironmentDelete",
           "type": "mutation"
         }
@@ -52055,7 +51999,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation usageLimitRemove($input: UsageLimitRemoveInput!) {\n  usageLimitRemove(input: $input) {\n    __typename\n  }\n}",
+          "query": "mutation usageLimitRemove($input: UsageLimitRemoveInput!) {\n  usageLimitRemove(input: $input)\n}",
           "operationName": "usageLimitRemove",
           "type": "mutation"
         }
@@ -52131,7 +52075,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation usageLimitSet($input: UsageLimitSetInput!) {\n  usageLimitSet(input: $input) {\n    __typename\n  }\n}",
+          "query": "mutation usageLimitSet($input: UsageLimitSetInput!) {\n  usageLimitSet(input: $input)\n}",
           "operationName": "usageLimitSet",
           "type": "mutation"
         }
@@ -53822,7 +53766,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation volumeInstanceBackupLock($volumeInstanceBackupId: String!, $volumeInstanceId: String!) {\n  volumeInstanceBackupLock(volumeInstanceBackupId: $volumeInstanceBackupId, volumeInstanceId: $volumeInstanceId) {\n    __typename\n  }\n}",
+          "query": "mutation volumeInstanceBackupLock($volumeInstanceBackupId: String!, $volumeInstanceId: String!) {\n  volumeInstanceBackupLock(volumeInstanceBackupId: $volumeInstanceBackupId, volumeInstanceId: $volumeInstanceId)\n}",
           "operationName": "volumeInstanceBackupLock",
           "type": "mutation"
         }
@@ -53950,7 +53894,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation volumeInstanceBackupScheduleUpdate($kinds: [VolumeInstanceBackupScheduleKind!]!, $volumeInstanceId: String!) {\n  volumeInstanceBackupScheduleUpdate(kinds: $kinds, volumeInstanceId: $volumeInstanceId) {\n    __typename\n  }\n}",
+          "query": "mutation volumeInstanceBackupScheduleUpdate($kinds: [VolumeInstanceBackupScheduleKind!]!, $volumeInstanceId: String!) {\n  volumeInstanceBackupScheduleUpdate(kinds: $kinds, volumeInstanceId: $volumeInstanceId)\n}",
           "operationName": "volumeInstanceBackupScheduleUpdate",
           "type": "mutation"
         }
@@ -57498,6 +57442,68 @@
         }
       }
     },
+    "com.railway.api#PrivateNetworkEndpointValue": {
+      "type": "structure",
+      "members": {
+        "createdAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "deletedAt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "dnsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "newDnsName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "privateIps": {
+          "target": "com.railway.api#PrivateNetworkEndpointResponsePrivateIpsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "publicId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "serviceInstanceId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "syncStatus": {
+          "target": "com.railway.api#PrivateNetworkEndpointSyncStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.railway.api#PrivateNetworkEndpointResponseTagsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.railway.api#ProjectResponseServicesEdgesItemNode": {
       "type": "structure",
       "members": {
@@ -57530,6 +57536,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
           }
         }
       }
@@ -57626,6 +57639,136 @@
       "members": {
         "edges": {
           "target": "com.railway.api#ProjectResponseBucketsEdgesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#ProjectResponseGroupsEdgesItemNode": {
+      "type": "structure",
+      "members": {
+        "color": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "groupId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "icon": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "isCollapsed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "projectId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#ProjectResponseGroupsEdgesItem": {
+      "type": "structure",
+      "members": {
+        "node": {
+          "target": "com.railway.api#ProjectResponseGroupsEdgesItemNode",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#ProjectResponseGroupsEdgesList": {
+      "type": "list",
+      "member": {
+        "target": "com.railway.api#ProjectResponseGroupsEdgesItem"
+      }
+    },
+    "com.railway.api#ProjectResponseGroups": {
+      "type": "structure",
+      "members": {
+        "edges": {
+          "target": "com.railway.api#ProjectResponseGroupsEdgesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.railway.api#WorkspaceResponseCustomerUsageLimit": {
+      "type": "structure",
+      "members": {
+        "agentHardLimitCents": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "agentSoftLimitCents": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "customerId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "hardLimit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {},
+            "com.railway.graphql#nullable": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "isOverLimit": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "softLimit": {
+          "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#required": {}
           }
