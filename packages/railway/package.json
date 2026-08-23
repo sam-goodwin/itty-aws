@@ -56,18 +56,6 @@
       "bun": "./src/traits.ts",
       "worker": "./src/traits.ts",
       "default": "./lib/traits.js"
-    },
-    "./railway": {
-      "types": "./lib/services/railway.d.ts",
-      "bun": "./src/services/railway.ts",
-      "worker": "./src/services/railway.ts",
-      "default": "./lib/services/railway.js"
-    },
-    "./*": {
-      "types": "./lib/services/*.d.ts",
-      "bun": "./src/services/*.ts",
-      "worker": "./src/services/*.ts",
-      "default": "./lib/services/*.js"
     }
   },
   "scripts": {
