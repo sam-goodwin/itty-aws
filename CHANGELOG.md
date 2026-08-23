@@ -1,3 +1,17 @@
+## v1.0.0-rc.6
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **fly-io**: Machines patches plus Sprites, MPG, and GraphQL add-ons &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/466 [<samp>(e9427)</samp>](https://github.com/alchemy-run/distilled/commit/e9427740c)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **fly-io**: Deploy-token response and base64 PetSem payloads &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/471 [<samp>(182d3)</samp>](https://github.com/alchemy-run/distilled/commit/182d343e5)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v1.0.0-rc.5...HEAD)
+
+---
+
 ## v1.0.0-rc.5
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features

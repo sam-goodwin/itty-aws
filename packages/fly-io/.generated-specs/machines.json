@@ -1188,7 +1188,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.flyio.machines#CreateAppResponse": {
+    "com.flyio.machines#CreateAppDeployTokenResponse": {
       "type": "structure",
       "members": {
         "token": {
@@ -1203,7 +1203,7 @@
         "target": "com.flyio.machines#CreateAppDeployTokenRequest"
       },
       "output": {
-        "target": "com.flyio.machines#CreateAppResponse"
+        "target": "com.flyio.machines#CreateAppDeployTokenResponse"
       },
       "errors": [
         {

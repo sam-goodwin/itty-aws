@@ -1082,7 +1082,7 @@ export const listBackups: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListClustersError = NotFound | FlyIoOpError;
+export type ListClustersError = Forbidden | NotFound | FlyIoOpError;
 /** List MPG v2 clusters in an organization */
 export const listClusters: API.OperationMethod<
   ListClustersRequest,
@@ -1092,7 +1092,7 @@ export const listClusters: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ListClustersRequest,
   output: ListClustersResponse,
-  errors: [NotFound],
+  errors: [Forbidden, NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
 }));

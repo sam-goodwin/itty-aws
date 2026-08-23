@@ -1020,6 +1020,27 @@ const buildMembers = (
 
 const ENVELOPE_KEYS = new Set(["success", "errors", "messages", "result_info"]);
 
+/** A node whose children are the v4 envelope keys (success/errors/…). */
+const isEnvelopeWrapper = (node: FieldNode): boolean => {
+  const names = new Set(node.children.map((c) => c.name));
+  return names.has("success") && names.has("errors");
+};
+
+/**
+ * Some doc pages wrap the whole Returns section in named envelope types
+ * (`IAMCollectionMembershipResponse object { errors, messages, success,
+ * result, result_info }`) instead of listing the envelope keys as top-level
+ * bullets — sometimes as a union of several such wrappers (memberships
+ * documents plain and with-policies variants). Unwrap so the standard
+ * result handling sees `result`; a wrapper union unwraps its first arm,
+ * the common base every variant extends. Without this the operation
+ * generated an EMPTY response structure and the payload was undecodable.
+ */
+const unwrapEnvelopeReturns = (returns: FieldNode[]): FieldNode[] =>
+  returns.length > 0 && returns.every(isEnvelopeWrapper)
+    ? returns[0].children
+    : returns;
+
 // ============================================================================
 // Whole-body union flattening
 // ============================================================================
@@ -1292,7 +1313,8 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
 
   // ---- Output: the UNWRAPPED `result` payload ----
   let outputTarget: string = PRELUDE.Unit;
-  const resultNode = parsed.returns.find((n) => n.name === "result");
+  const returns = unwrapEnvelopeReturns(parsed.returns);
+  const resultNode = returns.find((n) => n.name === "result");
   if (resultNode) {
     const { core } = stripOptional(resultNode.typeStr);
     const fieldChildren = resultNode.children.filter((c) => !isArmChild(c));
@@ -1354,7 +1376,7 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
     }
   } else {
     // Non-standard envelope: keep any non-envelope top-level fields as output.
-    const rest = parsed.returns.filter((n) => !ENVELOPE_KEYS.has(n.name));
+    const rest = returns.filter((n) => !ENVELOPE_KEYS.has(n.name));
     if (rest.length) {
       const members = buildMembers(bag, rest, `${opName}Response`, "output");
       outputTarget = addShape(bag, `${opName}Response`, {
@@ -1680,7 +1702,7 @@ const command = Command.make(
       const protocolPath = path.join(outDir, "cloudflare.protocols.json");
       yield* fs.writeFileString(
         protocolPath,
-        JSON.stringify(buildProtocolModel(), null, 2),
+        `${JSON.stringify(buildProtocolModel(), null, 2)}\n`,
       );
 
       const suppressions = {
@@ -1698,7 +1720,7 @@ const command = Command.make(
           shapes: bag.shapes,
         };
         const fp = path.join(outDir, `${sanitizeNsSegment(top)}.json`);
-        yield* fs.writeFileString(fp, JSON.stringify(model, null, 2));
+        yield* fs.writeFileString(fp, `${JSON.stringify(model, null, 2)}\n`);
       }
 
       yield* Console.log(
