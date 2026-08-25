@@ -643,6 +643,11 @@ export class TrustStoreNotReadyException
       T.HttpError(400),
     ),
   ).pipe(C.withBadRequestError) {}
+export class UnsupportedCertificate
+  extends /*@__PURE__*/ S.TaggedError<UnsupportedCertificate>()(
+    "UnsupportedCertificate",
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+  ).pipe(C.withBadRequestError) {}
 export class UnsupportedProtocolException
   extends /*@__PURE__*/ S.TaggedError<UnsupportedProtocolException>()(
     "UnsupportedProtocolException",
@@ -3877,6 +3882,7 @@ export type AddListenerCertificatesError =
   | CertificateNotFoundException
   | ListenerNotFoundException
   | TooManyCertificatesException
+  | UnsupportedCertificate
   | CommonErrors;
 /**
  * Adds the specified SSL server certificate to the certificate list for the specified HTTPS
@@ -3901,6 +3907,7 @@ export const addListenerCertificates: API.OperationMethod<
     CertificateNotFoundException,
     ListenerNotFoundException,
     TooManyCertificatesException,
+    UnsupportedCertificate,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3995,6 +4002,7 @@ export type CreateListenerError =
   | TrustStoreNotFoundException
   | TrustStoreNotReadyException
   | UnsupportedProtocolException
+  | UnsupportedCertificate
   | CommonErrors;
 /**
  * Creates a listener for the specified Application Load Balancer, Network Load Balancer, or
@@ -4043,6 +4051,7 @@ export const createListener: API.OperationMethod<
     TrustStoreNotFoundException,
     TrustStoreNotReadyException,
     UnsupportedProtocolException,
+    UnsupportedCertificate,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5035,6 +5044,7 @@ export type ModifyListenerError =
   | TrustStoreNotFoundException
   | TrustStoreNotReadyException
   | UnsupportedProtocolException
+  | UnsupportedCertificate
   | CommonErrors;
 /**
  * Replaces the specified properties of the specified listener. Any properties that you do
@@ -5076,6 +5086,7 @@ export const modifyListener: API.OperationMethod<
     TrustStoreNotFoundException,
     TrustStoreNotReadyException,
     UnsupportedProtocolException,
+    UnsupportedCertificate,
   ],
   protocol: AwsProtocol,
   retry: Retry,

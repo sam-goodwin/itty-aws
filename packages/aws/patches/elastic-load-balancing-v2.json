@@ -1,4 +1,12 @@
 {
+  "operations": {
+    "createListener": { "errors": ["UnsupportedCertificate"] },
+    "modifyListener": { "errors": ["UnsupportedCertificate"] },
+    "addListenerCertificates": { "errors": ["UnsupportedCertificate"] }
+  },
+  "errorCategories": {
+    "UnsupportedCertificate": ["BadRequestError"]
+  },
   "structures": {
     "AuthenticateOidcActionConfig": {
       "members": {
