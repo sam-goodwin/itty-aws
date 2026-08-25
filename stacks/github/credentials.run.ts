@@ -35,7 +35,7 @@ const REPO = { owner: "alchemy-run", repository: "distilled" };
 const ReposPat = Config.redacted("DISTILLED_REPOS_PAT").pipe(Config.option);
 
 const ReposOwner = Config.string("DISTILLED_REPOS_OWNER").pipe(
-  Config.withDefault("alchemy-run"),
+  Config.withDefault("distilled-mirror"),
 );
 
 export default Alchemy.Stack(
