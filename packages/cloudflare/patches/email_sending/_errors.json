@@ -69,6 +69,30 @@
           ]
         }
       }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_sending#InvalidEmailContent",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#documentation": "The message was rejected as invalid (code 10202, `email.sending.error.email.invalid`). Also returned transiently for a freshly registered sending subdomain while its DNS validation propagates \u2014 retry with backoff after creating a subdomain.",
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10202
+            }
+          ]
+        }
+      }
     }
   ]
 }

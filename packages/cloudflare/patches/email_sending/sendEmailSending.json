@@ -25,6 +25,15 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.email_sending#SendEmailSending/output/target",
       "value": "com.cloudflare.email_sending#SendEmailSendingResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_sending#SendEmailSending/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.email_sending#InvalidEmailContent"
+        }
+      ]
     }
   ]
 }

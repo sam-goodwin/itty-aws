@@ -35,6 +35,16 @@ export class Forbidden
     [{ status: 403 }],
   ) {}
 
+/** The message was rejected as invalid (code 10202, `email.sending.error.email.invalid`). Also returned transiently for a freshly registered sending subdomain while its DNS validation propagates — retry with backoff after creating a subdomain. */
+export class InvalidEmailContent
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<InvalidEmailContent>()("InvalidEmailContent", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 10202 }],
+  ) {}
+
 export class SendingSubdomainAlreadyExists
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<SendingSubdomainAlreadyExists>()(
@@ -847,7 +857,7 @@ export const listSubdomains: API.PaginatedOperationMethod<
   cloudflarePaginate,
 ) as any;
 
-export type SendEmailSendingError = CloudflareOpError;
+export type SendEmailSendingError = InvalidEmailContent | CloudflareOpError;
 /** Send an email */
 export const sendEmailSending: API.OperationMethod<
   SendEmailSendingRequest,
@@ -857,12 +867,12 @@ export const sendEmailSending: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SendEmailSendingRequest,
   output: SendEmailSendingResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [InvalidEmailContent, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type SendRawEmailSendingError = CloudflareOpError;
+export type SendRawEmailSendingError = InvalidEmailContent | CloudflareOpError;
 /** Send a raw MIME email */
 export const sendRawEmailSending: API.OperationMethod<
   SendRawEmailSendingRequest,
@@ -872,7 +882,7 @@ export const sendRawEmailSending: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SendRawEmailSendingRequest,
   output: SendRawEmailSendingResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [InvalidEmailContent, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
