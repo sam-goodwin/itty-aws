@@ -91,10 +91,7 @@ export class WorkerScriptNotFound
         message: S.String,
       },
     ),
-    [
-      { status: 404, message: { includes: "Workers Script Info not found" } },
-      { status: 400, message: { includes: "Workers Script Info not found" } },
-    ],
+    [{ code: 2016 }],
   ) {}
 
 export type AddressesEditRequestStatus = "unverified" | "verified";

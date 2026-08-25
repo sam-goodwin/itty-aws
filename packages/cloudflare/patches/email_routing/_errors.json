@@ -133,16 +133,7 @@
           "smithy.api#error": "client",
           "com.cloudflare.protocols#errorMatchers": [
             {
-              "status": 404,
-              "message": {
-                "includes": "Workers Script Info not found"
-              }
-            },
-            {
-              "status": 400,
-              "message": {
-                "includes": "Workers Script Info not found"
-              }
+              "code": 2016
             }
           ]
         }
