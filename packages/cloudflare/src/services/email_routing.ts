@@ -82,6 +82,21 @@ export class Forbidden
     [{ status: 403 }],
   ) {}
 
+export class WorkerScriptNotFound
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<WorkerScriptNotFound>()(
+      "WorkerScriptNotFound",
+      {
+        code: S.Number,
+        message: S.String,
+      },
+    ),
+    [
+      { status: 404, message: { includes: "Workers Script Info not found" } },
+      { status: 400, message: { includes: "Workers Script Info not found" } },
+    ],
+  ) {}
+
 export type AddressesEditRequestStatus = "unverified" | "verified";
 export const AddressesEditRequestStatus = /*@__PURE__*/ S.String;
 
@@ -1963,7 +1978,7 @@ export const createDns: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateRuleError = CloudflareOpError;
+export type CreateRuleError = WorkerScriptNotFound | CloudflareOpError;
 /** Rules consist of a set of criteria for matching emails (such as an email being sent to a specific custom email address) plus a set of actions to take on the email (like forwarding it to a specific destination address). Forward actions require all destination addresses to be verified. */
 export const createRule: API.OperationMethod<
   CreateRuleRequest,
@@ -1973,7 +1988,7 @@ export const createRule: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRuleRequest,
   output: CreateRuleResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [WorkerScriptNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -2106,7 +2121,10 @@ export const getEmailRouting: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetRuleError = CloudflareOpError;
+export type GetRuleError =
+  | Forbidden
+  | EmailRoutingRuleNotFound
+  | CloudflareOpError;
 /** Get information for a specific routing rule already created. */
 export const getRule: API.OperationMethod<
   GetRuleRequest,
@@ -2116,7 +2134,12 @@ export const getRule: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRuleRequest,
   output: GetRuleResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    Forbidden,
+    EmailRoutingRuleNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -2206,6 +2229,7 @@ export const patchDns: API.OperationMethod<
 export type PutRuleCatchAllError =
   | Forbidden
   | DestinationNotVerified
+  | WorkerScriptNotFound
   | CloudflareOpError;
 /** Enable or disable catch-all routing rule, or change action to forward to specific destination address. Forward actions require all destination addresses to be verified. */
 export const putRuleCatchAll: API.OperationMethod<
@@ -2219,6 +2243,7 @@ export const putRuleCatchAll: API.OperationMethod<
   errors: [
     Forbidden,
     DestinationNotVerified,
+    WorkerScriptNotFound,
     CloudflareRateLimited,
     CloudflareError,
   ],
@@ -2241,7 +2266,7 @@ export const unlock: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateRuleError = CloudflareOpError;
+export type UpdateRuleError = WorkerScriptNotFound | CloudflareOpError;
 /** Update actions and matches, or enable/disable specific routing rules. Forward actions require all destination addresses to be verified. */
 export const updateRule: API.OperationMethod<
   UpdateRuleRequest,
@@ -2251,7 +2276,7 @@ export const updateRule: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRuleRequest,
   output: UpdateRuleResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [WorkerScriptNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
