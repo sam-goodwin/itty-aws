@@ -219,6 +219,10 @@ export const RAILWAY_ERROR_MATCHERS: ReadonlyArray<{
     messageIncludes: "Login session",
     error: RailwayNotFound,
   },
+  {
+    messageIncludes: "Problem processing request",
+    error: RailwayInternalError,
+  },
 ];
 
 /** Union of the Railway-specific tagged error classes above. */
