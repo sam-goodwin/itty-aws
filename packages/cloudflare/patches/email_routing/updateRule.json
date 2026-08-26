@@ -25,6 +25,15 @@
       "op": "replace",
       "path": "/shapes/com.cloudflare.email_routing#UpdateRule/output/target",
       "value": "com.cloudflare.email_routing#UpdateRuleResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_routing#UpdateRule/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.email_routing#WorkerScriptNotFound"
+        }
+      ]
     }
   ]
 }
