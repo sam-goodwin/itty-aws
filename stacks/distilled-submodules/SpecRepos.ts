@@ -59,6 +59,8 @@ export const SPEC_REPOS: readonly SpecRepo[] = [
   { package: "fly-io" },
   { package: "gcp" },
   { package: "github" },
+  { package: "hetzner" },
+  { package: "huggingface" },
   { package: "kubernetes" },
   { package: "mongodb-atlas" },
   { package: "neon" },
@@ -70,6 +72,7 @@ export const SPEC_REPOS: readonly SpecRepo[] = [
   { package: "supabase" },
   { package: "turso" },
   { package: "typesense" },
+  { package: "vercel" },
   { package: "workos" },
 ];
 
