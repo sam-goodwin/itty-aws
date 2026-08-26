@@ -34,7 +34,7 @@ import * as Redacted from "effect/Redacted";
  * ```sh
  * cd stacks/distilled-monorepo
  * DISTILLED_REPOS_PAT=<org fine-grained PAT> \
- *   bun alchemy deploy --stage prod --profile <admin profile>
+ *   pnpm exec alchemy deploy --stage prod --profile <admin profile>
  * ```
  *
  * The org PAT is the one credential that cannot be minted through an API —

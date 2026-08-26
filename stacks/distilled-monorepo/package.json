@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "deploy": "bun alchemy deploy",
+    "deploy": "pnpm exec alchemy deploy",
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
@@ -13,7 +13,7 @@
     "@effect/platform-node": "4.0.0-rc.112"
   },
   "devDependencies": {
-    "@types/bun": "latest",
-    "typescript": "^7.0.2"
+    "@types/bun": "catalog:tooling",
+    "typescript": "catalog:build"
   }
 }

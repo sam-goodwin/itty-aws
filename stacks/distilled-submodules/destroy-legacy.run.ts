@@ -19,7 +19,7 @@ import * as Effect from "effect/Effect";
  *
  * ```sh
  * cd stacks/distilled-submodules
- * bun alchemy destroy destroy-legacy.run.ts --stage prod --profile alchemy-prod --yes
+ * pnpm exec alchemy destroy destroy-legacy.run.ts --stage prod --profile alchemy-prod --yes
  * ```
  *
  * Nothing on GitHub is deleted. `GitHub.Repository` defaults to a `retain`

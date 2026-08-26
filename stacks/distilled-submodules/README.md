@@ -44,10 +44,12 @@ stack.
   one shared stack.
 - The target org is `vars.DISTILLED_REPOS_OWNER`, falling back to
   `distilled-mirror`.
-- This directory is deliberately **not** a workspace member and has its own
-  `bun.lock`: `alchemy` tracks a different `effect` prerelease than the
-  monorepo's catalog, and a shared workspace install would hoist a single
-  incompatible copy of `effect`.
+- This directory is a workspace member, but pins `alchemy` and `effect` to
+  exact versions rather than taking `catalog:effect` — the alchemy CLI is
+  built against one `effect` prerelease and the SDK packages track another.
+  pnpm's isolated `node_modules` keeps both resolutions apart. It is not in
+  the root tsconfig's project references, so `tsc -b` never sees it; CI
+  checks it through the `typecheck-stacks` job instead.
 
 ## The file set
 
@@ -101,7 +103,7 @@ CI reads `ALCHEMY_GITHUB_TOKEN`, `STACKS_CLOUDFLARE_API_TOKEN`,
 
 ```bash
 cd stacks/distilled-submodules
-bun alchemy deploy --stage prod --profile <profile>
+pnpm exec alchemy deploy --stage prod --profile <profile>
 ```
 
 Because `SyncScaffold` is an Action, it re-runs only when its input digest

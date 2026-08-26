@@ -59,7 +59,7 @@ credentials or changing repository settings:
 ```bash
 cd stacks/distilled-monorepo
 DISTILLED_REPOS_PAT=<org fine-grained PAT> \
-  bun alchemy deploy --stage prod --profile <admin profile>
+  pnpm exec alchemy deploy --stage prod --profile <admin profile>
 ```
 
 `DISTILLED_REPOS_PAT` is optional — without it the deploying profile's own
