@@ -132,10 +132,15 @@ export default Alchemy.Stack(
           // stay converged) but no fetch machinery — see SpecRepo.blocked.
           if (specRepo.blocked === undefined) {
             const files = scaffolds[name]!;
+            // `fullName` and `defaultBranch` are the repository resource's
+            // OUTPUTS, not the plain strings above, and that is deliberate:
+            // the dependency graph is built from the Outputs an input
+            // references. Hand it `owner`/`name` literals and the Action has
+            // no upstream, so it runs alongside the repository it means to
+            // commit into and 404s on a from-scratch deploy.
             yield* SyncScaffold(`scaffold-${pkg}`, {
-              owner,
-              repository: name,
-              branch: "main",
+              fullName: repository.fullName,
+              branch: repository.defaultBranch,
               paths: Object.keys(files).sort(),
               digest: scaffoldDigest(files),
             });

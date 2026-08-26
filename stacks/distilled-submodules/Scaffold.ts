@@ -60,10 +60,33 @@ export const scaffoldDigest = (files: ScaffoldFiles) => {
   return hash.digest("hex");
 };
 
+/** Split an `owner/name` full name, failing loudly on anything else. */
+const splitFullName = (fullName: string): readonly [string, string] => {
+  const slash = fullName.indexOf("/");
+  if (slash <= 0 || slash === fullName.length - 1) {
+    throw new Error(`Expected an \`owner/name\` full name, got "${fullName}"`);
+  }
+  return [fullName.slice(0, slash), fullName.slice(slash + 1)] as const;
+};
+
 export interface ScaffoldInput {
-  readonly owner: string;
-  readonly repository: string;
-  /** Branch to commit on. */
+  /**
+   * `owner/name` of the repository to scaffold.
+   *
+   * One field rather than a separate `owner` and `repository`, because it is
+   * fed the `GitHub.Repository` resource's `fullName` OUTPUT. That is what
+   * makes this Action depend on the repository: alchemy builds its dependency
+   * graph from the Outputs referenced in an input, so passing plain strings
+   * here leaves the Action with no upstream and it runs CONCURRENTLY with the
+   * repository it is trying to commit into. On a from-scratch deploy that is a
+   * guaranteed 404 — the symptom is every scaffold failing at `getRef` while
+   * the repositories are still being created.
+   */
+  readonly fullName: string;
+  /**
+   * Branch to commit on — the repository's resolved `defaultBranch` Output,
+   * which is both the correct value and a second dependency edge.
+   */
   readonly branch: string;
   /** Managed paths, sorted — recorded in state so a plan diff is readable. */
   readonly paths: readonly string[];
@@ -104,7 +127,8 @@ export const makeSyncScaffold = (
         Effect.tryPromise({ try: call, catch: (e) => e as Error });
 
       return Effect.fn(function* (input: ScaffoldInput) {
-        const { owner, repository: repo, branch } = input;
+        const { branch } = input;
+        const [owner, repo] = splitFullName(input.fullName);
         const files = resolve(repo);
 
         // The commit the branch is on, and the tree it points at.
