@@ -11,7 +11,7 @@
 - agents.md
 - license.md
 - extract cf docs mirror into its own submodule
-- fix runaway spec-submodule size — IN PROGRESS (stacks/github)
+- fix runaway spec-submodule size — IN PROGRESS (stacks/distilled-submodules)
   - the general problem: `specs:sync` at the repo root is a plain recursive
     `submodule update --init` over every package, so it materialises each
     upstream repo's ENTIRE working tree — even though every generator reads a
@@ -20,7 +20,7 @@
     Azure/azure-rest-api-specs (338k paths for ~780 documents) and
     aws/api-models-aws are all large checkouts of which we consume a fraction.
   - option 1 (mirror the consumed files into a spec repo) is the one being
-    built: `stacks/github` now manages one `distilled-mirror/spec-mirror-<pkg>`
+    built: `stacks/distilled-submodules` now manages one `distilled-mirror/spec-mirror-<pkg>`
     repository per spec-consuming package, and an Alchemy Action commits the
     exact file set into each — a per-upstream `fetch-specs.ts` plus a daily
     workflow that refetches and commits.

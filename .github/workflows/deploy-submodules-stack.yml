@@ -1,0 +1,69 @@
+# Deploys stacks/distilled-submodules — the Alchemy stack that manages one
+# distilled-mirror/spec-mirror-<name> repository per spec-consuming packages/*
+# SDK, and the exact file set inside each of them.
+#
+# Runs on every push to main. Usually a no-op: GitHub.Repository converges
+# settings against the live repositories, and the SyncScaffold action skips
+# when the scaffold digest is unchanged.
+#
+# Every credential below is provisioned as code by stacks/distilled-monorepo,
+# which is deployed by hand with an admin profile and never from CI.
+#
+# Auth: the built-in GITHUB_TOKEN cannot create repositories, so the deploy
+# uses the ALCHEMY_GITHUB_TOKEN secret — a PAT that can create repositories in
+# the distilled-mirror org and push to them. Alchemy reads it from
+# GITHUB_ACCESS_TOKEN (env auth method, auto-selected because CI=true).
+
+name: deploy-submodules-stack
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never run two deploys concurrently; queue instead of cancelling so the
+# latest main always ends up deployed.
+concurrency:
+  group: deploy-submodules-stack
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: latest
+
+      - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('stacks/distilled-submodules/bun.lock') }}
+          restore-keys: bun-${{ runner.os }}-
+
+      # stacks/* are deliberately NOT workspace members: alchemy pins an older
+      # effect beta than the monorepo's catalog, and a shared install would
+      # hoist a single incompatible copy. Each stack has its own lockfile.
+      - run: bun install --frozen-lockfile
+        working-directory: stacks/distilled-submodules
+
+      - name: Deploy the spec-mirror repositories
+        working-directory: stacks/distilled-submodules
+        env:
+          GITHUB_ACCESS_TOKEN: ${{ secrets.ALCHEMY_GITHUB_TOKEN }}
+          # Remote state lives in the Cloudflare state store. These are the
+          # narrowly-scoped credentials minted by stacks/distilled-monorepo —
+          # NOT the repository's broadly-scoped CLOUDFLARE_* secrets, which
+          # belong to other tooling.
+          CLOUDFLARE_API_TOKEN: ${{ secrets.STACKS_CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.STACKS_CLOUDFLARE_ACCOUNT_ID }}
+          # The dedicated org the spec-mirror repositories live in.
+          DISTILLED_REPOS_OWNER: ${{ vars.DISTILLED_REPOS_OWNER }}
+        # --yes auto-accepts prompts (e.g. a state-store version upgrade),
+        # which would otherwise hang a non-interactive CI run.
+        run: bun alchemy deploy --stage prod --yes

@@ -9,8 +9,9 @@ name: CI
 # checking (`tsc -b --noCheck false`) across every package, so a
 # generator or patch bug can't reach npm.
 #
-# `stacks/` is hand-written and lives outside the workspace with its own
-# lockfile, so it gets its own job rather than riding along on `tsc -b`.
+# Each `stacks/*` directory is hand-written and lives outside the workspace
+# with its own lockfile, so they get their own job rather than riding along
+# on `tsc -b`.
 
 on:
   push:
@@ -51,13 +52,18 @@ jobs:
         run: pnpm typecheck:ci
 
   typecheck-stacks:
-    # `stacks/github` is its own install root (its own bun.lock, its own
-    # alchemy/effect versions), so it is not a workspace member and the
-    # `typecheck` job above never sees it. Check it here instead.
+    # Each `stacks/*` directory is its own install root (its own bun.lock, its
+    # own alchemy/effect versions), so none of them are workspace members and
+    # the `typecheck` job above never sees them. Check them here instead.
+    strategy:
+      fail-fast: false
+      matrix:
+        stack: [distilled-monorepo, distilled-submodules]
+    name: typecheck-stacks (${{ matrix.stack }})
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: stacks/github
+        working-directory: stacks/${{ matrix.stack }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
@@ -68,12 +74,12 @@ jobs:
       - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
         with:
           path: ~/.bun/install/cache
-          key: bun-${{ runner.os }}-${{ hashFiles('stacks/github/bun.lock') }}
+          key: bun-${{ runner.os }}-${{ hashFiles(format('stacks/{0}/bun.lock', matrix.stack)) }}
           restore-keys: bun-${{ runner.os }}-
 
       - run: bun install --frozen-lockfile
 
-      - name: Typecheck (stack program and mirror fetch scripts)
+      - name: Typecheck
         run: bun run typecheck
 
   format:
