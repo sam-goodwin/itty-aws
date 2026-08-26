@@ -13,10 +13,5 @@
   // the mirror repositories, where they run under Bun against each mirror's own
   // dependencies. They are data to this stack, not part of its program, and
   // `tsconfig.spec-repos.json` checks them separately.
-  "include": [
-    "alchemy.run.ts",
-    "destroy-legacy.run.ts",
-    "Scaffold.ts",
-    "SpecRepos.ts"
-  ]
+  "include": ["alchemy.run.ts", "Scaffold.ts", "SpecRepos.ts"]
 }
