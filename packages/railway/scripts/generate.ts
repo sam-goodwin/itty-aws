@@ -5,6 +5,9 @@
  *
  * Input:  .generated-specs/railway.json  (Smithy 2.0 model produced by
  *         scripts/convert.ts from Railway's GraphQL introspection schema)
+ *         Smithy patches live in patches/railway/*.json and are applied
+ *         by convert.ts — this run uses patchesDir: false so they are
+ *         never re-applied.
  * Output: src/services/railway.ts  +  src/services/index.ts
  *
  * The smithy→SDK compiler and CLI pipeline live in
@@ -121,5 +124,6 @@ const makeRailwaySpec = (model: any): SdkSpec => ({
 runGeneratorCli({
   description: "Generate the Railway Effect SDK from the Smithy model",
   root: `${import.meta.dir}/..`,
+  patchesDir: false,
   spec: makeRailwaySpec,
 });

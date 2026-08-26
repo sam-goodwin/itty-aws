@@ -15,7 +15,7 @@
  * @example
  * ```ts
  * import * as Stream from "effect/Stream";
- * import { projects } from "@distilled.cloud/railway/railway";
+ * import { projects } from "@distilled.cloud/railway";
  *
  * // every project across every page, one at a time
  * yield* projects.items({ first: 50 }).pipe(

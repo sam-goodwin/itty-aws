@@ -25,6 +25,14 @@
  *
  * • Subscriptions are skipped by the converter: they are a websocket
  *   transport, not a `POST /graphql/v2` request/response pair.
+ *
+ * • `tcpProxyCreate` is deprecated (staged changes replaced it) but it is
+ *   still the only mutation that creates a TCP proxy, so convert re-includes
+ *   just that root field after `skipDeprecated`.
+ *
+ * • Smithy patches in `patches/railway/*.json` apply after GraphQL→Smithy
+ *   (same as Fly add-ons). Do not invent verb-first operationIds — GraphQL
+ *   field names stay the spec (`projectCreate`, not `createProject`).
  */
 import * as fs from "node:fs";
 import * as path from "node:path";
@@ -33,6 +41,11 @@ import {
   PRELUDE,
   readIntrospection,
 } from "@distilled.cloud/core/codegen/graphql";
+import {
+  applyOperation,
+  isStaleTargetError,
+  type PatchFile,
+} from "@distilled.cloud/core/json-patch";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const SCHEMA_PATH = path.join(
@@ -46,7 +59,7 @@ const schema = readIntrospection(
   JSON.parse(fs.readFileSync(SCHEMA_PATH, "utf-8")),
 );
 
-const result = convertGraphQLToSmithy({
+const CONVERT_OPTIONS = {
   schema,
   namespace: "com.railway.api",
   serviceName: "Railway",
@@ -68,7 +81,6 @@ const result = convertGraphQLToSmithy({
   maxDepth: 2,
   // Flat schema — see the header note.
   maxNamespaceDepth: 1,
-  skipDeprecated: true,
   /**
    * Railway's custom scalars. The structured ones (`EnvironmentConfig`,
    * `TemplateConfig`, service/deployment metadata blobs …) really are
@@ -104,7 +116,99 @@ const result = convertGraphQLToSmithy({
     after: "after",
     first: "first",
   },
+} as const;
+
+const result = convertGraphQLToSmithy({
+  ...CONVERT_OPTIONS,
+  skipDeprecated: true,
 });
+
+// tcpProxyCreate is deprecated (staged changes replaced it) but it is
+// still the only mutation that creates a TCP proxy. skipDeprecated
+// drops it; re-include just that root field and merge its shapes.
+const KEEP_DEPRECATED = new Set(["tcpProxyCreate"]);
+const kept = convertGraphQLToSmithy({
+  ...CONVERT_OPTIONS,
+  skipDeprecated: false,
+  skipRootField: (name: string) => !KEEP_DEPRECATED.has(name),
+});
+
+const SERVICE_ID = "com.railway.api#Railway";
+type SmithyModel = {
+  shapes?: Record<
+    string,
+    { type?: string; operations?: Array<{ target: string }> }
+  >;
+};
+const model = result.model as SmithyModel;
+const keptModel = kept.model as SmithyModel;
+let keptShapes = 0;
+for (const [id, shape] of Object.entries(keptModel.shapes ?? {})) {
+  if (id === SERVICE_ID) continue;
+  if (model.shapes?.[id] === undefined) {
+    model.shapes![id] = shape;
+    keptShapes++;
+  }
+}
+const service = model.shapes?.[SERVICE_ID];
+const keptService = keptModel.shapes?.[SERVICE_ID];
+if (service?.operations && keptService?.operations) {
+  const existing = new Set(service.operations.map((op) => op.target));
+  for (const op of keptService.operations) {
+    if (!existing.has(op.target)) {
+      service.operations.push(op);
+      existing.add(op.target);
+    }
+  }
+}
+if (keptShapes > 0) {
+  console.log(
+    `   kept ${keptShapes} deprecated shape(s) for ${[...KEEP_DEPRECATED].join(", ")}`,
+  );
+}
+
+const patchesDir = path.join(ROOT, "patches", "railway");
+const patchFiles = (() => {
+  try {
+    return fs
+      .readdirSync(patchesDir)
+      .filter((f) => f.endsWith(".patch.json") || f.endsWith(".json"))
+      .filter((f) => !f.startsWith("_"))
+      .sort((a, b) => a.localeCompare(b))
+      .map((f) => path.join(patchesDir, f));
+  } catch (e) {
+    if ((e as NodeJS.ErrnoException).code === "ENOENT") return [];
+    throw e;
+  }
+})();
+
+let staleOps = 0;
+for (const file of patchFiles) {
+  const parsed = JSON.parse(fs.readFileSync(file, "utf8")) as PatchFile;
+  for (const patchOp of parsed.patches ?? []) {
+    try {
+      applyOperation(result.model, patchOp);
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : String(error);
+      if (isStaleTargetError(msg)) {
+        staleOps++;
+        console.warn(
+          `   ⚠️  stale: ${path.relative(ROOT, file)} [${patchOp.op} ${patchOp.path}]`,
+        );
+      } else {
+        throw new Error(
+          `malformed patch ${path.relative(ROOT, file)} [${patchOp.op} ${patchOp.path}]: ${msg}`,
+        );
+      }
+    }
+  }
+}
+if (patchFiles.length > 0) {
+  console.log(
+    `   applied ${patchFiles.length} Smithy patch file(s)` +
+      (staleOps ? `, ${staleOps} stale op(s) skipped` : ""),
+  );
+}
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
 fs.writeFileSync(OUT_FILE, `${JSON.stringify(result.model, null, 2)}\n`);

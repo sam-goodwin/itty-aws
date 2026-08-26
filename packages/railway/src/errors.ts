@@ -157,6 +157,12 @@ export const RAILWAY_ERROR_CODE_MAP: Record<string, any> = {
   UNAUTHORIZED: RailwayUnauthenticated,
   FORBIDDEN: RailwayForbidden,
   NOT_FOUND: RailwayNotFound,
+  PROJECT_NOT_FOUND: RailwayNotFound,
+  SERVICE_NOT_FOUND: RailwayNotFound,
+  ENVIRONMENT_NOT_FOUND: RailwayNotFound,
+  VOLUME_NOT_FOUND: RailwayNotFound,
+  BUCKET_NOT_FOUND: RailwayNotFound,
+  RESOURCE_NOT_FOUND: RailwayNotFound,
   BAD_USER_INPUT: RailwayValidationError,
   GRAPHQL_VALIDATION_FAILED: RailwayValidationError,
   BAD_REQUEST: RailwayValidationError,
@@ -166,6 +172,54 @@ export const RAILWAY_ERROR_CODE_MAP: Record<string, any> = {
   SUBSCRIPTION_REQUIRED: RailwayPlanLimitExceeded,
   INTERNAL_SERVER_ERROR: RailwayInternalError,
 };
+
+/**
+ * Message-aware matchers consulted *before* {@link RAILWAY_ERROR_CODE_MAP}.
+ * Railway often reuses `INTERNAL_SERVER_ERROR` for authorization failures
+ * (`Not Authorized` on `me` for workspace/team tokens).
+ */
+export const RAILWAY_ERROR_MATCHERS: ReadonlyArray<{
+  readonly code?: string;
+  readonly messageIncludes?: string;
+  // oxlint-disable-next-line no-explicit-any -- heterogeneous error class map
+  readonly error: any;
+}> = [
+  {
+    code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "Not Authorized",
+    error: RailwayForbidden,
+  },
+  {
+    code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "creating projects too quickly",
+    error: RailwayRateLimited,
+  },
+  {
+    code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "Invalid project name",
+    error: RailwayValidationError,
+  },
+  {
+    code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "is not a valid domain",
+    error: RailwayValidationError,
+  },
+  {
+    code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "Project not found",
+    error: RailwayNotFound,
+  },
+  {
+    code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "Source canvas view not found",
+    error: RailwayNotFound,
+  },
+  {
+    code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "Login session",
+    error: RailwayNotFound,
+  },
+];
 
 /** Union of the Railway-specific tagged error classes above. */
 export type RailwayTypedErrors =
