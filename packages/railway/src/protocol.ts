@@ -28,9 +28,8 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
 import * as Schema from "effect/Schema";
-import * as Semaphore from "effect/Semaphore";
 import type * as AST from "effect/SchemaAST";
-import * as HttpClient from "effect/unstable/http/HttpClient";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
 import type * as HttpClientError from "effect/unstable/http/HttpClientError";
 import * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
 import type * as HttpClientResponse from "effect/unstable/http/HttpClientResponse";
@@ -369,53 +368,5 @@ export const RailwayGraphqlProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
     encode: (args) =>
       encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
     decode,
-  }),
-);
-
-/**
- * Max in-flight GraphQL POSTs. Railway's public API 429s hard when a
- * consumer (alchemy nuke scans ~20 resource `list()`s) fans out. Override
- * with `DISTILLED_RAILWAY_GRAPHQL_CONCURRENCY`.
- */
-const graphqlConcurrency = (): number => {
-  const raw = process.env.DISTILLED_RAILWAY_GRAPHQL_CONCURRENCY;
-  if (raw === undefined || raw === "") return 2;
-  const n = Number(raw);
-  if (!Number.isFinite(n) || n < 1) return 2;
-  return Math.trunc(n);
-};
-
-const graphqlSemaphore = Semaphore.makeUnsafe(graphqlConcurrency());
-
-/**
- * Wrap an {@link HttpClient.HttpClient} so GraphQL calls take a global
- * permit. Provide over `FetchHttpClient.layer` so every Railway operation
- * in the process shares the cap.
- */
-export const gateHttpClient = (
-  client: HttpClient.HttpClient,
-): HttpClient.HttpClient =>
-  HttpClient.transform(client, (effect) =>
-    graphqlSemaphore.withPermits(1)(effect),
-  );
-
-/**
- * Replaces `HttpClient.HttpClient` with a gated wrapper of the client
- * already in context.
- *
- * @example
- * ```ts
- * GraphQlHttpGate.pipe(Layer.provide(FetchHttpClient.layer))
- * ```
- */
-export const GraphQlHttpGate: Layer.Layer<
-  HttpClient.HttpClient,
-  never,
-  HttpClient.HttpClient
-> = Layer.effect(
-  HttpClient.HttpClient,
-  Effect.gen(function* () {
-    const inner = yield* HttpClient.HttpClient;
-    return gateHttpClient(inner);
   }),
 );

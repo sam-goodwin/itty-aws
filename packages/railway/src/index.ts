@@ -26,8 +26,6 @@ export * from "./errors.ts";
 export * as T from "./traits.ts";
 export {
   RailwayGraphqlProtocol,
-  GraphQlHttpGate,
-  gateHttpClient,
   type RailwayOpError,
   type RailwayOpContext,
 } from "./protocol.ts";
