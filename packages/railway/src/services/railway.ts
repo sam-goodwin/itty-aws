@@ -12595,7 +12595,7 @@ export const ProjectsRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query projects($after: String, $before: String, $first: Int, $includeDeleted: Boolean, $last: Int, $orderBy: ProjectsOrderBy, $userId: String, $workspaceId: String) {\n  projects(after: $after, before: $before, first: $first, includeDeleted: $includeDeleted, last: $last, orderBy: $orderBy, userId: $userId, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        baseEnvironment {\n          canAccess\n          canvasGroupRefs\n          configEtag\n          createdAt\n          deletedAt\n          id\n          isEphemeral\n          name\n          projectId\n          unmergedChangesCount\n          updatedAt\n        }\n        baseEnvironmentId\n        botPrEnvironments\n        createdAt\n        deletedAt\n        description\n        expiredAt\n        featureFlags\n        focusedPrEnvironments\n        id\n        isPublic\n        isTempProject\n        members {\n          avatar\n          email\n          id\n          name\n          role\n        }\n        name\n        prDeploys\n        primaryEnvironmentId\n        subscriptionPlanLimit\n        subscriptionType\n        team {\n          adoptionLevel\n          avatar\n          createdAt\n          id\n          name\n          preferredRegion\n          slackChannelId\n          supportTierOverride\n          updatedAt\n        }\n        teamId\n        updatedAt\n        workspace {\n          adoptionLevel\n          allowDeprecatedRegions\n          avatar\n          banReason\n          createdAt\n          discordRole\n          has2FAEnforcement\n          hasAutomaticDiagnosis\n          hasGuardrailsAccess\n          hasHipaaBAA\n          hasSAML\n          id\n          name\n          plan\n          preferredRegion\n          redactedDueTo2FAPending\n          slackChannelId\n          subscriptionModel\n          subscriptionPlanLimit\n          supportTierOverride\n          updatedAt\n          usersWithout2FA\n        }\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
+          "query projects($after: String, $before: String, $first: Int, $includeDeleted: Boolean, $last: Int, $orderBy: ProjectsOrderBy, $userId: String, $workspaceId: String) {\n  projects(after: $after, before: $before, first: $first, includeDeleted: $includeDeleted, last: $last, orderBy: $orderBy, userId: $userId, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        baseEnvironmentId\n        createdAt\n        deletedAt\n        description\n        id\n        name\n        primaryEnvironmentId\n        updatedAt\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
         operationName: "projects",
         type: "query",
       }),
@@ -12604,145 +12604,27 @@ export const ProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectsRequest",
 }) as any as S.Schema<ProjectsRequest>;
 
-export type ProjectsResponseEdgesItemNodeBaseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-export const ProjectsResponseEdgesItemNodeBaseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-
-export type ProjectsResponseEdgesItemNodeFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const ProjectsResponseEdgesItemNodeFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActiveProjectFeatureFlag,
-  ) as any as S.Schema<ProjectsResponseEdgesItemNodeFeatureFlagsList>;
-
-export type ProjectsResponseEdgesItemNodeMembersItem =
-  InviteCodeUseResponseMembersItem;
-export const ProjectsResponseEdgesItemNodeMembersItem =
-  InviteCodeUseResponseMembersItem;
-
-export type ProjectsResponseEdgesItemNodeMembersList =
-  Array<InviteCodeUseResponseMembersItem>;
-export const ProjectsResponseEdgesItemNodeMembersList = /*@__PURE__*/ S.Array(
-  InviteCodeUseResponseMembersItem,
-) as any as S.Schema<ProjectsResponseEdgesItemNodeMembersList>;
-
-export type ProjectsResponseEdgesItemNodeTeam = InviteCodeUseResponseTeam;
-export const ProjectsResponseEdgesItemNodeTeam = InviteCodeUseResponseTeam;
-
-export type ProjectsResponseEdgesItemNodeWorkspaceUsersWithout2FAList =
-  Array<string>;
-export const ProjectsResponseEdgesItemNodeWorkspaceUsersWithout2FAList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectsResponseEdgesItemNodeWorkspaceUsersWithout2FAList>;
-
-export interface ProjectsResponseEdgesItemNodeWorkspace {
-  adoptionLevel: number;
-  allowDeprecatedRegions: boolean | null;
-  avatar: string | null;
-  banReason: string | null;
-  createdAt: string;
-  discordRole: string | null;
-  has2FAEnforcement: boolean;
-  hasAutomaticDiagnosis: boolean;
-  hasGuardrailsAccess: boolean;
-  hasHipaaBAA: boolean;
-  hasSAML: boolean;
-  id: string;
-  name: string;
-  plan: Plan;
-  preferredRegion: string | null;
-  redactedDueTo2FAPending: boolean;
-  slackChannelId: string | null;
-  subscriptionModel: SubscriptionModel;
-  subscriptionPlanLimit: unknown | null;
-  supportTierOverride: SupportTierOverride | null;
-  updatedAt: string;
-  usersWithout2FA: ProjectsResponseEdgesItemNodeWorkspaceUsersWithout2FAList;
-}
-export const ProjectsResponseEdgesItemNodeWorkspace = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      adoptionLevel: S.Number,
-      allowDeprecatedRegions: S.NullOr(S.Boolean),
-      avatar: S.NullOr(S.String),
-      banReason: S.NullOr(S.String),
-      createdAt: S.String,
-      discordRole: S.NullOr(S.String),
-      has2FAEnforcement: S.Boolean,
-      hasAutomaticDiagnosis: S.Boolean,
-      hasGuardrailsAccess: S.Boolean,
-      hasHipaaBAA: S.Boolean,
-      hasSAML: S.Boolean,
-      id: S.String,
-      name: S.String,
-      plan: Plan,
-      preferredRegion: S.NullOr(S.String),
-      redactedDueTo2FAPending: S.Boolean,
-      slackChannelId: S.NullOr(S.String),
-      subscriptionModel: SubscriptionModel,
-      subscriptionPlanLimit: S.NullOr(S.Unknown),
-      supportTierOverride: S.NullOr(SupportTierOverride),
-      updatedAt: S.String,
-      usersWithout2FA:
-        ProjectsResponseEdgesItemNodeWorkspaceUsersWithout2FAList,
-    }),
-).annotate({
-  identifier: "ProjectsResponseEdgesItemNodeWorkspace",
-}) as any as S.Schema<ProjectsResponseEdgesItemNodeWorkspace>;
-
 export interface ProjectsResponseEdgesItemNode {
-  baseEnvironment: AdminVolumeInstancesForVolumeResultItemEnvironment | null;
   baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
   createdAt: string;
   deletedAt: string | null;
   description: string | null;
-  expiredAt: string | null;
-  featureFlags: ProjectsResponseEdgesItemNodeFeatureFlagsList;
-  focusedPrEnvironments: boolean;
   id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  members: ProjectsResponseEdgesItemNodeMembersList;
   name: string;
-  prDeploys: boolean;
   primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  team: InviteCodeUseResponseTeam | null;
-  teamId: string | null;
   updatedAt: string;
-  workspace: ProjectsResponseEdgesItemNodeWorkspace | null;
   workspaceId: string | null;
 }
 export const ProjectsResponseEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    baseEnvironment: S.NullOr(
-      AdminVolumeInstancesForVolumeResultItemEnvironment,
-    ),
     baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
     createdAt: S.String,
     deletedAt: S.NullOr(S.String),
     description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: ProjectsResponseEdgesItemNodeFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
     id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    members: ProjectsResponseEdgesItemNodeMembersList,
     name: S.String,
-    prDeploys: S.Boolean,
     primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    team: S.NullOr(InviteCodeUseResponseTeam),
-    teamId: S.NullOr(S.String),
     updatedAt: S.String,
-    workspace: S.NullOr(ProjectsResponseEdgesItemNodeWorkspace),
     workspaceId: S.NullOr(S.String),
   }),
 ).annotate({

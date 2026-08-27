@@ -18251,7 +18251,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "query projects($after: String, $before: String, $first: Int, $includeDeleted: Boolean, $last: Int, $orderBy: ProjectsOrderBy, $userId: String, $workspaceId: String) {\n  projects(after: $after, before: $before, first: $first, includeDeleted: $includeDeleted, last: $last, orderBy: $orderBy, userId: $userId, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        baseEnvironment {\n          canAccess\n          canvasGroupRefs\n          configEtag\n          createdAt\n          deletedAt\n          id\n          isEphemeral\n          name\n          projectId\n          unmergedChangesCount\n          updatedAt\n        }\n        baseEnvironmentId\n        botPrEnvironments\n        createdAt\n        deletedAt\n        description\n        expiredAt\n        featureFlags\n        focusedPrEnvironments\n        id\n        isPublic\n        isTempProject\n        members {\n          avatar\n          email\n          id\n          name\n          role\n        }\n        name\n        prDeploys\n        primaryEnvironmentId\n        subscriptionPlanLimit\n        subscriptionType\n        team {\n          adoptionLevel\n          avatar\n          createdAt\n          id\n          name\n          preferredRegion\n          slackChannelId\n          supportTierOverride\n          updatedAt\n        }\n        teamId\n        updatedAt\n        workspace {\n          adoptionLevel\n          allowDeprecatedRegions\n          avatar\n          banReason\n          createdAt\n          discordRole\n          has2FAEnforcement\n          hasAutomaticDiagnosis\n          hasGuardrailsAccess\n          hasHipaaBAA\n          hasSAML\n          id\n          name\n          plan\n          preferredRegion\n          redactedDueTo2FAPending\n          slackChannelId\n          subscriptionModel\n          subscriptionPlanLimit\n          supportTierOverride\n          updatedAt\n          usersWithout2FA\n        }\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
+          "query": "query projects($after: String, $before: String, $first: Int, $includeDeleted: Boolean, $last: Int, $orderBy: ProjectsOrderBy, $userId: String, $workspaceId: String) {\n  projects(after: $after, before: $before, first: $first, includeDeleted: $includeDeleted, last: $last, orderBy: $orderBy, userId: $userId, workspaceId: $workspaceId) {\n    edges {\n      cursor\n      node {\n        baseEnvironmentId\n        createdAt\n        deletedAt\n        description\n        id\n        name\n        primaryEnvironmentId\n        updatedAt\n        workspaceId\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
           "operationName": "projects",
           "type": "query"
         }
@@ -18596,24 +18596,11 @@
     "com.railway.api#ProjectsResponseEdgesItemNode": {
       "type": "structure",
       "members": {
-        "baseEnvironment": {
-          "target": "com.railway.api#ProjectsResponseEdgesItemNodeBaseEnvironment",
-          "traits": {
-            "smithy.api#required": {},
-            "com.railway.graphql#nullable": {}
-          }
-        },
         "baseEnvironmentId": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {},
             "com.railway.graphql#nullable": {}
-          }
-        },
-        "botPrEnvironments": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#required": {}
           }
         },
         "createdAt": {
@@ -18636,57 +18623,14 @@
             "com.railway.graphql#nullable": {}
           }
         },
-        "expiredAt": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.railway.graphql#nullable": {}
-          }
-        },
-        "featureFlags": {
-          "target": "com.railway.api#ProjectsResponseEdgesItemNodeFeatureFlagsList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "focusedPrEnvironments": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
           }
         },
-        "isPublic": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "isTempProject": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "members": {
-          "target": "com.railway.api#ProjectsResponseEdgesItemNodeMembersList",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "name": {
           "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "prDeploys": {
-          "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#required": {}
           }
@@ -18698,43 +18642,10 @@
             "com.railway.graphql#nullable": {}
           }
         },
-        "subscriptionPlanLimit": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "subscriptionType": {
-          "target": "com.railway.api#SubscriptionPlanType",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "team": {
-          "target": "com.railway.api#ProjectsResponseEdgesItemNodeTeam",
-          "traits": {
-            "smithy.api#required": {},
-            "com.railway.graphql#nullable": {}
-          }
-        },
-        "teamId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {},
-            "com.railway.graphql#nullable": {}
-          }
-        },
         "updatedAt": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
-          }
-        },
-        "workspace": {
-          "target": "com.railway.api#ProjectsResponseEdgesItemNodeWorkspace",
-          "traits": {
-            "smithy.api#required": {},
-            "com.railway.graphql#nullable": {}
           }
         },
         "workspaceId": {
