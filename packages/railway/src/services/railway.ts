@@ -6025,7 +6025,7 @@ export const EnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query environments($after: String, $before: String, $first: Int, $isEphemeral: Boolean, $last: Int, $projectId: String!) {\n  environments(after: $after, before: $before, first: $first, isEphemeral: $isEphemeral, last: $last, projectId: $projectId) {\n    edges {\n      cursor\n      node {\n        createdAt\n        deletedAt\n        id\n        isEphemeral\n        name\n        projectId\n        updatedAt\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
+          "query environments($after: String, $before: String, $first: Int, $isEphemeral: Boolean, $last: Int, $projectId: String!) {\n  environments(after: $after, before: $before, first: $first, isEphemeral: $isEphemeral, last: $last, projectId: $projectId) {\n    edges {\n      cursor\n      node {\n        createdAt\n        deletedAt\n        id\n        isEphemeral\n        name\n        projectId\n        updatedAt\n        volumeInstances(first: 50) {\n          edges {\n            node {\n              createdAt\n              currentSizeMB\n              deletedAt\n              environmentId\n              id\n              isPendingDeletion\n              mountPath\n              region\n              serviceId\n              sizeMB\n              state\n              volume {\n                createdAt\n                id\n                name\n                projectId\n              }\n              volumeId\n            }\n          }\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
         operationName: "environments",
         type: "query",
       }),
@@ -6042,6 +6042,7 @@ export interface EnvironmentsResponseEdgesItemNode {
   name: string;
   projectId: string;
   updatedAt: string;
+  volumeInstances: EnvironmentResponseVolumeInstances;
 }
 export const EnvironmentsResponseEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6052,6 +6053,7 @@ export const EnvironmentsResponseEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
     projectId: S.String,
     updatedAt: S.String,
+    volumeInstances: EnvironmentResponseVolumeInstances,
   }),
 ).annotate({
   identifier: "EnvironmentsResponseEdgesItemNode",
