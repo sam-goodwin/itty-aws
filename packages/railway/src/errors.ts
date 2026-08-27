@@ -196,6 +196,11 @@ export const RAILWAY_ERROR_MATCHERS: ReadonlyArray<{
   },
   {
     code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "creating volumes too quickly",
+    error: RailwayRateLimited,
+  },
+  {
+    code: "INTERNAL_SERVER_ERROR",
     messageIncludes: "Invalid project name",
     error: RailwayValidationError,
   },
@@ -207,6 +212,21 @@ export const RAILWAY_ERROR_MATCHERS: ReadonlyArray<{
   {
     code: "INTERNAL_SERVER_ERROR",
     messageIncludes: "Project not found",
+    error: RailwayNotFound,
+  },
+  {
+    code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "ServiceInstance not found",
+    error: RailwayNotFound,
+  },
+  {
+    code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "BucketInstance not found",
+    error: RailwayNotFound,
+  },
+  {
+    code: "INTERNAL_SERVER_ERROR",
+    messageIncludes: "VolumeInstance not found",
     error: RailwayNotFound,
   },
   {

@@ -5151,7 +5151,7 @@ export const EnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query environment($id: String!, $projectId: String) {\n  environment(id: $id, projectId: $projectId) {\n    canAccess\n    canvasGroupRefs\n    config\n    configEtag\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n    volumeInstances(first: 50) {\n      edges {\n        node {\n          createdAt\n          currentSizeMB\n          deletedAt\n          environmentId\n          id\n          isPendingDeletion\n          mountPath\n          region\n          serviceId\n          sizeMB\n          state\n          volume {\n            createdAt\n            id\n            name\n            projectId\n          }\n          volumeId\n        }\n      }\n    }\n  }\n}",
+          "query environment($id: String!, $projectId: String) {\n  environment(id: $id, projectId: $projectId) {\n    canAccess\n    canvasGroupRefs\n    config\n    configEtag\n    createdAt\n    deletedAt\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n    volumeInstances(first: 200) {\n      edges {\n        node {\n          createdAt\n          currentSizeMB\n          deletedAt\n          environmentId\n          id\n          isPendingDeletion\n          mountPath\n          region\n          serviceId\n          sizeMB\n          state\n          volume {\n            createdAt\n            id\n            name\n            projectId\n          }\n          volumeId\n        }\n      }\n    }\n  }\n}",
         operationName: "environment",
         type: "query",
       }),
@@ -6025,7 +6025,7 @@ export const EnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query environments($after: String, $before: String, $first: Int, $isEphemeral: Boolean, $last: Int, $projectId: String!) {\n  environments(after: $after, before: $before, first: $first, isEphemeral: $isEphemeral, last: $last, projectId: $projectId) {\n    edges {\n      cursor\n      node {\n        createdAt\n        deletedAt\n        id\n        isEphemeral\n        name\n        projectId\n        updatedAt\n        volumeInstances(first: 50) {\n          edges {\n            node {\n              createdAt\n              currentSizeMB\n              deletedAt\n              environmentId\n              id\n              isPendingDeletion\n              mountPath\n              region\n              serviceId\n              sizeMB\n              state\n              volume {\n                createdAt\n                id\n                name\n                projectId\n              }\n              volumeId\n            }\n          }\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
+          "query environments($after: String, $before: String, $first: Int, $isEphemeral: Boolean, $last: Int, $projectId: String!) {\n  environments(after: $after, before: $before, first: $first, isEphemeral: $isEphemeral, last: $last, projectId: $projectId) {\n    edges {\n      cursor\n      node {\n        createdAt\n        deletedAt\n        id\n        isEphemeral\n        name\n        projectId\n        updatedAt\n        volumeInstances(first: 200) {\n          edges {\n            node {\n              createdAt\n              currentSizeMB\n              deletedAt\n              environmentId\n              id\n              isPendingDeletion\n              mountPath\n              region\n              serviceId\n              sizeMB\n              state\n              volume {\n                createdAt\n                id\n                name\n                projectId\n              }\n              volumeId\n            }\n          }\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}",
         operationName: "environments",
         type: "query",
       }),
@@ -10930,7 +10930,7 @@ export const ProjectRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query project($id: String!) {\n  project(id: $id) {\n    baseEnvironmentId\n    createdAt\n    deletedAt\n    description\n    id\n    name\n    primaryEnvironmentId\n    updatedAt\n    workspaceId\n    services(first: 50) {\n      edges {\n        node {\n          createdAt\n          deletedAt\n          groupId\n          id\n          name\n          projectId\n        }\n      }\n    }\n    buckets(first: 50) {\n      edges {\n        node {\n          createdAt\n          groupId\n          id\n          name\n          projectId\n          updatedAt\n        }\n      }\n    }\n    groups(first: 50) {\n      edges {\n        node {\n          color\n          groupId\n          icon\n          id\n          isCollapsed\n          name\n          projectId\n        }\n      }\n    }\n  }\n}",
+          "query project($id: String!) {\n  project(id: $id) {\n    baseEnvironmentId\n    createdAt\n    deletedAt\n    description\n    id\n    name\n    primaryEnvironmentId\n    updatedAt\n    workspaceId\n    services(first: 50) {\n      edges {\n        node {\n          createdAt\n          deletedAt\n          groupId\n          id\n          name\n          projectId\n          templateId\n        }\n      }\n    }\n    buckets(first: 50) {\n      edges {\n        node {\n          createdAt\n          groupId\n          id\n          name\n          projectId\n          updatedAt\n        }\n      }\n    }\n    groups(first: 50) {\n      edges {\n        node {\n          color\n          groupId\n          icon\n          id\n          isCollapsed\n          name\n          projectId\n        }\n      }\n    }\n  }\n}",
         operationName: "project",
         type: "query",
       }),
@@ -10944,6 +10944,7 @@ export interface ProjectResponseServicesEdgesItemNode {
   name: string;
   projectId: string;
   groupId: string | null;
+  templateId: string | null;
 }
 export const ProjectResponseServicesEdgesItemNode = /*@__PURE__*/ S.suspend(
   () =>
@@ -10954,6 +10955,7 @@ export const ProjectResponseServicesEdgesItemNode = /*@__PURE__*/ S.suspend(
       name: S.String,
       projectId: S.String,
       groupId: S.NullOr(S.String),
+      templateId: S.NullOr(S.String),
     }),
 ).annotate({
   identifier: "ProjectResponseServicesEdgesItemNode",
@@ -21697,7 +21699,7 @@ export const VolumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation volumeCreate($input: VolumeCreateInput!) {\n  volumeCreate(input: $input) {\n    createdAt\n    id\n    name\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n  }\n}",
+          "mutation volumeCreate($input: VolumeCreateInput!) {\n  volumeCreate(input: $input) {\n    createdAt\n    id\n    name\n    projectId\n    volumeInstances(first: 10) {\n      edges {\n        node {\n          createdAt\n          currentSizeMB\n          deletedAt\n          environmentId\n          id\n          isPendingDeletion\n          mountPath\n          region\n          serviceId\n          sizeMB\n          state\n          volume {\n            createdAt\n            id\n            name\n            projectId\n          }\n          volumeId\n        }\n      }\n    }\n  }\n}",
         operationName: "volumeCreate",
         type: "mutation",
       }),
@@ -21706,75 +21708,21 @@ export const VolumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VolumeCreateRequest",
 }) as any as S.Schema<VolumeCreateRequest>;
 
-export type VolumeCreateResponseProjectFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const VolumeCreateResponseProjectFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActiveProjectFeatureFlag,
-  ) as any as S.Schema<VolumeCreateResponseProjectFeatureFlagsList>;
-
-export interface VolumeCreateResponseProject {
-  baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
-  createdAt: string;
-  deletedAt: string | null;
-  description: string | null;
-  expiredAt: string | null;
-  featureFlags: VolumeCreateResponseProjectFeatureFlagsList;
-  focusedPrEnvironments: boolean;
-  id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  name: string;
-  prDeploys: boolean;
-  primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  teamId: string | null;
-  updatedAt: string;
-  workspaceId: string | null;
-}
-export const VolumeCreateResponseProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: VolumeCreateResponseProjectFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
-    id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    name: S.String,
-    prDeploys: S.Boolean,
-    primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    teamId: S.NullOr(S.String),
-    updatedAt: S.String,
-    workspaceId: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "VolumeCreateResponseProject",
-}) as any as S.Schema<VolumeCreateResponseProject>;
-
 /** Selection set for `volumeCreate` (unwrapped from the GraphQL `data` envelope). */
 export interface VolumeCreateResponse {
   createdAt: string;
   id: string;
   name: string;
-  project: VolumeCreateResponseProject;
   projectId: string;
+  volumeInstances: EnvironmentResponseVolumeInstances;
 }
 export const VolumeCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     id: S.String,
     name: S.String,
-    project: VolumeCreateResponseProject,
     projectId: S.String,
+    volumeInstances: EnvironmentResponseVolumeInstances,
   }).pipe(T.ResponsePath("volumeCreate")),
 ).annotate({
   identifier: "VolumeCreateResponse",
@@ -21818,7 +21766,7 @@ export const VolumeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "query volumeInstance($id: String!) {\n  volumeInstance(id: $id) {\n    createdAt\n    currentSizeMB\n    deletedAt\n    environment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    externalId\n    id\n    isPendingDeletion\n    mountPath\n    region\n    serviceId\n    sizeMB\n    state\n    volume {\n      createdAt\n      id\n      name\n      projectId\n    }\n    volumeId\n  }\n}",
+          "query volumeInstance($id: String!) {\n  volumeInstance(id: $id) {\n    createdAt\n    currentSizeMB\n    deletedAt\n    environmentId\n    externalId\n    id\n    isPendingDeletion\n    mountPath\n    region\n    serviceId\n    sizeMB\n    state\n    volume {\n      createdAt\n      id\n      name\n      projectId\n    }\n    volumeId\n  }\n}",
         operationName: "volumeInstance",
         type: "query",
       }),
@@ -21826,11 +21774,6 @@ export const VolumeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VolumeInstanceRequest",
 }) as any as S.Schema<VolumeInstanceRequest>;
-
-export type VolumeInstanceResponseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-export const VolumeInstanceResponseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
 
 export type VolumeInstanceResponseServiceFeatureFlagsList =
   Array<ActiveServiceFeatureFlag>;
@@ -21886,7 +21829,6 @@ export interface VolumeInstanceResponse {
   createdAt: string;
   currentSizeMB: number;
   deletedAt: string | null;
-  environment: AdminVolumeInstancesForVolumeResultItemEnvironment;
   environmentId: string;
   externalId: string | null;
   id: string;
@@ -21905,7 +21847,6 @@ export const VolumeInstanceResponse = /*@__PURE__*/ S.suspend(() =>
     createdAt: S.String,
     currentSizeMB: S.Number,
     deletedAt: S.NullOr(S.String),
-    environment: AdminVolumeInstancesForVolumeResultItemEnvironment,
     environmentId: S.String,
     externalId: S.NullOr(S.String),
     id: S.String,
