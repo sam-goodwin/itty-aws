@@ -181,8 +181,8 @@
         "RequestLimitExceeded",
         "SlowDown",
         "NoSuchBucket",
-        "PermanentRedirect",
-        "NotFound"
+        "NoSuchKey",
+        "PermanentRedirect"
       ]
     },
     "putObject": {
