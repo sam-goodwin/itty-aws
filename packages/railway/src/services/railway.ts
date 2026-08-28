@@ -3023,7 +3023,7 @@ export const DeploymentCancelRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation deploymentCancel($id: String!) {\n  deploymentCancel(id: $id) {\n    __typename\n  }\n}",
+          "mutation deploymentCancel($id: String!) {\n  deploymentCancel(id: $id)\n}",
         operationName: "deploymentCancel",
         type: "mutation",
       }),
@@ -3550,7 +3550,7 @@ export const DeploymentRemoveRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation deploymentRemove($id: String!) {\n  deploymentRemove(id: $id) {\n    __typename\n  }\n}",
+          "mutation deploymentRemove($id: String!) {\n  deploymentRemove(id: $id)\n}",
         operationName: "deploymentRemove",
         type: "mutation",
       }),
@@ -3577,7 +3577,7 @@ export const DeploymentRestartRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation deploymentRestart($id: String!) {\n  deploymentRestart(id: $id) {\n    __typename\n  }\n}",
+          "mutation deploymentRestart($id: String!) {\n  deploymentRestart(id: $id)\n}",
         operationName: "deploymentRestart",
         type: "mutation",
       }),
@@ -3966,7 +3966,7 @@ export const DeploymentStopRequest = /*@__PURE__*/ S.suspend(() =>
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation deploymentStop($id: String!) {\n  deploymentStop(id: $id) {\n    __typename\n  }\n}",
+          "mutation deploymentStop($id: String!) {\n  deploymentStop(id: $id)\n}",
         operationName: "deploymentStop",
         type: "mutation",
       }),

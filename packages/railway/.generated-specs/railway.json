@@ -32460,7 +32460,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation deploymentCancel($id: String!) {\n  deploymentCancel(id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation deploymentCancel($id: String!) {\n  deploymentCancel(id: $id)\n}",
           "operationName": "deploymentCancel",
           "type": "mutation"
         }
@@ -33032,7 +33032,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation deploymentRemove($id: String!) {\n  deploymentRemove(id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation deploymentRemove($id: String!) {\n  deploymentRemove(id: $id)\n}",
           "operationName": "deploymentRemove",
           "type": "mutation"
         }
@@ -33085,7 +33085,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation deploymentRestart($id: String!) {\n  deploymentRestart(id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation deploymentRestart($id: String!) {\n  deploymentRestart(id: $id)\n}",
           "operationName": "deploymentRestart",
           "type": "mutation"
         }
@@ -33191,7 +33191,7 @@
       "traits": {
         "smithy.api#input": {},
         "com.railway.graphql#operation": {
-          "query": "mutation deploymentStop($id: String!) {\n  deploymentStop(id: $id) {\n    __typename\n  }\n}",
+          "query": "mutation deploymentStop($id: String!) {\n  deploymentStop(id: $id)\n}",
           "operationName": "deploymentStop",
           "type": "mutation"
         }

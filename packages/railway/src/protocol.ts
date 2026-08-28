@@ -116,7 +116,8 @@ const retryAfterForRateLimit = (
 ) => {
   const fromHeader = parseRetryAfterForStatus(429, headers);
   if (fromHeader !== undefined) return fromHeader;
-  const match = /per (\d+) seconds/.exec(message);
+  const match =
+    /per (\d+) seconds/.exec(message) ?? /every (\d+)\s*s/.exec(message);
   if (match !== null) {
     return Duration.seconds(Number(match[1]) + 1);
   }
@@ -233,6 +234,12 @@ const matchError = (
   return fail(new UnknownRailwayError({ body: errorBody }));
 };
 
+/** Cloudflare's public GraphQL edge is 10 RPS; `source=` is an identified client. */
+const withClientSource = (url: string) => {
+  if (/[?&]source=/.test(url)) return url;
+  return url.includes("?") ? `${url}&source=alchemy` : `${url}?source=alchemy`;
+};
+
 // ============================================================================
 // Protocol
 // ============================================================================
@@ -283,7 +290,12 @@ const encode = ({
           ? { "Project-Access-Token": token }
           : { Authorization: `Bearer ${token}` };
 
-    const url = `${creds.apiBaseUrl}${http?.uri ?? "/graphql/v2"}`;
+    // Terraform's Railway provider hits
+    // `.../graphql/v2?source=terraform_provider_railway` so Cloudflare's
+    // 10 RPS edge limit on anonymous GraphQL does not apply. Same shape.
+    const url = withClientSource(
+      `${creds.apiBaseUrl}${http?.uri ?? "/graphql/v2"}`,
+    );
     if (process.env.DISTILLED_DEBUG_HTTP) {
       console.error(
         `[distilled] POST ${url} op=${op.operationName} variables=${JSON.stringify(variables).slice(0, 400)}`,
