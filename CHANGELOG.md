@@ -1,3 +1,13 @@
+## v1.0.0-rc.8
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Upgrade to effect rc 112 &nbsp;-&nbsp; by **Sam Goodwin** [<samp>(809f3)</samp>](https://github.com/alchemy-run/distilled/commit/809f3d85e)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v1.0.0-rc.7...HEAD)
+
+---
+
 ## v1.0.0-rc.7
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
