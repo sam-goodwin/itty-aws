@@ -1,3 +1,22 @@
+## v1.0.0-rc.7
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **cloudflare**:
+  - **email_routing**: Type WorkerScriptNotFound on rule writes &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/476 [<samp>(57e90)</samp>](https://github.com/alchemy-run/distilled/commit/57e9053f5)
+- **fly-io,hetzner,railway**:
+  - MachineIdentity, tagged createServer errors, slim GraphQL &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/477 [<samp>(e7f12)</samp>](https://github.com/alchemy-run/distilled/commit/e7f12dd80)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**: Unwrap single-type envelope wrappers in spec conversion &nbsp;-&nbsp; by **Rahul Mishra** and **Claude Fable 5** in https://github.com/alchemy-run/distilled/issues/473 [<samp>(8a55e)</samp>](https://github.com/alchemy-run/distilled/commit/8a55e2b13)
+- **deps**: Update to effect 4.0.0-rc.111 &nbsp;-&nbsp; by **Michael K** in https://github.com/alchemy-run/distilled/issues/474 [<samp>(651cd)</samp>](https://github.com/alchemy-run/distilled/commit/651cde92e)
+- **railway**: SDK DX, tcpProxyCreate, and error tags for alchemy &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/472 [<samp>(db3a1)</samp>](https://github.com/alchemy-run/distilled/commit/db3a1b539)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v1.0.0-rc.6...HEAD)
+
+---
+
 ## v1.0.0-rc.6
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
