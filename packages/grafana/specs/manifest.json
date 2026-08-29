@@ -1,0 +1,28 @@
+{
+  "repository": "https://github.com/grafana/grafana",
+  "directory": "packages/grafana-openapi/src/apis",
+  "grafanaVersion": "13.2.0",
+  "containerImage": "grafana/grafana:13.2.0",
+  "files": {
+    "dashboard.grafana.app-v2.json": {
+      "commit": "f681b1359f6a0b8ecb9f2c49a88ac72b75bde73b",
+      "sha256": "c290f6df50851d3962d6b2af3f7188d42d3d43ed317a3f4012d0e337b9fe7f32"
+    },
+    "folder.grafana.app-v1.json": {
+      "commit": "f681b1359f6a0b8ecb9f2c49a88ac72b75bde73b",
+      "sha256": "1ca05f3e4cd28a259c8976161b28242692719f10c6c7a459e25181d61b5dc2c6"
+    },
+    "playlist.grafana.app-v1.json": {
+      "commit": "f681b1359f6a0b8ecb9f2c49a88ac72b75bde73b",
+      "sha256": "9778d8fc1fede561e58803fdf5498f67be0edcff14a28514a5793da19927022a"
+    },
+    "rules.alerting.grafana.app-v0alpha1.json": {
+      "commit": "f681b1359f6a0b8ecb9f2c49a88ac72b75bde73b",
+      "sha256": "4eee110dd54b5a9fb6de3df6ac39d927952c3ae2362c688a40c932bbf47e1e6f"
+    },
+    "notifications.alerting.grafana.app-v1beta1.json": {
+      "commit": "f681b1359f6a0b8ecb9f2c49a88ac72b75bde73b",
+      "sha256": "b8ff160e5cbe24beb6937c2a2fff5166a665bb6943875775451893bcdd1d7965"
+    }
+  }
+}

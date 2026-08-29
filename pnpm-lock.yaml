@@ -332,6 +332,19 @@ importers:
         specifier: catalog:tooling
         version: 26.2.0
 
+  packages/grafana:
+    dependencies:
+      '@distilled.cloud/core':
+        specifier: workspace:*
+        version: link:../core
+      effect:
+        specifier: catalog:effect
+        version: 4.0.0-rc.111
+    devDependencies:
+      '@types/node':
+        specifier: catalog:tooling
+        version: 26.2.0
+
   packages/hetzner:
     dependencies:
       '@distilled.cloud/core':

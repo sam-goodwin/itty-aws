@@ -1,0 +1,3973 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.grafana.dashboard.v2#APIResourceList": {
+      "type": "structure",
+      "members": {
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+          }
+        },
+        "groupVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "groupVersion is the group and version this APIResourceList is for.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+          }
+        },
+        "resources": {
+          "target": "com.grafana.dashboard.v2#APIResourceListResourcesList",
+          "traits": {
+            "smithy.api#documentation": "resources contains the name of the resources and if they are namespaced.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced."
+      }
+    },
+    "com.grafana.dashboard.v2#APIResource": {
+      "type": "structure",
+      "members": {
+        "categories": {
+          "target": "com.grafana.dashboard.v2#APIResourceCategoriesList",
+          "traits": {
+            "smithy.api#documentation": "categories is a list of the grouped resources this resource belongs to (e.g. 'all')"
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "group is the preferred group of the resource.  Empty implies the group of the containing resource list. For subresources, this may have a different value, for example: Scale\"."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "kind is the kind for the resource (e.g. 'Foo' is the kind for a resource 'foo')",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "name is the plural name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "namespaced": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "namespaced indicates if a resource is namespaced or not.",
+            "smithy.api#required": {}
+          }
+        },
+        "shortNames": {
+          "target": "com.grafana.dashboard.v2#APIResourceShortNamesList",
+          "traits": {
+            "smithy.api#documentation": "shortNames is a list of suggested short names of the resource."
+          }
+        },
+        "singularName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "singularName is the singular name of the resource.  This allows clients to handle plural and singular opaquely. The singularName is more correct for reporting status on a single item and both singular and plural are allowed from the kubectl CLI interface.",
+            "smithy.api#required": {}
+          }
+        },
+        "storageVersionHash": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hash value of the storage version, the version this resource is converted to when written to the data store. Value must be treated as opaque by clients. Only equality comparison on the value is valid. This is an alpha feature and may change or be removed in the future. The field is populated by the apiserver only if the StorageVersionHash feature gate is enabled. This field will remain optional even if it graduates."
+          }
+        },
+        "verbs": {
+          "target": "com.grafana.dashboard.v2#APIResourceVerbsList",
+          "traits": {
+            "smithy.api#documentation": "verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy)",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)\"."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "APIResource specifies the name of a resource and whether it is namespaced."
+      }
+    },
+    "com.grafana.dashboard.v2#APIResourceCategoriesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "categories is a list of the grouped resources this resource belongs to (e.g. 'all')"
+      }
+    },
+    "com.grafana.dashboard.v2#APIResourceShortNamesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "shortNames is a list of suggested short names of the resource."
+      }
+    },
+    "com.grafana.dashboard.v2#APIResourceVerbsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy)"
+      }
+    },
+    "com.grafana.dashboard.v2#APIResourceListResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#APIResource"
+      },
+      "traits": {
+        "smithy.api#documentation": "resources contains the name of the resources and if they are namespaced."
+      }
+    },
+    "com.grafana.dashboard.v2#GetAPIResources": {
+      "type": "operation",
+      "input": {
+        "target": "smithy.api#Unit"
+      },
+      "output": {
+        "target": "com.grafana.dashboard.v2#APIResourceList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/apis/dashboard.grafana.app/v2",
+          "code": 200
+        },
+        "smithy.api#documentation": "Describe the available kubernetes resources"
+      }
+    },
+    "com.grafana.dashboard.v2#ListDashboardRequest": {
+      "type": "structure",
+      "members": {
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pretty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "pretty",
+            "smithy.api#documentation": "If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget)."
+          }
+        },
+        "continue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "continue",
+            "smithy.api#documentation": "The continue option should be set when retrieving more results from the server. Since this value is server defined, clients may only use the continue value from a previous query result with identical query parameters (except for the value of continue) and the server may reject a continue value it does not recognize. If the specified continue value is no longer valid whether due to expiration (generally five to fifteen minutes) or a configuration change on the server, the server will respond with a 410 ResourceExpired error together with a continue token. If the client needs a consistent list, it must restart their list without the continue field. Otherwise, the client may send another list request with the token received with the 410 error, the server will respond with a list starting from the next key, but from the latest snapshot, which is inconsistent from the previous list results - objects that are created, modified, or deleted after the first list request will be included in the response, as long as their keys are after the \"next key\".\n\nThis field is not supported when watch is true. Clients may start a watch from the last resourceVersion value returned by the server and not miss any modifications."
+          }
+        },
+        "fieldSelector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "fieldSelector",
+            "smithy.api#documentation": "A selector to restrict the list of returned objects by their fields. Defaults to everything."
+          }
+        },
+        "labelSelector": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "labelSelector",
+            "smithy.api#documentation": "A selector to restrict the list of returned objects by their labels. Defaults to everything."
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "limit",
+            "smithy.api#documentation": "limit is a maximum number of responses to return for a list call. If more items exist, the server will set the `continue` field on the list metadata to a value that can be used with the same initial query to retrieve the next set of results. Setting a limit may return fewer than the requested amount of items (up to zero items) in the event all requested objects are filtered out and clients should only use the presence of the continue field to determine whether more results are available. Servers may choose not to support the limit argument and will return all of the available results. If limit is specified and the continue field is empty, clients may assume that no more results are available. This field is not supported if watch is true.\n\nThe server guarantees that the objects returned when using continue will be identical to issuing a single list call without a limit - that is, no objects created, modified, or deleted after the first request is issued will be included in any subsequent continued requests. This is sometimes referred to as a consistent snapshot, and ensures that a client that is using limit to receive smaller chunks of a very large result can ensure they see all possible objects. If objects are updated during a chunked list the version of the object that was present at the time the first list result was calculated is returned."
+          }
+        },
+        "resourceVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "resourceVersion",
+            "smithy.api#documentation": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset"
+          }
+        },
+        "timeoutSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "timeoutSeconds",
+            "smithy.api#documentation": "Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity."
+          }
+        },
+        "watch": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "watch",
+            "smithy.api#documentation": "Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardList": {
+      "type": "structure",
+      "members": {
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+          }
+        },
+        "items": {
+          "target": "com.grafana.dashboard.v2#DashboardListItemsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+          }
+        },
+        "metadata": {
+          "target": "com.grafana.dashboard.v2#ListMeta",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#Dashboard2": {
+      "type": "structure",
+      "members": {
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+          }
+        },
+        "metadata": {
+          "target": "com.grafana.dashboard.v2#ObjectMeta",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardSpec",
+          "traits": {
+            "smithy.api#documentation": "Spec is the spec of the Dashboard",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.grafana.dashboard.v2#DashboardStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#ObjectMeta": {
+      "type": "structure",
+      "members": {
+        "annotations": {
+          "target": "com.grafana.dashboard.v2#ObjectMetaAnnotationsMap",
+          "traits": {
+            "smithy.api#documentation": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations"
+          }
+        },
+        "creationTimestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+          }
+        },
+        "deletionGracePeriodSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only."
+          }
+        },
+        "deletionTimestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.\n\nPopulated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+          }
+        },
+        "finalizers": {
+          "target": "com.grafana.dashboard.v2#ObjectMetaFinalizersList",
+          "traits": {
+            "smithy.api#documentation": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list."
+          }
+        },
+        "generateName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will return a 409.\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency"
+          }
+        },
+        "generation": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only."
+          }
+        },
+        "labels": {
+          "target": "com.grafana.dashboard.v2#ObjectMetaLabelsMap",
+          "traits": {
+            "smithy.api#documentation": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels"
+          }
+        },
+        "managedFields": {
+          "target": "com.grafana.dashboard.v2#ObjectMetaManagedFieldsList",
+          "traits": {
+            "smithy.api#documentation": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names"
+          }
+        },
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces"
+          }
+        },
+        "ownerReferences": {
+          "target": "com.grafana.dashboard.v2#ObjectMetaOwnerReferencesList",
+          "traits": {
+            "smithy.api#documentation": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller."
+          }
+        },
+        "resourceVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency"
+          }
+        },
+        "selfLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system."
+          }
+        },
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create."
+      }
+    },
+    "com.grafana.dashboard.v2#ObjectMetaAnnotationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations"
+      }
+    },
+    "com.grafana.dashboard.v2#ObjectMetaFinalizersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list."
+      }
+    },
+    "com.grafana.dashboard.v2#ObjectMetaLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels"
+      }
+    },
+    "com.grafana.dashboard.v2#ManagedFieldsEntry": {
+      "type": "structure",
+      "members": {
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "APIVersion defines the version of this resource that this field set applies to. The format is \"group/version\" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted."
+          }
+        },
+        "fieldsType": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: \"FieldsV1\""
+          }
+        },
+        "fieldsV1": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "FieldsV1 holds the first JSON version format as described in the \"FieldsV1\" type."
+          }
+        },
+        "manager": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Manager is an identifier of the workflow managing these fields."
+          }
+        },
+        "operation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are 'Apply' and 'Update'."
+          }
+        },
+        "subresource": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource."
+          }
+        },
+        "time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to."
+      }
+    },
+    "com.grafana.dashboard.v2#ObjectMetaManagedFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#ManagedFieldsEntry"
+      },
+      "traits": {
+        "smithy.api#documentation": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object."
+      }
+    },
+    "com.grafana.dashboard.v2#OwnerReference": {
+      "type": "structure",
+      "members": {
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "API version of the referent.",
+            "smithy.api#required": {}
+          }
+        },
+        "blockOwnerDeletion": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned."
+          }
+        },
+        "controller": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, this reference points to the managing controller."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+            "smithy.api#required": {}
+          }
+        },
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field."
+      }
+    },
+    "com.grafana.dashboard.v2#ObjectMetaOwnerReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#OwnerReference"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardSpec": {
+      "type": "structure",
+      "members": {
+        "annotations": {
+          "target": "com.grafana.dashboard.v2#DashboardSpecAnnotationsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "cursorSync": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Configuration of dashboard cursor sync behavior. \"Off\" for no shared crosshair or tooltip (default). \"Crosshair\" for shared crosshair. \"Tooltip\" for shared crosshair AND shared tooltip.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Description of dashboard."
+          }
+        },
+        "editable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether a dashboard is editable or not."
+          }
+        },
+        "elements": {
+          "target": "com.grafana.dashboard.v2#DashboardSpecElementsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "layout": {
+          "target": "com.grafana.dashboard.v2#DashboardGridLayoutKindOrRowsLayoutKindOrAutoGridLayoutKindOrTabsLayoutKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "links": {
+          "target": "com.grafana.dashboard.v2#DashboardSpecLinksList",
+          "traits": {
+            "smithy.api#documentation": "Links with references to other dashboards or external websites.",
+            "smithy.api#required": {}
+          }
+        },
+        "liveNow": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When set to true, the dashboard will redraw panels at an interval matching the pixel width. This will keep data \"moving left\" regardless of the query refresh rate. This setting helps avoid dashboards presenting stale live data."
+          }
+        },
+        "preferences": {
+          "target": "com.grafana.dashboard.v2#DashboardPreferences"
+        },
+        "preload": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When set to true, the dashboard will load all panels in the dashboard when it's loaded.",
+            "smithy.api#required": {}
+          }
+        },
+        "revision": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Plugins only. The version of the dashboard installed together with the plugin. This is used to determine if the dashboard should be updated when the plugin is updated."
+          }
+        },
+        "tags": {
+          "target": "com.grafana.dashboard.v2#DashboardSpecTagsList",
+          "traits": {
+            "smithy.api#documentation": "Tags associated with dashboard.",
+            "smithy.api#required": {}
+          }
+        },
+        "timeSettings": {
+          "target": "com.grafana.dashboard.v2#DashboardTimeSettingsSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Title of dashboard.",
+            "smithy.api#required": {}
+          }
+        },
+        "variables": {
+          "target": "com.grafana.dashboard.v2#DashboardSpecVariablesList",
+          "traits": {
+            "smithy.api#documentation": "Configured template variables.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardAnnotationQueryKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardAnnotationQuerySpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardAnnotationQuerySpec": {
+      "type": "structure",
+      "members": {
+        "builtIn": {
+          "target": "smithy.api#Boolean"
+        },
+        "enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "com.grafana.dashboard.v2#DashboardAnnotationPanelFilter"
+        },
+        "hide": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "iconColor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "legacyOptions": {
+          "target": "com.grafana.dashboard.v2#DashboardAnnotationQuerySpecLegacyOptionsMap",
+          "traits": {
+            "smithy.api#documentation": "Catch-all field for datasource-specific properties. Should not be available in as code tooling."
+          }
+        },
+        "mappings": {
+          "target": "com.grafana.dashboard.v2#DashboardAnnotationQuerySpecMappingsMap",
+          "traits": {
+            "smithy.api#documentation": "Mappings define how to convert data frame fields to annotation event fields."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "placement": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Placement can be used to display the annotation query somewhere else on the dashboard other than the default location."
+          }
+        },
+        "query": {
+          "target": "com.grafana.dashboard.v2#DashboardDataQueryKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardAnnotationPanelFilter": {
+      "type": "structure",
+      "members": {
+        "exclude": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Should the specified panels be included or excluded"
+          }
+        },
+        "ids": {
+          "target": "com.grafana.dashboard.v2#DashboardAnnotationPanelFilterIdsList",
+          "traits": {
+            "smithy.api#documentation": "Panel IDs that should be included or excluded",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardAnnotationPanelFilterIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      },
+      "traits": {
+        "smithy.api#documentation": "Panel IDs that should be included or excluded"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardAnnotationQuerySpecLegacyOptionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "Catch-all field for datasource-specific properties. Should not be available in as code tooling."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardAnnotationEventFieldMapping": {
+      "type": "structure",
+      "members": {
+        "regex": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Regular expression to apply to the field value"
+          }
+        },
+        "source": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Source type for the field value"
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Constant value to use when source is \"text\""
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Annotation event field mapping. Defines how to map a data frame field to an annotation event field."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardAnnotationQuerySpecMappingsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.grafana.dashboard.v2#DashboardAnnotationEventFieldMapping"
+      },
+      "traits": {
+        "smithy.api#documentation": "Mappings define how to convert data frame fields to annotation event fields."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardDataQueryKind": {
+      "type": "structure",
+      "members": {
+        "datasource": {
+          "target": "com.grafana.dashboard.v2#DashboardV2DataQueryKindDatasource",
+          "traits": {
+            "smithy.api#documentation": "New type for datasource reference Not creating a new type until we figure out how to handle DS refs for group by, adhoc, and every place that uses DataSourceRef in TS."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "labels": {
+          "target": "com.grafana.dashboard.v2#DashboardDataQueryKindLabelsMap"
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardDataQueryKindSpecMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardV2DataQueryKindDatasource": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardDataQueryKindLabelsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardDataQueryKindSpecMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardSpecAnnotationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardAnnotationQueryKind"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardPanelKindOrLibraryPanelKind": {
+      "type": "structure",
+      "members": {
+        "LibraryPanelKind": {
+          "target": "com.grafana.dashboard.v2#DashboardLibraryPanelKind"
+        },
+        "PanelKind": {
+          "target": "com.grafana.dashboard.v2#DashboardPanelKind"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardLibraryPanelKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardLibraryPanelKindSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardLibraryPanelKindSpec": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Panel ID for the library panel in the dashboard",
+            "smithy.api#required": {}
+          }
+        },
+        "libraryPanel": {
+          "target": "com.grafana.dashboard.v2#DashboardLibraryPanelRef",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Title for the library panel in the dashboard",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardLibraryPanelRef": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Library panel name",
+            "smithy.api#required": {}
+          }
+        },
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Library panel uid",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A library panel is a reusable panel that you can use in any dashboard. When you make a change to a library panel, that change propagates to all instances of where the panel is used. Library panels streamline reuse of panels across multiple dashboards."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardPanelKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardPanelSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardPanelSpec": {
+      "type": "structure",
+      "members": {
+        "data": {
+          "target": "com.grafana.dashboard.v2#DashboardQueryGroupKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shown in a info icon tooltip next to panel title"
+          }
+        },
+        "id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "links": {
+          "target": "com.grafana.dashboard.v2#DashboardPanelSpecLinksList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "subtitle": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shown in a sub header below the title."
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "transparent": {
+          "target": "smithy.api#Boolean"
+        },
+        "vizConfig": {
+          "target": "com.grafana.dashboard.v2#DashboardVizConfigKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardQueryGroupKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardQueryGroupSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardQueryGroupSpec": {
+      "type": "structure",
+      "members": {
+        "queries": {
+          "target": "com.grafana.dashboard.v2#DashboardQueryGroupSpecQueriesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "queryOptions": {
+          "target": "com.grafana.dashboard.v2#DashboardQueryOptionsSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "transformations": {
+          "target": "com.grafana.dashboard.v2#DashboardQueryGroupSpecTransformationsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardPanelQueryKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardPanelQuerySpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardPanelQuerySpec": {
+      "type": "structure",
+      "members": {
+        "hidden": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "query": {
+          "target": "com.grafana.dashboard.v2#DashboardDataQueryKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "refId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardQueryGroupSpecQueriesList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardPanelQueryKind"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardQueryOptionsSpec": {
+      "type": "structure",
+      "members": {
+        "cacheTimeout": {
+          "target": "smithy.api#String"
+        },
+        "hideTimeOverride": {
+          "target": "smithy.api#Boolean"
+        },
+        "interval": {
+          "target": "smithy.api#String"
+        },
+        "maxDataPoints": {
+          "target": "smithy.api#Integer"
+        },
+        "queryCachingTTL": {
+          "target": "smithy.api#Integer"
+        },
+        "timeCompare": {
+          "target": "smithy.api#String"
+        },
+        "timeFrom": {
+          "target": "smithy.api#String"
+        },
+        "timeShift": {
+          "target": "smithy.api#String"
+        },
+        "timeTo": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardTransformationKind": {
+      "type": "structure",
+      "members": {
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group is the transformation ID",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardTransformationSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardTransformationSpec": {
+      "type": "structure",
+      "members": {
+        "disabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Disabled transformations are skipped"
+          }
+        },
+        "filter": {
+          "target": "com.grafana.dashboard.v2#DashboardMatcherConfig",
+          "traits": {
+            "smithy.api#documentation": "Optional frame matcher. When missing it will be applied to all results"
+          }
+        },
+        "options": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Options to be passed to the transformer Valid options depend on the transformer id",
+            "smithy.api#required": {}
+          }
+        },
+        "topic": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Where to pull DataFrames from as input to transformation"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Transformations allow to manipulate data returned by a query before the system applies a visualization. Using transformations you can: rename fields, join time series data, perform mathematical operations across queries, use the output of one transformation as the input to another transformation, etc."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardMatcherConfig": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The matcher id. This is used to find the matcher implementation from registry.",
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The matcher options. This is specific to the matcher implementation."
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "If set, limits this matcher to fields of that type. If not set, \"series\" mode is used."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Matcher is a predicate configuration. Based on the config a set of field(s) or values is filtered in order to apply override / transformation. It comes with in id ( to resolve implementation from registry) and a configuration that’s specific to a particular matcher type."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardQueryGroupSpecTransformationsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardTransformationKind"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardDataLink": {
+      "type": "structure",
+      "members": {
+        "targetBlank": {
+          "target": "smithy.api#Boolean"
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardPanelSpecLinksList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardDataLink"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardVizConfigKind": {
+      "type": "structure",
+      "members": {
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group is the plugin ID",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardVizConfigSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardVizConfigSpec": {
+      "type": "structure",
+      "members": {
+        "fieldConfig": {
+          "target": "com.grafana.dashboard.v2#DashboardFieldConfigSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "options": {
+          "target": "com.grafana.dashboard.v2#DashboardVizConfigSpecOptionsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "--- Kinds ---"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardFieldConfigSource": {
+      "type": "structure",
+      "members": {
+        "defaults": {
+          "target": "com.grafana.dashboard.v2#DashboardFieldConfig",
+          "traits": {
+            "smithy.api#documentation": "Defaults are the options applied to all fields.",
+            "smithy.api#required": {}
+          }
+        },
+        "overrides": {
+          "target": "com.grafana.dashboard.v2#DashboardFieldConfigSourceOverridesList",
+          "traits": {
+            "smithy.api#documentation": "Overrides are the options applied to specific fields overriding the defaults.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The data model used in Grafana, namely the data frame, is a columnar-oriented table structure that unifies both time series and table query results. Each column within this structure is called a field. A field can represent a single time series or table column. Field options allow you to change how the data is displayed in your visualizations."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardFieldConfig": {
+      "type": "structure",
+      "members": {
+        "actions": {
+          "target": "com.grafana.dashboard.v2#DashboardFieldConfigActionsList",
+          "traits": {
+            "smithy.api#documentation": "Define interactive HTTP requests that can be triggered from data visualizations."
+          }
+        },
+        "color": {
+          "target": "com.grafana.dashboard.v2#DashboardFieldColor",
+          "traits": {
+            "smithy.api#documentation": "Panel color configuration"
+          }
+        },
+        "custom": {
+          "target": "com.grafana.dashboard.v2#DashboardFieldConfigCustomMap",
+          "traits": {
+            "smithy.api#documentation": "custom is specified by the FieldConfig field in panel plugin schemas."
+          }
+        },
+        "decimals": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specify the number of decimals Grafana includes in the rendered value. If you leave this field blank, Grafana automatically truncates the number of decimals based on the value. For example 1.1234 will display as 1.12 and 100.456 will display as 100. To display all decimals, set the unit to `String`."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human readable field metadata"
+          }
+        },
+        "displayName": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The display value for this field.  This supports template variables blank is auto"
+          }
+        },
+        "displayNameFromDS": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This can be used by data sources that return and explicit naming structure for values and labels When this property is configured, this value is used rather than the default naming strategy."
+          }
+        },
+        "fieldMinMax": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Calculate min max per field"
+          }
+        },
+        "filterable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if data source field supports ad-hoc filters"
+          }
+        },
+        "links": {
+          "target": "com.grafana.dashboard.v2#DashboardFieldConfigLinksList",
+          "traits": {
+            "smithy.api#documentation": "The behavior when clicking on a result"
+          }
+        },
+        "mappings": {
+          "target": "com.grafana.dashboard.v2#DashboardFieldConfigMappingsList",
+          "traits": {
+            "smithy.api#documentation": "Convert input values into a display string"
+          }
+        },
+        "max": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum value used in percentage threshold calculations. Leave blank for auto calculation based on all series and fields."
+          }
+        },
+        "min": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The minimum value used in percentage threshold calculations. Leave blank for auto calculation based on all series and fields."
+          }
+        },
+        "noValue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Alternative to empty string"
+          }
+        },
+        "nullValueMode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "How null values should be handled when calculating field stats \"null\" - Include null values, \"connected\" - Ignore nulls, \"null as zero\" - Treat nulls as zero"
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An explicit path to the field in the datasource.  When the frame meta includes a path, This will default to `${frame.meta.path}/${field.name}\n\nWhen defined, this value can be used as an identifier within the datasource scope, and may be used to update the results"
+          }
+        },
+        "thresholds": {
+          "target": "com.grafana.dashboard.v2#DashboardThresholdsConfig",
+          "traits": {
+            "smithy.api#documentation": "Map numeric values to states"
+          }
+        },
+        "unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unit a field should use. The unit you select is applied to all fields except time. You can use the units ID available in Grafana or a custom unit. Available units in Grafana: https://github.com/grafana/grafana/blob/main/packages/grafana-data/src/valueFormats/categories.ts As custom unit, you can use the following formats: `suffix:<suffix>` for custom unit that should go after value. `prefix:<prefix>` for custom unit that should go before value. `time:<format>` For custom date time formats type for example `time:YYYY-MM-DD`. `si:<base scale><unit characters>` for custom SI units. For example: `si: mF`. This one is a bit more advanced as you can specify both a unit and the source data scale. So if your source data is represented as milli (thousands of) something prefix the unit with that SI scale character. `count:<unit>` for a custom count unit. `currency:<unit>` for custom a currency unit."
+          }
+        },
+        "writeable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "True if data source can write a value to the path. Auth/authz are supported separately"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The data model used in Grafana, namely the data frame, is a columnar-oriented table structure that unifies both time series and table query results. Each column within this structure is called a field. A field can represent a single time series or table column. Field options allow you to change how the data is displayed in your visualizations."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardAction": {
+      "type": "structure",
+      "members": {
+        "confirmation": {
+          "target": "smithy.api#String"
+        },
+        "fetch": {
+          "target": "com.grafana.dashboard.v2#DashboardFetchOptions"
+        },
+        "infinity": {
+          "target": "com.grafana.dashboard.v2#DashboardInfinityOptions"
+        },
+        "oneClick": {
+          "target": "smithy.api#Boolean"
+        },
+        "style": {
+          "target": "com.grafana.dashboard.v2#DashboardV2ActionStyle"
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "variables": {
+          "target": "com.grafana.dashboard.v2#DashboardActionVariablesList"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardFetchOptions": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#String"
+        },
+        "headers": {
+          "target": "com.grafana.dashboard.v2#DashboardFetchOptionsHeadersList"
+        },
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "queryParams": {
+          "target": "com.grafana.dashboard.v2#DashboardFetchOptionsQueryParamsList",
+          "traits": {
+            "smithy.api#documentation": "These are 2D arrays of strings, each representing a key-value pair We are defining them this way because we can't generate a go struct that that would have exactly two strings in each sub-array"
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardFetchOptionsHeadersItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardFetchOptionsHeadersList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardFetchOptionsHeadersItemList"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardFetchOptionsQueryParamsItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardFetchOptionsQueryParamsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardFetchOptionsQueryParamsItemList"
+      },
+      "traits": {
+        "smithy.api#documentation": "These are 2D arrays of strings, each representing a key-value pair We are defining them this way because we can't generate a go struct that that would have exactly two strings in each sub-array"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardInfinityOptions": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#String"
+        },
+        "datasourceUid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "headers": {
+          "target": "com.grafana.dashboard.v2#DashboardInfinityOptionsHeadersList"
+        },
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "queryParams": {
+          "target": "com.grafana.dashboard.v2#DashboardInfinityOptionsQueryParamsList",
+          "traits": {
+            "smithy.api#documentation": "These are 2D arrays of strings, each representing a key-value pair We are defining them this way because we can't generate a go struct that that would have exactly two strings in each sub-array"
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardInfinityOptionsHeadersItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardInfinityOptionsHeadersList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardInfinityOptionsHeadersItemList"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardInfinityOptionsQueryParamsItemList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardInfinityOptionsQueryParamsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardInfinityOptionsQueryParamsItemList"
+      },
+      "traits": {
+        "smithy.api#documentation": "These are 2D arrays of strings, each representing a key-value pair We are defining them this way because we can't generate a go struct that that would have exactly two strings in each sub-array"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardV2ActionStyle": {
+      "type": "structure",
+      "members": {
+        "backgroundColor": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardActionVariable": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardActionVariablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardActionVariable"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardFieldConfigActionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardAction"
+      },
+      "traits": {
+        "smithy.api#documentation": "Define interactive HTTP requests that can be triggered from data visualizations."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardFieldColor": {
+      "type": "structure",
+      "members": {
+        "fixedColor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The fixed color value for fixed or shades color modes."
+          }
+        },
+        "gradientColorTo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The end color for the gradient color mode (smallest value). Only used when mode is gradient."
+          }
+        },
+        "mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The main color scheme mode.",
+            "smithy.api#required": {}
+          }
+        },
+        "seriesBy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Some visualizations need to know how to assign a series color from by value color schemes."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Map a field to a color."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardFieldConfigCustomMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "custom is specified by the FieldConfig field in panel plugin schemas."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardFieldConfigLinksList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {
+        "smithy.api#documentation": "The behavior when clicking on a result"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardValueMapOrRangeMapOrRegexMapOrSpecialValueMap": {
+      "type": "structure",
+      "members": {
+        "RangeMap": {
+          "target": "com.grafana.dashboard.v2#DashboardRangeMap"
+        },
+        "RegexMap": {
+          "target": "com.grafana.dashboard.v2#DashboardRegexMap"
+        },
+        "SpecialValueMap": {
+          "target": "com.grafana.dashboard.v2#DashboardSpecialValueMap"
+        },
+        "ValueMap": {
+          "target": "com.grafana.dashboard.v2#DashboardValueMap"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardRangeMap": {
+      "type": "structure",
+      "members": {
+        "options": {
+          "target": "com.grafana.dashboard.v2#DashboardV2RangeMapOptions",
+          "traits": {
+            "smithy.api#documentation": "Range to match against and the result to apply when the value is within the range",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Maps numerical ranges to a display text and color. For example, if a value is within a certain range, you can configure a range value mapping to display Low or High rather than the number."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardV2RangeMapOptions": {
+      "type": "structure",
+      "members": {
+        "from": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Min value of the range. It can be null which means -Infinity",
+            "smithy.api#required": {}
+          }
+        },
+        "result": {
+          "target": "com.grafana.dashboard.v2#DashboardValueMappingResult",
+          "traits": {
+            "smithy.api#documentation": "Config to apply when the value is within the range",
+            "smithy.api#required": {}
+          }
+        },
+        "to": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Max value of the range. It can be null which means +Infinity",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardValueMappingResult": {
+      "type": "structure",
+      "members": {
+        "color": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text to use when the value matches"
+          }
+        },
+        "icon": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Icon to display when the value matches. Only specific visualizations."
+          }
+        },
+        "index": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Position in the mapping array. Only used internally."
+          }
+        },
+        "text": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Text to display when the value matches"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Result used as replacement with text and color when the value matches"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardRegexMap": {
+      "type": "structure",
+      "members": {
+        "options": {
+          "target": "com.grafana.dashboard.v2#DashboardV2RegexMapOptions",
+          "traits": {
+            "smithy.api#documentation": "Regular expression to match against and the result to apply when the value matches the regex",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Maps regular expressions to replacement text and a color. For example, if a value is www.example.com, you can configure a regex value mapping so that Grafana displays www and truncates the domain."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardV2RegexMapOptions": {
+      "type": "structure",
+      "members": {
+        "pattern": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Regular expression to match against",
+            "smithy.api#required": {}
+          }
+        },
+        "result": {
+          "target": "com.grafana.dashboard.v2#DashboardValueMappingResult",
+          "traits": {
+            "smithy.api#documentation": "Config to apply when the value matches the regex",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardSpecialValueMap": {
+      "type": "structure",
+      "members": {
+        "options": {
+          "target": "com.grafana.dashboard.v2#DashboardV2SpecialValueMapOptions",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Maps special values like Null, NaN (not a number), and boolean values like true and false to a display text and color. See SpecialValueMatch to see the list of special values. For example, you can configure a special value mapping so that null values appear as N/A."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardV2SpecialValueMapOptions": {
+      "type": "structure",
+      "members": {
+        "match": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Special value to match against",
+            "smithy.api#required": {}
+          }
+        },
+        "result": {
+          "target": "com.grafana.dashboard.v2#DashboardValueMappingResult",
+          "traits": {
+            "smithy.api#documentation": "Config to apply when the value matches the special value",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardValueMap": {
+      "type": "structure",
+      "members": {
+        "options": {
+          "target": "com.grafana.dashboard.v2#DashboardValueMapOptionsMap",
+          "traits": {
+            "smithy.api#documentation": "Map with <value_to_match>: ValueMappingResult. For example: { \"10\": { text: \"Perfection!\", color: \"green\" } }",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Maps text values to a color or different display text and color. For example, you can configure a value mapping so that all instances of the value 10 appear as Perfection! rather than the number."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardValueMapOptionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.grafana.dashboard.v2#DashboardValueMappingResult"
+      },
+      "traits": {
+        "smithy.api#documentation": "Map with <value_to_match>: ValueMappingResult. For example: { \"10\": { text: \"Perfection!\", color: \"green\" } }"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardFieldConfigMappingsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardValueMapOrRangeMapOrRegexMapOrSpecialValueMap"
+      },
+      "traits": {
+        "smithy.api#documentation": "Convert input values into a display string"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardThresholdsConfig": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "steps": {
+          "target": "com.grafana.dashboard.v2#DashboardThresholdsConfigStepsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardThreshold": {
+      "type": "structure",
+      "members": {
+        "color": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Value null means -Infinity",
+            "smithy.api#required": {}
+          }
+        },
+        "valueExpr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional dashboard-variable expression (e.g. `$myVar`) resolved at render time; `value` is the numeric fallback when the expression cannot be resolved to a single finite number."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardThresholdsConfigStepsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardThreshold"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardV2FieldConfigSourceOverrides": {
+      "type": "structure",
+      "members": {
+        "__systemRef": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Describes config override rules created when interacting with Grafana."
+          }
+        },
+        "matcher": {
+          "target": "com.grafana.dashboard.v2#DashboardMatcherConfig",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "properties": {
+          "target": "com.grafana.dashboard.v2#DashboardV2FieldConfigSourceOverridesPropertiesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardDynamicConfigValue": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardV2FieldConfigSourceOverridesPropertiesList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardDynamicConfigValue"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardFieldConfigSourceOverridesList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardV2FieldConfigSourceOverrides"
+      },
+      "traits": {
+        "smithy.api#documentation": "Overrides are the options applied to specific fields overriding the defaults."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardVizConfigSpecOptionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardSpecElementsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "com.grafana.dashboard.v2#DashboardPanelKindOrLibraryPanelKind"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardGridLayoutKindOrRowsLayoutKindOrAutoGridLayoutKindOrTabsLayoutKind": {
+      "type": "structure",
+      "members": {
+        "AutoGridLayoutKind": {
+          "target": "com.grafana.dashboard.v2#DashboardAutoGridLayoutKind"
+        },
+        "GridLayoutKind": {
+          "target": "com.grafana.dashboard.v2#DashboardGridLayoutKind"
+        },
+        "RowsLayoutKind": {
+          "target": "com.grafana.dashboard.v2#DashboardRowsLayoutKind"
+        },
+        "TabsLayoutKind": {
+          "target": "com.grafana.dashboard.v2#DashboardTabsLayoutKind"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardAutoGridLayoutKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardAutoGridLayoutSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardAutoGridLayoutSpec": {
+      "type": "structure",
+      "members": {
+        "columnWidth": {
+          "target": "smithy.api#Double"
+        },
+        "columnWidthMode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "fillScreen": {
+          "target": "smithy.api#Boolean"
+        },
+        "items": {
+          "target": "com.grafana.dashboard.v2#DashboardAutoGridLayoutSpecItemsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "maxColumnCount": {
+          "target": "smithy.api#Double"
+        },
+        "rowHeight": {
+          "target": "smithy.api#Double"
+        },
+        "rowHeightMode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardAutoGridLayoutItemKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardAutoGridLayoutItemSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardAutoGridLayoutItemSpec": {
+      "type": "structure",
+      "members": {
+        "conditionalRendering": {
+          "target": "com.grafana.dashboard.v2#DashboardConditionalRenderingGroupKind"
+        },
+        "element": {
+          "target": "com.grafana.dashboard.v2#DashboardElementReference",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "repeat": {
+          "target": "com.grafana.dashboard.v2#DashboardAutoGridRepeatOptions"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardConditionalRenderingGroupKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardConditionalRenderingGroupSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardConditionalRenderingGroupSpec": {
+      "type": "structure",
+      "members": {
+        "condition": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "items": {
+          "target": "com.grafana.dashboard.v2#DashboardConditionalRenderingGroupSpecItemsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "visibility": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardConditionalRenderingVariableKindOrConditionalRenderingDataKindOrConditionalRenderingTimeRangeSizeKind": {
+      "type": "structure",
+      "members": {
+        "ConditionalRenderingDataKind": {
+          "target": "com.grafana.dashboard.v2#DashboardConditionalRenderingDataKind"
+        },
+        "ConditionalRenderingTimeRangeSizeKind": {
+          "target": "com.grafana.dashboard.v2#DashboardConditionalRenderingTimeRangeSizeKind"
+        },
+        "ConditionalRenderingVariableKind": {
+          "target": "com.grafana.dashboard.v2#DashboardConditionalRenderingVariableKind"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardConditionalRenderingDataKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardConditionalRenderingDataSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardConditionalRenderingDataSpec": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardConditionalRenderingTimeRangeSizeKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardConditionalRenderingTimeRangeSizeSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardConditionalRenderingTimeRangeSizeSpec": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardConditionalRenderingVariableKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardConditionalRenderingVariableSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardConditionalRenderingVariableSpec": {
+      "type": "structure",
+      "members": {
+        "operator": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "variable": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardConditionalRenderingGroupSpecItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardConditionalRenderingVariableKindOrConditionalRenderingDataKindOrConditionalRenderingTimeRangeSizeKind"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardElementReference": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardAutoGridRepeatOptions": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardAutoGridLayoutSpecItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardAutoGridLayoutItemKind"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardGridLayoutKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardGridLayoutSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardGridLayoutSpec": {
+      "type": "structure",
+      "members": {
+        "items": {
+          "target": "com.grafana.dashboard.v2#DashboardGridLayoutSpecItemsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardGridLayoutItemKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardGridLayoutItemSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardGridLayoutItemSpec": {
+      "type": "structure",
+      "members": {
+        "element": {
+          "target": "com.grafana.dashboard.v2#DashboardElementReference",
+          "traits": {
+            "smithy.api#documentation": "reference to a PanelKind from dashboard.spec.elements Expressed as JSON Schema reference",
+            "smithy.api#required": {}
+          }
+        },
+        "height": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "repeat": {
+          "target": "com.grafana.dashboard.v2#DashboardRepeatOptions"
+        },
+        "width": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "x": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "y": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardRepeatOptions": {
+      "type": "structure",
+      "members": {
+        "direction": {
+          "target": "smithy.api#String"
+        },
+        "maxPerRow": {
+          "target": "smithy.api#Integer"
+        },
+        "mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardGridLayoutSpecItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardGridLayoutItemKind"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardRowsLayoutKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardRowsLayoutSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardRowsLayoutSpec": {
+      "type": "structure",
+      "members": {
+        "rows": {
+          "target": "com.grafana.dashboard.v2#DashboardRowsLayoutSpecRowsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardRowsLayoutRowKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardRowsLayoutRowSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardRowsLayoutRowSpec": {
+      "type": "structure",
+      "members": {
+        "collapse": {
+          "target": "smithy.api#Boolean"
+        },
+        "conditionalRendering": {
+          "target": "com.grafana.dashboard.v2#DashboardConditionalRenderingGroupKind"
+        },
+        "fillScreen": {
+          "target": "smithy.api#Boolean"
+        },
+        "hideHeader": {
+          "target": "smithy.api#Boolean"
+        },
+        "layout": {
+          "target": "com.grafana.dashboard.v2#DashboardGridLayoutKindOrAutoGridLayoutKindOrTabsLayoutKindOrRowsLayoutKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "repeat": {
+          "target": "com.grafana.dashboard.v2#DashboardRowRepeatOptions"
+        },
+        "title": {
+          "target": "smithy.api#String"
+        },
+        "variables": {
+          "target": "com.grafana.dashboard.v2#DashboardRowsLayoutRowSpecVariablesList"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardGridLayoutKindOrAutoGridLayoutKindOrTabsLayoutKindOrRowsLayoutKind": {
+      "type": "structure",
+      "members": {
+        "AutoGridLayoutKind": {
+          "target": "com.grafana.dashboard.v2#DashboardAutoGridLayoutKind"
+        },
+        "GridLayoutKind": {
+          "target": "com.grafana.dashboard.v2#DashboardGridLayoutKind"
+        },
+        "RowsLayoutKind": {
+          "target": "com.grafana.dashboard.v2#DashboardRowsLayoutKind"
+        },
+        "TabsLayoutKind": {
+          "target": "com.grafana.dashboard.v2#DashboardTabsLayoutKind"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardTabsLayoutKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardTabsLayoutSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardTabsLayoutSpec": {
+      "type": "structure",
+      "members": {
+        "tabs": {
+          "target": "com.grafana.dashboard.v2#DashboardTabsLayoutSpecTabsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardTabsLayoutTabKind": {
+      "type": "structure",
+      "members": {
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardTabsLayoutTabSpec",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardTabsLayoutTabSpec": {
+      "type": "structure",
+      "members": {
+        "conditionalRendering": {
+          "target": "com.grafana.dashboard.v2#DashboardConditionalRenderingGroupKind"
+        },
+        "layout": {
+          "target": "com.grafana.dashboard.v2#DashboardGridLayoutKindOrRowsLayoutKindOrAutoGridLayoutKindOrTabsLayoutKind",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "repeat": {
+          "target": "com.grafana.dashboard.v2#DashboardTabRepeatOptions"
+        },
+        "title": {
+          "target": "smithy.api#String"
+        },
+        "variables": {
+          "target": "com.grafana.dashboard.v2#DashboardTabsLayoutTabSpecVariablesList"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardTabRepeatOptions": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardQueryVariableKindOrTextVariableKindOrConstantVariableKindOrDatasourceVariableKindOrIntervalVariableKindOrCustomVariableKindOrGroupByVariableKindOrAdhocVariableKindOrSwitchVariableKind": {
+      "type": "structure",
+      "members": {
+        "AdhocVariableKind": {
+          "target": "smithy.api#Document"
+        },
+        "ConstantVariableKind": {
+          "target": "smithy.api#Document"
+        },
+        "CustomVariableKind": {
+          "target": "smithy.api#Document"
+        },
+        "DatasourceVariableKind": {
+          "target": "smithy.api#Document"
+        },
+        "GroupByVariableKind": {
+          "target": "smithy.api#Document"
+        },
+        "IntervalVariableKind": {
+          "target": "smithy.api#Document"
+        },
+        "QueryVariableKind": {
+          "target": "smithy.api#Document"
+        },
+        "SwitchVariableKind": {
+          "target": "smithy.api#Document"
+        },
+        "TextVariableKind": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardTabsLayoutTabSpecVariablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardQueryVariableKindOrTextVariableKindOrConstantVariableKindOrDatasourceVariableKindOrIntervalVariableKindOrCustomVariableKindOrGroupByVariableKindOrAdhocVariableKindOrSwitchVariableKind"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardTabsLayoutSpecTabsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardTabsLayoutTabKind"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardRowRepeatOptions": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardRowsLayoutRowSpecVariablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardQueryVariableKindOrTextVariableKindOrConstantVariableKindOrDatasourceVariableKindOrIntervalVariableKindOrCustomVariableKindOrGroupByVariableKindOrAdhocVariableKindOrSwitchVariableKind"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardRowsLayoutSpecRowsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardRowsLayoutRowKind"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardDashboardLink": {
+      "type": "structure",
+      "members": {
+        "asDropdown": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, all dashboards links will be displayed in a dropdown. If false, all dashboards links will be displayed side by side. Only valid if the type is dashboards",
+            "smithy.api#required": {}
+          }
+        },
+        "icon": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Icon name to be displayed with the link",
+            "smithy.api#required": {}
+          }
+        },
+        "includeVars": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, includes current template variables values in the link as query params",
+            "smithy.api#required": {}
+          }
+        },
+        "keepTime": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, includes current time range in the link as query params",
+            "smithy.api#required": {}
+          }
+        },
+        "origin": {
+          "target": "com.grafana.dashboard.v2#DashboardDatasourceControlSourceRef",
+          "traits": {
+            "smithy.api#documentation": "The source that registered the link (if any)"
+          }
+        },
+        "placement": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Placement can be used to display the link somewhere else on the dashboard other than above the visualisations."
+          }
+        },
+        "tags": {
+          "target": "com.grafana.dashboard.v2#DashboardDashboardLinkTagsList",
+          "traits": {
+            "smithy.api#documentation": "List of tags to limit the linked dashboards. If empty, all dashboards will be displayed. Only valid if the type is dashboards",
+            "smithy.api#required": {}
+          }
+        },
+        "targetBlank": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, the link will be opened in a new tab",
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Title to display with the link",
+            "smithy.api#required": {}
+          }
+        },
+        "tooltip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Tooltip to display when the user hovers their mouse over it",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link type. Accepted values are dashboards (to refer to another dashboard) and link (to refer to an external resource) FIXME: The type is generated as `type: DashboardLinkType | dashboardLinkType.Link;` but it should be `type: DashboardLinkType`",
+            "smithy.api#required": {}
+          }
+        },
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Link URL. Only required/valid if the type is link"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Links with references to other dashboards or external resources"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardDatasourceControlSourceRef": {
+      "type": "structure",
+      "members": {
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The plugin type-id",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Source information for controls (e.g. variables or links)"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardDashboardLinkTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of tags to limit the linked dashboards. If empty, all dashboards will be displayed. Only valid if the type is dashboards"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardSpecLinksList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardDashboardLink"
+      },
+      "traits": {
+        "smithy.api#documentation": "Links with references to other dashboards or external websites."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardPreferences": {
+      "type": "structure",
+      "members": {
+        "layout": {
+          "target": "com.grafana.dashboard.v2#DashboardAutoGridLayoutKindOrGridLayoutKind",
+          "traits": {
+            "smithy.api#documentation": "default layout template to be used when new containers are created"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Dashboard specific preferences (applied per dashboard = all users using the dashboard)"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardAutoGridLayoutKindOrGridLayoutKind": {
+      "type": "structure",
+      "members": {
+        "AutoGridLayoutKind": {
+          "target": "com.grafana.dashboard.v2#DashboardAutoGridLayoutKind"
+        },
+        "GridLayoutKind": {
+          "target": "com.grafana.dashboard.v2#DashboardGridLayoutKind"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardSpecTagsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Tags associated with dashboard."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardTimeSettingsSpec": {
+      "type": "structure",
+      "members": {
+        "autoRefresh": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Refresh rate of dashboard. Represented via interval string, e.g. \"5s\", \"1m\", \"1h\", \"1d\". v1: refresh",
+            "smithy.api#required": {}
+          }
+        },
+        "autoRefreshIntervals": {
+          "target": "com.grafana.dashboard.v2#DashboardTimeSettingsSpecAutoRefreshIntervalsList",
+          "traits": {
+            "smithy.api#documentation": "Interval options available in the refresh picker dropdown. v1: timepicker.refresh_intervals",
+            "smithy.api#required": {}
+          }
+        },
+        "fiscalYearStartMonth": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "The month that the fiscal year starts on. 0 = January, 11 = December",
+            "smithy.api#required": {}
+          }
+        },
+        "from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start time range for dashboard. Accepted values are relative time strings like \"now-6h\" or absolute time strings like \"2020-07-10T08:00:00.000Z\".",
+            "smithy.api#required": {}
+          }
+        },
+        "hideTimepicker": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether timepicker is visible or not. v1: timepicker.hidden",
+            "smithy.api#required": {}
+          }
+        },
+        "nowDelay": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override the now time by entering a time delay. Use this option to accommodate known delays in data aggregation to avoid null values. v1: timepicker.nowDelay"
+          }
+        },
+        "quickRanges": {
+          "target": "com.grafana.dashboard.v2#DashboardTimeSettingsSpecQuickRangesList",
+          "traits": {
+            "smithy.api#documentation": "Selectable options available in the time picker dropdown. Has no effect on provisioned dashboard. v1: timepicker.quick_ranges , not exposed in the UI"
+          }
+        },
+        "timezone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timezone of dashboard. Accepted values are IANA TZDB zone ID or \"browser\" or \"utc\"."
+          }
+        },
+        "to": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End time range for dashboard. Accepted values are relative time strings like \"now-6h\" or absolute time strings like \"2020-07-10T08:00:00.000Z\".",
+            "smithy.api#required": {}
+          }
+        },
+        "weekStart": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Day when the week starts. Expressed by the name of the day in lowercase, e.g. \"monday\"."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Time configuration It defines the default time config for the time picker, the refresh picker for the specific dashboard."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardTimeSettingsSpecAutoRefreshIntervalsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "Interval options available in the refresh picker dropdown. v1: timepicker.refresh_intervals"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardTimeRangeOption": {
+      "type": "structure",
+      "members": {
+        "display": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "to": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardTimeSettingsSpecQuickRangesList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardTimeRangeOption"
+      },
+      "traits": {
+        "smithy.api#documentation": "Selectable options available in the time picker dropdown. Has no effect on provisioned dashboard. v1: timepicker.quick_ranges , not exposed in the UI"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardSpecVariablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#DashboardQueryVariableKindOrTextVariableKindOrConstantVariableKindOrDatasourceVariableKindOrIntervalVariableKindOrCustomVariableKindOrGroupByVariableKindOrAdhocVariableKindOrSwitchVariableKind"
+      },
+      "traits": {
+        "smithy.api#documentation": "Configured template variables."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardStatus": {
+      "type": "structure",
+      "members": {
+        "conversion": {
+          "target": "com.grafana.dashboard.v2#DashboardConversionStatus",
+          "traits": {
+            "smithy.api#documentation": "Optional conversion status."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#DashboardConversionStatus": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The error message from the conversion. Empty if the conversion has not failed."
+          }
+        },
+        "failed": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether from another version has failed. If true, means that the dashboard is not valid, and the caller should instead fetch the stored version.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The original value map[string]any"
+          }
+        },
+        "storedVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version which was stored when the dashboard was created / updated. Fetching this version should always succeed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ConversionStatus is the status of the conversion of the dashboard."
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardListItemsList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#Dashboard2"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#ListMeta": {
+      "type": "structure",
+      "members": {
+        "continue": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message."
+          }
+        },
+        "remainingItemCount": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "remainingItemCount is the number of subsequent items in the list which are not included in this list response. If the list request contained label or field selectors, then the number of remaining items is unknown and the field will be left unset and omitted during serialization. If the list is complete (either because it is not chunking or because this is the last chunk), then there are no more remaining items and this field will be left unset and omitted during serialization. Servers older than v1.15 do not set this field. The intended use of the remainingItemCount is *estimating* the size of a collection. Clients should not rely on the remainingItemCount to be set or to be exact."
+          }
+        },
+        "resourceVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency"
+          }
+        },
+        "selfLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}."
+      }
+    },
+    "com.grafana.dashboard.v2#ListDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.grafana.dashboard.v2#ListDashboardRequest"
+      },
+      "output": {
+        "target": "com.grafana.dashboard.v2#DashboardList"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/apis/dashboard.grafana.app/v2/namespaces/{namespace}/dashboards",
+          "code": 200
+        },
+        "smithy.api#documentation": "list objects of kind Dashboard",
+        "smithy.api#paginated": {
+          "mode": "cursor",
+          "inputToken": "continue",
+          "outputToken": "metadata.continue",
+          "items": "items"
+        }
+      }
+    },
+    "com.grafana.dashboard.v2#CreateDashboardRequest": {
+      "type": "structure",
+      "members": {
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pretty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "pretty",
+            "smithy.api#documentation": "If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget)."
+          }
+        },
+        "dryRun": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "dryRun",
+            "smithy.api#documentation": "When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed"
+          }
+        },
+        "fieldManager": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "fieldManager",
+            "smithy.api#documentation": "fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint."
+          }
+        },
+        "fieldValidation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "fieldValidation",
+            "smithy.api#documentation": "fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered."
+          }
+        },
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+          }
+        },
+        "metadata": {
+          "target": "com.grafana.dashboard.v2#ObjectMeta",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardSpec",
+          "traits": {
+            "smithy.api#documentation": "Spec is the spec of the Dashboard",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.grafana.dashboard.v2#DashboardStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.grafana.dashboard.v2#CreateDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.grafana.dashboard.v2#CreateDashboardRequest"
+      },
+      "output": {
+        "target": "com.grafana.dashboard.v2#Dashboard2"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/apis/dashboard.grafana.app/v2/namespaces/{namespace}/dashboards",
+          "code": 200
+        },
+        "smithy.api#documentation": "create a Dashboard"
+      }
+    },
+    "com.grafana.dashboard.v2#GetDashboardRequest": {
+      "type": "structure",
+      "members": {
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the Dashboard"
+          }
+        },
+        "pretty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "pretty",
+            "smithy.api#documentation": "If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.grafana.dashboard.v2#GetDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.grafana.dashboard.v2#GetDashboardRequest"
+      },
+      "output": {
+        "target": "com.grafana.dashboard.v2#Dashboard2"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/apis/dashboard.grafana.app/v2/namespaces/{namespace}/dashboards/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "read the specified Dashboard"
+      }
+    },
+    "com.grafana.dashboard.v2#ReplaceDashboardRequest": {
+      "type": "structure",
+      "members": {
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the Dashboard"
+          }
+        },
+        "pretty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "pretty",
+            "smithy.api#documentation": "If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget)."
+          }
+        },
+        "dryRun": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "dryRun",
+            "smithy.api#documentation": "When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed"
+          }
+        },
+        "fieldManager": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "fieldManager",
+            "smithy.api#documentation": "fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint."
+          }
+        },
+        "fieldValidation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "fieldValidation",
+            "smithy.api#documentation": "fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered."
+          }
+        },
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+          }
+        },
+        "metadata": {
+          "target": "com.grafana.dashboard.v2#ObjectMeta",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardSpec",
+          "traits": {
+            "smithy.api#documentation": "Spec is the spec of the Dashboard",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.grafana.dashboard.v2#DashboardStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.grafana.dashboard.v2#ReplaceDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.grafana.dashboard.v2#ReplaceDashboardRequest"
+      },
+      "output": {
+        "target": "com.grafana.dashboard.v2#Dashboard2"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/apis/dashboard.grafana.app/v2/namespaces/{namespace}/dashboards/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "replace the specified Dashboard"
+      }
+    },
+    "com.grafana.dashboard.v2#GrafanaPatchBody": {
+      "type": "union",
+      "members": {
+        "Case0": {
+          "target": "com.grafana.dashboard.v2#GrafanaPatchBodyCase0Map"
+        },
+        "Case1": {
+          "target": "com.grafana.dashboard.v2#GrafanaPatchBodyCase1List"
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Grafana structured API patch document."
+      }
+    },
+    "com.grafana.dashboard.v2#GrafanaPatchBodyCase0Map": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#GrafanaPatchBodyCase1List": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#UpdateDashboardRequest": {
+      "type": "structure",
+      "members": {
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the Dashboard"
+          }
+        },
+        "pretty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "pretty",
+            "smithy.api#documentation": "If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget)."
+          }
+        },
+        "dryRun": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "dryRun",
+            "smithy.api#documentation": "When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed"
+          }
+        },
+        "fieldManager": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "fieldManager",
+            "smithy.api#documentation": "fieldManager is a name associated with the actor or entity that is making these changes. The value must be less than or 128 characters long, and only contain printable characters, as defined by https://golang.org/pkg/unicode/#IsPrint. This field is required for apply requests (application/apply-patch) but optional for non-apply patch types (JsonPatch, MergePatch, StrategicMergePatch)."
+          }
+        },
+        "fieldValidation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "fieldValidation",
+            "smithy.api#documentation": "fieldValidation instructs the server on how to handle objects in the request (POST/PUT/PATCH) containing unknown or duplicate fields. Valid values are: - Ignore: This will ignore any unknown fields that are silently dropped from the object, and will ignore all but the last duplicate field that the decoder encounters. This is the default behavior prior to v1.23. - Warn: This will send a warning via the standard warning response header for each unknown field that is dropped from the object, and for each duplicate field that is encountered. The request will still succeed if there are no other errors, and will only persist the last of any duplicate fields. This is the default in v1.23+ - Strict: This will fail the request with a BadRequest error if any unknown fields would be dropped from the object, or if any duplicate fields are present. The error returned from the server will contain all unknown and duplicate fields encountered."
+          }
+        },
+        "force": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "force",
+            "smithy.api#documentation": "Force is going to \"force\" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests."
+          }
+        },
+        "body": {
+          "target": "com.grafana.dashboard.v2#GrafanaPatchBody",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.grafana.dashboard.v2#UpdateDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.grafana.dashboard.v2#UpdateDashboardRequest"
+      },
+      "output": {
+        "target": "com.grafana.dashboard.v2#Dashboard2"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/apis/dashboard.grafana.app/v2/namespaces/{namespace}/dashboards/{name}",
+          "code": 200,
+          "patchMediaType": "application/merge-patch+json"
+        },
+        "smithy.api#documentation": "partially update the specified Dashboard"
+      }
+    },
+    "com.grafana.dashboard.v2#DeleteDashboardRequest": {
+      "type": "structure",
+      "members": {
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the Dashboard"
+          }
+        },
+        "pretty": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "pretty",
+            "smithy.api#documentation": "If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget)."
+          }
+        },
+        "dryRun": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "dryRun",
+            "smithy.api#documentation": "When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed"
+          }
+        },
+        "gracePeriodSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "gracePeriodSeconds",
+            "smithy.api#documentation": "The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately."
+          }
+        },
+        "ignoreStoreReadErrorWithClusterBreakingPotential": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "ignoreStoreReadErrorWithClusterBreakingPotential",
+            "smithy.api#documentation": "if set to true, it will trigger an unsafe deletion of the resource in case the normal deletion flow fails with a corrupt object error. A resource is considered corrupt if it can not be retrieved from the underlying storage successfully because of a) its data can not be transformed e.g. decryption failure, or b) it fails to decode into an object. NOTE: unsafe deletion ignores finalizer constraints, skips precondition checks, and removes the object from the storage. WARNING: This may potentially break the cluster if the workload associated with the resource being unsafe-deleted relies on normal deletion flow. Use only if you REALLY know what you are doing. The default value is false, and the user must opt in to enable it"
+          }
+        },
+        "orphanDependents": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "orphanDependents",
+            "smithy.api#documentation": "Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the \"orphan\" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both."
+          }
+        },
+        "propagationPolicy": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "propagationPolicy",
+            "smithy.api#documentation": "Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.grafana.dashboard.v2#Status": {
+      "type": "structure",
+      "members": {
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+          }
+        },
+        "code": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Suggested HTTP return code for this status, 0 if not set."
+          }
+        },
+        "details": {
+          "target": "com.grafana.dashboard.v2#StatusDetails",
+          "traits": {
+            "smithy.api#documentation": "Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description of the status of this operation."
+          }
+        },
+        "metadata": {
+          "target": "com.grafana.dashboard.v2#ListMeta",
+          "traits": {
+            "smithy.api#documentation": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+          }
+        },
+        "reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A machine-readable description of why this operation is in the \"Failure\" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it."
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Status of the operation. One of: \"Success\" or \"Failure\". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Status is a return value for calls that don't return other objects."
+      }
+    },
+    "com.grafana.dashboard.v2#StatusDetails": {
+      "type": "structure",
+      "members": {
+        "causes": {
+          "target": "com.grafana.dashboard.v2#StatusDetailsCausesList",
+          "traits": {
+            "smithy.api#documentation": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes."
+          }
+        },
+        "group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The group attribute of the resource associated with the status StatusReason."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described)."
+          }
+        },
+        "retryAfterSeconds": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action."
+          }
+        },
+        "uid": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined."
+      }
+    },
+    "com.grafana.dashboard.v2#StatusCause": {
+      "type": "structure",
+      "members": {
+        "field": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed.  Fields may appear more than once in an array of causes due to fields having multiple errors. Optional.\n\nExamples:\n  \"name\" - the field \"name\" on the current resource\n  \"items[0].name\" - the field \"name\" on the first array entry in \"items\""
+          }
+        },
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description of the cause of the error.  This field may be presented as-is to a reader."
+          }
+        },
+        "reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A machine-readable description of the cause of the error. If this value is empty there is no information available."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered."
+      }
+    },
+    "com.grafana.dashboard.v2#StatusDetailsCausesList": {
+      "type": "list",
+      "member": {
+        "target": "com.grafana.dashboard.v2#StatusCause"
+      },
+      "traits": {
+        "smithy.api#documentation": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes."
+      }
+    },
+    "com.grafana.dashboard.v2#DeleteDashboard": {
+      "type": "operation",
+      "input": {
+        "target": "com.grafana.dashboard.v2#DeleteDashboardRequest"
+      },
+      "output": {
+        "target": "com.grafana.dashboard.v2#Status"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/apis/dashboard.grafana.app/v2/namespaces/{namespace}/dashboards/{name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "delete a Dashboard"
+      }
+    },
+    "com.grafana.dashboard.v2#GetDashboardDtoRequest": {
+      "type": "structure",
+      "members": {
+        "namespace": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "name of the DashboardWithAccessInfo"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardWithAccessInfo": {
+      "type": "structure",
+      "members": {
+        "access": {
+          "target": "com.grafana.dashboard.v2#DashboardAccess",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "apiVersion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources"
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+          }
+        },
+        "metadata": {
+          "target": "com.grafana.dashboard.v2#ObjectMeta",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "spec": {
+          "target": "com.grafana.dashboard.v2#DashboardSpec",
+          "traits": {
+            "smithy.api#documentation": "Spec is the spec of the Dashboard",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.grafana.dashboard.v2#DashboardStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "This is like the legacy DTO where access and metadata are all returned in a single call"
+      }
+    },
+    "com.grafana.dashboard.v2#DashboardAccess": {
+      "type": "structure",
+      "members": {
+        "annotationsPermissions": {
+          "target": "com.grafana.dashboard.v2#AnnotationPermission",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "canAdmin": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "canDelete": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "canEdit": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "canSave": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "The permissions part",
+            "smithy.api#required": {}
+          }
+        },
+        "canStar": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "isPublic": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Metadata fields"
+          }
+        },
+        "url": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#AnnotationPermission": {
+      "type": "structure",
+      "members": {
+        "dashboard": {
+          "target": "com.grafana.dashboard.v2#AnnotationActions",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#AnnotationActions": {
+      "type": "structure",
+      "members": {
+        "canAdd": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "canDelete": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "canEdit": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.grafana.dashboard.v2#GetDashboardDto": {
+      "type": "operation",
+      "input": {
+        "target": "com.grafana.dashboard.v2#GetDashboardDtoRequest"
+      },
+      "output": {
+        "target": "com.grafana.dashboard.v2#DashboardWithAccessInfo"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/apis/dashboard.grafana.app/v2/namespaces/{namespace}/dashboards/{name}/dto",
+          "code": 200
+        },
+        "smithy.api#documentation": "connect GET requests to dto of Dashboard"
+      }
+    },
+    "com.grafana.dashboard.v2#Dashboard": {
+      "type": "service",
+      "version": "1.0",
+      "operations": [
+        {
+          "target": "com.grafana.dashboard.v2#GetAPIResources"
+        },
+        {
+          "target": "com.grafana.dashboard.v2#ListDashboard"
+        },
+        {
+          "target": "com.grafana.dashboard.v2#CreateDashboard"
+        },
+        {
+          "target": "com.grafana.dashboard.v2#GetDashboard"
+        },
+        {
+          "target": "com.grafana.dashboard.v2#ReplaceDashboard"
+        },
+        {
+          "target": "com.grafana.dashboard.v2#UpdateDashboard"
+        },
+        {
+          "target": "com.grafana.dashboard.v2#DeleteDashboard"
+        },
+        {
+          "target": "com.grafana.dashboard.v2#GetDashboardDto"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "dashboard.grafana.app/v2",
+        "smithy.api#documentation": "Grafana dashboards as resources"
+      }
+    }
+  }
+}
