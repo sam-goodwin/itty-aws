@@ -14820,8 +14820,8 @@ export type DeleteObjectError =
   | RequestLimitExceeded
   | SlowDown
   | NoSuchBucket
+  | NoSuchKey
   | PermanentRedirect
-  | NotFound
   | CommonErrors;
 /**
  * Removes an object from a bucket. The behavior depends on the bucket's versioning state:
@@ -14925,8 +14925,8 @@ export const deleteObject: API.OperationMethod<
     RequestLimitExceeded,
     SlowDown,
     NoSuchBucket,
+    NoSuchKey,
     PermanentRedirect,
-    NotFound,
   ],
   protocol: AwsProtocol,
   retry: Retry,

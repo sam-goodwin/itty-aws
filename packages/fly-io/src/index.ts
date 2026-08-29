@@ -37,6 +37,7 @@ export {
   FlyApiProtocol,
   FlyGraphqlProtocol,
   SpritesProtocol,
+  MachineIdentity,
   type FlyIoOpError,
   type FlyIoOpContext,
   type SpritesOpError,
